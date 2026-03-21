@@ -21,20 +21,29 @@ export const metadata: Metadata = {
     default: "Abdul Gofur - Full-stack Developer Portfolio",
     template: "%s | Abdul Gofur"
   },
-  description: "Portfolio of Abdul Gofur (agds-dev), a Full-stack Developer specializing in Next.js, React, TypeScript, and PostgreSQL. Featuring production web applications: WC Check, AGDS POS, and Selisih Berat.",
+  description: "Portfolio of Abdul Gofur (agds-dev), Full-stack Developer & AI-Augmented Engineer. 15+ production projects built in <1 year. Specializing in Next.js, React, TypeScript, tRPC, Prisma. Featured projects: WC Check, Eduvate, E-Commerce, Trading Bots.",
   keywords: [
     "Abdul Gofur",
     "agds-dev",
     "Full-stack Developer",
+    "AI-Augmented Engineer",
     "Web Developer",
     "Next.js Developer",
     "React Developer",
     "TypeScript",
+    "tRPC",
+    "Prisma",
     "Portfolio",
     "Indonesia Developer",
     "WC Check",
+    "Eduvate",
+    "E-Commerce",
+    "Trading Bot",
     "AGDS POS",
-    "Selisih Berat"
+    "Selisih Berat",
+    "School Management System",
+    "Solana",
+    "Web3"
   ],
   authors: [{ name: "Abdul Gofur", url: "https://github.com/agds-alt" }],
   creator: "Abdul Gofur",
@@ -56,8 +65,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://abdulgofur.vercel.app',
-    title: 'Abdul Gofur - Full-stack Developer Portfolio',
-    description: 'Portfolio showcasing production web applications built with modern technologies like Next.js, React, and TypeScript.',
+    title: 'Abdul Gofur - Full-stack Developer & AI-Augmented Engineer',
+    description: '15+ production-ready projects built in <1 year. Modern tech stack: Next.js, React, TypeScript, tRPC, Prisma. From e-commerce to trading bots.',
     siteName: 'Abdul Gofur Portfolio',
     images: [
       {
@@ -70,8 +79,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Abdul Gofur - Full-stack Developer',
-    description: 'Portfolio showcasing production web applications built with modern technologies.',
+    title: 'Abdul Gofur - Full-stack Developer & AI-Augmented Engineer',
+    description: '15+ production projects | Next.js, tRPC, Prisma | E-commerce, Trading Bots, School Systems, Web3',
     creator: '@agdscID',
     images: ['/avatar.jpg'],
   },
