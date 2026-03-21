@@ -60,63 +60,186 @@ export const projects: Project[] = [
     status: "production"
   },
   {
-    id: "agds-pos",
-    title: "AGDS Corp POS",
-    shortDescription: "Point of Sale & Warehouse Management System dengan modern tech stack",
-    fullDescription: "Comprehensive POS and Warehouse Management System untuk berkompetisi dengan established Indonesian POS solutions seperti Moka POS, Pawoon, dan Majoo. Menggunakan modern tech stack dengan performance superior dan cost-efficient alternative untuk Indonesian market.",
+    id: "ecommerce-manual",
+    title: "E-Commerce Manual",
+    shortDescription: "Modern E-Commerce Platform dengan Next.js 16 & Advanced Features",
+    fullDescription: "Full-featured e-commerce platform dengan modern architecture, real-time inventory management, payment integration, dan admin dashboard yang powerful. Built untuk scale dan performa tinggi menggunakan latest Next.js 16.",
     category: "full-stack",
     techStack: [
       {
         category: "Frontend",
-        technologies: ["Next.js 16", "TypeScript 5.9", "Tailwind CSS"]
+        technologies: ["Next.js 16", "React 19", "TypeScript 5.9", "Tailwind CSS"]
       },
       {
         category: "Backend & API",
-        technologies: ["tRPC", "PostgreSQL", "Prisma"]
+        technologies: ["tRPC", "Prisma ORM", "PostgreSQL"]
       },
       {
-        category: "Infrastructure",
-        technologies: ["Upstash Redis", "Vercel"]
+        category: "Services & Integrations",
+        technologies: ["Cloudinary", "Resend Email", "Web Push", "NextAuth v4"]
       }
     ],
     highlights: [
       {
-        title: "Multi-outlet Management",
-        description: "Kelola banyak outlet dari satu dashboard",
-        icon: "store"
+        title: "Modern Architecture",
+        description: "tRPC untuk type-safe API dengan full TypeScript",
+        icon: "code"
       },
       {
-        title: "Real-time Inventory",
-        description: "Tracking stock dan warehouse monitoring",
-        icon: "package"
+        title: "Real-time Features",
+        description: "Live inventory updates dan order tracking",
+        icon: "activity"
       },
       {
-        title: "Superior Performance",
-        description: "FCP <1.8s, LCP <2.5s performance targets",
+        title: "Performance Optimized",
+        description: "Bundle analyzer, image optimization, dan PWA ready",
         icon: "zap"
       }
     ],
     features: [
-      "Multi-outlet management system",
-      "Real-time inventory tracking",
-      "Sales recording & transaction management",
-      "Warehouse monitoring",
-      "User roles & permissions",
-      "Transaction void/cancel system",
-      "End of day reports",
-      "Discount & promotions system",
-      "Low stock alerts",
-      "Responsive tablet design (7-8 inch optimized)"
+      "Product catalog dengan categories & filtering",
+      "Shopping cart dengan real-time inventory check",
+      "User authentication dengan NextAuth",
+      "Admin dashboard untuk product & order management",
+      "Order tracking system",
+      "Payment integration ready",
+      "Email notifications dengan Resend",
+      "Push notifications support",
+      "Image upload & optimization dengan Cloudinary",
+      "Responsive design untuk semua device",
+      "Bundle size optimization dengan analyzer"
     ],
     impact: {
-      performance: "FCP <1.8s, LCP <2.5s performance",
-      users: "90% feature parity dengan competitors menggunakan free-tier solutions"
+      performance: "Optimized bundle size dan fast page loads",
+      users: "Complete e-commerce solution dengan modern UX"
     },
-    demo: "https://agdspos.vercel.app",
-    image: "/projects/agds-thumb.jpg",
-    tags: ["Next.js 16", "tRPC", "PostgreSQL", "Prisma", "Redis"],
-    year: "2024",
-    status: "development"
+    demo: "https://ecommerce-manual.vercel.app",
+    image: "/projects/ecommerce-thumb.jpg",
+    tags: ["Next.js 16", "tRPC", "Prisma", "PostgreSQL", "E-Commerce"],
+    year: "2026",
+    status: "production"
+  },
+  {
+    id: "eduvate",
+    title: "Eduvate - School Management System",
+    shortDescription: "Comprehensive School Management System dengan Modern Tech Stack",
+    fullDescription: "Platform manajemen sekolah lengkap yang mencakup student management, attendance tracking, grades, schedules, dan parent portal. Dibangun dengan Next.js 15 dan tRPC untuk performa optimal dan developer experience terbaik.",
+    category: "full-stack",
+    techStack: [
+      {
+        category: "Frontend",
+        technologies: ["Next.js 15", "React 19", "TypeScript 5.7", "Tailwind CSS", "Radix UI"]
+      },
+      {
+        category: "Backend & Database",
+        technologies: ["tRPC", "Prisma ORM", "PostgreSQL", "NextAuth v5"]
+      },
+      {
+        category: "Features & Tools",
+        technologies: ["React Query", "Recharts", "QR Code", "CSV Import/Export", "PWA"]
+      }
+    ],
+    highlights: [
+      {
+        title: "Complete School Features",
+        description: "Student, Teacher, Parent, dan Admin management",
+        icon: "school"
+      },
+      {
+        title: "Advanced Analytics",
+        description: "Dashboard dengan charts dan insights untuk decision making",
+        icon: "bar-chart"
+      },
+      {
+        title: "Modern Architecture",
+        description: "Clean code dengan T3 Stack best practices",
+        icon: "layers"
+      }
+    ],
+    features: [
+      "Student information system (SIS)",
+      "Attendance tracking dengan QR code",
+      "Grade & report card management",
+      "Class scheduling system",
+      "Teacher assignment & management",
+      "Parent portal untuk monitoring",
+      "Admin dashboard dengan analytics",
+      "CSV data import/export",
+      "Role-based access control",
+      "Real-time notifications",
+      "PWA support untuk mobile access",
+      "Dark mode support"
+    ],
+    impact: {
+      efficiency: "Streamlined school operations dan reduced paperwork",
+      users: "All-in-one solution untuk student, teacher, parent & admin"
+    },
+    demo: "https://eduvate.vercel.app",
+    image: "/projects/eduvate-thumb.jpg",
+    tags: ["Next.js 15", "tRPC", "Prisma", "Education", "SaaS"],
+    year: "2026",
+    status: "production"
+  },
+  {
+    id: "binance-algo-bot",
+    title: "Binance Algorithmic Trading Bot",
+    shortDescription: "Automated Trading Bot dengan AI-Powered Strategies & License System",
+    fullDescription: "Professional algorithmic trading bot untuk Binance dengan multiple trading strategies, real-time market analysis, risk management, dan license-based tier system. Built dengan Python dan Streamlit untuk dashboard monitoring yang powerful.",
+    category: "automation",
+    techStack: [
+      {
+        category: "Core",
+        technologies: ["Python 3.10", "Streamlit", "CCXT", "python-binance"]
+      },
+      {
+        category: "Data & Analytics",
+        technologies: ["Pandas", "NumPy", "Plotly", "TA-Lib"]
+      },
+      {
+        category: "Infrastructure",
+        technologies: ["SQLite", "Telegram Bot API", "Stripe Payment", "Flask API"]
+      }
+    ],
+    highlights: [
+      {
+        title: "Multiple Strategies",
+        description: "Grid, DCA, Scalping, dan custom algorithms",
+        icon: "trending-up"
+      },
+      {
+        title: "Risk Management",
+        description: "Stop-loss, take-profit, dan position sizing otomatis",
+        icon: "shield"
+      },
+      {
+        title: "License System",
+        description: "Tier-based licensing dengan Stripe integration",
+        icon: "key"
+      }
+    ],
+    features: [
+      "Real-time market data & technical indicators",
+      "Multiple trading strategies (Grid, DCA, Scalping)",
+      "Automated risk management",
+      "Backtesting dengan historical data",
+      "Live performance dashboard dengan Streamlit",
+      "Telegram notifications untuk trades",
+      "License management system (Basic, Pro, Enterprise)",
+      "Stripe payment integration",
+      "Multi-exchange support via CCXT",
+      "Position tracking & P&L calculation",
+      "Trade history & analytics",
+      "Configuration management via YAML"
+    ],
+    impact: {
+      automation: "24/7 automated trading dengan risk management",
+      users: "Monetization-ready dengan license tiers"
+    },
+    demo: "https://github.com/yourusername/binance-algo-bot",
+    image: "/projects/trading-bot-thumb.jpg",
+    tags: ["Python", "Trading Bot", "AI", "Binance", "Automation"],
+    year: "2025-2026",
+    status: "production"
   },
   {
     id: "selisih-berat",

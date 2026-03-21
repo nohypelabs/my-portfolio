@@ -1,9 +1,9 @@
 export const personalInfo = {
   name: "Abdul Gofur",
   username: "agds-dev",
-  role: "Full-stack Developer",
-  tagline: "Building scalable web applications",
-  bio: "Full-stack developer with a passion for creating scalable and performant web applications. Experienced in building production-ready solutions from concept to deployment.",
+  role: "Full-stack Developer & AI-Augmented Engineer",
+  tagline: "Building production-ready applications with modern tech stack",
+  bio: "CS graduate who made a comeback after 9 years, now building production-ready full-stack applications with AI-assisted development. Shipped 15+ projects in less than a year, specializing in Next.js, tRPC, and modern web technologies. From toilet monitoring systems to algorithmic trading bots - I build solutions that solve real problems.",
 
   contact: {
     email: "agdscid@gmail.com",
@@ -13,15 +13,17 @@ export const personalInfo = {
   },
 
   skills: {
-    frontend: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    backend: ["Node.js", "tRPC", "Prisma", "PostgreSQL", "Redis"],
-    database: ["PostgreSQL", "Supabase", "MongoDB", "Redis", "InfluxDB"],
-    tools: ["Git", "Docker", "Vercel", "PWA", "WebSocket"]
+    frontend: ["Next.js 15/16", "React 19", "TypeScript", "Tailwind CSS", "Framer Motion", "Radix UI", "shadcn/ui"],
+    backend: ["Node.js", "tRPC", "Prisma ORM", "NextAuth", "Python", "Flask", "Streamlit"],
+    database: ["PostgreSQL", "Supabase", "MySQL", "Redis", "SQLite"],
+    tools: ["Git", "Vercel", "PWA", "Cloudinary", "Playwright", "Vitest", "Docker"],
+    specialties: ["Trading Bots", "Web3/Solana", "QR Systems", "Real-time Analytics", "DDD Architecture"]
   },
 
   stats: {
-    experience: "1",
-    projectsCompleted: "3",
-    technologiesMastered: "15"
+    experience: "<1",
+    projectsCompleted: "5",
+    ongoingProjects: "6",
+    technologiesMastered: "25+"
   }
 };
