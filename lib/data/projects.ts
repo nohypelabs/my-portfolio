@@ -171,7 +171,7 @@ export const projects: Project[] = [
       "Dark mode support"
     ],
     impact: {
-      efficiency: "Streamlined school operations dan reduced paperwork",
+      performance: "Streamlined school operations dan reduced paperwork",
       users: "All-in-one solution untuk student, teacher, parent & admin"
     },
     demo: "https://eduvate.vercel.app",
@@ -185,7 +185,7 @@ export const projects: Project[] = [
     title: "Binance Algorithmic Trading Bot",
     shortDescription: "Automated Trading Bot dengan AI-Powered Strategies & License System",
     fullDescription: "Professional algorithmic trading bot untuk Binance dengan multiple trading strategies, real-time market analysis, risk management, dan license-based tier system. Built dengan Python dan Streamlit untuk dashboard monitoring yang powerful.",
-    category: "automation",
+    category: "backend",
     techStack: [
       {
         category: "Core",
@@ -232,7 +232,7 @@ export const projects: Project[] = [
       "Configuration management via YAML"
     ],
     impact: {
-      automation: "24/7 automated trading dengan risk management",
+      performance: "24/7 automated trading dengan risk management",
       users: "Monetization-ready dengan license tiers"
     },
     demo: "https://github.com/yourusername/binance-algo-bot",
