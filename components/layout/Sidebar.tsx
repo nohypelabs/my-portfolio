@@ -20,6 +20,8 @@ import {
 import { AvatarImage } from "@/components/AvatarImage";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { translations } from "@/lib/translations";
+import { projects } from "@/lib/data/projects";
+import { ongoingProjects } from "@/lib/data/ongoingProjects";
 
 export function Sidebar() {
   const [isOpen, setIsOpen] = useState(true);
@@ -29,26 +31,32 @@ export function Sidebar() {
   const [expandedItems, setExpandedItems] = useState<string[]>([t.completedProjects, t.ongoingProjects]);
   const pathname = usePathname();
 
+  // Generate completed projects children from data
+  const completedProjectsChildren = projects
+    .filter(p => p.status === 'production')
+    .map(p => ({
+      name: p.title,
+      href: `/projects/${p.id}`
+    }));
+
+  // Generate ongoing projects children from data
+  const ongoingProjectsChildren = ongoingProjects.map(p => ({
+    name: p.name,
+    href: `/ongoing/${p.id}`
+  }));
+
   const sidebarItems = [
     { name: t.home, href: "/", icon: Home },
     { name: t.about, href: "/about", icon: User },
     {
-      name: t.completedProjects,
+      name: `${t.completedProjects} (${completedProjectsChildren.length})`,
       icon: FolderOpen,
-      children: [
-        { name: t.wcCheck, href: "/projects/wc-check" },
-        { name: t.agdsPos, href: "/projects/agds-pos" },
-        { name: t.selisihBerat, href: "/projects/selisih-berat" }
-      ]
+      children: completedProjectsChildren
     },
     {
-      name: t.ongoingProjects,
+      name: `${t.ongoingProjects} (${ongoingProjectsChildren.length})`,
       icon: FolderClosed,
-      children: [
-        { name: t.agdsPosV2, href: "/ongoing/agds-pos-v2" },
-        { name: t.saasBoilerplate, href: "/ongoing/personal-saas" },
-        { name: t.iotMonitoring, href: "/ongoing/monitoring-platform" }
-      ]
+      children: ongoingProjectsChildren
     },
     { name: t.cv, href: "/cv", icon: FileText },
     { name: t.contact, href: "/contact", icon: Mail }

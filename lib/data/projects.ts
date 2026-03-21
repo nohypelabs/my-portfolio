@@ -174,7 +174,7 @@ export const projects: Project[] = [
       performance: "Streamlined school operations dan reduced paperwork",
       users: "All-in-one solution untuk student, teacher, parent & admin"
     },
-    demo: "https://eduvate.vercel.app",
+    demo: "https://eduvate-azure.vercel.app",
     image: "/projects/eduvate-thumb.jpg",
     tags: ["Next.js 15", "tRPC", "Prisma", "Education", "SaaS"],
     year: "2026",
