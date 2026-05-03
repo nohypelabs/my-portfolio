@@ -2,6 +2,7 @@ import { Sidebar } from "@/components/layout/Sidebar";
 import { BottomNav } from "@/components/layout/BottomNav";
 import { PWAInstallPrompt } from "@/components/PWAInstallPrompt";
 import { TopBar } from "@/components/layout/TopBar";
+import { PageTransition } from "@/components/PageTransition";
 
 export default function DashboardLayout({
   children,
@@ -14,13 +15,13 @@ export default function DashboardLayout({
       <BottomNav />
       <PWAInstallPrompt />
 
-      {/* Main Content */}
       <main className="lg:ml-[var(--sidebar-width,280px)] min-h-screen transition-all duration-300">
         <TopBar />
 
-        {/* Page Content */}
         <div className="p-6 pb-24 lg:pb-6">
-          {children}
+          <PageTransition>
+            {children}
+          </PageTransition>
         </div>
       </main>
     </div>

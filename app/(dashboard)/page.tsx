@@ -29,6 +29,8 @@ import { useLanguage } from "@/lib/context/LanguageContext";
 import { translations } from "@/lib/translations";
 import { AvatarImage } from "@/components/AvatarImage";
 import { LiveMetrics } from "@/components/sections/LiveMetrics";
+import { HeroBackground } from "@/components/HeroBackground";
+import { TiltCard } from "@/components/TiltCard";
 
 const FEATURED_IDS = ["selisih-berat", "wc-check", "lakupos", "ecommerce-manual", "eduvate", "binance-algo-bot"];
 
@@ -68,6 +70,7 @@ export default function DashboardPage() {
         className="relative overflow-hidden bg-gradient-to-br from-zinc-900 via-zinc-900 to-emerald-950 dark:from-zinc-950 dark:via-zinc-950 dark:to-emerald-950 rounded-3xl p-8 md:p-12 text-white"
       >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent" />
+        <HeroBackground />
         <div className="relative flex flex-col md:flex-row gap-8 items-start md:items-center">
           <div className="shrink-0 hidden md:block">
             <div className="ring-4 ring-emerald-500/30 rounded-full">
@@ -199,6 +202,7 @@ export default function DashboardPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + i * 0.1 }}
             >
+              <TiltCard>
               <Link
                 href={`/projects/${project.id}`}
                 className="group block bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:shadow-xl transition-all hover:border-emerald-500/30"
@@ -293,6 +297,7 @@ export default function DashboardPage() {
                   </div>
                 </div>
               </Link>
+              </TiltCard>
             </motion.div>
           ))}
         </div>
