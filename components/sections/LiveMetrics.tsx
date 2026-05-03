@@ -67,6 +67,40 @@ function AnimatedNumber({
   return <>{display.toLocaleString("id-ID")}</>;
 }
 
+function SkeletonCard({ wide = false }: { wide?: boolean }) {
+  return (
+    <div className={`relative overflow-hidden rounded-xl md:rounded-2xl p-4 md:p-6 border bg-white/5 border-white/10`}>
+      <div className="animate-pulse">
+        <div className="flex items-center gap-2 mb-3">
+          <div className="w-7 h-7 rounded-lg bg-white/10" />
+          <div className="h-3 w-20 rounded bg-white/10" />
+        </div>
+        <div className={`h-8 md:h-12 ${wide ? "w-32 md:w-44" : "w-16 md:w-24"} rounded bg-white/10`} />
+      </div>
+      <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+    </div>
+  );
+}
+
+function SkeletonGroup() {
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-2">
+          <div className="w-4 h-4 rounded bg-white/10 animate-pulse" />
+          <div className="h-4 w-48 rounded bg-white/10 animate-pulse" />
+        </div>
+        <div className="h-3 w-16 rounded bg-white/10 animate-pulse" />
+      </div>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 md:gap-4">
+        <SkeletonCard wide />
+        <SkeletonCard />
+        <SkeletonCard />
+      </div>
+    </div>
+  );
+}
+
 function formatTime(iso: string) {
   try {
     return new Date(iso).toLocaleTimeString("id-ID", {
@@ -219,7 +253,15 @@ export function LiveMetrics() {
 
         {/* Project Groups */}
         <div className="space-y-6">
-          {projectGroups.map((group, gi) => (
+          {!metrics && (
+            <>
+              <SkeletonGroup />
+              <SkeletonGroup />
+              <SkeletonGroup />
+              <SkeletonGroup />
+            </>
+          )}
+          {metrics && projectGroups.map((group, gi) => (
             <div key={group.name}>
               <div className="flex items-center justify-between mb-4">
                 <Link

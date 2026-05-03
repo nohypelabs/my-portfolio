@@ -7,10 +7,10 @@
 - [x] Dock-Style Bottom Nav (macOS magnification effect)
 
 ## Session 2 — Polish & Professional Feel
-- [ ] Skeleton Loading (Live Metrics shimmer)
-- [ ] Scroll Progress Bar (emerald thin line di top)
-- [ ] Staggered Text Reveal (Hero headline per-word)
-- [ ] Animated Skill Bars (About page — fill on scroll)
+- [x] Skeleton Loading (Live Metrics shimmer)
+- [x] Scroll Progress Bar (emerald thin line di top)
+- [x] Staggered Text Reveal (Hero headline per-word)
+- [x] Animated Skill Bars (About page — fill on scroll)
 
 ## Session 3 — Power User & Finishing Touch
 - [ ] Command Palette (Cmd+K quick navigation)
@@ -29,3 +29,11 @@
 - `components/layout/BottomNav.tsx` — macOS dock magnification, spring physics, glow effect
 - `app/(dashboard)/layout.tsx` — integrated PageTransition wrapper
 - `app/(dashboard)/page.tsx` — integrated HeroBackground + TiltCard on featured projects
+
+### Session 2 — COMPLETED (2026-05-03)
+- `components/ScrollProgress.tsx` — emerald scroll progress bar at top of page
+- `components/TextReveal.tsx` — per-word staggered blur-to-sharp text animation
+- `components/sections/LiveMetrics.tsx` — skeleton shimmer loading state before data arrives
+- `app/(dashboard)/about/page.tsx` — animated skill bars with color-coded fill on scroll
+- `app/globals.css` — added shimmer keyframe animation
+- `app/(dashboard)/layout.tsx` — integrated ScrollProgress

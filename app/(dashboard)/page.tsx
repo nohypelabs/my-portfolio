@@ -31,6 +31,7 @@ import { AvatarImage } from "@/components/AvatarImage";
 import { LiveMetrics } from "@/components/sections/LiveMetrics";
 import { HeroBackground } from "@/components/HeroBackground";
 import { TiltCard } from "@/components/TiltCard";
+import { TextReveal } from "@/components/TextReveal";
 
 const FEATURED_IDS = ["selisih-berat", "wc-check", "lakupos", "ecommerce-manual", "eduvate", "binance-algo-bot"];
 
@@ -80,7 +81,7 @@ export default function DashboardPage() {
 
           <div className="flex-1 min-w-0">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
-              {t.heroHeadline}
+              <TextReveal text={t.heroHeadline} delay={0.3} />
             </h1>
             <div className="max-w-2xl">
               <p className={`text-zinc-300 text-base md:text-lg leading-relaxed text-justify ${!heroExpanded ? "line-clamp-2 md:line-clamp-none" : ""}`}>

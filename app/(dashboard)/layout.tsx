@@ -3,6 +3,7 @@ import { BottomNav } from "@/components/layout/BottomNav";
 import { PWAInstallPrompt } from "@/components/PWAInstallPrompt";
 import { TopBar } from "@/components/layout/TopBar";
 import { PageTransition } from "@/components/PageTransition";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 export default function DashboardLayout({
   children,
@@ -11,6 +12,7 @@ export default function DashboardLayout({
 }) {
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black">
+      <ScrollProgress />
       <Sidebar />
       <BottomNav />
       <PWAInstallPrompt />
