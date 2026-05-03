@@ -158,7 +158,66 @@ export default function DashboardPage() {
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold">{t.featuredProjects}</h2>
         </div>
-        <div className="space-y-6">
+        {/* Mobile: Compact cards */}
+        <div className="md:hidden space-y-2.5">
+          {featuredProjects.map((project, i) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, x: -12 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 + i * 0.06 }}
+            >
+              <Link
+                href={`/projects/${project.id}`}
+                className="group flex items-center gap-3 p-3 bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 hover:border-emerald-500/30 transition-all"
+              >
+                {project.image && (
+                  <div className="w-14 h-14 rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shrink-0">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={56}
+                      height={56}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <h3 className="text-sm font-bold truncate group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                      {project.title}
+                    </h3>
+                    <span className="px-1.5 py-0.5 rounded text-[9px] font-semibold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 shrink-0">
+                      {project.status}
+                    </span>
+                  </div>
+                  <p className="text-xs text-zinc-500 line-clamp-1">{project.shortDescription}</p>
+                  <div className="flex gap-1 mt-1.5">
+                    {project.tags.slice(0, 3).map((tag) => (
+                      <span key={tag} className="px-1.5 py-0.5 rounded text-[10px] bg-zinc-100 dark:bg-zinc-800 text-zinc-500">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                {project.demo && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="px-2.5 py-1.5 rounded-lg bg-emerald-500 text-white text-[10px] font-semibold flex items-center gap-1 shrink-0"
+                  >
+                    Live <ExternalLink className="w-3 h-3" />
+                  </a>
+                )}
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Desktop: Full detailed cards */}
+        <div className="hidden md:block space-y-6">
           {featuredProjects.map((project, i) => (
             <motion.div
               key={project.id}
