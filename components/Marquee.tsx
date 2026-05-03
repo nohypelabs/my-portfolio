@@ -12,10 +12,15 @@ interface MarqueeProps {
 export function Marquee({ children, speed = 30, pauseOnHover = true, className = "" }: MarqueeProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const el = scrollRef.current;
-    if (!el) return;
+    if (!el || !mounted) return;
 
     let offset = 0;
     let animId: number;
@@ -32,7 +37,7 @@ export function Marquee({ children, speed = 30, pauseOnHover = true, className =
 
     animId = requestAnimationFrame(step);
     return () => cancelAnimationFrame(animId);
-  }, [speed, paused]);
+  }, [speed, paused, mounted]);
 
   return (
     <div
@@ -42,7 +47,7 @@ export function Marquee({ children, speed = 30, pauseOnHover = true, className =
     >
       <div ref={scrollRef} className="flex gap-3 w-max will-change-transform">
         {children}
-        {children}
+        {mounted && <div aria-hidden="true" className="flex gap-3">{children}</div>}
       </div>
     </div>
   );

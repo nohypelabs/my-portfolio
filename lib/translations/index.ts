@@ -149,7 +149,7 @@ export const translations = {
     // Hero content
     heroRole: "Full-stack Developer & AI-Augmented Engineer",
     heroHeadline: "Came back after 9 years. Shipped 15 production apps in 12 months.",
-    heroNarrative: "Studied D3 Informatics Engineering (104/114 credits completed) — paused due to financial constraints, but never stopped learning. Came back with AI-augmented development and built 15+ production apps in under a year. From POS systems handling real transactions to algorithmic trading bots on Binance & Solana, I solve real problems with modern tech.",
+    heroNarrative: "After a 9-year break from tech, I came back with AI-augmented development and built 15+ production apps in under a year. From POS systems handling real transactions to algorithmic trading bots on Binance & Solana — I solve real problems with modern tech.",
 
     // Language switcher
     switchToId: "Switch to Indonesian",
@@ -305,7 +305,7 @@ export const translations = {
     // Hero content
     heroRole: "Full-stack Developer & AI-Augmented Engineer",
     heroHeadline: "Comeback setelah 9 tahun. Kirim 15 aplikasi production dalam 12 bulan.",
-    heroNarrative: "Menempuh D3 Teknik Informatika (104/114 SKS selesai) — terhenti karena keterbatasan biaya, tapi tidak pernah berhenti belajar. Kembali dengan AI-augmented development dan membuat 15+ aplikasi production dalam kurang dari setahun. Dari sistem POS yang menangani transaksi nyata hingga bot trading algoritmik di Binance & Solana, saya menyelesaikan masalah nyata dengan teknologi modern.",
+    heroNarrative: "Setelah 9 tahun vakum dari dunia tech, saya kembali dengan AI-augmented development dan membuat 15+ aplikasi production dalam kurang dari setahun. Dari sistem POS yang menangani transaksi nyata hingga bot trading algoritmik di Binance & Solana — saya menyelesaikan masalah nyata dengan teknologi modern.",
 
     // Language switcher
     switchToId: "Ganti ke Bahasa Indonesia",

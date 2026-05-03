@@ -3,9 +3,9 @@ export const personalInfo = {
   username: "agds-dev",
   role: "Full-stack Developer & AI-Augmented Engineer",
   tagline: "Building production-ready applications with modern tech stack",
-  headline: "I build production-grade apps at 10x speed.",
-  narrative: "Studied D3 Informatics Engineering (104/114 credits completed) — paused due to financial constraints, but never stopped learning. After a 9-year break, came back and built 15+ production apps in under a year using AI-augmented development. From POS systems handling real transactions to algorithmic trading bots, I solve real problems with modern tech.",
-  bio: "Studied D3 Informatics Engineering (104/114 credits) — paused due to financial constraints, but never stopped learning. Made a comeback after 9 years, now building production-ready full-stack applications with AI-assisted development. Built 15+ projects in less than a year, specializing in Next.js, tRPC, and modern web technologies. From toilet monitoring systems to algorithmic trading bots - I build solutions that solve real problems.",
+  headline: "Came back after 9 years. Shipped 15 production apps in 12 months.",
+  narrative: "After a 9-year break from tech, I came back with AI-augmented development and built 15+ production apps in under a year. From POS systems handling real transactions to algorithmic trading bots on Binance & Solana — I solve real problems with modern tech.",
+  bio: "After a 9-year break from tech, came back and built 15+ production apps in under a year with AI-augmented development. Specializing in Next.js, tRPC, and modern web technologies. From toilet monitoring systems to algorithmic trading bots — I build solutions that solve real problems.",
 
   contact: {
     email: "agdscid@gmail.com",
@@ -15,7 +15,7 @@ export const personalInfo = {
   },
 
   skills: {
-    frontend: ["Next.js 15/16", "React 19", "TypeScript", "Tailwind CSS", "Framer Motion", "Radix UI", "shadcn/ui"],
+    frontend: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Radix UI", "shadcn/ui"],
     backend: ["Node.js", "tRPC", "Prisma ORM", "NextAuth", "Python", "Flask", "Streamlit"],
     database: ["PostgreSQL", "Supabase", "MySQL", "Redis", "SQLite"],
     tools: ["Git", "Vercel", "PWA", "Cloudinary", "Playwright", "Vitest", "Docker"],

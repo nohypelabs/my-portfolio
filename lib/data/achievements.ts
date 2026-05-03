@@ -19,7 +19,7 @@ export const achievements: Achievement[] = [
   {
     id: "2",
     title: "Modern Tech Stack Mastery",
-    description: "Mastered 25+ modern technologies including Next.js 16, tRPC, Prisma, and Web3",
+    description: "Mastered 25+ modern technologies including Next.js, tRPC, Prisma, and Web3",
     icon: "code",
     metric: "25+ technologies"
   },

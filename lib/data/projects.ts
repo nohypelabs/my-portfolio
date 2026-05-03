@@ -74,7 +74,7 @@ export const projects: Project[] = [
     },
     demo: "https://lakupos.vercel.app",
     image: "/projects/lakupos-thumb.jpg",
-    tags: ["Next.js 16", "tRPC", "Supabase", "Redis", "QRIS", "POS"],
+    tags: ["Next.js", "tRPC", "Supabase", "Redis", "QRIS", "POS"],
     year: "2025",
     status: "production"
   },
@@ -153,8 +153,8 @@ export const projects: Project[] = [
   {
     id: "ecommerce-manual",
     title: "E-Commerce Manual",
-    shortDescription: "Modern E-Commerce Platform dengan Next.js 16 & Advanced Features",
-    fullDescription: "Full-featured e-commerce platform dengan modern architecture, real-time inventory management, payment integration, dan admin dashboard yang powerful. Built untuk scale dan performa tinggi menggunakan latest Next.js 16.",
+    shortDescription: "Modern E-Commerce Platform dengan Advanced Features",
+    fullDescription: "Full-featured e-commerce platform dengan modern architecture, real-time inventory management, payment integration, dan admin dashboard yang powerful. Built untuk scale dan performa tinggi menggunakan Next.js dan tRPC.",
     category: "full-stack",
     techStack: [
       {
@@ -206,7 +206,7 @@ export const projects: Project[] = [
     },
     demo: "https://qohira.vercel.app",
     image: "/projects/ecommerce-thumb.jpg",
-    tags: ["Next.js 16", "tRPC", "Prisma", "PostgreSQL", "E-Commerce"],
+    tags: ["Next.js", "tRPC", "Prisma", "PostgreSQL", "E-Commerce"],
     year: "2026",
     status: "production"
   },
@@ -214,7 +214,7 @@ export const projects: Project[] = [
     id: "eduvate",
     title: "Eduvate - School Management System",
     shortDescription: "Comprehensive School Management System dengan Modern Tech Stack",
-    fullDescription: "Platform manajemen sekolah lengkap yang mencakup student management, attendance tracking, grades, schedules, dan parent portal. Dibangun dengan Next.js 15 dan tRPC untuk performa optimal dan developer experience terbaik.",
+    fullDescription: "Platform manajemen sekolah lengkap yang mencakup student management, attendance tracking, grades, schedules, dan parent portal. Dibangun dengan Next.js dan tRPC untuk performa optimal dan developer experience terbaik.",
     category: "full-stack",
     techStack: [
       {
@@ -267,7 +267,7 @@ export const projects: Project[] = [
     },
     demo: "https://eduvate-azure.vercel.app",
     image: "/projects/eduvate-thumb.jpg",
-    tags: ["Next.js 15", "tRPC", "Prisma", "Education", "SaaS"],
+    tags: ["Next.js", "tRPC", "Prisma", "Education", "SaaS"],
     year: "2026",
     status: "production"
   },
