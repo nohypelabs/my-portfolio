@@ -60,7 +60,7 @@ export default function CVPage() {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-emerald-400">in</span>
-            <a href="https://linkedin.com/in/abdul-gofur" target="_blank" className="hover:text-white transition-colors">linkedin.com/in/abdul-gofur</a>
+            <a href="https://www.linkedin.com/in/abdul-gofur-505345344/" target="_blank" className="hover:text-white transition-colors">linkedin.com/in/abdul-gofur</a>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-emerald-400">X</span>

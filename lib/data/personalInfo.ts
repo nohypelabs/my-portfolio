@@ -11,7 +11,7 @@ export const personalInfo = {
     email: "agdscid@gmail.com",
     phone: "087874415491",
     github: "https://github.com/nohypelabs",
-    linkedin: "https://linkedin.com/in/abdul-gofur",
+    linkedin: "https://www.linkedin.com/in/abdul-gofur-505345344/",
     twitter: "https://x.com/nohypelabs"
   },
 
