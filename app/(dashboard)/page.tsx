@@ -130,10 +130,10 @@ export default function DashboardPage() {
         className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
       >
         {[
-          { value: "15+", label: t.productsShipped, accent: "text-emerald-500", border: "border-emerald-500/20", bg: "bg-emerald-500/5", span: "md:col-span-2" },
+          { value: "6", label: t.productsShipped, accent: "text-emerald-500", border: "border-emerald-500/20", bg: "bg-emerald-500/5", span: "md:col-span-2" },
           { value: "250K+", label: t.dataProcessed, accent: "text-orange-500", border: "border-orange-500/20", bg: "bg-orange-500/5", span: "md:col-span-2" },
-          { value: "6", label: t.activeProjects, accent: "text-blue-500", border: "border-zinc-200 dark:border-zinc-800", bg: "", span: "" },
-          { value: "25+", label: t.techMastered, accent: "text-purple-500", border: "border-zinc-200 dark:border-zinc-800", bg: "", span: "" },
+          { value: "4", label: t.activeProjects, accent: "text-blue-500", border: "border-zinc-200 dark:border-zinc-800", bg: "", span: "" },
+          { value: "6", label: t.techMastered, accent: "text-purple-500", border: "border-zinc-200 dark:border-zinc-800", bg: "", span: "" },
           { value: "<1yr", label: t.devTime, accent: "text-pink-500", border: "border-zinc-200 dark:border-zinc-800", bg: "", span: "" },
           { value: "10x", label: t.productivity, accent: "text-yellow-500", border: "border-zinc-200 dark:border-zinc-800", bg: "", span: "" },
         ].map((m, i) => (

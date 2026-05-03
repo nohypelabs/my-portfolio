@@ -86,7 +86,7 @@ const journeyData = {
     { year: "2016", icon: Coffee, color: "bg-yellow-500", title: "Paused Studies (104/114 credits)", desc: "Stopped due to financial constraints — 6 semesters completed, never graduated" },
     { year: "2016–2024", icon: Coffee, color: "bg-zinc-500", title: "9-Year Break", desc: "Worked in various fields, but never stopped tinkering with tech" },
     { year: "2024", icon: Rocket, color: "bg-emerald-500", title: "The Comeback", desc: "Returned to coding with AI-augmented development — built first production app" },
-    { year: "2024–2025", icon: Zap, color: "bg-purple-500", title: "15+ Production Apps", desc: "POS systems, QC tools, e-commerce, school management, IoT monitoring" },
+    { year: "2024–2025", icon: Zap, color: "bg-purple-500", title: "6 Production Systems", desc: "POS systems, QC tools, e-commerce, school management, trading bots" },
     { year: "2025", icon: Bot, color: "bg-orange-500", title: "Trading Bots & Web3", desc: "Algorithmic trading on Binance, DLMM agents on Solana — 90% complete" },
   ],
   id: [
@@ -94,7 +94,7 @@ const journeyData = {
     { year: "2016", icon: Coffee, color: "bg-yellow-500", title: "Berhenti Kuliah (104/114 SKS)", desc: "Terhenti karena keterbatasan biaya — 6 semester selesai, tidak lulus" },
     { year: "2016–2024", icon: Coffee, color: "bg-zinc-500", title: "9 Tahun Vakum", desc: "Bekerja di berbagai bidang, tapi tidak pernah berhenti utak-atik teknologi" },
     { year: "2024", icon: Rocket, color: "bg-emerald-500", title: "Comeback", desc: "Kembali coding dengan AI-augmented development — membuat aplikasi production pertama" },
-    { year: "2024–2025", icon: Zap, color: "bg-purple-500", title: "15+ Aplikasi Production", desc: "Sistem POS, tools QC, e-commerce, manajemen sekolah, monitoring IoT" },
+    { year: "2024–2025", icon: Zap, color: "bg-purple-500", title: "6 Sistem Production", desc: "Sistem POS, tools QC, e-commerce, manajemen sekolah, trading bot" },
     { year: "2025", icon: Bot, color: "bg-orange-500", title: "Trading Bots & Web3", desc: "Trading algoritmik di Binance, DLMM agent di Solana — 90% selesai" },
   ],
 };

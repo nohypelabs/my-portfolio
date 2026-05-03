@@ -10,32 +10,32 @@ export interface Achievement {
 export const achievements: Achievement[] = [
   {
     id: "1",
-    title: "Rapid Portfolio Growth",
-    description: "Built and deployed 15+ production-ready projects in less than 12 months after 9-year hiatus",
+    title: "6 Production Systems",
+    description: "Built and deployed 6 production apps in under 12 months — used daily by real clients in logistics, retail, and education",
     icon: "rocket",
-    metric: "15+ projects",
+    metric: "6 shipped",
     date: "2025-2026"
   },
   {
     id: "2",
-    title: "Modern Tech Stack Mastery",
-    description: "Mastered 25+ modern technologies including Next.js, tRPC, Prisma, and Web3",
+    title: "Core Tech Stack",
+    description: "Next.js, TypeScript, tRPC, PostgreSQL, Supabase, Python — the stack I build and ship with every day",
     icon: "code",
-    metric: "25+ technologies"
+    metric: "6 core techs"
   },
   {
     id: "3",
     title: "Production Scale Impact",
-    description: "Systems handling 25,000+ entries, 50,000+ photos, and real-time operations",
+    description: "Serat QC alone processes 80K+ resi and 160K+ GPS-watermarked photos. Total across all systems: 250K+ records",
     icon: "trending-up",
-    metric: "75K+ records"
+    metric: "250K+ records"
   },
   {
     id: "4",
     title: "AI-Augmented Development",
-    description: "Early adopter of AI-assisted coding with Claude CLI, achieving 10x productivity gains",
+    description: "Early adopter of AI-assisted coding with Claude CLI — shipped 6 production systems in under a year",
     icon: "zap",
-    metric: "10x faster"
+    metric: "AI-powered"
   },
   {
     id: "5",

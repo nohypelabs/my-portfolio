@@ -68,7 +68,7 @@ export const translations = {
     specialties: "Specialties",
     productsShipped: "Products Shipped",
     activeProjects: "Active Projects",
-    techMastered: "Tech Mastered",
+    techMastered: "Core Techs",
     dataProcessed: "Data Processed",
     devTime: "Dev Time",
     productivity: "Productivity",
@@ -77,7 +77,7 @@ export const translations = {
 
     // About page
     aboutMe: "About Me",
-    aboutBio: "Studied D3 Informatics Engineering (104/114 credits) — paused due to financial constraints, but never stopped learning. Made a comeback after 9 years, now building production-ready full-stack applications with AI-assisted development. Built 15+ projects in less than a year, specializing in Next.js, tRPC, and modern web technologies. From toilet monitoring systems to algorithmic trading bots — I build solutions that solve real problems.",
+    aboutBio: "Studied D3 Informatics Engineering (104/114 credits) — paused due to financial constraints, but never stopped learning. Made a comeback after 9 years, now building production-ready full-stack applications with AI-assisted development. Shipped 6 production systems in less than a year, specializing in Next.js, tRPC, and modern web technologies. From toilet monitoring systems to algorithmic trading bots — I build solutions that solve real problems.",
     myJourney: "My Journey",
     technicalSkills: "Technical Skills",
     toolsAndMore: "Tools & More",
@@ -148,8 +148,8 @@ export const translations = {
 
     // Hero content
     heroRole: "Full-stack Developer & AI-Augmented Engineer",
-    heroHeadline: "Came back after 9 years. Shipped 15 production apps in 12 months.",
-    heroNarrative: "After a 9-year break from tech, I came back with AI-augmented development and built 15+ production apps in under a year. From POS systems handling real transactions to algorithmic trading bots on Binance & Solana — I solve real problems with modern tech.",
+    heroHeadline: "Came back after 9 years. Shipped 6 production systems in 12 months.",
+    heroNarrative: "After a 9-year break from tech, I came back with AI-augmented development and shipped 6 production systems in under a year. From POS systems handling real transactions to algorithmic trading bots on Binance & Solana — I solve real problems with modern tech.",
 
     // Language switcher
     switchToId: "Switch to Indonesian",
@@ -224,7 +224,7 @@ export const translations = {
     specialties: "Spesialisasi",
     productsShipped: "Produk Shipped",
     activeProjects: "Proyek Aktif",
-    techMastered: "Teknologi Dikuasai",
+    techMastered: "Tech Inti",
     dataProcessed: "Data Diproses",
     devTime: "Waktu Dev",
     productivity: "Produktivitas",
@@ -233,7 +233,7 @@ export const translations = {
 
     // About page
     aboutMe: "Tentang Saya",
-    aboutBio: "Menempuh D3 Teknik Informatika (104/114 SKS selesai) — terhenti karena keterbatasan biaya, tapi tidak pernah berhenti belajar. Kembali setelah 9 tahun vakum, sekarang membangun aplikasi full-stack production-ready dengan bantuan AI. Membuat 15+ proyek dalam kurang dari setahun, spesialisasi di Next.js, tRPC, dan teknologi web modern. Dari sistem monitoring toilet hingga bot trading algoritmik — saya membangun solusi untuk masalah nyata.",
+    aboutBio: "Menempuh D3 Teknik Informatika (104/114 SKS selesai) — terhenti karena keterbatasan biaya, tapi tidak pernah berhenti belajar. Kembali setelah 9 tahun vakum, sekarang membangun aplikasi full-stack production-ready dengan bantuan AI. Mengirim 6 sistem production dalam kurang dari setahun, spesialisasi di Next.js, tRPC, dan teknologi web modern. Dari sistem monitoring toilet hingga bot trading algoritmik — saya membangun solusi untuk masalah nyata.",
     myJourney: "Perjalanan Saya",
     technicalSkills: "Keahlian Teknis",
     toolsAndMore: "Tools & Lainnya",
@@ -304,8 +304,8 @@ export const translations = {
 
     // Hero content
     heroRole: "Full-stack Developer & AI-Augmented Engineer",
-    heroHeadline: "Comeback setelah 9 tahun. Kirim 15 aplikasi production dalam 12 bulan.",
-    heroNarrative: "Setelah 9 tahun vakum dari dunia tech, saya kembali dengan AI-augmented development dan membuat 15+ aplikasi production dalam kurang dari setahun. Dari sistem POS yang menangani transaksi nyata hingga bot trading algoritmik di Binance & Solana — saya menyelesaikan masalah nyata dengan teknologi modern.",
+    heroHeadline: "Comeback setelah 9 tahun. Kirim 6 sistem production dalam 12 bulan.",
+    heroNarrative: "Setelah 9 tahun vakum dari dunia tech, saya kembali dengan AI-augmented development dan mengirim 6 sistem production dalam kurang dari setahun. Dari sistem POS yang menangani transaksi nyata hingga bot trading algoritmik di Binance & Solana — saya menyelesaikan masalah nyata dengan teknologi modern.",
 
     // Language switcher
     switchToId: "Ganti ke Bahasa Indonesia",

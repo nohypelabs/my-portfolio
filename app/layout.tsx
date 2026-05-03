@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     default: "Abdul Gofur - Full-stack Developer Portfolio",
     template: "%s | Abdul Gofur"
   },
-  description: "Portfolio of Abdul Gofur (agds-dev), Full-stack Developer & AI-Augmented Engineer. 15+ production projects built in <1 year. Specializing in Next.js, React, TypeScript, tRPC, Prisma. Featured projects: WC Check, Eduvate, E-Commerce, Trading Bots.",
+  description: "Portfolio of Abdul Gofur, Full-stack Developer & AI-Augmented Engineer. 6 production systems shipped in <1 year with 250K+ records processed. Specializing in Next.js, TypeScript, tRPC, PostgreSQL. Featured: Serat QC, WC Check, LakuPOS, Eduvate, Trading Bots.",
   keywords: [
     "Abdul Gofur",
     "agds-dev",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     "Solana",
     "Web3"
   ],
-  authors: [{ name: "Abdul Gofur", url: "https://github.com/agds-alt" }],
+  authors: [{ name: "Abdul Gofur", url: "https://github.com/nohypelabs" }],
   creator: "Abdul Gofur",
   publisher: "Abdul Gofur",
   formatDetection: {
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://abdulgofur.vercel.app',
     title: 'Abdul Gofur - Full-stack Developer & AI-Augmented Engineer',
-    description: '15+ production-ready projects built in <1 year. Modern tech stack: Next.js, React, TypeScript, tRPC, Prisma. From e-commerce to trading bots.',
+    description: '6 production systems shipped in <1 year, 250K+ records processed. Next.js, TypeScript, tRPC, PostgreSQL. From logistics QC to trading bots.',
     siteName: 'Abdul Gofur Portfolio',
     images: [
       {
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Abdul Gofur - Full-stack Developer & AI-Augmented Engineer',
-    description: '15+ production projects | Next.js, tRPC, Prisma | E-commerce, Trading Bots, School Systems, Web3',
+    description: '6 production systems | 250K+ records | Next.js, tRPC, PostgreSQL | Logistics, Retail, Trading Bots',
     creator: '@agdscID',
     images: ['/avatar.jpg'],
   },
