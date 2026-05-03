@@ -80,7 +80,7 @@ export default function DashboardPage() {
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
               {t.heroHeadline}
             </h1>
-            <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-2xl mb-8">
+            <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-2xl mb-8 text-justify">
               {t.heroNarrative}
             </p>
 

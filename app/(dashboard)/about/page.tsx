@@ -25,7 +25,7 @@ export default function AboutPage() {
         animate={{ opacity: 1, y: 0 }}
       >
         <h1 className="text-4xl font-bold mb-4">{t.aboutMe}</h1>
-        <p className="text-lg text-zinc-600 dark:text-zinc-400">
+        <p className="text-lg text-zinc-600 dark:text-zinc-400 text-justify">
           {personalInfo.bio}
         </p>
       </motion.div>
