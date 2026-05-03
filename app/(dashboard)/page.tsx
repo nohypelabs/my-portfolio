@@ -63,6 +63,10 @@ export default function DashboardPage() {
   const [heroExpanded, setHeroExpanded] = useState(false);
 
   const featuredProjects = FEATURED_IDS.map((id) => projects.find((p) => p.id === id)!).filter(Boolean);
+  const topOngoing = ongoingProjects
+    .filter(p => (p.progress ?? 0) >= 65)
+    .sort((a, b) => (b.progress ?? 0) - (a.progress ?? 0))
+    .slice(0, 4);
 
   return (
     <div className="max-w-6xl mx-auto space-y-10 pb-12">
@@ -275,6 +279,18 @@ export default function DashboardPage() {
                       )}
                     </div>
 
+                    {/* Testimonial */}
+                    {project.caseStudy?.testimonial && (
+                      <div className="mb-4 p-3 rounded-lg bg-emerald-50/50 dark:bg-emerald-500/5 border border-emerald-500/10">
+                        <p className="text-xs text-zinc-600 dark:text-zinc-300 italic leading-relaxed">
+                          &ldquo;{project.caseStudy.testimonial.quote}&rdquo;
+                        </p>
+                        <p className="text-[10px] text-zinc-500 mt-1.5 font-medium">
+                          — {project.caseStudy.testimonial.author}, {project.caseStudy.testimonial.role}
+                        </p>
+                      </div>
+                    )}
+
                     {/* Tags + Visit Button */}
                     <div className="flex items-center justify-between">
                       <div className="flex flex-wrap gap-1.5">
@@ -312,30 +328,37 @@ export default function DashboardPage() {
       {/* ── What Sets Me Apart ── */}
       <ScrollReveal>
       <section>
-        <CollapsibleSection title={t.whatSetsApart} badge={achievements.slice(0, 8).length}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {achievements.slice(0, 8).map((ach, i) => {
+        <CollapsibleSection title={t.whatSetsApart} badge={4}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {achievements.slice(0, 4).map((ach, i) => {
             const Icon = achievementIcons[ach.icon] || Zap;
+            const accentColors = [
+              { bg: "bg-emerald-500/10", ring: "ring-emerald-500/20", text: "text-emerald-500", metric: "text-emerald-500" },
+              { bg: "bg-blue-500/10", ring: "ring-blue-500/20", text: "text-blue-500", metric: "text-blue-500" },
+              { bg: "bg-purple-500/10", ring: "ring-purple-500/20", text: "text-purple-500", metric: "text-purple-500" },
+              { bg: "bg-orange-500/10", ring: "ring-orange-500/20", text: "text-orange-500", metric: "text-orange-500" },
+            ];
+            const accent = accentColors[i % accentColors.length];
             return (
               <motion.div
                 key={ach.id}
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 + i * 0.05 }}
-                className="bg-white dark:bg-zinc-900 rounded-xl p-5 border border-zinc-200 dark:border-zinc-800"
+                transition={{ delay: 0.5 + i * 0.08 }}
+                className="bg-white dark:bg-zinc-900 rounded-2xl p-6 border border-zinc-200 dark:border-zinc-800 hover:shadow-lg transition-shadow"
               >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="p-2 rounded-lg bg-emerald-50 dark:bg-emerald-900/20">
-                    <Icon className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+                <div className="flex items-center gap-4 mb-4">
+                  <div className={`p-3 rounded-xl ${accent.bg} ring-1 ${accent.ring}`}>
+                    <Icon className={`w-6 h-6 ${accent.text}`} />
                   </div>
                   {ach.metric && (
-                    <span className="text-lg font-extrabold text-emerald-600 dark:text-emerald-400">
+                    <span className={`text-2xl font-extrabold ${accent.metric}`}>
                       {ach.metric}
                     </span>
                   )}
                 </div>
-                <h3 className="font-bold text-sm mb-1">{ach.title}</h3>
-                <p className="text-xs text-zinc-500 leading-relaxed">{ach.description}</p>
+                <h3 className="font-bold text-base mb-1.5">{ach.title}</h3>
+                <p className="text-sm text-zinc-500 leading-relaxed">{ach.description}</p>
               </motion.div>
             );
           })}
@@ -384,13 +407,13 @@ export default function DashboardPage() {
               {t.inProgressProjects}
             </h2>
           }
-          badge={ongoingProjects.length}
+          badge={topOngoing.length}
           rightContent={
             <span className="text-sm text-zinc-500">{t.inProgress}</span>
           }
         >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {ongoingProjects.map((project, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {topOngoing.map((project, i) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 12 }}

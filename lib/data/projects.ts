@@ -61,6 +61,17 @@ export const projects: Project[] = [
       performance: "Production-ready dengan E2E test coverage",
       users: "Digunakan client nyata untuk operasional kasir & gudang"
     },
+    caseStudy: {
+      problem: "Client butuh sistem kasir yang bisa handle multi-outlet, barcode scanning, dan QRIS payment dalam satu aplikasi",
+      painPoints: ["Sistem kasir sebelumnya tidak support multi-outlet", "Manual stock tracking antar cabang"],
+      solution: "Full-stack POS dengan DDD architecture, real-time inventory sync, dan tablet-optimized UI",
+      metrics: [],
+      testimonial: {
+        quote: "Sistem kasirnya enak banget, bisa scan barcode langsung dari kamera. Stok antar outlet auto sync.",
+        author: "Pemilik Toko",
+        role: "Client LakuPOS"
+      }
+    },
     demo: "https://lakupos.vercel.app",
     image: "/projects/lakupos-thumb.jpg",
     tags: ["Next.js 16", "tRPC", "Supabase", "Redis", "QRIS", "POS"],
@@ -121,6 +132,17 @@ export const projects: Project[] = [
       dataVolume: "3.293 inspeksi | 53 users | 49 lokasi in production",
       performance: "Efisiensi inspeksi meningkat 70% vs manual",
       users: "14 active users weekly — live operational system"
+    },
+    caseStudy: {
+      problem: "Inspeksi kebersihan toilet dilakukan manual dengan form kertas, tidak ada monitoring real-time",
+      painPoints: ["Form kertas hilang/rusak", "Tidak ada data historis", "Tidak bisa monitor real-time"],
+      solution: "Web-based inspection system dengan QR code, photo documentation, dan real-time dashboard",
+      metrics: [],
+      testimonial: {
+        quote: "Sekarang tinggal scan QR, checklist, foto, selesai. Laporan langsung masuk dashboard.",
+        author: "Koordinator Lapangan",
+        role: "Tim Inspeksi"
+      }
     },
     demo: "https://wc-checks.vercel.app",
     image: "/projects/wccheck-thumb.jpg",
@@ -304,7 +326,7 @@ export const projects: Project[] = [
       performance: "24/7 automated trading dengan risk management",
       users: "Monetization-ready dengan license tiers"
     },
-    demo: "https://github.com/yourusername/binance-algo-bot",
+    demo: "https://github.com/nohypelabs/binance-algo-bot",
     image: "/projects/trading-bot-thumb.jpg",
     tags: ["Python", "Trading Bot", "AI", "Binance", "Automation"],
     year: "2025-2026",

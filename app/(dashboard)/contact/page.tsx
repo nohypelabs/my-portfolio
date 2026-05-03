@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { personalInfo } from "@/lib/data/personalInfo";
-import { Github, Linkedin, Mail, Twitter, ArrowUpRight, Rocket, Copy, Check } from "lucide-react";
+import { Github, Linkedin, Mail, Twitter, ArrowUpRight, Rocket, Copy, Check, Clock, Circle, Zap } from "lucide-react";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { translations } from "@/lib/translations";
 import { useState } from "react";
@@ -74,6 +74,46 @@ export default function ContactPage() {
         <p className="text-zinc-500 dark:text-zinc-400 max-w-md mx-auto">
           {t.getInTouchDesc}
         </p>
+      </motion.div>
+
+      {/* Availability Strip */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.08 }}
+        className="grid grid-cols-1 sm:grid-cols-3 gap-3"
+      >
+        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-emerald-500/5 border border-emerald-500/15">
+          <Circle className="w-3 h-3 text-emerald-500 fill-emerald-500 animate-pulse" />
+          <div>
+            <p className="text-xs font-semibold text-emerald-400">
+              {language === "en" ? "Available for projects" : "Tersedia untuk proyek"}
+            </p>
+            <p className="text-[10px] text-zinc-500">
+              {language === "en" ? "Freelance & contract" : "Freelance & kontrak"}
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10">
+          <Clock className="w-4 h-4 text-blue-400" />
+          <div>
+            <p className="text-xs font-semibold text-zinc-200">
+              {language === "en" ? "Response time" : "Waktu respons"}
+            </p>
+            <p className="text-[10px] text-zinc-500">
+              {language === "en" ? "Usually within 24 hours" : "Biasanya dalam 24 jam"}
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10">
+          <Zap className="w-4 h-4 text-yellow-400" />
+          <div>
+            <p className="text-xs font-semibold text-zinc-200">
+              {language === "en" ? "Timezone" : "Zona waktu"}
+            </p>
+            <p className="text-[10px] text-zinc-500">GMT+7 (WIB)</p>
+          </div>
+        </div>
       </motion.div>
 
       {/* Social Links */}
