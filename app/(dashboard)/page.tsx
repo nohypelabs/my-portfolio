@@ -65,7 +65,7 @@ export default function DashboardPage() {
   const featuredProjects = FEATURED_IDS.map((id) => projects.find((p) => p.id === id)!).filter(Boolean);
 
   return (
-    <div className="max-w-6xl mx-auto space-y-16 pb-12">
+    <div className="max-w-6xl mx-auto space-y-10 pb-12">
       {/* ── Hero ── */}
       <motion.section
         initial={{ opacity: 0, y: 24 }}
