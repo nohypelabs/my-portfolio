@@ -4,8 +4,8 @@ export const personalInfo = {
   role: "Full-stack Developer & AI-Augmented Engineer",
   tagline: "Building production-ready applications with modern tech stack",
   headline: "I build production-grade apps at 10x speed.",
-  narrative: "Studied D3 Informatics Engineering (104/114 credits completed) — paused due to financial constraints, but never stopped learning. After a 9-year break, came back and shipped 15+ production apps in under a year using AI-augmented development. From POS systems handling real transactions to algorithmic trading bots, I solve real problems with modern tech.",
-  bio: "Studied D3 Informatics Engineering (104/114 credits) — paused due to financial constraints, but never stopped learning. Made a comeback after 9 years, now building production-ready full-stack applications with AI-assisted development. Shipped 15+ projects in less than a year, specializing in Next.js, tRPC, and modern web technologies. From toilet monitoring systems to algorithmic trading bots - I build solutions that solve real problems.",
+  narrative: "Studied D3 Informatics Engineering (104/114 credits completed) — paused due to financial constraints, but never stopped learning. After a 9-year break, came back and built 15+ production apps in under a year using AI-augmented development. From POS systems handling real transactions to algorithmic trading bots, I solve real problems with modern tech.",
+  bio: "Studied D3 Informatics Engineering (104/114 credits) — paused due to financial constraints, but never stopped learning. Made a comeback after 9 years, now building production-ready full-stack applications with AI-assisted development. Built 15+ projects in less than a year, specializing in Next.js, tRPC, and modern web technologies. From toilet monitoring systems to algorithmic trading bots - I build solutions that solve real problems.",
 
   contact: {
     email: "agdscid@gmail.com",
