@@ -106,10 +106,10 @@ export default function ContactPage() {
           <Circle className="w-3 h-3 text-emerald-500 fill-emerald-500 animate-pulse" />
           <div>
             <p className="text-xs font-semibold text-emerald-400">
-              {language === "en" ? "Available for projects" : "Tersedia untuk proyek"}
+              {language === "en" ? "Available now" : "Tersedia sekarang"}
             </p>
             <p className="text-[10px] text-zinc-500">
-              {language === "en" ? "Freelance & contract" : "Freelance & kontrak"}
+              {language === "en" ? "Full-time · Contract · Freelance" : "Full-time · Kontrak · Freelance"}
             </p>
           </div>
         </div>

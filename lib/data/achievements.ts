@@ -10,32 +10,31 @@ export interface Achievement {
 export const achievements: Achievement[] = [
   {
     id: "1",
-    title: "4 Production Systems",
-    description: "Built and deployed 4 production apps in under 12 months — used daily by real clients in logistics and retail",
+    title: "Ship Fast, Ship Real",
+    description: "4 production systems in 12 months — 250K+ records processed across logistics QC, POS, and e-commerce. Used daily by real clients.",
     icon: "rocket",
-    metric: "4 shipped",
-    date: "2025-2026"
+    metric: "4 shipped"
   },
   {
     id: "2",
-    title: "Core Tech Stack",
-    description: "Next.js, TypeScript, tRPC, PostgreSQL, Supabase, Python — the stack I build and ship with every day",
+    title: "Full-Stack, End to End",
+    description: "From database design to deployment. Next.js, tRPC, PostgreSQL, Supabase — I own the entire stack, not just a layer.",
     icon: "code",
     metric: "6 core techs"
   },
   {
     id: "3",
-    title: "Production Scale Impact",
-    description: "Serat QC alone processes 80K+ resi and 160K+ GPS-watermarked photos. Total across all systems: 250K+ records",
-    icon: "trending-up",
-    metric: "250K+ records"
+    title: "AI-Augmented Builder",
+    description: "Claude CLI as a force multiplier — not a crutch. AI handles boilerplate, I handle architecture and business logic.",
+    icon: "zap",
+    metric: "AI-powered"
   },
   {
     id: "4",
-    title: "AI-Augmented Development",
-    description: "Early adopter of AI-assisted coding with Claude CLI — shipped 4 production systems in under a year",
-    icon: "zap",
-    metric: "AI-powered"
+    title: "Battle-Tested Systems",
+    description: "80K+ resi, 160K+ GPS photos, barcode scanning, multi-outlet POS — these aren't demos, they handle real operations daily.",
+    icon: "trending-up",
+    metric: "250K+ data"
   },
   {
     id: "5",

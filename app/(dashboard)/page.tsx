@@ -98,7 +98,7 @@ export default function DashboardPage() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
               <span className="text-xs font-semibold text-emerald-400">
-                {language === "en" ? "Available for hire" : "Siap untuk direkrut"}
+                {language === "en" ? "Open for full-time & contract" : "Tersedia full-time & kontrak"}
               </span>
             </motion.div>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-2">
@@ -517,7 +517,7 @@ export default function DashboardPage() {
           <div className="flex-1 text-center md:text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-4">
               <Rocket className="w-3.5 h-3.5" />
-              {language === "en" ? "Open to opportunities" : "Terbuka untuk kesempatan"}
+              {language === "en" ? "Full-time · Contract · Freelance" : "Full-time · Kontrak · Freelance"}
             </div>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">{t.letsWork}</h2>
             <p className="text-zinc-400 max-w-md">
