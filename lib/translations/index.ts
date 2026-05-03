@@ -42,6 +42,36 @@ export const translations = {
     // Stats Values
     year: "Year",
     years: "Years",
+
+    // Hero
+    viewCV: "View CV",
+    contactMe: "Contact Me",
+    shipped: "Shipped",
+    projectsIn: "projects in",
+    lessThanOneYear: "less than a year",
+
+    // New homepage sections
+    featuredProjects: "Featured Projects",
+    moreProjects: "More Projects",
+    whatSetsApart: "What Sets Me Apart",
+    techStack: "Tech Stack",
+    inProgressProjects: "In Progress",
+    letsWork: "Let's Work Together",
+    letsWorkDesc: "Looking for a developer who ships fast, writes clean code, and builds production-grade systems? Let's talk.",
+    sendEmail: "Send Email",
+    viewAllProjects: "View All Projects",
+    liveDemo: "Live Demo",
+    frontend: "Frontend",
+    backend: "Backend",
+    database: "Database",
+    tools: "Tools",
+    specialties: "Specialties",
+    productsShipped: "Products Shipped",
+    activeProjects: "Active Projects",
+    techMastered: "Tech Mastered",
+    dataProcessed: "Data Processed",
+    devTime: "Dev Time",
+    productivity: "Productivity",
   },
   id: {
     // Dashboard
@@ -86,6 +116,36 @@ export const translations = {
     // Stats Values
     year: "Tahun",
     years: "Tahun",
+
+    // Hero
+    viewCV: "Lihat CV",
+    contactMe: "Hubungi Saya",
+    shipped: "Shipped",
+    projectsIn: "proyek dalam",
+    lessThanOneYear: "kurang dari setahun",
+
+    // New homepage sections
+    featuredProjects: "Proyek Unggulan",
+    moreProjects: "Proyek Lainnya",
+    whatSetsApart: "Yang Membedakan Saya",
+    techStack: "Tech Stack",
+    inProgressProjects: "Sedang Dikerjakan",
+    letsWork: "Ayo Bekerja Sama",
+    letsWorkDesc: "Butuh developer yang cepat, menulis kode bersih, dan membangun sistem production-grade? Mari bicara.",
+    sendEmail: "Kirim Email",
+    viewAllProjects: "Lihat Semua Proyek",
+    liveDemo: "Live Demo",
+    frontend: "Frontend",
+    backend: "Backend",
+    database: "Database",
+    tools: "Tools",
+    specialties: "Spesialisasi",
+    productsShipped: "Produk Shipped",
+    activeProjects: "Proyek Aktif",
+    techMastered: "Teknologi Dikuasai",
+    dataProcessed: "Data Diproses",
+    devTime: "Waktu Dev",
+    productivity: "Produktivitas",
   }
 };
 

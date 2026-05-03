@@ -2,6 +2,72 @@ import { Project } from "../domain/entities/Project";
 
 export const projects: Project[] = [
   {
+    id: "lakupos",
+    title: "LakuPOS — Kasir & Warehouse System",
+    shortDescription: "Aplikasi kasir & manajemen gudang multi-outlet dengan QRIS, barcode scanner, dan DDD architecture",
+    fullDescription: "Full-stack Point of Sale dan Warehouse Management System yang dibangun untuk client nyata. Dilengkapi dengan kasir touchscreen, barcode scanning via kamera/USB, QRIS payment, manajemen stok multi-outlet dengan transfer antar cabang, analytics penjualan real-time, dan sistem role (Admin, Manager, Kasir). Diuji dengan Playwright E2E dan Jest unit tests. Dioptimalkan untuk tablet/iPad sebagai perangkat kasir utama.",
+    category: "full-stack",
+    techStack: [
+      {
+        category: "Frontend",
+        technologies: ["Next.js 16", "React 19", "TypeScript 5", "Tailwind CSS 4", "Recharts"]
+      },
+      {
+        category: "Backend & API",
+        technologies: ["tRPC", "React Query", "Supabase (PostgreSQL)", "Redis (Upstash)", "JWT Auth"]
+      },
+      {
+        category: "Integrations & Tools",
+        technologies: ["QRIS Payment", "Barcode Scanner", "QR Code", "Resend Email", "Sentry", "Zod"]
+      },
+      {
+        category: "Architecture & Testing",
+        technologies: ["DDD", "Clean Architecture", "Repository Pattern", "Playwright E2E", "Jest"]
+      }
+    ],
+    highlights: [
+      {
+        title: "Kasir dengan Barcode Scanner",
+        description: "3 mode scan: manual/USB scanner, kamera, dan upload gambar barcode",
+        icon: "scan"
+      },
+      {
+        title: "Multi-outlet & Stok Transfer",
+        description: "Kelola stok real-time per cabang dengan transfer dan stok opname",
+        icon: "building"
+      },
+      {
+        title: "DDD & Clean Architecture",
+        description: "Codebase production-grade dengan layered architecture, E2E & unit tests",
+        icon: "layers"
+      }
+    ],
+    features: [
+      "Kasir (POS) dengan keranjang multi-item dan quick-quantity buttons",
+      "Barcode scanning via kamera smartphone, USB scanner, atau upload gambar",
+      "QRIS payment integration",
+      "Multi-outlet management dengan pemilihan outlet per transaksi",
+      "Real-time stock tracking per outlet dengan low-stock alerts",
+      "Transfer stok antar outlet dengan audit log",
+      "Stok opname (physical count vs system)",
+      "Role-based access: Admin, Manager, Kasir",
+      "Forgot password via email (token single-use, 1 jam)",
+      "Analytics & laporan penjualan dengan Recharts",
+      "E2E tests dengan Playwright, unit tests dengan Jest",
+      "Error monitoring dengan Sentry",
+      "Tablet/iPad optimized UI"
+    ],
+    impact: {
+      performance: "Production-ready dengan E2E test coverage",
+      users: "Digunakan client nyata untuk operasional kasir & gudang"
+    },
+    demo: "https://lakupos.vercel.app",
+    image: "/projects/lakupos-thumb.jpg",
+    tags: ["Next.js 16", "tRPC", "Supabase", "Redis", "QRIS", "POS"],
+    year: "2025",
+    status: "production"
+  },
+  {
     id: "wc-check",
     title: "WC Check",
     shortDescription: "Professional Toilet Monitoring System dengan QR code scanning dan analytics real-time",
