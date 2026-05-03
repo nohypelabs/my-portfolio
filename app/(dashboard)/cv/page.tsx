@@ -88,7 +88,7 @@ export default function CVPage() {
                   { year: "2013", title: "SMA Muhammadiyah 1 Bandung", desc: "" },
                   { year: "2014", title: "Pendidikan Dasar Militer Menwa", desc: "Pendidikan Dasar Militer Resimen Mahasiswa dan dilantik di Dik Passus Situ Lembang" },
                   { year: "2014", title: "Pendidikan Para Dasar Marinir", desc: "Pendidikan Pasukan Udara Dasar Marinir / Terjun Statik" },
-                  { year: "2017", title: "D3 Teknik Informatika", desc: "Berhenti di semester 5 (Total SKS yang sudah diambil adalah 93 SKS)" },
+                  { year: "2017", title: "D3 Teknik Informatika", desc: "104 dari 114 SKS selesai (semester 6) — terhenti karena keterbatasan biaya" },
                 ].map((item, i) => (
                   <div key={i} className="border-l-2 border-zinc-200 pl-4 relative">
                     <div className="absolute -left-[5px] top-1 w-2 h-2 bg-emerald-500 rounded-full"></div>
