@@ -70,16 +70,13 @@ export default function DashboardPage() {
       >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent" />
         <div className="relative flex flex-col md:flex-row gap-8 items-start md:items-center">
-          <div className="shrink-0">
+          <div className="shrink-0 hidden md:block">
             <div className="ring-4 ring-emerald-500/30 rounded-full">
               <AvatarImage size={100} priority />
             </div>
           </div>
 
           <div className="flex-1 min-w-0">
-            <p className="text-emerald-400 font-medium text-sm tracking-wide uppercase mb-2">
-              {t.heroRole}
-            </p>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
               {t.heroHeadline}
             </h1>

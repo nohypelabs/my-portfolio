@@ -176,12 +176,24 @@ export function Sidebar() {
 
   return (
     <>
-      {/* Mobile Toggle Button - in top bar area */}
+      {/* Mobile Toggle Button - avatar as toggle */}
       <button
         onClick={() => setIsMobileOpen(!isMobileOpen)}
-        className="lg:hidden fixed top-3 left-4 z-50 p-2 rounded-xl bg-white/80 dark:bg-zinc-900/80 backdrop-blur-xl border border-zinc-200/50 dark:border-zinc-800/50 shadow-sm"
+        className="lg:hidden fixed top-3 left-4 z-50 rounded-full ring-2 ring-emerald-500/30 shadow-lg overflow-hidden w-9 h-9"
       >
-        {isMobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        {isMobileOpen ? (
+          <div className="w-full h-full bg-zinc-900 flex items-center justify-center">
+            <X className="w-4 h-4 text-white" />
+          </div>
+        ) : (
+          <Image
+            src="/avatar.jpg"
+            alt="Menu"
+            width={36}
+            height={36}
+            className="w-full h-full object-cover"
+          />
+        )}
       </button>
 
       {/* Desktop Sidebar */}
