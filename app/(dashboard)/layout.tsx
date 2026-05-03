@@ -4,6 +4,8 @@ import { PWAInstallPrompt } from "@/components/PWAInstallPrompt";
 import { TopBar } from "@/components/layout/TopBar";
 import { PageTransition } from "@/components/PageTransition";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { CommandPalette } from "@/components/CommandPalette";
+import { CustomCursor } from "@/components/CustomCursor";
 
 export default function DashboardLayout({
   children,
@@ -13,6 +15,8 @@ export default function DashboardLayout({
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black">
       <ScrollProgress />
+      <CommandPalette />
+      <CustomCursor />
       <Sidebar />
       <BottomNav />
       <PWAInstallPrompt />

@@ -32,6 +32,7 @@ import { LiveMetrics } from "@/components/sections/LiveMetrics";
 import { HeroBackground } from "@/components/HeroBackground";
 import { TiltCard } from "@/components/TiltCard";
 import { TextReveal } from "@/components/TextReveal";
+import { ScrollReveal } from "@/components/ScrollReveal";
 
 const FEATURED_IDS = ["selisih-berat", "wc-check", "lakupos", "ecommerce-manual", "eduvate", "binance-algo-bot"];
 
@@ -68,7 +69,7 @@ export default function DashboardPage() {
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="relative overflow-hidden bg-gradient-to-br from-zinc-900 via-zinc-900 to-emerald-950 dark:from-zinc-950 dark:via-zinc-950 dark:to-emerald-950 rounded-3xl p-8 md:p-12 text-white"
+        className="noise-overlay relative overflow-hidden bg-gradient-to-br from-zinc-900 via-zinc-900 to-emerald-950 dark:from-zinc-950 dark:via-zinc-950 dark:to-emerald-950 rounded-3xl p-8 md:p-12 text-white"
       >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent" />
         <HeroBackground />
@@ -306,6 +307,7 @@ export default function DashboardPage() {
 
 
       {/* ── What Sets Me Apart ── */}
+      <ScrollReveal>
       <section>
         <h2 className="text-2xl font-bold mb-6">{t.whatSetsApart}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -336,8 +338,10 @@ export default function DashboardPage() {
           })}
         </div>
       </section>
+      </ScrollReveal>
 
       {/* ── Tech Stack ── */}
+      <ScrollReveal delay={0.1}>
       <section>
         <h2 className="text-2xl font-bold mb-6">{t.techStack}</h2>
         <div className="bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 space-y-6">
@@ -363,8 +367,10 @@ export default function DashboardPage() {
           ))}
         </div>
       </section>
+      </ScrollReveal>
 
       {/* ── In Progress ── */}
+      <ScrollReveal delay={0.1}>
       <section>
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold flex items-center gap-2">
@@ -421,13 +427,15 @@ export default function DashboardPage() {
           ))}
         </div>
       </section>
+      </ScrollReveal>
 
       {/* ── CTA ── */}
+      <ScrollReveal>
       <motion.section
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
-        className="bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl p-8 md:p-12 text-white text-center"
+        className="noise-overlay relative bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl p-8 md:p-12 text-white text-center"
       >
         <h2 className="text-2xl md:text-3xl font-bold mb-3">{t.letsWork}</h2>
         <p className="text-emerald-100 mb-8 max-w-lg mx-auto">
@@ -458,6 +466,7 @@ export default function DashboardPage() {
           </a>
         </div>
       </motion.section>
+      </ScrollReveal>
     </div>
   );
 }

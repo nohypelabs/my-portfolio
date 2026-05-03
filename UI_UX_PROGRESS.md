@@ -13,10 +13,10 @@
 - [x] Animated Skill Bars (About page — fill on scroll)
 
 ## Session 3 — Power User & Finishing Touch
-- [ ] Command Palette (Cmd+K quick navigation)
-- [ ] Scroll-Driven Section Reveals (parallax offset)
-- [ ] Custom Cursor (desktop — shape shift on hover)
-- [ ] Noise Texture + Glassmorphism Cards
+- [x] Command Palette (Cmd+K quick navigation)
+- [x] Scroll-Driven Section Reveals (parallax offset)
+- [x] Custom Cursor (desktop — shape shift on hover)
+- [x] Noise Texture + Glassmorphism Cards
 
 ---
 
@@ -37,3 +37,12 @@
 - `app/(dashboard)/about/page.tsx` — animated skill bars with color-coded fill on scroll
 - `app/globals.css` — added shimmer keyframe animation
 - `app/(dashboard)/layout.tsx` — integrated ScrollProgress
+
+### Session 3 — COMPLETED (2026-05-03)
+- `components/CommandPalette.tsx` — Cmd+K quick nav with search, keyboard nav, grouped results
+- `components/ScrollReveal.tsx` — scroll-triggered fade+slide animation wrapper
+- `components/CustomCursor.tsx` — emerald ring cursor that expands on interactive elements (desktop only)
+- `components/layout/TopBar.tsx` — added Cmd+K search hint button
+- `app/globals.css` — noise texture overlay, glassmorphism card class
+- `app/(dashboard)/page.tsx` — noise on hero/CTA, ScrollReveal on lower sections
+- `components/sections/LiveMetrics.tsx` — noise overlay on section
