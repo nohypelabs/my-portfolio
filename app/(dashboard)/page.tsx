@@ -75,13 +75,13 @@ export default function DashboardPage() {
 
           <div className="flex-1 min-w-0">
             <p className="text-emerald-400 font-medium text-sm tracking-wide uppercase mb-2">
-              {personalInfo.role}
+              {t.heroRole}
             </p>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
-              {personalInfo.headline}
+              {t.heroHeadline}
             </h1>
             <p className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-2xl mb-8">
-              {personalInfo.narrative}
+              {t.heroNarrative}
             </p>
 
             <div className="flex flex-wrap gap-3">

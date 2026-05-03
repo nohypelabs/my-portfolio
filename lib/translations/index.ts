@@ -141,6 +141,11 @@ export const translations = {
     orders: "Orders",
     users: "Users",
 
+    // Hero content
+    heroRole: "Full-stack Developer & AI-Augmented Engineer",
+    heroHeadline: "I build production-grade apps at 10x speed.",
+    heroNarrative: "CS graduate who came back after a 9-year break — then shipped 15+ production apps in under a year using AI-augmented development. From POS systems handling real transactions to algorithmic trading bots, I solve real problems with modern tech.",
+
     // Language switcher
     switchToId: "Switch to Indonesian",
     switchToEn: "Switch to English",
@@ -286,6 +291,11 @@ export const translations = {
     products: "Produk",
     orders: "Pesanan",
     users: "Users",
+
+    // Hero content
+    heroRole: "Full-stack Developer & AI-Augmented Engineer",
+    heroHeadline: "Saya membangun aplikasi production-grade dengan kecepatan 10x.",
+    heroNarrative: "Lulusan Informatika yang kembali setelah 9 tahun vakum — lalu mengirimkan 15+ aplikasi production dalam kurang dari setahun menggunakan AI-augmented development. Dari sistem POS yang menangani transaksi nyata hingga bot trading algoritmik, saya menyelesaikan masalah nyata dengan teknologi modern.",
 
     // Language switcher
     switchToId: "Ganti ke Bahasa Indonesia",
