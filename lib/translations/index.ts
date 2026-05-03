@@ -77,6 +77,7 @@ export const translations = {
 
     // About page
     aboutMe: "About Me",
+    aboutBio: "Studied D3 Informatics Engineering (104/114 credits) — paused due to financial constraints, but never stopped learning. Made a comeback after 9 years, now building production-ready full-stack applications with AI-assisted development. Built 15+ projects in less than a year, specializing in Next.js, tRPC, and modern web technologies. From toilet monitoring systems to algorithmic trading bots — I build solutions that solve real problems.",
     technicalSkills: "Technical Skills",
     toolsAndMore: "Tools & More",
     name: "Name",
@@ -228,6 +229,7 @@ export const translations = {
 
     // About page
     aboutMe: "Tentang Saya",
+    aboutBio: "Menempuh D3 Teknik Informatika (104/114 SKS selesai) — terhenti karena keterbatasan biaya, tapi tidak pernah berhenti belajar. Kembali setelah 9 tahun vakum, sekarang membangun aplikasi full-stack production-ready dengan bantuan AI. Membuat 15+ proyek dalam kurang dari setahun, spesialisasi di Next.js, tRPC, dan teknologi web modern. Dari sistem monitoring toilet hingga bot trading algoritmik — saya membangun solusi untuk masalah nyata.",
     technicalSkills: "Keahlian Teknis",
     toolsAndMore: "Tools & Lainnya",
     name: "Nama",

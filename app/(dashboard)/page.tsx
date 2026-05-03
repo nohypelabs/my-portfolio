@@ -79,19 +79,16 @@ export default function DashboardPage() {
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
               {t.heroHeadline}
             </h1>
-            <div className="max-w-2xl mb-8 relative">
+            <div className="max-w-2xl">
               <p className={`text-zinc-300 text-base md:text-lg leading-relaxed text-justify ${!heroExpanded ? "line-clamp-2 md:line-clamp-none" : ""}`}>
                 {t.heroNarrative}
               </p>
-              {!heroExpanded && (
-                <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-zinc-900 to-transparent md:hidden" />
-              )}
               <button
                 onClick={() => setHeroExpanded(!heroExpanded)}
-                className="mt-1.5 flex items-center gap-1 text-xs font-medium text-emerald-400 hover:text-emerald-300 transition-colors md:hidden"
+                className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-emerald-400 hover:text-emerald-300 transition-colors md:hidden"
               >
                 {heroExpanded ? (language === "en" ? "Show less" : "Sembunyikan") : (language === "en" ? "Read more" : "Selengkapnya")}
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform ${heroExpanded ? "rotate-180" : ""}`} />
+                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${heroExpanded ? "rotate-180" : ""}`} />
               </button>
             </div>
 

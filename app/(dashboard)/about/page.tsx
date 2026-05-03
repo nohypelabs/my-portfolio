@@ -29,7 +29,7 @@ export default function AboutPage() {
         <h1 className="text-4xl font-bold mb-4 text-center">{t.aboutMe}</h1>
         <div className="relative">
           <p className={`text-lg text-zinc-600 dark:text-zinc-400 text-justify leading-relaxed ${!expanded ? "line-clamp-3" : ""}`}>
-            {personalInfo.bio}
+            {t.aboutBio}
           </p>
           {!expanded && (
             <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-zinc-50 dark:from-black to-transparent" />
