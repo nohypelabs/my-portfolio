@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { personalInfo } from "@/lib/data/personalInfo";
-import { ChevronDown, Code2, Database, Layout, Server } from "lucide-react";
+import { ChevronDown, Code2, Database, Layout, Server, GraduationCap, Coffee, Rocket, Zap, Bot } from "lucide-react";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { translations } from "@/lib/translations";
 
@@ -71,9 +71,93 @@ export default function AboutPage() {
         </div>
       </motion.div>
 
+      {/* Journey Timeline */}
+      <JourneyTimeline title={t.myJourney} language={language} />
+
       {/* Skills */}
       <SkillsSection skillCategories={skillCategories} title={t.technicalSkills} />
     </div>
+  );
+}
+
+const journeyData = {
+  en: [
+    { year: "2014", icon: GraduationCap, color: "bg-blue-500", title: "Started D3 Informatics Engineering", desc: "Began formal CS education, learned programming fundamentals" },
+    { year: "2016", icon: Coffee, color: "bg-yellow-500", title: "Paused Studies (104/114 credits)", desc: "Stopped due to financial constraints — 6 semesters completed, never graduated" },
+    { year: "2016–2024", icon: Coffee, color: "bg-zinc-500", title: "9-Year Break", desc: "Worked in various fields, but never stopped tinkering with tech" },
+    { year: "2024", icon: Rocket, color: "bg-emerald-500", title: "The Comeback", desc: "Returned to coding with AI-augmented development — built first production app" },
+    { year: "2024–2025", icon: Zap, color: "bg-purple-500", title: "15+ Production Apps", desc: "POS systems, QC tools, e-commerce, school management, IoT monitoring" },
+    { year: "2025", icon: Bot, color: "bg-orange-500", title: "Trading Bots & Web3", desc: "Algorithmic trading on Binance, DLMM agents on Solana — 90% complete" },
+  ],
+  id: [
+    { year: "2014", icon: GraduationCap, color: "bg-blue-500", title: "Mulai D3 Teknik Informatika", desc: "Memulai pendidikan formal CS, belajar dasar pemrograman" },
+    { year: "2016", icon: Coffee, color: "bg-yellow-500", title: "Berhenti Kuliah (104/114 SKS)", desc: "Terhenti karena keterbatasan biaya — 6 semester selesai, tidak lulus" },
+    { year: "2016–2024", icon: Coffee, color: "bg-zinc-500", title: "9 Tahun Vakum", desc: "Bekerja di berbagai bidang, tapi tidak pernah berhenti utak-atik teknologi" },
+    { year: "2024", icon: Rocket, color: "bg-emerald-500", title: "Comeback", desc: "Kembali coding dengan AI-augmented development — membuat aplikasi production pertama" },
+    { year: "2024–2025", icon: Zap, color: "bg-purple-500", title: "15+ Aplikasi Production", desc: "Sistem POS, tools QC, e-commerce, manajemen sekolah, monitoring IoT" },
+    { year: "2025", icon: Bot, color: "bg-orange-500", title: "Trading Bots & Web3", desc: "Trading algoritmik di Binance, DLMM agent di Solana — 90% selesai" },
+  ],
+};
+
+function JourneyTimeline({ title, language }: { title: string; language: "en" | "id" }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const items = journeyData[language];
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.15 }}
+    >
+      <h2 className="text-2xl font-bold mb-8 text-center">{title}</h2>
+      <div className="relative">
+        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-zinc-200 dark:bg-zinc-800 md:-translate-x-px" />
+
+        <div className="space-y-8">
+          {items.map((item, i) => {
+            const Icon = item.icon;
+            const isRight = i % 2 === 1;
+            return (
+              <motion.div
+                key={item.year}
+                initial={{ opacity: 0, x: isRight ? 30 : -30 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }}
+                className={`relative flex items-start gap-4 md:gap-0 ${
+                  isRight ? "md:flex-row-reverse" : ""
+                }`}
+              >
+                <div className={`hidden md:block md:w-1/2 ${isRight ? "md:pl-10" : "md:pr-10 md:text-right"}`}>
+                  <div className="bg-white dark:bg-zinc-900 rounded-xl p-4 border border-zinc-200 dark:border-zinc-800 inline-block">
+                    <p className="text-xs font-bold text-zinc-400 mb-1">{item.year}</p>
+                    <h3 className="font-bold text-sm mb-1">{item.title}</h3>
+                    <p className="text-xs text-zinc-500 leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+
+                <div className="absolute left-4 md:left-1/2 -translate-x-1/2 z-10">
+                  <div className={`w-8 h-8 rounded-full ${item.color} flex items-center justify-center ring-4 ring-zinc-50 dark:ring-black`}>
+                    <Icon className="w-4 h-4 text-white" />
+                  </div>
+                </div>
+
+                <div className="md:hidden ml-12">
+                  <div className="bg-white dark:bg-zinc-900 rounded-xl p-4 border border-zinc-200 dark:border-zinc-800">
+                    <p className="text-xs font-bold text-zinc-400 mb-1">{item.year}</p>
+                    <h3 className="font-bold text-sm mb-1">{item.title}</h3>
+                    <p className="text-xs text-zinc-500 leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
+
+                <div className="hidden md:block md:w-1/2" />
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </motion.div>
   );
 }
 

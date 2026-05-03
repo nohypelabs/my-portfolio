@@ -34,6 +34,7 @@ import { TiltCard } from "@/components/TiltCard";
 import { TextReveal } from "@/components/TextReveal";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { CollapsibleSection } from "@/components/CollapsibleSection";
+import { Marquee } from "@/components/Marquee";
 
 const FEATURED_IDS = ["selisih-berat", "wc-check", "lakupos", "ecommerce-manual", "eduvate", "binance-algo-bot"];
 
@@ -103,30 +104,32 @@ export default function DashboardPage() {
         </div>
       </motion.section>
 
-      {/* ── Metrics Strip ── */}
+      {/* ── Metrics Bento ── */}
       <motion.section
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.15 }}
-        className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
+        className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
       >
         {[
-          { value: "15+", label: t.productsShipped, accent: "text-emerald-500" },
-          { value: "6", label: t.activeProjects, accent: "text-blue-500" },
-          { value: "25+", label: t.techMastered, accent: "text-purple-500" },
-          { value: "80K+", label: t.dataProcessed, accent: "text-orange-500" },
-          { value: "<1yr", label: t.devTime, accent: "text-pink-500" },
-          { value: "10x", label: t.productivity, accent: "text-yellow-500" },
+          { value: "15+", label: t.productsShipped, accent: "text-emerald-500", border: "border-emerald-500/20", bg: "bg-emerald-500/5", span: "md:col-span-2" },
+          { value: "80K+", label: t.dataProcessed, accent: "text-orange-500", border: "border-orange-500/20", bg: "bg-orange-500/5", span: "md:col-span-2" },
+          { value: "6", label: t.activeProjects, accent: "text-blue-500", border: "border-zinc-200 dark:border-zinc-800", bg: "", span: "" },
+          { value: "25+", label: t.techMastered, accent: "text-purple-500", border: "border-zinc-200 dark:border-zinc-800", bg: "", span: "" },
+          { value: "<1yr", label: t.devTime, accent: "text-pink-500", border: "border-zinc-200 dark:border-zinc-800", bg: "", span: "" },
+          { value: "10x", label: t.productivity, accent: "text-yellow-500", border: "border-zinc-200 dark:border-zinc-800", bg: "", span: "" },
         ].map((m, i) => (
           <motion.div
             key={m.label}
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 + i * 0.05 }}
-            className="bg-white dark:bg-zinc-900 rounded-xl p-4 border border-zinc-200 dark:border-zinc-800 text-center"
+            className={`bg-white dark:bg-zinc-900 rounded-xl border ${m.border} ${m.bg} ${m.span} ${
+              m.span ? "p-5 md:p-6" : "p-4"
+            } text-center`}
           >
-            <p className={`text-2xl md:text-3xl font-extrabold ${m.accent}`}>{m.value}</p>
-            <p className="text-xs text-zinc-500 mt-1 font-medium">{m.label}</p>
+            <p className={`font-extrabold ${m.accent} ${m.span ? "text-3xl md:text-4xl" : "text-2xl md:text-3xl"}`}>{m.value}</p>
+            <p className={`text-zinc-500 font-medium ${m.span ? "text-sm mt-1.5" : "text-xs mt-1"}`}>{m.label}</p>
           </motion.div>
         ))}
       </motion.section>
@@ -344,26 +347,26 @@ export default function DashboardPage() {
       {/* ── Tech Stack ── */}
       <ScrollReveal delay={0.1}>
       <section>
-        <CollapsibleSection title={t.techStack} badge={skillCategoryIcons.length}>
-        <div className="bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 space-y-6">
-          {skillCategoryIcons.map(({ key, icon: Icon }) => (
-            <div key={key} className="flex flex-col sm:flex-row sm:items-start gap-3">
-              <div className="flex items-center gap-2 sm:w-32 shrink-0">
+        <CollapsibleSection title={t.techStack}>
+        <div className="space-y-4">
+          {skillCategoryIcons.map(({ key, icon: Icon }, rowIdx) => (
+            <div key={key}>
+              <div className="flex items-center gap-2 mb-2.5">
                 <Icon className="w-4 h-4 text-zinc-400" />
                 <span className="text-sm font-semibold text-zinc-600 dark:text-zinc-400 capitalize">
                   {t[key] || key}
                 </span>
               </div>
-              <div className="flex flex-wrap gap-2">
+              <Marquee speed={20 + rowIdx * 5} className="py-1">
                 {personalInfo.skills[key].map((skill) => (
                   <span
                     key={skill}
-                    className="px-3 py-1 rounded-lg bg-zinc-100 dark:bg-zinc-800 text-sm text-zinc-700 dark:text-zinc-300"
+                    className="px-4 py-2 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-sm font-medium text-zinc-700 dark:text-zinc-300 whitespace-nowrap hover:border-emerald-500/30 hover:text-emerald-500 transition-colors cursor-default"
                   >
                     {skill}
                   </span>
                 ))}
-              </div>
+              </Marquee>
             </div>
           ))}
         </div>
