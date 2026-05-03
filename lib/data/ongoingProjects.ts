@@ -70,23 +70,6 @@ export const ongoingProjects: OngoingProject[] = [
     ]
   },
   {
-    id: "serat-qc",
-    name: "Serat QC System",
-    description: "Quality Control management system untuk manufacturing process monitoring",
-    status: "In Progress",
-    startDate: "2024-12",
-    estimatedCompletion: "2026-05",
-    techStack: ["Next.js", "Prisma", "PostgreSQL", "TypeScript"],
-    progress: 55,
-    keyGoals: [
-      "Multi-stage QC process",
-      "Defect tracking & categorization",
-      "Analytics & trend analysis",
-      "Photo documentation",
-      "Export & reporting features"
-    ]
-  },
-  {
     id: "forex-trading-bot",
     name: "Forex Trading Bot",
     description: "Automated forex trading bot dengan multiple strategies & risk management",

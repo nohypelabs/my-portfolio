@@ -27,8 +27,9 @@ import Image from "next/image";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { translations } from "@/lib/translations";
 import { AvatarImage } from "@/components/AvatarImage";
+import { LiveMetrics } from "@/components/sections/LiveMetrics";
 
-const FEATURED_IDS = ["lakupos", "eduvate", "binance-algo-bot"];
+const FEATURED_IDS = ["lakupos", "selisih-berat", "wc-check", "eduvate", "binance-algo-bot"];
 
 const achievementIcons: Record<string, typeof Rocket> = {
   rocket: Rocket,
@@ -132,7 +133,7 @@ export default function DashboardPage() {
           { value: "15+", label: t.productsShipped, accent: "text-emerald-500" },
           { value: "6", label: t.activeProjects, accent: "text-blue-500" },
           { value: "25+", label: t.techMastered, accent: "text-purple-500" },
-          { value: "75K+", label: t.dataProcessed, accent: "text-orange-500" },
+          { value: "80K+", label: t.dataProcessed, accent: "text-orange-500" },
           { value: "<1yr", label: t.devTime, accent: "text-pink-500" },
           { value: "10x", label: t.productivity, accent: "text-yellow-500" },
         ].map((m, i) => (
@@ -148,6 +149,9 @@ export default function DashboardPage() {
           </motion.div>
         ))}
       </motion.section>
+
+      {/* ── Live Production Metrics ── */}
+      <LiveMetrics />
 
       {/* ── Featured Projects ── */}
       <section>

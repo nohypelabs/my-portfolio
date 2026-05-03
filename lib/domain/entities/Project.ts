@@ -14,6 +14,25 @@ export interface ProjectHighlight {
   icon?: string;
 }
 
+export interface CaseStudyMetric {
+  label: string;
+  before: string;
+  after: string;
+}
+
+export interface CaseStudy {
+  problem: string;
+  painPoints: string[];
+  solution: string;
+  metrics: CaseStudyMetric[];
+  testimonial?: {
+    quote: string;
+    author: string;
+    role: string;
+  };
+  timeline?: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -28,6 +47,7 @@ export interface Project {
     dataVolume?: string;
     performance?: string;
   };
+  caseStudy?: CaseStudy;
   github?: string;
   demo?: string;
   image: string;

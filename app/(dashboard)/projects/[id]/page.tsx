@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { projects } from "@/lib/data/projects";
 import { notFound } from "next/navigation";
-import { ExternalLink, Github, Calendar, CheckCircle2 } from "lucide-react";
+import { ExternalLink, Github, Calendar, CheckCircle2, ArrowRight, Quote, Clock, AlertTriangle, Zap } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { TechBadge } from "@/components/ui/TechBadge";
@@ -141,6 +141,128 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
           {project.fullDescription}
         </p>
       </motion.div>
+
+      {/* Case Study */}
+      {project.caseStudy && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.22 }}
+          className="space-y-6"
+        >
+          <div className="bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm">
+            <div className="flex items-center gap-2 mb-6">
+              <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/20">
+                <AlertTriangle className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+              </div>
+              <h2 className="text-xl md:text-2xl font-bold">The Problem</h2>
+            </div>
+            <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
+              {project.caseStudy.problem}
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {project.caseStudy.painPoints.map((point, idx) => (
+                <div
+                  key={idx}
+                  className="flex items-start gap-3 p-3 rounded-lg bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20"
+                >
+                  <span className="text-red-500 font-bold text-sm mt-0.5">x</span>
+                  <span className="text-xs md:text-sm text-zinc-700 dark:text-zinc-300">{point}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex justify-center">
+            <div className="p-3 rounded-full bg-emerald-100 dark:bg-emerald-900/20">
+              <ArrowRight className="w-6 h-6 text-emerald-600 dark:text-emerald-400 rotate-90" />
+            </div>
+          </div>
+
+          <div className="bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm">
+            <div className="flex items-center gap-2 mb-6">
+              <div className="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/20">
+                <Zap className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+              </div>
+              <h2 className="text-xl md:text-2xl font-bold">The Solution</h2>
+            </div>
+            <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
+              {project.caseStudy.solution}
+            </p>
+
+            {project.caseStudy.timeline && (
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800">
+                <Clock className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                <span className="text-sm font-medium text-emerald-700 dark:text-emerald-400">
+                  {project.caseStudy.timeline}
+                </span>
+              </div>
+            )}
+          </div>
+
+          <div className="bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm">
+            <h2 className="text-xl md:text-2xl font-bold mb-6">Before vs After</h2>
+            <div className="space-y-4">
+              {project.caseStudy.metrics.map((metric, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 + idx * 0.05 }}
+                  className="bg-zinc-50 dark:bg-zinc-800/50 rounded-xl p-4 border border-zinc-200 dark:border-zinc-700"
+                >
+                  <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-3">
+                    {metric.label}
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="flex-1 p-3 rounded-lg bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20">
+                      <p className="text-xs text-red-500 font-medium mb-1">Before</p>
+                      <p className="text-sm font-bold text-zinc-800 dark:text-zinc-200">{metric.before}</p>
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-emerald-500 shrink-0" />
+                    <div className="flex-1 p-3 rounded-lg bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-900/20">
+                      <p className="text-xs text-emerald-500 font-medium mb-1">After</p>
+                      <p className="text-sm font-bold text-zinc-800 dark:text-zinc-200">{metric.after}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {project.caseStudy.testimonial && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="bg-gradient-to-br from-zinc-900 via-zinc-900 to-emerald-950 dark:from-zinc-950 dark:via-zinc-950 dark:to-emerald-950 rounded-2xl p-6 md:p-8 text-white relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent" />
+              <div className="relative">
+                <Quote className="w-10 h-10 text-emerald-500/30 mb-4" />
+                <blockquote className="text-lg md:text-xl font-medium leading-relaxed mb-6 text-zinc-100">
+                  &ldquo;{project.caseStudy.testimonial.quote}&rdquo;
+                </blockquote>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                    <span className="text-emerald-400 font-bold text-sm">
+                      {project.caseStudy.testimonial.author.charAt(0)}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-sm text-zinc-100">
+                      {project.caseStudy.testimonial.author}
+                    </p>
+                    <p className="text-xs text-zinc-400">
+                      {project.caseStudy.testimonial.role}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </motion.div>
+      )}
 
       {/* Highlights */}
       <motion.div

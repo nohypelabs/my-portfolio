@@ -69,9 +69,9 @@ export const projects: Project[] = [
   },
   {
     id: "wc-check",
-    title: "WC Check",
-    shortDescription: "Professional Toilet Monitoring System dengan QR code scanning dan analytics real-time",
-    fullDescription: "Sistem monitoring kebersihan toilet berbasis web dengan QR code scanning dan analytics real-time untuk organisasi, perusahaan, dan institusi. Meningkatkan efisiensi inspeksi hingga 70% dan mengurangi paperwork manual.",
+    title: "WC Check — Toilet Inspection System",
+    shortDescription: "Production Toilet Monitoring System: 3.293 inspeksi, 53 users, 49 lokasi terkelola dengan QR code & real-time analytics",
+    fullDescription: "Sistem monitoring kebersihan toilet berbasis web yang sudah berjalan di production. Telah mencatat 3.293 inspeksi, digunakan oleh 53 users (14 aktif mingguan) di 49 lokasi. Dilengkapi QR code scanning, multi-component checklist, photo documentation, dan real-time analytics dashboard untuk organisasi dan institusi.",
     category: "full-stack",
     techStack: [
       {
@@ -89,19 +89,19 @@ export const projects: Project[] = [
     ],
     highlights: [
       {
-        title: "QR Code Scanning",
-        description: "Auto-generated QR codes untuk setiap lokasi toilet",
+        title: "3.293 Inspections",
+        description: "Total inspeksi tercatat di production — terus bertambah harian",
+        icon: "clipboard-check"
+      },
+      {
+        title: "53 Users & 49 Lokasi",
+        description: "14 active users mingguan mengelola 49 titik inspeksi",
+        icon: "users"
+      },
+      {
+        title: "QR Code + Real-time",
+        description: "Scan QR per lokasi, dashboard analytics langsung update",
         icon: "qr-code"
-      },
-      {
-        title: "Real-time Analytics",
-        description: "Dashboard dengan insights dan trends inspection",
-        icon: "activity"
-      },
-      {
-        title: "PWA Support",
-        description: "Installable sebagai mobile app dengan offline capability",
-        icon: "smartphone"
       }
     ],
     features: [
@@ -113,15 +113,18 @@ export const projects: Project[] = [
       "Multi-level organization hierarchy (Org → Building → Location)",
       "PWA support - Installable sebagai mobile app",
       "Export data (CSV)",
-      "Calendar view untuk inspection history"
+      "Calendar view untuk inspection history",
+      "User management dengan role & permissions",
+      "Occupation & template management"
     ],
     impact: {
-      performance: "Meningkatkan efisiensi inspeksi hingga 70%",
-      users: "Mengurangi paperwork dan manual tracking"
+      dataVolume: "3.293 inspeksi | 53 users | 49 lokasi in production",
+      performance: "Efisiensi inspeksi meningkat 70% vs manual",
+      users: "14 active users weekly — live operational system"
     },
     demo: "https://wc-checks.vercel.app",
     image: "/projects/wccheck-thumb.jpg",
-    tags: ["Next.js", "TypeScript", "Supabase", "PWA", "QR Code"],
+    tags: ["Next.js", "TypeScript", "Supabase", "PWA", "QR Code", "Production"],
     year: "2024",
     status: "production"
   },
@@ -309,9 +312,9 @@ export const projects: Project[] = [
   },
   {
     id: "selisih-berat",
-    title: "Selisih Berat",
-    shortDescription: "Logistics Weight Audit System for J&T Express dengan GPS watermarking",
-    fullDescription: "Aplikasi audit dan tracking selisih berat untuk operasional logistik dengan real-time monitoring, barcode scanning, dan GPS watermarking. Streamlined logistics weight verification process dengan gamification untuk meningkatkan user engagement.",
+    title: "Serat QC — Selisih Berat J&T Express",
+    shortDescription: "Production-scale Logistics QC System: 80K+ resi diproses, 160K+ foto terdokumentasi dengan GPS watermarking",
+    fullDescription: "Sistem Quality Control dan audit selisih berat untuk operasional logistik J&T Express yang sudah berjalan di production. Memproses 80.187 entries dan mendokumentasikan 160.374 foto dengan GPS watermarking. Dilengkapi barcode scanning, real-time monitoring, gamification, dan photo documentation otomatis untuk setiap paket.",
     category: "full-stack",
     techStack: [
       {
@@ -329,19 +332,19 @@ export const projects: Project[] = [
     ],
     highlights: [
       {
-        title: "Barcode Scanner",
-        description: "Scan No Resi JNT packages dengan Quagga2",
+        title: "80K+ Resi Diproses",
+        description: "80.187 entries production — sistem berjalan dan terus bertambah",
+        icon: "database"
+      },
+      {
+        title: "160K+ Foto Documented",
+        description: "160.374 foto dengan GPS watermark tersimpan otomatis",
+        icon: "camera"
+      },
+      {
+        title: "Barcode + GPS Watermark",
+        description: "Scan resi, auto-capture GPS, watermark foto real-time",
         icon: "scan"
-      },
-      {
-        title: "GPS Watermark",
-        description: "Photo dengan GPS coordinates, date, time, dan location",
-        icon: "map-pin"
-      },
-      {
-        title: "Gamification",
-        description: "Leaderboard system (Beginner → Diamond levels)",
-        icon: "trophy"
       }
     ],
     features: [
@@ -357,12 +360,51 @@ export const projects: Project[] = [
       "Role-based access (Admin vs User)"
     ],
     impact: {
-      dataVolume: "Production database: 25,000+ entries, 50,000+ photos",
-      users: "Real-time operational insights untuk J&T Express"
+      dataVolume: "80.187 entries & 160.374 photos in production",
+      users: "Live operational QC system untuk J&T Express"
+    },
+    caseStudy: {
+      problem: "Tim operasional J&T Express harus memverifikasi selisih berat paket setiap hari. Setiap resi membutuhkan 2 foto bukti yang harus di-rename manual satu per satu dengan format tertentu (nomor resi + keterangan). Rata-rata 500 resi dan 1.000 foto per hari.",
+      painPoints: [
+        "Rename 1.000 foto manual satu per satu setiap hari",
+        "Harus cocokkan nama file dengan nomor resi — rawan salah",
+        "Proses memakan waktu 4-5 jam per hari untuk 500 resi",
+        "Tidak ada tracking progress atau dashboard monitoring",
+        "Data tersebar di folder lokal, sulit diaudit"
+      ],
+      solution: "Dibangun sistem web-based (PWA) dimana user cukup scan barcode resi, ambil foto langsung dari kamera — sistem otomatis memberi nama file, menambahkan GPS watermark (tanggal, waktu, koordinat, lokasi), dan upload ke cloud. Semua data langsung masuk dashboard real-time.",
+      metrics: [
+        {
+          label: "Waktu per 500 resi",
+          before: "4-5 jam",
+          after: "< 30 menit"
+        },
+        {
+          label: "Rename foto",
+          before: "Manual 1 per 1",
+          after: "Otomatis via barcode scan"
+        },
+        {
+          label: "Total data diproses",
+          before: "Scattered di folder lokal",
+          after: "80.187 resi & 160.374 foto terpusat"
+        },
+        {
+          label: "Monitoring & audit",
+          before: "Tidak ada",
+          after: "Real-time dashboard + export Excel"
+        }
+      ],
+      testimonial: {
+        quote: "Dulu butuh 4-5 jam buat 500 resi, sekarang under 30 menit. Gak perlu rename foto satu-satu lagi.",
+        author: "User Operasional",
+        role: "Tim QC J&T Express"
+      },
+      timeline: "Dari ide ke production dalam 3 bulan"
     },
     demo: "https://selisih-berat.vercel.app",
     image: "/projects/selisih-thumb.jpg",
-    tags: ["Next.js", "TypeScript", "Supabase", "GPS", "Barcode"],
+    tags: ["Next.js", "TypeScript", "Supabase", "GPS", "Barcode", "Production"],
     year: "2024",
     status: "production"
   }
