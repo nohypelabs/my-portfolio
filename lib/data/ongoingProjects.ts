@@ -89,35 +89,35 @@ export const ongoingProjects: OngoingProject[] = [
   {
     id: "smart-grid-bot",
     name: "Smart Grid Trading Bot",
-    description: "Advanced grid trading bot untuk crypto dengan dynamic grid spacing, auto-rebalancing, dan multi-pair support",
+    description: "Advanced grid trading bot untuk crypto dengan dynamic grid spacing, auto-rebalancing, multi-pair support, dan Telegram Bot integration untuk monitoring & control real-time",
     status: "In Progress",
     startDate: "2025-03",
     estimatedCompletion: "2026-06",
-    techStack: ["Python", "CCXT", "Binance API", "Pandas", "SQLite"],
-    progress: 45,
+    techStack: ["Python", "CCXT", "Binance API", "Pandas", "SQLite", "Telegram Bot API"],
+    progress: 90,
     keyGoals: [
       "Dynamic grid spacing berdasarkan volatility",
       "Auto-rebalancing grid levels",
       "Multi-pair simultaneous trading",
-      "Real-time P&L tracking",
-      "Telegram alerts & monitoring"
+      "Real-time P&L tracking via Telegram Bot",
+      "Telegram Bot: start/stop, status, profit report, config management"
     ]
   },
   {
     id: "dlmm-agent",
     name: "DLMM Agent — Meteora LP Automation",
-    description: "Autonomous agent untuk manage liquidity positions di Meteora DLMM pools pada Solana, otomatis rebalance & compound fees",
+    description: "Autonomous agent untuk manage liquidity positions di Meteora DLMM pools pada Solana, otomatis rebalance & compound fees, dengan Telegram Bot untuk monitoring positions & alerts",
     status: "In Progress",
     startDate: "2025-04",
     estimatedCompletion: "2026-07",
-    techStack: ["TypeScript", "Solana Web3.js", "@meteora-ag/dlmm", "Node.js"],
-    progress: 35,
+    techStack: ["TypeScript", "Solana Web3.js", "@meteora-ag/dlmm", "Node.js", "Telegram Bot API"],
+    progress: 90,
     keyGoals: [
       "Auto-create & manage DLMM positions",
       "Dynamic bin range adjustment",
       "Auto-compound fee earnings",
-      "Impermanent loss monitoring",
-      "Multi-pool strategy management"
+      "Impermanent loss monitoring & alerts via Telegram",
+      "Telegram Bot: position status, P&L report, rebalance triggers"
     ]
   }
 ];
