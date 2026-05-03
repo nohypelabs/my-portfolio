@@ -1,14 +1,16 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { personalInfo } from "@/lib/data/personalInfo";
-import { Code2, Database, Layout, Server } from "lucide-react";
+import { ChevronDown, Code2, Database, Layout, Server } from "lucide-react";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { translations } from "@/lib/translations";
 
 export default function AboutPage() {
   const { language } = useLanguage();
   const t = translations[language];
+  const [expanded, setExpanded] = useState(false);
 
   const skillCategories = [
     { name: t.frontend, icon: Layout, skills: personalInfo.skills.frontend },
@@ -24,10 +26,22 @@ export default function AboutPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <h1 className="text-4xl font-bold mb-4">{t.aboutMe}</h1>
-        <p className="text-lg text-zinc-600 dark:text-zinc-400 text-justify">
-          {personalInfo.bio}
-        </p>
+        <h1 className="text-4xl font-bold mb-4 text-center">{t.aboutMe}</h1>
+        <div className="relative">
+          <p className={`text-lg text-zinc-600 dark:text-zinc-400 text-justify leading-relaxed ${!expanded ? "line-clamp-3" : ""}`}>
+            {personalInfo.bio}
+          </p>
+          {!expanded && (
+            <div className="absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-zinc-50 dark:from-black to-transparent" />
+          )}
+        </div>
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="mt-2 flex items-center gap-1 text-sm font-medium text-emerald-500 hover:text-emerald-400 transition-colors mx-auto"
+        >
+          {expanded ? (language === "en" ? "Show less" : "Sembunyikan") : (language === "en" ? "Read more" : "Baca selengkapnya")}
+          <ChevronDown className={`w-4 h-4 transition-transform ${expanded ? "rotate-180" : ""}`} />
+        </button>
       </motion.div>
 
       {/* Personal Info */}
@@ -63,7 +77,7 @@ export default function AboutPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <h2 className="text-2xl font-bold mb-6">{t.technicalSkills}</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">{t.technicalSkills}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {skillCategories.map((category, index) => {
             const Icon = category.icon;
