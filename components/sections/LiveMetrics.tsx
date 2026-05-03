@@ -295,7 +295,7 @@ export function LiveMetrics() {
               </div>
 
               <div
-                className={`grid gap-4 ${
+                className={`grid gap-2.5 md:gap-4 ${
                   group.cards.length === 2
                     ? "grid-cols-2"
                     : "grid-cols-2 md:grid-cols-3"
@@ -318,7 +318,7 @@ export function LiveMetrics() {
                         delay: 0.15 + gi * 0.2 + ci * 0.1,
                         duration: 0.4,
                       }}
-                      className={`relative overflow-hidden rounded-2xl p-5 md:p-6 border transition-shadow hover:shadow-2xl ${
+                      className={`relative overflow-hidden rounded-xl md:rounded-2xl p-4 md:p-6 border transition-shadow hover:shadow-2xl ${
                         isHero
                           ? "bg-gradient-to-br from-emerald-500/10 to-teal-500/5 border-emerald-500/20 hover:border-emerald-500/40"
                           : "bg-white/5 border-white/10 hover:border-white/20"
@@ -328,27 +328,27 @@ export function LiveMetrics() {
                         <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
                       )}
                       <div className="relative">
-                        <div className="flex items-center gap-2 mb-3">
+                        <div className="flex items-center gap-1.5 md:gap-2 mb-2 md:mb-3">
                           <div
-                            className={`p-1.5 rounded-lg ${
+                            className={`p-1 md:p-1.5 rounded-lg ${
                               isHero ? "bg-emerald-500/20" : "bg-white/10"
                             }`}
                           >
                             <Icon
-                              className={`w-4 h-4 ${
+                              className={`w-3.5 h-3.5 md:w-4 md:h-4 ${
                                 isHero ? "text-emerald-400" : "text-zinc-400"
                               }`}
                             />
                           </div>
-                          <span className="text-xs font-medium text-zinc-400 uppercase tracking-wider">
+                          <span className="text-[10px] md:text-xs font-medium text-zinc-400 uppercase tracking-wider">
                             {card.label}
                           </span>
                         </div>
                         <p
                           className={`font-extrabold tracking-tight ${
                             isHero
-                              ? "text-4xl md:text-5xl bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent"
-                              : "text-3xl md:text-4xl text-white"
+                              ? "text-2xl sm:text-4xl md:text-5xl bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent"
+                              : "text-xl sm:text-3xl md:text-4xl text-white"
                           }`}
                         >
                           <AnimatedNumber
