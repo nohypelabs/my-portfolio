@@ -17,7 +17,7 @@ export function LanguageSwitcher() {
     >
       <Languages className="w-5 h-5" />
       <span className="absolute -bottom-0.5 text-[10px] font-bold">
-        {language === "en" ? "EN" : "ID"}
+        {language === "en" ? "ID" : "EN"}
       </span>
     </button>
   );
