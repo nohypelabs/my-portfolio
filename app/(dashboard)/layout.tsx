@@ -1,11 +1,13 @@
 import { Sidebar } from "@/components/layout/Sidebar";
 import { BottomNav } from "@/components/layout/BottomNav";
+import { Footer } from "@/components/layout/Footer";
 import { PWAInstallPrompt } from "@/components/PWAInstallPrompt";
 import { TopBar } from "@/components/layout/TopBar";
 import { PageTransition } from "@/components/PageTransition";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { CommandPalette } from "@/components/CommandPalette";
 import { CustomCursor } from "@/components/CustomCursor";
+import { FloatingContact } from "@/components/FloatingContact";
 
 export default function DashboardLayout({
   children,
@@ -20,6 +22,7 @@ export default function DashboardLayout({
       <Sidebar />
       <BottomNav />
       <PWAInstallPrompt />
+      <FloatingContact />
 
       <main className="lg:ml-[var(--sidebar-width,280px)] min-h-screen transition-all duration-300">
         <TopBar />
@@ -29,6 +32,7 @@ export default function DashboardLayout({
             {children}
           </PageTransition>
         </div>
+        <Footer />
       </main>
     </div>
   );

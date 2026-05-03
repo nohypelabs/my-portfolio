@@ -118,6 +118,30 @@ export default function DashboardPage() {
               </button>
             </div>
 
+            <div className="flex flex-wrap gap-3 mt-5">
+              <Link
+                href="/cv"
+                className="group inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30"
+              >
+                {t.viewCV}
+                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </Link>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 text-white rounded-xl text-sm font-semibold transition-all"
+              >
+                <Mail className="w-4 h-4" />
+                {t.contactMe}
+              </Link>
+              <div className="hidden md:flex items-center gap-2 ml-1">
+                <a href={personalInfo.contact.github} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-all">
+                  <Github className="w-4 h-4" />
+                </a>
+                <a href={personalInfo.contact.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-all">
+                  <Linkedin className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </motion.section>
@@ -153,10 +177,12 @@ export default function DashboardPage() {
       </motion.section>
 
       {/* ── Live Production Metrics ── */}
-      <LiveMetrics />
+      <div id="live-data">
+        <LiveMetrics />
+      </div>
 
       {/* ── Featured Projects ── */}
-      <section>
+      <section id="projects">
         <CollapsibleSection title={t.featuredProjects} badge={featuredProjects.length}>
         {/* Mobile: Compact cards */}
         <div className="md:hidden space-y-2.5">
@@ -341,7 +367,7 @@ export default function DashboardPage() {
 
       {/* ── What Sets Me Apart ── */}
       <ScrollReveal>
-      <section>
+      <section id="highlights">
         <CollapsibleSection title={t.whatSetsApart} badge={4}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {achievements.slice(0, 4).map((ach, i) => {
@@ -383,7 +409,7 @@ export default function DashboardPage() {
 
       {/* ── Tech Stack ── */}
       <ScrollReveal delay={0.1}>
-      <section>
+      <section id="skills">
         <CollapsibleSection title={t.techStack}>
         <div className="space-y-4">
           {skillCategoryIcons.map(({ key, icon: Icon }, rowIdx) => (
@@ -413,7 +439,7 @@ export default function DashboardPage() {
 
       {/* ── In Progress ── */}
       <ScrollReveal delay={0.1}>
-      <section>
+      <section id="in-progress">
         <CollapsibleSection
           title={
             <h2 className="text-2xl font-bold flex items-center gap-2">
@@ -478,6 +504,7 @@ export default function DashboardPage() {
       {/* ── CTA ── */}
       <ScrollReveal>
       <motion.section
+        id="contact"
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
