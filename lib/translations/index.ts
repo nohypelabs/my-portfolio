@@ -50,7 +50,7 @@ export const translations = {
     projectsIn: "projects in",
     lessThanOneYear: "less than a year",
 
-    // New homepage sections
+    // Homepage sections
     featuredProjects: "Featured Projects",
     moreProjects: "More Projects",
     whatSetsApart: "What Sets Me Apart",
@@ -72,6 +72,78 @@ export const translations = {
     dataProcessed: "Data Processed",
     devTime: "Dev Time",
     productivity: "Productivity",
+    visitLive: "Visit Live",
+    live: "Live",
+
+    // About page
+    aboutMe: "About Me",
+    technicalSkills: "Technical Skills",
+    toolsAndMore: "Tools & More",
+    name: "Name",
+    role: "Role",
+    username: "Username",
+
+    // Contact page
+    getInTouch: "Get In Touch",
+    getInTouchDesc: "I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.",
+    letsBuildTogether: "Let's Build Something Great Together",
+    letsBuildDesc: "Whether you have a question or just want to say hi, I'll try my best to get back to you!",
+    sendMeEmail: "Send Me an Email",
+
+    // Project detail page
+    backToDashboard: "← Back to Dashboard",
+    visitLiveProject: "Visit Live Project",
+    viewSourceCode: "View Source Code",
+    liveProductionProject: "Live Production Project",
+    liveProductionDesc: "This project is deployed and accessible online. Click the button above to explore the full application in action!",
+    aboutThisProject: "About This Project",
+    theProblem: "The Problem",
+    theSolution: "The Solution",
+    beforeVsAfter: "Before vs After",
+    before: "Before",
+    after: "After",
+    keyHighlights: "Key Highlights",
+    features: "Features",
+    technologyStack: "Technology Stack",
+    impactResults: "Impact & Results",
+
+    // Ongoing project detail page
+    timelineProgress: "Timeline & Progress",
+    startDate: "Start Date",
+    estimatedCompletion: "Estimated Completion",
+    overallProgress: "Overall Progress",
+    keyGoals: "Key Goals",
+    plannedTechStack: "Planned Technology Stack",
+    projectStatus: "Project Status",
+    statusInProgress: "This project is currently under active development. Stay tuned for updates!",
+    statusPlanning: "This project is in the planning phase. Specifications and architecture are being finalized.",
+    statusOnHold: "This project is temporarily on hold. Development will resume soon.",
+
+    // Live Metrics
+    liveProductionData: "Live Production Data",
+    liveMetricsDesc: "Real-time data directly from production databases. Not dummy data — these are systems used every day.",
+    loading: "LOADING",
+    fetched: "Fetched",
+    visitApp: "Visit App",
+    liveMetricsFooter: "Data fetched directly from Supabase & PostgreSQL production databases via server-side API route. Auto-refresh every 5 minutes.",
+    databases: "Databases",
+
+    // Live Metrics labels
+    receiptsProcessed: "Receipts Processed",
+    gpsWatermarkedPhotos: "GPS Watermarked Photos",
+    inspectionsRecorded: "Inspections Recorded",
+    registeredUsers: "Registered Users",
+    managedLocations: "Managed Locations",
+    transactions: "Transactions",
+    registeredProducts: "Registered Products",
+    activeOutlets: "Active Outlets",
+    products: "Products",
+    orders: "Orders",
+    users: "Users",
+
+    // Language switcher
+    switchToId: "Switch to Indonesian",
+    switchToEn: "Switch to English",
   },
   id: {
     // Dashboard
@@ -124,7 +196,7 @@ export const translations = {
     projectsIn: "proyek dalam",
     lessThanOneYear: "kurang dari setahun",
 
-    // New homepage sections
+    // Homepage sections
     featuredProjects: "Proyek Unggulan",
     moreProjects: "Proyek Lainnya",
     whatSetsApart: "Yang Membedakan Saya",
@@ -146,6 +218,78 @@ export const translations = {
     dataProcessed: "Data Diproses",
     devTime: "Waktu Dev",
     productivity: "Produktivitas",
+    visitLive: "Kunjungi",
+    live: "Live",
+
+    // About page
+    aboutMe: "Tentang Saya",
+    technicalSkills: "Keahlian Teknis",
+    toolsAndMore: "Tools & Lainnya",
+    name: "Nama",
+    role: "Peran",
+    username: "Username",
+
+    // Contact page
+    getInTouch: "Hubungi Saya",
+    getInTouchDesc: "Saya selalu terbuka untuk mendiskusikan proyek baru, ide kreatif, atau kesempatan untuk menjadi bagian dari visi Anda.",
+    letsBuildTogether: "Mari Bangun Sesuatu yang Hebat Bersama",
+    letsBuildDesc: "Punya pertanyaan atau ingin menyapa? Saya akan berusaha membalas secepatnya!",
+    sendMeEmail: "Kirim Email",
+
+    // Project detail page
+    backToDashboard: "← Kembali ke Dashboard",
+    visitLiveProject: "Kunjungi Proyek Live",
+    viewSourceCode: "Lihat Source Code",
+    liveProductionProject: "Proyek Production Live",
+    liveProductionDesc: "Proyek ini sudah di-deploy dan bisa diakses online. Klik tombol di atas untuk menjelajahi aplikasi secara langsung!",
+    aboutThisProject: "Tentang Proyek Ini",
+    theProblem: "Masalah",
+    theSolution: "Solusi",
+    beforeVsAfter: "Sebelum vs Sesudah",
+    before: "Sebelum",
+    after: "Sesudah",
+    keyHighlights: "Highlight Utama",
+    features: "Fitur",
+    technologyStack: "Technology Stack",
+    impactResults: "Dampak & Hasil",
+
+    // Ongoing project detail page
+    timelineProgress: "Timeline & Progres",
+    startDate: "Tanggal Mulai",
+    estimatedCompletion: "Estimasi Selesai",
+    overallProgress: "Progres Keseluruhan",
+    keyGoals: "Target Utama",
+    plannedTechStack: "Technology Stack yang Direncanakan",
+    projectStatus: "Status Proyek",
+    statusInProgress: "Proyek ini sedang dalam pengembangan aktif. Nantikan update selanjutnya!",
+    statusPlanning: "Proyek ini dalam fase perencanaan. Spesifikasi dan arsitektur sedang difinalisasi.",
+    statusOnHold: "Proyek ini sementara ditunda. Pengembangan akan dilanjutkan segera.",
+
+    // Live Metrics
+    liveProductionData: "Data Production Live",
+    liveMetricsDesc: "Data real-time langsung dari production database. Bukan dummy — ini sistem yang benar-benar dipakai setiap hari.",
+    loading: "MEMUAT",
+    fetched: "Diambil",
+    visitApp: "Kunjungi App",
+    liveMetricsFooter: "Data di-fetch langsung dari Supabase & PostgreSQL production database via server-side API route. Auto-refresh setiap 5 menit.",
+    databases: "Database",
+
+    // Live Metrics labels
+    receiptsProcessed: "Resi Diproses",
+    gpsWatermarkedPhotos: "Foto GPS Watermarked",
+    inspectionsRecorded: "Inspeksi Tercatat",
+    registeredUsers: "Users Terdaftar",
+    managedLocations: "Lokasi Terkelola",
+    transactions: "Transaksi",
+    registeredProducts: "Produk Terdaftar",
+    activeOutlets: "Outlet Aktif",
+    products: "Produk",
+    orders: "Pesanan",
+    users: "Users",
+
+    // Language switcher
+    switchToId: "Ganti ke Bahasa Indonesia",
+    switchToEn: "Ganti ke English",
   }
 };
 

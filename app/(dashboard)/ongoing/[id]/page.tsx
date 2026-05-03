@@ -6,12 +6,16 @@ import { notFound } from "next/navigation";
 import { Calendar, Clock, TrendingUp, Target } from "lucide-react";
 import Link from "next/link";
 import { TechBadge } from "@/components/ui/TechBadge";
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 import { use } from "react";
 
 export default function OngoingProjectDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const project = ongoingProjects.find((p) => p.id === id);
+  const { language } = useLanguage();
+  const t = translations[language];
 
   if (!project) {
     notFound();
@@ -30,7 +34,7 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
         href="/"
         className="inline-flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
       >
-        ← Back to Dashboard
+        {t.backToDashboard}
       </Link>
 
       {/* Header */}
@@ -58,20 +62,20 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
         transition={{ delay: 0.1 }}
         className="bg-white dark:bg-zinc-900 rounded-xl p-6 border border-zinc-200 dark:border-zinc-800"
       >
-        <h2 className="text-2xl font-bold mb-6">Timeline & Progress</h2>
+        <h2 className="text-2xl font-bold mb-6">{t.timelineProgress}</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div className="flex items-center gap-3">
             <Calendar className="w-5 h-5 text-blue-600" />
             <div>
-              <p className="text-sm text-zinc-500">Start Date</p>
+              <p className="text-sm text-zinc-500">{t.startDate}</p>
               <p className="font-medium">{project.startDate}</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
             <Clock className="w-5 h-5 text-purple-600" />
             <div>
-              <p className="text-sm text-zinc-500">Estimated Completion</p>
+              <p className="text-sm text-zinc-500">{t.estimatedCompletion}</p>
               <p className="font-medium">{project.estimatedCompletion}</p>
             </div>
           </div>
@@ -80,7 +84,7 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
         {project.progress !== undefined && (
           <div>
             <div className="flex justify-between mb-2">
-              <span className="text-sm font-medium">Overall Progress</span>
+              <span className="text-sm font-medium">{t.overallProgress}</span>
               <span className="text-sm font-bold text-blue-600">{project.progress}%</span>
             </div>
             <div className="w-full bg-zinc-200 dark:bg-zinc-800 rounded-full h-3">
@@ -105,7 +109,7 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
         >
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
             <Target className="w-6 h-6 text-blue-600" />
-            Key Goals
+            {t.keyGoals}
           </h2>
           <ul className="space-y-3">
             {project.keyGoals.map((goal, idx) => (
@@ -131,7 +135,7 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
         transition={{ delay: 0.4 }}
         className="bg-white dark:bg-zinc-900 rounded-xl p-6 border border-zinc-200 dark:border-zinc-800"
       >
-        <h2 className="text-2xl font-bold mb-6">Planned Technology Stack</h2>
+        <h2 className="text-2xl font-bold mb-6">{t.plannedTechStack}</h2>
         <div className="flex flex-wrap gap-2">
           {project.techStack.map((tech) => (
             <TechBadge key={tech} tech={tech} />
@@ -153,11 +157,11 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
         } text-white`}
       >
         <TrendingUp className="w-8 h-8 mb-3" />
-        <h3 className="text-xl font-bold mb-2">Project Status</h3>
+        <h3 className="text-xl font-bold mb-2">{t.projectStatus}</h3>
         <p className="opacity-90">
-          {project.status === 'In Progress' && "This project is currently under active development. Stay tuned for updates!"}
-          {project.status === 'Planning' && "This project is in the planning phase. Specifications and architecture are being finalized."}
-          {project.status === 'On Hold' && "This project is temporarily on hold. Development will resume soon."}
+          {project.status === 'In Progress' && t.statusInProgress}
+          {project.status === 'Planning' && t.statusPlanning}
+          {project.status === 'On Hold' && t.statusOnHold}
         </p>
       </motion.div>
     </div>

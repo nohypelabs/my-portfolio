@@ -3,31 +3,20 @@
 import { motion } from "framer-motion";
 import { personalInfo } from "@/lib/data/personalInfo";
 import { Code2, Database, Layout, Server } from "lucide-react";
-
-const skillCategories = [
-  {
-    name: "Frontend",
-    icon: Layout,
-    skills: personalInfo.skills.frontend
-  },
-  {
-    name: "Backend",
-    icon: Server,
-    skills: personalInfo.skills.backend
-  },
-  {
-    name: "Database",
-    icon: Database,
-    skills: personalInfo.skills.database
-  },
-  {
-    name: "Tools & More",
-    icon: Code2,
-    skills: personalInfo.skills.tools
-  }
-];
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 export default function AboutPage() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
+  const skillCategories = [
+    { name: t.frontend, icon: Layout, skills: personalInfo.skills.frontend },
+    { name: t.backend, icon: Server, skills: personalInfo.skills.backend },
+    { name: t.database, icon: Database, skills: personalInfo.skills.database },
+    { name: t.toolsAndMore, icon: Code2, skills: personalInfo.skills.tools },
+  ];
+
   return (
     <div className="max-w-5xl mx-auto space-y-8">
       {/* Header */}
@@ -35,7 +24,7 @@ export default function AboutPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <h1 className="text-4xl font-bold mb-4">About Me</h1>
+        <h1 className="text-4xl font-bold mb-4">{t.aboutMe}</h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-400">
           {personalInfo.bio}
         </p>
@@ -50,19 +39,19 @@ export default function AboutPage() {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">Name</p>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">{t.name}</p>
             <p className="text-lg font-medium">{personalInfo.name}</p>
           </div>
           <div>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">Role</p>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">{t.role}</p>
             <p className="text-lg font-medium">{personalInfo.role}</p>
           </div>
           <div>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">Username</p>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">{t.username}</p>
             <p className="text-lg font-medium">{personalInfo.username}</p>
           </div>
           <div>
-            <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">Experience</p>
+            <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">{t.experience}</p>
             <p className="text-lg font-medium">{personalInfo.stats.experience}</p>
           </div>
         </div>
@@ -74,7 +63,7 @@ export default function AboutPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <h2 className="text-2xl font-bold mb-6">Technical Skills</h2>
+        <h2 className="text-2xl font-bold mb-6">{t.technicalSkills}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {skillCategories.map((category, index) => {
             const Icon = category.icon;

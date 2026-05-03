@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { personalInfo } from "@/lib/data/personalInfo";
 import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 const socialLinks = [
   {
@@ -32,6 +34,9 @@ const socialLinks = [
 ];
 
 export default function ContactPage() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <div className="max-w-4xl mx-auto space-y-8">
       {/* Header */}
@@ -40,9 +45,9 @@ export default function ContactPage() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center"
       >
-        <h1 className="text-4xl font-bold mb-4">Get In Touch</h1>
+        <h1 className="text-4xl font-bold mb-4">{t.getInTouch}</h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-400">
-          I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+          {t.getInTouchDesc}
         </p>
       </motion.div>
 
@@ -82,15 +87,15 @@ export default function ContactPage() {
         transition={{ delay: 0.4 }}
         className="bg-gradient-to-br from-emerald-500 to-teal-500 rounded-xl p-8 text-white text-center"
       >
-        <h2 className="text-2xl font-bold mb-3">Let's Build Something Great Together</h2>
+        <h2 className="text-2xl font-bold mb-3">{t.letsBuildTogether}</h2>
         <p className="opacity-90 mb-6">
-          Whether you have a question or just want to say hi, I'll try my best to get back to you!
+          {t.letsBuildDesc}
         </p>
         <a
           href={`mailto:${personalInfo.contact.email}`}
           className="inline-block px-6 py-3 bg-white text-emerald-600 rounded-lg font-medium hover:bg-zinc-100 transition-colors"
         >
-          Send Me an Email
+          {t.sendMeEmail}
         </a>
       </motion.div>
     </div>

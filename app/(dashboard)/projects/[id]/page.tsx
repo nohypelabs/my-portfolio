@@ -7,12 +7,16 @@ import { ExternalLink, Github, Calendar, CheckCircle2, ArrowRight, Quote, Clock,
 import Link from "next/link";
 import Image from "next/image";
 import { TechBadge } from "@/components/ui/TechBadge";
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 import { use } from "react";
 
 export default function ProjectDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const project = projects.find((p) => p.id === id);
+  const { language } = useLanguage();
+  const t = translations[language];
 
   if (!project) {
     notFound();
@@ -25,7 +29,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         href="/"
         className="inline-flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
       >
-        ← Back to Dashboard
+        {t.backToDashboard}
       </Link>
 
       {/* Header */}
@@ -69,7 +73,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
               className="group flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-xl font-semibold hover:from-emerald-600 hover:to-teal-600 transition-all shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
             >
               <ExternalLink className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-              <span>Visit Live Project</span>
+              <span>{t.visitLiveProject}</span>
               <span className="text-xs opacity-75">↗</span>
             </a>
           )}
@@ -81,7 +85,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
               className="group flex items-center justify-center gap-2 px-6 py-3 border-2 border-zinc-300 dark:border-zinc-700 rounded-xl font-semibold hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all hover:scale-[1.02] active:scale-[0.98]"
             >
               <Github className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              <span>View Source Code</span>
+              <span>{t.viewSourceCode}</span>
             </a>
           )}
         </div>
@@ -100,9 +104,9 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
               <ExternalLink className="w-5 h-5 text-blue-600 dark:text-blue-400" />
             </div>
             <div className="flex-1">
-              <h3 className="font-bold text-sm md:text-base mb-1">🚀 Live Production Project</h3>
+              <h3 className="font-bold text-sm md:text-base mb-1">🚀 {t.liveProductionProject}</h3>
               <p className="text-xs md:text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                This project is deployed and accessible online. Click the button above to explore the full application in action!
+                {t.liveProductionDesc}
               </p>
             </div>
           </div>
@@ -136,7 +140,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         transition={{ delay: 0.2 }}
         className="bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm"
       >
-        <h2 className="text-xl md:text-2xl font-bold mb-4">About This Project</h2>
+        <h2 className="text-xl md:text-2xl font-bold mb-4">{t.aboutThisProject}</h2>
         <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
           {project.fullDescription}
         </p>
@@ -155,7 +159,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
               <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/20">
                 <AlertTriangle className="w-5 h-5 text-orange-600 dark:text-orange-400" />
               </div>
-              <h2 className="text-xl md:text-2xl font-bold">The Problem</h2>
+              <h2 className="text-xl md:text-2xl font-bold">{t.theProblem}</h2>
             </div>
             <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
               {project.caseStudy.problem}
@@ -184,7 +188,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
               <div className="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/20">
                 <Zap className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
               </div>
-              <h2 className="text-xl md:text-2xl font-bold">The Solution</h2>
+              <h2 className="text-xl md:text-2xl font-bold">{t.theSolution}</h2>
             </div>
             <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed mb-6">
               {project.caseStudy.solution}
@@ -201,7 +205,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
           </div>
 
           <div className="bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm">
-            <h2 className="text-xl md:text-2xl font-bold mb-6">Before vs After</h2>
+            <h2 className="text-xl md:text-2xl font-bold mb-6">{t.beforeVsAfter}</h2>
             <div className="space-y-4">
               {project.caseStudy.metrics.map((metric, idx) => (
                 <motion.div
@@ -216,12 +220,12 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                   </p>
                   <div className="flex items-center gap-3">
                     <div className="flex-1 p-3 rounded-lg bg-red-50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/20">
-                      <p className="text-xs text-red-500 font-medium mb-1">Before</p>
+                      <p className="text-xs text-red-500 font-medium mb-1">{t.before}</p>
                       <p className="text-sm font-bold text-zinc-800 dark:text-zinc-200">{metric.before}</p>
                     </div>
                     <ArrowRight className="w-5 h-5 text-emerald-500 shrink-0" />
                     <div className="flex-1 p-3 rounded-lg bg-emerald-50 dark:bg-emerald-900/10 border border-emerald-100 dark:border-emerald-900/20">
-                      <p className="text-xs text-emerald-500 font-medium mb-1">After</p>
+                      <p className="text-xs text-emerald-500 font-medium mb-1">{t.after}</p>
                       <p className="text-sm font-bold text-zinc-800 dark:text-zinc-200">{metric.after}</p>
                     </div>
                   </div>
@@ -271,7 +275,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         transition={{ delay: 0.25 }}
         className="bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm"
       >
-        <h2 className="text-xl md:text-2xl font-bold mb-6">Key Highlights</h2>
+        <h2 className="text-xl md:text-2xl font-bold mb-6">{t.keyHighlights}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {project.highlights.map((highlight, idx) => (
             <motion.div
@@ -299,7 +303,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         transition={{ delay: 0.3 }}
         className="bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm"
       >
-        <h2 className="text-xl md:text-2xl font-bold mb-6">Features</h2>
+        <h2 className="text-xl md:text-2xl font-bold mb-6">{t.features}</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4">
           {project.features.map((feature, idx) => (
             <motion.div
@@ -323,7 +327,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         transition={{ delay: 0.35 }}
         className="bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm"
       >
-        <h2 className="text-xl md:text-2xl font-bold mb-6">Technology Stack</h2>
+        <h2 className="text-xl md:text-2xl font-bold mb-6">{t.technologyStack}</h2>
         <div className="space-y-6">
           {project.techStack.map((stack, idx) => (
             <div key={idx}>
@@ -348,7 +352,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
           transition={{ delay: 0.4 }}
           className="bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl p-6 md:p-8 text-white shadow-lg"
         >
-          <h2 className="text-xl md:text-2xl font-bold mb-5">Impact & Results</h2>
+          <h2 className="text-xl md:text-2xl font-bold mb-5">{t.impactResults}</h2>
           <div className="space-y-3">
             {project.impact.users && (
               <p className="text-sm md:text-base opacity-95 flex items-start gap-2">

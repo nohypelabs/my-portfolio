@@ -17,6 +17,8 @@ import {
   Receipt,
 } from "lucide-react";
 import Link from "next/link";
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { translations } from "@/lib/translations";
 
 interface Metrics {
   seratQc: { entries: number; photos: number };
@@ -84,118 +86,60 @@ interface ProjectGroup {
   accent: string;
   cards: {
     key: string;
-    label: string;
+    labelKey: string;
     icon: typeof Package;
     getValue: (m: Metrics) => number;
     highlight?: boolean;
   }[];
 }
 
-const projectGroups: ProjectGroup[] = [
-  {
-    name: "Serat QC — Selisih Berat J&T Express",
-    link: "/projects/selisih-berat",
-    demo: "https://selisih-berat.vercel.app",
-    accent: "emerald",
-    cards: [
-      {
-        key: "serat-entries",
-        label: "Resi Diproses",
-        icon: Package,
-        getValue: (m) => m.seratQc.entries,
-        highlight: true,
-      },
-      {
-        key: "serat-photos",
-        label: "Foto GPS Watermarked",
-        icon: Camera,
-        getValue: (m) => m.seratQc.photos,
-        highlight: true,
-      },
-    ],
-  },
-  {
-    name: "WC Check — Toilet Inspection System",
-    link: "/projects/wc-check",
-    demo: "https://wc-checks.vercel.app",
-    accent: "purple",
-    cards: [
-      {
-        key: "wc-inspections",
-        label: "Inspeksi Tercatat",
-        icon: ClipboardCheck,
-        getValue: (m) => m.wcCheck.inspections,
-        highlight: true,
-      },
-      {
-        key: "wc-users",
-        label: "Users Terdaftar",
-        icon: Users,
-        getValue: (m) => m.wcCheck.users,
-      },
-      {
-        key: "wc-locations",
-        label: "Lokasi Terkelola",
-        icon: MapPin,
-        getValue: (m) => m.wcCheck.locations,
-      },
-    ],
-  },
-  {
-    name: "LakuPOS — Kasir & Warehouse System",
-    link: "/projects/lakupos",
-    demo: "https://lakupos.vercel.app",
-    accent: "blue",
-    cards: [
-      {
-        key: "laku-transactions",
-        label: "Transaksi",
-        icon: Receipt,
-        getValue: (m) => m.lakuPos.transactions,
-        highlight: true,
-      },
-      {
-        key: "laku-products",
-        label: "Produk Terdaftar",
-        icon: Box,
-        getValue: (m) => m.lakuPos.products,
-      },
-      {
-        key: "laku-outlets",
-        label: "Outlet Aktif",
-        icon: Store,
-        getValue: (m) => m.lakuPos.outlets,
-      },
-    ],
-  },
-  {
-    name: "E-Commerce Manual — Toko Online",
-    link: "/projects/ecommerce-manual",
-    demo: "https://qohira.vercel.app",
-    accent: "orange",
-    cards: [
-      {
-        key: "ecom-products",
-        label: "Produk",
-        icon: ShoppingCart,
-        getValue: (m) => m.ecommerce.products,
-        highlight: true,
-      },
-      {
-        key: "ecom-orders",
-        label: "Pesanan",
-        icon: Receipt,
-        getValue: (m) => m.ecommerce.orders,
-      },
-      {
-        key: "ecom-users",
-        label: "Users",
-        icon: Users,
-        getValue: (m) => m.ecommerce.users,
-      },
-    ],
-  },
-];
+function getProjectGroups(): ProjectGroup[] {
+  return [
+    {
+      name: "Serat QC — Selisih Berat J&T Express",
+      link: "/projects/selisih-berat",
+      demo: "https://selisih-berat.vercel.app",
+      accent: "emerald",
+      cards: [
+        { key: "serat-entries", labelKey: "receiptsProcessed", icon: Package, getValue: (m) => m.seratQc.entries, highlight: true },
+        { key: "serat-photos", labelKey: "gpsWatermarkedPhotos", icon: Camera, getValue: (m) => m.seratQc.photos, highlight: true },
+      ],
+    },
+    {
+      name: "WC Check — Toilet Inspection System",
+      link: "/projects/wc-check",
+      demo: "https://wc-checks.vercel.app",
+      accent: "purple",
+      cards: [
+        { key: "wc-inspections", labelKey: "inspectionsRecorded", icon: ClipboardCheck, getValue: (m) => m.wcCheck.inspections, highlight: true },
+        { key: "wc-users", labelKey: "registeredUsers", icon: Users, getValue: (m) => m.wcCheck.users },
+        { key: "wc-locations", labelKey: "managedLocations", icon: MapPin, getValue: (m) => m.wcCheck.locations },
+      ],
+    },
+    {
+      name: "LakuPOS — Kasir & Warehouse System",
+      link: "/projects/lakupos",
+      demo: "https://lakupos.vercel.app",
+      accent: "blue",
+      cards: [
+        { key: "laku-transactions", labelKey: "transactions", icon: Receipt, getValue: (m) => m.lakuPos.transactions, highlight: true },
+        { key: "laku-products", labelKey: "registeredProducts", icon: Box, getValue: (m) => m.lakuPos.products },
+        { key: "laku-outlets", labelKey: "activeOutlets", icon: Store, getValue: (m) => m.lakuPos.outlets },
+      ],
+    },
+    {
+      name: "Qohira — Online Shop",
+      link: "/projects/ecommerce-manual",
+      demo: "https://qohira.vercel.app",
+      accent: "orange",
+      cards: [
+        { key: "ecom-products", labelKey: "products", icon: ShoppingCart, getValue: (m) => m.ecommerce.products, highlight: true },
+        { key: "ecom-orders", labelKey: "orders", icon: Receipt, getValue: (m) => m.ecommerce.orders },
+        { key: "ecom-users", labelKey: "users", icon: Users, getValue: (m) => m.ecommerce.users },
+      ],
+    },
+  ];
+}
 
 export function LiveMetrics() {
   const [metrics, setMetrics] = useState<Metrics | null>(null);
@@ -203,6 +147,9 @@ export function LiveMetrics() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   const started = isInView && metrics !== null;
+  const { language } = useLanguage();
+  const t = translations[language];
+  const projectGroups = getProjectGroups();
 
   useEffect(() => {
     fetch("/api/live-metrics")
@@ -236,12 +183,11 @@ export function LiveMetrics() {
                 <Database className="w-5 h-5 text-emerald-400" />
               </div>
               <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">
-                Live Production Data
+                {t.liveProductionData}
               </h2>
             </div>
             <p className="text-sm text-zinc-400 max-w-lg">
-              Real-time data langsung dari production database. Bukan dummy — ini
-              sistem yang benar-benar dipakai setiap hari.
+              {t.liveMetricsDesc}
             </p>
           </div>
 
@@ -260,11 +206,11 @@ export function LiveMetrics() {
             </span>
             <div className="text-xs">
               <p className="font-semibold text-white">
-                {isLive ? "LIVE" : "LOADING"}
+                {isLive ? "LIVE" : t.loading}
               </p>
               {isLive && metrics?.fetchedAt && (
                 <p className="text-zinc-500">
-                  Fetched {formatTime(metrics.fetchedAt)}
+                  {t.fetched} {formatTime(metrics.fetchedAt)}
                 </p>
               )}
             </div>
@@ -290,7 +236,7 @@ export function LiveMetrics() {
                   rel="noopener noreferrer"
                   className="text-xs text-emerald-500 hover:text-emerald-400 font-medium flex items-center gap-1 transition-colors"
                 >
-                  Visit App <ExternalLink className="w-3 h-3" />
+                  {t.visitApp} <ExternalLink className="w-3 h-3" />
                 </a>
               </div>
 
@@ -341,7 +287,7 @@ export function LiveMetrics() {
                             />
                           </div>
                           <span className="text-[10px] md:text-xs font-medium text-zinc-400 uppercase tracking-wider">
-                            {card.label}
+                            {(t as Record<string, string>)[card.labelKey] ?? card.labelKey}
                           </span>
                         </div>
                         <p
@@ -369,8 +315,7 @@ export function LiveMetrics() {
         {/* Footer */}
         <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <p className="text-xs text-zinc-500">
-            Data di-fetch langsung dari Supabase & PostgreSQL production database via
-            server-side API route. Auto-refresh setiap 5 menit.
+            {t.liveMetricsFooter}
           </p>
           <div className="flex items-center gap-2">
             <span className="px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-semibold text-emerald-400 uppercase tracking-wider">
@@ -380,7 +325,7 @@ export function LiveMetrics() {
               PostgreSQL
             </span>
             <span className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[10px] font-semibold text-zinc-400 uppercase tracking-wider">
-              4 Databases
+              4 {t.databases}
             </span>
           </div>
         </div>
