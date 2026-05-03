@@ -38,10 +38,13 @@ export function Sidebar() {
       href: `/projects/${p.id}`
     }));
 
-  const ongoingProjectsChildren = ongoingProjects.map(p => ({
-    name: p.name,
-    href: `/ongoing/${p.id}`
-  }));
+  const ongoingProjectsChildren = ongoingProjects
+    .filter(p => (p.progress ?? 0) >= 65)
+    .sort((a, b) => (b.progress ?? 0) - (a.progress ?? 0))
+    .map(p => ({
+      name: p.name,
+      href: `/ongoing/${p.id}`
+    }));
 
   const sidebarItems = [
     { name: t.home, href: "/", icon: Home },
