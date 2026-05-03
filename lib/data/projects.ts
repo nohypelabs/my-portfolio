@@ -211,67 +211,6 @@ export const projects: Project[] = [
     status: "production"
   },
   {
-    id: "eduvate",
-    title: "Eduvate - School Management System",
-    shortDescription: "Comprehensive School Management System dengan Modern Tech Stack",
-    fullDescription: "Platform manajemen sekolah lengkap yang mencakup student management, attendance tracking, grades, schedules, dan parent portal. Dibangun dengan Next.js dan tRPC untuk performa optimal dan developer experience terbaik.",
-    category: "full-stack",
-    techStack: [
-      {
-        category: "Frontend",
-        technologies: ["Next.js 15", "React 19", "TypeScript 5.7", "Tailwind CSS", "Radix UI"]
-      },
-      {
-        category: "Backend & Database",
-        technologies: ["tRPC", "Prisma ORM", "PostgreSQL", "NextAuth v5"]
-      },
-      {
-        category: "Features & Tools",
-        technologies: ["React Query", "Recharts", "QR Code", "CSV Import/Export", "PWA"]
-      }
-    ],
-    highlights: [
-      {
-        title: "Complete School Features",
-        description: "Student, Teacher, Parent, dan Admin management",
-        icon: "school"
-      },
-      {
-        title: "Advanced Analytics",
-        description: "Dashboard dengan charts dan insights untuk decision making",
-        icon: "bar-chart"
-      },
-      {
-        title: "Modern Architecture",
-        description: "Clean code dengan T3 Stack best practices",
-        icon: "layers"
-      }
-    ],
-    features: [
-      "Student information system (SIS)",
-      "Attendance tracking dengan QR code",
-      "Grade & report card management",
-      "Class scheduling system",
-      "Teacher assignment & management",
-      "Parent portal untuk monitoring",
-      "Admin dashboard dengan analytics",
-      "CSV data import/export",
-      "Role-based access control",
-      "Real-time notifications",
-      "PWA support untuk mobile access",
-      "Dark mode support"
-    ],
-    impact: {
-      performance: "Streamlined school operations dan reduced paperwork",
-      users: "All-in-one solution untuk student, teacher, parent & admin"
-    },
-    demo: "https://eduvate-azure.vercel.app",
-    image: "/projects/eduvate-thumb.jpg",
-    tags: ["Next.js", "tRPC", "Prisma", "Education", "SaaS"],
-    year: "2026",
-    status: "production"
-  },
-  {
     id: "selisih-berat",
     title: "Serat QC — Selisih Berat J&T Express",
     shortDescription: "Production-scale Logistics QC System: 80K+ resi diproses, 160K+ foto terdokumentasi dengan GPS watermarking",

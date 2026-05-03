@@ -2,20 +2,21 @@ import { OngoingProject } from "../domain/entities/OngoingProject";
 
 export const ongoingProjects: OngoingProject[] = [
   {
-    id: "agds-pos",
-    name: "AGDS Corp POS",
-    description: "Point of Sale & Warehouse Management System untuk compete dengan Moka POS, Pawoon, dan Majoo",
+    id: "eduvate",
+    name: "Eduvate — School Management System",
+    description: "Platform manajemen sekolah lengkap: student management, attendance tracking, grades, schedules, dan parent portal. Built with Next.js, tRPC, Prisma.",
     status: "In Progress",
-    startDate: "2024-10",
-    estimatedCompletion: "2026-04",
-    techStack: ["Next.js 16", "tRPC", "PostgreSQL", "Prisma", "Upstash Redis"],
-    progress: 75,
+    startDate: "2025-01",
+    estimatedCompletion: "2026-06",
+    techStack: ["Next.js 15", "tRPC", "Prisma", "PostgreSQL", "NextAuth v5"],
+    progress: 70,
+    demo: "https://eduvate-azure.vercel.app",
     keyGoals: [
-      "Multi-outlet management system",
-      "Real-time inventory tracking",
-      "Transaction void/cancel system",
-      "End of day reports & analytics",
-      "Superior performance (FCP <1.8s, LCP <2.5s)"
+      "Student information system (SIS)",
+      "Attendance tracking dengan QR code",
+      "Grade & report card management",
+      "Parent portal untuk monitoring",
+      "Admin dashboard dengan analytics"
     ]
   },
   {

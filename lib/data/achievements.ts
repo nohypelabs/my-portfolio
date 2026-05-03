@@ -10,10 +10,10 @@ export interface Achievement {
 export const achievements: Achievement[] = [
   {
     id: "1",
-    title: "5 Production Systems",
-    description: "Built and deployed 5 production apps in under 12 months — used daily by real clients in logistics, retail, and education",
+    title: "4 Production Systems",
+    description: "Built and deployed 4 production apps in under 12 months — used daily by real clients in logistics and retail",
     icon: "rocket",
-    metric: "5 shipped",
+    metric: "4 shipped",
     date: "2025-2026"
   },
   {
@@ -33,16 +33,16 @@ export const achievements: Achievement[] = [
   {
     id: "4",
     title: "AI-Augmented Development",
-    description: "Early adopter of AI-assisted coding with Claude CLI — shipped 5 production systems in under a year",
+    description: "Early adopter of AI-assisted coding with Claude CLI — shipped 4 production systems in under a year",
     icon: "zap",
     metric: "AI-powered"
   },
   {
     id: "5",
     title: "Full-Stack Versatility",
-    description: "From e-commerce to logistics QC, school systems to toilet monitoring",
+    description: "From e-commerce to logistics QC, POS systems to toilet monitoring",
     icon: "layers",
-    metric: "5 domains"
+    metric: "4 domains"
   },
   {
     id: "6",

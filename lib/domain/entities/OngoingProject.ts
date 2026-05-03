@@ -13,4 +13,5 @@ export interface OngoingProject {
   techStack: string[];
   progress?: number; // 0-100
   keyGoals?: string[];
+  demo?: string;
 }
