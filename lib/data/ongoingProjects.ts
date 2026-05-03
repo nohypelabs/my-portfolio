@@ -25,7 +25,7 @@ export const ongoingProjects: OngoingProject[] = [
     description: "Major refactor dengan Domain-Driven Design, tRPC, dan Next.js 16 untuk better scalability",
     status: "In Progress",
     startDate: "2024-11",
-    estimatedCompletion: "2026-05",
+    estimatedCompletion: "2026-08",
     techStack: ["Next.js 16", "tRPC", "Prisma", "PostgreSQL", "DDD Pattern"],
     progress: 65,
     keyGoals: [
@@ -42,7 +42,7 @@ export const ongoingProjects: OngoingProject[] = [
     description: "Inventory loss tracking system untuk retail & warehouse management",
     status: "In Progress",
     startDate: "2025-01",
-    estimatedCompletion: "2026-04",
+    estimatedCompletion: "2026-09",
     techStack: ["Next.js", "Prisma", "PostgreSQL", "TypeScript"],
     progress: 50,
     keyGoals: [

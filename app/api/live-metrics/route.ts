@@ -36,7 +36,7 @@ const FALLBACK = {
   seratQc: { entries: 80187, photos: 160374 },
   wcCheck: { inspections: 3293, users: 53, locations: 49 },
   lakuPos: { transactions: 11, products: 2, outlets: 4 },
-  ecommerce: { products: 0, orders: 0, users: 0 },
+  ecommerce: { products: 16, orders: 6, users: 5 },
 };
 
 export async function GET(request: Request) {

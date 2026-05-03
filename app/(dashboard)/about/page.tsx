@@ -3,7 +3,7 @@
 import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { personalInfo } from "@/lib/data/personalInfo";
-import { ChevronDown, Code2, Database, Layout, Server, GraduationCap, Coffee, Rocket, Zap, Bot } from "lucide-react";
+import { ChevronDown, Code2, Database, Layout, Server, GraduationCap, Coffee, Rocket, Zap, Bot, Sparkles } from "lucide-react";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { translations } from "@/lib/translations";
 
@@ -17,6 +17,7 @@ export default function AboutPage() {
     { name: t.backend, icon: Server, skills: personalInfo.skills.backend },
     { name: t.database, icon: Database, skills: personalInfo.skills.database },
     { name: t.toolsAndMore, icon: Code2, skills: personalInfo.skills.tools },
+    { name: t.specialties, icon: Sparkles, skills: personalInfo.skills.specialties },
   ];
 
   return (
@@ -183,7 +184,7 @@ function SkillsSection({ skillCategories, title }: {
       transition={{ delay: 0.2 }}
     >
       <h2 className="text-2xl font-bold mb-6 text-center">{title}</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {skillCategories.map((category, catIdx) => {
           const Icon = category.icon;
           const accent = accentColors[catIdx % accentColors.length];
@@ -193,34 +194,23 @@ function SkillsSection({ skillCategories, title }: {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.3 + catIdx * 0.1 }}
-              className="bg-white dark:bg-zinc-900 rounded-xl p-6 border border-zinc-200 dark:border-zinc-800"
+              className="bg-white dark:bg-zinc-900 rounded-xl p-5 border border-zinc-200 dark:border-zinc-800"
             >
-              <div className="flex items-center gap-3 mb-5">
+              <div className="flex items-center gap-3 mb-4">
                 <div className={`p-2 rounded-lg ${accent.bgLight}`}>
                   <Icon className={`w-5 h-5 ${accent.text}`} />
                 </div>
-                <h3 className="font-bold text-lg">{category.name}</h3>
+                <h3 className="font-bold">{category.name}</h3>
                 <span className="ml-auto text-xs text-zinc-400 font-medium">{category.skills.length}</span>
               </div>
-              <div className="space-y-3">
-                {category.skills.map((skill, si) => (
-                  <div key={skill}>
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-sm font-medium">{skill}</span>
-                    </div>
-                    <div className="h-1.5 rounded-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden">
-                      <motion.div
-                        className={`h-full rounded-full ${accent.bg}`}
-                        initial={{ width: 0 }}
-                        animate={isInView ? { width: `${88 + ((si * 7 + catIdx * 3) % 12)}%` } : { width: 0 }}
-                        transition={{
-                          delay: 0.5 + catIdx * 0.15 + si * 0.06,
-                          duration: 0.8,
-                          ease: [0.25, 0.1, 0.25, 1],
-                        }}
-                      />
-                    </div>
-                  </div>
+              <div className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="px-3 py-1.5 rounded-lg bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-sm font-medium text-zinc-700 dark:text-zinc-300"
+                  >
+                    {skill}
+                  </span>
                 ))}
               </div>
             </motion.div>

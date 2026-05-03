@@ -153,8 +153,8 @@ export const projects: Project[] = [
   {
     id: "ecommerce-manual",
     title: "Qohira — E-Commerce Manual Payment",
-    shortDescription: "Modern E-Commerce Platform dengan Advanced Features",
-    fullDescription: "Full-featured e-commerce platform dengan modern architecture, real-time inventory management, payment integration, dan admin dashboard yang powerful. Built untuk scale dan performa tinggi menggunakan Next.js dan tRPC.",
+    shortDescription: "Full-stack e-commerce platform dengan manual payment flow, real-time inventory, admin dashboard, dan push notifications — dipakai client nyata",
+    fullDescription: "Full-stack e-commerce platform yang dibangun untuk client nyata. Dilengkapi product catalog, shopping cart dengan real-time inventory check, manual payment verification flow, admin dashboard untuk product & order management, email notifications, dan web push notifications. Built dengan Next.js, tRPC, dan Prisma ORM dengan arsitektur type-safe end-to-end.",
     category: "full-stack",
     techStack: [
       {
@@ -172,18 +172,18 @@ export const projects: Project[] = [
     ],
     highlights: [
       {
-        title: "Modern Architecture",
-        description: "tRPC untuk type-safe API dengan full TypeScript",
+        title: "16 Products, 6 Orders",
+        description: "Data nyata dari production database — dipakai client aktif",
+        icon: "database"
+      },
+      {
+        title: "Manual Payment Flow",
+        description: "Upload bukti transfer → admin verify → order confirmed otomatis",
         icon: "code"
       },
       {
-        title: "Real-time Features",
-        description: "Live inventory updates dan order tracking",
-        icon: "activity"
-      },
-      {
-        title: "Performance Optimized",
-        description: "Bundle analyzer, image optimization, dan PWA ready",
+        title: "Push Notifications",
+        description: "Web push + email alerts untuk order baru & status update",
         icon: "zap"
       }
     ],
@@ -201,8 +201,24 @@ export const projects: Project[] = [
       "Bundle size optimization dengan analyzer"
     ],
     impact: {
-      performance: "Optimized bundle size dan fast page loads",
-      users: "Complete e-commerce solution dengan modern UX"
+      dataVolume: "16 products & 6 orders in production database",
+      performance: "Type-safe end-to-end dengan tRPC + Prisma ORM",
+      users: "Dipakai client nyata dengan admin dashboard aktif"
+    },
+    caseStudy: {
+      problem: "Client butuh toko online dengan alur pembayaran manual (transfer bank) dan verifikasi oleh admin sebelum pesanan diproses",
+      painPoints: [
+        "Tidak ada sistem terpusat untuk kelola produk & pesanan",
+        "Konfirmasi pembayaran manual via chat, rawan terlewat",
+        "Tidak ada notifikasi otomatis ke pembeli & admin"
+      ],
+      solution: "E-commerce platform dengan manual payment verification flow — customer upload bukti transfer, admin konfirmasi via dashboard, notifikasi otomatis via email & web push",
+      metrics: [],
+      testimonial: {
+        quote: "Sekarang semua pesanan dan konfirmasi bayar masuk satu tempat, gak perlu cek WA terus.",
+        author: "Pemilik Toko",
+        role: "Client Qohira"
+      }
     },
     demo: "https://qohira.vercel.app",
     image: "/projects/ecommerce-thumb.jpg",

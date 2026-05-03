@@ -176,11 +176,6 @@ export default function DashboardPage() {
         ))}
       </motion.section>
 
-      {/* ── Live Production Metrics ── */}
-      <div id="live-data">
-        <LiveMetrics />
-      </div>
-
       {/* ── Featured Projects ── */}
       <section id="projects">
         <CollapsibleSection title={t.featuredProjects} badge={featuredProjects.length}>
@@ -364,6 +359,13 @@ export default function DashboardPage() {
         </div>
         </CollapsibleSection>
       </section>
+
+      {/* ── Live Production Metrics ── */}
+      <ScrollReveal delay={0.05}>
+      <div id="live-data">
+        <LiveMetrics />
+      </div>
+      </ScrollReveal>
 
       {/* ── What Sets Me Apart ── */}
       <ScrollReveal>

@@ -75,39 +75,39 @@ export interface Metric {
 
 export const metrics: Metric[] = [
   {
-    label: "Projects Completed",
-    value: "5",
-    description: "Production-ready applications deployed",
+    label: "Products Shipped",
+    value: "4",
+    description: "Production systems in active use by real clients",
     icon: "check-circle"
   },
   {
-    label: "Projects In Progress",
-    value: "6",
-    description: "Active development (20-75% complete)",
+    label: "Active Projects",
+    value: "4",
+    description: "Ongoing development (65%+ progress)",
     icon: "code"
   },
   {
-    label: "Technologies",
-    value: "25+",
-    description: "Modern tech stack mastered",
+    label: "Core Technologies",
+    value: "6",
+    description: "Next.js, TypeScript, tRPC, PostgreSQL, Supabase, Python",
     icon: "layers"
   },
   {
-    label: "Code Quality",
-    value: "A+",
-    description: "Clean code, testing, DDD patterns",
-    icon: "award"
+    label: "Data Processed",
+    value: "250K+",
+    description: "Records across logistics QC, POS, and inspections",
+    icon: "database"
   },
   {
     label: "Development Time",
     value: "<1 Year",
-    description: "From comeback to production",
+    description: "From comeback to 4 production systems",
     icon: "clock"
   },
   {
-    label: "Productivity Gain",
+    label: "AI-Augmented",
     value: "10x",
-    description: "AI-augmented development",
+    description: "Productivity via Claude CLI as force multiplier",
     icon: "zap"
   }
 ];

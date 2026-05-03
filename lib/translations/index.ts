@@ -30,11 +30,9 @@ export const translations = {
 
     // Sidebar Projects
     wcCheck: "WC Check",
-    agdsPos: "AGDS Corp POS",
-    selisihBerat: "Selisih Berat",
-    agdsPosV2: "AGDS POS v2.0",
-    saasBoilerplate: "SaaS Boilerplate",
-    iotMonitoring: "IoT Monitoring",
+    lakuPos: "LakuPOS",
+    selisihBerat: "Serat QC",
+    qohira: "Qohira",
 
     // Profile
     fullstackDev: "Full-stack Dev",
@@ -186,11 +184,9 @@ export const translations = {
 
     // Sidebar Projects
     wcCheck: "WC Check",
-    agdsPos: "AGDS Corp POS",
-    selisihBerat: "Selisih Berat",
-    agdsPosV2: "AGDS POS v2.0",
-    saasBoilerplate: "SaaS Boilerplate",
-    iotMonitoring: "IoT Monitoring",
+    lakuPos: "LakuPOS",
+    selisihBerat: "Serat QC",
+    qohira: "Qohira",
 
     // Profile
     fullstackDev: "Full-stack Dev",
