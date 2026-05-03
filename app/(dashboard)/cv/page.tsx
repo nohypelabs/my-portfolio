@@ -202,7 +202,7 @@ export default function CVPage() {
                   status: "production" as const,
                 },
                 {
-                  title: "Qohira — Online Shop",
+                  title: "Qohira — E-Commerce Manual Payment",
                   desc: "E-Commerce platform dengan product catalog, shopping cart, order tracking, dan payment integration.",
                   tags: ["Next.js", "tRPC", "Prisma", "PostgreSQL"],
                   url: "qohira.vercel.app",

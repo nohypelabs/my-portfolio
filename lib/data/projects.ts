@@ -152,7 +152,7 @@ export const projects: Project[] = [
   },
   {
     id: "ecommerce-manual",
-    title: "E-Commerce Manual",
+    title: "Qohira — E-Commerce Manual Payment",
     shortDescription: "Modern E-Commerce Platform dengan Advanced Features",
     fullDescription: "Full-featured e-commerce platform dengan modern architecture, real-time inventory management, payment integration, dan admin dashboard yang powerful. Built untuk scale dan performa tinggi menggunakan Next.js dan tRPC.",
     category: "full-stack",
