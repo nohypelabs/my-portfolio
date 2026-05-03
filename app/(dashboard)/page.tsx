@@ -82,11 +82,12 @@ export default function DashboardPage() {
           </div>
 
           <div className="flex-1 min-w-0">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-2">
               <TextReveal text={t.heroHeadline} delay={0.3} />
             </h1>
+            <div className="w-12 h-0.5 bg-emerald-500/40 rounded-full mb-4" />
             <div className="max-w-2xl">
-              <p className={`text-zinc-300 text-base md:text-lg leading-relaxed text-justify ${!heroExpanded ? "line-clamp-2 md:line-clamp-none" : ""}`}>
+              <p className={`text-zinc-400 text-sm md:text-base leading-relaxed text-justify ${!heroExpanded ? "line-clamp-2 md:line-clamp-none" : ""}`}>
                 {t.heroNarrative}
               </p>
               <button
