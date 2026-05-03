@@ -75,7 +75,7 @@ export default function CVPage() {
             <div>
               <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-3 pb-2 border-b-2 border-emerald-500 inline-block">PROFIL</h2>
               <p className="text-xs md:text-sm text-zinc-600 leading-relaxed mt-3">
-                Full-stack developer yang dalam &lt;1 tahun membangun 6 sistem production dengan 250K+ records,
+                Full-stack developer yang dalam &lt;1 tahun membangun 5 sistem production dengan 250K+ records,
                 digunakan oleh client nyata di J&T Express dan sektor ritel. Spesialisasi di Next.js, tRPC, dan
                 PostgreSQL. Comeback setelah 9 tahun vakum — kini fokus membangun solusi yang scalable dan performant
                 dengan AI-augmented development.
@@ -123,7 +123,7 @@ export default function CVPage() {
                   { year: "2015", title: "Mocha Loco Cafe and Resto", desc: "Waiter — 3 bulan (masa libur kuliah)" },
                   { year: "2017 – 2018", title: "Agen JNE Sudirman 2", desc: "Admin operasional selama 1 tahun" },
                   { year: "2018 – 2024", title: "Pengembangan Usaha Mandiri", desc: "Mengelola usaha keluarga dan berbagai bidang pekerjaan. Tetap mengikuti perkembangan teknologi secara otodidak" },
-                  { year: "2024 – Sekarang", title: "Full-stack Developer (Freelance)", desc: "Membangun 6 sistem production dengan 250K+ records untuk client di logistik, ritel, dan edukasi. Stack: Next.js, tRPC, PostgreSQL, Supabase" },
+                  { year: "2024 – Sekarang", title: "Full-stack Developer (Freelance)", desc: "Membangun 5 sistem production dengan 250K+ records untuk client di logistik, ritel, dan edukasi. Stack: Next.js, tRPC, PostgreSQL, Supabase" },
                 ].map((item, i) => (
                   <div key={i} className="border-l-2 border-zinc-200 pl-4 relative">
                     <div className="absolute -left-[5px] top-1 w-2 h-2 bg-emerald-500 rounded-full"></div>
@@ -213,13 +213,6 @@ export default function CVPage() {
                   desc: "Platform manajemen sekolah: student management, attendance, grades, schedules, dan parent portal.",
                   tags: ["Next.js", "tRPC", "Prisma", "PostgreSQL"],
                   url: "eduvate.vercel.app",
-                  status: "production" as const,
-                },
-                {
-                  title: "Binance Algo Trading Bot",
-                  desc: "Automated trading bot dengan multiple strategies, risk management, dan license system dengan Stripe.",
-                  tags: ["Python", "CCXT", "Streamlit", "Telegram"],
-                  url: "github.com/nohypelabs",
                   status: "production" as const,
                 },
               ].map((project, i) => (

@@ -36,7 +36,7 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { CollapsibleSection } from "@/components/CollapsibleSection";
 import { Marquee } from "@/components/Marquee";
 
-const FEATURED_IDS = ["selisih-berat", "wc-check", "lakupos", "ecommerce-manual", "eduvate", "binance-algo-bot"];
+const FEATURED_IDS = ["selisih-berat", "wc-check", "lakupos", "ecommerce-manual", "eduvate"];
 
 const achievementIcons: Record<string, typeof Rocket> = {
   rocket: Rocket,
@@ -130,7 +130,7 @@ export default function DashboardPage() {
         className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
       >
         {[
-          { value: "6", label: t.productsShipped, accent: "text-emerald-500", border: "border-emerald-500/20", bg: "bg-emerald-500/5", span: "md:col-span-2" },
+          { value: "5", label: t.productsShipped, accent: "text-emerald-500", border: "border-emerald-500/20", bg: "bg-emerald-500/5", span: "md:col-span-2" },
           { value: "250K+", label: t.dataProcessed, accent: "text-orange-500", border: "border-orange-500/20", bg: "bg-orange-500/5", span: "md:col-span-2" },
           { value: "4", label: t.activeProjects, accent: "text-blue-500", border: "border-zinc-200 dark:border-zinc-800", bg: "", span: "" },
           { value: "6", label: t.techMastered, accent: "text-purple-500", border: "border-zinc-200 dark:border-zinc-800", bg: "", span: "" },

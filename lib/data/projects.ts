@@ -272,67 +272,6 @@ export const projects: Project[] = [
     status: "production"
   },
   {
-    id: "binance-algo-bot",
-    title: "Binance Algorithmic Trading Bot",
-    shortDescription: "Automated Trading Bot dengan AI-Powered Strategies & License System",
-    fullDescription: "Professional algorithmic trading bot untuk Binance dengan multiple trading strategies, real-time market analysis, risk management, dan license-based tier system. Built dengan Python dan Streamlit untuk dashboard monitoring yang powerful.",
-    category: "backend",
-    techStack: [
-      {
-        category: "Core",
-        technologies: ["Python 3.10", "Streamlit", "CCXT", "python-binance"]
-      },
-      {
-        category: "Data & Analytics",
-        technologies: ["Pandas", "NumPy", "Plotly", "TA-Lib"]
-      },
-      {
-        category: "Infrastructure",
-        technologies: ["SQLite", "Telegram Bot API", "Stripe Payment", "Flask API"]
-      }
-    ],
-    highlights: [
-      {
-        title: "Multiple Strategies",
-        description: "Grid, DCA, Scalping, dan custom algorithms",
-        icon: "trending-up"
-      },
-      {
-        title: "Risk Management",
-        description: "Stop-loss, take-profit, dan position sizing otomatis",
-        icon: "shield"
-      },
-      {
-        title: "License System",
-        description: "Tier-based licensing dengan Stripe integration",
-        icon: "key"
-      }
-    ],
-    features: [
-      "Real-time market data & technical indicators",
-      "Multiple trading strategies (Grid, DCA, Scalping)",
-      "Automated risk management",
-      "Backtesting dengan historical data",
-      "Live performance dashboard dengan Streamlit",
-      "Telegram notifications untuk trades",
-      "License management system (Basic, Pro, Enterprise)",
-      "Stripe payment integration",
-      "Multi-exchange support via CCXT",
-      "Position tracking & P&L calculation",
-      "Trade history & analytics",
-      "Configuration management via YAML"
-    ],
-    impact: {
-      performance: "24/7 automated trading dengan risk management",
-      users: "Monetization-ready dengan license tiers"
-    },
-    demo: "https://github.com/nohypelabs/binance-algo-bot",
-    image: "/projects/trading-bot-thumb.jpg",
-    tags: ["Python", "Trading Bot", "AI", "Binance", "Automation"],
-    year: "2025-2026",
-    status: "production"
-  },
-  {
     id: "selisih-berat",
     title: "Serat QC — Selisih Berat J&T Express",
     shortDescription: "Production-scale Logistics QC System: 80K+ resi diproses, 160K+ foto terdokumentasi dengan GPS watermarking",
