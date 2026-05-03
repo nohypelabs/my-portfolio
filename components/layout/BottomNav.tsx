@@ -39,7 +39,7 @@ function DockItem({
   });
 
   const scale = useSpring(
-    useTransform(distance, [0, 80, 150], [1.25, 1.05, 1]),
+    useTransform(distance, [0, 80, 150], [1.3, 1.05, 1]),
     { stiffness: 400, damping: 25 }
   );
 
@@ -47,37 +47,40 @@ function DockItem({
     <Link
       ref={ref}
       href={href}
-      className="flex-1 flex flex-col items-center justify-center gap-0.5 py-2 rounded-xl transition-all duration-200 active:scale-95 touch-none"
+      className="relative flex-1 flex flex-col items-center justify-center gap-1 py-2.5 rounded-2xl transition-all duration-200 active:scale-90 touch-none"
     >
+      {active && (
+        <motion.div
+          layoutId="bottomnav-bg"
+          className="absolute inset-1 rounded-xl bg-emerald-500/10 border border-emerald-500/15"
+          transition={{ type: "spring", stiffness: 500, damping: 30 }}
+        />
+      )}
       <motion.div
-        className="relative"
+        className="relative z-10"
         style={{ scale }}
       >
         <Icon
-          className={`w-6 h-6 transition-colors ${
-            active
-              ? "text-emerald-500"
-              : "text-zinc-500"
+          className={`w-[22px] h-[22px] transition-colors duration-200 ${
+            active ? "text-emerald-400" : "text-zinc-500"
           }`}
-          strokeWidth={active ? 2.5 : 2}
+          strokeWidth={active ? 2.5 : 1.8}
         />
-        {active && (
-          <motion.div
-            layoutId="floating-dot"
-            className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-emerald-500 rounded-full"
-            transition={{ type: "spring", stiffness: 500, damping: 30 }}
-          />
-        )}
       </motion.div>
       <span
-        className={`text-[11px] font-medium transition-colors ${
-          active
-            ? "text-emerald-500"
-            : "text-zinc-500"
+        className={`relative z-10 text-[10px] font-semibold tracking-wide transition-colors duration-200 ${
+          active ? "text-emerald-400" : "text-zinc-500"
         }`}
       >
         {label}
       </span>
+      {active && (
+        <motion.div
+          layoutId="bottomnav-dot"
+          className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-1 h-1 bg-emerald-400 rounded-full shadow-[0_0_6px_theme(colors.emerald.500)]"
+          transition={{ type: "spring", stiffness: 500, damping: 30 }}
+        />
+      )}
     </Link>
   );
 }
@@ -111,8 +114,9 @@ export function BottomNav() {
       }}
       onTouchEnd={() => mouseX.set(-1)}
     >
-      <div className="flex justify-center px-6 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
-        <div className="flex items-center justify-around w-[85%] max-w-sm bg-zinc-900/80 backdrop-blur-2xl rounded-[2rem] shadow-2xl shadow-black/20 border border-zinc-700/30 px-2 py-0.5 pointer-events-auto">
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+      <div className="relative flex justify-center px-6 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
+        <div className="flex items-center justify-around w-[85%] max-w-sm bg-zinc-900/90 backdrop-blur-2xl rounded-[1.75rem] shadow-2xl shadow-black/30 border border-white/[0.06] px-1.5 py-0.5 pointer-events-auto">
           {navItems.map((item) => (
             <DockItem
               key={item.key}
