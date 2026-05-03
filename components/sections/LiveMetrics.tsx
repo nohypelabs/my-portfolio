@@ -310,11 +310,11 @@ export function LiveMetrics() {
             </>
           )}
           {metrics && projectGroups.map((group, gi) => {
-            const accentMap: Record<string, { border: string; bg: string; icon: string; dot: string }> = {
-              emerald: { border: "border-l-emerald-500/40", bg: "bg-emerald-500/5", icon: "text-emerald-500", dot: "bg-emerald-500" },
-              purple: { border: "border-l-purple-500/40", bg: "bg-purple-500/5", icon: "text-purple-500", dot: "bg-purple-500" },
-              blue: { border: "border-l-blue-500/40", bg: "bg-blue-500/5", icon: "text-blue-500", dot: "bg-blue-500" },
-              orange: { border: "border-l-orange-500/40", bg: "bg-orange-500/5", icon: "text-orange-500", dot: "bg-orange-500" },
+            const accentMap: Record<string, { border: string; bg: string; icon: string; dot: string; btnBorder: string }> = {
+              emerald: { border: "border-l-emerald-500/40", bg: "bg-emerald-500/5", icon: "text-emerald-500", dot: "bg-emerald-500", btnBorder: "border-emerald-500/20" },
+              purple: { border: "border-l-purple-500/40", bg: "bg-purple-500/5", icon: "text-purple-500", dot: "bg-purple-500", btnBorder: "border-purple-500/20" },
+              blue: { border: "border-l-blue-500/40", bg: "bg-blue-500/5", icon: "text-blue-500", dot: "bg-blue-500", btnBorder: "border-blue-500/20" },
+              orange: { border: "border-l-orange-500/40", bg: "bg-orange-500/5", icon: "text-orange-500", dot: "bg-orange-500", btnBorder: "border-orange-500/20" },
             };
             const accent = accentMap[group.accent] ?? accentMap.emerald;
 
@@ -336,7 +336,7 @@ export function LiveMetrics() {
                   href={group.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`text-xs font-medium flex items-center gap-1 transition-colors ${accent.icon} hover:brightness-125`}
+                  className={`text-[10px] sm:text-xs font-semibold flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all ${accent.bg} ${accent.btnBorder} ${accent.icon} hover:brightness-125`}
                 >
                   {t.visitApp} <ExternalLink className="w-3 h-3" />
                 </a>
