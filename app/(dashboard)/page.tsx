@@ -7,7 +7,6 @@ import { ongoingProjects } from "@/lib/data/ongoingProjects";
 import { personalInfo } from "@/lib/data/personalInfo";
 import { achievements } from "@/lib/data/achievements";
 import {
-  ArrowRight,
   ArrowUpRight,
   CheckCircle2,
   Clock,
@@ -96,39 +95,6 @@ export default function DashboardPage() {
               </button>
             </div>
 
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/cv"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-black font-semibold transition-colors text-sm"
-              >
-                {t.viewCV}
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-zinc-600 hover:border-zinc-400 hover:bg-white/5 transition-colors text-sm font-medium"
-              >
-                {t.contactMe}
-              </Link>
-              <a
-                href={personalInfo.contact.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl hover:bg-white/5 transition-colors text-sm text-zinc-400 hover:text-white"
-              >
-                <Github className="w-4 h-4" />
-                GitHub
-              </a>
-              <a
-                href={personalInfo.contact.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl hover:bg-white/5 transition-colors text-sm text-zinc-400 hover:text-white"
-              >
-                <Linkedin className="w-4 h-4" />
-                LinkedIn
-              </a>
-            </div>
           </div>
         </div>
       </motion.section>
