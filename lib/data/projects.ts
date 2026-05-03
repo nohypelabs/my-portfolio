@@ -182,7 +182,7 @@ export const projects: Project[] = [
       performance: "Optimized bundle size dan fast page loads",
       users: "Complete e-commerce solution dengan modern UX"
     },
-    demo: "https://ecommerce-manual.vercel.app",
+    demo: "https://qohira.vercel.app",
     image: "/projects/ecommerce-thumb.jpg",
     tags: ["Next.js 16", "tRPC", "Prisma", "PostgreSQL", "E-Commerce"],
     year: "2026",

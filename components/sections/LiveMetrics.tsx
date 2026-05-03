@@ -171,7 +171,7 @@ const projectGroups: ProjectGroup[] = [
   {
     name: "E-Commerce Manual — Toko Online",
     link: "/projects/ecommerce-manual",
-    demo: "https://ecommerce-manual.vercel.app",
+    demo: "https://qohira.vercel.app",
     accent: "orange",
     cards: [
       {

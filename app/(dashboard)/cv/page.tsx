@@ -158,7 +158,7 @@ export default function CVPage() {
           {/* Projects Section - Full Width */}
           <div className="col-span-1 md:col-span-2 bg-zinc-50 p-4 md:p-6 rounded-xl mt-4">
             <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-4 pb-2 border-b-2 border-emerald-500 inline-block">PORTFOLIO PROYEK WEB</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 mt-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 mt-5">
               {[
                 {
                   title: "Serat QC — Selisih Berat",
@@ -179,6 +179,13 @@ export default function CVPage() {
                   desc: "Kasir & Warehouse Management System. Multi-outlet, barcode scanning, QRIS payment, real-time analytics dengan DDD architecture.",
                   tags: ["Next.js 16", "tRPC", "PostgreSQL", "Redis"],
                   url: "lakupos.vercel.app",
+                  status: "production" as const,
+                },
+                {
+                  title: "Qohira — Online Shop",
+                  desc: "E-Commerce platform dengan product catalog, shopping cart, order tracking, payment integration, dan push notifications.",
+                  tags: ["Next.js 16", "tRPC", "Prisma", "PostgreSQL"],
+                  url: "qohira.vercel.app",
                   status: "production" as const,
                 },
               ].map((project, i) => (
@@ -292,9 +299,9 @@ export default function CVPage() {
 
           .bg-zinc-50.p-4 { padding: 0.5rem !important; margin-top: 0.5rem !important; }
 
-          .grid.grid-cols-1.md\\:grid-cols-3 {
+          .grid.grid-cols-1.md\\:grid-cols-2 {
             gap: 0.5rem !important;
-            grid-template-columns: 1fr 1fr 1fr !important;
+            grid-template-columns: 1fr 1fr !important;
             display: grid !important;
           }
 
