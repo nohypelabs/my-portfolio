@@ -10,13 +10,19 @@ import {
   ExternalLink,
   MapPin,
   Package,
+  ShoppingCart,
+  Store,
   Users,
+  Box,
+  Receipt,
 } from "lucide-react";
 import Link from "next/link";
 
 interface Metrics {
   seratQc: { entries: number; photos: number };
   wcCheck: { inspections: number; users: number; locations: number };
+  lakuPos: { transactions: number; products: number; outlets: number };
+  ecommerce: { products: number; orders: number; users: number };
   fetchedAt: string;
   cached?: boolean;
 }
@@ -24,6 +30,8 @@ interface Metrics {
 const FALLBACK: Metrics = {
   seratQc: { entries: 80187, photos: 160374 },
   wcCheck: { inspections: 3293, users: 53, locations: 49 },
+  lakuPos: { transactions: 11, products: 2, outlets: 4 },
+  ecommerce: { products: 0, orders: 0, users: 0 },
   fetchedAt: new Date().toISOString(),
   cached: true,
 };
@@ -73,6 +81,7 @@ interface ProjectGroup {
   name: string;
   link: string;
   demo: string;
+  accent: string;
   cards: {
     key: string;
     label: string;
@@ -87,6 +96,7 @@ const projectGroups: ProjectGroup[] = [
     name: "Serat QC — Selisih Berat J&T Express",
     link: "/projects/selisih-berat",
     demo: "https://selisih-berat.vercel.app",
+    accent: "emerald",
     cards: [
       {
         key: "serat-entries",
@@ -108,6 +118,7 @@ const projectGroups: ProjectGroup[] = [
     name: "WC Check — Toilet Inspection System",
     link: "/projects/wc-check",
     demo: "https://wc-checks.vercel.app",
+    accent: "purple",
     cards: [
       {
         key: "wc-inspections",
@@ -127,6 +138,60 @@ const projectGroups: ProjectGroup[] = [
         label: "Lokasi Terkelola",
         icon: MapPin,
         getValue: (m) => m.wcCheck.locations,
+      },
+    ],
+  },
+  {
+    name: "LakuPOS — Kasir & Warehouse System",
+    link: "/projects/lakupos",
+    demo: "https://lakupos.vercel.app",
+    accent: "blue",
+    cards: [
+      {
+        key: "laku-transactions",
+        label: "Transaksi",
+        icon: Receipt,
+        getValue: (m) => m.lakuPos.transactions,
+        highlight: true,
+      },
+      {
+        key: "laku-products",
+        label: "Produk Terdaftar",
+        icon: Box,
+        getValue: (m) => m.lakuPos.products,
+      },
+      {
+        key: "laku-outlets",
+        label: "Outlet Aktif",
+        icon: Store,
+        getValue: (m) => m.lakuPos.outlets,
+      },
+    ],
+  },
+  {
+    name: "E-Commerce Manual — Toko Online",
+    link: "/projects/ecommerce-manual",
+    demo: "https://ecommerce-manual.vercel.app",
+    accent: "orange",
+    cards: [
+      {
+        key: "ecom-products",
+        label: "Produk",
+        icon: ShoppingCart,
+        getValue: (m) => m.ecommerce.products,
+        highlight: true,
+      },
+      {
+        key: "ecom-orders",
+        label: "Pesanan",
+        icon: Receipt,
+        getValue: (m) => m.ecommerce.orders,
+      },
+      {
+        key: "ecom-users",
+        label: "Users",
+        icon: Users,
+        getValue: (m) => m.ecommerce.users,
       },
     ],
   },
@@ -184,9 +249,7 @@ export function LiveMetrics() {
             <span className="relative flex h-3 w-3">
               <span
                 className={`absolute inline-flex h-full w-full rounded-full opacity-75 ${
-                  isLive
-                    ? "animate-ping bg-emerald-400"
-                    : "bg-yellow-400"
+                  isLive ? "animate-ping bg-emerald-400" : "bg-yellow-400"
                 }`}
               />
               <span
@@ -268,16 +331,12 @@ export function LiveMetrics() {
                         <div className="flex items-center gap-2 mb-3">
                           <div
                             className={`p-1.5 rounded-lg ${
-                              isHero
-                                ? "bg-emerald-500/20"
-                                : "bg-white/10"
+                              isHero ? "bg-emerald-500/20" : "bg-white/10"
                             }`}
                           >
                             <Icon
                               className={`w-4 h-4 ${
-                                isHero
-                                  ? "text-emerald-400"
-                                  : "text-zinc-400"
+                                isHero ? "text-emerald-400" : "text-zinc-400"
                               }`}
                             />
                           </div>
@@ -307,21 +366,21 @@ export function LiveMetrics() {
           ))}
         </div>
 
-        {/* Footer Note */}
+        {/* Footer */}
         <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <p className="text-xs text-zinc-500">
-            Data di-fetch langsung dari Supabase production database via
+            Data di-fetch langsung dari Supabase & PostgreSQL production database via
             server-side API route. Auto-refresh setiap 5 menit.
           </p>
           <div className="flex items-center gap-2">
             <span className="px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-semibold text-emerald-400 uppercase tracking-wider">
               Supabase
             </span>
-            <span className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[10px] font-semibold text-zinc-400 uppercase tracking-wider">
-              Next.js API
+            <span className="px-2.5 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-[10px] font-semibold text-blue-400 uppercase tracking-wider">
+              PostgreSQL
             </span>
             <span className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[10px] font-semibold text-zinc-400 uppercase tracking-wider">
-              Real Data
+              4 Databases
             </span>
           </div>
         </div>
