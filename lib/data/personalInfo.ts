@@ -9,9 +9,9 @@ export const personalInfo = {
 
   contact: {
     email: "agdscid@gmail.com",
-    github: "https://github.com/agds-alt",
+    github: "https://github.com/nohypelabs",
     linkedin: "https://linkedin.com/in/abdul-gofur",
-    twitter: "https://twitter.com/agdscID"
+    twitter: "https://x.com/nohypelabs"
   },
 
   skills: {

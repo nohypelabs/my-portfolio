@@ -11,7 +11,7 @@ const socialLinks = [
     name: "GitHub",
     icon: Github,
     url: personalInfo.contact.github,
-    handle: "@agds-alt"
+    handle: "@nohypelabs"
   },
   {
     name: "LinkedIn",
@@ -26,10 +26,10 @@ const socialLinks = [
     handle: personalInfo.contact.email
   },
   {
-    name: "Twitter",
+    name: "X (Twitter)",
     icon: Twitter,
     url: personalInfo.contact.twitter,
-    handle: "@agdscID"
+    handle: "@nohypelabs"
   }
 ];
 
