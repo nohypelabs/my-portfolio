@@ -48,7 +48,7 @@ export default function CVPage() {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-emerald-400">T</span>
-            <span>0812-2157-5053</span>
+            <span>0878-7441-5491</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-emerald-400">L</span>

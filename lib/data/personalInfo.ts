@@ -9,6 +9,7 @@ export const personalInfo = {
 
   contact: {
     email: "agdscid@gmail.com",
+    phone: "087874415491",
     github: "https://github.com/nohypelabs",
     linkedin: "https://linkedin.com/in/abdul-gofur",
     twitter: "https://x.com/nohypelabs"
