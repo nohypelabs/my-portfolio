@@ -128,6 +128,9 @@ export const translations = {
     fetched: "Fetched",
     visitApp: "Visit App",
     liveMetricsFooter: "Data fetched directly from Supabase & PostgreSQL production databases via server-side API route. Auto-refresh every 5 minutes.",
+    fetchLatest: "Fetch Latest",
+    fetching: "Fetching...",
+    fetchHint: "Press this button to pull the latest data directly from production databases",
     databases: "Databases",
 
     // Live Metrics labels
@@ -281,6 +284,9 @@ export const translations = {
     fetched: "Diambil",
     visitApp: "Kunjungi App",
     liveMetricsFooter: "Data di-fetch langsung dari Supabase & PostgreSQL production database via server-side API route. Auto-refresh setiap 5 menit.",
+    fetchLatest: "Ambil Terbaru",
+    fetching: "Mengambil...",
+    fetchHint: "Tekan tombol ini untuk menarik data terkini langsung dari production database",
     databases: "Database",
 
     // Live Metrics labels

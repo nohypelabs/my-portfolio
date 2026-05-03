@@ -4,7 +4,8 @@ import postgres from "postgres";
 async function supabaseCount(
   url: string,
   key: string,
-  table: string
+  table: string,
+  noCache = false
 ): Promise<number> {
   const res = await fetch(
     `${url}/rest/v1/${table}?select=id&limit=0`,
@@ -14,7 +15,7 @@ async function supabaseCount(
         Authorization: `Bearer ${key}`,
         Prefer: "count=exact",
       },
-      next: { revalidate: 300 },
+      ...(noCache ? { cache: "no-store" as const } : { next: { revalidate: 300 } }),
     }
   );
   const count = res.headers.get("content-range")?.split("/")[1];
@@ -38,33 +39,41 @@ const FALLBACK = {
   ecommerce: { products: 0, orders: 0, users: 0 },
 };
 
-export async function GET() {
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const fresh = searchParams.has("t");
+
   try {
     const results = await Promise.allSettled([
       supabaseCount(
         process.env.SERAT_QC_SUPABASE_URL!,
         process.env.SERAT_QC_SUPABASE_ANON_KEY!,
-        "entries"
+        "entries",
+        fresh
       ),
       supabaseCount(
         process.env.WC_CHECK_SUPABASE_URL!,
         process.env.WC_CHECK_SUPABASE_ANON_KEY!,
-        "inspection_records"
+        "inspection_records",
+        fresh
       ),
       supabaseCount(
         process.env.LAKUPOS_SUPABASE_URL!,
         process.env.LAKUPOS_SUPABASE_SERVICE_KEY!,
-        "transactions"
+        "transactions",
+        fresh
       ),
       supabaseCount(
         process.env.LAKUPOS_SUPABASE_URL!,
         process.env.LAKUPOS_SUPABASE_SERVICE_KEY!,
-        "products"
+        "products",
+        fresh
       ),
       supabaseCount(
         process.env.LAKUPOS_SUPABASE_URL!,
         process.env.LAKUPOS_SUPABASE_SERVICE_KEY!,
-        "outlets"
+        "outlets",
+        fresh
       ),
       process.env.ECOMMERCE_DATABASE_URL
         ? pgCount(process.env.ECOMMERCE_DATABASE_URL, "Product")
@@ -107,7 +116,9 @@ export async function GET() {
       },
       {
         headers: {
-          "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
+          "Cache-Control": fresh
+            ? "no-cache, no-store, must-revalidate"
+            : "public, s-maxage=300, stale-while-revalidate=600",
         },
       }
     );
