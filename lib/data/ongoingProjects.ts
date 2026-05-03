@@ -85,5 +85,39 @@ export const ongoingProjects: OngoingProject[] = [
       "Backtesting framework",
       "Performance monitoring dashboard"
     ]
+  },
+  {
+    id: "smart-grid-bot",
+    name: "Smart Grid Trading Bot",
+    description: "Advanced grid trading bot untuk crypto dengan dynamic grid spacing, auto-rebalancing, dan multi-pair support",
+    status: "In Progress",
+    startDate: "2025-03",
+    estimatedCompletion: "2026-06",
+    techStack: ["Python", "CCXT", "Binance API", "Pandas", "SQLite"],
+    progress: 45,
+    keyGoals: [
+      "Dynamic grid spacing berdasarkan volatility",
+      "Auto-rebalancing grid levels",
+      "Multi-pair simultaneous trading",
+      "Real-time P&L tracking",
+      "Telegram alerts & monitoring"
+    ]
+  },
+  {
+    id: "dlmm-agent",
+    name: "DLMM Agent — Meteora LP Automation",
+    description: "Autonomous agent untuk manage liquidity positions di Meteora DLMM pools pada Solana, otomatis rebalance & compound fees",
+    status: "In Progress",
+    startDate: "2025-04",
+    estimatedCompletion: "2026-07",
+    techStack: ["TypeScript", "Solana Web3.js", "@meteora-ag/dlmm", "Node.js"],
+    progress: 35,
+    keyGoals: [
+      "Auto-create & manage DLMM positions",
+      "Dynamic bin range adjustment",
+      "Auto-compound fee earnings",
+      "Impermanent loss monitoring",
+      "Multi-pool strategy management"
+    ]
   }
 ];
