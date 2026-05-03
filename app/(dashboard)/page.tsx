@@ -33,6 +33,7 @@ import { HeroBackground } from "@/components/HeroBackground";
 import { TiltCard } from "@/components/TiltCard";
 import { TextReveal } from "@/components/TextReveal";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { CollapsibleSection } from "@/components/CollapsibleSection";
 
 const FEATURED_IDS = ["selisih-berat", "wc-check", "lakupos", "ecommerce-manual", "eduvate", "binance-algo-bot"];
 
@@ -134,9 +135,7 @@ export default function DashboardPage() {
 
       {/* ── Featured Projects ── */}
       <section>
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold">{t.featuredProjects}</h2>
-        </div>
+        <CollapsibleSection title={t.featuredProjects} badge={featuredProjects.length}>
         {/* Mobile: Compact cards */}
         <div className="md:hidden space-y-2.5">
           {featuredProjects.map((project, i) => (
@@ -303,13 +302,13 @@ export default function DashboardPage() {
             </motion.div>
           ))}
         </div>
+        </CollapsibleSection>
       </section>
-
 
       {/* ── What Sets Me Apart ── */}
       <ScrollReveal>
       <section>
-        <h2 className="text-2xl font-bold mb-6">{t.whatSetsApart}</h2>
+        <CollapsibleSection title={t.whatSetsApart} badge={achievements.slice(0, 8).length}>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {achievements.slice(0, 8).map((ach, i) => {
             const Icon = achievementIcons[ach.icon] || Zap;
@@ -337,13 +336,14 @@ export default function DashboardPage() {
             );
           })}
         </div>
+        </CollapsibleSection>
       </section>
       </ScrollReveal>
 
       {/* ── Tech Stack ── */}
       <ScrollReveal delay={0.1}>
       <section>
-        <h2 className="text-2xl font-bold mb-6">{t.techStack}</h2>
+        <CollapsibleSection title={t.techStack} badge={skillCategoryIcons.length}>
         <div className="bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 space-y-6">
           {skillCategoryIcons.map(({ key, icon: Icon }) => (
             <div key={key} className="flex flex-col sm:flex-row sm:items-start gap-3">
@@ -366,21 +366,25 @@ export default function DashboardPage() {
             </div>
           ))}
         </div>
+        </CollapsibleSection>
       </section>
       </ScrollReveal>
 
       {/* ── In Progress ── */}
       <ScrollReveal delay={0.1}>
       <section>
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-bold flex items-center gap-2">
-            <Clock className="w-5 h-5 text-zinc-400" />
-            {t.inProgressProjects}
-          </h2>
-          <span className="text-sm text-zinc-500">
-            {ongoingProjects.length} {t.inProgress}
-          </span>
-        </div>
+        <CollapsibleSection
+          title={
+            <h2 className="text-2xl font-bold flex items-center gap-2">
+              <Clock className="w-5 h-5 text-zinc-400" />
+              {t.inProgressProjects}
+            </h2>
+          }
+          badge={ongoingProjects.length}
+          rightContent={
+            <span className="text-sm text-zinc-500">{t.inProgress}</span>
+          }
+        >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {ongoingProjects.map((project, i) => (
             <motion.div
@@ -426,6 +430,7 @@ export default function DashboardPage() {
             </motion.div>
           ))}
         </div>
+        </CollapsibleSection>
       </section>
       </ScrollReveal>
 

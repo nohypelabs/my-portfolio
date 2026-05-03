@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
   Activity,
   Camera,
+  ChevronDown,
   ClipboardCheck,
   Database,
   ExternalLink,
@@ -178,6 +179,7 @@ function getProjectGroups(): ProjectGroup[] {
 export function LiveMetrics() {
   const [metrics, setMetrics] = useState<Metrics | null>(null);
   const [isLive, setIsLive] = useState(false);
+  const [expanded, setExpanded] = useState(true);
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   const started = isInView && metrics !== null;
@@ -211,19 +213,26 @@ export function LiveMetrics() {
       <div className="relative">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
-          <div>
-            <div className="flex items-center gap-3 mb-2">
-              <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
-                <Database className="w-5 h-5 text-emerald-400" />
-              </div>
-              <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">
-                {t.liveProductionData}
-              </h2>
+          <button onClick={() => setExpanded(!expanded)} className="flex items-center gap-3 group text-left">
+            <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+              <Database className="w-5 h-5 text-emerald-400" />
             </div>
-            <p className="text-sm text-zinc-400 max-w-lg">
-              {t.liveMetricsDesc}
-            </p>
-          </div>
+            <div>
+              <div className="flex items-center gap-2">
+                <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">
+                  {t.liveProductionData}
+                </h2>
+                <div className="p-1 rounded-lg bg-white/5 group-hover:bg-white/10 transition-colors">
+                  <motion.div animate={{ rotate: expanded ? 0 : -90 }} transition={{ duration: 0.2 }}>
+                    <ChevronDown className="w-4 h-4 text-zinc-400" />
+                  </motion.div>
+                </div>
+              </div>
+              <p className="text-sm text-zinc-400 max-w-lg mt-1">
+                {t.liveMetricsDesc}
+              </p>
+            </div>
+          </button>
 
           <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
             <span className="relative flex h-3 w-3">
@@ -252,6 +261,15 @@ export function LiveMetrics() {
         </div>
 
         {/* Project Groups */}
+        <AnimatePresence initial={false}>
+        {expanded && (
+        <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
+          className="overflow-hidden"
+        >
         <div className="space-y-6">
           {!metrics && (
             <>
@@ -371,6 +389,9 @@ export function LiveMetrics() {
             </span>
           </div>
         </div>
+        </motion.div>
+        )}
+        </AnimatePresence>
       </div>
     </motion.section>
   );

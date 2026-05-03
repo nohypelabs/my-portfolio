@@ -17,8 +17,17 @@ export function TopBar() {
     <div className="sticky top-0 z-30 bg-zinc-900/80 backdrop-blur-xl border-b border-zinc-800/50 transition-all duration-300">
       <div className="flex items-center justify-between px-4 md:px-6 py-3">
         <div className="w-9 lg:hidden" />
-        <p className="text-xs md:text-sm font-medium text-zinc-400 text-center flex-1 truncate">
-          {t.heroRole}
+        <p className="text-xs md:text-sm font-bold text-center flex-1 truncate">
+          <span className="md:hidden">
+            <span className="text-emerald-400">Full-stack Dev</span>
+            <span className="text-zinc-500"> & </span>
+            <span className="text-zinc-200">AI Engineer</span>
+          </span>
+          <span className="hidden md:inline">
+            <span className="text-emerald-400">Full-stack Developer</span>
+            <span className="text-zinc-500"> & </span>
+            <span className="text-zinc-200">AI-Augmented Engineer</span>
+          </span>
         </p>
         <div className="flex items-center gap-2">
           <button
