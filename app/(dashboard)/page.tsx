@@ -29,7 +29,7 @@ import { translations } from "@/lib/translations";
 import { AvatarImage } from "@/components/AvatarImage";
 import { LiveMetrics } from "@/components/sections/LiveMetrics";
 
-const FEATURED_IDS = ["lakupos", "selisih-berat", "wc-check", "eduvate", "binance-algo-bot"];
+const FEATURED_IDS = ["selisih-berat", "wc-check", "lakupos", "ecommerce-manual", "eduvate", "binance-algo-bot"];
 
 const achievementIcons: Record<string, typeof Rocket> = {
   rocket: Rocket,
@@ -54,7 +54,7 @@ export default function DashboardPage() {
   const { language } = useLanguage();
   const t = translations[language];
 
-  const featuredProjects = projects.filter((p) => FEATURED_IDS.includes(p.id));
+  const featuredProjects = FEATURED_IDS.map((id) => projects.find((p) => p.id === id)!).filter(Boolean);
   const otherProjects = projects.filter((p) => !FEATURED_IDS.includes(p.id));
 
   return (
