@@ -7,8 +7,8 @@
 @theme {
   --color-background: #ffffff;
   --color-foreground: #171717;
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 /* Enable dark mode with class strategy */
@@ -20,7 +20,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
 }
 
 /* Smooth scroll behavior */
