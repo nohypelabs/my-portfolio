@@ -56,11 +56,15 @@ export default function CVPage() {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-emerald-400">G</span>
-            <a href="https://github.com/agds-alt" target="_blank" className="hover:text-white transition-colors">github.com/agds-alt</a>
+            <a href="https://github.com/nohypelabs" target="_blank" className="hover:text-white transition-colors">github.com/nohypelabs</a>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-emerald-400">in</span>
             <a href="https://linkedin.com/in/abdul-gofur" target="_blank" className="hover:text-white transition-colors">linkedin.com/in/abdul-gofur</a>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-emerald-400">X</span>
+            <a href="https://x.com/nohypelabs" target="_blank" className="hover:text-white transition-colors">@nohypelabs</a>
           </div>
         </div>
 
