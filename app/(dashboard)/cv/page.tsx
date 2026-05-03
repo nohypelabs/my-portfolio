@@ -75,9 +75,10 @@ export default function CVPage() {
             <div>
               <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-3 pb-2 border-b-2 border-emerald-500 inline-block">PROFIL</h2>
               <p className="text-xs md:text-sm text-zinc-600 leading-relaxed mt-3">
-                Saya Abdul Gofur, lahir di Majalengka 12 April 1994. Full-stack developer dengan 1+ tahun pengalaman
-                dalam membangun aplikasi web production-ready. Memiliki semangat kerja yang tinggi di bidang IT dan
-                passionate dalam menciptakan solusi yang scalable dan performant.
+                Full-stack developer yang dalam &lt;1 tahun membangun 6 sistem production dengan 250K+ records,
+                digunakan oleh client nyata di J&T Express dan sektor ritel. Spesialisasi di Next.js, tRPC, dan
+                PostgreSQL. Comeback setelah 9 tahun vakum — kini fokus membangun solusi yang scalable dan performant
+                dengan AI-augmented development.
               </p>
             </div>
 
@@ -86,9 +87,24 @@ export default function CVPage() {
               <div className="mt-3 space-y-4">
                 {[
                   { year: "2013", title: "SMA Muhammadiyah 1 Bandung", desc: "" },
-                  { year: "2014", title: "Pendidikan Dasar Militer Menwa", desc: "Pendidikan Dasar Militer Resimen Mahasiswa dan dilantik di Dik Passus Situ Lembang" },
-                  { year: "2014", title: "Pendidikan Para Dasar Marinir", desc: "Pendidikan Pasukan Udara Dasar Marinir / Terjun Statik" },
                   { year: "2017", title: "D3 Teknik Informatika", desc: "104 dari 114 SKS selesai (semester 6) — terhenti karena keterbatasan biaya" },
+                ].map((item, i) => (
+                  <div key={i} className="border-l-2 border-zinc-200 pl-4 relative">
+                    <div className="absolute -left-[5px] top-1 w-2 h-2 bg-emerald-500 rounded-full"></div>
+                    <div className="font-bold text-emerald-600 text-sm">{item.year}</div>
+                    <div className="font-semibold text-sm text-zinc-900">{item.title}</div>
+                    {item.desc && <div className="text-xs text-zinc-500">{item.desc}</div>}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-3 pb-2 border-b-2 border-emerald-500 inline-block">LATAR BELAKANG</h2>
+              <div className="mt-3 space-y-4">
+                {[
+                  { year: "2014", title: "Pendidikan Dasar Militer — Resimen Mahasiswa", desc: "Dilantik di Dik Passus Situ Lembang" },
+                  { year: "2014", title: "Pendidikan Para Dasar — Korps Marinir", desc: "Pasukan Udara Dasar Marinir / Terjun Statik" },
                 ].map((item, i) => (
                   <div key={i} className="border-l-2 border-zinc-200 pl-4 relative">
                     <div className="absolute -left-[5px] top-1 w-2 h-2 bg-emerald-500 rounded-full"></div>
@@ -104,9 +120,10 @@ export default function CVPage() {
               <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-3 pb-2 border-b-2 border-emerald-500 inline-block">PENGALAMAN KERJA</h2>
               <div className="mt-3 space-y-4">
                 {[
-                  { year: "2015", title: "Mocha Loco Cafe and Resto", desc: "Bekerja sebagai waiter selama 3 bulan pada saat libur kuliah" },
-                  { year: "2017", title: "Agen JNE Sudirman 2", desc: "Bekerja sebagai Admin selama 1 (satu) tahun pada saat cuti kuliah" },
-                  { year: "2024 - Sekarang", title: "Full-stack Developer (Freelance)", desc: "Mengembangkan aplikasi web full-stack dengan Next.js, React, TypeScript, dan PostgreSQL" },
+                  { year: "2015", title: "Mocha Loco Cafe and Resto", desc: "Waiter — 3 bulan (masa libur kuliah)" },
+                  { year: "2017 – 2018", title: "Agen JNE Sudirman 2", desc: "Admin operasional selama 1 tahun" },
+                  { year: "2018 – 2024", title: "Pengembangan Usaha Mandiri", desc: "Mengelola usaha keluarga dan berbagai bidang pekerjaan. Tetap mengikuti perkembangan teknologi secara otodidak" },
+                  { year: "2024 – Sekarang", title: "Full-stack Developer (Freelance)", desc: "Membangun 6 sistem production dengan 250K+ records untuk client di logistik, ritel, dan edukasi. Stack: Next.js, tRPC, PostgreSQL, Supabase" },
                 ].map((item, i) => (
                   <div key={i} className="border-l-2 border-zinc-200 pl-4 relative">
                     <div className="absolute -left-[5px] top-1 w-2 h-2 bg-emerald-500 rounded-full"></div>
@@ -125,12 +142,12 @@ export default function CVPage() {
               <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-3 pb-2 border-b-2 border-emerald-500 inline-block">KEAHLIAN TEKNIS</h2>
               <div className="mt-3 space-y-3">
                 {[
-                  { label: "Frontend Development", value: "Next.js, React, TypeScript, Tailwind CSS" },
-                  { label: "Backend Development", value: "Node.js, tRPC, Prisma, PostgreSQL" },
-                  { label: "Database", value: "PostgreSQL, Supabase, MongoDB, Redis" },
-                  { label: "Tools & DevOps", value: "Git, Docker, Vercel, PWA" },
-                  { label: "Typing Speed", value: "80 WPM" },
-                  { label: "System Administration", value: "Windows & Linux Installation" },
+                  { label: "Frontend", value: "Next.js, React, TypeScript, Tailwind CSS, Framer Motion" },
+                  { label: "Backend & API", value: "Node.js, tRPC, Prisma, REST API, Python" },
+                  { label: "Database", value: "PostgreSQL, Supabase, Redis, SQLite" },
+                  { label: "DevOps & Tools", value: "Git, Vercel, Docker, CI/CD, PWA, Sentry" },
+                  { label: "Architecture", value: "DDD, Clean Architecture, Repository Pattern" },
+                  { label: "Testing", value: "Playwright E2E, Vitest, Jest, Testing Library" },
                 ].map((skill, i) => (
                   <div key={i} className="bg-zinc-50 p-3 rounded-lg border-l-2 border-emerald-500">
                     <div className="font-semibold text-sm text-zinc-900">{skill.label}</div>
@@ -142,15 +159,14 @@ export default function CVPage() {
 
             <div>
               <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-3 pb-2 border-b-2 border-emerald-500 inline-block">BAHASA</h2>
-              <div className="mt-3 grid grid-cols-3 gap-4">
+              <div className="mt-3 grid grid-cols-2 gap-4">
                 {[
-                  { lang: "Indonesia", pct: "97.5%" },
-                  { lang: "Sunda", pct: "90.5%" },
-                  { lang: "Inggris", pct: "25%" },
+                  { lang: "Indonesia", level: "Native" },
+                  { lang: "Sunda", level: "Native" },
                 ].map((item, i) => (
                   <div key={i} className="text-center">
-                    <div className="w-16 h-16 mx-auto rounded-full bg-zinc-900 flex items-center justify-center text-emerald-400 font-bold text-sm mb-2">
-                      {item.pct}
+                    <div className="w-16 h-16 mx-auto rounded-full bg-zinc-900 flex items-center justify-center text-emerald-400 font-bold text-xs mb-2">
+                      {item.level}
                     </div>
                     <div className="text-xs font-semibold text-zinc-700">{item.lang}</div>
                   </div>
@@ -162,7 +178,7 @@ export default function CVPage() {
           {/* Projects Section - Full Width */}
           <div className="col-span-1 md:col-span-2 bg-zinc-50 p-4 md:p-6 rounded-xl mt-4">
             <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-4 pb-2 border-b-2 border-emerald-500 inline-block">PORTFOLIO PROYEK WEB</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 mt-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 mt-5">
               {[
                 {
                   title: "Serat QC — Selisih Berat",
@@ -173,23 +189,37 @@ export default function CVPage() {
                 },
                 {
                   title: "WC Check",
-                  desc: "Professional Toilet Monitoring System. 3.293 inspeksi, 53 users, 49 lokasi terkelola dengan QR code scanning dan analytics real-time.",
+                  desc: "Toilet Monitoring System. 3.293 inspeksi, 53 users, 49 lokasi terkelola dengan QR code dan analytics real-time.",
                   tags: ["Next.js", "TypeScript", "Supabase", "PWA"],
                   url: "wc-checks.vercel.app",
                   status: "production" as const,
                 },
                 {
                   title: "LakuPOS",
-                  desc: "Kasir & Warehouse Management System. Multi-outlet, barcode scanning, QRIS payment, real-time analytics dengan DDD architecture.",
-                  tags: ["Next.js 16", "tRPC", "PostgreSQL", "Redis"],
+                  desc: "Kasir & Warehouse System. Multi-outlet, barcode scanning, QRIS payment, DDD architecture.",
+                  tags: ["Next.js", "tRPC", "PostgreSQL", "Redis"],
                   url: "lakupos.vercel.app",
                   status: "production" as const,
                 },
                 {
                   title: "Qohira — Online Shop",
-                  desc: "E-Commerce platform dengan product catalog, shopping cart, order tracking, payment integration, dan push notifications.",
-                  tags: ["Next.js 16", "tRPC", "Prisma", "PostgreSQL"],
+                  desc: "E-Commerce platform dengan product catalog, shopping cart, order tracking, dan payment integration.",
+                  tags: ["Next.js", "tRPC", "Prisma", "PostgreSQL"],
                   url: "qohira.vercel.app",
+                  status: "production" as const,
+                },
+                {
+                  title: "Eduvate — School Management",
+                  desc: "Platform manajemen sekolah: student management, attendance, grades, schedules, dan parent portal.",
+                  tags: ["Next.js", "tRPC", "Prisma", "PostgreSQL"],
+                  url: "eduvate.vercel.app",
+                  status: "production" as const,
+                },
+                {
+                  title: "Binance Algo Trading Bot",
+                  desc: "Automated trading bot dengan multiple strategies, risk management, dan license system dengan Stripe.",
+                  tags: ["Python", "CCXT", "Streamlit", "Telegram"],
+                  url: "github.com/nohypelabs",
                   status: "production" as const,
                 },
               ].map((project, i) => (
@@ -217,7 +247,7 @@ export default function CVPage() {
 
         {/* Footer */}
         <div className="bg-zinc-900 text-zinc-400 text-center p-3 md:p-5 text-xs">
-          Portfolio: <a href="https://agds-dev.vercel.app" target="_blank" className="font-semibold text-emerald-400 hover:underline">agds-dev.vercel.app</a> |
+          Portfolio: <a href="https://nohype.vercel.app" target="_blank" className="font-semibold text-emerald-400 hover:underline">nohype.vercel.app</a> |
           Created by Abdul Gofur | 2025
         </div>
       </div>
