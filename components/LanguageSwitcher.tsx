@@ -2,23 +2,36 @@
 
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { translations } from "@/lib/translations";
-import { Languages } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Globe } from "lucide-react";
 
 export function LanguageSwitcher() {
   const { language, setLanguage } = useLanguage();
   const t = translations[language];
+  const target = language === "en" ? "id" : "en";
 
   return (
     <button
-      onClick={() => setLanguage(language === "en" ? "id" : "en")}
-      className="relative w-9 h-9 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors group"
+      onClick={() => setLanguage(target)}
+      className="group relative flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-zinc-800/50 border border-zinc-700/50 hover:border-emerald-500/30 hover:bg-zinc-800 transition-all"
       aria-label="Switch language"
       title={language === "en" ? t.switchToId : t.switchToEn}
     >
-      <Languages className="w-5 h-5" />
-      <span className="absolute -bottom-0.5 text-[10px] font-bold">
-        {language === "en" ? "ID" : "EN"}
-      </span>
+      <Globe className="w-3.5 h-3.5 text-zinc-400 group-hover:text-emerald-400 transition-colors" />
+      <div className="relative w-7 h-5 overflow-hidden">
+        <AnimatePresence mode="popLayout" initial={false}>
+          <motion.span
+            key={language}
+            initial={{ y: 12, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -12, opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="absolute inset-0 flex items-center justify-center text-[11px] font-bold text-zinc-300 group-hover:text-emerald-400 transition-colors"
+          >
+            {target.toUpperCase()}
+          </motion.span>
+        </AnimatePresence>
+      </div>
     </button>
   );
 }
