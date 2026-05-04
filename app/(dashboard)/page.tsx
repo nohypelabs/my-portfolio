@@ -103,36 +103,6 @@ export default function DashboardPage() {
         </div>
       </motion.section>
 
-      {/* ── Metrics Bento ── */}
-      <motion.section
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.15 }}
-        className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
-      >
-        {[
-          { value: "4", label: t.productsShipped, accent: "text-emerald-500", border: "border-emerald-500/20", bg: "bg-emerald-500/5", span: "md:col-span-2" },
-          { value: "250K+", label: t.dataProcessed, accent: "text-orange-500", border: "border-orange-500/20", bg: "bg-orange-500/5", span: "md:col-span-2" },
-          { value: "4", label: t.activeProjects, accent: "text-blue-500", border: "border-zinc-200 dark:border-zinc-800", bg: "", span: "" },
-          { value: "6", label: t.techMastered, accent: "text-purple-500", border: "border-zinc-200 dark:border-zinc-800", bg: "", span: "" },
-          { value: "<1yr", label: t.devTime, accent: "text-pink-500", border: "border-zinc-200 dark:border-zinc-800", bg: "", span: "" },
-          { value: "10x", label: t.productivity, accent: "text-yellow-500", border: "border-zinc-200 dark:border-zinc-800", bg: "", span: "" },
-        ].map((m, i) => (
-          <motion.div
-            key={m.label}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 + i * 0.05 }}
-            className={`bg-white dark:bg-zinc-900 rounded-xl border ${m.border} ${m.bg} ${m.span} ${
-              m.span ? "p-5 md:p-6" : "p-4"
-            } text-center`}
-          >
-            <p className={`font-extrabold ${m.accent} ${m.span ? "text-3xl md:text-4xl" : "text-2xl md:text-3xl"}`}>{m.value}</p>
-            <p className={`text-zinc-500 font-medium ${m.span ? "text-sm mt-1.5" : "text-xs mt-1"}`}>{m.label}</p>
-          </motion.div>
-        ))}
-      </motion.section>
-
       {/* ── Live Production Metrics ── */}
       <ScrollReveal delay={0.05}>
         <LiveMetrics />

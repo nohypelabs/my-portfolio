@@ -9,6 +9,15 @@ import { useLanguage } from "@/lib/context/LanguageContext";
 import { translations } from "@/lib/translations";
 import { TiltCard } from "@/components/TiltCard";
 
+const STATS = [
+  { value: "4", labelKey: "productsShipped" as const, accent: "text-emerald-400", border: "border-emerald-500/20", bg: "bg-emerald-500/5" },
+  { value: "250K+", labelKey: "dataProcessed" as const, accent: "text-orange-400", border: "border-orange-500/20", bg: "bg-orange-500/5" },
+  { value: "4", labelKey: "activeProjects" as const, accent: "text-blue-400", border: "border-blue-500/20", bg: "bg-blue-500/5" },
+  { value: "6", labelKey: "techMastered" as const, accent: "text-purple-400", border: "border-purple-500/20", bg: "bg-purple-500/5" },
+  { value: "<1yr", labelKey: "devTime" as const, accent: "text-pink-400", border: "border-pink-500/20", bg: "bg-pink-500/5" },
+  { value: "10x", labelKey: "productivity" as const, accent: "text-yellow-400", border: "border-yellow-500/20", bg: "bg-yellow-500/5" },
+];
+
 const productionProjects = projects.filter((p) => p.status === "production");
 
 export default function ProjectsPage() {
@@ -27,6 +36,22 @@ export default function ProjectsPage() {
           {productionProjects.length} {language === "en" ? "production systems shipped" : "sistem production sudah dikirim"}
         </p>
       </motion.div>
+
+      {/* Stats grid */}
+      <div className="grid grid-cols-3 md:grid-cols-6 gap-2.5">
+        {STATS.map((s, i) => (
+          <motion.div
+            key={s.labelKey}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.05 + i * 0.04 }}
+            className={`${s.bg} border ${s.border} rounded-xl p-3 text-center`}
+          >
+            <p className={`font-extrabold text-lg md:text-xl ${s.accent}`}>{s.value}</p>
+            <p className="text-zinc-500 text-[10px] font-medium mt-0.5 leading-tight">{t[s.labelKey]}</p>
+          </motion.div>
+        ))}
+      </div>
 
       {/* Mobile: compact list */}
       <div className="md:hidden space-y-2.5">
