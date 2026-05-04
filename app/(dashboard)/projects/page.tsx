@@ -31,7 +31,7 @@ export default function ProjectsPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <h1 className="text-2xl font-extrabold mb-1">{t.completedProjects}</h1>
+        <h1 className="text-2xl font-extrabold mb-1 text-zinc-900 dark:text-white">{t.completedProjects}</h1>
         <p className="text-sm text-zinc-500">
           {productionProjects.length} {language === "en" ? "production systems shipped" : "sistem production sudah dikirim"}
         </p>
@@ -79,7 +79,7 @@ export default function ProjectsPage() {
               )}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-0.5">
-                  <h3 className="text-sm font-bold truncate group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                  <h3 className="text-sm font-bold truncate text-zinc-900 dark:text-zinc-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                     {project.title}
                   </h3>
                   <span className="px-1.5 py-0.5 rounded text-[9px] font-semibold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 shrink-0">
@@ -144,7 +144,7 @@ export default function ProjectsPage() {
                   )}
                   <div className="flex-1 p-6 lg:p-8 flex flex-col justify-between">
                     <div>
-                      <h3 className="text-xl font-bold mb-2 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                      <h3 className="text-xl font-bold mb-2 text-zinc-900 dark:text-zinc-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                         {project.title}
                       </h3>
                       <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4">

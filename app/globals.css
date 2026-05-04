@@ -7,7 +7,7 @@
 
 @theme {
   --color-background: #ffffff;
-  --color-foreground: #171717;
+  --color-foreground: #09090b;
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
 }

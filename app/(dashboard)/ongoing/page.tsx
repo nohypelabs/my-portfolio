@@ -19,7 +19,7 @@ export default function OngoingPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <h1 className="text-2xl font-extrabold mb-1">{t.inProgressProjects}</h1>
+        <h1 className="text-2xl font-extrabold mb-1 text-zinc-900 dark:text-white">{t.inProgressProjects}</h1>
         <p className="text-sm text-zinc-500">
           {sorted.length} {language === "en" ? "projects in active development" : "proyek dalam pengembangan aktif"}
         </p>
@@ -38,7 +38,7 @@ export default function OngoingPage() {
               className="group block bg-white dark:bg-zinc-900 rounded-xl p-5 border border-zinc-200 dark:border-zinc-800 hover:shadow-lg hover:border-emerald-500/30 transition-all h-full"
             >
               <div className="flex items-start justify-between mb-2">
-                <h3 className="font-bold text-sm group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                <h3 className="font-bold text-sm text-zinc-900 dark:text-zinc-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                   {project.name}
                 </h3>
                 <span

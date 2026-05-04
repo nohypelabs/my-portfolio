@@ -27,7 +27,7 @@ export default function AboutPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <h1 className="text-4xl font-bold mb-4 text-center">{t.aboutMe}</h1>
+        <h1 className="text-4xl font-bold mb-4 text-center text-zinc-900 dark:text-white">{t.aboutMe}</h1>
         <div className="relative">
           <p className={`text-lg text-zinc-600 dark:text-zinc-400 text-justify leading-relaxed ${!expanded ? "line-clamp-3" : ""}`}>
             {t.aboutBio}
@@ -55,19 +55,19 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">{t.name}</p>
-            <p className="text-lg font-medium">{personalInfo.name}</p>
+            <p className="text-lg font-medium text-zinc-900 dark:text-zinc-100">{personalInfo.name}</p>
           </div>
           <div>
             <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">{t.role}</p>
-            <p className="text-lg font-medium">{personalInfo.role}</p>
+            <p className="text-lg font-medium text-zinc-900 dark:text-zinc-100">{personalInfo.role}</p>
           </div>
           <div>
             <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">{t.username}</p>
-            <p className="text-lg font-medium">{personalInfo.username}</p>
+            <p className="text-lg font-medium text-zinc-900 dark:text-zinc-100">{personalInfo.username}</p>
           </div>
           <div>
             <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-1">{t.experience}</p>
-            <p className="text-lg font-medium">{personalInfo.stats.experience}</p>
+            <p className="text-lg font-medium text-zinc-900 dark:text-zinc-100">{personalInfo.stats.experience}</p>
           </div>
         </div>
       </motion.div>
@@ -112,7 +112,7 @@ function JourneyTimeline({ title, language }: { title: string; language: "en" | 
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.15 }}
     >
-      <h2 className="text-2xl font-bold mb-8 text-center">{title}</h2>
+      <h2 className="text-2xl font-bold mb-8 text-center text-zinc-900 dark:text-white">{title}</h2>
       <div className="relative">
         <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-zinc-200 dark:bg-zinc-800 md:-translate-x-px" />
 
@@ -133,7 +133,7 @@ function JourneyTimeline({ title, language }: { title: string; language: "en" | 
                 <div className={`hidden md:block md:w-1/2 ${isRight ? "md:pl-10" : "md:pr-10 md:text-right"}`}>
                   <div className="bg-white dark:bg-zinc-900 rounded-xl p-4 border border-zinc-200 dark:border-zinc-800 inline-block">
                     <p className="text-xs font-bold text-zinc-400 mb-1">{item.year}</p>
-                    <h3 className="font-bold text-sm mb-1">{item.title}</h3>
+                    <h3 className="font-bold text-sm mb-1 text-zinc-900 dark:text-zinc-100">{item.title}</h3>
                     <p className="text-xs text-zinc-500 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
@@ -147,7 +147,7 @@ function JourneyTimeline({ title, language }: { title: string; language: "en" | 
                 <div className="md:hidden ml-12">
                   <div className="bg-white dark:bg-zinc-900 rounded-xl p-4 border border-zinc-200 dark:border-zinc-800">
                     <p className="text-xs font-bold text-zinc-400 mb-1">{item.year}</p>
-                    <h3 className="font-bold text-sm mb-1">{item.title}</h3>
+                    <h3 className="font-bold text-sm mb-1 text-zinc-900 dark:text-zinc-100">{item.title}</h3>
                     <p className="text-xs text-zinc-500 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
@@ -183,7 +183,7 @@ function SkillsSection({ skillCategories, title }: {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.2 }}
     >
-      <h2 className="text-2xl font-bold mb-6 text-center">{title}</h2>
+      <h2 className="text-2xl font-bold mb-6 text-center text-zinc-900 dark:text-white">{title}</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {skillCategories.map((category, catIdx) => {
           const Icon = category.icon;
@@ -200,7 +200,7 @@ function SkillsSection({ skillCategories, title }: {
                 <div className={`p-2 rounded-lg ${accent.bgLight}`}>
                   <Icon className={`w-5 h-5 ${accent.text}`} />
                 </div>
-                <h3 className="font-bold">{category.name}</h3>
+                <h3 className="font-bold text-zinc-900 dark:text-zinc-100">{category.name}</h3>
                 <span className="ml-auto text-xs text-zinc-400 font-medium">{category.skills.length}</span>
               </div>
               <div className="flex flex-wrap gap-2">

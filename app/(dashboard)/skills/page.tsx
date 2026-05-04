@@ -47,7 +47,7 @@ export default function SkillsPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <h1 className="text-2xl font-extrabold mb-1">{t.whatSetsApart}</h1>
+        <h1 className="text-2xl font-extrabold mb-1 text-zinc-900 dark:text-white">{t.whatSetsApart}</h1>
         <p className="text-sm text-zinc-500 mb-5">
           {language === "en" ? "Key strengths & differentiators" : "Keunggulan & pembeda utama"}
         </p>
@@ -73,7 +73,7 @@ export default function SkillsPage() {
                     </span>
                   )}
                 </div>
-                <h3 className="font-bold text-base mb-1.5">{ach.title}</h3>
+                <h3 className="font-bold text-base mb-1.5 text-zinc-900 dark:text-white">{ach.title}</h3>
                 <p className="text-sm text-zinc-500 leading-relaxed">{ach.description}</p>
               </motion.div>
             );
@@ -87,7 +87,7 @@ export default function SkillsPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.4 }}
       >
-        <h2 className="text-xl font-extrabold mb-1">{t.techStack}</h2>
+        <h2 className="text-xl font-extrabold mb-1 text-zinc-900 dark:text-white">{t.techStack}</h2>
         <p className="text-sm text-zinc-500 mb-5">
           {language === "en" ? "Technologies I work with" : "Teknologi yang saya gunakan"}
         </p>

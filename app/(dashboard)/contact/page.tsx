@@ -89,7 +89,7 @@ export default function ContactPage() {
           <Rocket className="w-3.5 h-3.5" />
           {language === "en" ? "Let's connect" : "Mari terhubung"}
         </div>
-        <h1 className="text-4xl font-bold mb-3">{t.getInTouch}</h1>
+        <h1 className="text-4xl font-bold mb-3 text-zinc-900 dark:text-white">{t.getInTouch}</h1>
         <p className="text-zinc-500 dark:text-zinc-400 max-w-md mx-auto">
           {t.getInTouchDesc}
         </p>
@@ -156,7 +156,7 @@ export default function ContactPage() {
                   {link.customIcon ? <link.customIcon className={`w-5 h-5 ${colors.icon}`} /> : <Icon className={`w-5 h-5 ${colors.icon}`} />}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-sm mb-0.5">{link.name}</h3>
+                  <h3 className="font-bold text-sm mb-0.5 text-zinc-900 dark:text-white">{link.name}</h3>
                   <p className="text-xs text-zinc-500 dark:text-zinc-400 truncate">{link.handle}</p>
                 </div>
                 <div className="flex items-center gap-1.5 shrink-0">
