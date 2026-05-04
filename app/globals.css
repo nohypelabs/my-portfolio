@@ -5,12 +5,13 @@
 }
 
 @theme {
-  --color-background: #0a0a0a;
-  --color-foreground: #ededed;
+  --color-background: #ffffff;
+  --color-foreground: #171717;
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
 }
 
+/* Enable dark mode with class strategy */
 .dark {
   --color-background: #0a0a0a;
   --color-foreground: #ededed;
