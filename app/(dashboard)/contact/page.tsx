@@ -61,7 +61,7 @@ const colorMap: Record<string, { icon: string; hover: string; bg: string; ring: 
   green: { icon: "text-green-500", hover: "hover:border-green-500/30", bg: "bg-green-500/10", ring: "ring-green-500/20" },
   emerald: { icon: "text-emerald-500", hover: "hover:border-emerald-500/30", bg: "bg-emerald-500/10", ring: "ring-emerald-500/20" },
   blue: { icon: "text-blue-500", hover: "hover:border-blue-500/30", bg: "bg-blue-500/10", ring: "ring-blue-500/20" },
-  zinc: { icon: "text-zinc-400", hover: "hover:border-zinc-600/30", bg: "bg-zinc-800/50", ring: "ring-zinc-700/20" },
+  zinc: { icon: "text-zinc-500", hover: "hover:border-zinc-400/30", bg: "bg-zinc-100 dark:bg-zinc-800/50", ring: "ring-zinc-300/50 dark:ring-zinc-700/20" },
 };
 
 export default function ContactPage() {
@@ -113,10 +113,10 @@ export default function ContactPage() {
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10">
+        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/10">
           <Clock className="w-4 h-4 text-blue-400" />
           <div>
-            <p className="text-xs font-semibold text-zinc-200">
+            <p className="text-xs font-semibold text-zinc-800 dark:text-zinc-200">
               {language === "en" ? "Response time" : "Waktu respons"}
             </p>
             <p className="text-[10px] text-zinc-500">
@@ -124,10 +124,10 @@ export default function ContactPage() {
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 border border-white/10">
+        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/10">
           <Zap className="w-4 h-4 text-yellow-400" />
           <div>
-            <p className="text-xs font-semibold text-zinc-200">
+            <p className="text-xs font-semibold text-zinc-800 dark:text-zinc-200">
               {language === "en" ? "Timezone" : "Zona waktu"}
             </p>
             <p className="text-[10px] text-zinc-500">GMT+7 (WIB)</p>
@@ -173,7 +173,7 @@ export default function ContactPage() {
                       )}
                     </button>
                   )}
-                  <ArrowUpRight className="w-4 h-4 text-zinc-400 group-hover:text-zinc-200 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  <ArrowUpRight className="w-4 h-4 text-zinc-400 group-hover:text-zinc-700 dark:group-hover:text-zinc-200 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </div>
               </div>
             </motion.a>
