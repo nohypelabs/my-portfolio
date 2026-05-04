@@ -3,7 +3,7 @@
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Home, User, FileText, Mail, FolderOpen, Clock, Search, Command } from "lucide-react";
+import { Home, User, FileText, Mail, FolderOpen, Clock, Cpu, Search } from "lucide-react";
 import { projects } from "@/lib/data/projects";
 import { ongoingProjects } from "@/lib/data/ongoingProjects";
 import { useLanguage } from "@/lib/context/LanguageContext";
@@ -29,6 +29,9 @@ export function CommandPalette() {
     const nav: CommandItem[] = [
       { id: "home", label: t.home, href: "/", icon: Home, group: "Navigation" },
       { id: "about", label: t.about, href: "/about", icon: User, group: "Navigation" },
+      { id: "projects-page", label: t.completedProjects, href: "/projects", icon: FolderOpen, group: "Navigation" },
+      { id: "ongoing-page", label: t.ongoingProjects, href: "/ongoing", icon: Clock, group: "Navigation" },
+      { id: "skills-page", label: "Skills", href: "/skills", icon: Cpu, group: "Navigation" },
       { id: "cv", label: "CV", href: "/cv", icon: FileText, group: "Navigation" },
       { id: "contact", label: t.contact, href: "/contact", icon: Mail, group: "Navigation" },
     ];

@@ -8,8 +8,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Home,
   FolderOpen,
-  FolderClosed,
-  ChevronRight,
+  Clock,
+  Cpu,
   User,
   Mail,
   X,
@@ -20,63 +20,33 @@ import {
 import { AvatarImage } from "@/components/AvatarImage";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { translations } from "@/lib/translations";
-import { projects } from "@/lib/data/projects";
-import { ongoingProjects } from "@/lib/data/ongoingProjects";
 
 export function Sidebar() {
   const [isOpen, setIsOpen] = useState(true);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const { language } = useLanguage();
   const t = translations[language];
-  const [expandedItems, setExpandedItems] = useState<string[]>([t.completedProjects, t.ongoingProjects]);
   const pathname = usePathname();
-
-  const completedProjectsChildren = projects
-    .filter(p => p.status === 'production')
-    .map(p => ({
-      name: p.title,
-      href: `/projects/${p.id}`
-    }));
-
-  const ongoingProjectsChildren = ongoingProjects
-    .filter(p => (p.progress ?? 0) >= 65)
-    .sort((a, b) => (b.progress ?? 0) - (a.progress ?? 0))
-    .map(p => ({
-      name: p.name,
-      href: `/ongoing/${p.id}`
-    }));
 
   const sidebarItems = [
     { name: t.home, href: "/", icon: Home },
     { name: t.about, href: "/about", icon: User },
-    {
-      name: `${t.completedProjects} (${completedProjectsChildren.length})`,
-      icon: FolderOpen,
-      children: completedProjectsChildren
-    },
-    {
-      name: `${t.ongoingProjects} (${ongoingProjectsChildren.length})`,
-      icon: FolderClosed,
-      children: ongoingProjectsChildren
-    },
-    { name: t.cv, href: "/cv", icon: FileText },
-    { name: t.contact, href: "/contact", icon: Mail }
+    { name: t.completedProjects, href: "/projects", icon: FolderOpen },
+    { name: t.ongoingProjects, href: "/ongoing", icon: Clock },
+    { name: "Skills", href: "/skills", icon: Cpu },
+    { name: "CV", href: "/cv", icon: FileText },
+    { name: t.contact, href: "/contact", icon: Mail },
   ];
 
   useEffect(() => {
     document.documentElement.style.setProperty(
-      '--sidebar-width',
-      isOpen ? '280px' : '80px'
+      "--sidebar-width",
+      isOpen ? "280px" : "80px"
     );
   }, [isOpen]);
 
-  const toggleExpanded = (name: string) => {
-    setExpandedItems(prev =>
-      prev.includes(name) ? prev.filter(item => item !== name) : [...prev, name]
-    );
-  };
-
-  const isActive = (href: string) => pathname === href;
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   const SidebarContent = () => (
     <div className="flex flex-col h-full">
@@ -89,7 +59,9 @@ export function Sidebar() {
           </div>
           {isOpen && (
             <Link href="/" className="min-w-0 group">
-              <h2 className="font-bold text-sm text-white truncate group-hover:text-emerald-400 transition-colors">Abdul Gofur</h2>
+              <h2 className="font-bold text-sm text-white truncate group-hover:text-emerald-400 transition-colors">
+                Abdul Gofur
+              </h2>
               <p className="text-[11px] text-zinc-500 truncate">{t.fullstackDev}</p>
             </Link>
           )}
@@ -99,81 +71,11 @@ export function Sidebar() {
       {/* Navigation */}
       <nav className="flex-1 overflow-y-auto p-3 space-y-1 scrollbar-thin">
         {sidebarItems.map((item) => {
-          if (item.children) {
-            const isExpanded = expandedItems.includes(item.name);
-            const Icon = item.icon;
-            const hasActiveChild = item.children.some(c => isActive(c.href));
-
-            return (
-              <div key={item.name}>
-                <button
-                  onClick={() => toggleExpanded(item.name)}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group ${
-                    hasActiveChild
-                      ? "bg-emerald-500/5 text-emerald-400"
-                      : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5"
-                  }`}
-                >
-                  <div className={`p-1.5 rounded-lg transition-colors ${
-                    hasActiveChild ? "bg-emerald-500/10" : "bg-white/5 group-hover:bg-white/10"
-                  }`}>
-                    <Icon className="w-4 h-4 flex-shrink-0" />
-                  </div>
-                  {isOpen && (
-                    <>
-                      <span className="flex-1 text-left text-sm font-medium">{item.name}</span>
-                      <motion.div
-                        animate={{ rotate: isExpanded ? 90 : 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <ChevronRight className="w-3.5 h-3.5 text-zinc-600" />
-                      </motion.div>
-                    </>
-                  )}
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {isExpanded && isOpen && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                      className="overflow-hidden"
-                    >
-                      <div className="ml-5 mt-1 pl-4 border-l border-white/5 space-y-0.5">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            onClick={() => setIsMobileOpen(false)}
-                            className={`block px-3 py-1.5 rounded-lg text-[13px] transition-all duration-200 ${
-                              isActive(child.href)
-                                ? "bg-emerald-500/10 text-emerald-400 font-medium"
-                                : "text-zinc-500 hover:text-zinc-300 hover:bg-white/5"
-                            }`}
-                          >
-                            <span className="flex items-center gap-2">
-                              <span className={`w-1 h-1 rounded-full ${
-                                isActive(child.href) ? "bg-emerald-500" : "bg-zinc-700"
-                              }`} />
-                              <span className="truncate">{child.name}</span>
-                            </span>
-                          </Link>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            );
-          }
-
           const Icon = item.icon;
           const active = isActive(item.href);
           return (
             <Link
-              key={item.name}
+              key={item.href}
               href={item.href}
               onClick={() => setIsMobileOpen(false)}
               className={`relative flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group ${
@@ -189,9 +91,11 @@ export function Sidebar() {
                   transition={{ type: "spring", stiffness: 500, damping: 30 }}
                 />
               )}
-              <div className={`p-1.5 rounded-lg transition-colors ${
-                active ? "bg-emerald-500/15" : "bg-white/5 group-hover:bg-white/10"
-              }`}>
+              <div
+                className={`p-1.5 rounded-lg transition-colors ${
+                  active ? "bg-emerald-500/15" : "bg-white/5 group-hover:bg-white/10"
+                }`}
+              >
                 <Icon className="w-4 h-4 flex-shrink-0" />
               </div>
               {isOpen && <span className="text-sm font-medium">{item.name}</span>}
@@ -210,7 +114,9 @@ export function Sidebar() {
             {isOpen ? (
               <>
                 <PanelLeftClose className="w-4 h-4" />
-                <span className="text-xs font-medium">{language === "en" ? "Collapse" : "Perkecil"}</span>
+                <span className="text-xs font-medium">
+                  {language === "en" ? "Collapse" : "Perkecil"}
+                </span>
               </>
             ) : (
               <PanelLeftOpen className="w-4 h-4" />

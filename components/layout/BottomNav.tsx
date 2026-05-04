@@ -3,15 +3,15 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Home, User, FileText, Mail } from "lucide-react";
+import { Home, FolderOpen, Clock, Mail } from "lucide-react";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { translations } from "@/lib/translations";
 import { useRef } from "react";
 
 const navItems = [
   { key: "home" as const, href: "/", icon: Home },
-  { key: "about" as const, href: "/about", icon: User },
-  { key: "cv" as const, href: "/cv", icon: FileText },
+  { key: "projects" as const, href: "/projects", icon: FolderOpen },
+  { key: "ongoing" as const, href: "/ongoing", icon: Clock },
   { key: "contact" as const, href: "/contact", icon: Mail },
 ] as const;
 
@@ -93,8 +93,8 @@ export function BottomNav() {
 
   const labels: Record<string, string> = {
     home: t.home,
-    about: t.about,
-    cv: "CV",
+    projects: language === "en" ? "Projects" : "Proyek",
+    ongoing: language === "en" ? "Ongoing" : "Berjalan",
     contact: t.contact,
   };
 
