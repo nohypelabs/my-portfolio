@@ -62,14 +62,14 @@ function DockItem({
       >
         <Icon
           className={`w-[22px] h-[22px] transition-colors duration-200 ${
-            active ? "text-emerald-400" : "text-zinc-500"
+            active ? "text-emerald-600 dark:text-emerald-400" : "text-zinc-400 dark:text-zinc-500"
           }`}
           strokeWidth={active ? 2.5 : 1.8}
         />
       </motion.div>
       <span
         className={`relative z-10 text-[10px] font-semibold tracking-wide transition-colors duration-200 ${
-          active ? "text-emerald-400" : "text-zinc-500"
+          active ? "text-emerald-600 dark:text-emerald-400" : "text-zinc-400 dark:text-zinc-500"
         }`}
       >
         {label}
@@ -114,9 +114,9 @@ export function BottomNav() {
       }}
       onTouchEnd={() => mouseX.set(-1)}
     >
-      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-black/80 to-transparent pointer-events-none" />
+      <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white/80 dark:from-black/80 to-transparent pointer-events-none" />
       <div className="relative flex justify-center px-6 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
-        <div className="flex items-center justify-around w-[85%] max-w-sm bg-zinc-900/90 backdrop-blur-2xl rounded-[1.75rem] shadow-2xl shadow-black/30 border border-white/[0.06] px-1.5 py-0.5 pointer-events-auto">
+        <div className="flex items-center justify-around w-[85%] max-w-sm bg-white/90 dark:bg-zinc-900/90 backdrop-blur-2xl rounded-[1.75rem] shadow-2xl shadow-zinc-300/50 dark:shadow-black/30 border border-zinc-200 dark:border-white/[0.06] px-1.5 py-0.5 pointer-events-auto">
           {navItems.map((item) => (
             <DockItem
               key={item.key}

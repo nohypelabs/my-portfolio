@@ -51,15 +51,15 @@ export function Sidebar() {
   const SidebarContent = () => (
     <div className="flex flex-col h-full">
       {/* Header */}
-      <div className="p-4 border-b border-white/5">
+      <div className="p-4 border-b border-zinc-200 dark:border-white/5">
         <div className="flex items-center gap-3">
           <div className="relative">
             <AvatarImage size={isOpen ? 42 : 36} priority />
-            <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full ring-2 ring-zinc-950" />
+            <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 rounded-full ring-2 ring-white dark:ring-zinc-950" />
           </div>
           {isOpen && (
             <Link href="/" className="min-w-0 group">
-              <h2 className="font-bold text-sm text-white truncate group-hover:text-emerald-400 transition-colors">
+              <h2 className="font-bold text-sm text-zinc-900 dark:text-white truncate group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                 Abdul Gofur
               </h2>
               <p className="text-[11px] text-zinc-500 truncate">{t.fullstackDev}</p>
@@ -80,8 +80,8 @@ export function Sidebar() {
               onClick={() => setIsMobileOpen(false)}
               className={`relative flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group ${
                 active
-                  ? "bg-emerald-500/10 text-emerald-400"
-                  : "text-zinc-400 hover:text-zinc-200 hover:bg-white/5"
+                  ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                  : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-white/5"
               }`}
             >
               {active && (
@@ -93,7 +93,9 @@ export function Sidebar() {
               )}
               <div
                 className={`p-1.5 rounded-lg transition-colors ${
-                  active ? "bg-emerald-500/15" : "bg-white/5 group-hover:bg-white/10"
+                  active
+                    ? "bg-emerald-500/15"
+                    : "bg-zinc-100 dark:bg-white/5 group-hover:bg-zinc-200 dark:group-hover:bg-white/10"
                 }`}
               >
                 <Icon className="w-4 h-4 flex-shrink-0" />
@@ -106,10 +108,10 @@ export function Sidebar() {
 
       {/* Footer - Toggle (Desktop only) */}
       {!isMobileOpen && (
-        <div className="hidden lg:block p-3 border-t border-white/5">
+        <div className="hidden lg:block p-3 border-t border-zinc-200 dark:border-white/5">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-zinc-500 hover:text-zinc-300 hover:bg-white/5 transition-all duration-200"
+            className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-white/5 transition-all duration-200"
           >
             {isOpen ? (
               <>
@@ -135,8 +137,8 @@ export function Sidebar() {
         className="lg:hidden fixed top-3 left-4 z-50 rounded-full ring-2 ring-emerald-500/30 shadow-lg shadow-emerald-500/10 overflow-hidden w-9 h-9 transition-transform active:scale-90"
       >
         {isMobileOpen ? (
-          <div className="w-full h-full bg-zinc-900 flex items-center justify-center">
-            <X className="w-4 h-4 text-white" />
+          <div className="w-full h-full bg-zinc-100 dark:bg-zinc-900 flex items-center justify-center">
+            <X className="w-4 h-4 text-zinc-900 dark:text-white" />
           </div>
         ) : (
           <Image
@@ -153,7 +155,7 @@ export function Sidebar() {
       <motion.aside
         initial={false}
         animate={{ width: isOpen ? 280 : 80 }}
-        className="hidden lg:block fixed left-0 top-0 h-screen bg-zinc-950/95 backdrop-blur-xl border-r border-white/5 z-40"
+        className="hidden lg:block fixed left-0 top-0 h-screen bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl border-r border-zinc-200 dark:border-white/5 z-40"
       >
         <SidebarContent />
       </motion.aside>
@@ -166,7 +168,7 @@ export function Sidebar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+              className="lg:hidden fixed inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm z-40"
               onClick={() => setIsMobileOpen(false)}
             />
             <motion.aside
@@ -174,7 +176,7 @@ export function Sidebar() {
               animate={{ x: 0 }}
               exit={{ x: -280 }}
               transition={{ type: "spring", stiffness: 400, damping: 30 }}
-              className="lg:hidden fixed left-0 top-0 h-screen w-72 bg-zinc-950/95 backdrop-blur-xl border-r border-white/5 z-50"
+              className="lg:hidden fixed left-0 top-0 h-screen w-72 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl border-r border-zinc-200 dark:border-white/5 z-50"
             >
               <SidebarContent />
             </motion.aside>
