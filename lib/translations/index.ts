@@ -151,6 +151,23 @@ export const translations = {
     heroHeadline: "Came back after 9 years. Shipped 4 production systems in 12 months.",
     heroNarrative: "After a 9-year break from tech, I came back with AI-augmented development and shipped 4 production systems in under a year. From POS systems handling real transactions to logistics QC processing 250K+ records — I solve real problems with modern tech.",
 
+    // CV Page
+    cvProfile: "Profile",
+    cvEducation: "Education",
+    cvBackground: "Background",
+    cvWorkExperience: "Work Experience",
+    cvTechnicalSkills: "Technical Skills",
+    cvLanguages: "Languages",
+    cvPortfolioProjects: "Web Project Portfolio",
+    cvFrontend: "Frontend",
+    cvBackend: "Backend & API",
+    cvDatabase: "Database",
+    cvDevOps: "DevOps & Tools",
+    cvArchitecture: "Architecture",
+    cvTesting: "Testing",
+    cvDownloadPDF: "Download PDF",
+    cvProduction: "production",
+
     // Language switcher
     switchToId: "Switch to Indonesian",
     switchToEn: "Switch to English",
@@ -306,6 +323,23 @@ export const translations = {
     heroRole: "Full-stack Developer & AI-Augmented Engineer",
     heroHeadline: "Comeback setelah 9 tahun. Kirim 4 sistem production dalam 12 bulan.",
     heroNarrative: "Setelah 9 tahun vakum dari dunia tech, saya kembali dengan AI-augmented development dan mengirim 4 sistem production dalam kurang dari setahun. Dari sistem POS yang menangani transaksi nyata hingga QC logistik dengan 250K+ records — saya menyelesaikan masalah nyata dengan teknologi modern.",
+
+    // CV Page
+    cvProfile: "Profil",
+    cvEducation: "Pendidikan",
+    cvBackground: "Latar Belakang",
+    cvWorkExperience: "Pengalaman Kerja",
+    cvTechnicalSkills: "Keahlian Teknis",
+    cvLanguages: "Bahasa",
+    cvPortfolioProjects: "Portfolio Proyek Web",
+    cvFrontend: "Frontend",
+    cvBackend: "Backend & API",
+    cvDatabase: "Database",
+    cvDevOps: "DevOps & Tools",
+    cvArchitecture: "Architecture",
+    cvTesting: "Testing",
+    cvDownloadPDF: "Download PDF",
+    cvProduction: "production",
 
     // Language switcher
     switchToId: "Ganti ke Bahasa Indonesia",

@@ -2,8 +2,18 @@
 
 import { Download } from "lucide-react";
 import Image from "next/image";
+import { useLanguage } from "@/lib/context/LanguageContext";
+import { translations } from "@/lib/translations";
+import { personalInfo } from "@/lib/data/personalInfo";
+import { projects } from "@/lib/data/projects";
+import { cvData } from "@/lib/data/cvData";
 
 export default function CVPage() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
+  const productionProjects = projects.filter((p) => p.status === "production");
+
   const handleDownloadPDF = () => {
     window.print();
   };
@@ -15,7 +25,7 @@ export default function CVPage() {
         className="fixed top-20 right-4 md:top-24 md:right-8 z-50 bg-zinc-900 hover:bg-zinc-800 text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 print:hidden transition-colors"
       >
         <Download className="w-5 h-5" />
-        <span className="hidden md:inline">Download PDF</span>
+        <span className="hidden md:inline">{t.cvDownloadPDF}</span>
       </button>
 
       <div className="w-full md:max-w-[210mm] bg-white shadow-2xl overflow-hidden">
@@ -26,16 +36,16 @@ export default function CVPage() {
             <div className="shrink-0">
               <Image
                 src="/avatar.jpg"
-                alt="Abdul Gofur"
+                alt={personalInfo.name}
                 width={80}
                 height={80}
                 className="rounded-full border-4 border-emerald-500/30"
               />
             </div>
             <div className="flex-1">
-              <h1 className="text-3xl md:text-5xl font-bold mb-2 tracking-wide">ABDUL GOFUR</h1>
-              <div className="text-base md:text-xl font-light mb-2 md:mb-3 text-emerald-400">Full-stack Developer & Web Application Specialist</div>
-              <div className="text-xs md:text-sm text-zinc-400">Building scalable web applications with modern technologies</div>
+              <h1 className="text-3xl md:text-5xl font-bold mb-2 tracking-wide">{personalInfo.name.toUpperCase()}</h1>
+              <div className="text-base md:text-xl font-light mb-2 md:mb-3 text-emerald-400">{personalInfo.role}</div>
+              <div className="text-xs md:text-sm text-zinc-400">{personalInfo.tagline}</div>
             </div>
           </div>
         </div>
@@ -44,11 +54,11 @@ export default function CVPage() {
         <div className="bg-zinc-800 text-zinc-300 p-3 md:p-5 flex flex-wrap gap-3 md:gap-6 text-xs">
           <div className="flex items-center gap-2">
             <span className="text-emerald-400">@</span>
-            <a href="mailto:agdscid@gmail.com" className="hover:text-white transition-colors">agdscid@gmail.com</a>
+            <a href={`mailto:${personalInfo.contact.email}`} className="hover:text-white transition-colors">{personalInfo.contact.email}</a>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-emerald-400">T</span>
-            <span>0878-7441-5491</span>
+            <span>{personalInfo.contact.phone}</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-emerald-400">L</span>
@@ -56,15 +66,15 @@ export default function CVPage() {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-emerald-400">G</span>
-            <a href="https://github.com/nohypelabs" target="_blank" className="hover:text-white transition-colors">github.com/nohypelabs</a>
+            <a href={personalInfo.contact.github} target="_blank" className="hover:text-white transition-colors">github.com/nohypelabs</a>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-emerald-400">in</span>
-            <a href="https://www.linkedin.com/in/abdul-gofur-505345344/" target="_blank" className="hover:text-white transition-colors">linkedin.com/in/abdul-gofur</a>
+            <a href={personalInfo.contact.linkedin} target="_blank" className="hover:text-white transition-colors">linkedin.com/in/abdul-gofur</a>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-emerald-400">X</span>
-            <a href="https://x.com/nohypelabs" target="_blank" className="hover:text-white transition-colors">@nohypelabs</a>
+            <a href={personalInfo.contact.twitter} target="_blank" className="hover:text-white transition-colors">@nohypelabs</a>
           </div>
         </div>
 
@@ -73,63 +83,49 @@ export default function CVPage() {
           {/* Left Column */}
           <div className="space-y-6">
             <div>
-              <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-3 pb-2 border-b-2 border-emerald-500 inline-block">PROFIL</h2>
+              <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-3 pb-2 border-b-2 border-emerald-500 inline-block">{t.cvProfile}</h2>
               <p className="text-xs md:text-sm text-zinc-600 leading-relaxed mt-3">
-                Full-stack developer yang dalam &lt;1 tahun membangun 4 sistem production dengan 250K+ records,
-                digunakan oleh client nyata di J&T Express dan sektor ritel. Spesialisasi di Next.js, tRPC, dan
-                PostgreSQL. Comeback setelah 9 tahun vakum — kini fokus membangun solusi yang scalable dan performant
-                dengan AI-augmented development.
+                {cvData.profile[language]}
               </p>
             </div>
 
             <div>
-              <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-3 pb-2 border-b-2 border-emerald-500 inline-block">PENDIDIKAN</h2>
+              <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-3 pb-2 border-b-2 border-emerald-500 inline-block">{t.cvEducation}</h2>
               <div className="mt-3 space-y-4">
-                {[
-                  { year: "2013", title: "SMA Muhammadiyah 1 Bandung", desc: "" },
-                  { year: "2017", title: "D3 Teknik Informatika", desc: "104 dari 114 SKS selesai (semester 6) — terhenti karena keterbatasan biaya" },
-                ].map((item, i) => (
+                {cvData.education.map((item, i) => (
                   <div key={i} className="border-l-2 border-zinc-200 pl-4 relative">
                     <div className="absolute -left-[5px] top-1 w-2 h-2 bg-emerald-500 rounded-full"></div>
                     <div className="font-bold text-emerald-600 text-sm">{item.year}</div>
                     <div className="font-semibold text-sm text-zinc-900">{item.title}</div>
-                    {item.desc && <div className="text-xs text-zinc-500">{item.desc}</div>}
+                    {item.description[language] && <div className="text-xs text-zinc-500">{item.description[language]}</div>}
                   </div>
                 ))}
               </div>
             </div>
 
             <div>
-              <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-3 pb-2 border-b-2 border-emerald-500 inline-block">LATAR BELAKANG</h2>
+              <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-3 pb-2 border-b-2 border-emerald-500 inline-block">{t.cvBackground}</h2>
               <div className="mt-3 space-y-4">
-                {[
-                  { year: "2014", title: "Pendidikan Dasar Militer — Resimen Mahasiswa", desc: "Dilantik di Dik Passus Situ Lembang" },
-                  { year: "2014", title: "Pendidikan Para Dasar — Korps Marinir", desc: "Pasukan Udara Dasar Marinir / Terjun Statik" },
-                ].map((item, i) => (
+                {cvData.background.map((item, i) => (
                   <div key={i} className="border-l-2 border-zinc-200 pl-4 relative">
                     <div className="absolute -left-[5px] top-1 w-2 h-2 bg-emerald-500 rounded-full"></div>
                     <div className="font-bold text-emerald-600 text-sm">{item.year}</div>
                     <div className="font-semibold text-sm text-zinc-900">{item.title}</div>
-                    {item.desc && <div className="text-xs text-zinc-500">{item.desc}</div>}
+                    {item.description[language] && <div className="text-xs text-zinc-500">{item.description[language]}</div>}
                   </div>
                 ))}
               </div>
             </div>
 
             <div>
-              <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-3 pb-2 border-b-2 border-emerald-500 inline-block">PENGALAMAN KERJA</h2>
+              <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-3 pb-2 border-b-2 border-emerald-500 inline-block">{t.cvWorkExperience}</h2>
               <div className="mt-3 space-y-4">
-                {[
-                  { year: "2015", title: "Mocha Loco Cafe and Resto", desc: "Waiter — 3 bulan (masa libur kuliah)" },
-                  { year: "2017 – 2018", title: "Agen JNE Sudirman 2", desc: "Admin operasional selama 1 tahun" },
-                  { year: "2018 – 2024", title: "Pengembangan Usaha Mandiri", desc: "Mengelola usaha keluarga dan berbagai bidang pekerjaan. Tetap mengikuti perkembangan teknologi secara otodidak" },
-                  { year: "2024 – Sekarang", title: "Full-stack Developer (Freelance)", desc: "Membangun 4 sistem production dengan 250K+ records untuk client di logistik dan ritel. Stack: Next.js, tRPC, PostgreSQL, Supabase" },
-                ].map((item, i) => (
+                {cvData.workExperience.map((item, i) => (
                   <div key={i} className="border-l-2 border-zinc-200 pl-4 relative">
                     <div className="absolute -left-[5px] top-1 w-2 h-2 bg-emerald-500 rounded-full"></div>
                     <div className="font-bold text-emerald-600 text-sm">{item.year}</div>
                     <div className="font-semibold text-sm text-zinc-900">{item.title}</div>
-                    <div className="text-xs text-zinc-500">{item.desc}</div>
+                    <div className="text-xs text-zinc-500">{item.description[language]}</div>
                   </div>
                 ))}
               </div>
@@ -139,36 +135,26 @@ export default function CVPage() {
           {/* Right Column */}
           <div className="space-y-6">
             <div>
-              <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-3 pb-2 border-b-2 border-emerald-500 inline-block">KEAHLIAN TEKNIS</h2>
+              <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-3 pb-2 border-b-2 border-emerald-500 inline-block">{t.cvTechnicalSkills}</h2>
               <div className="mt-3 space-y-3">
-                {[
-                  { label: "Frontend", value: "Next.js, React, TypeScript, Tailwind CSS, Framer Motion" },
-                  { label: "Backend & API", value: "Node.js, tRPC, Prisma, REST API, Python" },
-                  { label: "Database", value: "PostgreSQL, Supabase, Redis, SQLite" },
-                  { label: "DevOps & Tools", value: "Git, Vercel, Docker, CI/CD, PWA, Sentry" },
-                  { label: "Architecture", value: "DDD, Clean Architecture, Repository Pattern" },
-                  { label: "Testing", value: "Playwright E2E, Vitest, Jest, Testing Library" },
-                ].map((skill, i) => (
+                {cvData.skillCategories.map((skill, i) => (
                   <div key={i} className="bg-zinc-50 p-3 rounded-lg border-l-2 border-emerald-500">
-                    <div className="font-semibold text-sm text-zinc-900">{skill.label}</div>
-                    <div className="text-xs text-zinc-500">{skill.value}</div>
+                    <div className="font-semibold text-sm text-zinc-900">{t[skill.labelKey]}</div>
+                    <div className="text-xs text-zinc-500">{skill.skills}</div>
                   </div>
                 ))}
               </div>
             </div>
 
             <div>
-              <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-3 pb-2 border-b-2 border-emerald-500 inline-block">BAHASA</h2>
+              <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-3 pb-2 border-b-2 border-emerald-500 inline-block">{t.cvLanguages}</h2>
               <div className="mt-3 grid grid-cols-2 gap-4">
-                {[
-                  { lang: "Indonesia", level: "Native" },
-                  { lang: "Sunda", level: "Native" },
-                ].map((item, i) => (
+                {cvData.languages.map((item, i) => (
                   <div key={i} className="text-center">
                     <div className="w-16 h-16 mx-auto rounded-full bg-zinc-900 flex items-center justify-center text-emerald-400 font-bold text-xs mb-2">
-                      {item.level}
+                      {item.level[language]}
                     </div>
-                    <div className="text-xs font-semibold text-zinc-700">{item.lang}</div>
+                    <div className="text-xs font-semibold text-zinc-700">{item.name[language]}</div>
                   </div>
                 ))}
               </div>
@@ -177,52 +163,25 @@ export default function CVPage() {
 
           {/* Projects Section - Full Width */}
           <div className="col-span-1 md:col-span-2 bg-zinc-50 p-4 md:p-6 rounded-xl mt-4">
-            <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-4 pb-2 border-b-2 border-emerald-500 inline-block">PORTFOLIO PROYEK WEB</h2>
+            <h2 className="text-xl md:text-2xl font-bold text-zinc-900 mb-4 pb-2 border-b-2 border-emerald-500 inline-block">{t.cvPortfolioProjects}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 mt-5">
-              {[
-                {
-                  title: "Serat QC — Selisih Berat",
-                  desc: "Logistics QC System for J&T Express. 80.187 resi diproses, 160.374 foto GPS watermarked. Dari 4-5 jam manual menjadi < 30 menit.",
-                  tags: ["Next.js", "GPS API", "Barcode", "Supabase"],
-                  url: "selisih-berat.vercel.app",
-                  status: "production" as const,
-                },
-                {
-                  title: "WC Check",
-                  desc: "Toilet Monitoring System. 3.293 inspeksi, 53 users, 49 lokasi terkelola dengan QR code dan analytics real-time.",
-                  tags: ["Next.js", "TypeScript", "Supabase", "PWA"],
-                  url: "wc-checks.vercel.app",
-                  status: "production" as const,
-                },
-                {
-                  title: "LakuPOS",
-                  desc: "Kasir & Warehouse System. Multi-outlet, barcode scanning, QRIS payment, DDD architecture.",
-                  tags: ["Next.js", "tRPC", "PostgreSQL", "Redis"],
-                  url: "lakupos.vercel.app",
-                  status: "production" as const,
-                },
-                {
-                  title: "Qohira — E-Commerce Manual Payment",
-                  desc: "E-Commerce platform dengan product catalog, shopping cart, order tracking, dan payment integration.",
-                  tags: ["Next.js", "tRPC", "Prisma", "PostgreSQL"],
-                  url: "qohira.vercel.app",
-                  status: "production" as const,
-                },
-              ].map((project, i) => (
-                <div key={i} className="bg-white rounded-lg p-4 md:p-5 shadow-sm border border-zinc-200 hover:-translate-y-1 transition-transform">
+              {productionProjects.map((project) => (
+                <div key={project.id} className="bg-white rounded-lg p-4 md:p-5 shadow-sm border border-zinc-200 hover:-translate-y-1 transition-transform">
                   <h3 className="font-bold text-sm md:text-base mb-2 text-zinc-900">{project.title}</h3>
-                  <p className="text-xs text-zinc-500 mb-3 leading-relaxed">{project.desc}</p>
+                  <p className="text-xs text-zinc-500 mb-3 leading-relaxed">{project.shortDescription}</p>
                   <div className="flex flex-wrap gap-1.5 mb-3">
-                    {project.tags.map((tag) => (
+                    {project.tags.slice(0, 4).map((tag) => (
                       <span key={tag} className="bg-zinc-900 text-white px-2 py-0.5 rounded text-[9px] font-medium">{tag}</span>
                     ))}
                   </div>
                   <div className="flex items-center justify-between">
-                    <a href={`https://${project.url}`} className="text-emerald-600 hover:underline text-xs font-semibold" target="_blank">
-                      {project.url}
-                    </a>
+                    {project.demo && (
+                      <a href={project.demo} className="text-emerald-600 hover:underline text-xs font-semibold" target="_blank">
+                        {new URL(project.demo).hostname}
+                      </a>
+                    )}
                     <span className="px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded text-[9px] font-bold uppercase">
-                      {project.status}
+                      {t.cvProduction}
                     </span>
                   </div>
                 </div>
@@ -233,8 +192,8 @@ export default function CVPage() {
 
         {/* Footer */}
         <div className="bg-zinc-900 text-zinc-400 text-center p-3 md:p-5 text-xs">
-          Portfolio: <a href="https://nohype.vercel.app" target="_blank" className="font-semibold text-emerald-400 hover:underline">nohype.vercel.app</a> |
-          Created by Abdul Gofur | 2025
+          Portfolio: <a href="https://abdulgofur.vercel.app" target="_blank" className="font-semibold text-emerald-400 hover:underline">abdulgofur.vercel.app</a> |{" "}
+          Created by {personalInfo.name} | {new Date().getFullYear()}
         </div>
       </div>
 
@@ -242,7 +201,7 @@ export default function CVPage() {
       <style jsx global>{`
         @media print {
           @page {
-            size: 210mm 330mm;
+            size: 210mm 297mm;
             margin: 0;
           }
 
