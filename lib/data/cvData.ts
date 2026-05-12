@@ -99,5 +99,6 @@ export const cvData = {
   languages: [
     { name: { en: "Indonesian", id: "Indonesia" }, level: { en: "Native", id: "Asli" } },
     { name: { en: "Sundanese", id: "Sunda" }, level: { en: "Native", id: "Asli" } },
+    { name: { en: "English", id: "Inggris" }, level: { en: "Intermediate", id: "Menengah" } },
   ],
 };

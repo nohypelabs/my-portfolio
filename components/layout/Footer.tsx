@@ -59,7 +59,7 @@ export function Footer() {
               ? "Built with Next.js & Claude"
               : "Dibuat dengan Next.js & Claude"}
           </p>
-          <p>&copy; 2025 {personalInfo.name}</p>
+          <p>&copy; {new Date().getFullYear()} {personalInfo.name}</p>
         </div>
       </div>
     </footer>

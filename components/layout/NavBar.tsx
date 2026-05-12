@@ -145,7 +145,7 @@ export function NavBar() {
   return (
     <>
       {/* ── Desktop Top Bar ── */}
-      <header className="sticky top-0 z-40 hidden lg:block bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-200 dark:border-white/5">
+      <header className="sticky top-0 z-40 hidden lg:block bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-200 dark:border-white/5 print:hidden">
         <div className="max-w-5xl mx-auto flex items-center justify-between h-14 px-6">
           {/* Left: Avatar + Name */}
           <Link href="/" className="flex items-center gap-3 shrink-0">
@@ -196,7 +196,7 @@ export function NavBar() {
       </header>
 
       {/* ── Mobile Top Bar ── */}
-      <header className="sticky top-0 z-40 lg:hidden bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-200 dark:border-white/5">
+      <header className="sticky top-0 z-40 lg:hidden bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-200 dark:border-white/5 print:hidden">
         <div className="flex items-center justify-between h-12 px-4">
           <Link href="/" className="flex items-center gap-2.5">
             <AvatarImage size={28} priority />
@@ -249,7 +249,7 @@ export function NavBar() {
 
       {/* ── Mobile Bottom Dock ── */}
       <nav
-        className="lg:hidden fixed bottom-0 left-0 right-0 z-50 pointer-events-none"
+        className="lg:hidden fixed bottom-0 left-0 right-0 z-50 pointer-events-none print:hidden"
         onMouseMove={(e) => mouseX.set(e.clientX)}
         onMouseLeave={() => mouseX.set(-1)}
         onTouchMove={(e) => {
