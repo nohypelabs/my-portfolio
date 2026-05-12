@@ -89,7 +89,7 @@ export function PWAInstallPrompt() {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 100, opacity: 0 }}
         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-        className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-md z-50"
+        className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:max-w-md z-50 print:hidden"
       >
         <div className="bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl shadow-2xl p-6 text-white">
           <button

@@ -63,7 +63,7 @@ export function FloatingContact() {
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          className="fixed bottom-20 lg:bottom-6 right-4 lg:right-6 z-40 flex flex-col items-center gap-3"
+          className="fixed bottom-20 lg:bottom-6 right-4 lg:right-6 z-40 flex flex-col items-center gap-3 print:hidden"
         >
           <AnimatePresence>
             {open && actions.map((action, i) => (
