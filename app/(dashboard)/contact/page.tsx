@@ -6,6 +6,7 @@ import { Github, Linkedin, Mail, Twitter, ArrowUpRight, Rocket, Copy, Check, Clo
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { translations } from "@/lib/translations";
 import { useState } from "react";
+import Script from "next/script";
 
 const waNumber = personalInfo.contact.phone.replace(/^0/, "62");
 
@@ -180,6 +181,32 @@ export default function ContactPage() {
           );
         })}
       </div>
+
+      {/* LinkedIn Badge */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.35 }}
+        className="flex justify-center"
+      >
+        <div
+          className="badge-base LI-profile-badge"
+          data-locale="in_ID"
+          data-size="medium"
+          data-theme="light"
+          data-type="VERTICAL"
+          data-vanity="abdul-gofur-505345344"
+          data-version="v1"
+        >
+          <a
+            className="badge-base__link LI-simple-link"
+            href="https://id.linkedin.com/in/abdul-gofur-505345344?trk=profile-badge"
+          >
+            Abdul Gofur
+          </a>
+        </div>
+        <Script src="https://platform.linkedin.com/badges/js/profile.js" strategy="lazyOnload" />
+      </motion.div>
 
       {/* CTA */}
       <motion.div

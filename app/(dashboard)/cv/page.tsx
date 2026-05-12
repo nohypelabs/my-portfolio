@@ -187,7 +187,7 @@ export default function CVPage() {
 
         {/* Footer */}
         <div className="bg-zinc-900 text-zinc-400 text-center p-2 md:p-4 text-[10px]">
-          Portfolio: <a href="https://abdulgofur.vercel.app" target="_blank" className="font-semibold text-emerald-400 hover:underline">abdulgofur.vercel.app</a> |{" "}
+          Portfolio: <a href="https://nohypelabs.vercel.app" target="_blank" className="font-semibold text-emerald-400 hover:underline">nohypelabs.vercel.app</a> |{" "}
           Created by {personalInfo.name} | {new Date().getFullYear()}
         </div>
       </div>
