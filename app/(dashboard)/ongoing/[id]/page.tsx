@@ -31,10 +31,10 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
     <div className="max-w-5xl mx-auto space-y-8">
       {/* Back Button */}
       <Link
-        href="/"
+        href="/ongoing"
         className="inline-flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
       >
-        {t.backToDashboard}
+        {t.backToOngoing}
       </Link>
 
       {/* Header */}

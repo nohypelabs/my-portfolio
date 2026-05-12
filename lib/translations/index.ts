@@ -26,7 +26,9 @@ export const translations = {
     home: "Home",
     about: "About",
     contact: "Contact",
-    cv: "Curriculum Vitae",
+    cv: "CV",
+    backToProjects: "← Back to Projects",
+    backToOngoing: "← Back to Ongoing",
 
     // Sidebar Projects
     wcCheck: "WC Check",
@@ -180,7 +182,9 @@ export const translations = {
     home: "Beranda",
     about: "Tentang",
     contact: "Kontak",
-    cv: "Curriculum Vitae",
+    cv: "CV",
+    backToProjects: "← Kembali ke Proyek",
+    backToOngoing: "← Kembali ke Proyek Berjalan",
 
     // Sidebar Projects
     wcCheck: "WC Check",

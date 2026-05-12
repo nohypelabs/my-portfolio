@@ -1,32 +1,26 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { personalInfo } from "@/lib/data/personalInfo";
-import {
-  ArrowUpRight,
-  ChevronDown,
-  Github,
-  Linkedin,
-  Mail,
-  Rocket,
-} from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { translations } from "@/lib/translations";
 import { AvatarImage } from "@/components/AvatarImage";
 import { HeroBackground } from "@/components/HeroBackground";
 import { TextReveal } from "@/components/TextReveal";
-import { LiveMetrics } from "@/components/sections/LiveMetrics";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { FeaturedProjects } from "@/components/sections/FeaturedProjects";
+import { TechStackStrip } from "@/components/sections/TechStackStrip";
+import { OngoingStrip } from "@/components/sections/OngoingStrip";
+import { StatsStrip } from "@/components/sections/StatsStrip";
 
 export default function DashboardPage() {
   const { language } = useLanguage();
   const t = translations[language];
-  const [heroExpanded, setHeroExpanded] = useState(false);
 
   return (
-    <div className="max-w-4xl mx-auto space-y-8 pb-12">
+    <div className="max-w-4xl mx-auto space-y-10 pb-12">
       {/* ── Hero ── */}
       <motion.section
         initial={{ opacity: 0, y: 24 }}
@@ -55,25 +49,18 @@ export default function DashboardPage() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
               </span>
               <span className="text-xs font-semibold text-emerald-400">
-                {language === "en" ? "Open for full-time & contract" : "Tersedia full-time & kontrak"}
+                {language === "en"
+                  ? "Open for full-time & contract"
+                  : "Tersedia full-time & kontrak"}
               </span>
             </motion.div>
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-2">
               <TextReveal text={t.heroHeadline} delay={0.3} />
             </h1>
             <div className="w-12 h-0.5 bg-emerald-500/40 rounded-full mb-4" />
-            <div className="max-w-2xl">
-              <p className={`text-zinc-400 text-sm md:text-base leading-relaxed text-justify ${!heroExpanded ? "line-clamp-2 md:line-clamp-none" : ""}`}>
-                {t.heroNarrative}
-              </p>
-              <button
-                onClick={() => setHeroExpanded(!heroExpanded)}
-                className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-emerald-400 hover:text-emerald-300 transition-colors md:hidden"
-              >
-                {heroExpanded ? (language === "en" ? "Show less" : "Sembunyikan") : (language === "en" ? "Read more" : "Selengkapnya")}
-                <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${heroExpanded ? "rotate-180" : ""}`} />
-              </button>
-            </div>
+            <p className="text-zinc-400 text-sm md:text-base leading-relaxed max-w-2xl">
+              {t.heroNarrative}
+            </p>
 
             <div className="flex flex-wrap gap-3 mt-5">
               <Link
@@ -91,10 +78,20 @@ export default function DashboardPage() {
                 {t.contactMe}
               </Link>
               <div className="hidden md:flex items-center gap-2 ml-1">
-                <a href={personalInfo.contact.github} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-all">
+                <a
+                  href={personalInfo.contact.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-all"
+                >
                   <Github className="w-4 h-4" />
                 </a>
-                <a href={personalInfo.contact.linkedin} target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-all">
+                <a
+                  href={personalInfo.contact.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-lg bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white transition-all"
+                >
                   <Linkedin className="w-4 h-4" />
                 </a>
               </div>
@@ -103,9 +100,24 @@ export default function DashboardPage() {
         </div>
       </motion.section>
 
-      {/* ── Live Production Metrics ── */}
-      <ScrollReveal delay={0.05}>
-        <LiveMetrics />
+      {/* ── Stats ── */}
+      <ScrollReveal>
+        <StatsStrip />
+      </ScrollReveal>
+
+      {/* ── Featured Projects ── */}
+      <ScrollReveal>
+        <FeaturedProjects />
+      </ScrollReveal>
+
+      {/* ── Tech Stack ── */}
+      <ScrollReveal>
+        <TechStackStrip />
+      </ScrollReveal>
+
+      {/* ── Ongoing Work ── */}
+      <ScrollReveal>
+        <OngoingStrip />
       </ScrollReveal>
 
       {/* ── CTA ── */}
@@ -121,11 +133,9 @@ export default function DashboardPage() {
 
           <div className="relative p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
             <div className="flex-1 text-center md:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-4">
-                <Rocket className="w-3.5 h-3.5" />
-                {language === "en" ? "Full-time · Contract · Freelance" : "Full-time · Kontrak · Freelance"}
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">{t.letsWork}</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-3">
+                {t.letsWork}
+              </h2>
               <p className="text-zinc-400 max-w-md">{t.letsWorkDesc}</p>
             </div>
 

@@ -6,7 +6,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://abdulgofur.vercel.app'
 
   // Static pages
-  const routes = ['', '/about', '/contact'].map((route) => ({
+  const routes = ['', '/projects', '/cv', '/contact'].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
     changeFrequency: 'monthly' as const,

@@ -5,6 +5,11 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactCompiler: true,
   turbopack: {},
+  redirects: async () => [
+    { source: "/about", destination: "/", permanent: true },
+    { source: "/skills", destination: "/", permanent: true },
+    { source: "/ongoing", destination: "/", permanent: true },
+  ],
 };
 
 export default withPWA({

@@ -1,8 +1,6 @@
-import { Sidebar } from "@/components/layout/Sidebar";
-import { BottomNav } from "@/components/layout/BottomNav";
+import { NavBar } from "@/components/layout/NavBar";
 import { Footer } from "@/components/layout/Footer";
 import { PWAInstallPrompt } from "@/components/PWAInstallPrompt";
-import { TopBar } from "@/components/layout/TopBar";
 import { PageTransition } from "@/components/PageTransition";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { CommandPalette } from "@/components/CommandPalette";
@@ -19,14 +17,11 @@ export default function DashboardLayout({
       <ScrollProgress />
       <CommandPalette />
       <CustomCursor />
-      <Sidebar />
-      <BottomNav />
+      <NavBar />
       <PWAInstallPrompt />
       <FloatingContact />
 
-      <main className="lg:ml-[var(--sidebar-width,280px)] min-h-screen transition-all duration-300">
-        <TopBar />
-
+      <main className="min-h-screen">
         <div className="p-6 pb-24 lg:pb-6">
           <PageTransition>
             {children}
