@@ -165,6 +165,7 @@ export const translations = {
     cvDevOps: "DevOps & Tools",
     cvArchitecture: "Architecture",
     cvTesting: "Testing",
+    cvGeneralIT: "General IT",
     cvDownloadPDF: "Download PDF",
     cvProduction: "production",
 
@@ -338,6 +339,7 @@ export const translations = {
     cvDevOps: "DevOps & Tools",
     cvArchitecture: "Architecture",
     cvTesting: "Testing",
+    cvGeneralIT: "IT Umum",
     cvDownloadPDF: "Download PDF",
     cvProduction: "production",
 

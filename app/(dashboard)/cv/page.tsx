@@ -62,7 +62,7 @@ export default function CVPage() {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-emerald-400">L</span>
-            <span>Jakarta, Indonesia</span>
+            <span>Bandung, Indonesia</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-emerald-400">G</span>

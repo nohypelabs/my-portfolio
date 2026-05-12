@@ -80,16 +80,8 @@ export const cvData = {
       year: "2024 – 2026",
       title: "PT PIM Parking",
       description: {
-        en: "Field Staff & Boomgate Technician — Vehicle entry/exit access portal systems",
-        id: "Staf Lapangan dan Teknisi Boomgate Portal Akses Keluar Masuk Kendaraan",
-      },
-    },
-    {
-      year: "2024 – Present",
-      title: "Full-stack Developer (Freelance)",
-      description: {
-        en: "Built 4 production systems with 250K+ records for clients in logistics and retail. Stack: Next.js, tRPC, PostgreSQL, Supabase",
-        id: "Membangun 4 sistem production dengan 250K+ records untuk client di logistik dan ritel. Stack: Next.js, tRPC, PostgreSQL, Supabase",
+        en: "Field Staff & Boomgate Technician — Vehicle entry/exit access portal systems. Concurrently freelancing as Full-stack Developer — built 4 production systems with 250K+ records for clients in logistics and retail. Stack: Next.js, tRPC, PostgreSQL, Supabase",
+        id: "Staf Lapangan dan Teknisi Boomgate Portal Akses Keluar Masuk Kendaraan. Sambil freelance Full-stack Developer — membangun 4 sistem production dengan 250K+ records untuk client di logistik dan ritel. Stack: Next.js, tRPC, PostgreSQL, Supabase",
       },
     },
   ],
@@ -101,6 +93,7 @@ export const cvData = {
     { labelKey: "cvDevOps" as const, skills: "Git, Vercel, Docker, CI/CD, PWA, Sentry" },
     { labelKey: "cvArchitecture" as const, skills: "DDD, Clean Architecture, Repository Pattern" },
     { labelKey: "cvTesting" as const, skills: "Playwright E2E, Vitest, Jest, Testing Library" },
+    { labelKey: "cvGeneralIT" as const, skills: "Hardware & Software PC (Rakit PC, Install Ulang Windows & Linux), Mengetik 10 Jari — 87 WPM" },
   ],
 
   languages: [
