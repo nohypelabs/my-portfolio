@@ -29,8 +29,8 @@ export const cvData = {
       year: "2014",
       title: "Pendidikan Para Dasar — Korps Marinir",
       description: {
-        en: "Basic Paratrooper / Static Jump — Marine Corps",
-        id: "Pasukan Udara Dasar Marinir / Terjun Statik",
+        en: "Basic Paratrooper / Static Jump at Kodikmar TNI AL Gunungsari, Surabaya",
+        id: "Pasukan Udara Dasar Marinir / Terjun Statik di Kodikmar TNI AL Gunungsari, Surabaya",
       },
     },
   ],
@@ -53,11 +53,35 @@ export const cvData = {
       },
     },
     {
-      year: "2018 – 2024",
-      title: "Self-employed Development",
+      year: "2018 – 2019",
+      title: "PT Kinenta Purwakarta",
       description: {
-        en: "Managed family business across various fields. Kept up with technology trends through self-learning",
-        id: "Mengelola usaha keluarga dan berbagai bidang pekerjaan. Tetap mengikuti perkembangan teknologi secara otodidak",
+        en: "Quality Control (QC) Staff",
+        id: "Staf Quality Control (QC)",
+      },
+    },
+    {
+      year: "2019 – 2021",
+      title: "Freelancer",
+      description: {
+        en: "Various freelance projects",
+        id: "Berbagai proyek freelance",
+      },
+    },
+    {
+      year: "2021 – 2023",
+      title: "PT Bina Pustaka Madani",
+      description: {
+        en: "Sales & Marketing Staff — Al-Qur'an division",
+        id: "Staf Sales dan Marketing Al-Qur'an",
+      },
+    },
+    {
+      year: "2024 – 2026",
+      title: "PT PIM Parking",
+      description: {
+        en: "Field Staff & Boomgate Technician — Vehicle entry/exit access portal systems",
+        id: "Staf Lapangan dan Teknisi Boomgate Portal Akses Keluar Masuk Kendaraan",
       },
     },
     {
