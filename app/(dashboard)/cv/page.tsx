@@ -127,7 +127,7 @@ export default function CVPage() {
               </div>
             </div>
 
-            <div>
+            <div className="print-hide">
               <h2 className="cv-h2 text-lg md:text-xl font-bold text-zinc-900 mb-2 pb-1 border-b-2 border-emerald-500 inline-block">{t.cvBackground}</h2>
               <div className="mt-2 space-y-2">
                 {cvData.background.map((item, i) => (
@@ -221,12 +221,13 @@ export default function CVPage() {
         @media print {
           @page {
             size: A4 portrait;
-            margin: 8mm;
+            margin: 6mm;
           }
 
           * {
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
+            box-sizing: border-box !important;
           }
 
           body { margin: 0; padding: 0; }
@@ -242,63 +243,69 @@ export default function CVPage() {
 
           .shadow-2xl {
             box-shadow: none !important;
-            max-width: 100% !important;
+            max-width: 160mm !important;
+            margin: 0 auto !important;
           }
 
           .print-hide { display: none !important; }
 
-          /* Header compact */
-          .bg-zinc-900.text-white { padding: 6mm 8mm !important; }
-          .bg-zinc-900.text-white img { width: 40px !important; height: 40px !important; }
-          h1 { font-size: 14pt !important; margin-bottom: 2pt !important; line-height: 1.1 !important; }
-          .text-emerald-400.text-base, .text-emerald-400.md\\:text-lg { font-size: 9pt !important; margin-bottom: 1pt !important; }
-          .text-xs.md\\:text-sm.text-zinc-400 { font-size: 7pt !important; }
+          /* Header ultra compact */
+          .bg-zinc-900.text-white { padding: 3mm 6mm !important; }
+          .bg-zinc-900.text-white img { width: 28px !important; height: 28px !important; }
+          h1 { font-size: 11pt !important; margin-bottom: 0 !important; line-height: 1 !important; }
+          .text-emerald-400.text-base, .text-emerald-400.md\\:text-lg { font-size: 7pt !important; margin-bottom: 0 !important; }
+          .text-xs.md\\:text-sm.text-zinc-400 { font-size: 6pt !important; }
 
-          /* Contact bar compact */
-          .bg-zinc-800 { padding: 3mm 8mm !important; gap: 4mm !important; font-size: 7pt !important; }
+          /* Contact bar ultra compact */
+          .bg-zinc-800 { padding: 1.5mm 6mm !important; gap: 2mm !important; font-size: 5.5pt !important; }
 
-          /* Main grid compact */
-          .cv-grid { padding: 4mm 8mm !important; gap: 4mm !important; grid-template-columns: 1fr 1fr !important; display: grid !important; }
-          .cv-col { gap: 2mm !important; }
-          .cv-col > div { margin-top: 2mm !important; }
+          /* Main grid — 2 columns tight */
+          .cv-grid {
+            padding: 2mm 6mm !important;
+            gap: 3mm !important;
+            grid-template-columns: 1fr 1fr !important;
+            display: grid !important;
+          }
+          .cv-col { gap: 1.5mm !important; }
+          .cv-col > div { margin-top: 1mm !important; }
 
           /* Section headings */
-          .cv-h2 { font-size: 9pt !important; margin-bottom: 1mm !important; padding-bottom: 0.5mm !important; }
+          .cv-h2 { font-size: 7.5pt !important; margin-bottom: 0.5mm !important; padding-bottom: 0.3mm !important; }
 
           /* Timeline entries */
-          .border-l-2 { padding-left: 3mm !important; margin-bottom: 1mm !important; }
-          .border-l-2 .font-bold.text-emerald-600 { font-size: 7pt !important; }
-          .border-l-2 .font-semibold.text-xs { font-size: 7pt !important; }
-          .border-l-2 .text-\\[11px\\], .border-l-2 .text-xs.text-zinc-500 { font-size: 6.5pt !important; line-height: 1.2 !important; }
+          .border-l-2 { padding-left: 2mm !important; margin-bottom: 0.5mm !important; }
+          .border-l-2 .font-bold.text-emerald-600 { font-size: 6pt !important; }
+          .border-l-2 .font-semibold.text-xs { font-size: 6pt !important; }
+          .border-l-2 .text-\\[11px\\], .border-l-2 .text-xs.text-zinc-500 { font-size: 5.5pt !important; line-height: 1.15 !important; }
+          .border-l-2 .text-\\[10px\\] { display: none !important; }
 
           /* Profile text */
-          .text-xs.text-zinc-600 { font-size: 7pt !important; line-height: 1.3 !important; }
+          .text-xs.text-zinc-600 { font-size: 6pt !important; line-height: 1.2 !important; }
 
           /* Skills compact */
-          .bg-zinc-50 { padding: 1.5mm 2.5mm !important; margin-bottom: 1mm !important; }
-          .bg-zinc-50 .font-semibold.text-xs { font-size: 7pt !important; }
-          .bg-zinc-50 .text-\\[11px\\] { font-size: 6.5pt !important; }
+          .bg-zinc-50 { padding: 1mm 2mm !important; margin-bottom: 0.5mm !important; }
+          .bg-zinc-50 .font-semibold.text-xs { font-size: 5.5pt !important; }
+          .bg-zinc-50 .text-\\[11px\\] { font-size: 5pt !important; }
 
           /* Language badges */
-          .rounded-full.bg-zinc-900 { padding: 1.5mm 2mm !important; font-size: 5.5pt !important; width: auto !important; height: auto !important; }
-          .text-\\[11px\\].font-semibold.text-zinc-700 { font-size: 6.5pt !important; }
+          .rounded-full.bg-zinc-900 { padding: 0.5mm 1.5mm !important; font-size: 5pt !important; width: auto !important; height: auto !important; }
+          .text-\\[11px\\].font-semibold.text-zinc-700 { font-size: 5pt !important; }
 
-          /* Project cards (same as skills) */
-          .cv-col > div:last-child .bg-zinc-50 { padding: 1.5mm 2.5mm !important; margin-bottom: 1mm !important; }
-          .cv-col > div:last-child h3 { font-size: 7pt !important; }
-          .cv-col > div:last-child .bg-zinc-900 { font-size: 5pt !important; padding: 0.3mm 1.5mm !important; }
-          .cv-col > div:last-child .text-emerald-600 { font-size: 6pt !important; }
+          /* Project cards */
+          .cv-col .bg-zinc-50 { padding: 1mm 2mm !important; margin-bottom: 0.5mm !important; }
+          .cv-col h3 { font-size: 5.5pt !important; }
+          .cv-col .bg-zinc-900 { font-size: 4pt !important; padding: 0.2mm 1mm !important; }
+          .cv-col .text-emerald-600 { font-size: 5pt !important; }
 
-          /* Footer compact */
-          .bg-zinc-900.text-zinc-400 { padding: 2mm 8mm !important; font-size: 6pt !important; }
+          /* Footer ultra compact */
+          .bg-zinc-900.text-zinc-400 { padding: 1.5mm 6mm !important; font-size: 5pt !important; }
 
           /* Remove decorative elements */
           .absolute.-top-20 { display: none !important; }
           .absolute.-left-\\[4px\\], .absolute.-left-\\[5px\\] { display: none !important; }
 
-          /* No page breaks inside sections */
-          .cv-col > div { page-break-inside: avoid; }
-          .bg-white.rounded-lg { page-break-inside: avoid; }
+          /* No page breaks — force 1 page */
+          .cv-grid, .cv-col, .cv-col > div { page-break-inside: avoid !important; break-inside: avoid !important; }
 
           a[href]:after { content: none !important; }
         }
