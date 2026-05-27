@@ -57,8 +57,8 @@ export default function CVPage() {
             <a href={`mailto:${personalInfo.contact.email}`} className="hover:text-white transition-colors">{personalInfo.contact.email}</a>
           </div>
           <div className="flex items-center gap-1.5">
-            <span className="text-emerald-400">T</span>
-            <span>{personalInfo.contact.phone}</span>
+            <span className="text-emerald-400">W</span>
+            <a href={`https://wa.me/${personalInfo.contact.phone.replace(/^0/, "62")}`} target="_blank" className="hover:text-white transition-colors">WhatsApp</a>
           </div>
           <div className="flex items-center gap-1.5">
             <span className="text-emerald-400">L</span>
@@ -90,14 +90,38 @@ export default function CVPage() {
             </div>
 
             <div>
-              <h2 className="cv-h2 text-lg md:text-xl font-bold text-zinc-900 mb-2 pb-1 border-b-2 border-emerald-500 inline-block">{t.cvEducation}</h2>
+              <h2 className="cv-h2 text-lg md:text-xl font-bold text-zinc-900 mb-2 pb-1 border-b-2 border-emerald-500 inline-block">{language === "en" ? "Technical Experience" : "Pengalaman Teknis"}</h2>
               <div className="mt-2 space-y-2">
-                {cvData.education.map((item, i) => (
+                {cvData.technicalExperience.map((item, i) => (
                   <div key={i} className="border-l-2 border-zinc-200 pl-3 relative">
                     <div className="absolute -left-[4px] top-1 w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
                     <div className="font-bold text-emerald-600 text-xs">{item.year}</div>
                     <div className="font-semibold text-xs text-zinc-900">{item.title}</div>
-                    {item.description[language] && <div className="text-[11px] text-zinc-500">{item.description[language]}</div>}
+                    <div className="text-[11px] text-zinc-500">{item.description[language]}</div>
+                    {"highlights" in item && (item as any).highlights?.length > 0 && (
+                      <ul className="mt-1 space-y-0.5">
+                        {(item as any).highlights.map((h: string, j: number) => (
+                          <li key={j} className="text-[10px] text-zinc-600 flex items-start gap-1">
+                            <span className="text-emerald-500 mt-0.5">▸</span>
+                            <span>{h}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h2 className="cv-h2 text-lg md:text-xl font-bold text-zinc-900 mb-2 pb-1 border-b-2 border-emerald-500 inline-block">{language === "en" ? "Other Experience" : "Pengalaman Lain"}</h2>
+              <div className="mt-2 space-y-2">
+                {cvData.otherExperience.map((item, i) => (
+                  <div key={i} className="border-l-2 border-zinc-200 pl-3 relative">
+                    <div className="absolute -left-[4px] top-1 w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
+                    <div className="font-bold text-emerald-600 text-xs">{item.year}</div>
+                    <div className="font-semibold text-xs text-zinc-900">{item.title}</div>
+                    <div className="text-[11px] text-zinc-500">{item.description[language]}</div>
                   </div>
                 ))}
               </div>
@@ -118,14 +142,14 @@ export default function CVPage() {
             </div>
 
             <div>
-              <h2 className="cv-h2 text-lg md:text-xl font-bold text-zinc-900 mb-2 pb-1 border-b-2 border-emerald-500 inline-block">{t.cvWorkExperience}</h2>
+              <h2 className="cv-h2 text-lg md:text-xl font-bold text-zinc-900 mb-2 pb-1 border-b-2 border-emerald-500 inline-block">{t.cvEducation}</h2>
               <div className="mt-2 space-y-2">
-                {cvData.workExperience.map((item, i) => (
+                {cvData.education.map((item, i) => (
                   <div key={i} className="border-l-2 border-zinc-200 pl-3 relative">
                     <div className="absolute -left-[4px] top-1 w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
                     <div className="font-bold text-emerald-600 text-xs">{item.year}</div>
                     <div className="font-semibold text-xs text-zinc-900">{item.title}</div>
-                    <div className="text-[11px] text-zinc-500">{item.description[language]}</div>
+                    {item.description[language] && <div className="text-[11px] text-zinc-500">{item.description[language]}</div>}
                   </div>
                 ))}
               </div>

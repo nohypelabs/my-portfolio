@@ -71,7 +71,7 @@ export const translations = {
     techMastered: "Core Techs",
     dataProcessed: "Data Processed",
     devTime: "Dev Time",
-    productivity: "Productivity",
+    productivity: "Ship Time",
     visitLive: "Visit Live",
     live: "Live",
 
@@ -148,8 +148,8 @@ export const translations = {
 
     // Hero content
     heroRole: "Full-stack Developer & AI-Augmented Engineer",
-    heroHeadline: "Came back after 9 years. Shipped 4 production systems in 12 months.",
-    heroNarrative: "After a 9-year break from tech, I came back with AI-augmented development and shipped 4 production systems in under a year. From POS systems handling real transactions to logistics QC processing 250K+ records — I solve real problems with modern tech.",
+    heroHeadline: "Came back to full-stack after 9 years. Shipped 4 production systems in 12 months.",
+    heroNarrative: "After 9 years away from production tech, I came back with AI-augmented development and shipped 4 production systems in under a year. From POS systems handling real transactions to logistics QC processing 250K+ records — I solve real problems with modern tech.",
 
     // CV Page
     cvProfile: "Profile",
@@ -245,7 +245,7 @@ export const translations = {
     techMastered: "Tech Inti",
     dataProcessed: "Data Diproses",
     devTime: "Waktu Dev",
-    productivity: "Produktivitas",
+    productivity: "Waktu Ship",
     visitLive: "Kunjungi",
     live: "Live",
 
@@ -322,8 +322,8 @@ export const translations = {
 
     // Hero content
     heroRole: "Full-stack Developer & AI-Augmented Engineer",
-    heroHeadline: "Comeback setelah 9 tahun. Kirim 4 sistem production dalam 12 bulan.",
-    heroNarrative: "Setelah 9 tahun vakum dari dunia tech, saya kembali dengan AI-augmented development dan mengirim 4 sistem production dalam kurang dari setahun. Dari sistem POS yang menangani transaksi nyata hingga QC logistik dengan 250K+ records — saya menyelesaikan masalah nyata dengan teknologi modern.",
+    heroHeadline: "Kembali ke full-stack setelah 9 tahun. Kirim 4 sistem production dalam 12 bulan.",
+    heroNarrative: "Setelah 9 tahun tidak aktif di production tech, saya kembali dengan AI-augmented development dan mengirim 4 sistem production dalam kurang dari setahun. Dari sistem POS yang menangani transaksi nyata hingga QC logistik dengan 250K+ records — saya menyelesaikan masalah nyata dengan teknologi modern.",
 
     // CV Page
     cvProfile: "Profil",

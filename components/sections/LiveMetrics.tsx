@@ -123,6 +123,7 @@ interface ProjectGroup {
   link: string;
   demo: string;
   accent: string;
+  note?: string;
   cards: {
     key: string;
     labelKey: string;
@@ -160,6 +161,7 @@ function getProjectGroups(): ProjectGroup[] {
       link: "/projects/lakupos",
       demo: "https://lakupos.vercel.app",
       accent: "blue",
+      note: "Recently deployed — client actively onboarding",
       cards: [
         { key: "laku-transactions", labelKey: "transactions", icon: Receipt, getValue: (m) => m.lakuPos.transactions, highlight: true },
         { key: "laku-products", labelKey: "registeredProducts", icon: Box, getValue: (m) => m.lakuPos.products },
@@ -332,6 +334,11 @@ export function LiveMetrics() {
                   {group.name}
                   <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
+                {group.note && (
+                  <span className="text-[10px] text-zinc-500 ml-4 mt-0.5 italic">
+                    {group.note}
+                  </span>
+                )}
                 <a
                   href={group.demo}
                   target="_blank"

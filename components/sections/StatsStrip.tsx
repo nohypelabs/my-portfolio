@@ -10,7 +10,7 @@ const STATS = [
   { value: "4", labelKey: "activeProjects" as const, accent: "text-blue-500" },
   { value: "6", labelKey: "techMastered" as const, accent: "text-purple-500" },
   { value: "<1yr", labelKey: "devTime" as const, accent: "text-pink-500" },
-  { value: "10x", labelKey: "productivity" as const, accent: "text-yellow-500" },
+  { value: "Weeks", labelKey: "productivity" as const, accent: "text-yellow-500" },
 ];
 
 export function StatsStrip() {

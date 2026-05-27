@@ -24,7 +24,7 @@ const socialLinks = [
     icon: Phone,
     customIcon: WhatsAppIcon,
     url: `https://wa.me/${waNumber}`,
-    handle: personalInfo.contact.phone.replace(/(\d{4})(\d{4})(\d{4})/, "$1-$2-$3"),
+    handle: "Chat via WhatsApp",
     color: "green",
   },
   {
@@ -181,6 +181,81 @@ export default function ContactPage() {
           );
         })}
       </div>
+
+      {/* Contact Form */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 p-6"
+      >
+        <h3 className="font-bold text-lg text-zinc-900 dark:text-white mb-1">
+          {language === "en" ? "Send a Message" : "Kirim Pesan"}
+        </h3>
+        <p className="text-xs text-zinc-500 mb-4">
+          {language === "en"
+            ? "Fill out the form and I'll get back to you within 24 hours."
+            : "Isi form di bawah dan saya akan merespons dalam 24 jam."}
+        </p>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            const formData = new FormData(e.currentTarget);
+            const name = formData.get("name");
+            const email = formData.get("email");
+            const message = formData.get("message");
+            const subject = encodeURIComponent(`Portfolio Contact from ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+            window.open(`mailto:${personalInfo.contact.email}?subject=${subject}&body=${body}`);
+          }}
+          className="space-y-3"
+        >
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                {language === "en" ? "Name" : "Nama"}
+              </label>
+              <input
+                type="text"
+                name="name"
+                required
+                placeholder={language === "en" ? "Your name" : "Nama kamu"}
+                className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-sm text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="you@example.com"
+                className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-sm text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500"
+              />
+            </div>
+          </div>
+          <div>
+            <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+              {language === "en" ? "Message" : "Pesan"}
+            </label>
+            <textarea
+              name="message"
+              required
+              rows={4}
+              placeholder={language === "en" ? "Tell me about your project..." : "Ceritakan tentang project kamu..."}
+              className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-sm text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 resize-none"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full sm:w-auto px-6 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-emerald-500/20"
+          >
+            {language === "en" ? "Send Message" : "Kirim Pesan"}
+          </button>
+        </form>
+      </motion.div>
 
       {/* LinkedIn Badge */}
       <motion.div

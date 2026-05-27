@@ -6,7 +6,6 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   turbopack: {},
   redirects: async () => [
-    { source: "/about", destination: "/", permanent: true },
     { source: "/skills", destination: "/", permanent: true },
     { source: "/ongoing", destination: "/", permanent: true },
   ],

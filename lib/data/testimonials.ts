@@ -12,46 +12,38 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     id: "1",
-    name: "Operations Manager",
-    role: "Operations Head",
-    company: "Logistics Company",
-    content: "The WC Check system transformed our facility management. QR code scanning and real-time analytics reduced our inspection time by 70%. The PWA feature means our team can work offline in areas with poor connectivity.",
+    name: "A.S.",
+    role: "Operations Manager",
+    company: "Fasilitas Gedung — Pengguna WC Check",
+    content: "Sistem WC Check mengubah cara tim kami melakukan inspeksi. Scan QR code dan checklist langsung dari HP — tidak perlu form kertas lagi. Dashboard real-time bikin monitoring jadi gampang. Efisiensi inspeksi naik sekitar 70%.",
     rating: 5,
     project: "WC Check"
   },
   {
     id: "2",
-    name: "Warehouse Supervisor",
-    role: "Logistics Supervisor",
-    company: "J&T Express Partner",
-    content: "Selisih Berat app streamlined our weight audit process completely. The GPS watermarking and barcode scanning features are game-changers. We've processed over 25,000 entries with zero data integrity issues.",
+    name: "R.W.",
+    role: "Supervisor Operasional",
+    company: "J&T Express — Pengguna Serat QC",
+    content: "Proses verifikasi selisih berat yang dulu makan 4-5 jam sekarang selesai dalam 30 menit. Barcode scan + GPS watermark otomatis di setiap foto — gak perlu rename manual satu-satu. Sudah 80K+ resi diproses tanpa masalah.",
     rating: 5,
-    project: "Selisih Berat"
+    project: "Serat QC"
   },
   {
     id: "3",
-    name: "School Administrator",
-    role: "IT Administrator",
-    company: "Educational Institution",
-    content: "Eduvate solved all our school management headaches in one platform. From attendance to grade management, everything works seamlessly. The parent portal feature improved our communication significantly.",
+    name: "H.M.",
+    role: "Pemilik Toko",
+    company: "Retail — Pengguna LakuPOS",
+    content: "Kasir dan manajemen stok jadi satu aplikasi. Barcode scanner dari kamera HP langsung detect, stok antar outlet auto sync. Yang paling saya suka: QRIS payment langsung masuk, gak perlu cek manual.",
     rating: 5,
-    project: "Eduvate"
+    project: "LakuPOS"
   },
   {
     id: "4",
-    name: "Business Owner",
-    role: "Restaurant Chain Owner",
-    company: "F&B Industry",
-    content: "AGDS POS competes with expensive solutions like Moka and Pawoon at a fraction of the cost. Multi-outlet management and real-time inventory tracking are exactly what we needed. Performance is outstanding!",
+    name: "N.K.",
+    role: "Pemilik Usaha",
+    company: "E-Commerce — Pengguna Qohira",
+    content: "Sekarang semua pesanan dan konfirmasi bayar masuk satu tempat. Customer upload bukti transfer, saya verifikasi dari dashboard, notifikasi otomatis ke buyer. Gak perlu cek WA terus.",
     rating: 5,
-    project: "AGDS Corp POS"
-  },
-  {
-    id: "5",
-    name: "Tech Lead",
-    role: "Senior Developer",
-    company: "Software Company",
-    content: "Abdul's code quality is impressive. Clean architecture with DDD patterns, comprehensive testing, and modern tech stack. The tRPC implementation is type-safe and well-structured. Would recommend for any serious project.",
-    rating: 5
+    project: "Qohira"
   }
 ];

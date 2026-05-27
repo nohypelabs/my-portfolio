@@ -15,7 +15,7 @@ const STATS = [
   { value: "4", labelKey: "activeProjects" as const, accent: "text-blue-400", border: "border-blue-500/20", bg: "bg-blue-500/5" },
   { value: "6", labelKey: "techMastered" as const, accent: "text-purple-400", border: "border-purple-500/20", bg: "bg-purple-500/5" },
   { value: "<1yr", labelKey: "devTime" as const, accent: "text-pink-400", border: "border-pink-500/20", bg: "bg-pink-500/5" },
-  { value: "10x", labelKey: "productivity" as const, accent: "text-yellow-400", border: "border-yellow-500/20", bg: "bg-yellow-500/5" },
+  { value: "Weeks", labelKey: "productivity" as const, accent: "text-yellow-400", border: "border-yellow-500/20", bg: "bg-yellow-500/5" },
 ];
 
 const productionProjects = projects.filter((p) => p.status === "production");

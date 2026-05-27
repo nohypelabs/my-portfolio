@@ -2,25 +2,26 @@
 
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { personalInfo } from "@/lib/data/personalInfo";
 
 const socialLinks = [
   {
     name: "GitHub",
     icon: Github,
-    url: "https://github.com/agds-dev",
-    handle: "@agds-dev"
+    url: personalInfo.contact.github,
+    handle: `@${personalInfo.contact.github.split("/").pop()}`
   },
   {
     name: "LinkedIn",
     icon: Linkedin,
-    url: "https://linkedin.com/in/abdul-gofur",
-    handle: "Abdul Gofur"
+    url: personalInfo.contact.linkedin,
+    handle: personalInfo.name
   },
   {
     name: "Email",
     icon: Mail,
-    url: "mailto:contact@abdulgofur.dev",
-    handle: "contact@abdulgofur.dev"
+    url: `mailto:${personalInfo.contact.email}`,
+    handle: personalInfo.contact.email
   }
 ];
 

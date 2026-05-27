@@ -58,14 +58,31 @@ export const projects: Project[] = [
       "Tablet/iPad optimized UI"
     ],
     impact: {
+      dataVolume: "11 transaksi | 2 produk | 4 outlet aktif",
       performance: "Production-ready dengan E2E test coverage",
-      users: "Digunakan client nyata untuk operasional kasir & gudang"
+      users: "Digunakan client nyata untuk operasional kasir & gudang harian"
     },
     caseStudy: {
       problem: "Client butuh sistem kasir yang bisa handle multi-outlet, barcode scanning, dan QRIS payment dalam satu aplikasi",
       painPoints: ["Sistem kasir sebelumnya tidak support multi-outlet", "Manual stock tracking antar cabang"],
       solution: "Full-stack POS dengan DDD architecture, real-time inventory sync, dan tablet-optimized UI",
-      metrics: [],
+      metrics: [
+        {
+          label: "Checkout process",
+          before: "Manual hitung + ketik ulang",
+          after: "Scan barcode → auto-add ke keranjang"
+        },
+        {
+          label: "Stok antar outlet",
+          before: "Excel terpisah per cabang",
+          after: "Real-time sync + transfer antar outlet"
+        },
+        {
+          label: "Pembayaran QRIS",
+          before: "Manual cek rekening",
+          after: "QRIS auto-generate, verifikasi otomatis"
+        }
+      ],
       testimonial: {
         quote: "Sistem kasirnya enak banget, bisa scan barcode langsung dari kamera. Stok antar outlet auto sync.",
         author: "Pemilik Toko",
@@ -137,7 +154,23 @@ export const projects: Project[] = [
       problem: "Inspeksi kebersihan toilet dilakukan manual dengan form kertas, tidak ada monitoring real-time",
       painPoints: ["Form kertas hilang/rusak", "Tidak ada data historis", "Tidak bisa monitor real-time"],
       solution: "Web-based inspection system dengan QR code, photo documentation, dan real-time dashboard",
-      metrics: [],
+      metrics: [
+        {
+          label: "Inspeksi per hari",
+          before: "5-10 inspeksi (form kertas)",
+          after: "20-30 inspeksi (scan QR + checklist)"
+        },
+        {
+          label: "Laporan",
+          before: "Manual kumpulkan form, input ke Excel",
+          after: "Auto-generate dashboard real-time"
+        },
+        {
+          label: "Data historis",
+          before: "Tidak ada (form hilang/rusak)",
+          after: "3.293 inspeksi tercatat, searchable"
+        }
+      ],
       testimonial: {
         quote: "Sekarang tinggal scan QR, checklist, foto, selesai. Laporan langsung masuk dashboard.",
         author: "Koordinator Lapangan",
@@ -201,9 +234,9 @@ export const projects: Project[] = [
       "Bundle size optimization dengan analyzer"
     ],
     impact: {
-      dataVolume: "16 products & 6 orders in production database",
+      dataVolume: "16 produk | 6 pesanan | 5 user terdaftar",
       performance: "Type-safe end-to-end dengan tRPC + Prisma ORM",
-      users: "Dipakai client nyata dengan admin dashboard aktif"
+      users: "Dipakai client nyata — admin dashboard aktif untuk kelola produk & pesanan"
     },
     caseStudy: {
       problem: "Client butuh toko online dengan alur pembayaran manual (transfer bank) dan verifikasi oleh admin sebelum pesanan diproses",
@@ -213,7 +246,23 @@ export const projects: Project[] = [
         "Tidak ada notifikasi otomatis ke pembeli & admin"
       ],
       solution: "E-commerce platform dengan manual payment verification flow — customer upload bukti transfer, admin konfirmasi via dashboard, notifikasi otomatis via email & web push",
-      metrics: [],
+      metrics: [
+        {
+          label: "Kelola produk & pesanan",
+          before: "Chat WA manual, data tersebar",
+          after: "Dashboard terpusat — produk, pesanan, stok"
+        },
+        {
+          label: "Verifikasi pembayaran",
+          before: "Cek rekening manual via WA",
+          after: "Customer upload bukti → admin verifikasi di dashboard"
+        },
+        {
+          label: "Notifikasi",
+          before: "Manual chat satu-satu ke buyer",
+          after: "Auto email + web push saat status berubah"
+        }
+      ],
       testimonial: {
         quote: "Sekarang semua pesanan dan konfirmasi bayar masuk satu tempat, gak perlu cek WA terus.",
         author: "Pemilik Toko",

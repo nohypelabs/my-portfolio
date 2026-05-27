@@ -106,7 +106,7 @@ export const metrics: Metric[] = [
   },
   {
     label: "AI-Augmented",
-    value: "10x",
+    value: "Weeks",
     description: "Productivity via Claude CLI as force multiplier",
     icon: "zap"
   }

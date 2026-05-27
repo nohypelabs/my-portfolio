@@ -1,12 +1,13 @@
 import { MetadataRoute } from 'next'
 import { projects } from '@/lib/data/projects'
 import { ongoingProjects } from '@/lib/data/ongoingProjects'
+import { blogPosts } from '@/lib/data/blogPosts'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://abdulgofur.vercel.app'
 
   // Static pages
-  const routes = ['', '/projects', '/cv', '/contact'].map((route) => ({
+  const routes = ['', '/projects', '/about', '/blog', '/cv', '/contact', '/live'].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
     changeFrequency: 'monthly' as const,
@@ -29,5 +30,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...routes, ...projectPages, ...ongoingPages]
+  // Blog post pages
+  const blogPages = blogPosts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: post.date,
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
+
+  return [...routes, ...projectPages, ...ongoingPages, ...blogPages]
 }
