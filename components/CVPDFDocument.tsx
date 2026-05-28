@@ -21,6 +21,7 @@ Font.register({
   ],
 });
 
+// ── Colors (exact match from web) ──────────────
 const TEAL = "#10b981";
 const DARK = "#0f172a";
 const GRAY_600 = "#475569";
@@ -29,28 +30,29 @@ const GRAY_400 = "#94a3b8";
 const BORDER = "#e2e8f0";
 const BG_CARD = "#f8fafc";
 
-const styles = StyleSheet.create({
+// ── Styles (exact match from web page.tsx inline styles) ──
+const s = StyleSheet.create({
   page: {
     fontFamily: "Helvetica",
     fontSize: 9,
     lineHeight: 1.4,
     color: DARK,
-    padding: "0.35in 0.45in",
+    padding: "0.4in 0.5in", // matches web: padding: "0.4in 0.5in"
   },
 
-  // ── Header ──────────────────────────────────────
+  // Header — matches web: padding: "18pt 20pt", bg-zinc-900
   header: {
     backgroundColor: DARK,
     color: "white",
-    padding: "10pt 12pt",
-    marginBottom: 8,
+    padding: 14,
+    marginBottom: 10,
     flexDirection: "row",
     alignItems: "center",
   },
   headerPhoto: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
     marginRight: 12,
     borderWidth: 2,
     borderColor: TEAL,
@@ -60,26 +62,26 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   headerName: {
-    fontSize: 18,
-    fontWeight: 800,
+    fontSize: 22,
+    fontWeight: "bold",
     letterSpacing: 1.5,
     textTransform: "uppercase",
-    marginBottom: 1,
+    marginBottom: 2,
   },
   headerRole: {
-    fontSize: 8.5,
+    fontSize: 10,
     fontWeight: 300,
     color: TEAL,
-    marginBottom: 4,
+    marginBottom: 6,
   },
-  // Contact: 2-column grid — guaranteed no wrap
+  // Contact: 2-column grid — matches web: gap: 12pt, fontSize: 7.5pt
   contactGrid: {
     flexDirection: "row",
     flexWrap: "wrap",
-    marginTop: 4,
-    paddingTop: 4,
-    borderTopWidth: 0.5,
-    borderTopColor: "rgba(255,255,255,0.15)",
+    marginTop: 8,
+    paddingTop: 6,
+    borderTopWidth: 1,
+    borderTopColor: "rgba(255,255,255,0.1)",
     borderTopStyle: "solid",
   },
   contactCell: {
@@ -90,126 +92,122 @@ const styles = StyleSheet.create({
   },
   contactLabel: {
     color: TEAL,
-    fontWeight: 700,
-    fontSize: 7,
-    width: 12,
+    fontWeight: "bold",
+    fontSize: 7.5,
+    width: 14,
   },
   contactText: {
     color: GRAY_400,
-    fontSize: 7,
+    fontSize: 7.5,
   },
   contactLink: {
     color: GRAY_400,
-    fontSize: 7,
+    fontSize: 7.5,
     textDecoration: "none",
   },
 
-  // ── Grid ────────────────────────────────────────
+  // Grid — matches web: gap: 14pt
   grid: {
     flexDirection: "row",
-    gap: 12,
+    gap: 14,
   },
-  leftCol: {
-    flex: 1,
-  },
-  rightCol: {
-    flex: 1,
-  },
+  leftCol: { flex: 1 },
+  rightCol: { flex: 1 },
 
-  // ── Section headers ─────────────────────────────
-  sectionTitle: {
-    fontSize: 9.5,
-    fontWeight: 700,
+  // Section headers — matches web: fontSize: 10pt, fontWeight: 700
+  h2: {
+    fontSize: 10,
+    fontWeight: "bold",
     color: DARK,
     textTransform: "uppercase",
     letterSpacing: 0.8,
     borderBottomWidth: 2,
     borderBottomColor: TEAL,
     borderBottomStyle: "solid",
-    paddingBottom: 2,
-    marginBottom: 6,
-    marginTop: 8,
+    paddingBottom: 3,
+    marginBottom: 8,
+    marginTop: 10,
   },
-  sectionTitleFirst: {
-    fontSize: 9.5,
-    fontWeight: 700,
+  h2First: {
+    fontSize: 10,
+    fontWeight: "bold",
     color: DARK,
     textTransform: "uppercase",
     letterSpacing: 0.8,
     borderBottomWidth: 2,
     borderBottomColor: TEAL,
     borderBottomStyle: "solid",
-    paddingBottom: 2,
-    marginBottom: 6,
+    paddingBottom: 3,
+    marginBottom: 8,
     marginTop: 0,
   },
 
-  // ── Profile ─────────────────────────────────────
+  // Profile — matches web: fontSize: 8pt, color: #475569
   profileText: {
-    fontSize: 7.5,
+    fontSize: 8,
     color: GRAY_600,
     lineHeight: 1.5,
   },
 
-  // ── Timeline entries ────────────────────────────
+  // Timeline entries — matches web: borderLeft: 2pt solid #e2e8f0
   entry: {
     borderLeftWidth: 2,
     borderLeftColor: BORDER,
     borderLeftStyle: "solid",
-    paddingLeft: 8,
-    marginBottom: 6,
+    paddingLeft: 10,
+    marginBottom: 8,
   },
   entryYear: {
-    fontSize: 6.5,
-    fontWeight: 700,
+    fontSize: 7,
+    fontWeight: "bold",
     color: TEAL,
     textTransform: "uppercase",
     letterSpacing: 0.3,
   },
   entryTitle: {
-    fontSize: 8,
-    fontWeight: 700,
+    fontSize: 8.5,
+    fontWeight: "bold",
     color: DARK,
-    marginBottom: 1,
+    marginBottom: 2,
   },
   entryDesc: {
-    fontSize: 7,
+    fontSize: 7.5,
     color: GRAY_500,
-    lineHeight: 1.35,
+    lineHeight: 1.4,
   },
   bulletItem: {
-    fontSize: 6.5,
+    fontSize: 7,
     color: GRAY_600,
-    lineHeight: 1.35,
+    lineHeight: 1.4,
     marginTop: 1,
   },
 
-  // ── Skill cards ─────────────────────────────────
+  // Skill cards — matches web: padding: "5pt 8pt"
   skillCard: {
     backgroundColor: BG_CARD,
     borderLeftWidth: 2.5,
     borderLeftColor: TEAL,
     borderLeftStyle: "solid",
-    padding: "3pt 5pt",
-    borderRadius: 2,
-    marginBottom: 3,
+    padding: "4pt 6pt",
+    borderRadius: 3,
+    marginBottom: 4,
   },
   skillLabel: {
-    fontSize: 7,
-    fontWeight: 700,
+    fontSize: 7.5,
+    fontWeight: "bold",
     color: DARK,
   },
   skillList: {
-    fontSize: 6.5,
+    fontSize: 7,
     color: GRAY_500,
-    lineHeight: 1.35,
+    lineHeight: 1.4,
   },
 
-  // ── Languages ───────────────────────────────────
+  // Languages — matches web: grid 3 cols, gap 6pt
   langRow: {
     flexDirection: "row",
-    gap: 8,
-    marginBottom: 4,
+    gap: 6,
+    marginBottom: 6,
   },
   langItem: {
     flex: 1,
@@ -218,29 +216,28 @@ const styles = StyleSheet.create({
   langBadge: {
     backgroundColor: DARK,
     color: TEAL,
-    fontSize: 5.5,
-    fontWeight: 700,
-    padding: "2pt 0",
-    width: 52,
-    borderRadius: 10,
+    fontSize: 6,
+    fontWeight: "bold",
+    padding: "3pt 6pt",
+    borderRadius: 20,
     textAlign: "center",
   },
   langName: {
-    fontSize: 6.5,
-    fontWeight: 600,
+    fontSize: 7,
+    fontWeight: "bold",
     color: "#334155",
     textAlign: "center",
     marginTop: 2,
   },
 
-  // ── Project cards ───────────────────────────────
+  // Project cards — matches web: padding: "5pt 8pt"
   projectCard: {
     backgroundColor: BG_CARD,
     borderLeftWidth: 2.5,
     borderLeftColor: TEAL,
     borderLeftStyle: "solid",
     padding: "4pt 6pt",
-    borderRadius: 2,
+    borderRadius: 3,
     marginBottom: 4,
   },
   projectHeader: {
@@ -250,12 +247,12 @@ const styles = StyleSheet.create({
   },
   projectTitle: {
     fontSize: 7.5,
-    fontWeight: 700,
+    fontWeight: "bold",
     color: DARK,
     flex: 1,
   },
   projectLink: {
-    fontSize: 5.5,
+    fontSize: 6,
     color: TEAL,
     textDecoration: "none",
     flexShrink: 0,
@@ -270,58 +267,58 @@ const styles = StyleSheet.create({
     backgroundColor: DARK,
     color: "white",
     fontSize: 5,
-    fontWeight: 600,
-    padding: "1pt 3pt",
+    fontWeight: "bold",
+    padding: "1pt 4pt",
     borderRadius: 2,
   },
 
-  // ── Footer ──────────────────────────────────────
+  // Footer — matches web: padding: "6pt", fontSize: "6.5pt"
   footer: {
     backgroundColor: DARK,
     color: GRAY_400,
     textAlign: "center",
-    padding: 4,
-    borderRadius: 3,
-    fontSize: 6,
-    marginTop: 10,
+    padding: 6,
+    borderRadius: 4,
+    fontSize: 6.5,
+    marginTop: 12,
   },
   footerLink: {
     color: TEAL,
     textDecoration: "none",
-    fontWeight: 600,
+    fontWeight: "bold",
   },
 });
 
-// ── Helper: bullet highlights ─────────────────────
+// ── Helpers ──────────────────────────────────────
+
 function Highlights({ items }: { items: string[] }) {
-  if (!items || items.length === 0) return null;
+  if (!items?.length) return null;
   return (
-    <View style={{ marginTop: 2 }}>
+    <View style={{ marginTop: 3 }}>
       {items.map((h, i) => (
         <View key={i} style={{ flexDirection: "row", marginTop: 1 }}>
-          <Text style={{ color: TEAL, fontSize: 5.5, marginRight: 3, marginTop: 0.5 }}>▸</Text>
-          <Text style={styles.bulletItem}>{h}</Text>
+          <Text style={{ color: TEAL, fontSize: 6, marginRight: 3 }}>▸</Text>
+          <Text style={s.bulletItem}>{h}</Text>
         </View>
       ))}
     </View>
   );
 }
 
-// ── Helper: contact item ──────────────────────────
 function ContactItem({ label, text, href }: { label: string; text: string; href?: string }) {
   return (
-    <View style={styles.contactCell}>
-      <Text style={styles.contactLabel}>{label}</Text>
+    <View style={s.contactCell}>
+      <Text style={s.contactLabel}>{label}</Text>
       {href ? (
-        <Link src={href} style={styles.contactLink}>{text}</Link>
+        <Link src={href} style={s.contactLink}>{text}</Link>
       ) : (
-        <Text style={styles.contactText}>{text}</Text>
+        <Text style={s.contactText}>{text}</Text>
       )}
     </View>
   );
 }
 
-// ── Main Component ────────────────────────────────
+// ── Main ─────────────────────────────────────────
 
 interface Props {
   cvData: typeof cvDataType;
@@ -345,17 +342,14 @@ export default function CVPDFDocument({
 
   return (
     <Document>
-      <Page size="LEGAL" style={styles.page}>
-        {/* ── Header ─────────────────────────────── */}
-        <View style={styles.header}>
-          <Image src={photoUrl} style={styles.headerPhoto} />
-          <View style={styles.headerInfo}>
-            <Text style={styles.headerName}>
-              {personalInfo.name.toUpperCase()}
-            </Text>
-            <Text style={styles.headerRole}>{personalInfo.role}</Text>
-            {/* Contact: 2-column grid, never wraps */}
-            <View style={styles.contactGrid}>
+      <Page size="LEGAL" style={s.page}>
+        {/* Header — exact match from web */}
+        <View style={s.header}>
+          <Image src={photoUrl} style={s.headerPhoto} />
+          <View style={s.headerInfo}>
+            <Text style={s.headerName}>{personalInfo.name.toUpperCase()}</Text>
+            <Text style={s.headerRole}>{personalInfo.role}</Text>
+            <View style={s.contactGrid}>
               <ContactItem label="@" text={personalInfo.contact.email} />
               <ContactItem label="W" text="WhatsApp" href={`https://wa.me/${personalInfo.contact.phone.replace(/^0/, "62")}`} />
               <ContactItem label="L" text="Bandung, Indonesia" />
@@ -366,107 +360,103 @@ export default function CVPDFDocument({
           </View>
         </View>
 
-        {/* ── Two Column Grid ────────────────────── */}
-        <View style={styles.grid}>
+        {/* Two Column Grid — exact match from web */}
+        <View style={s.grid}>
           {/* LEFT COLUMN */}
-          <View style={styles.leftCol}>
-            <Text style={styles.sectionTitleFirst}>{t.cvProfile}</Text>
-            <Text style={styles.profileText}>{cvData.profile[language]}</Text>
+          <View style={s.leftCol}>
+            <Text style={s.h2First}>{t.cvProfile}</Text>
+            <Text style={s.profileText}>{cvData.profile[language]}</Text>
 
-            <Text style={styles.sectionTitle}>
-              {language === "en" ? "Technical Experience" : "Pengalaman Teknis"}
-            </Text>
+            <Text style={s.h2}>{language === "en" ? "Technical Experience" : "Pengalaman Teknis"}</Text>
             {cvData.technicalExperience.map((item, i) => (
-              <View key={i} style={styles.entry}>
-                <Text style={styles.entryYear}>{item.year}</Text>
-                <Text style={styles.entryTitle}>{item.title}</Text>
-                <Text style={styles.entryDesc}>{item.description[language]}</Text>
+              <View key={i} style={s.entry}>
+                <Text style={s.entryYear}>{item.year}</Text>
+                <Text style={s.entryTitle}>{item.title}</Text>
+                <Text style={s.entryDesc}>{item.description[language]}</Text>
                 {"highlights" in item && (item as any).highlights?.length > 0 && (
                   <Highlights items={(item as any).highlights} />
                 )}
               </View>
             ))}
 
-            <Text style={styles.sectionTitle}>
-              {language === "en" ? "Other Experience" : "Pengalaman Lain"}
-            </Text>
+            <Text style={s.h2}>{language === "en" ? "Other Experience" : "Pengalaman Lain"}</Text>
             {cvData.otherExperience.map((item, i) => (
-              <View key={i} style={styles.entry}>
-                <Text style={styles.entryYear}>{item.year}</Text>
-                <Text style={styles.entryTitle}>{item.title}</Text>
-                <Text style={styles.entryDesc}>{item.description[language]}</Text>
+              <View key={i} style={s.entry}>
+                <Text style={s.entryYear}>{item.year}</Text>
+                <Text style={s.entryTitle}>{item.title}</Text>
+                <Text style={s.entryDesc}>{item.description[language]}</Text>
               </View>
             ))}
 
-            <Text style={styles.sectionTitle}>{t.cvEducation}</Text>
+            <Text style={s.h2}>{t.cvEducation}</Text>
             {cvData.education.map((item, i) => (
-              <View key={i} style={styles.entry}>
-                <Text style={styles.entryYear}>{item.year}</Text>
-                <Text style={styles.entryTitle}>{item.title}</Text>
+              <View key={i} style={s.entry}>
+                <Text style={s.entryYear}>{item.year}</Text>
+                <Text style={s.entryTitle}>{item.title}</Text>
                 {item.description[language] ? (
-                  <Text style={styles.entryDesc}>{item.description[language]}</Text>
+                  <Text style={s.entryDesc}>{item.description[language]}</Text>
                 ) : null}
               </View>
             ))}
           </View>
 
           {/* RIGHT COLUMN */}
-          <View style={styles.rightCol}>
-            <Text style={styles.sectionTitleFirst}>{t.cvTechnicalSkills}</Text>
+          <View style={s.rightCol}>
+            <Text style={s.h2First}>{t.cvTechnicalSkills}</Text>
             {cvData.skillCategories.map((skill, i) => (
-              <View key={i} style={styles.skillCard}>
-                <Text style={styles.skillLabel}>{t[skill.labelKey]}</Text>
-                <Text style={styles.skillList}>{skill.skills}</Text>
+              <View key={i} style={s.skillCard}>
+                <Text style={s.skillLabel}>{t[skill.labelKey]}</Text>
+                <Text style={s.skillList}>{skill.skills}</Text>
               </View>
             ))}
 
-            <Text style={styles.sectionTitle}>{t.cvLanguages}</Text>
-            <View style={styles.langRow}>
+            <Text style={s.h2}>{t.cvLanguages}</Text>
+            <View style={s.langRow}>
               {cvData.languages.map((item, i) => (
-                <View key={i} style={styles.langItem}>
-                  <Text style={styles.langBadge}>{item.level[language]}</Text>
-                  <Text style={styles.langName}>{item.name[language]}</Text>
+                <View key={i} style={s.langItem}>
+                  <Text style={s.langBadge}>{item.level[language]}</Text>
+                  <Text style={s.langName}>{item.name[language]}</Text>
                 </View>
               ))}
             </View>
 
-            <Text style={styles.sectionTitle}>{t.cvPortfolioProjects}</Text>
+            <Text style={s.h2}>{t.cvPortfolioProjects}</Text>
             {productionProjects.map((project) => (
-              <View key={project.id} style={styles.projectCard}>
-                <View style={styles.projectHeader}>
-                  <Text style={styles.projectTitle}>{project.title}</Text>
+              <View key={project.id} style={s.projectCard}>
+                <View style={s.projectHeader}>
+                  <Text style={s.projectTitle}>{project.title}</Text>
                   {project.demo ? (
-                    <Link src={project.demo} style={styles.projectLink}>
+                    <Link src={project.demo} style={s.projectLink}>
                       {new URL(project.demo).hostname}
                     </Link>
                   ) : null}
                 </View>
-                <View style={styles.tagRow}>
+                <View style={s.tagRow}>
                   {project.tags.slice(0, 4).map((tag) => (
-                    <Text key={tag} style={styles.tag}>{tag}</Text>
+                    <Text key={tag} style={s.tag}>{tag}</Text>
                   ))}
                 </View>
               </View>
             ))}
 
-            <Text style={styles.sectionTitle}>{t.cvBackground}</Text>
+            <Text style={s.h2}>{t.cvBackground}</Text>
             {cvData.background.map((item, i) => (
-              <View key={i} style={styles.entry}>
-                <Text style={styles.entryYear}>{item.year}</Text>
-                <Text style={styles.entryTitle}>{item.title}</Text>
+              <View key={i} style={s.entry}>
+                <Text style={s.entryYear}>{item.year}</Text>
+                <Text style={s.entryTitle}>{item.title}</Text>
                 {item.description[language] ? (
-                  <Text style={styles.entryDesc}>{item.description[language]}</Text>
+                  <Text style={s.entryDesc}>{item.description[language]}</Text>
                 ) : null}
               </View>
             ))}
           </View>
         </View>
 
-        {/* ── Footer ─────────────────────────────── */}
-        <View style={styles.footer}>
+        {/* Footer — exact match from web */}
+        <View style={s.footer}>
           <Text>
             Portfolio:{" "}
-            <Link src="https://abdulgofur-builder.vercel.app" style={styles.footerLink}>
+            <Link src="https://abdulgofur-builder.vercel.app" style={s.footerLink}>
               abdulgofur-builder.vercel.app
             </Link>{" "}
             | Created by {personalInfo.name} | 2026

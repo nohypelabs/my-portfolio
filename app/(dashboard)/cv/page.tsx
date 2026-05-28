@@ -163,7 +163,7 @@ export default function CVPage() {
 
         {/* Footer */}
         <div style={{ background: "#0f172a", color: "#94a3b8", textAlign: "center" as const, padding: "6pt", borderRadius: "4pt", fontSize: "6.5pt", marginTop: "12pt" }}>
-          Portfolio: <a href="https://nohypelabs.vercel.app" style={{ color: "#10b981", textDecoration: "none", fontWeight: 600 }}>nohypelabs.vercel.app</a> |{" "}
+          Portfolio: <a href="https://abdulgofur-builder.vercel.app" style={{ color: "#10b981", textDecoration: "none", fontWeight: 600 }}>abdulgofur-builder.vercel.app</a> |{" "}
           Created by {personalInfo.name} | {new Date().getFullYear()}
         </div>
       </div>
