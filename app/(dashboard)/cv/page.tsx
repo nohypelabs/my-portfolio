@@ -14,7 +14,12 @@ export default function CVPage() {
   const productionProjects = projects.filter((p) => p.status === "production");
 
   const handleDownloadPDF = () => {
-    window.print();
+    const link = document.createElement("a");
+    link.href = `/api/cv/pdf?lang=${language}`;
+    link.download = `abdul-gofur-cv-${language}.pdf`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
