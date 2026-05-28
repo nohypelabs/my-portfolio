@@ -27,7 +27,7 @@ export default function CVPage() {
         <span className="hidden md:inline">{t.cvDownloadPDF}</span>
       </button>
 
-      <div className="cv-page bg-white text-zinc-900 mx-auto" style={{ width: "7in", minHeight: "12.5in", fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif", fontSize: "9pt", lineHeight: 1.4 }}>
+      <div className="cv-page bg-white text-zinc-900 mx-auto" style={{ width: "7in", minHeight: "12.5in", fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif", fontSize: "9pt", lineHeight: 1.4, padding: "0.4in 0.5in" }}>
 
         {/* Header */}
         <div className="cv-header bg-gradient-to-br from-zinc-900 to-zinc-800 text-white rounded-md overflow-hidden relative" style={{ padding: "18pt 20pt", marginBottom: "10pt" }}>
@@ -201,10 +201,11 @@ export default function CVPage() {
 
           /* CV page container */
           .cv-page {
-            width: 7in !important;
+            width: 100% !important;
             min-height: auto !important;
             margin: 0 auto !important;
             box-shadow: none !important;
+            padding: 0.4in 0.5in !important;
           }
 
           /* No page breaks inside entries */
