@@ -13,7 +13,6 @@ import type { cvData as cvDataType } from "@/lib/data/cvData";
 import type { personalInfo as personalInfoType } from "@/lib/data/personalInfo";
 import type { projects as projectsType } from "@/lib/data/projects";
 
-// Use Helvetica (built-in) — reliable, no external fetch needed
 Font.register({
   family: "Helvetica",
   fonts: [
@@ -36,22 +35,22 @@ const styles = StyleSheet.create({
     fontSize: 9,
     lineHeight: 1.4,
     color: DARK,
-    padding: "0.4in 0.5in",
+    padding: "0.35in 0.45in",
   },
 
-  // Header
+  // ── Header ──────────────────────────────────────
   header: {
     backgroundColor: DARK,
     color: "white",
-    padding: "12pt 14pt",
+    padding: "10pt 12pt",
     marginBottom: 8,
     flexDirection: "row",
     alignItems: "center",
   },
   headerPhoto: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
+    width: 48,
+    height: 48,
+    borderRadius: 24,
     marginRight: 12,
     borderWidth: 2,
     borderColor: TEAL,
@@ -61,40 +60,54 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   headerName: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 800,
     letterSpacing: 1.5,
     textTransform: "uppercase",
-    marginBottom: 2,
+    marginBottom: 1,
   },
   headerRole: {
-    fontSize: 9,
+    fontSize: 8.5,
     fontWeight: 300,
     color: TEAL,
-    marginBottom: 2,
+    marginBottom: 4,
   },
-  contactRow: {
+  // Contact: 2-column grid — guaranteed no wrap
+  contactGrid: {
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: 10,
-    fontSize: 7.5,
-    color: GRAY_400,
-    marginTop: 6,
-    paddingTop: 6,
+    marginTop: 4,
+    paddingTop: 4,
     borderTopWidth: 0.5,
     borderTopColor: "rgba(255,255,255,0.15)",
     borderTopStyle: "solid",
   },
+  contactCell: {
+    width: "50%",
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 2,
+  },
   contactLabel: {
     color: TEAL,
-    fontWeight: 600,
-    marginRight: 2,
+    fontWeight: 700,
+    fontSize: 7,
+    width: 12,
+  },
+  contactText: {
+    color: GRAY_400,
+    fontSize: 7,
+  },
+  contactLink: {
+    color: GRAY_400,
+    fontSize: 7,
+    textDecoration: "none",
   },
 
-  // Grid
+  // ── Grid ────────────────────────────────────────
   grid: {
     flexDirection: "row",
-    gap: 14,
+    gap: 12,
   },
   leftCol: {
     flex: 1,
@@ -103,9 +116,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 
-  // Section headers
+  // ── Section headers ─────────────────────────────
   sectionTitle: {
-    fontSize: 10,
+    fontSize: 9.5,
     fontWeight: 700,
     color: DARK,
     textTransform: "uppercase",
@@ -113,12 +126,12 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderBottomColor: TEAL,
     borderBottomStyle: "solid",
-    paddingBottom: 3,
-    marginBottom: 8,
-    marginTop: 10,
+    paddingBottom: 2,
+    marginBottom: 6,
+    marginTop: 8,
   },
   sectionTitleFirst: {
-    fontSize: 10,
+    fontSize: 9.5,
     fontWeight: 700,
     color: DARK,
     textTransform: "uppercase",
@@ -126,117 +139,126 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderBottomColor: TEAL,
     borderBottomStyle: "solid",
-    paddingBottom: 3,
-    marginBottom: 8,
+    paddingBottom: 2,
+    marginBottom: 6,
     marginTop: 0,
   },
 
-  // Profile
+  // ── Profile ─────────────────────────────────────
   profileText: {
-    fontSize: 8,
+    fontSize: 7.5,
     color: GRAY_600,
     lineHeight: 1.5,
   },
 
-  // Timeline entries
+  // ── Timeline entries ────────────────────────────
   entry: {
     borderLeftWidth: 2,
     borderLeftColor: BORDER,
     borderLeftStyle: "solid",
-    paddingLeft: 10,
-    marginBottom: 8,
+    paddingLeft: 8,
+    marginBottom: 6,
   },
   entryYear: {
-    fontSize: 7,
+    fontSize: 6.5,
     fontWeight: 700,
     color: TEAL,
     textTransform: "uppercase",
     letterSpacing: 0.3,
   },
   entryTitle: {
-    fontSize: 8.5,
-    fontWeight: 600,
+    fontSize: 8,
+    fontWeight: 700,
     color: DARK,
-    marginBottom: 2,
+    marginBottom: 1,
   },
   entryDesc: {
-    fontSize: 7.5,
+    fontSize: 7,
     color: GRAY_500,
-    lineHeight: 1.4,
+    lineHeight: 1.35,
   },
   bulletItem: {
-    fontSize: 7,
+    fontSize: 6.5,
     color: GRAY_600,
-    lineHeight: 1.4,
+    lineHeight: 1.35,
     marginTop: 1,
   },
 
-  // Skill cards
+  // ── Skill cards ─────────────────────────────────
   skillCard: {
     backgroundColor: BG_CARD,
     borderLeftWidth: 2.5,
     borderLeftColor: TEAL,
     borderLeftStyle: "solid",
-    padding: "4pt 6pt",
-    borderRadius: 3,
-    marginBottom: 4,
+    padding: "3pt 5pt",
+    borderRadius: 2,
+    marginBottom: 3,
   },
   skillLabel: {
-    fontSize: 7.5,
-    fontWeight: 600,
+    fontSize: 7,
+    fontWeight: 700,
     color: DARK,
   },
   skillList: {
-    fontSize: 7,
+    fontSize: 6.5,
     color: GRAY_500,
-    lineHeight: 1.4,
+    lineHeight: 1.35,
   },
 
-  // Languages
+  // ── Languages ───────────────────────────────────
   langRow: {
     flexDirection: "row",
-    gap: 6,
-    marginBottom: 6,
-  },
-  langBadge: {
-    backgroundColor: DARK,
-    color: TEAL,
-    fontSize: 6,
-    fontWeight: 700,
-    padding: "2pt 5pt",
-    borderRadius: 10,
-    textAlign: "center",
-  },
-  langName: {
-    fontSize: 7,
-    fontWeight: 600,
-    color: "#334155",
-    textAlign: "center",
+    gap: 8,
+    marginBottom: 4,
   },
   langItem: {
     flex: 1,
     alignItems: "center",
   },
+  langBadge: {
+    backgroundColor: DARK,
+    color: TEAL,
+    fontSize: 5.5,
+    fontWeight: 700,
+    padding: "2pt 0",
+    width: 52,
+    borderRadius: 10,
+    textAlign: "center",
+  },
+  langName: {
+    fontSize: 6.5,
+    fontWeight: 600,
+    color: "#334155",
+    textAlign: "center",
+    marginTop: 2,
+  },
 
-  // Project cards
+  // ── Project cards ───────────────────────────────
   projectCard: {
     backgroundColor: BG_CARD,
     borderLeftWidth: 2.5,
     borderLeftColor: TEAL,
     borderLeftStyle: "solid",
     padding: "4pt 6pt",
-    borderRadius: 3,
+    borderRadius: 2,
     marginBottom: 4,
+  },
+  projectHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   projectTitle: {
     fontSize: 7.5,
-    fontWeight: 600,
+    fontWeight: 700,
     color: DARK,
+    flex: 1,
   },
   projectLink: {
-    fontSize: 6,
+    fontSize: 5.5,
     color: TEAL,
     textDecoration: "none",
+    flexShrink: 0,
   },
   tagRow: {
     flexDirection: "row",
@@ -253,48 +275,53 @@ const styles = StyleSheet.create({
     borderRadius: 2,
   },
 
-  // Footer
+  // ── Footer ──────────────────────────────────────
   footer: {
     backgroundColor: DARK,
     color: GRAY_400,
     textAlign: "center",
-    padding: 5,
-    borderRadius: 4,
-    fontSize: 6.5,
-    marginTop: 12,
+    padding: 4,
+    borderRadius: 3,
+    fontSize: 6,
+    marginTop: 10,
   },
   footerLink: {
     color: TEAL,
     textDecoration: "none",
     fontWeight: 600,
   },
-
-  // Dot on timeline
-  dot: {
-    width: 6,
-    height: 6,
-    backgroundColor: TEAL,
-    borderRadius: 3,
-    position: "absolute",
-    left: -13,
-    top: 3,
-  },
 });
 
-// Helper: render highlights
+// ── Helper: bullet highlights ─────────────────────
 function Highlights({ items }: { items: string[] }) {
   if (!items || items.length === 0) return null;
   return (
-    <View style={{ marginTop: 3 }}>
+    <View style={{ marginTop: 2 }}>
       {items.map((h, i) => (
         <View key={i} style={{ flexDirection: "row", marginTop: 1 }}>
-          <Text style={{ color: TEAL, fontSize: 6, marginRight: 3 }}>▸</Text>
+          <Text style={{ color: TEAL, fontSize: 5.5, marginRight: 3, marginTop: 0.5 }}>▸</Text>
           <Text style={styles.bulletItem}>{h}</Text>
         </View>
       ))}
     </View>
   );
 }
+
+// ── Helper: contact item ──────────────────────────
+function ContactItem({ label, text, href }: { label: string; text: string; href?: string }) {
+  return (
+    <View style={styles.contactCell}>
+      <Text style={styles.contactLabel}>{label}</Text>
+      {href ? (
+        <Link src={href} style={styles.contactLink}>{text}</Link>
+      ) : (
+        <Text style={styles.contactText}>{text}</Text>
+      )}
+    </View>
+  );
+}
+
+// ── Main Component ────────────────────────────────
 
 interface Props {
   cvData: typeof cvDataType;
@@ -319,59 +346,33 @@ export default function CVPDFDocument({
   return (
     <Document>
       <Page size="LEGAL" style={styles.page}>
-        {/* Header */}
+        {/* ── Header ─────────────────────────────── */}
         <View style={styles.header}>
-          <Image
-            src={photoUrl}
-            style={styles.headerPhoto}
-          />
+          <Image src={photoUrl} style={styles.headerPhoto} />
           <View style={styles.headerInfo}>
             <Text style={styles.headerName}>
               {personalInfo.name.toUpperCase()}
             </Text>
             <Text style={styles.headerRole}>{personalInfo.role}</Text>
-            <View style={styles.contactRow}>
-              <Text>
-                <Text style={styles.contactLabel}>@</Text>
-                {personalInfo.contact.email}
-              </Text>
-              <Text>
-                <Text style={styles.contactLabel}>W</Text>WhatsApp
-              </Text>
-              <Text>
-                <Text style={styles.contactLabel}>L</Text>Bandung, Indonesia
-              </Text>
-              <Text>
-                <Text style={styles.contactLabel}>G</Text>
-                <Link src={personalInfo.contact.github} style={{ color: GRAY_400, textDecoration: "none" }}>
-                  github.com/nohypelabs
-                </Link>
-              </Text>
-              <Text>
-                <Text style={styles.contactLabel}>in</Text>
-                <Link src={personalInfo.contact.linkedin} style={{ color: GRAY_400, textDecoration: "none" }}>
-                  linkedin.com/in/abdul-gofur
-                </Link>
-              </Text>
-              <Text>
-                <Text style={styles.contactLabel}>X</Text>
-                <Link src={personalInfo.contact.twitter} style={{ color: GRAY_400, textDecoration: "none" }}>
-                  @nohypelabs
-                </Link>
-              </Text>
+            {/* Contact: 2-column grid, never wraps */}
+            <View style={styles.contactGrid}>
+              <ContactItem label="@" text={personalInfo.contact.email} />
+              <ContactItem label="W" text="WhatsApp" href={`https://wa.me/${personalInfo.contact.phone.replace(/^0/, "62")}`} />
+              <ContactItem label="L" text="Bandung, Indonesia" />
+              <ContactItem label="G" text="github.com/nohypelabs" href={personalInfo.contact.github} />
+              <ContactItem label="in" text="linkedin.com/in/abdul-gofur" href={personalInfo.contact.linkedin} />
+              <ContactItem label="X" text="@nohypelabs" href={personalInfo.contact.twitter} />
             </View>
           </View>
         </View>
 
-        {/* Two Column Grid */}
+        {/* ── Two Column Grid ────────────────────── */}
         <View style={styles.grid}>
           {/* LEFT COLUMN */}
           <View style={styles.leftCol}>
-            {/* Profile */}
             <Text style={styles.sectionTitleFirst}>{t.cvProfile}</Text>
             <Text style={styles.profileText}>{cvData.profile[language]}</Text>
 
-            {/* Technical Experience */}
             <Text style={styles.sectionTitle}>
               {language === "en" ? "Technical Experience" : "Pengalaman Teknis"}
             </Text>
@@ -379,16 +380,13 @@ export default function CVPDFDocument({
               <View key={i} style={styles.entry}>
                 <Text style={styles.entryYear}>{item.year}</Text>
                 <Text style={styles.entryTitle}>{item.title}</Text>
-                <Text style={styles.entryDesc}>
-                  {item.description[language]}
-                </Text>
+                <Text style={styles.entryDesc}>{item.description[language]}</Text>
                 {"highlights" in item && (item as any).highlights?.length > 0 && (
                   <Highlights items={(item as any).highlights} />
                 )}
               </View>
             ))}
 
-            {/* Other Experience */}
             <Text style={styles.sectionTitle}>
               {language === "en" ? "Other Experience" : "Pengalaman Lain"}
             </Text>
@@ -396,22 +394,17 @@ export default function CVPDFDocument({
               <View key={i} style={styles.entry}>
                 <Text style={styles.entryYear}>{item.year}</Text>
                 <Text style={styles.entryTitle}>{item.title}</Text>
-                <Text style={styles.entryDesc}>
-                  {item.description[language]}
-                </Text>
+                <Text style={styles.entryDesc}>{item.description[language]}</Text>
               </View>
             ))}
 
-            {/* Education */}
             <Text style={styles.sectionTitle}>{t.cvEducation}</Text>
             {cvData.education.map((item, i) => (
               <View key={i} style={styles.entry}>
                 <Text style={styles.entryYear}>{item.year}</Text>
                 <Text style={styles.entryTitle}>{item.title}</Text>
                 {item.description[language] ? (
-                  <Text style={styles.entryDesc}>
-                    {item.description[language]}
-                  </Text>
+                  <Text style={styles.entryDesc}>{item.description[language]}</Text>
                 ) : null}
               </View>
             ))}
@@ -419,7 +412,6 @@ export default function CVPDFDocument({
 
           {/* RIGHT COLUMN */}
           <View style={styles.rightCol}>
-            {/* Technical Skills */}
             <Text style={styles.sectionTitleFirst}>{t.cvTechnicalSkills}</Text>
             {cvData.skillCategories.map((skill, i) => (
               <View key={i} style={styles.skillCard}>
@@ -428,7 +420,6 @@ export default function CVPDFDocument({
               </View>
             ))}
 
-            {/* Languages */}
             <Text style={styles.sectionTitle}>{t.cvLanguages}</Text>
             <View style={styles.langRow}>
               {cvData.languages.map((item, i) => (
@@ -439,17 +430,10 @@ export default function CVPDFDocument({
               ))}
             </View>
 
-            {/* Portfolio Projects */}
             <Text style={styles.sectionTitle}>{t.cvPortfolioProjects}</Text>
             {productionProjects.map((project) => (
               <View key={project.id} style={styles.projectCard}>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
+                <View style={styles.projectHeader}>
                   <Text style={styles.projectTitle}>{project.title}</Text>
                   {project.demo ? (
                     <Link src={project.demo} style={styles.projectLink}>
@@ -459,36 +443,31 @@ export default function CVPDFDocument({
                 </View>
                 <View style={styles.tagRow}>
                   {project.tags.slice(0, 4).map((tag) => (
-                    <Text key={tag} style={styles.tag}>
-                      {tag}
-                    </Text>
+                    <Text key={tag} style={styles.tag}>{tag}</Text>
                   ))}
                 </View>
               </View>
             ))}
 
-            {/* Background */}
             <Text style={styles.sectionTitle}>{t.cvBackground}</Text>
             {cvData.background.map((item, i) => (
               <View key={i} style={styles.entry}>
                 <Text style={styles.entryYear}>{item.year}</Text>
                 <Text style={styles.entryTitle}>{item.title}</Text>
                 {item.description[language] ? (
-                  <Text style={styles.entryDesc}>
-                    {item.description[language]}
-                  </Text>
+                  <Text style={styles.entryDesc}>{item.description[language]}</Text>
                 ) : null}
               </View>
             ))}
           </View>
         </View>
 
-        {/* Footer */}
+        {/* ── Footer ─────────────────────────────── */}
         <View style={styles.footer}>
           <Text>
             Portfolio:{" "}
-            <Link src="https://nohypelabs.vercel.app" style={styles.footerLink}>
-              nohypelabs.vercel.app
+            <Link src="https://abdulgofur-builder.vercel.app" style={styles.footerLink}>
+              abdulgofur-builder.vercel.app
             </Link>{" "}
             | Created by {personalInfo.name} | 2026
           </Text>
