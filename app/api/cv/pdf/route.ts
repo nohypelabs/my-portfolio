@@ -15,12 +15,18 @@ export async function GET(request: Request) {
     const lang = (searchParams.get("lang") || "id") as "en" | "id";
     const t = translations[lang];
 
+    // Get base URL for image resolution
+    const host = request.headers.get("host") || "localhost:3000";
+    const protocol = request.headers.get("x-forwarded-proto") || "http";
+    const baseUrl = `${protocol}://${host}`;
+
     const doc = React.createElement(CVPDFDocument, {
       cvData,
       personalInfo,
       projects,
       language: lang,
       translations: t,
+      baseUrl,
     });
 
     const stream = await renderToStream(doc);

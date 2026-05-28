@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Font,
   Link,
+  Image,
 } from "@react-pdf/renderer";
 import type { cvData as cvDataType } from "@/lib/data/cvData";
 import type { personalInfo as personalInfoType } from "@/lib/data/personalInfo";
@@ -42,22 +43,35 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: DARK,
     color: "white",
-    padding: "14pt 16pt",
-    borderRadius: 4,
-    marginBottom: 10,
+    padding: "12pt 14pt",
+    marginBottom: 8,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  headerPhoto: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginRight: 12,
+    borderWidth: 2,
+    borderColor: TEAL,
+    borderStyle: "solid",
+  },
+  headerInfo: {
+    flex: 1,
   },
   headerName: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: 800,
     letterSpacing: 1.5,
     textTransform: "uppercase",
     marginBottom: 2,
   },
   headerRole: {
-    fontSize: 10,
+    fontSize: 9,
     fontWeight: 300,
     color: TEAL,
-    marginBottom: 4,
+    marginBottom: 2,
   },
   contactRow: {
     flexDirection: "row",
@@ -288,6 +302,7 @@ interface Props {
   projects: typeof projectsType;
   language: "en" | "id";
   translations: Record<string, string>;
+  baseUrl?: string;
 }
 
 export default function CVPDFDocument({
@@ -296,7 +311,9 @@ export default function CVPDFDocument({
   projects,
   language,
   translations: t,
+  baseUrl = "",
 }: Props) {
+  const photoUrl = `${baseUrl}/picture/abdulgofur-photo.png`;
   const productionProjects = projects.filter((p) => p.status === "production");
 
   return (
@@ -304,39 +321,45 @@ export default function CVPDFDocument({
       <Page size="LEGAL" style={styles.page}>
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.headerName}>
-            {personalInfo.name.toUpperCase()}
-          </Text>
-          <Text style={styles.headerRole}>{personalInfo.role}</Text>
-          <View style={styles.contactRow}>
-            <Text>
-              <Text style={styles.contactLabel}>@</Text>
-              {personalInfo.contact.email}
+          <Image
+            src={photoUrl}
+            style={styles.headerPhoto}
+          />
+          <View style={styles.headerInfo}>
+            <Text style={styles.headerName}>
+              {personalInfo.name.toUpperCase()}
             </Text>
-            <Text>
-              <Text style={styles.contactLabel}>W</Text>WhatsApp
-            </Text>
-            <Text>
-              <Text style={styles.contactLabel}>L</Text>Bandung, Indonesia
-            </Text>
-            <Text>
-              <Text style={styles.contactLabel}>G</Text>
-              <Link src={personalInfo.contact.github} style={{ color: GRAY_400, textDecoration: "none" }}>
-                github.com/nohypelabs
-              </Link>
-            </Text>
-            <Text>
-              <Text style={styles.contactLabel}>in</Text>
-              <Link src={personalInfo.contact.linkedin} style={{ color: GRAY_400, textDecoration: "none" }}>
-                linkedin.com/in/abdul-gofur
-              </Link>
-            </Text>
-            <Text>
-              <Text style={styles.contactLabel}>X</Text>
-              <Link src={personalInfo.contact.twitter} style={{ color: GRAY_400, textDecoration: "none" }}>
-                @nohypelabs
-              </Link>
-            </Text>
+            <Text style={styles.headerRole}>{personalInfo.role}</Text>
+            <View style={styles.contactRow}>
+              <Text>
+                <Text style={styles.contactLabel}>@</Text>
+                {personalInfo.contact.email}
+              </Text>
+              <Text>
+                <Text style={styles.contactLabel}>W</Text>WhatsApp
+              </Text>
+              <Text>
+                <Text style={styles.contactLabel}>L</Text>Bandung, Indonesia
+              </Text>
+              <Text>
+                <Text style={styles.contactLabel}>G</Text>
+                <Link src={personalInfo.contact.github} style={{ color: GRAY_400, textDecoration: "none" }}>
+                  github.com/nohypelabs
+                </Link>
+              </Text>
+              <Text>
+                <Text style={styles.contactLabel}>in</Text>
+                <Link src={personalInfo.contact.linkedin} style={{ color: GRAY_400, textDecoration: "none" }}>
+                  linkedin.com/in/abdul-gofur
+                </Link>
+              </Text>
+              <Text>
+                <Text style={styles.contactLabel}>X</Text>
+                <Link src={personalInfo.contact.twitter} style={{ color: GRAY_400, textDecoration: "none" }}>
+                  @nohypelabs
+                </Link>
+              </Text>
+            </View>
           </View>
         </View>
 
