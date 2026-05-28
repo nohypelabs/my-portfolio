@@ -1,7 +1,6 @@
 "use client";
 
 import { Download } from "lucide-react";
-import Image from "next/image";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { translations } from "@/lib/translations";
 import { personalInfo } from "@/lib/data/personalInfo";
@@ -19,209 +18,157 @@ export default function CVPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-2 md:p-6">
+    <>
       <button
         onClick={handleDownloadPDF}
-        className="fixed top-20 right-4 md:top-24 md:right-8 z-50 bg-zinc-900 hover:bg-zinc-800 text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 print:hidden transition-colors"
+        className="fixed top-20 right-4 md:top-24 md:right-8 z-50 bg-zinc-900 hover:bg-zinc-800 text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 print:hidden transition-colors cursor-pointer"
       >
         <Download className="w-5 h-5" />
         <span className="hidden md:inline">{t.cvDownloadPDF}</span>
       </button>
 
-      <div className="w-full md:max-w-[210mm] bg-white shadow-2xl overflow-hidden">
+      <div className="cv-page bg-white text-zinc-900 mx-auto" style={{ width: "7in", minHeight: "12.5in", fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif", fontSize: "9pt", lineHeight: 1.4 }}>
+
         {/* Header */}
-        <div className="bg-zinc-900 text-white p-4 md:p-6 relative overflow-hidden">
-          <div className="absolute -top-20 -right-20 w-64 h-64 bg-emerald-500/10 rounded-full print-hide"></div>
-          <div className="relative z-10 flex items-center gap-4">
-            <div className="shrink-0">
-              <Image
-                src="/avatar.jpg"
-                alt={personalInfo.name}
-                width={80}
-                height={80}
-                className="rounded-full border-4 border-emerald-500/30"
-              />
-            </div>
-            <div className="flex-1">
-              <h1 className="text-3xl md:text-5xl font-bold mb-1 tracking-wide">{personalInfo.name.toUpperCase()}</h1>
-              <div className="text-base md:text-lg font-light mb-1 text-emerald-400">{personalInfo.role}</div>
-              <div className="text-xs md:text-sm text-zinc-400">{personalInfo.tagline}</div>
+        <div className="cv-header bg-gradient-to-br from-zinc-900 to-zinc-800 text-white rounded-md overflow-hidden relative" style={{ padding: "18pt 20pt", marginBottom: "10pt" }}>
+          <div className="absolute -top-8 -right-8 w-32 h-32 bg-emerald-500/10 rounded-full print-hide" />
+          <div className="relative z-10">
+            <h1 style={{ fontSize: "22pt", fontWeight: 800, letterSpacing: "1.5pt", marginBottom: "2pt", textTransform: "uppercase" as const }}>
+              {personalInfo.name.toUpperCase()}
+            </h1>
+            <div style={{ fontSize: "10pt", fontWeight: 300, color: "#10b981", marginBottom: "6pt" }}>{personalInfo.role}</div>
+            <div style={{ display: "flex", flexWrap: "wrap" as const, gap: "12pt", fontSize: "7.5pt", color: "#94a3b8", marginTop: "8pt", paddingTop: "6pt", borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+              <span><span style={{ color: "#10b981", fontWeight: 600, marginRight: "3pt" }}>@</span>{personalInfo.contact.email}</span>
+              <span><span style={{ color: "#10b981", fontWeight: 600, marginRight: "3pt" }}>W</span>WhatsApp</span>
+              <span><span style={{ color: "#10b981", fontWeight: 600, marginRight: "3pt" }}>L</span>Bandung, Indonesia</span>
+              <span><span style={{ color: "#10b981", fontWeight: 600, marginRight: "3pt" }}>G</span><a href={personalInfo.contact.github} target="_blank" style={{ color: "#94a3b8", textDecoration: "none" }}>github.com/nohypelabs</a></span>
+              <span><span style={{ color: "#10b981", fontWeight: 600, marginRight: "3pt" }}>in</span><a href={personalInfo.contact.linkedin} target="_blank" style={{ color: "#94a3b8", textDecoration: "none" }}>linkedin.com/in/abdul-gofur</a></span>
+              <span><span style={{ color: "#10b981", fontWeight: 600, marginRight: "3pt" }}>X</span><a href={personalInfo.contact.twitter} target="_blank" style={{ color: "#94a3b8", textDecoration: "none" }}>@nohypelabs</a></span>
             </div>
           </div>
         </div>
 
-        {/* Contact Bar */}
-        <div className="bg-zinc-800 text-zinc-300 p-2 md:p-4 flex flex-wrap gap-2 md:gap-5 text-[11px]">
-          <div className="flex items-center gap-1.5">
-            <span className="text-emerald-400">@</span>
-            <a href={`mailto:${personalInfo.contact.email}`} className="hover:text-white transition-colors">{personalInfo.contact.email}</a>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="text-emerald-400">W</span>
-            <a href={`https://wa.me/${personalInfo.contact.phone.replace(/^0/, "62")}`} target="_blank" className="hover:text-white transition-colors">WhatsApp</a>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="text-emerald-400">L</span>
-            <span>Bandung, Indonesia</span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="text-emerald-400">G</span>
-            <a href={personalInfo.contact.github} target="_blank" className="hover:text-white transition-colors">github.com/nohypelabs</a>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="text-emerald-400">in</span>
-            <a href={personalInfo.contact.linkedin} target="_blank" className="hover:text-white transition-colors">linkedin.com/in/abdul-gofur</a>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <span className="text-emerald-400">X</span>
-            <a href={personalInfo.contact.twitter} target="_blank" className="hover:text-white transition-colors">@nohypelabs</a>
-          </div>
-        </div>
+        {/* Two Column Grid */}
+        <div className="cv-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14pt" }}>
 
-        {/* Main Content */}
-        <div className="cv-grid grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 p-3 md:p-6">
-          {/* Left Column */}
-          <div className="cv-col space-y-4">
-            <div>
-              <h2 className="cv-h2 text-lg md:text-xl font-bold text-zinc-900 mb-2 pb-1 border-b-2 border-emerald-500 inline-block">{t.cvProfile}</h2>
-              <p className="text-xs text-zinc-600 leading-relaxed mt-2">
-                {cvData.profile[language]}
-              </p>
-            </div>
+          {/* LEFT COLUMN */}
+          <div>
+            {/* Profile */}
+            <h2 className="cv-h2" style={{ fontSize: "10pt", fontWeight: 700, color: "#0f172a", textTransform: "uppercase" as const, letterSpacing: "0.8pt", borderBottom: "2pt solid #10b981", paddingBottom: "3pt", marginBottom: "8pt", marginTop: "10pt" }}>{t.cvProfile}</h2>
+            <p style={{ fontSize: "8pt", color: "#475569", lineHeight: 1.5 }}>{cvData.profile[language]}</p>
 
-            <div>
-              <h2 className="cv-h2 text-lg md:text-xl font-bold text-zinc-900 mb-2 pb-1 border-b-2 border-emerald-500 inline-block">{language === "en" ? "Technical Experience" : "Pengalaman Teknis"}</h2>
-              <div className="mt-2 space-y-2">
-                {cvData.technicalExperience.map((item, i) => (
-                  <div key={i} className="border-l-2 border-zinc-200 pl-3 relative">
-                    <div className="absolute -left-[4px] top-1 w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
-                    <div className="font-bold text-emerald-600 text-xs">{item.year}</div>
-                    <div className="font-semibold text-xs text-zinc-900">{item.title}</div>
-                    <div className="text-[11px] text-zinc-500">{item.description[language]}</div>
-                    {"highlights" in item && (item as any).highlights?.length > 0 && (
-                      <ul className="mt-1 space-y-0.5">
-                        {(item as any).highlights.map((h: string, j: number) => (
-                          <li key={j} className="text-[10px] text-zinc-600 flex items-start gap-1">
-                            <span className="text-emerald-500 mt-0.5">▸</span>
-                            <span>{h}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                ))}
+            {/* Technical Experience */}
+            <h2 className="cv-h2" style={{ fontSize: "10pt", fontWeight: 700, color: "#0f172a", textTransform: "uppercase" as const, letterSpacing: "0.8pt", borderBottom: "2pt solid #10b981", paddingBottom: "3pt", marginBottom: "8pt", marginTop: "10pt" }}>{language === "en" ? "Technical Experience" : "Pengalaman Teknis"}</h2>
+            {cvData.technicalExperience.map((item, i) => (
+              <div key={i} className="cv-entry" style={{ borderLeft: "2pt solid #e2e8f0", paddingLeft: "10pt", marginBottom: "8pt", position: "relative" as const }}>
+                <div style={{ position: "absolute" as const, left: "-4.5pt", top: "4pt", width: "7pt", height: "7pt", background: "#10b981", borderRadius: "50%", border: "1.5pt solid white" }} />
+                <div style={{ fontSize: "7pt", fontWeight: 700, color: "#10b981", textTransform: "uppercase" as const, letterSpacing: "0.3pt" }}>{item.year}</div>
+                <div style={{ fontSize: "8.5pt", fontWeight: 600, color: "#0f172a", marginBottom: "2pt" }}>{item.title}</div>
+                <div style={{ fontSize: "7.5pt", color: "#64748b", lineHeight: 1.4 }}>{item.description[language]}</div>
+                {"highlights" in item && (item as any).highlights?.length > 0 && (
+                  <ul style={{ listStyle: "none", marginTop: "3pt" }}>
+                    {(item as any).highlights.map((h: string, j: number) => (
+                      <li key={j} style={{ fontSize: "7pt", color: "#475569", paddingLeft: "8pt", position: "relative" as const, lineHeight: 1.4, marginBottom: "1pt" }}>
+                        <span style={{ position: "absolute" as const, left: 0, color: "#10b981", fontSize: "6pt" }}>▸</span>
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
-            </div>
+            ))}
 
-            <div>
-              <h2 className="cv-h2 text-lg md:text-xl font-bold text-zinc-900 mb-2 pb-1 border-b-2 border-emerald-500 inline-block">{language === "en" ? "Other Experience" : "Pengalaman Lain"}</h2>
-              <div className="mt-2 space-y-2">
-                {cvData.otherExperience.map((item, i) => (
-                  <div key={i} className="border-l-2 border-zinc-200 pl-3 relative">
-                    <div className="absolute -left-[4px] top-1 w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
-                    <div className="font-bold text-emerald-600 text-xs">{item.year}</div>
-                    <div className="font-semibold text-xs text-zinc-900">{item.title}</div>
-                    <div className="text-[11px] text-zinc-500">{item.description[language]}</div>
-                  </div>
-                ))}
+            {/* Other Experience */}
+            <h2 className="cv-h2" style={{ fontSize: "10pt", fontWeight: 700, color: "#0f172a", textTransform: "uppercase" as const, letterSpacing: "0.8pt", borderBottom: "2pt solid #10b981", paddingBottom: "3pt", marginBottom: "8pt", marginTop: "10pt" }}>{language === "en" ? "Other Experience" : "Pengalaman Lain"}</h2>
+            {cvData.otherExperience.map((item, i) => (
+              <div key={i} className="cv-entry" style={{ borderLeft: "2pt solid #e2e8f0", paddingLeft: "10pt", marginBottom: "8pt", position: "relative" as const }}>
+                <div style={{ position: "absolute" as const, left: "-4.5pt", top: "4pt", width: "7pt", height: "7pt", background: "#10b981", borderRadius: "50%", border: "1.5pt solid white" }} />
+                <div style={{ fontSize: "7pt", fontWeight: 700, color: "#10b981", textTransform: "uppercase" as const, letterSpacing: "0.3pt" }}>{item.year}</div>
+                <div style={{ fontSize: "8.5pt", fontWeight: 600, color: "#0f172a", marginBottom: "2pt" }}>{item.title}</div>
+                <div style={{ fontSize: "7.5pt", color: "#64748b", lineHeight: 1.4 }}>{item.description[language]}</div>
               </div>
-            </div>
+            ))}
 
-            <div className="print-hide">
-              <h2 className="cv-h2 text-lg md:text-xl font-bold text-zinc-900 mb-2 pb-1 border-b-2 border-emerald-500 inline-block">{t.cvBackground}</h2>
-              <div className="mt-2 space-y-2">
-                {cvData.background.map((item, i) => (
-                  <div key={i} className="border-l-2 border-zinc-200 pl-3 relative">
-                    <div className="absolute -left-[4px] top-1 w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
-                    <div className="font-bold text-emerald-600 text-xs">{item.year}</div>
-                    <div className="font-semibold text-xs text-zinc-900">{item.title}</div>
-                    {item.description[language] && <div className="text-[11px] text-zinc-500">{item.description[language]}</div>}
-                  </div>
-                ))}
+            {/* Education */}
+            <h2 className="cv-h2" style={{ fontSize: "10pt", fontWeight: 700, color: "#0f172a", textTransform: "uppercase" as const, letterSpacing: "0.8pt", borderBottom: "2pt solid #10b981", paddingBottom: "3pt", marginBottom: "8pt", marginTop: "10pt" }}>{t.cvEducation}</h2>
+            {cvData.education.map((item, i) => (
+              <div key={i} className="cv-entry" style={{ borderLeft: "2pt solid #e2e8f0", paddingLeft: "10pt", marginBottom: "8pt", position: "relative" as const }}>
+                <div style={{ position: "absolute" as const, left: "-4.5pt", top: "4pt", width: "7pt", height: "7pt", background: "#10b981", borderRadius: "50%", border: "1.5pt solid white" }} />
+                <div style={{ fontSize: "7pt", fontWeight: 700, color: "#10b981", textTransform: "uppercase" as const, letterSpacing: "0.3pt" }}>{item.year}</div>
+                <div style={{ fontSize: "8.5pt", fontWeight: 600, color: "#0f172a", marginBottom: "2pt" }}>{item.title}</div>
+                {item.description[language] && <div style={{ fontSize: "7.5pt", color: "#64748b", lineHeight: 1.4 }}>{item.description[language]}</div>}
               </div>
-            </div>
-
-            <div>
-              <h2 className="cv-h2 text-lg md:text-xl font-bold text-zinc-900 mb-2 pb-1 border-b-2 border-emerald-500 inline-block">{t.cvEducation}</h2>
-              <div className="mt-2 space-y-2">
-                {cvData.education.map((item, i) => (
-                  <div key={i} className="border-l-2 border-zinc-200 pl-3 relative">
-                    <div className="absolute -left-[4px] top-1 w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
-                    <div className="font-bold text-emerald-600 text-xs">{item.year}</div>
-                    <div className="font-semibold text-xs text-zinc-900">{item.title}</div>
-                    {item.description[language] && <div className="text-[11px] text-zinc-500">{item.description[language]}</div>}
-                  </div>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
 
-          {/* Right Column */}
-          <div className="cv-col space-y-4">
-            <div>
-              <h2 className="cv-h2 text-lg md:text-xl font-bold text-zinc-900 mb-2 pb-1 border-b-2 border-emerald-500 inline-block">{t.cvTechnicalSkills}</h2>
-              <div className="mt-2 space-y-1.5">
-                {cvData.skillCategories.map((skill, i) => (
-                  <div key={i} className="bg-zinc-50 p-2 rounded-lg border-l-2 border-emerald-500">
-                    <div className="font-semibold text-xs text-zinc-900">{t[skill.labelKey]}</div>
-                    <div className="text-[11px] text-zinc-500">{skill.skills}</div>
-                  </div>
-                ))}
+          {/* RIGHT COLUMN */}
+          <div>
+            {/* Technical Skills */}
+            <h2 className="cv-h2" style={{ fontSize: "10pt", fontWeight: 700, color: "#0f172a", textTransform: "uppercase" as const, letterSpacing: "0.8pt", borderBottom: "2pt solid #10b981", paddingBottom: "3pt", marginBottom: "8pt", marginTop: "10pt" }}>{t.cvTechnicalSkills}</h2>
+            {cvData.skillCategories.map((skill, i) => (
+              <div key={i} style={{ background: "#f8fafc", borderLeft: "2.5pt solid #10b981", padding: "5pt 8pt", borderRadius: "3pt", marginBottom: "4pt" }}>
+                <div style={{ fontSize: "7.5pt", fontWeight: 600, color: "#0f172a" }}>{t[skill.labelKey]}</div>
+                <div style={{ fontSize: "7pt", color: "#64748b", lineHeight: 1.4 }}>{skill.skills}</div>
               </div>
+            ))}
+
+            {/* Languages */}
+            <h2 className="cv-h2" style={{ fontSize: "10pt", fontWeight: 700, color: "#0f172a", textTransform: "uppercase" as const, letterSpacing: "0.8pt", borderBottom: "2pt solid #10b981", paddingBottom: "3pt", marginBottom: "8pt", marginTop: "10pt" }}>{t.cvLanguages}</h2>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "6pt", textAlign: "center" as const }}>
+              {cvData.languages.map((item, i) => (
+                <div key={i}>
+                  <div style={{ background: "#0f172a", color: "#10b981", fontSize: "6pt", fontWeight: 700, padding: "3pt 6pt", borderRadius: "20pt", display: "inline-block", marginBottom: "2pt" }}>{item.level[language]}</div>
+                  <div style={{ fontSize: "7pt", fontWeight: 600, color: "#334155" }}>{item.name[language]}</div>
+                </div>
+              ))}
             </div>
 
-            <div>
-              <h2 className="cv-h2 text-lg md:text-xl font-bold text-zinc-900 mb-2 pb-1 border-b-2 border-emerald-500 inline-block">{t.cvLanguages}</h2>
-              <div className="mt-2 grid grid-cols-3 gap-2">
-                {cvData.languages.map((item, i) => (
-                  <div key={i} className="text-center">
-                    <div className="mx-auto rounded-full bg-zinc-900 flex items-center justify-center text-emerald-400 font-bold text-[9px] px-2 py-1.5 mb-1">
-                      {item.level[language]}
-                    </div>
-                    <div className="text-[11px] font-semibold text-zinc-700">{item.name[language]}</div>
-                  </div>
-                ))}
+            {/* Portfolio Projects */}
+            <h2 className="cv-h2" style={{ fontSize: "10pt", fontWeight: 700, color: "#0f172a", textTransform: "uppercase" as const, letterSpacing: "0.8pt", borderBottom: "2pt solid #10b981", paddingBottom: "3pt", marginBottom: "8pt", marginTop: "10pt" }}>{t.cvPortfolioProjects}</h2>
+            {productionProjects.map((project) => (
+              <div key={project.id} style={{ background: "#f8fafc", borderLeft: "2.5pt solid #10b981", padding: "5pt 8pt", borderRadius: "3pt", marginBottom: "4pt" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <span style={{ fontSize: "7.5pt", fontWeight: 600, color: "#0f172a" }}>{project.title}</span>
+                  {project.demo && (
+                    <a href={project.demo} target="_blank" style={{ fontSize: "6pt", color: "#10b981", textDecoration: "none" }}>
+                      {new URL(project.demo).hostname}
+                    </a>
+                  )}
+                </div>
+                <div style={{ display: "flex", flexWrap: "wrap" as const, gap: "2pt", marginTop: "3pt" }}>
+                  {project.tags.slice(0, 4).map((tag) => (
+                    <span key={tag} style={{ background: "#0f172a", color: "white", fontSize: "5pt", fontWeight: 600, padding: "1pt 4pt", borderRadius: "2pt" }}>{tag}</span>
+                  ))}
+                </div>
               </div>
-            </div>
+            ))}
 
-            <div>
-              <h2 className="cv-h2 text-lg md:text-xl font-bold text-zinc-900 mb-2 pb-1 border-b-2 border-emerald-500 inline-block">{t.cvPortfolioProjects}</h2>
-              <div className="mt-2 space-y-2">
-                {productionProjects.map((project) => (
-                  <div key={project.id} className="bg-zinc-50 p-2 rounded-lg border-l-2 border-emerald-500">
-                    <div className="flex items-center justify-between">
-                      <h3 className="font-semibold text-xs text-zinc-900">{project.title}</h3>
-                      {project.demo && (
-                        <a href={project.demo} className="text-emerald-600 hover:underline text-[10px] font-medium" target="_blank">
-                          {new URL(project.demo).hostname}
-                        </a>
-                      )}
-                    </div>
-                    <div className="flex flex-wrap gap-1 mt-1">
-                      {project.tags.slice(0, 4).map((tag) => (
-                        <span key={tag} className="bg-zinc-900 text-white px-1.5 py-0.5 rounded text-[8px] font-medium">{tag}</span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
+            {/* Background */}
+            <h2 className="cv-h2" style={{ fontSize: "10pt", fontWeight: 700, color: "#0f172a", textTransform: "uppercase" as const, letterSpacing: "0.8pt", borderBottom: "2pt solid #10b981", paddingBottom: "3pt", marginBottom: "8pt", marginTop: "10pt" }}>{t.cvBackground}</h2>
+            {cvData.background.map((item, i) => (
+              <div key={i} className="cv-entry" style={{ borderLeft: "2pt solid #e2e8f0", paddingLeft: "10pt", marginBottom: "8pt", position: "relative" as const }}>
+                <div style={{ position: "absolute" as const, left: "-4.5pt", top: "4pt", width: "7pt", height: "7pt", background: "#10b981", borderRadius: "50%", border: "1.5pt solid white" }} />
+                <div style={{ fontSize: "7pt", fontWeight: 700, color: "#10b981", textTransform: "uppercase" as const, letterSpacing: "0.3pt" }}>{item.year}</div>
+                <div style={{ fontSize: "8.5pt", fontWeight: 600, color: "#0f172a", marginBottom: "2pt" }}>{item.title}</div>
+                {item.description[language] && <div style={{ fontSize: "7.5pt", color: "#64748b", lineHeight: 1.4 }}>{item.description[language]}</div>}
               </div>
-            </div>
+            ))}
           </div>
         </div>
 
         {/* Footer */}
-        <div className="bg-zinc-900 text-zinc-400 text-center p-2 md:p-4 text-[10px]">
-          Portfolio: <a href="https://nohypelabs.vercel.app" target="_blank" className="font-semibold text-emerald-400 hover:underline">nohypelabs.vercel.app</a> |{" "}
+        <div style={{ background: "#0f172a", color: "#94a3b8", textAlign: "center" as const, padding: "6pt", borderRadius: "4pt", fontSize: "6.5pt", marginTop: "12pt" }}>
+          Portfolio: <a href="https://nohypelabs.vercel.app" style={{ color: "#10b981", textDecoration: "none", fontWeight: 600 }}>nohypelabs.vercel.app</a> |{" "}
           Created by {personalInfo.name} | {new Date().getFullYear()}
         </div>
       </div>
 
-      {/* Print Styles */}
+      {/* Print Styles — Legal 8.5" x 14" */}
       <style jsx global>{`
         @media print {
           @page {
             size: 8.5in 14in;
-            margin: 6mm;
+            margin: 0.75in;
           }
 
           * {
@@ -230,89 +177,52 @@ export default function CVPage() {
             box-sizing: border-box !important;
           }
 
-          body { margin: 0; padding: 0; width: auto !important; }
+          body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: auto !important;
+            background: white !important;
+          }
 
-          .min-h-screen {
+          /* Hide everything except the CV */
+          nav, footer, .print-hide, [data-theme-toggle], button {
+            display: none !important;
+          }
+
+          /* Reset page wrapper */
+          .min-h-screen, main, [class*="layout"] {
             min-height: auto !important;
             height: auto !important;
             padding: 0 !important;
+            margin: 0 !important;
             background: white !important;
             display: block !important;
-            align-items: flex-start !important;
-            width: auto !important;
           }
 
-          .shadow-2xl {
-            box-shadow: none !important;
-            width: 200mm !important;
-            max-width: 200mm !important;
-            min-height: 290mm !important;
+          /* CV page container */
+          .cv-page {
+            width: 7in !important;
+            min-height: auto !important;
             margin: 0 auto !important;
+            box-shadow: none !important;
           }
 
-          .print-hide { display: none !important; }
-
-          /* Header ultra compact */
-          .bg-zinc-900.text-white { padding: 3mm 6mm !important; }
-          .bg-zinc-900.text-white img { width: 28px !important; height: 28px !important; }
-          h1 { font-size: 11pt !important; margin-bottom: 0 !important; line-height: 1 !important; }
-          .text-emerald-400.text-base, .text-emerald-400.md\\:text-lg { font-size: 7pt !important; margin-bottom: 0 !important; }
-          .text-xs.md\\:text-sm.text-zinc-400 { font-size: 6pt !important; }
-
-          /* Contact bar ultra compact */
-          .bg-zinc-800 { padding: 1.5mm 6mm !important; gap: 2mm !important; font-size: 5.5pt !important; }
-
-          /* Main grid — 2 columns tight */
-          .cv-grid {
-            padding: 2mm 6mm !important;
-            gap: 3mm !important;
-            grid-template-columns: 1fr 1fr !important;
-            display: grid !important;
+          /* No page breaks inside entries */
+          .cv-entry, .cv-grid > div {
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
           }
-          .cv-col { gap: 1.5mm !important; }
-          .cv-col > div { margin-top: 1mm !important; }
 
-          /* Section headings */
-          .cv-h2 { font-size: 7.5pt !important; margin-bottom: 0.5mm !important; padding-bottom: 0.3mm !important; }
+          /* Links — no underline in print */
+          a {
+            text-decoration: none !important;
+          }
 
-          /* Timeline entries */
-          .border-l-2 { padding-left: 2mm !important; margin-bottom: 0.5mm !important; }
-          .border-l-2 .font-bold.text-emerald-600 { font-size: 6pt !important; }
-          .border-l-2 .font-semibold.text-xs { font-size: 6pt !important; }
-          .border-l-2 .text-\\[11px\\], .border-l-2 .text-xs.text-zinc-500 { font-size: 5.5pt !important; line-height: 1.15 !important; }
-          .border-l-2 .text-\\[10px\\] { display: none !important; }
-
-          /* Profile text */
-          .text-xs.text-zinc-600 { font-size: 6pt !important; line-height: 1.2 !important; }
-
-          /* Skills compact */
-          .bg-zinc-50 { padding: 1mm 2mm !important; margin-bottom: 0.5mm !important; }
-          .bg-zinc-50 .font-semibold.text-xs { font-size: 5.5pt !important; }
-          .bg-zinc-50 .text-\\[11px\\] { font-size: 5pt !important; }
-
-          /* Language badges */
-          .rounded-full.bg-zinc-900 { padding: 0.5mm 1.5mm !important; font-size: 5pt !important; width: auto !important; height: auto !important; }
-          .text-\\[11px\\].font-semibold.text-zinc-700 { font-size: 5pt !important; }
-
-          /* Project cards */
-          .cv-col .bg-zinc-50 { padding: 1mm 2mm !important; margin-bottom: 0.5mm !important; }
-          .cv-col h3 { font-size: 5.5pt !important; }
-          .cv-col .bg-zinc-900 { font-size: 4pt !important; padding: 0.2mm 1mm !important; }
-          .cv-col .text-emerald-600 { font-size: 5pt !important; }
-
-          /* Footer ultra compact */
-          .bg-zinc-900.text-zinc-400 { padding: 1.5mm 6mm !important; font-size: 5pt !important; }
-
-          /* Remove decorative elements */
-          .absolute.-top-20 { display: none !important; }
-          .absolute.-left-\\[4px\\], .absolute.-left-\\[5px\\] { display: none !important; }
-
-          /* No page breaks — force 1 page */
-          .cv-grid, .cv-col, .cv-col > div { page-break-inside: avoid !important; break-inside: avoid !important; }
-
-          a[href]:after { content: none !important; }
+          a[href]::after {
+            content: none !important;
+          }
         }
       `}</style>
-    </div>
+    </>
   );
 }
