@@ -220,7 +220,7 @@ export default function CVPage() {
       <style jsx global>{`
         @media print {
           @page {
-            size: 215mm 330mm;
+            size: 8.5in 14in;
             margin: 6mm;
           }
 
