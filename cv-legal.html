@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV — Abdul Gofur</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page {
+    size: 8.5in 14in;
+    margin: 0.75in;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 9pt;
+    line-height: 1.4;
+    color: #1a1a2e;
+    background: white;
+  }
+
+  .page {
+    width: 7in;
+    min-height: 12.5in;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: white;
+    padding: 18pt 20pt;
+    border-radius: 6pt;
+    margin-bottom: 10pt;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    top: -30pt;
+    right: -30pt;
+    width: 120pt;
+    height: 120pt;
+    background: rgba(16, 185, 129, 0.08);
+    border-radius: 50%;
+  }
+  .header h1 {
+    font-size: 22pt;
+    font-weight: 800;
+    letter-spacing: 1.5pt;
+    margin-bottom: 2pt;
+    text-transform: uppercase;
+  }
+  .header .role {
+    font-size: 10pt;
+    font-weight: 300;
+    color: #10b981;
+    margin-bottom: 6pt;
+  }
+  .contact-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12pt;
+    font-size: 7.5pt;
+    color: #94a3b8;
+    margin-top: 8pt;
+    padding-top: 6pt;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .contact-bar a {
+    color: #94a3b8;
+    text-decoration: none;
+  }
+  .contact-bar a:hover { color: #10b981; }
+  .contact-bar .label { color: #10b981; font-weight: 600; margin-right: 3pt; }
+
+  /* Two column grid */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14pt;
+  }
+
+  /* Section headers */
+  h2 {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #0f172a;
+    text-transform: uppercase;
+    letter-spacing: 0.8pt;
+    border-bottom: 2pt solid #10b981;
+    padding-bottom: 3pt;
+    margin-bottom: 8pt;
+    margin-top: 10pt;
+  }
+  h2:first-child { margin-top: 0; }
+
+  /* Profile */
+  .profile-text {
+    font-size: 8pt;
+    color: #475569;
+    line-height: 1.5;
+  }
+
+  /* Timeline entries */
+  .entry {
+    border-left: 2pt solid #e2e8f0;
+    padding-left: 10pt;
+    margin-bottom: 8pt;
+    position: relative;
+  }
+  .entry::before {
+    content: '';
+    position: absolute;
+    left: -4.5pt;
+    top: 4pt;
+    width: 7pt;
+    height: 7pt;
+    background: #10b981;
+    border-radius: 50%;
+    border: 1.5pt solid white;
+  }
+  .entry .year {
+    font-size: 7pt;
+    font-weight: 700;
+    color: #10b981;
+    text-transform: uppercase;
+    letter-spacing: 0.3pt;
+  }
+  .entry .title {
+    font-size: 8.5pt;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 2pt;
+  }
+  .entry .desc {
+    font-size: 7.5pt;
+    color: #64748b;
+    line-height: 1.4;
+  }
+  .entry ul {
+    list-style: none;
+    margin-top: 3pt;
+  }
+  .entry ul li {
+    font-size: 7pt;
+    color: #475569;
+    padding-left: 8pt;
+    position: relative;
+    line-height: 1.4;
+    margin-bottom: 1pt;
+  }
+  .entry ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: #10b981;
+    font-size: 6pt;
+  }
+
+  /* Skill cards */
+  .skill-card {
+    background: #f8fafc;
+    border-left: 2.5pt solid #10b981;
+    padding: 5pt 8pt;
+    border-radius: 3pt;
+    margin-bottom: 4pt;
+  }
+  .skill-card .skill-label {
+    font-size: 7.5pt;
+    font-weight: 600;
+    color: #0f172a;
+  }
+  .skill-card .skill-list {
+    font-size: 7pt;
+    color: #64748b;
+    line-height: 1.4;
+  }
+
+  /* Languages */
+  .lang-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6pt;
+    text-align: center;
+  }
+  .lang-badge {
+    background: #0f172a;
+    color: #10b981;
+    font-size: 6pt;
+    font-weight: 700;
+    padding: 3pt 6pt;
+    border-radius: 20pt;
+    display: inline-block;
+    margin-bottom: 2pt;
+  }
+  .lang-name {
+    font-size: 7pt;
+    font-weight: 600;
+    color: #334155;
+  }
+
+  /* Portfolio projects */
+  .project-card {
+    background: #f8fafc;
+    border-left: 2.5pt solid #10b981;
+    padding: 5pt 8pt;
+    border-radius: 3pt;
+    margin-bottom: 4pt;
+  }
+  .project-card .proj-title {
+    font-size: 7.5pt;
+    font-weight: 600;
+    color: #0f172a;
+  }
+  .project-card .proj-link {
+    font-size: 6pt;
+    color: #10b981;
+    text-decoration: none;
+  }
+  .project-card .proj-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2pt;
+    margin-top: 3pt;
+  }
+  .project-card .tag {
+    background: #0f172a;
+    color: white;
+    font-size: 5pt;
+    font-weight: 600;
+    padding: 1pt 4pt;
+    border-radius: 2pt;
+  }
+
+  /* Footer */
+  .footer {
+    background: #0f172a;
+    color: #94a3b8;
+    text-align: center;
+    padding: 6pt;
+    border-radius: 4pt;
+    font-size: 6.5pt;
+    margin-top: 12pt;
+  }
+  .footer a {
+    color: #10b981;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  /* Print */
+  @media print {
+    body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .page { width: 100%; min-height: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Abdul Gofur</h1>
+    <div class="role">Full-stack Developer & AI-Augmented Engineer</div>
+    <div class="contact-bar">
+      <span><span class="label">@</span> agdscid@gmail.com</span>
+      <span><span class="label">W</span> WhatsApp</span>
+      <span><span class="label">L</span> Bandung, Indonesia</span>
+      <span><span class="label">G</span> <a href="https://github.com/nohypelabs">github.com/nohypelabs</a></span>
+      <span><span class="label">in</span> <a href="https://linkedin.com/in/abdul-gofur">linkedin.com/in/abdul-gofur</a></span>
+      <span><span class="label">X</span> <a href="https://x.com/nohypelabs">@nohypelabs</a></span>
+    </div>
+  </div>
+
+  <div class="grid">
+    <!-- LEFT COLUMN -->
+    <div>
+      <!-- Profile -->
+      <h2>Profile</h2>
+      <p class="profile-text">
+        Full-stack developer who shipped 4 production systems in 12 months — 250K+ records processed, real clients at J&T Express and retail sector. Tech stack: Next.js, TypeScript, tRPC, PostgreSQL. Also experienced in IT support: hardware troubleshooting, OS deployment, and network configuration. Returned to production-grade development after 9 years, now combining full-stack engineering with AI-augmented workflows.
+      </p>
+
+      <!-- Technical Experience -->
+      <h2>Technical Experience</h2>
+
+      <div class="entry">
+        <div class="year">2024 – Present</div>
+        <div class="title">Freelance Full-stack Developer</div>
+        <div class="desc">Built and shipped 4 production systems for real clients in logistics, retail, and e-commerce. End-to-end ownership: database design, API development, frontend, deployment, and ongoing maintenance.</div>
+        <ul>
+          <li>Serat QC — 80K+ resi, 160K+ foto GPS-watermarked untuk J&T Express</li>
+          <li>WC Check — 3.293 inspeksi, 53 users, 49 lokasi (toilet monitoring)</li>
+          <li>LakuPOS — POS & warehouse system multi-outlet dengan QRIS payment</li>
+          <li>Qohira — E-commerce platform dengan manual payment verification</li>
+        </ul>
+      </div>
+
+      <div class="entry">
+        <div class="year">2019 – 2024</div>
+        <div class="title">Freelance Developer & IT Support</div>
+        <div class="desc">Transition period with continuous skill building. Delivered web tools, automation scripts, and small applications while expanding into full-stack development. Also provided IT support: hardware troubleshooting, OS installation, and network setup.</div>
+        <ul>
+          <li>Self-taught modern stack: React → Next.js → tRPC → PostgreSQL</li>
+          <li>Provided IT support: PC/laptop repair, OS deployment, LAN/WiFi setup</li>
+        </ul>
+      </div>
+
+      <!-- Other Experience -->
+      <h2>Other Experience</h2>
+
+      <div class="entry">
+        <div class="year">2024 – Present</div>
+        <div class="title">PT PIM Parking — Field Staff & Boomgate Technician</div>
+        <div class="desc">Boomgate and vehicle access portal systems — hardware installation, maintenance, and troubleshooting. Concurrently building full-stack applications as freelance developer.</div>
+      </div>
+
+      <div class="entry">
+        <div class="year">2021 – 2023</div>
+        <div class="title">PT Bina Pustaka Madani — Sales, Marketing & Web Management</div>
+        <div class="desc">Sales & Marketing staff for Al-Qur'an division. Also managed 2 company websites — handled development/rebuild and managed hosting & domain infrastructure.</div>
+      </div>
+
+      <div class="entry">
+        <div class="year">2018 – 2019</div>
+        <div class="title">PT Kinenta Purwakarta — Quality Control</div>
+        <div class="desc">Quality Control (QC) Staff — product inspection and compliance reporting.</div>
+      </div>
+
+      <div class="entry">
+        <div class="year">2017 – 2018</div>
+        <div class="title">Agen JNE Sudirman 2 — Operations Admin</div>
+        <div class="desc">Operations admin — shipment tracking, customer service, and daily reporting for 1 year.</div>
+      </div>
+
+      <!-- Education -->
+      <h2>Education</h2>
+
+      <div class="entry">
+        <div class="year">2013 – 2017</div>
+        <div class="title">D3 Teknik Informatika — Politeknik Negeri Bandung</div>
+        <div class="desc">104 of 114 credits completed (91%) — paused in semester 6 to accelerate career in tech industry</div>
+      </div>
+
+      <div class="entry">
+        <div class="year">2013</div>
+        <div class="title">SMA Muhammadiyah 1 Bandung</div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div>
+      <!-- Technical Skills -->
+      <h2>Technical Skills</h2>
+
+      <div class="skill-card">
+        <div class="skill-label">Frontend</div>
+        <div class="skill-list">Next.js, React, TypeScript, Tailwind CSS, Framer Motion</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">Backend & API</div>
+        <div class="skill-list">Node.js, tRPC, Prisma, REST API, Python</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">Database</div>
+        <div class="skill-list">PostgreSQL, Supabase, Redis, SQLite</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">DevOps & Tools</div>
+        <div class="skill-list">Git, Vercel, Docker, CI/CD, PWA, Sentry</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">Architecture</div>
+        <div class="skill-list">DDD, Clean Architecture, Repository Pattern</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">Testing</div>
+        <div class="skill-list">Playwright E2E, Vitest, Jest, Testing Library</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">IT Support & Hardware</div>
+        <div class="skill-list">Troubleshooting PC/laptop, Install & konfigurasi OS (Windows/Linux), Driver management, Upgrade komponen (RAM, HDD/SSD, LCD), Konfigurasi jaringan LAN/WiFi/Router</div>
+      </div>
+
+      <!-- Languages -->
+      <h2>Languages</h2>
+      <div class="lang-grid">
+        <div>
+          <div class="lang-badge">Native</div>
+          <div class="lang-name">Indonesian</div>
+        </div>
+        <div>
+          <div class="lang-badge">Native</div>
+          <div class="lang-name">Sundanese</div>
+        </div>
+        <div>
+          <div class="lang-badge">Intermediate</div>
+          <div class="lang-name">English</div>
+        </div>
+      </div>
+
+      <!-- Portfolio Projects -->
+      <h2>Portfolio Projects</h2>
+
+      <div class="project-card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span class="proj-title">Serat QC</span>
+          <a href="https://serat-qc.vercel.app" class="proj-link" target="_blank">serat-qc.vercel.app</a>
+        </div>
+        <div class="proj-tags">
+          <span class="tag">Next.js</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">Supabase</span>
+          <span class="tag">GPS</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span class="proj-title">WC Check</span>
+          <a href="https://wc-check.vercel.app" class="proj-link" target="_blank">wc-check.vercel.app</a>
+        </div>
+        <div class="proj-tags">
+          <span class="tag">Next.js</span>
+          <span class="tag">tRPC</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">QR</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span class="proj-title">LakuPOS</span>
+          <a href="https://lakupos.com" class="proj-link" target="_blank">lakupos.com</a>
+        </div>
+        <div class="proj-tags">
+          <span class="tag">Next.js</span>
+          <span class="tag">Prisma</span>
+          <span class="tag">QRIS</span>
+          <span class="tag">POS</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span class="proj-title">Qohira</span>
+          <a href="https://qohira.com" class="proj-link" target="_blank">qohira.com</a>
+        </div>
+        <div class="proj-tags">
+          <span class="tag">Next.js</span>
+          <span class="tag">E-commerce</span>
+          <span class="tag">Payment</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span class="proj-title">SignalFlow Agent</span>
+          <a href="https://signalflowagent.vercel.app" class="proj-link" target="_blank">signalflowagent.vercel.app</a>
+        </div>
+        <div class="proj-tags">
+          <span class="tag">Next.js</span>
+          <span class="tag">AI</span>
+          <span class="tag">Trading</span>
+          <span class="tag">Web3</span>
+        </div>
+      </div>
+
+      <!-- Background -->
+      <h2>Background</h2>
+      <div class="entry">
+        <div class="year">2014</div>
+        <div class="title">Pendidikan Dasar Militer — Resimen Mahasiswa</div>
+        <div class="desc">Sworn in at Dik Passus Situ Lembang</div>
+      </div>
+      <div class="entry">
+        <div class="year">2014</div>
+        <div class="title">Pendidikan Para Dasar — Korps Marinir</div>
+        <div class="desc">Basic Paratrooper / Static Jump at Kodikmar TNI AL Gunungsari, Surabaya</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Portfolio: <a href="https://nohypelabs.vercel.app">nohypelabs.vercel.app</a> |
+    Created by Abdul Gofur | 2026
+  </div>
+
+</div>
+</body>
+</html>
