@@ -220,7 +220,7 @@ export default function CVPage() {
       <style jsx global>{`
         @media print {
           @page {
-            size: A4 portrait;
+            size: 215mm 330mm;
             margin: 6mm;
           }
 
@@ -230,7 +230,7 @@ export default function CVPage() {
             box-sizing: border-box !important;
           }
 
-          body { margin: 0; padding: 0; }
+          body { margin: 0; padding: 0; width: auto !important; }
 
           .min-h-screen {
             min-height: auto !important;
@@ -239,11 +239,14 @@ export default function CVPage() {
             background: white !important;
             display: block !important;
             align-items: flex-start !important;
+            width: auto !important;
           }
 
           .shadow-2xl {
             box-shadow: none !important;
-            max-width: 160mm !important;
+            width: 200mm !important;
+            max-width: 200mm !important;
+            min-height: 290mm !important;
             margin: 0 auto !important;
           }
 
