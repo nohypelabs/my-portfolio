@@ -4,8 +4,8 @@ export const projects: Project[] = [
   {
     id: "lakupos",
     title: "LakuPOS — Kasir & Warehouse System",
-    shortDescription: "Aplikasi kasir & manajemen gudang multi-outlet dengan QRIS, barcode scanner, dan DDD architecture",
-    fullDescription: "Full-stack Point of Sale dan Warehouse Management System yang dibangun untuk client nyata. Dilengkapi dengan kasir touchscreen, barcode scanning via kamera/USB, QRIS payment, manajemen stok multi-outlet dengan transfer antar cabang, analytics penjualan real-time, dan sistem role (Admin, Manager, Kasir). Diuji dengan Playwright E2E dan Jest unit tests. Dioptimalkan untuk tablet/iPad sebagai perangkat kasir utama.",
+    shortDescription: "Production POS & warehouse system untuk client ritel nyata — barcode scanning, QRIS payment, multi-outlet inventory sync. DDD architecture dengan E2E tests.",
+    fullDescription: "Full-stack Point of Sale dan Warehouse Management System yang dibangun untuk client ritel nyata. Problem: client butuh sistem kasir yang handle multi-outlet, barcode scanning, dan QRIS payment dalam satu aplikasi — sebelumnya pakai Excel terpisah per cabang. Solution: POS tablet-optimized dengan 3 mode barcode scan (USB/camera/upload), real-time stock sync antar outlet, dan QRIS auto-generate. DDD architecture dengan Playwright E2E dan Jest unit tests.",
     category: "full-stack",
     techStack: [
       {
@@ -60,7 +60,8 @@ export const projects: Project[] = [
     impact: {
       dataVolume: "11 transaksi | 2 produk | 4 outlet aktif",
       performance: "Production-ready dengan E2E test coverage",
-      users: "Digunakan client nyata untuk operasional kasir & gudang harian"
+      users: "Digunakan client nyata untuk operasional kasir & gudang harian",
+      business: "Client aktif — sistem kasir harian untuk multi-outlet retail"
     },
     caseStudy: {
       problem: "Client butuh sistem kasir yang bisa handle multi-outlet, barcode scanning, dan QRIS payment dalam satu aplikasi",
@@ -98,8 +99,8 @@ export const projects: Project[] = [
   {
     id: "wc-check",
     title: "WC Check — Toilet Inspection System",
-    shortDescription: "Production Toilet Monitoring System: 3.293 inspeksi, 53 users, 49 lokasi terkelola dengan QR code & real-time analytics",
-    fullDescription: "Sistem monitoring kebersihan toilet berbasis web yang sudah berjalan di production. Telah mencatat 3.293 inspeksi, digunakan oleh 53 users (14 aktif mingguan) di 49 lokasi. Dilengkapi QR code scanning, multi-component checklist, photo documentation, dan real-time analytics dashboard untuk organisasi dan institusi.",
+    shortDescription: "Production toilet inspection system: 3.293 inspeksi, 53 users, 49 lokasi. Client bayar 12-month subscription — revenue locked in. QR code + real-time analytics.",
+    fullDescription: "Sistem monitoring kebersihan toilet berbasis web untuk Proservice Indonesia. Problem: inspeksi toilet manual pakai form kertas — hilang/rusak, tidak ada data historis, tidak bisa monitor real-time. Solution: QR-code scanning per lokasi, 11-component checklist, photo documentation, dan real-time dashboard. 3.293 inspeksi tercatat, 53 users (14 aktif mingguan), 49 lokasi. Client locked in 12-month subscription.",
     category: "full-stack",
     techStack: [
       {
@@ -148,7 +149,8 @@ export const projects: Project[] = [
     impact: {
       dataVolume: "3.293 inspeksi | 53 users | 49 lokasi in production",
       performance: "Efisiensi inspeksi meningkat 70% vs manual",
-      users: "14 active users weekly — live operational system"
+      users: "14 active users weekly — live operational system",
+      business: "12-month subscription locked in — client retention 100%"
     },
     caseStudy: {
       problem: "Inspeksi kebersihan toilet dilakukan manual dengan form kertas, tidak ada monitoring real-time",
@@ -186,8 +188,8 @@ export const projects: Project[] = [
   {
     id: "ecommerce-manual",
     title: "Qohira — E-Commerce Manual Payment",
-    shortDescription: "Full-stack e-commerce platform dengan manual payment flow, real-time inventory, admin dashboard, dan push notifications — dipakai client nyata",
-    fullDescription: "Full-stack e-commerce platform yang dibangun untuk client nyata. Dilengkapi product catalog, shopping cart dengan real-time inventory check, manual payment verification flow, admin dashboard untuk product & order management, email notifications, dan web push notifications. Built dengan Next.js, tRPC, dan Prisma ORM dengan arsitektur type-safe end-to-end.",
+    shortDescription: "Production e-commerce untuk client nyata — manual payment verification, real-time inventory, admin dashboard. 16 produk, 6 orders, 5 users aktif.",
+    fullDescription: "Full-stack e-commerce platform untuk client ritel yang butuh toko online dengan alur pembayaran transfer bank. Problem: konfirmasi pembayaran manual via chat WA, data pesanan tersebar, tidak ada notifikasi otomatis. Solution: customer upload bukti transfer → admin verify di dashboard → auto email + web push notification. Type-safe end-to-end dengan tRPC + Prisma ORM.",
     category: "full-stack",
     techStack: [
       {
@@ -278,8 +280,8 @@ export const projects: Project[] = [
   {
     id: "selisih-berat",
     title: "Serat QC — Selisih Berat J&T Express",
-    shortDescription: "Production-scale Logistics QC System: 80K+ resi diproses, 160K+ foto terdokumentasi dengan GPS watermarking",
-    fullDescription: "Sistem Quality Control dan audit selisih berat untuk operasional logistik J&T Express yang sudah berjalan di production. Memproses 80.187 entries dan mendokumentasikan 160.374 foto dengan GPS watermarking. Dilengkapi barcode scanning, real-time monitoring, gamification, dan photo documentation otomatis untuk setiap paket.",
+    shortDescription: "Production logistics QC untuk J&T Express — 80K+ resi, 160K+ foto GPS-watermarked. Waktu proses: 4-5 jam → <30 menit per 500 resi.",
+    fullDescription: "Sistem Quality Control selisih berat untuk operasional J&T Express. Problem: tim operasional harus rename 1.000 foto manual per hari, proses 4-5 jam untuk 500 resi, data tersebar di folder lokal. Solution: scan barcode resi → auto-capture GPS → watermark foto otomatis → upload cloud. Real-time dashboard + gamification leaderboard. 80.187 entries dan 160.374 foto terproses di production.",
     category: "full-stack",
     techStack: [
       {
@@ -326,7 +328,8 @@ export const projects: Project[] = [
     ],
     impact: {
       dataVolume: "80.187 entries & 160.374 photos in production",
-      users: "Live operational QC system untuk J&T Express"
+      users: "Live operational QC system untuk J&T Express",
+      business: "Sistem operational harian — 500+ resi per hari diproses"
     },
     caseStudy: {
       problem: "Tim operasional J&T Express harus memverifikasi selisih berat paket setiap hari. Setiap resi membutuhkan 2 foto bukti yang harus di-rename manual satu per satu dengan format tertentu (nomor resi + keterangan). Rata-rata 500 resi dan 1.000 foto per hari.",
@@ -376,8 +379,8 @@ export const projects: Project[] = [
   {
     id: "signalflow-agent",
     title: "SignalFlow Agent — AI Trading Signal Dashboard",
-    shortDescription: "AI-powered signal-to-execution trading dashboard dengan 5-Layer Signal Engine V2, multi-timeframe confluence, dan paper futures trading — built for SoSoValue Buildathon 2026",
-    fullDescription: "SignalFlow Agent mengubah multi-dimensional market data menjadi trade signals yang explainable, dilengkapi wallet-aware paper futures validation, Bloomberg-style command center, dan production-grade mobile/PWA support. Dibangun untuk SoSoValue Buildathon 2026 oleh NoHype Labs. Mengintegrasikan SoSoValue API (ETF flows, sentiment, macro) dan SoDEX API (tickers, klines, orderbook, paper trading) dengan AI signal enrichment dari DeepSeek/OpenAI/OpenRouter.",
+    shortDescription: "AI trading signal dashboard — 5-Layer Signal Engine V2, multi-timeframe confluence, paper futures trading. SoSoValue Buildathon 2026 submission.",
+    fullDescription: "SignalFlow Agent mengubah multi-dimensional market data menjadi trade signals yang explainable. Problem: trader retail butuh sistem yang bisa analisis multi-factor (trend, momentum, volatility, volume, structure) secara otomatis dan execute paper trades — bukan cuma chart viewer. Solution: 5-Layer Signal Engine V2 dengan market regime detection, 7-tier classification, dan wallet-aware paper futures validation. Bloomberg-style command center dengan pipeline visualization.",
     category: "full-stack",
     techStack: [
       {
@@ -438,6 +441,34 @@ export const projects: Project[] = [
       performance: "End-to-end signal pipeline: market data → multi-factor analysis → classified signal → paper execution",
       users: "SoSoValue Buildathon 2026 submission by NoHype Labs"
     },
+    caseStudy: {
+      problem: "Trader retail kesulitan mengintegrasikan data dari banyak sumber (ETF flows, sentiment, macro events, technical indicators) menjadi satu keputusan trading yang koheren. Platform existing hanya chart viewer tanpa signal classification atau automated execution.",
+      painPoints: [
+        "Data tersebar di banyak platform — tidak ada unified view",
+        "Tidak ada sistem multi-factor confluence yang explainable",
+        "Paper trading terpisah dari analysis — tidak ada feedback loop",
+        "Tidak ada adaptasi per trading style (scalper vs swing vs position)"
+      ],
+      solution: "5-Layer Signal Engine V2 yang menggabungkan Trend, Momentum, Volatility, Volume, dan Structure analysis dengan market regime detection. Setiap signal dianalisis di 3 timeframe (1H, 4H, 1D) dengan alignment scoring. Paper futures trading dengan virtual USDC, auto TP/SL/liquidation, dan per-type performance stats.",
+      metrics: [
+        {
+          label: "Signal analysis",
+          before: "Manual cek 5+ indikator di berbagai platform",
+          after: "Auto 5-factor confluence + 3-timeframe alignment"
+        },
+        {
+          label: "Trade execution",
+          before: "Manual open/close, rawan emosi",
+          after: "Paper futures dengan auto TP/SL/liquidation"
+        },
+        {
+          label: "Performance tracking",
+          before: "Tidak ada atau manual spreadsheet",
+          after: "Per-type stats: Sharpe, Sortino, Calmar, drawdown"
+        }
+      ],
+      timeline: "Dibangun dalam 3 minggu untuk SoSoValue Buildathon 2026"
+    },
     demo: "https://signalflowagent.vercel.app",
     github: "https://github.com/nohypelabs/signalflow-agent",
     image: "/projects/signalflow-thumb.jpg",
@@ -448,8 +479,8 @@ export const projects: Project[] = [
   {
     id: "shadowbid",
     title: "ShadowBid — Encrypted Sealed-Bid Auction (FHE)",
-    shortDescription: "Sealed-bid auction protocol dimana bid tetap terenkripsi on-chain menggunakan Fully Homomorphic Encryption (FHE). Public Asset. Private Bids. Verifiable Settlement.",
-    fullDescription: "ShadowBid adalah protokol sealed-bid auction dimana bid tetap terenkripsi on-chain menggunakan Fully Homomorphic Encryption (FHE). Smart contract membandingkan encrypted bids via FHE CMUX operations tanpa pernah mendecrypt-nya — hanya pemenang yang di-reveal setelah settlement. Menggunakan Fhenix CoFHE untuk in-browser encryption dan Threshold Network untuk decentralized decryption. Menghilangkan MEV extraction, bid sniping, dan price manipulation yang inherent di on-chain auctions biasa.",
+    shortDescription: "On-chain sealed-bid auction dengan Fully Homomorphic Encryption (FHE) — bid tetap terenkripsi, smart contract compute winner tanpa decrypt. 47 tests.",
+    fullDescription: "Protokol sealed-bid auction dimana bid tetap terenkripsi on-chain menggunakan FHE. Problem: on-chain auctions biasa vulnerable ke MEV extraction, bid sniping, dan price manipulation karena bid visible di mempool. Solution: bid di-encrypt di browser via CoFHE SDK, smart contract bandingkan encrypted bids via FHE CMUX operations tanpa pernah decrypt — hanya pemenang yang di-reveal setelah settlement via Threshold Network. Deployed on Arbitrum Sepolia.",
     category: "full-stack",
     techStack: [
       {
@@ -511,6 +542,34 @@ export const projects: Project[] = [
     impact: {
       performance: "~430 lines smart contract dengan 47 tests — production-grade FHE auction protocol",
       users: "Deployed on Arbitrum Sepolia testnet (contract: 0x96dA...447)"
+    },
+    caseStudy: {
+      problem: "On-chain auctions biasa (English, Dutch, Sealed-bid) semuanya vulnerable: bid visible di mempool, MEV bots bisa snipe, dan price manipulation mudah dilakukan. Tidak ada privacy untuk peserta auction.",
+      painPoints: [
+        "Bid visible di mempool — MEV bots bisa extract value",
+        "Bid sniping: peserta tunggu last second untuk outbid",
+        "Price manipulation mudah karena semua bid transparan",
+        "Tidak ada protokol sealed-bid yang truly private on-chain"
+      ],
+      solution: "Fully Homomorphic Encryption (FHE) memungkinkan smart contract compute pada encrypted data. Bid di-encrypt di browser via Fhenix CoFHE SDK, disimpan on-chain sebagai euint64. Smart contract bandingkan encrypted bids via CMUX operations — tidak pernah decrypt individual bids. Hanya winning bid yang di-reveal setelah finalization via Threshold Network.",
+      metrics: [
+        {
+          label: "Bid privacy",
+          before: "Visible di mempool — MEV extractable",
+          after: "FHE encrypted — zero knowledge sampai settlement"
+        },
+        {
+          label: "Winner selection",
+          before: "On-chain comparison (plaintext)",
+          after: "CMUX on encrypted bids — never decrypts losers"
+        },
+        {
+          label: "Trust model",
+          before: "Trusted auctioneer atau transparent (gameable)",
+          after: "Trustless — verifiable on-chain, no third party"
+        }
+      ],
+      timeline: "Dibangun dalam 2 minggu — ~430 lines Solidity + 47 tests"
     },
     demo: "https://shadowbid.vercel.app",
     github: "https://github.com/nohypelabs/shadowbid",

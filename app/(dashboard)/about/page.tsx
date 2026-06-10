@@ -14,6 +14,10 @@ import {
   Heart,
   Zap,
   ArrowUpRight,
+  Building2,
+  Truck,
+  ShoppingCart,
+  Link as LinkIcon,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -63,8 +67,8 @@ export default function AboutPage() {
             </p>
             <p>
               {language === "en"
-                ? "In 2024, I came back. This time with modern tooling and a production-first mindset. Within 12 months, I shipped 4 production systems processing 250K+ records — from logistics QC at J&T Express to POS systems for real retail clients."
-                : "Di 2024, saya kembali. Kali ini dengan tooling modern dan mindset production-first. Dalam 12 bulan, saya mengirim 4 sistem production yang memproses 250K+ records — dari QC logistik di J&T Express sampai sistem POS untuk client ritel nyata."}
+                ? "In 2024, I came back. This time with modern tooling and a production-first mindset. Within 12 months, I shipped 7 production systems processing 250K+ records — from logistics QC at J&T Express to POS systems for real retail clients, trading dashboards to fleet tracking."
+                : "Di 2024, saya kembali. Kali ini dengan tooling modern dan mindset production-first. Dalam 12 bulan, saya mengirim 7 sistem production yang memproses 250K+ records — dari QC logistik di J&T Express sampai sistem POS untuk client ritel nyata, trading dashboard hingga fleet tracking."}
             </p>
             <p>
               {language === "en"
@@ -129,6 +133,90 @@ export default function AboutPage() {
                 </p>
               </motion.div>
             ))}
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* Industries I Build For */}
+      <ScrollReveal>
+        <section className="space-y-4">
+          <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
+            <Building2 className="w-5 h-5 text-emerald-500" />
+            {language === "en" ? "Industries I Build For" : "Industri yang Saya Layani"}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            {[
+              {
+                icon: Truck,
+                title: language === "en" ? "Logistics & Operations" : "Logistik & Operasional",
+                desc: language === "en"
+                  ? "QC systems, fleet tracking, barcode scanning. I've worked in logistics — I know the pain."
+                  : "Sistem QC, fleet tracking, barcode scanning. Saya pernah kerja di logistik — saya tahu sakitnya.",
+                projects: "Serat QC, TraceFlow",
+              },
+              {
+                icon: ShoppingCart,
+                title: language === "en" ? "Retail & UMKM" : "Ritel & UMKM",
+                desc: language === "en"
+                  ? "POS systems, e-commerce, warehouse management. Built for Indonesian businesses with real operations."
+                  : "Sistem POS, e-commerce, manajemen gudang. Dibangun untuk bisnis Indonesia dengan operasional nyata.",
+                projects: "LakuPOS, Qohira, WC Check",
+              },
+              {
+                icon: LinkIcon,
+                title: language === "en" ? "Web3 & Trading" : "Web3 & Trading",
+                desc: language === "en"
+                  ? "FHE protocols, trading dashboards, Solana agents. Cutting-edge tech with production discipline."
+                  : "Protokol FHE, trading dashboard, Solana agent. Teknologi cutting-edge dengan disiplin production.",
+                projects: "SignalFlow, ShadowBid",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * i }}
+                className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4"
+              >
+                <item.icon className="w-5 h-5 text-emerald-500 mb-2" />
+                <h3 className="font-bold text-sm text-zinc-900 dark:text-white mb-1">
+                  {item.title}
+                </h3>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed mb-2">
+                  {item.desc}
+                </p>
+                <p className="text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
+                  {item.projects}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+      </ScrollReveal>
+
+      {/* Engineering Philosophy */}
+      <ScrollReveal>
+        <section className="space-y-4">
+          <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
+            <Code className="w-5 h-5 text-emerald-500" />
+            {language === "en" ? "How I Think About Code" : "Cara Saya Memikirkan Kode"}
+          </h2>
+          <div className="prose prose-sm dark:prose-invert max-w-none space-y-3 text-zinc-600 dark:text-zinc-400">
+            <p>
+              {language === "en"
+                ? "I don't write code for code's sake. Every function, every component, every database query exists to solve a business problem. If I can't explain why something exists in plain language, it shouldn't exist."
+                : "Saya tidak menulis kode demi kode itu sendiri. Setiap function, setiap component, setiap query database ada untuk menyelesaikan masalah bisnis. Kalau saya tidak bisa menjelaskan kenapa sesuatu ada dalam bahasa sederhana, seharusnya itu tidak ada."}
+            </p>
+            <p>
+              {language === "en"
+                ? "DDD isn't a buzzword to me — it's how I think. When I build a POS system, I think in terms of transactions, inventory, and outlets — not database tables and API routes. The architecture follows the domain, not the other way around."
+                : "DDD bukan buzzword bagi saya — itu cara saya berpikir. Saat membangun sistem POS, saya berpikir dalam transaksi, inventori, dan outlet — bukan tabel database dan route API. Arsitektur mengikuti domain, bukan sebaliknya."}
+            </p>
+            <p>
+              {language === "en"
+                ? "I learn by shipping. My first production system (Serat QC) was built while I was still relearning modern web dev. 80K+ records later, it's still running. The best way to learn is to build something real, deploy it, and watch it break — then fix it."
+                : "Saya belajar dengan mengirim. Sistem production pertama saya (Serat QC) dibangun saat saya masih belajar ulang web dev modern. 80K+ records kemudian, masih berjalan. Cara terbaik belajar adalah membangun sesuatu yang nyata, deploy, dan lihat dia pecah — lalu perbaiki."}
+            </p>
           </div>
         </section>
       </ScrollReveal>

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { personalInfo } from "@/lib/data/personalInfo";
-import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin, Mail, Rocket, Globe, Layers } from "lucide-react";
 import Link from "next/link";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { translations } from "@/lib/translations";
@@ -103,6 +103,39 @@ export default function DashboardPage() {
       {/* ── Stats ── */}
       <ScrollReveal>
         <StatsStrip />
+      </ScrollReveal>
+
+      {/* ── Why Me ── */}
+      <ScrollReveal>
+        <section className="space-y-4">
+          <h2 className="text-lg font-bold text-zinc-900 dark:text-white">
+            {t.whyMeTitle}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            {[
+              { icon: Rocket, title: t.whyMe1Title, desc: t.whyMe1Desc },
+              { icon: Globe, title: t.whyMe2Title, desc: t.whyMe2Desc },
+              { icon: Layers, title: t.whyMe3Title, desc: t.whyMe3Desc },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4"
+              >
+                <item.icon className="w-5 h-5 text-emerald-500 mb-2" />
+                <h3 className="font-bold text-sm text-zinc-900 dark:text-white mb-1">
+                  {item.title}
+                </h3>
+                <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                  {item.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
       </ScrollReveal>
 
       {/* ── Featured Projects ── */}

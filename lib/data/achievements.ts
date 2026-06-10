@@ -11,9 +11,9 @@ export const achievements: Achievement[] = [
   {
     id: "1",
     title: "Ship Fast, Ship Real",
-    description: "4 production systems in 12 months — 250K+ records processed across logistics QC, POS, and e-commerce. Used daily by real clients.",
+    description: "7 production systems in 12 months — 250K+ records processed across logistics QC, POS, e-commerce, and Web3. Used daily by real clients.",
     icon: "rocket",
-    metric: "4 shipped"
+    metric: "7 shipped"
   },
   {
     id: "2",
@@ -39,9 +39,9 @@ export const achievements: Achievement[] = [
   {
     id: "5",
     title: "Full-Stack Versatility",
-    description: "From e-commerce to logistics QC, POS systems to toilet monitoring",
+    description: "From e-commerce to logistics QC, POS systems to fleet tracking, trading dashboards to encrypted auctions",
     icon: "layers",
-    metric: "4 domains"
+    metric: "7 domains"
   },
   {
     id: "6",
@@ -76,7 +76,7 @@ export interface Metric {
 export const metrics: Metric[] = [
   {
     label: "Products Shipped",
-    value: "4",
+    value: "7",
     description: "Production systems in active use by real clients",
     icon: "check-circle"
   },
@@ -101,7 +101,7 @@ export const metrics: Metric[] = [
   {
     label: "Development Time",
     value: "<1 Year",
-    description: "From comeback to 4 production systems",
+    description: "From comeback to 7 production systems",
     icon: "clock"
   },
   {

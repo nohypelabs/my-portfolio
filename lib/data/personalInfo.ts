@@ -3,9 +3,9 @@ export const personalInfo = {
   username: "agds-dev",
   role: "Full-stack Developer",
   tagline: "Building production-ready applications with modern tech stack",
-  headline: "Came back to full-stack after 9 years. Shipped 4 production systems in 12 months.",
-  narrative: "After 9 years away from production tech, I came back and shipped 4 production systems in under a year. From POS systems handling real transactions to logistics QC processing 250K+ records — I solve real problems with modern tech.",
-  bio: "After 9 years away from production tech, came back and shipped 4 production systems in under a year. Specializing in Next.js, tRPC, and modern web technologies. From toilet monitoring systems to logistics QC — I build solutions that solve real problems.",
+  headline: "Came back to full-stack after 9 years. Shipped 7 production systems in 12 months.",
+  narrative: "After 9 years away from production tech, I came back and shipped 7 production systems in under a year. From POS systems handling real transactions to logistics QC processing 250K+ records, trading dashboards to encrypted FHE auctions — I solve real problems with modern tech.",
+  bio: "After 9 years away from production tech, came back and shipped 7 production systems in under a year. Specializing in Next.js, tRPC, and modern web technologies. From toilet monitoring systems to logistics QC, trading dashboards to fleet tracking — I build solutions that solve real problems.",
 
   contact: {
     email: "agdscid@gmail.com",
@@ -30,7 +30,7 @@ export const personalInfo = {
 
   stats: {
     experience: "1",
-    projectsCompleted: "4",
+    projectsCompleted: "7",
     ongoingProjects: "4",
     technologiesMastered: "6"
   }

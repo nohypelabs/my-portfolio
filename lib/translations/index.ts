@@ -57,6 +57,13 @@ export const translations = {
     featuredProjects: "Featured Projects",
     moreProjects: "More Projects",
     whatSetsApart: "What Sets Me Apart",
+    whyMeTitle: "Why Work With Me",
+    whyMe1Title: "7 Systems in 12 Months",
+    whyMe1Desc: "From logistics QC to POS to fleet tracking — I ship production systems, not portfolio demos. Real clients, real revenue, real impact.",
+    whyMe2Title: "Indonesian Market DNA",
+    whyMe2Desc: "I've worked in logistics, retail, and operations. I build for Indonesian businesses because I understand their actual pain points — not from a textbook.",
+    whyMe3Title: "Full-Stack, End to End",
+    whyMe3Desc: "Database design to deployment, DDD architecture, type-safe APIs. I own the entire stack — not just a layer. No handoffs, no gaps.",
     techStack: "Tech Stack",
     inProgressProjects: "In Progress",
     letsWork: "Need a Full-Stack Developer?",
@@ -80,7 +87,7 @@ export const translations = {
 
     // About page
     aboutMe: "About Me",
-    aboutBio: "Studied D3 Informatics Engineering (104/114 credits) — paused due to financial constraints, but never stopped learning. Made a comeback after 9 years, now building production-ready full-stack applications. Shipped 6 production systems in less than a year, specializing in Next.js, tRPC, and modern web technologies. From toilet monitoring systems to logistics QC, trading dashboards to encrypted FHE auctions — I build solutions that solve real problems.",
+    aboutBio: "Studied D3 Informatics Engineering (104/114 credits) — paused due to financial constraints, but never stopped learning. Made a comeback after 9 years, now building production-ready full-stack applications. Shipped 7 production systems in less than a year, specializing in Next.js, tRPC, and modern web technologies. From toilet monitoring systems to logistics QC, trading dashboards to fleet tracking — I build solutions that solve real problems.",
     myJourney: "My Journey",
     technicalSkills: "Technical Skills",
     toolsAndMore: "Tools & More",
@@ -151,8 +158,8 @@ export const translations = {
 
     // Hero content
     heroRole: "Full-stack Developer",
-    heroHeadline: "Came back to full-stack after 9 years. Shipped 6 production systems in 12 months.",
-    heroNarrative: "After 9 years away from production tech, I came back and shipped 6 production systems in under a year. From POS systems handling real transactions to logistics QC processing 250K+ records, trading dashboards to encrypted FHE auctions — I solve real problems with modern tech.",
+    heroHeadline: "Came back to full-stack after 9 years. Shipped 7 production systems in 12 months.",
+    heroNarrative: "After 9 years away from production tech, I came back and shipped 7 production systems in under a year. From POS systems handling real transactions to logistics QC processing 250K+ records, trading dashboards to encrypted FHE auctions — I solve real problems with modern tech.",
 
     // CV Page
     cvProfile: "Profile",
@@ -234,6 +241,13 @@ export const translations = {
     featuredProjects: "Proyek Unggulan",
     moreProjects: "Proyek Lainnya",
     whatSetsApart: "Yang Membedakan Saya",
+    whyMeTitle: "Kenapa Bekerja Sama Dengan Saya",
+    whyMe1Title: "7 Sistem dalam 12 Bulan",
+    whyMe1Desc: "Dari QC logistik hingga POS hingga fleet tracking — saya mengirim sistem production, bukan demo portfolio. Client nyata, revenue nyata, dampak nyata.",
+    whyMe2Title: "DNA Pasar Indonesia",
+    whyMe2Desc: "Saya pernah bekerja di logistik, ritel, dan operasional. Saya membangun untuk bisnis Indonesia karena saya memahami pain points mereka — bukan dari buku.",
+    whyMe3Title: "Full-Stack, End to End",
+    whyMe3Desc: "Dari desain database ke deployment, DDD architecture, type-safe API. Saya memiliki seluruh stack — bukan hanya satu layer. Tidak ada handoff, tidak ada celah.",
     techStack: "Tech Stack",
     inProgressProjects: "Sedang Dikerjakan",
     letsWork: "Butuh Full-Stack Developer?",
@@ -257,7 +271,7 @@ export const translations = {
 
     // About page
     aboutMe: "Tentang Saya",
-    aboutBio: "Menempuh D3 Teknik Informatika (104/114 SKS selesai) — terhenti karena keterbatasan biaya, tapi tidak pernah berhenti belajar. Kembali setelah 9 tahun vakum, sekarang membangun aplikasi full-stack production-ready. Mengirim 6 sistem production dalam kurang dari setahun, spesialisasi di Next.js, tRPC, dan teknologi web modern. Dari sistem monitoring toilet hingga QC logistik, trading dashboard hingga encrypted FHE auction — saya membangun solusi untuk masalah nyata.",
+    aboutBio: "Menempuh D3 Teknik Informatika (104/114 SKS selesai) — terhenti karena keterbatasan biaya, tapi tidak pernah berhenti belajar. Kembali setelah 9 tahun vakum, sekarang membangun aplikasi full-stack production-ready. Mengirim 7 sistem production dalam kurang dari setahun, spesialisasi di Next.js, tRPC, dan teknologi web modern. Dari sistem monitoring toilet hingga QC logistik, trading dashboard hingga fleet tracking — saya membangun solusi untuk masalah nyata.",
     myJourney: "Perjalanan Saya",
     technicalSkills: "Keahlian Teknis",
     toolsAndMore: "Tools & Lainnya",
@@ -328,8 +342,8 @@ export const translations = {
 
     // Hero content
     heroRole: "Full-stack Developer",
-    heroHeadline: "Kembali ke full-stack setelah 9 tahun. Kirim 6 sistem production dalam 12 bulan.",
-    heroNarrative: "Setelah 9 tahun tidak aktif di production tech, saya kembali dan mengirim 6 sistem production dalam kurang dari setahun. Dari sistem POS yang menangani transaksi nyata hingga QC logistik dengan 250K+ records, trading dashboard hingga encrypted FHE auction — saya menyelesaikan masalah nyata dengan teknologi modern.",
+    heroHeadline: "Kembali ke full-stack setelah 9 tahun. Kirim 7 sistem production dalam 12 bulan.",
+    heroNarrative: "Setelah 9 tahun tidak aktif di production tech, saya kembali dan mengirim 7 sistem production dalam kurang dari setahun. Dari sistem POS yang menangani transaksi nyata hingga QC logistik dengan 250K+ records, trading dashboard hingga fleet tracking — saya menyelesaikan masalah nyata dengan teknologi modern.",
 
     // CV Page
     cvProfile: "Profil",

@@ -46,6 +46,7 @@ export interface Project {
     users?: string;
     dataVolume?: string;
     performance?: string;
+    business?: string;
   };
   caseStudy?: CaseStudy;
   github?: string;
