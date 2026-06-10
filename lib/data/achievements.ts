@@ -24,10 +24,10 @@ export const achievements: Achievement[] = [
   },
   {
     id: "3",
-    title: "AI-Augmented Builder",
-    description: "Claude CLI as a force multiplier — not a crutch. AI handles boilerplate, I handle architecture and business logic.",
+    title: "Rapid Shipper",
+    description: "From idea to production in weeks, not months. Domain-driven architecture, clean code, and real-world testing — shipped fast without cutting corners.",
     icon: "zap",
-    metric: "AI-powered"
+    metric: "Weeks to ship"
   },
   {
     id: "4",
@@ -105,9 +105,9 @@ export const metrics: Metric[] = [
     icon: "clock"
   },
   {
-    label: "AI-Augmented",
+    label: "Ship Speed",
     value: "Weeks",
-    description: "Productivity via Claude CLI as force multiplier",
+    description: "From idea to production — fast iteration, real feedback",
     icon: "zap"
   }
 ];

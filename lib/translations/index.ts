@@ -35,7 +35,7 @@ export const translations = {
     lakuPos: "LakuPOS",
     selisihBerat: "Serat QC",
     qohira: "Qohira",
-    signalflowAgent: "SignalFlow Agent",
+    signalflowAgent: "SignalFlow",
     shadowbid: "ShadowBid",
 
     // Profile
@@ -79,7 +79,7 @@ export const translations = {
 
     // About page
     aboutMe: "About Me",
-    aboutBio: "Studied D3 Informatics Engineering (104/114 credits) — paused due to financial constraints, but never stopped learning. Made a comeback after 9 years, now building production-ready full-stack applications with AI-assisted development. Shipped 6 production systems in less than a year, specializing in Next.js, tRPC, and modern web technologies. From toilet monitoring systems to logistics QC, AI trading dashboards to encrypted FHE auctions — I build solutions that solve real problems.",
+    aboutBio: "Studied D3 Informatics Engineering (104/114 credits) — paused due to financial constraints, but never stopped learning. Made a comeback after 9 years, now building production-ready full-stack applications. Shipped 6 production systems in less than a year, specializing in Next.js, tRPC, and modern web technologies. From toilet monitoring systems to logistics QC, trading dashboards to encrypted FHE auctions — I build solutions that solve real problems.",
     myJourney: "My Journey",
     technicalSkills: "Technical Skills",
     toolsAndMore: "Tools & More",
@@ -149,9 +149,9 @@ export const translations = {
     users: "Users",
 
     // Hero content
-    heroRole: "Full-stack Developer & AI-Augmented Engineer",
+    heroRole: "Full-stack Developer",
     heroHeadline: "Came back to full-stack after 9 years. Shipped 6 production systems in 12 months.",
-    heroNarrative: "After 9 years away from production tech, I came back with AI-augmented development and shipped 6 production systems in under a year. From POS systems handling real transactions to logistics QC processing 250K+ records, AI trading dashboards to encrypted FHE auctions — I solve real problems with modern tech.",
+    heroNarrative: "After 9 years away from production tech, I came back and shipped 6 production systems in under a year. From POS systems handling real transactions to logistics QC processing 250K+ records, trading dashboards to encrypted FHE auctions — I solve real problems with modern tech.",
 
     // CV Page
     cvProfile: "Profile",
@@ -211,7 +211,7 @@ export const translations = {
     lakuPos: "LakuPOS",
     selisihBerat: "Serat QC",
     qohira: "Qohira",
-    signalflowAgent: "SignalFlow Agent",
+    signalflowAgent: "SignalFlow",
     shadowbid: "ShadowBid",
 
     // Profile
@@ -255,7 +255,7 @@ export const translations = {
 
     // About page
     aboutMe: "Tentang Saya",
-    aboutBio: "Menempuh D3 Teknik Informatika (104/114 SKS selesai) — terhenti karena keterbatasan biaya, tapi tidak pernah berhenti belajar. Kembali setelah 9 tahun vakum, sekarang membangun aplikasi full-stack production-ready dengan bantuan AI. Mengirim 6 sistem production dalam kurang dari setahun, spesialisasi di Next.js, tRPC, dan teknologi web modern. Dari sistem monitoring toilet hingga QC logistik, AI trading dashboard hingga encrypted FHE auction — saya membangun solusi untuk masalah nyata.",
+    aboutBio: "Menempuh D3 Teknik Informatika (104/114 SKS selesai) — terhenti karena keterbatasan biaya, tapi tidak pernah berhenti belajar. Kembali setelah 9 tahun vakum, sekarang membangun aplikasi full-stack production-ready. Mengirim 6 sistem production dalam kurang dari setahun, spesialisasi di Next.js, tRPC, dan teknologi web modern. Dari sistem monitoring toilet hingga QC logistik, trading dashboard hingga encrypted FHE auction — saya membangun solusi untuk masalah nyata.",
     myJourney: "Perjalanan Saya",
     technicalSkills: "Keahlian Teknis",
     toolsAndMore: "Tools & Lainnya",
@@ -325,9 +325,9 @@ export const translations = {
     users: "Users",
 
     // Hero content
-    heroRole: "Full-stack Developer & AI-Augmented Engineer",
+    heroRole: "Full-stack Developer",
     heroHeadline: "Kembali ke full-stack setelah 9 tahun. Kirim 6 sistem production dalam 12 bulan.",
-    heroNarrative: "Setelah 9 tahun tidak aktif di production tech, saya kembali dengan AI-augmented development dan mengirim 6 sistem production dalam kurang dari setahun. Dari sistem POS yang menangani transaksi nyata hingga QC logistik dengan 250K+ records, AI trading dashboard hingga encrypted FHE auction — saya menyelesaikan masalah nyata dengan teknologi modern.",
+    heroNarrative: "Setelah 9 tahun tidak aktif di production tech, saya kembali dan mengirim 6 sistem production dalam kurang dari setahun. Dari sistem POS yang menangani transaksi nyata hingga QC logistik dengan 250K+ records, trading dashboard hingga encrypted FHE auction — saya menyelesaikan masalah nyata dengan teknologi modern.",
 
     // CV Page
     cvProfile: "Profil",

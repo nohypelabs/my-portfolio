@@ -9,7 +9,7 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import {
   Rocket,
   Code,
-  Brain,
+  Lightbulb,
   Target,
   Heart,
   Zap,
@@ -63,8 +63,8 @@ export default function AboutPage() {
             </p>
             <p>
               {language === "en"
-                ? "In 2024, I came back. But this time, I had AI as a force multiplier. Within 12 months, I shipped 4 production systems processing 250K+ records — from logistics QC at J&T Express to POS systems for real retail clients."
-                : "Di 2024, saya kembali. Tapi kali ini, saya punya AI sebagai force multiplier. Dalam 12 bulan, saya mengirim 4 sistem production yang memproses 250K+ records — dari QC logistik di J&T Express sampai sistem POS untuk client ritel nyata."}
+                ? "In 2024, I came back. This time with modern tooling and a production-first mindset. Within 12 months, I shipped 4 production systems processing 250K+ records — from logistics QC at J&T Express to POS systems for real retail clients."
+                : "Di 2024, saya kembali. Kali ini dengan tooling modern dan mindset production-first. Dalam 12 bulan, saya mengirim 4 sistem production yang memproses 250K+ records — dari QC logistik di J&T Express sampai sistem POS untuk client ritel nyata."}
             </p>
             <p>
               {language === "en"
@@ -79,17 +79,17 @@ export default function AboutPage() {
       <ScrollReveal>
         <section className="space-y-4">
           <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
-            <Brain className="w-5 h-5 text-emerald-500" />
+            <Lightbulb className="w-5 h-5 text-emerald-500" />
             {language === "en" ? "How I Work" : "Cara Saya Bekerja"}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {[
               {
                 icon: Zap,
-                title: language === "en" ? "AI-Augmented" : "AI-Augmented",
+                title: language === "en" ? "Rapid Iteration" : "Iterasi Cepat",
                 desc: language === "en"
-                  ? "Claude CLI handles boilerplate and patterns. I focus on architecture, business logic, and the decisions that matter."
-                  : "Claude CLI menangani boilerplate dan patterns. Saya fokus pada arsitektur, business logic, dan keputusan yang penting.",
+                  ? "Modern tooling handles boilerplate. I focus on architecture, business logic, and the decisions that matter."
+                  : "Tooling modern menangani boilerplate. Saya fokus pada arsitektur, business logic, dan keputusan yang penting.",
               },
               {
                 icon: Target,
@@ -147,13 +147,13 @@ export default function AboutPage() {
                     "Full-time or contract roles as Full-stack Developer",
                     "Teams that value shipping speed and real-world impact",
                     "Projects where I can own the stack end-to-end",
-                    "Environments that embrace AI-augmented development",
+                    "Environments that value shipping velocity and clean code",
                   ]
                 : [
                     "Full-time atau kontrak sebagai Full-stack Developer",
                     "Tim yang menghargai kecepatan shipping dan dampak nyata",
                     "Project dimana saya bisa memiliki stack end-to-end",
-                    "Lingkungan yang mendukung AI-augmented development",
+                    "Lingkungan yang menghargai kecepatan shipping dan kode bersih",
                   ]
               ).map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
@@ -181,8 +181,8 @@ export default function AboutPage() {
             </p>
             <p>
               {language === "en"
-                ? "Based in Bandung, Indonesia. I speak Indonesian (native), Sundanese (native), and English (intermediate). When I'm not coding, I'm exploring crypto trading bots and Solana DeFi protocols."
-                : "Berdomisili di Bandung, Indonesia. Saya berbicara Bahasa Indonesia (asli), Bahasa Sunda (asli), dan Inggris (menengah). Saat tidak coding, saya mengeksplorasi bot trading crypto dan protokol DeFi Solana."}
+                ? "Based in Bandung, Indonesia. I speak Indonesian (native), Sundanese (native), and English (basic). When I'm not coding, I'm exploring Web3 protocols and building side projects on Solana."
+                : "Berdomisili di Bandung, Indonesia. Saya berbicara Bahasa Indonesia (asli), Bahasa Sunda (asli), dan Inggris (dasar). Saat tidak coding, saya mengeksplorasi protokol Web3 dan membangun side project di Solana."}
             </p>
           </div>
         </section>

@@ -10,7 +10,7 @@ import { translations } from "@/lib/translations";
 import { TiltCard } from "@/components/TiltCard";
 
 const STATS = [
-  { value: "4", labelKey: "productsShipped" as const, accent: "text-emerald-400", border: "border-emerald-500/20", bg: "bg-emerald-500/5" },
+  { value: "5", labelKey: "productsShipped" as const, accent: "text-emerald-400", border: "border-emerald-500/20", bg: "bg-emerald-500/5" },
   { value: "250K+", labelKey: "dataProcessed" as const, accent: "text-orange-400", border: "border-orange-500/20", bg: "bg-orange-500/5" },
   { value: "4", labelKey: "activeProjects" as const, accent: "text-blue-400", border: "border-blue-500/20", bg: "bg-blue-500/5" },
   { value: "6", labelKey: "techMastered" as const, accent: "text-purple-400", border: "border-purple-500/20", bg: "bg-purple-500/5" },

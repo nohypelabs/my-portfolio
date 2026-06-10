@@ -22,8 +22,8 @@ export default function BlogPage() {
         </h1>
         <p className="text-sm text-zinc-500">
           {language === "en"
-            ? "Thoughts on development, AI-augmented workflows, and shipping production systems."
-            : "Pemikiran tentang development, AI-augmented workflow, dan mengirim sistem production."}
+            ? "Thoughts on full-stack development, shipping production systems, and building for real users."
+            : "Pemikiran tentang full-stack development, mengirim sistem production, dan membangun untuk user nyata."}
         </p>
       </motion.div>
 

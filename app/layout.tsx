@@ -20,12 +20,12 @@ export const metadata: Metadata = {
     default: "Abdul Gofur - Full-stack Developer Portfolio",
     template: "%s | Abdul Gofur"
   },
-  description: "Portfolio of Abdul Gofur, Full-stack Developer & AI-Augmented Engineer. 4 production systems shipped in <1 year with 250K+ records processed. Specializing in Next.js, TypeScript, tRPC, PostgreSQL. Featured: Serat QC, WC Check, LakuPOS.",
+  description: "Portfolio of Abdul Gofur, Full-stack Developer. 4 production systems shipped in <1 year with 250K+ records processed. Specializing in Next.js, TypeScript, tRPC, PostgreSQL. Featured: Serat QC, WC Check, LakuPOS.",
   keywords: [
     "Abdul Gofur",
     "agds-dev",
     "Full-stack Developer",
-    "AI-Augmented Engineer",
+    "Full-stack Engineer",
     "Web Developer",
     "Next.js Developer",
     "React Developer",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://abdulgofur.vercel.app',
-    title: 'Abdul Gofur - Full-stack Developer & AI-Augmented Engineer',
+    title: 'Abdul Gofur - Full-stack Developer',
     description: '4 production systems shipped in <1 year, 250K+ records processed. Next.js, TypeScript, tRPC, PostgreSQL. From logistics QC to POS systems.',
     siteName: 'Abdul Gofur Portfolio',
     images: [
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Abdul Gofur - Full-stack Developer & AI-Augmented Engineer',
+    title: 'Abdul Gofur - Full-stack Developer',
     description: '4 production systems | 250K+ records | Next.js, tRPC, PostgreSQL | Logistics, Retail',
     creator: '@agdscID',
     images: ['/avatar.jpg'],
