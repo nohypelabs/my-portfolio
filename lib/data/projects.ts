@@ -518,5 +518,103 @@ export const projects: Project[] = [
     tags: ["React", "Solidity", "FHE", "Fhenix", "Hardhat", "RainbowKit", "Arbitrum", "Web3"],
     year: "2026",
     status: "production"
+  },
+  {
+    id: "traceflow",
+    title: "TraceFlow — Real-Time GPS Fleet Tracking",
+    shortDescription: "GPS fleet management dashboard dengan real-time tracking, geofencing, multi-provider GPS integration, dan comprehensive reporting — untuk perusahaan logistik dan transportasi",
+    fullDescription: "Sistem manajemen armada GPS real-time berbasis web yang memungkinkan pemantauan kendaraan secara live, pembuatan zona geofence, penerimaan peringatan otomatis, serta analisis riwayat perjalanan. Mendukung berbagai perangkat GPS dari vendor Teltonika, Queclink, dan Concox, serta mode testing menggunakan GPS smartphone. Dibangun dengan arsitektur full-stack modern menggunakan Next.js 16, tRPC, Prisma, dan Socket.IO untuk real-time updates.",
+    category: "full-stack",
+    techStack: [
+      {
+        category: "Frontend",
+        technologies: ["Next.js 16", "React 19", "TypeScript 5", "Tailwind CSS 4", "Framer Motion", "Leaflet", "Lucide React"]
+      },
+      {
+        category: "Backend & Database",
+        technologies: ["tRPC 11", "Prisma 7", "PostgreSQL 15", "Socket.IO 4", "NextAuth v5"]
+      },
+      {
+        category: "Maps & GPS",
+        technologies: ["Leaflet 1.9", "OpenStreetMap", "Teltonika", "Queclink", "Concox", "GPS Webhook API"]
+      },
+      {
+        category: "Infrastructure",
+        technologies: ["Supabase (Storage)", "PM2", "Nginx", "PWA"]
+      }
+    ],
+    highlights: [
+      {
+        title: "Real-Time Vehicle Tracking",
+        description: "Pantau posisi kendaraan secara live di peta OpenStreetMap dengan marker berkode warna dan animasi transisi smooth",
+        icon: "map-pin"
+      },
+      {
+        title: "Geofencing & Alerts",
+        description: "Buat zona virtual (lingkaran/polygon), dapatkan peringatan otomatis saat kendaraan masuk/keluar zona — 9 tipe alert",
+        icon: "shield"
+      },
+      {
+        title: "Multi-Provider GPS Integration",
+        description: "Support 4 provider GPS: Teltonika, Queclink, Concox, dan Mock — plus GPS smartphone via browser",
+        icon: "satellite"
+      }
+    ],
+    features: [
+      "Real-time vehicle monitoring di peta OpenStreetMap",
+      "Marker berkode warna berdasarkan status (Online, Idle, Offline)",
+      "Multi-provider GPS: Teltonika, Queclink, Concox, Mock",
+      "3 metode integrasi: GPS tracker fisik, API JSON Push, GPS HP (browser)",
+      "Geofencing: zona lingkaran dan polygon dengan auto-alert",
+      "9 tipe peringatan: Speeding, Geofence Enter/Exit, SOS, Ignition, Low Battery, Offline, Idle",
+      "Trip history dengan playback rute di peta",
+      "Statistik perjalanan: jarak, durasi, kecepatan max/rata-rata",
+      "Laporan harian/mingguan/bulanan dengan export TXT/MD/CSV",
+      "Role-based access: Super Admin, Admin, Manager, User, Viewer",
+      "Profil pengguna dengan upload foto (Supabase Storage)",
+      "Socket.IO real-time updates tanpa refresh"
+    ],
+    impact: {
+      performance: "Real-time GPS updates via WebSocket — zero latency vehicle tracking",
+      users: "Target: perusahaan logistik, layanan transportasi, manajemen armada kendaraan"
+    },
+    caseStudy: {
+      problem: "Perusahaan logistik kesulitan memantau armada kendaraan secara real-time. Data GPS tersebar di berbagai platform vendor, tidak ada dashboard terpusat untuk monitoring, geofencing, dan reporting.",
+      painPoints: [
+        "Tidak ada dashboard terpusat untuk multi-vendor GPS",
+        "Monitoring kendaraan manual via WhatsApp/telepon",
+        "Tidak ada sistem geofencing dan auto-alert",
+        "Laporan perjalanan dibuat manual dari data mentah GPS"
+      ],
+      solution: "Full-stack fleet management dashboard dengan real-time tracking via Socket.IO, multi-provider GPS webhook integration, geofencing engine, dan automated reporting system.",
+      metrics: [
+        {
+          label: "Monitoring armada",
+          before: "Manual via WhatsApp/telepon ke supir",
+          after: "Real-time dashboard dengan posisi live di peta"
+        },
+        {
+          label: "Geofencing",
+          before: "Tidak ada — tidak tahu kendaraan masuk/keluar zona",
+          after: "Auto-alert 9 tipe: speeding, geofence, SOS, ignition, dll"
+        },
+        {
+          label: "Laporan perjalanan",
+          before: "Manual kumpulkan data dari setiap vendor GPS",
+          after: "Auto-generate harian/mingguan/bulanan + export CSV"
+        }
+      ],
+      testimonial: {
+        quote: "Sekarang semua kendaraan terpantau dari satu dashboard. Geofencing langsung alert kalau kendaraan keluar rute.",
+        author: "Fleet Manager",
+        role: "Client TraceFlow"
+      }
+    },
+    demo: "https://traceflow01.vercel.app",
+    github: "https://github.com/nohypelabs/traceflow",
+    image: "/projects/traceflow-thumb.jpg",
+    tags: ["Next.js", "tRPC", "Prisma", "Socket.IO", "Leaflet", "GPS", "Fleet Management"],
+    year: "2026",
+    status: "production"
   }
 ];

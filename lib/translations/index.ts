@@ -37,6 +37,7 @@ export const translations = {
     qohira: "Qohira",
     signalflowAgent: "SignalFlow",
     shadowbid: "ShadowBid",
+    traceflow: "TraceFlow",
 
     // Profile
     fullstackDev: "Full-stack Dev",
@@ -213,6 +214,7 @@ export const translations = {
     qohira: "Qohira",
     signalflowAgent: "SignalFlow",
     shadowbid: "ShadowBid",
+    traceflow: "TraceFlow",
 
     // Profile
     fullstackDev: "Full-stack Dev",
