@@ -16,7 +16,12 @@ pnpm lint         # ESLint (next/core-web-vitals + typescript)
 npx tsc --noEmit  # Type-check only (no emit)
 ```
 
-No test suite is configured.
+```bash
+pnpm test         # Vitest — run all tests (data integrity checks)
+pnpm test:watch   # Vitest in watch mode
+```
+
+Tests use Vitest + @testing-library/react + jsdom. Test files live in `test/` (e.g. `test/data.test.ts`). Setup file: `test/setup.ts`. Run a single test file with `pnpm vitest run test/data.test.ts`.
 
 ## Tech Stack
 
@@ -32,7 +37,7 @@ No test suite is configured.
 
 ### Routing (App Router)
 
-`app/(dashboard)/` is a route group that shares a NavBar layout (`app/(dashboard)/layout.tsx`). Pages inside: `page.tsx` (home), `contact/`, `cv/`, `projects/`, `projects/[id]/`, `ongoing/[id]/`. The `(dashboard)` prefix does not appear in URLs. Old routes `/about`, `/skills`, `/ongoing` redirect to `/` via `next.config.ts`.
+`app/(dashboard)/` is a route group that shares a NavBar layout (`app/(dashboard)/layout.tsx`). Pages inside: `page.tsx` (home), `about/`, `blog/`, `blog/[slug]/`, `contact/`, `cv/`, `live/`, `projects/`, `projects/[id]/`, `ongoing/[id]/`. The `(dashboard)` prefix does not appear in URLs. Old routes `/skills`, `/ongoing` redirect to `/` via `next.config.ts`.
 
 `app/layout.tsx` is the root layout — wraps everything in `ThemeProvider` and `LanguageProvider`.
 
@@ -43,7 +48,7 @@ Navigation: sticky top NavBar (desktop) + bottom dock (mobile), 4 items: Home, P
 All portfolio content is static TypeScript in `lib/data/`:
 - `projects.ts` — completed projects (typed as `Project[]` from `lib/domain/entities/Project.ts`)
 - `ongoingProjects.ts` — in-progress projects (typed as `OngoingProject[]`)
-- `personalInfo.ts`, `achievements.ts`, `testimonials.ts`
+- `personalInfo.ts`, `achievements.ts`, `testimonials.ts`, `blogPosts.ts`, `cvData.ts`
 
 Domain entities are in `lib/domain/entities/`. When adding fields to projects, update both the entity interface and the data file.
 
@@ -56,6 +61,10 @@ When adding new UI text, add keys to both `en` and `id` in `lib/translations/ind
 ### Live Metrics API
 
 `app/api/live-metrics/route.ts` fetches real-time counts from multiple Supabase projects and a Postgres database (ecommerce). Falls back to hardcoded values if any source is unreachable. Environment variables required: `SERAT_QC_SUPABASE_URL`, `SERAT_QC_SUPABASE_ANON_KEY`, `WC_CHECK_SUPABASE_URL`, `WC_CHECK_SUPABASE_ANON_KEY`, `LAKUPOS_SUPABASE_URL`, `LAKUPOS_SUPABASE_SERVICE_KEY`, `ECOMMERCE_DATABASE_URL`.
+
+### CV PDF API
+
+`app/api/cv/pdf/route.ts` generates a PDF CV on-the-fly using `@react-pdf/renderer`. The PDF component is in `components/CVPDFDocument.tsx`, data from `lib/data/cvData.ts`.
 
 ### Theming
 
