@@ -1,13 +1,14 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Send, ArrowLeft, Loader2, CheckCircle } from 'lucide-react';
+import { Send, ArrowLeft, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { staggerContainer, fadeInUp } from '@/lib/animations';
 import { useState, useEffect, Suspense } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import type { PricingPackage, Service } from '@/lib/supabase/types';
+import type { User } from '@supabase/supabase-js';
 
 function OrderForm() {
   const searchParams = useSearchParams();
@@ -17,7 +18,8 @@ function OrderForm() {
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
-  const [user, setUser] = useState<{ id: string; email: string } | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   const [form, setForm] = useState({
     customer_name: '',
@@ -76,7 +78,7 @@ function OrderForm() {
       setSuccess(true);
     } catch (err) {
       console.error(err);
-      alert('Gagal mengirim pesanan. Silakan coba lagi.');
+      setError('Gagal mengirim pesanan. Silakan coba lagi.');
     } finally {
       setLoading(false);
     }
@@ -116,6 +118,13 @@ function OrderForm() {
           Isi form di bawah untuk memesan. Kami akan menghubungi Anda untuk diskusi lebih lanjut.
         </p>
       </motion.div>
+
+      {error && (
+        <motion.div variants={fadeInUp} className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-lg text-[12px] text-red-600">
+          <AlertCircle className="w-4 h-4 flex-shrink-0" />
+          {error}
+        </motion.div>
+      )}
 
       {/* Form */}
       <motion.form variants={fadeInUp} onSubmit={handleSubmit} className="bg-white border border-neutral-200 rounded-xl p-6 space-y-5">

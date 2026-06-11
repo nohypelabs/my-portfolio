@@ -47,7 +47,7 @@ export default function FAQPage() {
     fetch('/api/faqs')
       .then(r => r.json())
       .then(data => { if (data.length > 0) setFaqs(data); })
-      .catch(() => {})
+      .catch(console.error)
       .finally(() => setLoading(false));
   }, []);
 

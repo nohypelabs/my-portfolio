@@ -28,7 +28,7 @@ export default function ProcessPage() {
     fetch('/api/process')
       .then(r => r.json())
       .then(data => { if (data.length > 0) setSteps(data); })
-      .catch(() => {})
+      .catch(console.error)
       .finally(() => setLoading(false));
   }, []);
 

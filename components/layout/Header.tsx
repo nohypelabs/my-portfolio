@@ -18,6 +18,13 @@ const pageMeta: Record<string, { title: string; subtitle: string }> = {
   '/about': { title: 'About Me', subtitle: 'Background, skills & experience' },
   '/contact': { title: 'Contact', subtitle: 'Let\'s build something together' },
   '/order': { title: 'Pesan Layanan', subtitle: 'Mulai project Anda' },
+  '/admin/dashboard': { title: 'Admin Dashboard', subtitle: 'Kelola konten nasaq.id' },
+  '/admin/pricing': { title: 'Kelola Harga', subtitle: 'Edit paket dan harga' },
+  '/admin/services': { title: 'Kelola Layanan', subtitle: 'Edit layanan yang ditawarkan' },
+  '/admin/testimonials': { title: 'Kelola Testimoni', subtitle: 'Edit testimoni klien' },
+  '/admin/faqs': { title: 'Kelola FAQ', subtitle: 'Edit pertanyaan umum' },
+  '/admin/orders': { title: 'Kelola Pesanan', subtitle: 'Lihat dan kelola pesanan' },
+  '/admin/login': { title: 'Admin Login', subtitle: 'Masuk ke panel admin' },
 };
 
 export const Header = () => {

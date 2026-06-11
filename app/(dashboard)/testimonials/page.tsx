@@ -21,7 +21,7 @@ export default function TestimonialsPage() {
     fetch('/api/testimonials')
       .then(r => r.json())
       .then(data => { if (data.length > 0) setTestimonials(data); })
-      .catch(() => {})
+      .catch(console.error)
       .finally(() => setLoading(false));
   }, []);
 

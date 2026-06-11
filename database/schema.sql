@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS pricing_packages (
 -- Process steps table
 CREATE TABLE IF NOT EXISTS process_steps (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  step_number INTEGER NOT NULL,
+  step_number INTEGER NOT NULL UNIQUE,
   title TEXT NOT NULL,
   description TEXT NOT NULL,
   icon TEXT NOT NULL DEFAULT 'Search',
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS testimonials (
   position TEXT,
   company TEXT,
   content TEXT NOT NULL,
-  rating INTEGER DEFAULT 5,
+  rating INTEGER DEFAULT 5 CHECK (rating >= 1 AND rating <= 5),
   avatar_url TEXT,
   is_featured BOOLEAN DEFAULT false,
   sort_order INTEGER DEFAULT 0,
@@ -186,9 +186,9 @@ CREATE POLICY "Admin full access on settings" ON site_settings
 CREATE POLICY "Customers can view own orders" ON orders
   FOR SELECT USING (customer_id = auth.uid());
 
--- Customers can create orders
+-- Customers can create orders (anonymous or authenticated)
 CREATE POLICY "Customers can create orders" ON orders
-  FOR INSERT WITH CHECK (customer_id = auth.uid());
+  FOR INSERT WITH CHECK (customer_id IS NULL OR customer_id = auth.uid());
 
 -- ============================================
 -- Seed Data
@@ -219,7 +219,7 @@ INSERT INTO process_steps (step_number, title, description, icon, sort_order) VA
 (4, 'Testing', 'QA dan UAT menyeluruh. Semua fitur ditest sebelum launch untuk memastikan kualitas.', 'CheckCircle', 4),
 (5, 'Deploy', 'Launch ke production. Setup hosting, domain, SSL, dan monitoring. Sistem siap digunakan user.', 'Rocket', 5),
 (6, 'Support', 'Maintenance pasca-launch. Bug fix, update, dan optimasi berkelanjutan sesuai paket yang dipilih.', 'Headphones', 6)
-ON CONFLICT DO NOTHING;
+ON CONFLICT (step_number) DO NOTHING;
 
 -- Testimonials
 INSERT INTO testimonials (name, position, company, content, rating, is_featured, sort_order) VALUES

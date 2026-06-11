@@ -48,7 +48,7 @@ export default function PricingPage() {
     fetch('/api/pricing')
       .then(r => r.json())
       .then(data => { if (data.length > 0) setPackages(data); })
-      .catch(() => {})
+      .catch(console.error)
       .finally(() => setLoading(false));
   }, []);
 

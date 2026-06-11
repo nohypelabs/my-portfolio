@@ -52,7 +52,7 @@ export default function ServicesPage() {
     fetch('/api/services')
       .then(r => r.json())
       .then(data => { if (data.length > 0) setServices(data); })
-      .catch(() => {})
+      .catch(console.error)
       .finally(() => setLoading(false));
   }, []);
 

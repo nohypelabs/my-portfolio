@@ -99,7 +99,7 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
 
         {/* Bottom */}
         <div className="border-t border-neutral-300 py-4 px-4">
-          <p className="text-[11px] text-neutral-500">© 2025 nasaq</p>
+          <p className="text-[11px] text-neutral-500">© {new Date().getFullYear()} nasaq</p>
         </div>
       </div>
     </div>

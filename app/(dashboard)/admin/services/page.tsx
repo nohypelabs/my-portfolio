@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Save, Loader2, Plus, Trash2, ArrowLeft } from 'lucide-react';
+import { Save, Loader2, Plus, Trash2, ArrowLeft, AlertCircle } from 'lucide-react';
 import Link from 'next/link';
 import { staggerContainer, fadeInUp } from '@/lib/animations';
 import { useState, useEffect } from 'react';
@@ -12,6 +12,7 @@ export default function AdminServicesPage() {
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const supabase = createClient();
@@ -64,7 +65,11 @@ export default function AdminServicesPage() {
       })
       .eq('id', svc.id);
 
-    if (error) alert('Gagal: ' + error.message);
+    if (error) {
+      setError('Gagal: ' + error.message);
+    } else {
+      setError(null);
+    }
     setSaving(null);
   };
 
@@ -80,6 +85,13 @@ export default function AdminServicesPage() {
         </Link>
         <h1 className="text-[20px] font-semibold text-neutral-900">Kelola Layanan</h1>
       </motion.div>
+
+      {error && (
+        <motion.div variants={fadeInUp} className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-lg text-[12px] text-red-600">
+          <AlertCircle className="w-4 h-4 flex-shrink-0" />
+          {error}
+        </motion.div>
+      )}
 
       <div className="space-y-6">
         {services.map((svc) => (
