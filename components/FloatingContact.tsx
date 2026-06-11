@@ -80,7 +80,7 @@ export function FloatingContact() {
                 aria-label={action.label}
               >
                 {action.icon}
-                <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-lg bg-zinc-900 text-white text-xs font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
+                <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-lg bg-neutral-900 text-white text-xs font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
                   {action.label}
                 </span>
               </motion.a>
@@ -93,8 +93,8 @@ export function FloatingContact() {
             whileTap={{ scale: 0.95 }}
             className={`p-3.5 rounded-full text-white shadow-lg transition-all duration-300 ${
               open
-                ? "bg-zinc-700 hover:bg-zinc-600 shadow-zinc-700/30 rotate-0"
-                : "bg-emerald-500 hover:bg-emerald-400 shadow-emerald-500/30"
+                ? "bg-neutral-900 hover:bg-neutral-800 shadow-neutral-900/30 rotate-0"
+                : "bg-[#0D9488] hover:bg-[#14B8A6] shadow-[#0D9488]/30"
             }`}
             aria-label={open ? "Close contact menu" : "Open contact menu"}
           >

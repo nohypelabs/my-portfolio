@@ -36,15 +36,15 @@ export default function AboutPage() {
       {/* Header */}
       <motion.div {...fadeUp} className="flex items-start gap-6">
         <div className="shrink-0 hidden md:block">
-          <div className="ring-4 ring-emerald-500/30 rounded-full">
+          <div className="ring-4 ring-[#0D9488]/30 rounded-full">
             <AvatarImage size={120} priority />
           </div>
         </div>
         <div>
-          <h1 className="text-3xl md:text-4xl font-extrabold text-zinc-900 dark:text-white mb-2">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-neutral-900 mb-2">
             {language === "en" ? "About Me" : "Tentang Saya"}
           </h1>
-          <p className="text-zinc-500 dark:text-zinc-400 text-sm md:text-base leading-relaxed">
+          <p className="text-neutral-500 text-sm md:text-base leading-relaxed">
             {language === "en"
               ? "Developer, builder, and comeback story in progress."
               : "Developer, builder, dan comeback story yang sedang berjalan."}
@@ -54,12 +54,12 @@ export default function AboutPage() {
 
       {/* The Comeback Story */}
       <ScrollReveal>
-        <section className="space-y-4">
-          <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
-            <Rocket className="w-5 h-5 text-emerald-500" />
+        <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 space-y-4">
+          <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
+            <Rocket className="w-5 h-5 text-[#0D9488]" />
             {language === "en" ? "The Comeback Story" : "Cerita Comeback"}
           </h2>
-          <div className="prose prose-sm dark:prose-invert max-w-none space-y-3 text-zinc-600 dark:text-zinc-400">
+          <div className="prose prose-sm max-w-none space-y-3 text-neutral-600">
             <p>
               {language === "en"
                 ? "I stepped away from serious tech work in 2015. Not by choice — life happened. I worked as a waiter, logistics admin, QC staff, and sales marketing. For 9 years, production-grade development was off the table — though I'd occasionally tinker with scripts and small tools on the side."
@@ -76,14 +76,14 @@ export default function AboutPage() {
                 : "Gap 9 tahun bukan sia-sia. Bekerja di operasional, logistik, dan ritel mengajarkan saya bagaimana bisnis nyata benar-benar berjalan — pain points, workflow, hal-hal yang penting. Sekarang saya membangun solusi untuk masalah-masalah itu karena saya pernah mengalaminya."}
             </p>
           </div>
-        </section>
+        </div>
       </ScrollReveal>
 
       {/* How I Work */}
       <ScrollReveal>
-        <section className="space-y-4">
-          <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
-            <Lightbulb className="w-5 h-5 text-emerald-500" />
+        <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 space-y-4">
+          <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
+            <Lightbulb className="w-5 h-5 text-[#0D9488]" />
             {language === "en" ? "How I Work" : "Cara Saya Bekerja"}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -122,26 +122,26 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * i }}
-                className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4"
+                className="bg-[#FAFAFA] border border-neutral-400 rounded-[35px] p-4"
               >
-                <item.icon className="w-5 h-5 text-emerald-500 mb-2" />
-                <h3 className="font-bold text-sm text-zinc-900 dark:text-white mb-1">
+                <item.icon className="w-5 h-5 text-[#0D9488] mb-2" />
+                <h3 className="font-bold text-sm text-neutral-900 mb-1">
                   {item.title}
                 </h3>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                <p className="text-xs text-neutral-500 leading-relaxed">
                   {item.desc}
                 </p>
               </motion.div>
             ))}
           </div>
-        </section>
+        </div>
       </ScrollReveal>
 
       {/* Industries I Build For */}
       <ScrollReveal>
-        <section className="space-y-4">
-          <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
-            <Building2 className="w-5 h-5 text-emerald-500" />
+        <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 space-y-4">
+          <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
+            <Building2 className="w-5 h-5 text-[#0D9488]" />
             {language === "en" ? "Industries I Build For" : "Industri yang Saya Layani"}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -176,32 +176,32 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * i }}
-                className="bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-4"
+                className="bg-[#FAFAFA] border border-neutral-400 rounded-[35px] p-4"
               >
-                <item.icon className="w-5 h-5 text-emerald-500 mb-2" />
-                <h3 className="font-bold text-sm text-zinc-900 dark:text-white mb-1">
+                <item.icon className="w-5 h-5 text-[#0D9488] mb-2" />
+                <h3 className="font-bold text-sm text-neutral-900 mb-1">
                   {item.title}
                 </h3>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed mb-2">
+                <p className="text-xs text-neutral-500 leading-relaxed mb-2">
                   {item.desc}
                 </p>
-                <p className="text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
+                <p className="text-[10px] font-medium text-[#0F766E]">
                   {item.projects}
                 </p>
               </motion.div>
             ))}
           </div>
-        </section>
+        </div>
       </ScrollReveal>
 
       {/* Engineering Philosophy */}
       <ScrollReveal>
-        <section className="space-y-4">
-          <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
-            <Code className="w-5 h-5 text-emerald-500" />
+        <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 space-y-4">
+          <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
+            <Code className="w-5 h-5 text-[#0D9488]" />
             {language === "en" ? "How I Think About Code" : "Cara Saya Memikirkan Kode"}
           </h2>
-          <div className="prose prose-sm dark:prose-invert max-w-none space-y-3 text-zinc-600 dark:text-zinc-400">
+          <div className="prose prose-sm max-w-none space-y-3 text-neutral-600">
             <p>
               {language === "en"
                 ? "I don't write code for code's sake. Every function, every component, every database query exists to solve a business problem. If I can't explain why something exists in plain language, it shouldn't exist."
@@ -218,18 +218,18 @@ export default function AboutPage() {
                 : "Saya belajar dengan mengirim. Sistem production pertama saya (Serat QC) dibangun saat saya masih belajar ulang web dev modern. 80K+ records kemudian, masih berjalan. Cara terbaik belajar adalah membangun sesuatu yang nyata, deploy, dan lihat dia pecah — lalu perbaiki."}
             </p>
           </div>
-        </section>
+        </div>
       </ScrollReveal>
 
       {/* What I'm Looking For */}
       <ScrollReveal>
-        <section className="space-y-4">
-          <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
-            <Target className="w-5 h-5 text-emerald-500" />
+        <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 space-y-4">
+          <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
+            <Target className="w-5 h-5 text-[#0D9488]" />
             {language === "en" ? "What I'm Looking For" : "Yang Saya Cari"}
           </h2>
-          <div className="bg-gradient-to-br from-emerald-50 to-zinc-50 dark:from-emerald-950/30 dark:to-zinc-900 border border-emerald-200 dark:border-emerald-800/30 rounded-xl p-5 space-y-3">
-            <ul className="space-y-2 text-sm text-zinc-700 dark:text-zinc-300">
+          <div className="bg-[#FAFAFA] border border-neutral-400 rounded-[35px] p-5 space-y-3">
+            <ul className="space-y-2 text-sm text-neutral-700">
               {(language === "en"
                 ? [
                     "Full-time or contract roles as Full-stack Developer",
@@ -245,23 +245,23 @@ export default function AboutPage() {
                   ]
               ).map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className="text-emerald-500 mt-0.5">✓</span>
+                  <span className="text-[#0D9488] mt-0.5">✓</span>
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </div>
-        </section>
+        </div>
       </ScrollReveal>
 
       {/* Beyond Code */}
       <ScrollReveal>
-        <section className="space-y-4">
-          <h2 className="text-xl font-bold text-zinc-900 dark:text-white flex items-center gap-2">
-            <Heart className="w-5 h-5 text-emerald-500" />
+        <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 space-y-4">
+          <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
+            <Heart className="w-5 h-5 text-[#0D9488]" />
             {language === "en" ? "Beyond Code" : "Di Luar Coding"}
           </h2>
-          <div className="text-sm text-zinc-600 dark:text-zinc-400 space-y-2">
+          <div className="text-sm text-neutral-600 space-y-2">
             <p>
               {language === "en"
                 ? "Military-trained (Resimen Mahasiswa & Korps Marinir — basic paratrooper). The discipline translates directly to how I approach engineering: structured, methodical, mission-oriented."
@@ -273,7 +273,7 @@ export default function AboutPage() {
                 : "Berdomisili di Bandung, Indonesia. Saya berbicara Bahasa Indonesia (asli), Bahasa Sunda (asli), dan Inggris (dasar). Saat tidak coding, saya mengeksplorasi protokol Web3 dan membangun side project di Solana."}
             </p>
           </div>
-        </section>
+        </div>
       </ScrollReveal>
 
       {/* CTA */}
@@ -281,14 +281,14 @@ export default function AboutPage() {
         <div className="flex flex-wrap gap-3 pt-4">
           <Link
             href="/cv"
-            className="group inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-emerald-500/20"
+            className="group inline-flex items-center gap-2 px-5 py-2.5 bg-[#0D9488] hover:bg-[#0F766E] text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-[#0D9488]/20"
           >
             {t.viewCV}
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 dark:text-white text-zinc-900 rounded-xl text-sm font-semibold transition-all"
+            className="inline-flex items-center gap-2 px-5 py-2.5 border border-neutral-400 text-neutral-900 hover:bg-neutral-50 rounded-xl text-sm font-semibold transition-all"
           >
             {t.contactMe}
           </Link>

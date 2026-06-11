@@ -47,7 +47,7 @@ export const translations = {
     years: "Years",
 
     // Hero
-    viewCV: "View CV",
+    viewCV: "View Projects",
     contactMe: "Contact Me",
     shipped: "Shipped",
     projectsIn: "projects in",
@@ -182,6 +182,15 @@ export const translations = {
     // Language switcher
     switchToId: "Switch to Indonesian",
     switchToEn: "Switch to English",
+
+    // New pages
+    services: "Services",
+    process: "Process",
+    pricing: "Pricing",
+    order: "Order",
+    testimonials: "Testimonials",
+    faq: "FAQ",
+    admin: "Admin",
   },
   id: {
     // Dashboard
@@ -231,7 +240,7 @@ export const translations = {
     years: "Tahun",
 
     // Hero
-    viewCV: "Lihat CV",
+    viewCV: "Lihat Projects",
     contactMe: "Hubungi Saya",
     shipped: "Shipped",
     projectsIn: "proyek dalam",
@@ -366,6 +375,15 @@ export const translations = {
     // Language switcher
     switchToId: "Ganti ke Bahasa Indonesia",
     switchToEn: "Ganti ke English",
+
+    // New pages
+    services: "Layanan",
+    process: "Proses Kerja",
+    pricing: "Harga",
+    order: "Pesan",
+    testimonials: "Testimoni",
+    faq: "FAQ",
+    admin: "Admin",
   }
 };
 

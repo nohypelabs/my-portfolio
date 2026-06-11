@@ -3,7 +3,7 @@
 import { useEffect, useState, useMemo, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Home, FileText, Mail, FolderOpen, Clock, Activity, Search, User, PenLine } from "lucide-react";
+import { Home, FileText, Mail, FolderOpen, Clock, Activity, Search, User, PenLine, Briefcase, Route, DollarSign, MessageSquare, HelpCircle, Shield } from "lucide-react";
 import { projects } from "@/lib/data/projects";
 import { ongoingProjects } from "@/lib/data/ongoingProjects";
 import { useLanguage } from "@/lib/context/LanguageContext";
@@ -28,12 +28,19 @@ export function CommandPalette() {
   const items = useMemo<CommandItem[]>(() => {
     const nav: CommandItem[] = [
       { id: "home", label: t.home, href: "/", icon: Home, group: "Navigation" },
+      { id: "services", label: "Layanan", href: "/services", icon: Briefcase, group: "Layanan" },
+      { id: "process", label: "Proses Kerja", href: "/process", icon: Route, group: "Layanan" },
+      { id: "pricing", label: "Harga", href: "/pricing", icon: DollarSign, group: "Layanan" },
+      { id: "order", label: "Pesan Layanan", href: "/order", icon: Mail, group: "Layanan" },
       { id: "projects-page", label: t.projects, href: "/projects", icon: FolderOpen, group: "Navigation" },
+      { id: "testimonials", label: "Testimoni", href: "/testimonials", icon: MessageSquare, group: "Navigation" },
+      { id: "faq", label: "FAQ", href: "/faq", icon: HelpCircle, group: "Navigation" },
       { id: "about", label: t.about, href: "/about", icon: User, group: "Navigation" },
       { id: "blog", label: "Blog", href: "/blog", icon: PenLine, group: "Navigation" },
       { id: "live", label: t.liveProductionData, href: "/live", icon: Activity, group: "Navigation" },
       { id: "cv", label: t.cv, href: "/cv", icon: FileText, group: "Navigation" },
       { id: "contact", label: t.contact, href: "/contact", icon: Mail, group: "Navigation" },
+      { id: "admin", label: "Admin Panel", href: "/admin/dashboard", icon: Shield, group: "Admin" },
     ];
 
     const proj = projects.filter(p => p.status === "production").map(p => ({

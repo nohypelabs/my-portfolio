@@ -22,19 +22,20 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
     >
       <Link
         href={`/projects/${project.id}`}
-        className="group block bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden hover:shadow-lg hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300"
+        className="group block bg-[#FAFAFA] rounded-[35px] border border-neutral-400 overflow-hidden hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
       >
         {/* Image */}
-        <div className="aspect-video relative overflow-hidden bg-zinc-100 dark:bg-zinc-800">
+        <div className="aspect-video relative overflow-hidden bg-border/30">
           <Image
             src={project.image}
             alt={project.title}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-500"
             sizes="(max-width: 768px) 100vw, 50vw"
+            loading="eager"
           />
           <div className="absolute top-3 right-3">
-            <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500 text-white">
+            <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#0D9488] text-white">
               Live
             </span>
           </div>
@@ -42,10 +43,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
         {/* Content */}
         <div className="p-4">
-          <h3 className="font-bold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+          <h3 className="font-bold text-sm mb-1 text-foreground group-hover:text-[#0D9488] transition-colors">
             {project.title}
           </h3>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400 line-clamp-2 mb-3">
+          <p className="text-xs text-muted line-clamp-2 mb-3">
             {project.shortDescription}
           </p>
           <div className="flex items-center justify-between">
@@ -54,7 +55,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
                 <TechBadge key={tag} tech={tag} />
               ))}
             </div>
-            <ExternalLink className="w-3.5 h-3.5 text-zinc-400 group-hover:text-emerald-500 transition-colors" />
+            <ExternalLink className="w-3.5 h-3.5 text-muted group-hover:text-[#0D9488] transition-colors" />
           </div>
         </div>
       </Link>

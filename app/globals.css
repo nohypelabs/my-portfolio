@@ -1,27 +1,44 @@
 @import "tailwindcss";
 
+/* ── Enterprise Design System: White + Tosca + Black ── */
 :root {
   color-scheme: light;
-}
-
-@theme {
   --color-background: #ffffff;
-  --color-foreground: #09090b;
+  --color-foreground: #0a0a0a;
+  --color-surface: #ffffff;
+  --color-border: #d4d4d4;
+  --color-muted: #737373;
+  --color-accent: #0D9488;
+  --color-accent-light: #99F6E4;
+  --color-accent-dark: #0F766E;
+  --color-accent-bg: #FAFAFA;
+  --color-accent-hover: #14B8A6;
   --font-sans: var(--font-inter);
   --font-mono: var(--font-jetbrains-mono);
 }
 
-/* Enable dark mode with class strategy */
-.dark {
-  --color-background: #0a0a0a;
-  --color-foreground: #ededed;
-  color-scheme: dark;
+/* ── Register as Tailwind utilities ── */
+@theme {
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-surface: var(--color-surface);
+  --color-border: var(--color-border);
+  --color-muted: var(--color-muted);
+  --color-accent: var(--color-accent);
+  --color-accent-light: var(--color-accent-light);
+  --color-accent-dark: var(--color-accent-dark);
+  --color-accent-bg: var(--color-accent-bg);
+  --color-accent-hover: var(--color-accent-hover);
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Smooth scroll behavior */
@@ -31,33 +48,88 @@ html {
 
 /* Custom scrollbar for webkit browsers */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-zinc-100 dark:bg-zinc-900;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-zinc-300 dark:bg-zinc-700 rounded-full;
+  background: #d4d4d4;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-zinc-400 dark:bg-zinc-600;
+  background: #a3a3a3;
 }
 
+/* ── Enterprise Card ── */
+.card-enterprise {
+  background: #ffffff;
+  border: 1px solid #0a0a0a;
+  border-radius: 35px;
+  transition: all 0.2s ease;
+}
+
+.card-enterprise:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Tosca Layer Card ── */
+.card-tosca {
+  background: #FAFAFA;
+  border: 1px solid #0a0a0a;
+  border-radius: 35px;
+  transition: all 0.2s ease;
+}
+
+.card-tosca:hover {
+  box-shadow: 0 4px 16px rgba(13, 148, 136, 0.12);
+  border-color: #0D9488;
+}
+
+/* ── Tosca accent background layer ── */
+.tosca-layer {
+  background: #FAFAFA;
+}
+
+/* ── Pill button ── */
+.btn-pill {
+  background: #ffffff;
+  border: 1px solid #0a0a0a;
+  border-radius: 16px;
+  padding: 1rem 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.btn-pill:hover {
+  border-color: #0D9488;
+  box-shadow: 0 4px 12px rgba(13, 148, 136, 0.1);
+}
+
+/* ── Animations ── */
 @keyframes shimmer {
   100% {
     transform: translateX(100%);
   }
 }
 
-/* Noise texture overlay for premium sections */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* ── Noise texture overlay ── */
 .noise-overlay::before {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.03;
+  opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px;
@@ -66,10 +138,62 @@ html {
   border-radius: inherit;
 }
 
-/* Glass card effect */
-.glass-card {
-  background: rgba(24, 24, 27, 0.6);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+/* ── CV Print Styles ── */
+@media print {
+  @page {
+    size: 8.5in 14in;
+    margin: 0.75in;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-sizing: border-box !important;
+  }
+
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+    background: white !important;
+  }
+
+  /* Hide everything except the CV */
+  nav, aside, header, footer, .print-hide, [data-theme-toggle], button {
+    display: none !important;
+  }
+
+  /* Reset page wrapper */
+  .min-h-screen, main, [class*="layout"] {
+    min-height: auto !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: white !important;
+    display: block !important;
+  }
+
+  /* CV page container */
+  .cv-page {
+    width: 100% !important;
+    min-height: auto !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+    padding: 0.4in 0.5in !important;
+  }
+
+  /* No page breaks inside entries */
+  .cv-entry, .cv-grid > div {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Links — no underline in print */
+  a {
+    text-decoration: none !important;
+  }
+
+  a[href]::after {
+    content: none !important;
+  }
 }

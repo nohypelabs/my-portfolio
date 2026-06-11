@@ -54,7 +54,7 @@ export function StatsStrip() {
   const { totalData, activeProjects } = deriveStats(m);
 
   const stats = [
-    { value: String(activeProjects), labelKey: "productsShipped" as const, accent: "text-emerald-500" },
+    { value: String(activeProjects), labelKey: "productsShipped" as const, accent: "text-[#0D9488]" },
     { value: formatCompact(totalData), labelKey: "dataProcessed" as const, accent: "text-orange-500" },
     { value: String(activeProjects), labelKey: "activeProjects" as const, accent: "text-blue-500" },
     { value: "6", labelKey: "techMastered" as const, accent: "text-purple-500" },
@@ -71,12 +71,12 @@ export function StatsStrip() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: i * 0.05 }}
-          className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-3 text-center"
+          className="bg-[#FAFAFA] border border-neutral-400 rounded-xl p-3 text-center hover:shadow-sm transition-all duration-200"
         >
           <p className={`font-extrabold text-lg md:text-xl ${s.accent}`}>
             {metrics === null && i < 3 ? "—" : s.value}
           </p>
-          <p className="text-zinc-500 text-[10px] font-medium mt-0.5 leading-tight">{t[s.labelKey]}</p>
+          <p className="text-muted text-[10px] font-medium mt-0.5 leading-tight">{t[s.labelKey]}</p>
         </motion.div>
       ))}
     </div>

@@ -59,10 +59,10 @@ const socialLinks = [
 ];
 
 const colorMap: Record<string, { icon: string; hover: string; bg: string; ring: string }> = {
-  green: { icon: "text-green-500", hover: "hover:border-green-500/30", bg: "bg-green-500/10", ring: "ring-green-500/20" },
-  emerald: { icon: "text-emerald-500", hover: "hover:border-emerald-500/30", bg: "bg-emerald-500/10", ring: "ring-emerald-500/20" },
-  blue: { icon: "text-blue-500", hover: "hover:border-blue-500/30", bg: "bg-blue-500/10", ring: "ring-blue-500/20" },
-  zinc: { icon: "text-zinc-500", hover: "hover:border-zinc-400/30", bg: "bg-zinc-100 dark:bg-zinc-800/50", ring: "ring-zinc-300/50 dark:ring-zinc-700/20" },
+  green: { icon: "text-green-600", hover: "hover:border-neutral-400", bg: "bg-[#FAFAFA]", ring: "ring-[#0D9488]/20" },
+  emerald: { icon: "text-[#0D9488]", hover: "hover:border-neutral-400", bg: "bg-[#FAFAFA]", ring: "ring-[#0D9488]/20" },
+  blue: { icon: "text-blue-600", hover: "hover:border-neutral-400", bg: "bg-blue-50", ring: "ring-blue-500/20" },
+  zinc: { icon: "text-neutral-700", hover: "hover:border-neutral-400", bg: "bg-neutral-100", ring: "ring-neutral-300" },
 };
 
 export default function ContactPage() {
@@ -86,12 +86,12 @@ export default function ContactPage() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center"
       >
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold mb-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAFAFA] border border-[#0D9488]/20 text-[#0D9488] text-xs font-semibold mb-4">
           <Rocket className="w-3.5 h-3.5" />
           {language === "en" ? "Let's connect" : "Mari terhubung"}
         </div>
-        <h1 className="text-4xl font-bold mb-3 text-zinc-900 dark:text-white">{t.getInTouch}</h1>
-        <p className="text-zinc-500 dark:text-zinc-400 max-w-md mx-auto">
+        <h1 className="text-4xl font-bold mb-3 text-neutral-900">{t.getInTouch}</h1>
+        <p className="text-neutral-500 max-w-md mx-auto">
           {t.getInTouchDesc}
         </p>
       </motion.div>
@@ -103,41 +103,41 @@ export default function ContactPage() {
         transition={{ delay: 0.08 }}
         className="grid grid-cols-1 sm:grid-cols-3 gap-3"
       >
-        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-emerald-500/5 border border-emerald-500/15">
-          <Circle className="w-3 h-3 text-emerald-500 fill-emerald-500 animate-pulse" />
+        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#FAFAFA] border border-neutral-400">
+          <Circle className="w-3 h-3 text-[#0D9488] fill-[#0D9488] animate-pulse" />
           <div>
-            <p className="text-xs font-semibold text-emerald-400">
+            <p className="text-xs font-semibold text-[#0D9488]">
               {language === "en" ? "Available now" : "Tersedia sekarang"}
             </p>
-            <p className="text-[10px] text-zinc-500">
+            <p className="text-[10px] text-neutral-500">
               {language === "en" ? "Full-time · Contract · Freelance" : "Full-time · Kontrak · Freelance"}
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/10">
-          <Clock className="w-4 h-4 text-blue-400" />
+        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#FAFAFA] border border-neutral-400">
+          <Clock className="w-4 h-4 text-blue-500" />
           <div>
-            <p className="text-xs font-semibold text-zinc-800 dark:text-zinc-200">
+            <p className="text-xs font-semibold text-neutral-900">
               {language === "en" ? "Response time" : "Waktu respons"}
             </p>
-            <p className="text-[10px] text-zinc-500">
+            <p className="text-[10px] text-neutral-500">
               {language === "en" ? "Usually within 24 hours" : "Biasanya dalam 24 jam"}
             </p>
           </div>
         </div>
-        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-zinc-100 dark:bg-white/5 border border-zinc-200 dark:border-white/10">
-          <Zap className="w-4 h-4 text-yellow-400" />
+        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#FAFAFA] border border-neutral-400">
+          <Zap className="w-4 h-4 text-yellow-500" />
           <div>
-            <p className="text-xs font-semibold text-zinc-800 dark:text-zinc-200">
+            <p className="text-xs font-semibold text-neutral-900">
               {language === "en" ? "Timezone" : "Zona waktu"}
             </p>
-            <p className="text-[10px] text-zinc-500">GMT+7 (WIB)</p>
+            <p className="text-[10px] text-neutral-500">GMT+7 (WIB)</p>
           </div>
         </div>
       </motion.div>
 
       {/* Social Links */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {socialLinks.map((link, index) => {
           const Icon = link.icon;
           const colors = colorMap[link.color];
@@ -150,31 +150,31 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 + index * 0.08 }}
-              className={`group relative bg-white dark:bg-zinc-900 rounded-2xl p-5 border border-zinc-200 dark:border-zinc-800 ${colors.hover} transition-all hover:shadow-lg`}
+              className={`group relative bg-[#FAFAFA] rounded-2xl p-5 border border-neutral-400 ${colors.hover} transition-all hover:shadow-lg`}
             >
               <div className="flex items-center gap-4">
                 <div className={`p-3 rounded-xl ${colors.bg} ring-1 ${colors.ring}`}>
                   {link.customIcon ? <link.customIcon className={`w-5 h-5 ${colors.icon}`} /> : <Icon className={`w-5 h-5 ${colors.icon}`} />}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-sm mb-0.5 text-zinc-900 dark:text-white">{link.name}</h3>
-                  <p className="text-xs text-zinc-500 dark:text-zinc-400 truncate">{link.handle}</p>
+                  <h3 className="font-bold text-sm mb-0.5 text-neutral-900">{link.name}</h3>
+                  <p className="text-xs text-neutral-500 truncate">{link.handle}</p>
                 </div>
                 <div className="flex items-center gap-1.5 shrink-0">
                   {link.copyable && (
                     <button
                       onClick={copyEmail}
-                      className="p-2 rounded-lg bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors"
+                      className="p-2 rounded-lg bg-neutral-100 hover:bg-neutral-200 transition-colors"
                       title={copied ? "Copied!" : "Copy email"}
                     >
                       {copied ? (
-                        <Check className="w-3.5 h-3.5 text-emerald-500" />
+                        <Check className="w-3.5 h-3.5 text-[#0D9488]" />
                       ) : (
-                        <Copy className="w-3.5 h-3.5 text-zinc-400" />
+                        <Copy className="w-3.5 h-3.5 text-neutral-500" />
                       )}
                     </button>
                   )}
-                  <ArrowUpRight className="w-4 h-4 text-zinc-400 group-hover:text-zinc-700 dark:group-hover:text-zinc-200 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-neutral-900 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </div>
               </div>
             </motion.a>
@@ -187,12 +187,12 @@ export default function ContactPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 p-6"
+        className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6"
       >
-        <h3 className="font-bold text-lg text-zinc-900 dark:text-white mb-1">
+        <h3 className="font-bold text-lg text-neutral-900 mb-1">
           {language === "en" ? "Send a Message" : "Kirim Pesan"}
         </h3>
-        <p className="text-xs text-zinc-500 mb-4">
+        <p className="text-xs text-neutral-500 mb-4">
           {language === "en"
             ? "Fill out the form and I'll get back to you within 24 hours."
             : "Isi form di bawah dan saya akan merespons dalam 24 jam."}
@@ -212,7 +212,7 @@ export default function ContactPage() {
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+              <label className="block text-xs font-medium text-neutral-700 mb-1">
                 {language === "en" ? "Name" : "Nama"}
               </label>
               <input
@@ -220,11 +220,11 @@ export default function ContactPage() {
                 name="name"
                 required
                 placeholder={language === "en" ? "Your name" : "Nama kamu"}
-                className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-sm text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500"
+                className="w-full px-3 py-2 rounded-xl border border-neutral-400 bg-white text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0D9488]/50 focus:border-[#0D9488]"
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+              <label className="block text-xs font-medium text-neutral-700 mb-1">
                 Email
               </label>
               <input
@@ -232,12 +232,12 @@ export default function ContactPage() {
                 name="email"
                 required
                 placeholder="you@example.com"
-                className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-sm text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500"
+                className="w-full px-3 py-2 rounded-xl border border-neutral-400 bg-white text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0D9488]/50 focus:border-[#0D9488]"
               />
             </div>
           </div>
           <div>
-            <label className="block text-xs font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+            <label className="block text-xs font-medium text-neutral-700 mb-1">
               {language === "en" ? "Message" : "Pesan"}
             </label>
             <textarea
@@ -245,12 +245,12 @@ export default function ContactPage() {
               required
               rows={4}
               placeholder={language === "en" ? "Tell me about your project..." : "Ceritakan tentang project kamu..."}
-              className="w-full px-3 py-2 rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800 text-sm text-zinc-900 dark:text-white placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 resize-none"
+              className="w-full px-3 py-2 rounded-xl border border-neutral-400 bg-white text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0D9488]/50 focus:border-[#0D9488] resize-none"
             />
           </div>
           <button
             type="submit"
-            className="w-full sm:w-auto px-6 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-emerald-500/20"
+            className="w-full sm:w-auto px-6 py-2.5 bg-[#0D9488] hover:bg-[#0F766E] text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-[#0D9488]/20"
           >
             {language === "en" ? "Send Message" : "Kirim Pesan"}
           </button>
@@ -288,19 +288,19 @@ export default function ContactPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
-        className="noise-overlay relative overflow-hidden bg-gradient-to-br from-zinc-900 via-zinc-900 to-emerald-950 rounded-2xl border border-emerald-500/10"
+        className="relative overflow-hidden bg-[#FAFAFA] rounded-[35px] border border-neutral-400"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent" />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[#0D9488]/5 via-transparent to-transparent" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-[#0D9488]/30 to-transparent" />
 
         <div className="relative p-8 md:p-10 text-center">
-          <h2 className="text-2xl font-bold text-white mb-2">{t.letsBuildTogether}</h2>
-          <p className="text-zinc-400 mb-6 max-w-md mx-auto text-sm">
+          <h2 className="text-2xl font-bold text-neutral-900 mb-2">{t.letsBuildTogether}</h2>
+          <p className="text-neutral-500 mb-6 max-w-md mx-auto text-sm">
             {t.letsBuildDesc}
           </p>
           <a
             href={`mailto:${personalInfo.contact.email}`}
-            className="group inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-white rounded-xl font-semibold transition-all shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30"
+            className="group inline-flex items-center gap-2 px-6 py-3 bg-[#0D9488] hover:bg-[#0F766E] text-white rounded-xl font-semibold transition-all shadow-lg shadow-[#0D9488]/20 hover:shadow-[#0D9488]/30"
           >
             <Mail className="w-4 h-4" />
             {t.sendMeEmail}

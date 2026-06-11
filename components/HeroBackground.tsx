@@ -59,7 +59,7 @@ export function HeroBackground() {
             ctx.beginPath();
             ctx.moveTo(dots[i].x, dots[i].y);
             ctx.lineTo(dots[j].x, dots[j].y);
-            ctx.strokeStyle = `rgba(16, 185, 129, ${opacity})`;
+            ctx.strokeStyle = `rgba(13, 148, 136, ${opacity})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -71,7 +71,7 @@ export function HeroBackground() {
         const radius = 1.5 + pulse * 1;
         ctx.beginPath();
         ctx.arc(dot.x, dot.y, radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(16, 185, 129, ${0.3 + pulse * 0.3})`;
+        ctx.fillStyle = `rgba(13, 148, 136, ${0.3 + pulse * 0.3})`;
         ctx.fill();
       }
 

@@ -74,15 +74,15 @@ function AnimatedNumber({
 
 function SkeletonCard({ wide = false }: { wide?: boolean }) {
   return (
-    <div className={`relative overflow-hidden rounded-xl md:rounded-2xl p-4 md:p-6 border bg-white/5 border-white/10`}>
+    <div className={`relative overflow-hidden rounded-xl md:rounded-2xl p-4 md:p-6 border bg-white border-neutral-200`}>
       <div className="animate-pulse">
         <div className="flex items-center gap-2 mb-3">
-          <div className="w-7 h-7 rounded-lg bg-white/10" />
-          <div className="h-3 w-20 rounded bg-white/10" />
+          <div className="w-7 h-7 rounded-lg bg-neutral-200" />
+          <div className="h-3 w-20 rounded bg-neutral-200" />
         </div>
-        <div className={`h-8 md:h-12 ${wide ? "w-32 md:w-44" : "w-16 md:w-24"} rounded bg-white/10`} />
+        <div className={`h-8 md:h-12 ${wide ? "w-32 md:w-44" : "w-16 md:w-24"} rounded bg-neutral-200`} />
       </div>
-      <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/5 to-transparent" />
+      <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/60 to-transparent" />
     </div>
   );
 }
@@ -92,10 +92,10 @@ function SkeletonGroup() {
     <div>
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <div className="w-4 h-4 rounded bg-white/10 animate-pulse" />
-          <div className="h-4 w-48 rounded bg-white/10 animate-pulse" />
+          <div className="w-4 h-4 rounded bg-neutral-200 animate-pulse" />
+          <div className="h-4 w-48 rounded bg-neutral-200 animate-pulse" />
         </div>
-        <div className="h-3 w-16 rounded bg-white/10 animate-pulse" />
+        <div className="h-3 w-16 rounded bg-neutral-200 animate-pulse" />
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-2.5 md:gap-4">
         <SkeletonCard wide />
@@ -221,30 +221,30 @@ export function LiveMetrics() {
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="noise-overlay relative overflow-hidden bg-gradient-to-br from-zinc-900 via-zinc-900 to-emerald-950 dark:from-zinc-950 dark:via-zinc-950 dark:to-emerald-950 rounded-3xl p-6 md:p-10 text-white"
+      className="relative overflow-hidden bg-[#FAFAFA] rounded-[35px] p-6 md:p-10 text-neutral-900 border border-neutral-400"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-emerald-500/8 via-transparent to-transparent" />
-      <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-[#0D9488]/5 via-transparent to-transparent" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#0D9488]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
 
       <div className="relative">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <button onClick={() => setExpanded(!expanded)} className="flex items-center gap-3 group text-left">
-            <div className="p-2 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
-              <Database className="w-5 h-5 text-emerald-400" />
+            <div className="p-2 rounded-xl bg-[#FAFAFA] border border-neutral-400">
+              <Database className="w-5 h-5 text-[#0D9488]" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight">
+                <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-neutral-900">
                   {t.liveProductionData}
                 </h2>
-                <div className="p-1 rounded-lg bg-white/5 group-hover:bg-white/10 transition-colors">
+                <div className="p-1 rounded-lg bg-neutral-100 group-hover:bg-neutral-200 transition-colors">
                   <motion.div animate={{ rotate: expanded ? 0 : -90 }} transition={{ duration: 0.2 }}>
-                    <ChevronDown className="w-4 h-4 text-zinc-400" />
+                    <ChevronDown className="w-4 h-4 text-neutral-500" />
                   </motion.div>
                 </div>
               </div>
-              <p className="text-sm text-zinc-400 max-w-lg mt-1">
+              <p className="text-sm text-neutral-500 max-w-lg mt-1">
                 {t.liveMetricsDesc}
               </p>
             </div>
@@ -255,38 +255,38 @@ export function LiveMetrics() {
               <button
                 onClick={() => fetchMetrics(true)}
                 disabled={refreshing}
-                className="group/btn flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 hover:border-emerald-500/30 disabled:opacity-60 disabled:cursor-not-allowed transition-all text-xs font-semibold text-emerald-400"
+                className="group/btn flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#FAFAFA] border border-neutral-400 hover:bg-[#99F6E4]/30 disabled:opacity-60 disabled:cursor-not-allowed transition-all text-xs font-semibold text-[#0D9488]"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? "animate-spin" : "group-hover/btn:rotate-180 transition-transform duration-500"}`} />
                 {refreshing ? t.fetching : t.fetchLatest}
               </button>
 
-              <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
+              <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-[#FAFAFA] border border-neutral-400">
                 <span className="relative flex h-3 w-3">
                   <span
                     className={`absolute inline-flex h-full w-full rounded-full opacity-75 ${
-                      isLive ? "animate-ping bg-emerald-400" : "bg-yellow-400"
+                      isLive ? "animate-ping bg-[#0D9488]" : "bg-yellow-400"
                     }`}
                   />
                   <span
                     className={`relative inline-flex rounded-full h-3 w-3 ${
-                      isLive ? "bg-emerald-500" : "bg-yellow-500"
+                      isLive ? "bg-[#0D9488]" : "bg-yellow-500"
                     }`}
                   />
                 </span>
                 <div className="text-xs">
-                  <p className="font-semibold text-white">
+                  <p className="font-semibold text-neutral-900">
                     {isLive ? "LIVE" : t.loading}
                   </p>
                   {isLive && metrics?.fetchedAt && (
-                    <p className="text-zinc-500">
+                    <p className="text-neutral-400">
                       {t.fetched} {formatTime(metrics.fetchedAt)}
                     </p>
                   )}
                 </div>
               </div>
             </div>
-            <p className="text-[10px] text-zinc-500 text-right">
+            <p className="text-[10px] text-neutral-400 text-right">
               {t.fetchHint}
             </p>
           </div>
@@ -313,29 +313,29 @@ export function LiveMetrics() {
           )}
           {metrics && projectGroups.map((group, gi) => {
             const accentMap: Record<string, { border: string; bg: string; icon: string; dot: string; btnBorder: string }> = {
-              emerald: { border: "border-l-emerald-500/40", bg: "bg-emerald-500/5", icon: "text-emerald-500", dot: "bg-emerald-500", btnBorder: "border-emerald-500/20" },
-              purple: { border: "border-l-purple-500/40", bg: "bg-purple-500/5", icon: "text-purple-500", dot: "bg-purple-500", btnBorder: "border-purple-500/20" },
-              blue: { border: "border-l-blue-500/40", bg: "bg-blue-500/5", icon: "text-blue-500", dot: "bg-blue-500", btnBorder: "border-blue-500/20" },
-              orange: { border: "border-l-orange-500/40", bg: "bg-orange-500/5", icon: "text-orange-500", dot: "bg-orange-500", btnBorder: "border-orange-500/20" },
+              emerald: { border: "border-l-[#0D9488]", bg: "bg-[#FAFAFA]", icon: "text-[#0D9488]", dot: "bg-[#0D9488]", btnBorder: "border-neutral-400" },
+              purple: { border: "border-l-purple-500", bg: "bg-purple-50", icon: "text-purple-600", dot: "bg-purple-500", btnBorder: "border-neutral-400" },
+              blue: { border: "border-l-blue-500", bg: "bg-blue-50", icon: "text-blue-600", dot: "bg-blue-500", btnBorder: "border-neutral-400" },
+              orange: { border: "border-l-orange-500", bg: "bg-orange-50", icon: "text-orange-600", dot: "bg-orange-500", btnBorder: "border-neutral-400" },
             };
             const accent = accentMap[group.accent] ?? accentMap.emerald;
 
             return (
             <div
               key={group.name}
-              className={`rounded-xl ${accent.bg} border border-white/5 ${accent.border} border-l-2 p-4 md:p-5`}
+              className={`rounded-xl ${accent.bg} border border-neutral-400 ${accent.border} border-l-2 p-4 md:p-5`}
             >
               <div className="flex items-center justify-between mb-4">
                 <Link
                   href={group.link}
-                  className="group flex items-center gap-2 text-sm font-semibold text-zinc-300 hover:text-white transition-colors"
+                  className="group flex items-center gap-2 text-sm font-semibold text-neutral-700 hover:text-neutral-900 transition-colors"
                 >
                   <span className={`w-2 h-2 rounded-full ${accent.dot}`} />
                   {group.name}
                   <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
                 {group.note && (
-                  <span className="text-[10px] text-zinc-500 ml-4 mt-0.5 italic">
+                  <span className="text-[10px] text-neutral-400 ml-4 mt-0.5 italic">
                     {group.note}
                   </span>
                 )}
@@ -343,7 +343,7 @@ export function LiveMetrics() {
                   href={group.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`text-[10px] sm:text-xs font-semibold flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all ${accent.bg} ${accent.btnBorder} ${accent.icon} hover:brightness-125`}
+                  className={`text-[10px] sm:text-xs font-semibold flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all bg-white ${accent.btnBorder} ${accent.icon} hover:bg-neutral-50`}
                 >
                   {t.visitApp} <ExternalLink className="w-3 h-3" />
                 </a>
@@ -375,35 +375,35 @@ export function LiveMetrics() {
                       }}
                       className={`relative overflow-hidden rounded-xl md:rounded-2xl p-4 md:p-6 border transition-shadow hover:shadow-2xl ${
                         isHero
-                          ? "bg-gradient-to-br from-emerald-500/10 to-teal-500/5 border-emerald-500/20 hover:border-emerald-500/40"
-                          : "bg-white/5 border-white/10 hover:border-white/20"
+                          ? "bg-[#FAFAFA] border-[#0D9488]/30 hover:border-[#0D9488]/60"
+                          : "bg-[#FAFAFA] border-neutral-400 hover:border-neutral-400"
                       }`}
                     >
                       {isHero && (
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
+                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#0D9488]/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
                       )}
                       <div className="relative">
                         <div className="flex items-center gap-1.5 md:gap-2 mb-2 md:mb-3">
                           <div
                             className={`p-1 md:p-1.5 rounded-lg ${
-                              isHero ? "bg-emerald-500/20" : "bg-white/10"
+                              isHero ? "bg-[#FAFAFA]" : "bg-neutral-100"
                             }`}
                           >
                             <Icon
                               className={`w-3.5 h-3.5 md:w-4 md:h-4 ${
-                                isHero ? "text-emerald-400" : "text-zinc-400"
+                                isHero ? "text-[#0D9488]" : "text-neutral-500"
                               }`}
                             />
                           </div>
-                          <span className="text-[10px] md:text-xs font-medium text-zinc-400 uppercase tracking-wider">
+                          <span className="text-[10px] md:text-xs font-medium text-neutral-500 uppercase tracking-wider">
                             {(t as Record<string, string>)[card.labelKey] ?? card.labelKey}
                           </span>
                         </div>
                         <p
                           className={`font-extrabold tracking-tight ${
                             isHero
-                              ? "text-2xl sm:text-4xl md:text-5xl bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent"
-                              : "text-xl sm:text-3xl md:text-4xl text-white"
+                              ? "text-2xl sm:text-4xl md:text-5xl bg-gradient-to-r from-[#0D9488] to-[#14B8A6] bg-clip-text text-transparent"
+                              : "text-xl sm:text-3xl md:text-4xl text-neutral-900"
                           }`}
                         >
                           <AnimatedNumber
@@ -424,18 +424,18 @@ export function LiveMetrics() {
         </div>
 
         {/* Footer */}
-        <div className="mt-8 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <p className="text-xs text-zinc-500">
+        <div className="mt-8 pt-6 border-t border-neutral-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <p className="text-xs text-neutral-400">
             {t.liveMetricsFooter}
           </p>
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-semibold text-emerald-400 uppercase tracking-wider">
+            <span className="px-2.5 py-1 rounded-md bg-[#FAFAFA] border border-neutral-400 text-[10px] font-semibold text-[#0D9488] uppercase tracking-wider">
               Supabase
             </span>
-            <span className="px-2.5 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-[10px] font-semibold text-blue-400 uppercase tracking-wider">
+            <span className="px-2.5 py-1 rounded-md bg-blue-50 border border-neutral-400 text-[10px] font-semibold text-blue-600 uppercase tracking-wider">
               PostgreSQL
             </span>
-            <span className="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[10px] font-semibold text-zinc-400 uppercase tracking-wider">
+            <span className="px-2.5 py-1 rounded-md bg-[#FAFAFA] border border-neutral-400 text-[10px] font-semibold text-neutral-500 uppercase tracking-wider">
               4 {t.databases}
             </span>
           </div>

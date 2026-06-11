@@ -13,10 +13,10 @@ function renderMarkdown(content: string) {
     .map((block, i) => {
       // Headers
       if (block.startsWith("### ")) {
-        return `<h3 class="text-lg font-bold text-zinc-900 dark:text-white mt-6 mb-2">${block.slice(4)}</h3>`;
+        return `<h3 class="text-lg font-bold text-neutral-900 mt-6 mb-2">${block.slice(4)}</h3>`;
       }
       if (block.startsWith("## ")) {
-        return `<h2 class="text-xl font-bold text-zinc-900 dark:text-white mt-8 mb-3">${block.slice(3)}</h2>`;
+        return `<h2 class="text-xl font-bold text-neutral-900 mt-8 mb-3">${block.slice(3)}</h2>`;
       }
       // Table
       if (block.includes("|")) {
@@ -25,8 +25,8 @@ function renderMarkdown(content: string) {
           const headerCells = rows[0].split("|").filter(Boolean).map((c) => c.trim());
           const bodyRows = rows.slice(1).map((r) => r.split("|").filter(Boolean).map((c) => c.trim()));
           return `<div class="overflow-x-auto my-4"><table class="w-full text-sm border-collapse">
-            <thead><tr>${headerCells.map((c) => `<th class="text-left p-2 border-b-2 border-zinc-200 dark:border-zinc-700 font-semibold">${c}</th>`).join("")}</tr></thead>
-            <tbody>${bodyRows.map((r) => `<tr>${r.map((c) => `<td class="p-2 border-b border-zinc-100 dark:border-zinc-800">${c}</td>`).join("")}</tr>`).join("")}</tbody>
+            <thead><tr>${headerCells.map((c) => `<th class="text-left p-2 border-b-2 border-neutral-400 font-semibold">${c}</th>`).join("")}</tr></thead>
+            <tbody>${bodyRows.map((r) => `<tr>${r.map((c) => `<td class="p-2 border-b border-neutral-400">${c}</td>`).join("")}</tr>`).join("")}</tbody>
           </table></div>`;
         }
       }
@@ -36,7 +36,7 @@ function renderMarkdown(content: string) {
           const text = line.replace(/^\d+\.\s*/, "").replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
           return `<li class="mb-1">${text}</li>`;
         });
-        return `<ol class="list-decimal list-inside space-y-1 text-zinc-700 dark:text-zinc-300 my-3">${items.join("")}</ol>`;
+        return `<ol class="list-decimal list-inside space-y-1 text-neutral-900 my-3">${items.join("")}</ol>`;
       }
       // Unordered list
       if (block.match(/^[-*]/m)) {
@@ -44,13 +44,13 @@ function renderMarkdown(content: string) {
           const text = line.replace(/^[-*]\s*/, "").replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
           return `<li class="mb-1">${text}</li>`;
         });
-        return `<ul class="list-disc list-inside space-y-1 text-zinc-700 dark:text-zinc-300 my-3">${items.join("")}</ul>`;
+        return `<ul class="list-disc list-inside space-y-1 text-neutral-900 my-3">${items.join("")}</ul>`;
       }
       // Regular paragraph
       const formatted = block
         .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-        .replace(/`(.*?)`/g, '<code class="px-1.5 py-0.5 bg-zinc-100 dark:bg-zinc-800 rounded text-sm font-mono text-emerald-600 dark:text-emerald-400">$1</code>');
-      return `<p class="text-zinc-700 dark:text-zinc-300 leading-relaxed my-3">${formatted}</p>`;
+        .replace(/`(.*?)`/g, '<code class="px-1.5 py-0.5 bg-[#FAFAFA] rounded text-sm font-mono text-[#0D9488]">$1</code>');
+      return `<p class="text-neutral-900 leading-relaxed my-3">${formatted}</p>`;
     })
     .join("");
 }
@@ -63,10 +63,10 @@ export default function BlogPostPage() {
   if (!post) {
     return (
       <div className="max-w-3xl mx-auto py-20 text-center">
-        <h1 className="text-2xl font-bold text-zinc-900 dark:text-white mb-4">
+        <h1 className="text-2xl font-bold text-neutral-900 mb-4">
           {language === "en" ? "Post not found" : "Artikel tidak ditemukan"}
         </h1>
-        <Link href="/blog" className="text-emerald-500 hover:underline">
+        <Link href="/blog" className="text-[#0D9488] hover:underline">
           ← {language === "en" ? "Back to blog" : "Kembali ke blog"}
         </Link>
       </div>
@@ -82,17 +82,17 @@ export default function BlogPostPage() {
       >
         <Link
           href="/blog"
-          className="inline-flex items-center gap-1.5 text-sm text-zinc-500 hover:text-emerald-500 transition-colors mb-6"
+          className="inline-flex items-center gap-1.5 text-sm text-neutral-500 hover:text-[#0D9488] transition-colors mb-6"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           {language === "en" ? "Back to blog" : "Kembali ke blog"}
         </Link>
 
-        <h1 className="text-2xl md:text-3xl font-extrabold text-zinc-900 dark:text-white mb-4">
+        <h1 className="text-2xl md:text-3xl font-extrabold text-neutral-900 mb-4">
           {post.title}
         </h1>
 
-        <div className="flex flex-wrap items-center gap-3 text-sm text-zinc-500 mb-8 pb-6 border-b border-zinc-200 dark:border-zinc-800">
+        <div className="flex flex-wrap items-center gap-3 text-sm text-neutral-500 mb-8 pb-6 border-b border-neutral-400">
           <span className="flex items-center gap-1.5">
             <Calendar className="w-3.5 h-3.5" />
             {new Date(post.date).toLocaleDateString("en-US", {
@@ -109,7 +109,7 @@ export default function BlogPostPage() {
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="px-2 py-0.5 bg-zinc-100 dark:bg-zinc-800 rounded-full text-xs font-medium text-zinc-600 dark:text-zinc-400"
+                className="px-2 py-0.5 bg-[#FAFAFA] border border-neutral-400 rounded-full text-xs font-medium text-neutral-900"
               >
                 {tag}
               </span>
@@ -119,7 +119,7 @@ export default function BlogPostPage() {
       </motion.div>
 
       <article
-        className="prose prose-sm dark:prose-invert max-w-none"
+        className="prose prose-sm max-w-none"
         dangerouslySetInnerHTML={{ __html: renderMarkdown(post.content) }}
       />
     </div>

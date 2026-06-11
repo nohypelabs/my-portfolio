@@ -35,8 +35,8 @@ export function ContactSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">Get In Touch</h2>
-          <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-12 max-w-2xl mx-auto">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-neutral-900">Get In Touch</h2>
+          <p className="text-lg text-neutral-500 mb-12 max-w-2xl mx-auto">
             I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
           </p>
         </motion.div>
@@ -54,15 +54,15 @@ export function ContactSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 p-6 hover:shadow-lg transition-all hover:scale-105"
+                className="group bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 hover:shadow-lg transition-all hover:scale-105"
               >
                 <div className="flex flex-col items-center gap-4">
-                  <div className="p-4 rounded-full bg-zinc-100 dark:bg-zinc-800 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 transition-colors">
-                    <Icon className="w-6 h-6 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
+                  <div className="p-4 rounded-full bg-[#FAFAFA] group-hover:bg-[#99F6E4]/30 transition-colors">
+                    <Icon className="w-6 h-6 text-[#0D9488] group-hover:text-[#0F766E] transition-colors" />
                   </div>
                   <div>
-                    <h3 className="font-bold mb-1">{link.name}</h3>
-                    <p className="text-sm text-zinc-500 dark:text-zinc-400">{link.handle}</p>
+                    <h3 className="font-bold mb-1 text-neutral-900">{link.name}</h3>
+                    <p className="text-sm text-neutral-500">{link.handle}</p>
                   </div>
                 </div>
               </motion.a>

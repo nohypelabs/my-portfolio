@@ -14,12 +14,12 @@ export function FeaturedProjects() {
   return (
     <section>
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-bold text-zinc-900 dark:text-white">
+        <h2 className="text-lg font-bold text-foreground">
           {t.featuredProjects}
         </h2>
         <Link
           href="/projects"
-          className="flex items-center gap-1 text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:underline"
+          className="flex items-center gap-1 text-xs font-medium text-[#0D9488] hover:underline"
         >
           {t.viewAllProjects}
           <ArrowRight className="w-3 h-3" />

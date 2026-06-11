@@ -42,7 +42,7 @@ function NavLink({
       className={`relative px-3 py-1.5 rounded-lg text-sm font-medium transition-colors ${
         active
           ? "text-emerald-600 dark:text-emerald-400"
-          : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-200"
+          : "text-muted hover:text-foreground"
       }`}
     >
       {active && (
@@ -104,7 +104,7 @@ function DockItem({
           className={`w-[22px] h-[22px] transition-colors duration-200 ${
             active
               ? "text-emerald-600 dark:text-emerald-400"
-              : "text-zinc-400 dark:text-zinc-500"
+              : "text-muted"
           }`}
           strokeWidth={active ? 2.5 : 1.8}
         />
@@ -149,16 +149,16 @@ export function NavBar() {
   return (
     <>
       {/* ── Desktop Top Bar ── */}
-      <header className="sticky top-0 z-40 hidden lg:block bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-200 dark:border-white/5 print:hidden">
+      <header className="sticky top-0 z-40 hidden lg:block bg-surface/80 backdrop-blur-xl border-b border-border print:hidden">
         <div className="max-w-5xl mx-auto flex items-center justify-between h-14 px-6">
           {/* Left: Avatar + Name */}
           <Link href="/" className="flex items-center gap-3 shrink-0">
             <AvatarImage size={32} priority />
             <div>
-              <h1 className="text-sm font-bold text-zinc-900 dark:text-white leading-none">
+              <h1 className="text-sm font-bold text-foreground leading-none">
                 Abdul Gofur
               </h1>
-              <p className="text-[11px] text-zinc-500 leading-none mt-0.5">
+              <p className="text-[11px] text-muted leading-none mt-0.5">
                 {t.fullstackDev}
               </p>
             </div>
@@ -188,7 +188,7 @@ export function NavBar() {
                   })
                 );
               }}
-              className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-zinc-400 bg-zinc-100 dark:bg-white/5 hover:bg-zinc-200 dark:hover:bg-white/10 transition-colors"
+              className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs text-muted bg-border/50 hover:bg-border transition-colors"
             >
               <Search className="w-3 h-3" />
               <kbd className="font-mono">⌘K</kbd>
@@ -200,11 +200,11 @@ export function NavBar() {
       </header>
 
       {/* ── Mobile Top Bar ── */}
-      <header className="sticky top-0 z-40 lg:hidden bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-200 dark:border-white/5 print:hidden">
+      <header className="sticky top-0 z-40 lg:hidden bg-surface/80 backdrop-blur-xl border-b border-border print:hidden">
         <div className="flex items-center justify-between h-12 px-4">
           <Link href="/" className="flex items-center gap-2.5">
             <AvatarImage size={28} priority />
-            <h1 className="text-sm font-bold text-zinc-900 dark:text-white">
+            <h1 className="text-sm font-bold text-foreground">
               Abdul Gofur
             </h1>
           </Link>
@@ -213,7 +213,7 @@ export function NavBar() {
             <ThemeToggle />
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="p-1.5 rounded-lg text-zinc-500 hover:bg-zinc-100 dark:hover:bg-white/5 transition-colors"
+              className="p-1.5 rounded-lg text-muted hover:bg-border/50 transition-colors"
             >
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -226,7 +226,7 @@ export function NavBar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="border-t border-zinc-200 dark:border-white/5 px-4 pb-3"
+            className="border-t border-border px-4 pb-3"
           >
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -239,7 +239,7 @@ export function NavBar() {
                   className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-colors ${
                     active
                       ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
-                      : "text-zinc-500 hover:bg-zinc-100 dark:hover:bg-white/5"
+                      : "text-muted hover:bg-border/50"
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -262,9 +262,9 @@ export function NavBar() {
         }}
         onTouchEnd={() => mouseX.set(-1)}
       >
-        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white/80 dark:from-black/80 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-background/80 to-transparent pointer-events-none" />
         <div className="relative flex justify-center px-6 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
-          <div className="flex items-center justify-around w-[85%] max-w-sm bg-white/90 dark:bg-zinc-900/90 backdrop-blur-2xl rounded-[1.75rem] shadow-2xl shadow-zinc-300/50 dark:shadow-black/30 border border-zinc-200 dark:border-white/[0.06] px-1.5 py-0.5 pointer-events-auto">
+          <div className="flex items-center justify-around w-[85%] max-w-sm bg-surface/90 backdrop-blur-2xl rounded-[1.75rem] shadow-2xl shadow-black/10 dark:shadow-black/30 border border-border px-1.5 py-0.5 pointer-events-auto">
             {navItems.map((item) => (
               <DockItem
                 key={item.key}

@@ -17,10 +17,10 @@ export default function BlogPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <h1 className="text-2xl font-extrabold mb-1 text-zinc-900 dark:text-white">
+        <h1 className="text-2xl font-extrabold mb-1 text-neutral-900">
           {language === "en" ? "Blog" : "Blog"}
         </h1>
-        <p className="text-sm text-zinc-500">
+        <p className="text-sm text-neutral-500">
           {language === "en"
             ? "Thoughts on full-stack development, shipping production systems, and building for real users."
             : "Pemikiran tentang full-stack development, mengirim sistem production, dan membangun untuk user nyata."}
@@ -32,17 +32,17 @@ export default function BlogPage() {
           <ScrollReveal key={post.slug}>
             <Link
               href={`/blog/${post.slug}`}
-              className="group block bg-zinc-50 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl p-5 hover:border-emerald-500/30 dark:hover:border-emerald-500/30 transition-all"
+              className="group block bg-[#FAFAFA] border border-neutral-400 rounded-[35px] p-5 hover:border-[#0D9488]/30 hover:shadow-sm transition-all"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
-                  <h2 className="font-bold text-zinc-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors mb-2">
+                  <h2 className="font-bold text-neutral-900 group-hover:text-[#0D9488] transition-colors mb-2">
                     {post.title}
                   </h2>
-                  <p className="text-sm text-zinc-500 dark:text-zinc-400 mb-3 line-clamp-2">
+                  <p className="text-sm text-neutral-500 mb-3 line-clamp-2">
                     {post.excerpt}
                   </p>
-                  <div className="flex flex-wrap items-center gap-3 text-xs text-zinc-400">
+                  <div className="flex flex-wrap items-center gap-3 text-xs text-neutral-500">
                     <span className="flex items-center gap-1">
                       <Calendar className="w-3 h-3" />
                       {new Date(post.date).toLocaleDateString("en-US", {
@@ -59,7 +59,7 @@ export default function BlogPage() {
                       {post.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 py-0.5 bg-zinc-200 dark:bg-zinc-800 rounded-full text-[10px] font-medium text-zinc-600 dark:text-zinc-400"
+                          className="px-2 py-0.5 bg-[#FAFAFA] border border-neutral-400 rounded-full text-[10px] font-medium text-neutral-900"
                         >
                           {tag}
                         </span>
@@ -67,7 +67,7 @@ export default function BlogPage() {
                     </div>
                   </div>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-zinc-400 group-hover:text-emerald-500 transition-colors shrink-0 mt-1" />
+                <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-[#0D9488] transition-colors shrink-0 mt-1" />
               </div>
             </Link>
           </ScrollReveal>

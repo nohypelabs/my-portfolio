@@ -22,9 +22,9 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
   }
 
   const statusColors = {
-    'Planning': { bg: 'bg-blue-100 dark:bg-blue-900/30', text: 'text-blue-600 dark:text-blue-400' },
-    'In Progress': { bg: 'bg-green-100 dark:bg-green-900/30', text: 'text-green-600 dark:text-green-400' },
-    'On Hold': { bg: 'bg-yellow-100 dark:bg-yellow-900/30', text: 'text-yellow-600 dark:text-yellow-400' }
+    'Planning': { bg: 'bg-[#FAFAFA]', text: 'text-[#0D9488]' },
+    'In Progress': { bg: 'bg-[#FAFAFA]', text: 'text-[#0D9488]' },
+    'On Hold': { bg: 'bg-yellow-100', text: 'text-yellow-600' }
   };
 
   return (
@@ -32,7 +32,7 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
       {/* Back Button */}
       <Link
         href="/ongoing"
-        className="inline-flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
+        className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-neutral-900"
       >
         {t.backToOngoing}
       </Link>
@@ -45,7 +45,7 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
         <div className="flex items-start justify-between mb-4">
           <div>
             <h1 className="text-4xl font-bold mb-2">{project.name}</h1>
-            <p className="text-lg text-zinc-600 dark:text-zinc-400">
+            <p className="text-lg text-neutral-500">
               {project.description}
             </p>
           </div>
@@ -60,22 +60,22 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="bg-white dark:bg-zinc-900 rounded-xl p-6 border border-zinc-200 dark:border-zinc-800"
+        className="bg-[#FAFAFA] rounded-[35px] p-6 border border-neutral-400"
       >
         <h2 className="text-2xl font-bold mb-6">{t.timelineProgress}</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div className="flex items-center gap-3">
-            <Calendar className="w-5 h-5 text-blue-600" />
+            <Calendar className="w-5 h-5 text-[#0D9488]" />
             <div>
-              <p className="text-sm text-zinc-500">{t.startDate}</p>
+              <p className="text-sm text-neutral-500">{t.startDate}</p>
               <p className="font-medium">{project.startDate}</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <Clock className="w-5 h-5 text-purple-600" />
+            <Clock className="w-5 h-5 text-[#0D9488]" />
             <div>
-              <p className="text-sm text-zinc-500">{t.estimatedCompletion}</p>
+              <p className="text-sm text-neutral-500">{t.estimatedCompletion}</p>
               <p className="font-medium">{project.estimatedCompletion}</p>
             </div>
           </div>
@@ -85,14 +85,14 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
           <div>
             <div className="flex justify-between mb-2">
               <span className="text-sm font-medium">{t.overallProgress}</span>
-              <span className="text-sm font-bold text-blue-600">{project.progress}%</span>
+              <span className="text-sm font-bold text-[#0D9488]">{project.progress}%</span>
             </div>
-            <div className="w-full bg-zinc-200 dark:bg-zinc-800 rounded-full h-3">
+            <div className="w-full bg-border rounded-full h-3">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${project.progress}%` }}
                 transition={{ duration: 1, delay: 0.3 }}
-                className="bg-gradient-to-r from-emerald-500 to-teal-500 h-3 rounded-full"
+                className="bg-gradient-to-r from-[#0D9488] to-[#14B8A6] h-3 rounded-full"
               />
             </div>
           </div>
@@ -105,10 +105,10 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-white dark:bg-zinc-900 rounded-xl p-6 border border-zinc-200 dark:border-zinc-800"
+          className="bg-[#FAFAFA] rounded-[35px] p-6 border border-neutral-400"
         >
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-            <Target className="w-6 h-6 text-blue-600" />
+            <Target className="w-6 h-6 text-[#0D9488]" />
             {t.keyGoals}
           </h2>
           <ul className="space-y-3">
@@ -120,7 +120,7 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
                 transition={{ delay: 0.3 + idx * 0.1 }}
                 className="flex items-start gap-3"
               >
-                <div className="w-2 h-2 rounded-full bg-blue-600 mt-2" />
+                <div className="w-2 h-2 rounded-full bg-[#0D9488] mt-2" />
                 <span>{goal}</span>
               </motion.li>
             ))}
@@ -133,7 +133,7 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
-        className="bg-white dark:bg-zinc-900 rounded-xl p-6 border border-zinc-200 dark:border-zinc-800"
+        className="bg-[#FAFAFA] rounded-[35px] p-6 border border-neutral-400"
       >
         <h2 className="text-2xl font-bold mb-6">{t.plannedTechStack}</h2>
         <div className="flex flex-wrap gap-2">
@@ -150,9 +150,9 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
         transition={{ delay: 0.5 }}
         className={`rounded-xl p-6 ${
           project.status === 'In Progress'
-            ? 'bg-gradient-to-br from-emerald-500 to-teal-500'
+            ? 'bg-gradient-to-br from-[#0D9488] to-[#14B8A6]'
             : project.status === 'Planning'
-            ? 'bg-gradient-to-br from-teal-500 to-cyan-500'
+            ? 'bg-gradient-to-br from-[#0D9488] to-[#99F6E4]'
             : 'bg-gradient-to-br from-yellow-600 to-orange-600'
         } text-white`}
       >

@@ -17,10 +17,10 @@ export function OngoingStrip() {
   return (
     <section>
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-bold text-zinc-900 dark:text-white">
+        <h2 className="text-lg font-bold text-foreground">
           {t.inProgressProjects}
         </h2>
-        <span className="text-xs text-zinc-500 dark:text-zinc-400">
+        <span className="text-xs text-muted">
           {ongoingProjects.length} {t.inProgress}
         </span>
       </div>
@@ -29,22 +29,22 @@ export function OngoingStrip() {
           <Link
             key={project.id}
             href={`/ongoing/${project.id}`}
-            className="group bg-white dark:bg-zinc-900 rounded-xl border border-zinc-200 dark:border-zinc-800 p-3 hover:border-emerald-300 dark:hover:border-emerald-700 transition-colors"
+            className="group bg-[#FAFAFA] rounded-xl border border-neutral-400 p-3 hover:border-[#0D9488]/30 hover:shadow-sm transition-all duration-200"
           >
             <div className="flex items-center justify-between mb-2">
-              <h3 className="text-xs font-semibold text-zinc-900 dark:text-white truncate group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+              <h3 className="text-xs font-semibold text-foreground truncate group-hover:text-[#0D9488] transition-colors">
                 {project.name.split(" — ")[0]}
               </h3>
-              <ArrowRight className="w-3 h-3 text-zinc-400 group-hover:text-emerald-500 transition-colors shrink-0" />
+              <ArrowRight className="w-3 h-3 text-muted group-hover:text-[#0D9488] transition-colors shrink-0" />
             </div>
             <div className="flex items-center gap-2">
-              <div className="flex-1 h-1.5 rounded-full bg-zinc-100 dark:bg-white/5 overflow-hidden">
+              <div className="flex-1 h-1.5 rounded-full bg-border/50 overflow-hidden">
                 <div
-                  className="h-full rounded-full bg-emerald-500"
+                  className="h-full rounded-full bg-[#0D9488]"
                   style={{ width: `${project.progress ?? 0}%` }}
                 />
               </div>
-              <span className="text-[10px] font-semibold text-zinc-500 dark:text-zinc-400 tabular-nums">
+              <span className="text-[10px] font-semibold text-muted tabular-nums">
                 {project.progress ?? 0}%
               </span>
             </div>

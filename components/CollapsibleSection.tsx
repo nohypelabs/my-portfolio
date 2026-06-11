@@ -34,19 +34,19 @@ export function CollapsibleSection({
             title
           )}
           {badge !== undefined && (
-            <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-zinc-100 dark:bg-zinc-800 text-zinc-500">
+            <span className="px-2 py-0.5 rounded-full text-xs font-semibold bg-border/50 text-muted">
               {badge}
             </span>
           )}
         </div>
         <div className="flex items-center gap-2 shrink-0">
           {rightContent}
-          <div className="p-1 rounded-lg bg-zinc-100 dark:bg-zinc-800/50 group-hover:bg-zinc-200 dark:group-hover:bg-zinc-700/50 transition-colors">
+          <div className="p-1 rounded-lg bg-border/50 group-hover:bg-border transition-colors">
             <motion.div
               animate={{ rotate: open ? 0 : -90 }}
               transition={{ duration: 0.2 }}
             >
-              <ChevronDown className="w-4 h-4 text-zinc-400" />
+              <ChevronDown className="w-4 h-4 text-muted" />
             </motion.div>
           </div>
         </div>

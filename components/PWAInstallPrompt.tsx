@@ -126,7 +126,7 @@ export function PWAInstallPrompt() {
               {!isIOS && deferredPrompt && (
                 <button
                   onClick={handleInstallClick}
-                  className="mt-3 px-4 py-2 bg-white text-emerald-600 rounded-lg font-semibold hover:bg-zinc-100 transition-colors text-sm"
+                  className="mt-3 px-4 py-2 bg-white text-emerald-600 rounded-lg font-semibold hover:bg-neutral-100 transition-colors text-sm"
                 >
                   Install Now
                 </button>

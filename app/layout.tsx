@@ -17,7 +17,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://abdulgofur.vercel.app'),
   title: {
-    default: "Abdul Gofur - Full-stack Developer Portfolio",
+    default: "nasaq — Full-stack Developer Portfolio",
     template: "%s | Abdul Gofur"
   },
   description: "Portfolio of Abdul Gofur, Full-stack Developer. 7 production systems shipped in <1 year with 250K+ records processed. Specializing in Next.js, TypeScript, tRPC, PostgreSQL. Featured: Serat QC, WC Check, LakuPOS, TraceFlow.",
@@ -63,21 +63,21 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://abdulgofur.vercel.app',
-    title: 'Abdul Gofur - Full-stack Developer',
+    title: 'nasaq — Full-stack Developer',
     description: '7 production systems shipped in <1 year, 250K+ records processed. Next.js, TypeScript, tRPC, PostgreSQL. From logistics QC to POS systems.',
-    siteName: 'Abdul Gofur Portfolio',
+    siteName: 'nasaq Portfolio',
     images: [
       {
         url: '/avatar.jpg',
         width: 800,
         height: 800,
-        alt: 'Abdul Gofur Profile',
+        alt: 'nasaq Profile',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Abdul Gofur - Full-stack Developer',
+    title: 'nasaq — Full-stack Developer',
     description: '7 production systems | 250K+ records | Next.js, tRPC, PostgreSQL | Logistics, Retail',
     creator: '@agdscID',
     images: ['/avatar.jpg'],

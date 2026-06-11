@@ -36,7 +36,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white dark:bg-zinc-900 rounded-2xl p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm"
+        className="bg-[#FAFAFA] rounded-[35px] p-8 border border-neutral-400"
       >
         {/* Title & Meta */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-6">
@@ -119,7 +119,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.18 }}
-          className="relative w-full overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-lg bg-zinc-100 dark:bg-zinc-900"
+          className="relative w-full overflow-hidden rounded-2xl border border-neutral-400 bg-[#FAFAFA]"
         >
           <Image
             src={project.image}
@@ -138,7 +138,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm"
+        className="bg-[#FAFAFA] rounded-[35px] p-6 md:p-8 border border-neutral-400"
       >
         <h2 className="text-xl md:text-2xl font-bold mb-4">{t.aboutThisProject}</h2>
         <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
@@ -154,7 +154,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
           transition={{ delay: 0.22 }}
           className="space-y-6"
         >
-          <div className="bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm">
+          <div className="bg-[#FAFAFA] rounded-[35px] p-6 md:p-8 border border-neutral-400">
             <div className="flex items-center gap-2 mb-6">
               <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/20">
                 <AlertTriangle className="w-5 h-5 text-orange-600 dark:text-orange-400" />
@@ -183,7 +183,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
             </div>
           </div>
 
-          <div className="bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm">
+          <div className="bg-[#FAFAFA] rounded-[35px] p-6 md:p-8 border border-neutral-400">
             <div className="flex items-center gap-2 mb-6">
               <div className="p-2 rounded-lg bg-emerald-100 dark:bg-emerald-900/20">
                 <Zap className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
@@ -204,7 +204,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
             )}
           </div>
 
-          <div className="bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm">
+          <div className="bg-[#FAFAFA] rounded-[35px] p-6 md:p-8 border border-neutral-400">
             <h2 className="text-xl md:text-2xl font-bold mb-6">{t.beforeVsAfter}</h2>
             <div className="space-y-4">
               {project.caseStudy.metrics.map((metric, idx) => (
@@ -213,7 +213,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 + idx * 0.05 }}
-                  className="bg-zinc-50 dark:bg-zinc-800/50 rounded-xl p-4 border border-zinc-200 dark:border-zinc-700"
+                  className="bg-[#FAFAFA] rounded-xl p-4 border border-neutral-400"
                 >
                   <p className="text-xs font-semibold text-zinc-500 uppercase tracking-wide mb-3">
                     {metric.label}
@@ -239,7 +239,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="bg-gradient-to-br from-zinc-900 via-zinc-900 to-emerald-950 dark:from-zinc-950 dark:via-zinc-950 dark:to-emerald-950 rounded-2xl p-6 md:p-8 text-white relative overflow-hidden"
+              className="bg-[#FAFAFA] rounded-[35px] p-6 md:p-8 text-neutral-900 border border-neutral-400 relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-emerald-500/10 via-transparent to-transparent" />
               <div className="relative">
@@ -273,7 +273,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.25 }}
-        className="bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm"
+        className="bg-[#FAFAFA] rounded-[35px] p-6 md:p-8 border border-neutral-400"
       >
         <h2 className="text-xl md:text-2xl font-bold mb-6">{t.keyHighlights}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -283,7 +283,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 + idx * 0.05 }}
-              className="space-y-2 p-4 rounded-xl bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-800"
+              className="space-y-2 p-4 rounded-xl bg-[#FAFAFA] border border-neutral-400"
             >
               <h3 className="font-bold text-base md:text-lg text-zinc-900 dark:text-zinc-100">
                 {highlight.title}
@@ -301,7 +301,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm"
+        className="bg-[#FAFAFA] rounded-[35px] p-6 md:p-8 border border-neutral-400"
       >
         <h2 className="text-xl md:text-2xl font-bold mb-6">{t.features}</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 md:gap-4">
@@ -325,7 +325,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.35 }}
-        className="bg-white dark:bg-zinc-900 rounded-2xl p-6 md:p-8 border border-zinc-200 dark:border-zinc-800 shadow-sm"
+        className="bg-[#FAFAFA] rounded-[35px] p-6 md:p-8 border border-neutral-400"
       >
         <h2 className="text-xl md:text-2xl font-bold mb-6">{t.technologyStack}</h2>
         <div className="space-y-6">
@@ -350,7 +350,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl p-6 md:p-8 text-white shadow-lg"
+          className="bg-[#FAFAFA] rounded-[35px] p-6 md:p-8 text-neutral-900 border border-neutral-400"
         >
           <h2 className="text-xl md:text-2xl font-bold mb-5">{t.impactResults}</h2>
           <div className="space-y-3">
