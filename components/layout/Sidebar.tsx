@@ -93,9 +93,9 @@ export const Sidebar = () => {
           {/* Logo — standalone text "nasaq" */}
           {!isCollapsed && (
             <h1
-              className="text-[20px] text-neutral-900"
-              style={{ fontFamily: "'Inter', system-ui, sans-serif", fontWeight: 350, letterSpacing: '-0.03em' }}
-            >nasaq</h1>
+              className="text-[22px] font-extrabold text-neutral-900 tracking-tight"
+              style={{ fontFamily: "'Inter', 'SF Pro Display', system-ui, sans-serif", letterSpacing: '-0.05em' }}
+            >nasaq<span className="text-[#0D9488]">.id</span></h1>
           )}
           <button
             onClick={toggleCollapsed}
@@ -131,8 +131,8 @@ export const Sidebar = () => {
               <p className="text-[10px] text-[#0D9488] font-medium truncate">Next.js + Tailwind CSS</p>
             </div>
           ) : (
-            <div className="w-6 h-6 mx-auto rounded-full bg-[#FAFAFA] border border-[#0D9488] flex items-center justify-center">
-              <span className="text-[8px] text-[#0D9488] font-bold">N</span>
+            <div className="w-7 h-7 mx-auto rounded-lg bg-neutral-900 flex items-center justify-center">
+              <span className="text-[11px] text-white font-extrabold" style={{ letterSpacing: '-0.05em' }}>n</span>
             </div>
           )}
         </div>

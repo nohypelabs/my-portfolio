@@ -54,9 +54,9 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
         {/* Header — standalone text "nasaq" */}
         <div className="h-[60px] flex items-center justify-between px-6">
           <h1
-            className="text-[20px] text-neutral-900"
-            style={{ fontFamily: "'Inter', system-ui, sans-serif", fontWeight: 350, letterSpacing: '-0.03em' }}
-          >nasaq</h1>
+            className="text-[22px] font-extrabold text-neutral-900 tracking-tight"
+            style={{ fontFamily: "'Inter', 'SF Pro Display', system-ui, sans-serif", letterSpacing: '-0.05em' }}
+          >nasaq<span className="text-[#0D9488]">.id</span></h1>
           <button
             onClick={onClose}
             className="w-7 h-7 rounded-lg flex items-center justify-center text-neutral-900 hover:bg-neutral-100 transition-colors"
