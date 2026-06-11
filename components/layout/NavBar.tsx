@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Home, FolderOpen, FileText, Mail, Search, Activity, Menu, X, User, PenLine } from "lucide-react";
+import { Home, FolderOpen, FileText, Mail, Search, Activity, Menu, X, User, PenLine, Building2 } from "lucide-react";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { translations } from "@/lib/translations";
 import { AvatarImage } from "@/components/AvatarImage";
@@ -16,7 +16,7 @@ const navItems = [
   { key: "projects" as const, href: "/projects", icon: FolderOpen },
   { key: "about" as const, href: "/about", icon: User },
   { key: "blog" as const, href: "/blog", icon: PenLine },
-  { key: "cv" as const, href: "/cv", icon: FileText },
+  { key: "cv" as const, href: "/cv", icon: Building2 },
   { key: "contact" as const, href: "/contact", icon: Mail },
   { key: "live" as const, href: "/live", icon: Activity },
 ] as const;

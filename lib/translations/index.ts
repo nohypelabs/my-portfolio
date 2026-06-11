@@ -26,7 +26,7 @@ export const translations = {
     home: "Home",
     about: "About",
     contact: "Contact",
-    cv: "CV",
+    cv: "Company Profile",
     backToProjects: "← Back to Projects",
     backToOngoing: "← Back to Ongoing",
 
@@ -219,7 +219,7 @@ export const translations = {
     home: "Beranda",
     about: "Tentang",
     contact: "Kontak",
-    cv: "CV",
+    cv: "Profil Perusahaan",
     backToProjects: "← Kembali ke Proyek",
     backToOngoing: "← Kembali ke Proyek Berjalan",
 

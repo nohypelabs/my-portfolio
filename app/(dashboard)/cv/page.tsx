@@ -1,174 +1,363 @@
 "use client";
 
-import { Download } from "lucide-react";
+import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { translations } from "@/lib/translations";
-import { personalInfo } from "@/lib/data/personalInfo";
-import { projects } from "@/lib/data/projects";
-import { cvData } from "@/lib/data/cvData";
+import { ScrollReveal } from "@/components/ScrollReveal";
+import {
+  Building2,
+  Target,
+  Shield,
+  Zap,
+  Users,
+  Globe,
+  Award,
+  ArrowUpRight,
+  CheckCircle2,
+  Laptop,
+  Smartphone,
+  Palette,
+  Headphones,
+  Code2,
+  Database,
+} from "lucide-react";
+import Link from "next/link";
 
-export default function CVPage() {
+const fadeUp = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.5 },
+};
+
+const COMPANY = {
+  name: "nasaq.id",
+  tagline: {
+    id: "Solusi Digital Enterprise untuk Bisnis Anda",
+    en: "Enterprise Digital Solutions for Your Business",
+  },
+  founded: "2024",
+  location: "Bandung, Indonesia",
+  email: "hello@nasaq.id",
+};
+
+const VALUES = [
+  {
+    icon: Shield,
+    title: { id: "Production-Grade", en: "Production-Grade" },
+    desc: {
+      id: "Setiap sistem yang kami bangun dirancang untuk menangani beban nyata. Bukan prototype, bukan demo — sistem yang siap dipakai.",
+      en: "Every system we build is designed to handle real loads. Not prototypes, not demos — systems ready for production.",
+    },
+  },
+  {
+    icon: Target,
+    title: { id: "Berorientasi Hasil", en: "Result-Oriented" },
+    desc: {
+      id: "Kami fokus pada dampak bisnis, bukan sekadar kode. Setiap fitur harus punya alasan yang jelas untuk bisnis Anda.",
+      en: "We focus on business impact, not just code. Every feature must have a clear reason for your business.",
+    },
+  },
+  {
+    icon: Zap,
+    title: { id: "Kecepatan & Kualitas", en: "Speed & Quality" },
+    desc: {
+      id: "MVP dalam minggu, bukan bulan. Iterasi cepat dengan quality assurance yang ketat.",
+      en: "MVP in weeks, not months. Rapid iteration with strict quality assurance.",
+    },
+  },
+  {
+    icon: Users,
+    title: { id: "Kemitraan Jangka Panjang", en: "Long-Term Partnership" },
+    desc: {
+      id: "Kami bukan vendor sekali pakai. Kami adalah partner teknologi yang mendampingi pertumbuhan bisnis Anda.",
+      en: "We're not one-time vendors. We're your technology partner supporting your business growth.",
+    },
+  },
+];
+
+const SERVICES = [
+  {
+    icon: Laptop,
+    title: { id: "Web Application", en: "Web Application" },
+    desc: {
+      id: "Sistem web enterprise dengan arsitektur clean, scalable, dan maintainable.",
+      en: "Enterprise web applications with clean, scalable, and maintainable architecture.",
+    },
+    tech: ["Next.js", "React", "TypeScript", "tRPC"],
+  },
+  {
+    icon: Smartphone,
+    title: { id: "Mobile App (Android)", en: "Mobile App (Android)" },
+    desc: {
+      id: "Aplikasi Android native atau cross-platform untuk operasional bisnis mobile.",
+      en: "Native or cross-platform Android apps for mobile business operations.",
+    },
+    tech: ["React Native", "Kotlin", "Flutter"],
+  },
+  {
+    icon: Palette,
+    title: { id: "Landing Page", en: "Landing Page" },
+    desc: {
+      id: "Landing page profesional yang dikonversi tinggi untuk marketing dan branding bisnis Anda.",
+      en: "Professional, high-converting landing pages for your business marketing and branding.",
+    },
+    tech: ["Next.js", "Tailwind CSS", "Framer Motion"],
+  },
+  {
+    icon: Code2,
+    title: { id: "Sistem Bisnis Kustom", en: "Custom Business Systems" },
+    desc: {
+      id: "POS, CRM, ERP, sistem inventori — dibangun sesuai kebutuhan spesifik bisnis Anda.",
+      en: "POS, CRM, ERP, inventory systems — built to your specific business needs.",
+    },
+    tech: ["DDD", "Clean Architecture", "Type-Safe"],
+  },
+  {
+    icon: Database,
+    title: { id: "API & Backend", en: "API & Backend" },
+    desc: {
+      id: "Backend robust dengan API terdokumentasi, autentikasi aman, dan database teroptimasi.",
+      en: "Robust backend with documented APIs, secure authentication, and optimized databases.",
+    },
+    tech: ["Node.js", "PostgreSQL", "Supabase", "Redis"],
+  },
+  {
+    icon: Headphones,
+    title: { id: "Konsultasi Teknologi", en: "Technology Consulting" },
+    desc: {
+      id: "Konsultasi arsitektur, pemilihan tech stack, code review, dan strategi teknologi untuk bisnis Anda.",
+      en: "Architecture consulting, tech stack selection, code review, and technology strategy for your business.",
+    },
+    tech: ["Architecture", "Code Review", "Strategy"],
+  },
+];
+
+const STATS = [
+  { value: "7+", label: { id: "Sistem Production", en: "Production Systems" } },
+  { value: "250K+", label: { id: "Data Diproses", en: "Records Processed" } },
+  { value: "3+", label: { id: "Tahun Pengalaman", en: "Years Experience" } },
+  { value: "99.9%", label: { id: "Uptime", en: "Uptime" } },
+];
+
+const PROCESS = [
+  { step: "01", title: { id: "Discovery", en: "Discovery" }, desc: { id: "Memahami kebutuhan bisnis Anda", en: "Understanding your business needs" } },
+  { step: "02", title: { id: "Desain", en: "Design" }, desc: { id: "Merancang arsitektur & UI/UX", en: "Designing architecture & UI/UX" } },
+  { step: "03", title: { id: "Development", en: "Development" }, desc: { id: "Membangun dengan standar enterprise", en: "Building with enterprise standards" } },
+  { step: "04", title: { id: "Testing", en: "Testing" }, desc: { id: "Quality assurance ketat", en: "Strict quality assurance" } },
+  { step: "05", title: { id: "Deploy", en: "Deploy" }, desc: { id: "Go-live ke production", en: "Go-live to production" } },
+  { step: "06", title: { id: "Support", en: "Support" }, desc: { id: "Maintenance & pengembangan berkelanjutan", en: "Ongoing maintenance & development" } },
+];
+
+export default function CompanyProfilePage() {
   const { language } = useLanguage();
   const t = translations[language];
 
-  const productionProjects = projects.filter((p) => p.status === "production");
-
-  const handleDownloadPDF = () => {
-    const link = document.createElement("a");
-    link.href = `/api/cv/pdf?lang=${language}`;
-    link.download = `abdul-gofur-cv-${language}.pdf`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   return (
-    <>
-      <button
-        onClick={handleDownloadPDF}
-        className="fixed top-20 right-4 md:top-24 md:right-8 z-50 bg-[#0D9488] hover:bg-[#0F766E] text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2 print:hidden transition-colors cursor-pointer"
-      >
-        <Download className="w-5 h-5" />
-        <span className="hidden md:inline">{t.cvDownloadPDF}</span>
-      </button>
+    <div className="max-w-4xl mx-auto space-y-12 pb-12">
+      {/* Hero Header */}
+      <motion.div {...fadeUp} className="text-center space-y-4 pt-4">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#0D9488]/10 rounded-full text-[#0D9488] text-xs font-semibold">
+          <Building2 className="w-3.5 h-3.5" />
+          {language === "en" ? "Company Profile" : "Profil Perusahaan"}
+        </div>
+        <h1 className="text-4xl md:text-5xl font-extrabold text-neutral-900">
+          {COMPANY.name}
+        </h1>
+        <p className="text-neutral-500 text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+          {COMPANY.tagline[language]}
+        </p>
+        <div className="flex items-center justify-center gap-4 text-xs text-neutral-400">
+          <span>📍 {COMPANY.location}</span>
+          <span>•</span>
+          <span>📅 {language === "en" ? "Founded" : "Berdiri"} {COMPANY.founded}</span>
+          <span>•</span>
+          <span>✉️ {COMPANY.email}</span>
+        </div>
+      </motion.div>
 
-      <div className="cv-page bg-white text-zinc-900 mx-auto" style={{ width: "7in", minHeight: "12.5in", fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif", fontSize: "9pt", lineHeight: 1.4, padding: "0.4in 0.5in" }}>
+      {/* Stats */}
+      <ScrollReveal>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {STATS.map((stat, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.1 * i }}
+              className="bg-[#FAFAFA] border border-neutral-400 rounded-[25px] p-5 text-center"
+            >
+              <div className="text-2xl md:text-3xl font-extrabold text-[#0D9488]">{stat.value}</div>
+              <div className="text-xs text-neutral-500 mt-1">{stat.label[language]}</div>
+            </motion.div>
+          ))}
+        </div>
+      </ScrollReveal>
 
-        {/* Header */}
-        <div className="cv-header bg-gradient-to-br from-[#0D9488] to-[#0F766E] text-white rounded-md overflow-hidden relative" style={{ padding: "18pt 20pt", marginBottom: "10pt" }}>
-          <div className="absolute -top-8 -right-8 w-32 h-32 bg-white/10 rounded-full print-hide" />
-          <div className="relative z-10">
-            <h1 style={{ fontSize: "22pt", fontWeight: 800, letterSpacing: "1.5pt", marginBottom: "2pt", textTransform: "uppercase" as const }}>
-              {personalInfo.name.toUpperCase()}
-            </h1>
-            <div style={{ fontSize: "10pt", fontWeight: 300, color: "#ffffff", marginBottom: "6pt" }}>{personalInfo.role}</div>
-            <div style={{ display: "flex", flexWrap: "wrap" as const, gap: "12pt", fontSize: "7.5pt", color: "#ffffffcc", marginTop: "8pt", paddingTop: "6pt", borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-              <span><span style={{ color: "#ffffff", fontWeight: 600, marginRight: "3pt" }}>@</span>{personalInfo.contact.email}</span>
-              <span><span style={{ color: "#ffffff", fontWeight: 600, marginRight: "3pt" }}>W</span>WhatsApp</span>
-              <span><span style={{ color: "#ffffff", fontWeight: 600, marginRight: "3pt" }}>L</span>Bandung, Indonesia</span>
-              <span><span style={{ color: "#ffffff", fontWeight: 600, marginRight: "3pt" }}>G</span><a href={personalInfo.contact.github} target="_blank" style={{ color: "#ffffffcc", textDecoration: "none" }}>github.com/nohypelabs</a></span>
-              <span><span style={{ color: "#ffffff", fontWeight: 600, marginRight: "3pt" }}>in</span><a href={personalInfo.contact.linkedin} target="_blank" style={{ color: "#ffffffcc", textDecoration: "none" }}>linkedin.com/in/abdul-gofur</a></span>
-              <span><span style={{ color: "#ffffff", fontWeight: 600, marginRight: "3pt" }}>X</span><a href={personalInfo.contact.twitter} target="_blank" style={{ color: "#ffffffcc", textDecoration: "none" }}>@nohypelabs</a></span>
+      {/* Vision & Mission */}
+      <ScrollReveal>
+        <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 md:p-8 space-y-4">
+          <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
+            <Globe className="w-5 h-5 text-[#0D9488]" />
+            {language === "en" ? "Vision & Mission" : "Visi & Misi"}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-2">
+              <h3 className="font-bold text-sm text-[#0D9488]">
+                {language === "en" ? "Vision" : "Visi"}
+              </h3>
+              <p className="text-sm text-neutral-600 leading-relaxed">
+                {language === "en"
+                  ? "To become the trusted technology partner for Indonesian businesses, delivering enterprise-grade digital solutions that drive real growth."
+                  : "Menjadi mitra teknologi terpercaya untuk bisnis Indonesia, menghadirkan solusi digital bertaraf enterprise yang mendorong pertumbuhan nyata."}
+              </p>
+            </div>
+            <div className="space-y-2">
+              <h3 className="font-bold text-sm text-[#0D9488]">
+                {language === "en" ? "Mission" : "Misi"}
+              </h3>
+              <ul className="space-y-1.5 text-sm text-neutral-600">
+                {[
+                  {
+                    id: "Membangun sistem berkualitas tinggi dengan harga terjangkau",
+                    en: "Build high-quality systems at affordable prices",
+                  },
+                  {
+                    id: "Memberdayakan bisnis lokal dengan teknologi modern",
+                    en: "Empower local businesses with modern technology",
+                  },
+                  {
+                    id: "Menjadi partner jangka panjang, bukan vendor sekali pakai",
+                    en: "Be a long-term partner, not a one-time vendor",
+                  },
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-2">
+                    <CheckCircle2 className="w-4 h-4 text-[#0D9488] shrink-0 mt-0.5" />
+                    <span>{item[language]}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
+      </ScrollReveal>
 
-        {/* Two Column Grid */}
-        <div className="cv-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "14pt" }}>
-
-          {/* LEFT COLUMN */}
-          <div>
-            {/* Profile */}
-            <h2 className="cv-h2" style={{ fontSize: "10pt", fontWeight: 700, color: "#0f172a", textTransform: "uppercase" as const, letterSpacing: "0.8pt", borderBottom: "2pt solid #0D9488", paddingBottom: "3pt", marginBottom: "8pt", marginTop: "10pt" }}>{t.cvProfile}</h2>
-            <p style={{ fontSize: "8pt", color: "#475569", lineHeight: 1.5 }}>{cvData.profile[language]}</p>
-
-            {/* Technical Experience */}
-            <h2 className="cv-h2" style={{ fontSize: "10pt", fontWeight: 700, color: "#0f172a", textTransform: "uppercase" as const, letterSpacing: "0.8pt", borderBottom: "2pt solid #0D9488", paddingBottom: "3pt", marginBottom: "8pt", marginTop: "10pt" }}>{language === "en" ? "Technical Experience" : "Pengalaman Teknis"}</h2>
-            {cvData.technicalExperience.map((item, i) => (
-              <div key={i} className="cv-entry" style={{ borderLeft: "2pt solid #e2e8f0", paddingLeft: "10pt", marginBottom: "8pt", position: "relative" as const }}>
-                <div style={{ position: "absolute" as const, left: "-4.5pt", top: "4pt", width: "7pt", height: "7pt", background: "#0D9488", borderRadius: "50%", border: "1.5pt solid white" }} />
-                <div style={{ fontSize: "7pt", fontWeight: 700, color: "#0D9488", textTransform: "uppercase" as const, letterSpacing: "0.3pt" }}>{item.year}</div>
-                <div style={{ fontSize: "8.5pt", fontWeight: 600, color: "#0f172a", marginBottom: "2pt" }}>{item.title}</div>
-                <div style={{ fontSize: "7.5pt", color: "#64748b", lineHeight: 1.4 }}>{item.description[language]}</div>
-                {"highlights" in item && (item as any).highlights?.length > 0 && (
-                  <ul style={{ listStyle: "none", marginTop: "3pt" }}>
-                    {(item as any).highlights.map((h: string, j: number) => (
-                      <li key={j} style={{ fontSize: "7pt", color: "#475569", paddingLeft: "8pt", position: "relative" as const, lineHeight: 1.4, marginBottom: "1pt" }}>
-                        <span style={{ position: "absolute" as const, left: 0, color: "#0D9488", fontSize: "6pt" }}>▸</span>
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            ))}
-
-            {/* Other Experience */}
-            <h2 className="cv-h2" style={{ fontSize: "10pt", fontWeight: 700, color: "#0f172a", textTransform: "uppercase" as const, letterSpacing: "0.8pt", borderBottom: "2pt solid #0D9488", paddingBottom: "3pt", marginBottom: "8pt", marginTop: "10pt" }}>{language === "en" ? "Other Experience" : "Pengalaman Lain"}</h2>
-            {cvData.otherExperience.map((item, i) => (
-              <div key={i} className="cv-entry" style={{ borderLeft: "2pt solid #e2e8f0", paddingLeft: "10pt", marginBottom: "8pt", position: "relative" as const }}>
-                <div style={{ position: "absolute" as const, left: "-4.5pt", top: "4pt", width: "7pt", height: "7pt", background: "#0D9488", borderRadius: "50%", border: "1.5pt solid white" }} />
-                <div style={{ fontSize: "7pt", fontWeight: 700, color: "#0D9488", textTransform: "uppercase" as const, letterSpacing: "0.3pt" }}>{item.year}</div>
-                <div style={{ fontSize: "8.5pt", fontWeight: 600, color: "#0f172a", marginBottom: "2pt" }}>{item.title}</div>
-                <div style={{ fontSize: "7.5pt", color: "#64748b", lineHeight: 1.4 }}>{item.description[language]}</div>
-              </div>
-            ))}
-
-            {/* Education */}
-            <h2 className="cv-h2" style={{ fontSize: "10pt", fontWeight: 700, color: "#0f172a", textTransform: "uppercase" as const, letterSpacing: "0.8pt", borderBottom: "2pt solid #0D9488", paddingBottom: "3pt", marginBottom: "8pt", marginTop: "10pt" }}>{t.cvEducation}</h2>
-            {cvData.education.map((item, i) => (
-              <div key={i} className="cv-entry" style={{ borderLeft: "2pt solid #e2e8f0", paddingLeft: "10pt", marginBottom: "8pt", position: "relative" as const }}>
-                <div style={{ position: "absolute" as const, left: "-4.5pt", top: "4pt", width: "7pt", height: "7pt", background: "#0D9488", borderRadius: "50%", border: "1.5pt solid white" }} />
-                <div style={{ fontSize: "7pt", fontWeight: 700, color: "#0D9488", textTransform: "uppercase" as const, letterSpacing: "0.3pt" }}>{item.year}</div>
-                <div style={{ fontSize: "8.5pt", fontWeight: 600, color: "#0f172a", marginBottom: "2pt" }}>{item.title}</div>
-                {item.description[language] && <div style={{ fontSize: "7.5pt", color: "#64748b", lineHeight: 1.4 }}>{item.description[language]}</div>}
-              </div>
+      {/* Core Values */}
+      <ScrollReveal>
+        <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 md:p-8 space-y-4">
+          <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
+            <Award className="w-5 h-5 text-[#0D9488]" />
+            {language === "en" ? "Core Values" : "Nilai Inti"}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {VALUES.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * i }}
+                className="bg-white border border-neutral-200 rounded-[25px] p-5"
+              >
+                <item.icon className="w-5 h-5 text-[#0D9488] mb-2" />
+                <h3 className="font-bold text-sm text-neutral-900 mb-1">
+                  {item.title[language]}
+                </h3>
+                <p className="text-xs text-neutral-500 leading-relaxed">
+                  {item.desc[language]}
+                </p>
+              </motion.div>
             ))}
           </div>
+        </div>
+      </ScrollReveal>
 
-          {/* RIGHT COLUMN */}
-          <div>
-            {/* Technical Skills */}
-            <h2 className="cv-h2" style={{ fontSize: "10pt", fontWeight: 700, color: "#0f172a", textTransform: "uppercase" as const, letterSpacing: "0.8pt", borderBottom: "2pt solid #0D9488", paddingBottom: "3pt", marginBottom: "8pt", marginTop: "10pt" }}>{t.cvTechnicalSkills}</h2>
-            {cvData.skillCategories.map((skill, i) => (
-              <div key={i} style={{ background: "#FAFAFA", borderLeft: "2.5pt solid #0D9488", padding: "5pt 8pt", borderRadius: "3pt", marginBottom: "4pt" }}>
-                <div style={{ fontSize: "7.5pt", fontWeight: 600, color: "#0f172a" }}>{t[skill.labelKey]}</div>
-                <div style={{ fontSize: "7pt", color: "#64748b", lineHeight: 1.4 }}>{skill.skills}</div>
-              </div>
-            ))}
-
-            {/* Languages */}
-            <h2 className="cv-h2" style={{ fontSize: "10pt", fontWeight: 700, color: "#0f172a", textTransform: "uppercase" as const, letterSpacing: "0.8pt", borderBottom: "2pt solid #0D9488", paddingBottom: "3pt", marginBottom: "8pt", marginTop: "10pt" }}>{t.cvLanguages}</h2>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "6pt", textAlign: "center" as const }}>
-              {cvData.languages.map((item, i) => (
-                <div key={i}>
-                  <div style={{ background: "#0D9488", color: "#ffffff", fontSize: "6pt", fontWeight: 700, padding: "3pt 6pt", borderRadius: "20pt", display: "inline-block", marginBottom: "2pt" }}>{item.level[language]}</div>
-                  <div style={{ fontSize: "7pt", fontWeight: 600, color: "#334155" }}>{item.name[language]}</div>
-                </div>
-              ))}
-            </div>
-
-            {/* Portfolio Projects */}
-            <h2 className="cv-h2" style={{ fontSize: "10pt", fontWeight: 700, color: "#0f172a", textTransform: "uppercase" as const, letterSpacing: "0.8pt", borderBottom: "2pt solid #0D9488", paddingBottom: "3pt", marginBottom: "8pt", marginTop: "10pt" }}>{t.cvPortfolioProjects}</h2>
-            {productionProjects.map((project) => (
-              <div key={project.id} style={{ background: "#FAFAFA", borderLeft: "2.5pt solid #0D9488", padding: "5pt 8pt", borderRadius: "3pt", marginBottom: "4pt" }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                  <span style={{ fontSize: "7.5pt", fontWeight: 600, color: "#0f172a" }}>{project.title}</span>
-                  {project.demo && (
-                    <a href={project.demo} target="_blank" style={{ fontSize: "6pt", color: "#0D9488", textDecoration: "none" }}>
-                      {new URL(project.demo).hostname}
-                    </a>
-                  )}
-                </div>
-                <div style={{ display: "flex", flexWrap: "wrap" as const, gap: "2pt", marginTop: "3pt" }}>
-                  {project.tags.slice(0, 4).map((tag) => (
-                    <span key={tag} style={{ background: "#0D9488", color: "white", fontSize: "5pt", fontWeight: 600, padding: "1pt 4pt", borderRadius: "2pt" }}>{tag}</span>
+      {/* Services */}
+      <ScrollReveal>
+        <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 md:p-8 space-y-4">
+          <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
+            <Code2 className="w-5 h-5 text-[#0D9488]" />
+            {language === "en" ? "Our Services" : "Layanan Kami"}
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {SERVICES.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.08 * i }}
+                className="bg-white border border-neutral-200 rounded-[25px] p-5"
+              >
+                <item.icon className="w-5 h-5 text-[#0D9488] mb-2" />
+                <h3 className="font-bold text-sm text-neutral-900 mb-1">
+                  {item.title[language]}
+                </h3>
+                <p className="text-xs text-neutral-500 leading-relaxed mb-3">
+                  {item.desc[language]}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {item.tech.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[10px] font-medium px-2 py-0.5 bg-[#0D9488]/10 text-[#0F766E] rounded-full"
+                    >
+                      {tag}
+                    </span>
                   ))}
                 </div>
-              </div>
-            ))}
-
-            {/* Background */}
-            <h2 className="cv-h2" style={{ fontSize: "10pt", fontWeight: 700, color: "#0f172a", textTransform: "uppercase" as const, letterSpacing: "0.8pt", borderBottom: "2pt solid #0D9488", paddingBottom: "3pt", marginBottom: "8pt", marginTop: "10pt" }}>{t.cvBackground}</h2>
-            {cvData.background.map((item, i) => (
-              <div key={i} className="cv-entry" style={{ borderLeft: "2pt solid #e2e8f0", paddingLeft: "10pt", marginBottom: "8pt", position: "relative" as const }}>
-                <div style={{ position: "absolute" as const, left: "-4.5pt", top: "4pt", width: "7pt", height: "7pt", background: "#0D9488", borderRadius: "50%", border: "1.5pt solid white" }} />
-                <div style={{ fontSize: "7pt", fontWeight: 700, color: "#0D9488", textTransform: "uppercase" as const, letterSpacing: "0.3pt" }}>{item.year}</div>
-                <div style={{ fontSize: "8.5pt", fontWeight: 600, color: "#0f172a", marginBottom: "2pt" }}>{item.title}</div>
-                {item.description[language] && <div style={{ fontSize: "7.5pt", color: "#64748b", lineHeight: 1.4 }}>{item.description[language]}</div>}
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
+      </ScrollReveal>
 
-        {/* Footer */}
-        <div style={{ background: "#0D9488", color: "#ffffff", textAlign: "center" as const, padding: "6pt", borderRadius: "4pt", fontSize: "6.5pt", marginTop: "12pt" }}>
-          Portfolio: <a href="https://abdulgofur-builder.vercel.app" style={{ color: "#ffffff", textDecoration: "none", fontWeight: 600 }}>abdulgofur-builder.vercel.app</a> |{" "}
-          Created by {personalInfo.name} | {new Date().getFullYear()}
+      {/* Work Process */}
+      <ScrollReveal>
+        <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 md:p-8 space-y-4">
+          <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
+            <Target className="w-5 h-5 text-[#0D9488]" />
+            {language === "en" ? "How We Work" : "Cara Kami Bekerja"}
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {PROCESS.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.08 * i }}
+                className="text-center space-y-2"
+              >
+                <div className="w-10 h-10 mx-auto bg-[#0D9488] text-white rounded-full flex items-center justify-center text-xs font-bold">
+                  {item.step}
+                </div>
+                <h3 className="font-bold text-sm text-neutral-900">
+                  {item.title[language]}
+                </h3>
+                <p className="text-xs text-neutral-500">
+                  {item.desc[language]}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
+      </ScrollReveal>
 
-      {/* Print styles moved to globals.css to fix hydration mismatch */}
-    </>
+      {/* CTA */}
+      <ScrollReveal>
+        <div className="flex flex-wrap gap-3 pt-4 justify-center">
+          <Link
+            href="/order"
+            className="group inline-flex items-center gap-2 px-6 py-3 bg-[#0D9488] hover:bg-[#0F766E] text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-[#0D9488]/20"
+          >
+            {language === "en" ? "Start Your Project" : "Mulai Project Anda"}
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-6 py-3 border border-neutral-400 text-neutral-900 hover:bg-neutral-50 rounded-xl text-sm font-semibold transition-all"
+          >
+            {language === "en" ? "Free Consultation" : "Konsultasi Gratis"}
+          </Link>
+        </div>
+      </ScrollReveal>
+    </div>
   );
 }

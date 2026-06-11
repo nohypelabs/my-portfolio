@@ -17,6 +17,7 @@ import {
   Shield,
   ChevronsUpDown,
   ExternalLink,
+  Building2,
 } from 'lucide-react';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { clsx } from '@/lib/utils';
@@ -46,7 +47,7 @@ const mainNavItems: NavItem[] = [
 // Pages shown in the chevron dropdown menu
 const menuNavItems: NavItem[] = [
   { id: 'admin', label: 'Admin Panel', icon: Shield, path: '/admin/dashboard' },
-  { id: 'cv', label: 'Download CV', icon: ExternalLink, path: '/cv' },
+  { id: 'cv', label: 'Company Profile', icon: Building2, path: '/cv' },
 ];
 
 export const Sidebar = () => {
