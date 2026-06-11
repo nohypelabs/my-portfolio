@@ -40,36 +40,42 @@ export default function DashboardPage() {
       <motion.div variants={fadeInUp}>
         <CursorSpotlight
           overlayColor="#FAFAFA"
-          radius={200}
+          radius={220}
           backgroundContent={<ProjectMosaic />}
-          className="rounded-[35px] border border-neutral-400"
+          className="rounded-[35px] border border-neutral-300 shadow-sm"
         >
-          <div className="p-8 md:p-12 text-neutral-900">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0D9488]/10 rounded-full text-[11px] font-medium text-[#0D9488] mb-4">
-              <Rocket className="w-3 h-3" /> Jasa Pembuatan Sistem Web & Android
+          <div className="p-8 md:p-14 text-neutral-900">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#0D9488]/8 border border-[#0D9488]/15 rounded-full text-[11px] font-semibold text-[#0D9488] mb-6 tracking-wide">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#0D9488] animate-pulse" />
+              JASA PEMBUATAN SISTEM WEB & ANDROID
             </div>
 
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
-              Bangun Sistem Bisnis Anda<br />
+            {/* Headline */}
+            <h1 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold leading-[1.1] mb-5 tracking-tight">
+              Bangun Sistem<br />
+              Bisnis Anda<br />
               <span className="text-[#0D9488]">Bersama nasaq.id</span>
             </h1>
 
-            <p className="text-neutral-500 max-w-xl mb-8 text-[15px] leading-relaxed">
-              Kami bantu transformasi digital bisnis Anda dengan sistem web & Android yang production-grade.
-              Dari ide hingga deploy, dari UMKM hingga enterprise.
+            {/* Subtitle */}
+            <p className="text-neutral-500 max-w-lg mb-10 text-[15px] leading-[1.7]">
+              Transformasi digital bisnis Anda dengan sistem web & Android yang
+              production-grade. Dari ide hingga deploy, dari UMKM hingga enterprise.
             </p>
 
+            {/* CTAs */}
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/pricing"
-                className="group inline-flex items-center gap-2 px-6 py-3 bg-[#0D9488] hover:bg-[#0F766E] text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-[#0D9488]/20 hover:shadow-[#0D9488]/30"
+                className="group inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#0D9488] hover:bg-[#0F766E] text-white rounded-xl text-[13px] font-semibold transition-all shadow-lg shadow-[#0D9488]/25 hover:shadow-[#0D9488]/40 hover:-translate-y-0.5"
               >
                 Lihat Harga
                 <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </Link>
               <Link
                 href="/order"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-neutral-400 hover:bg-[#FAFAFA] text-neutral-900 rounded-xl text-sm font-semibold transition-all"
+                className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-white border border-neutral-300 hover:border-neutral-400 text-neutral-900 rounded-xl text-[13px] font-semibold transition-all hover:-translate-y-0.5"
               >
                 Pesan Sekarang
                 <ArrowRight className="w-4 h-4" />
@@ -77,10 +83,22 @@ export default function DashboardPage() {
             </div>
 
             {/* Hover hint */}
-            <p className="mt-6 text-[10px] text-neutral-400 flex items-center gap-1.5">
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#0D9488]/40 animate-pulse" />
-              Gerakkan cursor untuk reveal
-            </p>
+            <div className="mt-10 flex items-center gap-6">
+              <p className="text-[10px] text-neutral-400 flex items-center gap-2">
+                <span className="inline-block w-1 h-1 rounded-full bg-[#0D9488]/50 animate-pulse" />
+                Hover untuk reveal portfolio
+              </p>
+              <div className="hidden md:flex items-center gap-4 text-[10px] text-neutral-400">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-3 h-3 rounded border border-neutral-300 flex items-center justify-center text-[7px]">8</span>
+                  Project Shipped
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-3 h-3 rounded border border-neutral-300 flex items-center justify-center text-[7px]">3</span>
+                  Years Experience
+                </span>
+              </div>
+            </div>
           </div>
         </CursorSpotlight>
       </motion.div>

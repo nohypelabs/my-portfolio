@@ -1,42 +1,76 @@
 'use client';
 
 /**
- * Grid mosaic of project screenshots.
+ * Premium grid mosaic of project screenshots.
  * Used as background content for CursorSpotlight.
  */
 const projects = [
-  { src: '/projects/lakupos-thumb.jpg', name: 'LakuPOS' },
-  { src: '/projects/selisih-thumb.jpg', name: 'Serat QC' },
-  { src: '/projects/wccheck-thumb.jpg', name: 'WC Check' },
-  { src: '/projects/ecommerce-thumb.jpg', name: 'Qohira' },
-  { src: '/projects/signalflow-thumb.jpg', name: 'SignalFlow' },
-  { src: '/projects/shadowbid-thumb.jpg', name: 'ShadowBid' },
-  { src: '/projects/traceflow-thumb.jpg', name: 'TraceFlow' },
-  { src: '/projects/eduvate-thumb.jpg', name: 'Eduvate' },
+  { src: '/projects/lakupos-thumb.jpg', name: 'LakuPOS', tag: 'POS System' },
+  { src: '/projects/selisih-thumb.jpg', name: 'Serat QC', tag: 'Logistics' },
+  { src: '/projects/wccheck-thumb.jpg', name: 'WC Check', tag: 'Monitoring' },
+  { src: '/projects/ecommerce-thumb.jpg', name: 'Qohira', tag: 'E-commerce' },
+  { src: '/projects/signalflow-thumb.jpg', name: 'SignalFlow', tag: 'AI Agent' },
+  { src: '/projects/shadowbid-thumb.jpg', name: 'ShadowBid', tag: 'Trading' },
+  { src: '/projects/traceflow-thumb.jpg', name: 'TraceFlow', tag: 'Fleet Track' },
+  { src: '/projects/eduvate-thumb.jpg', name: 'Eduvate', tag: 'Education' },
 ];
 
 export function ProjectMosaic() {
   return (
-    <div className="absolute inset-0 grid grid-cols-4 grid-rows-2 gap-1 p-1">
-      {projects.map((project, i) => (
-        <div
-          key={i}
-          className="relative overflow-hidden rounded-sm"
-        >
-          <img
-            src={project.src}
-            alt={project.name}
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
-          {/* Subtle overlay with project name */}
-          <div className="absolute inset-0 bg-black/20 flex items-end p-2">
-            <span className="text-[9px] font-semibold text-white/80 tracking-wide uppercase">
-              {project.name}
-            </span>
+    <div className="absolute inset-0 bg-neutral-950">
+      <div className="absolute inset-0 grid grid-cols-4 grid-rows-2 gap-[2px]">
+        {projects.map((project, i) => (
+          <div
+            key={i}
+            className="relative overflow-hidden group"
+          >
+            {/* Image */}
+            <img
+              src={project.src}
+              alt={project.name}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="eager"
+            />
+
+            {/* Dark gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+            {/* Project info */}
+            <div className="absolute bottom-0 left-0 right-0 p-3">
+              <div className="flex items-end justify-between">
+                <div>
+                  <p className="text-[10px] font-bold text-white tracking-wide leading-tight">
+                    {project.name}
+                  </p>
+                  <p className="text-[8px] text-white/50 mt-0.5 uppercase tracking-widest">
+                    {project.tag}
+                  </p>
+                </div>
+                <div className="w-1.5 h-1.5 rounded-full bg-[#0D9488]" />
+              </div>
+            </div>
+
+            {/* Top-right index */}
+            <div className="absolute top-2 right-2">
+              <span className="text-[8px] font-mono text-white/20">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+
+      {/* Grid lines overlay */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-10"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '25% 50%',
+        }}
+      />
     </div>
   );
 }
