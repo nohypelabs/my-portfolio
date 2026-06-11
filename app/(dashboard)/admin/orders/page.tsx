@@ -29,7 +29,7 @@ export default function AdminOrdersPage() {
       .from('orders')
       .select('*')
       .order('created_at', { ascending: false })
-      .then(({ data }) => {
+      .then(({ data }: { data: Order[] | null }) => {
         if (data) setOrders(data);
         setLoading(false);
       });

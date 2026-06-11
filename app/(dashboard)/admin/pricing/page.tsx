@@ -20,7 +20,7 @@ export default function AdminPricingPage() {
       .from('pricing_packages')
       .select('*')
       .order('sort_order')
-      .then(({ data }) => {
+      .then(({ data }: { data: PricingPackage[] | null }) => {
         if (data) setPackages(data);
         setLoading(false);
       });

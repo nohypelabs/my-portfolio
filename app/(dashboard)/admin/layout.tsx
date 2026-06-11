@@ -16,7 +16,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   useEffect(() => {
     const supabase = createClient();
 
-    supabase.auth.getUser().then(({ data }) => {
+    supabase.auth.getUser().then(({ data }: { data: { user: { email?: string } | null } }) => {
       if (!data.user) {
         router.push('/admin/login');
         return;

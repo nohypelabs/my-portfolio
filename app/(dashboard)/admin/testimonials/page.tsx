@@ -16,7 +16,7 @@ export default function AdminTestimonialsPage() {
 
   useEffect(() => {
     const supabase = createClient();
-    supabase.from('testimonials').select('*').order('sort_order').then(({ data }) => {
+    supabase.from('testimonials').select('*').order('sort_order').then(({ data }: { data: Testimonial[] | null }) => {
       if (data) setTestimonials(data);
       setLoading(false);
     });

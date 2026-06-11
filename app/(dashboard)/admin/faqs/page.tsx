@@ -16,7 +16,7 @@ export default function AdminFAQsPage() {
 
   useEffect(() => {
     const supabase = createClient();
-    supabase.from('faqs').select('*').order('sort_order').then(({ data }) => {
+    supabase.from('faqs').select('*').order('sort_order').then(({ data }: { data: FAQ[] | null }) => {
       if (data) setFaqs(data);
       setLoading(false);
     });

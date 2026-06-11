@@ -26,7 +26,7 @@ export default function AdminDashboardPage() {
       supabase.from('pricing_packages').select('id', { count: 'exact', head: true }),
       supabase.from('testimonials').select('id', { count: 'exact', head: true }),
       supabase.from('faqs').select('id', { count: 'exact', head: true }),
-    ]).then(([orders, services, packages, testimonials, faqs]) => {
+    ]).then(([orders, services, packages, testimonials, faqs]: Array<{ count: number | null }>) => {
       setStats({
         orders: orders.count ?? 0,
         services: services.count ?? 0,

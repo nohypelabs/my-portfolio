@@ -16,7 +16,7 @@ export default function AdminServicesPage() {
 
   useEffect(() => {
     const supabase = createClient();
-    supabase.from('services').select('*').order('sort_order').then(({ data }) => {
+    supabase.from('services').select('*').order('sort_order').then(({ data }: { data: Service[] | null }) => {
       if (data) setServices(data);
       setLoading(false);
     });
