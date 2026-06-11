@@ -37,12 +37,13 @@ function OrderForm() {
 
     // Check auth
     supabase.auth.getUser().then(({ data }: { data: { user: User | null } }) => {
-      if (data.user) {
-        setUser(data.user);
+      const u = data.user;
+      if (u) {
+        setUser(u);
         setForm(prev => ({
           ...prev,
-          customer_name: data.user.user_metadata?.full_name || prev.customer_name,
-          customer_email: data.user.email || prev.customer_email,
+          customer_name: (u.user_metadata?.full_name as string) || prev.customer_name,
+          customer_email: u.email || prev.customer_email,
         }));
       }
     });
