@@ -36,7 +36,7 @@ function OrderForm() {
     const supabase = createClient();
 
     // Check auth
-    supabase.auth.getUser().then(({ data }) => {
+    supabase.auth.getUser().then(({ data }: { data: { user: User | null } }) => {
       if (data.user) {
         setUser(data.user);
         setForm(prev => ({
