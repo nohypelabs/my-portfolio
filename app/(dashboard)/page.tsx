@@ -5,6 +5,7 @@ import { ArrowRight, Globe, Smartphone, Server, Wrench, MessageCircle, CheckCirc
 import Link from 'next/link';
 import { staggerContainer, fadeInUp } from '@/lib/animations';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { CursorSpotlight } from '@/components/CursorSpotlight';
 import { FeaturedProjects } from '@/components/sections/FeaturedProjects';
 import { TechStackStrip } from '@/components/sections/TechStackStrip';
 
@@ -34,45 +35,53 @@ const pricingPreview = [
 export default function DashboardPage() {
   return (
     <motion.div variants={staggerContainer} initial="initial" animate="animate" className="space-y-12 pb-12">
-      {/* ── Hero: Service Provider ── */}
-      <motion.section
-        variants={fadeInUp}
-        className="noise-overlay relative overflow-hidden bg-[#FAFAFA] rounded-[35px] p-8 md:p-12 text-neutral-900 border border-neutral-400"
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#0D9488]/10 via-transparent to-transparent" />
-        <div className="relative">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0D9488]/10 rounded-full text-[11px] font-medium text-[#0D9488] mb-4">
-            <Rocket className="w-3 h-3" /> Jasa Pembuatan Sistem Web & Android
+      {/* ── Hero: Service Provider (with Cursor Spotlight Reveal) ── */}
+      <motion.div variants={fadeInUp}>
+        <CursorSpotlight
+          overlayColor="#FAFAFA"
+          radius={200}
+          className="rounded-[35px] border border-neutral-400"
+        >
+          <div className="p-8 md:p-12 text-neutral-900">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#0D9488]/10 rounded-full text-[11px] font-medium text-[#0D9488] mb-4">
+              <Rocket className="w-3 h-3" /> Jasa Pembuatan Sistem Web & Android
+            </div>
+
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
+              Bangun Sistem Bisnis Anda<br />
+              <span className="text-[#0D9488]">Bersama nasaq.id</span>
+            </h1>
+
+            <p className="text-neutral-500 max-w-xl mb-8 text-[15px] leading-relaxed">
+              Kami bantu transformasi digital bisnis Anda dengan sistem web & Android yang production-grade.
+              Dari ide hingga deploy, dari UMKM hingga enterprise.
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/pricing"
+                className="group inline-flex items-center gap-2 px-6 py-3 bg-[#0D9488] hover:bg-[#0F766E] text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-[#0D9488]/20 hover:shadow-[#0D9488]/30"
+              >
+                Lihat Harga
+                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </Link>
+              <Link
+                href="/order"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-neutral-400 hover:bg-[#FAFAFA] text-neutral-900 rounded-xl text-sm font-semibold transition-all"
+              >
+                Pesan Sekarang
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            {/* Hover hint */}
+            <p className="mt-6 text-[10px] text-neutral-400 flex items-center gap-1.5">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-[#0D9488]/40 animate-pulse" />
+              Gerakkan cursor untuk reveal
+            </p>
           </div>
-
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-4">
-            Bangun Sistem Bisnis Anda<br />
-            <span className="text-[#0D9488]">Bersama nasaq.id</span>
-          </h1>
-
-          <p className="text-neutral-500 max-w-xl mb-8 text-[15px] leading-relaxed">
-            Kami bantu transformasi digital bisnis Anda dengan sistem web & Android yang production-grade.
-            Dari ide hingga deploy, dari UMKM hingga enterprise.
-          </p>
-
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/pricing"
-              className="group inline-flex items-center gap-2 px-6 py-3 bg-[#0D9488] hover:bg-[#0F766E] text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-[#0D9488]/20 hover:shadow-[#0D9488]/30"
-            >
-              Lihat Harga
-              <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </Link>
-            <Link
-              href="/order"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-neutral-400 hover:bg-[#FAFAFA] text-neutral-900 rounded-xl text-sm font-semibold transition-all"
-            >
-              Pesan Sekarang
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </motion.section>
+        </CursorSpotlight>
+      </motion.div>
 
       {/* ── Services Quick Overview ── */}
       <motion.section variants={fadeInUp}>
