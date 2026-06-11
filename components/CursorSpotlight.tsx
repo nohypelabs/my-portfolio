@@ -3,13 +3,15 @@
 import { useRef, useState, useCallback, useEffect } from 'react';
 
 interface CursorSpotlightProps {
-  /** Background image URL (optional — falls back to animated gradient) */
+  /** Background content (JSX element like a grid of images) */
+  backgroundContent?: React.ReactNode;
+  /** Background image URL (simple mode) */
   imageUrl?: string;
   /** Overlay color (the color that covers the image) */
   overlayColor?: string;
   /** Spotlight radius in pixels */
   radius?: number;
-  /** Enable animated gradient background if no imageUrl */
+  /** Enable animated gradient background if no imageUrl/backgroundContent */
   enableGradient?: boolean;
   /** Children rendered on top */
   children: React.ReactNode;
@@ -18,6 +20,7 @@ interface CursorSpotlightProps {
 }
 
 export function CursorSpotlight({
+  backgroundContent,
   imageUrl,
   overlayColor = '#FAFAFA',
   radius = 180,
@@ -66,6 +69,7 @@ export function CursorSpotlight({
   }, []);
 
   const hasImage = !!imageUrl;
+  const hasContent = !!backgroundContent;
 
   return (
     <div
@@ -75,36 +79,45 @@ export function CursorSpotlight({
       onMouseLeave={handleMouseLeave}
       className={`relative overflow-hidden ${className}`}
     >
-      {/* Layer 1: Background image or gradient */}
-      {(hasImage || enableGradient) && (
+      {/* Layer 1: Background content (mosaic/image/gradient) */}
+      {(hasContent || hasImage || enableGradient) && (
         <div
           className="absolute inset-0 transition-opacity duration-500 ease-out"
-          style={{
-            ...(hasImage ? {
-              backgroundImage: `url(${imageUrl})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            } : {
-              background: `
-                radial-gradient(ellipse at 20% 50%, rgba(13, 148, 136, 0.15) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(13, 148, 136, 0.1) 0%, transparent 50%),
-                radial-gradient(ellipse at 50% 80%, rgba(13, 148, 136, 0.08) 0%, transparent 50%),
-                linear-gradient(135deg, #f0fdfa 0%, #f8fafc 50%, #f0fdfa 100%)
-              `,
-            }),
-            opacity: isHovering ? 1 : 0,
-          }}
-        />
+          style={{ opacity: isHovering ? 1 : 0 }}
+        >
+          {hasContent ? (
+            <div className="absolute inset-0">
+              {backgroundContent}
+            </div>
+          ) : hasImage ? (
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+              style={{ backgroundImage: `url(${imageUrl})` }}
+            />
+          ) : (
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `
+                  radial-gradient(ellipse at 20% 50%, rgba(13, 148, 136, 0.15) 0%, transparent 50%),
+                  radial-gradient(ellipse at 80% 20%, rgba(13, 148, 136, 0.1) 0%, transparent 50%),
+                  radial-gradient(ellipse at 50% 80%, rgba(13, 148, 136, 0.08) 0%, transparent 50%),
+                  linear-gradient(135deg, #f0fdfa 0%, #f8fafc 50%, #f0fdfa 100%)
+                `,
+              }}
+            />
+          )}
+        </div>
       )}
 
-      {/* Layer 2: Animated dots/pattern overlay */}
+      {/* Layer 2: Animated dot pattern */}
       {isHovering && enableGradient && (
         <div
-          className="absolute inset-0 pointer-events-none opacity-30"
+          className="absolute inset-0 pointer-events-none opacity-20"
           style={{
-            backgroundImage: `radial-gradient(circle 2px at 20px 20px, rgba(13,148,136,0.3) 1px, transparent 1px),
-              radial-gradient(circle 2px at 40px 40px, rgba(13,148,136,0.2) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px',
+            backgroundImage: `radial-gradient(circle 1.5px at 20px 20px, rgba(13,148,136,0.4) 1px, transparent 1px),
+              radial-gradient(circle 1.5px at 40px 40px, rgba(13,148,136,0.2) 1px, transparent 1px)`,
+            backgroundSize: '50px 50px',
             maskImage: `radial-gradient(circle ${radius}px at ${smoothPos.x}px ${smoothPos.y}px, black 0%, transparent 70%)`,
             WebkitMaskImage: `radial-gradient(circle ${radius}px at ${smoothPos.x}px ${smoothPos.y}px, black 0%, transparent 70%)`,
           }}
@@ -125,7 +138,7 @@ export function CursorSpotlight({
         }}
       />
 
-      {/* Layer 4: Soft glow ring around spotlight */}
+      {/* Layer 4: Soft glow ring */}
       {isHovering && (
         <div
           className="absolute inset-0 pointer-events-none"

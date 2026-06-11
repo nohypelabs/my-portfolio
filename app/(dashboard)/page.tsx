@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { staggerContainer, fadeInUp } from '@/lib/animations';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { CursorSpotlight } from '@/components/CursorSpotlight';
+import { ProjectMosaic } from '@/components/ProjectMosaic';
 import { FeaturedProjects } from '@/components/sections/FeaturedProjects';
 import { TechStackStrip } from '@/components/sections/TechStackStrip';
 
@@ -40,6 +41,7 @@ export default function DashboardPage() {
         <CursorSpotlight
           overlayColor="#FAFAFA"
           radius={200}
+          backgroundContent={<ProjectMosaic />}
           className="rounded-[35px] border border-neutral-400"
         >
           <div className="p-8 md:p-12 text-neutral-900">
