@@ -15,8 +15,10 @@ import {
   MessageSquare,
   HelpCircle,
   Shield,
+  ChevronsUpDown,
+  ExternalLink,
 } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { clsx } from '@/lib/utils';
 import { useSidebar } from '@/contexts/SidebarContext';
 
@@ -39,13 +41,43 @@ const mainNavItems: NavItem[] = [
   { id: 'blog', label: 'Blog', icon: BookOpen, path: '/blog' },
   { id: 'about', label: 'About Me', icon: User, path: '/about' },
   { id: 'contact', label: 'Contact', icon: Mail, path: '/contact' },
-  { id: 'admin', label: 'Admin', icon: Shield, path: '/admin/dashboard' },
+];
+
+// Pages shown in the chevron dropdown menu
+const menuNavItems: NavItem[] = [
+  { id: 'admin', label: 'Admin Panel', icon: Shield, path: '/admin/dashboard' },
+  { id: 'cv', label: 'Download CV', icon: ExternalLink, path: '/cv' },
 ];
 
 export const Sidebar = () => {
   const router = useRouter();
   const pathname = usePathname();
   const { isCollapsed, toggleCollapsed } = useSidebar();
+
+  const [showMenu, setShowMenu] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Close menu on outside click
+  useEffect(() => {
+    if (!showMenu) return;
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setShowMenu(false);
+      }
+    };
+
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setShowMenu(false);
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [showMenu]);
 
   const NavItem = ({ item }: { item: NavItem }) => {
     const isActive = pathname === item.path || (item.path !== '/' && pathname.startsWith(item.path));
@@ -90,7 +122,6 @@ export const Sidebar = () => {
             isCollapsed ? 'px-3 justify-center' : 'px-6 justify-between'
           )}
         >
-          {/* Logo — standalone text "nasaq" */}
           {!isCollapsed && (
             <h1
               className="text-[22px] font-extrabold text-neutral-900 tracking-tight"
@@ -118,23 +149,114 @@ export const Sidebar = () => {
           ))}
         </nav>
 
-        {/* Bottom section */}
+        {/* Bottom section — Profile + Options */}
         <div
           className={clsx(
-            'border-t border-neutral-300 py-4 flex-shrink-0',
-            isCollapsed ? 'px-2' : 'px-4'
+            'border-t border-neutral-300 py-3 flex-shrink-0 relative',
+            isCollapsed ? 'px-2' : 'px-3'
           )}
+          ref={menuRef}
         >
-          {!isCollapsed ? (
-            <div>
-              <p className="text-[10px] text-neutral-400 leading-tight">Built with</p>
-              <p className="text-[10px] text-[#0D9488] font-medium truncate">Next.js + Tailwind CSS</p>
-            </div>
-          ) : (
-            <div className="w-7 h-7 mx-auto rounded-lg bg-neutral-900 flex items-center justify-center">
-              <span className="text-[11px] text-white font-extrabold" style={{ letterSpacing: '-0.05em' }}>n</span>
+          {/* Dropdown menu — pops upward */}
+          {showMenu && (
+            <div className="absolute bottom-full left-3 right-3 mb-1 z-50 bg-white border border-neutral-300 rounded-[12px] shadow-lg overflow-hidden">
+              <div className="px-4 py-1.5">
+                <span className="text-[10px] font-medium text-neutral-700 uppercase tracking-wider">Navigasi</span>
+              </div>
+              {menuNavItems.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <button
+                    key={item.id}
+                    onClick={() => {
+                      setShowMenu(false);
+                      router.push(item.path);
+                    }}
+                    className="w-full flex items-center gap-2.5 px-4 py-2.5 text-[13px] text-black hover:bg-neutral-50 transition-colors text-left"
+                  >
+                    <Icon className="w-4 h-4 text-black" strokeWidth={1.5} />
+                    <span>{item.label}</span>
+                  </button>
+                );
+              })}
             </div>
           )}
+
+          {/* Profile row */}
+          <div className={clsx(
+            'flex items-center',
+            isCollapsed ? 'flex-col gap-2' : 'gap-2.5'
+          )}>
+            {/* Profile area — clickable -> /about */}
+            {isCollapsed ? (
+              <button
+                onClick={() => router.push('/about')}
+                title="Abdul Gofur"
+                className="rounded-lg hover:bg-neutral-200/40 transition-colors text-left w-full flex items-center justify-center py-1.5"
+              >
+                <div className="rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 w-7 h-7">
+                  <img
+                    src="/picture/abdulgofur-photo.png"
+                    alt="Abdul Gofur"
+                    className="w-full h-full rounded-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const parent = target.parentElement;
+                      if (parent) {
+                        const span = document.createElement('span');
+                        span.className = 'text-[13px] font-semibold text-white';
+                        span.textContent = 'A';
+                        parent.appendChild(span);
+                      }
+                    }}
+                  />
+                </div>
+              </button>
+            ) : (
+              <button
+                onClick={() => router.push('/about')}
+                className="rounded-lg hover:bg-neutral-200/40 transition-colors text-left flex items-center gap-2.5 flex-1 min-w-0 px-2 py-1.5 -ml-2"
+              >
+                <div className="rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 w-9 h-9 overflow-hidden">
+                  <img
+                    src="/picture/abdulgofur-photo.png"
+                    alt="Abdul Gofur"
+                    className="w-full h-full rounded-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      const parent = target.parentElement;
+                      if (parent) {
+                        const span = document.createElement('span');
+                        span.className = 'text-[13px] font-semibold text-white';
+                        span.textContent = 'A';
+                        parent.appendChild(span);
+                      }
+                    }}
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="text-[13px] font-medium text-black truncate leading-tight">Abdul Gofur</p>
+                  <p className="text-[11px] text-neutral-500 truncate leading-tight">Full-stack Developer</p>
+                </div>
+              </button>
+            )}
+
+            {/* Options chevron — only when not collapsed */}
+            {!isCollapsed && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowMenu((prev) => !prev);
+                }}
+                className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 text-black hover:bg-neutral-200/40 transition-colors"
+                aria-label="Menu opsi"
+              >
+                <ChevronsUpDown className="w-4 h-4" strokeWidth={1} />
+              </button>
+            )}
+          </div>
         </div>
       </aside>
     </>
