@@ -9,6 +9,9 @@ import { CursorSpotlight } from '@/components/CursorSpotlight';
 import { ProjectMosaic } from '@/components/ProjectMosaic';
 import { FeaturedProjects } from '@/components/sections/FeaturedProjects';
 import { TechStackStrip } from '@/components/sections/TechStackStrip';
+import { StatsStrip } from '@/components/sections/StatsStrip';
+import { ClientLogos } from '@/components/sections/ClientLogos';
+import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
 
 const services = [
   { icon: Globe, title: 'Web Application', desc: 'Sistem manajemen, dashboard, POS, inventory' },
@@ -128,6 +131,21 @@ export default function DashboardPage() {
           ))}
         </div>
       </motion.section>
+
+      {/* ── Stats Strip (Social Proof) ── */}
+      <ScrollReveal>
+        <StatsStrip />
+      </ScrollReveal>
+
+      {/* ── Client Logos ── */}
+      <ScrollReveal>
+        <ClientLogos />
+      </ScrollReveal>
+
+      {/* ── Testimonials ── */}
+      <ScrollReveal>
+        <TestimonialsSection />
+      </ScrollReveal>
 
       {/* ── Why Choose Us ── */}
       <ScrollReveal>
