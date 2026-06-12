@@ -31,9 +31,9 @@ const processSteps = [
 ];
 
 const pricingPreview = [
-  { name: 'Basic', price: '5jt', desc: 'Landing page & company profile' },
-  { name: 'Standard', price: '15jt', desc: 'Web app + admin dashboard', popular: true },
-  { name: 'Premium', price: '40jt', desc: 'Full system web + mobile' },
+  { name: 'Starter', price: '500rb', desc: 'Landing page & company profile' },
+  { name: 'Basic', price: '2jt', desc: 'Company profile multi-halaman', popular: true },
+  { name: 'Standard', price: '5jt', desc: 'Web app + admin dashboard' },
 ];
 
 export default function DashboardPage() {
