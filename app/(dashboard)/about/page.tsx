@@ -1,23 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { personalInfo } from "@/lib/data/personalInfo";
-import { useLanguage } from "@/lib/context/LanguageContext";
-import { translations } from "@/lib/translations";
 import { AvatarImage } from "@/components/AvatarImage";
 import { ScrollReveal } from "@/components/ScrollReveal";
+import { useLanguage } from "@/lib/context/LanguageContext";
 import {
-  Rocket,
-  Code,
-  Lightbulb,
-  Target,
-  Heart,
-  Zap,
   ArrowUpRight,
   Building2,
-  Truck,
-  ShoppingCart,
+  Code,
+  Globe,
+  Lightbulb,
   Link as LinkIcon,
+  Rocket,
+  ShoppingCart,
+  Target,
+  Truck,
+  Zap,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -29,269 +27,236 @@ const fadeUp = {
 
 export default function AboutPage() {
   const { language } = useLanguage();
-  const t = translations[language];
+  const isEn = language === "en";
+
+  const studioTracks = [
+    {
+      icon: Globe,
+      title: isEn ? "Company Profile That Feels Credible" : "Company Profile yang Terasa Kredibel",
+      desc: isEn
+        ? "Landing pages and company profiles that make the business look serious, clear, and ready to close."
+        : "Landing page dan company profile yang membuat bisnis terlihat serius, jelas, dan siap closing.",
+    },
+    {
+      icon: Building2,
+      title: isEn ? "Internal Systems That Cut Friction" : "Sistem Internal yang Mengurangi Ribet",
+      desc: isEn
+        ? "Dashboards, admin panels, and workflows that reduce repeated manual work in daily operations."
+        : "Dashboard, admin panel, dan workflow yang mengurangi kerja manual berulang di operasional harian.",
+    },
+    {
+      icon: Code,
+      title: isEn ? "Custom Web Builds for Real Use" : "Build Custom untuk Kebutuhan Nyata",
+      desc: isEn
+        ? "Not template dumping. Each build starts from the business problem, then the system follows."
+        : "Bukan sekadar pasang template. Setiap build dimulai dari masalah bisnis, lalu sistem mengikuti.",
+    },
+  ];
+
+  const workStyle = [
+    {
+      icon: Lightbulb,
+      title: isEn ? "Start from bottlenecks" : "Mulai dari bottleneck",
+      desc: isEn
+        ? "I map what slows the team down before touching visual or technical decisions."
+        : "Saya petakan apa yang bikin tim melambat sebelum menyentuh keputusan visual atau teknis.",
+    },
+    {
+      icon: Zap,
+      title: isEn ? "Ship lean, iterate fast" : "Build cepat, iterasi cepat",
+      desc: isEn
+        ? "Priority is early working output, then polish based on real use and feedback."
+        : "Prioritasnya output yang cepat dipakai dulu, lalu dipoles dari penggunaan dan feedback nyata.",
+    },
+    {
+      icon: Target,
+      title: isEn ? "Keep the scope practical" : "Jaga scope tetap praktis",
+      desc: isEn
+        ? "I avoid layers, features, and motion that look expensive but do not help conversion or operations."
+        : "Saya hindari layer, fitur, dan motion yang terlihat mahal tapi tidak membantu conversion atau operasional.",
+    },
+    {
+      icon: Rocket,
+      title: isEn ? "Build for handoff" : "Bangun supaya gampang diteruskan",
+      desc: isEn
+        ? "The output should be usable by the client team, not depend forever on hidden context."
+        : "Output harus bisa dipakai tim client, bukan selamanya tergantung pada konteks yang disimpan sendiri.",
+    },
+  ];
+
+  const fieldContext = [
+    {
+      icon: Truck,
+      title: isEn ? "Logistics & field operations" : "Logistik & operasional lapangan",
+      desc: isEn
+        ? "QC flow, fleet tracking, documentation pressure, and repetitive admin work are familiar terrain."
+        : "Flow QC, fleet tracking, tekanan dokumentasi, dan admin berulang adalah medan yang sangat familiar.",
+    },
+    {
+      icon: ShoppingCart,
+      title: isEn ? "Retail & daily transactions" : "Ritel & transaksi harian",
+      desc: isEn
+        ? "Cashier flow, product changes, stock movement, and outlet realities shape how the system should behave."
+        : "Flow kasir, perubahan produk, pergerakan stok, dan realita outlet membentuk bagaimana sistem harus bekerja.",
+    },
+    {
+      icon: LinkIcon,
+      title: isEn ? "Digital products with stronger UX" : "Produk digital dengan UX yang lebih kuat",
+      desc: isEn
+        ? "From company profiles to custom dashboards, the interface has to look intentional and reduce confusion."
+        : "Dari company profile sampai dashboard custom, interface harus terasa sengaja dirancang dan mengurangi bingung.",
+    },
+  ];
 
   return (
-    <div className="max-w-3xl mx-auto space-y-10 pb-12">
-      {/* Header */}
-      <motion.div {...fadeUp} className="flex items-start gap-6">
-        <div className="shrink-0 hidden md:block">
-          <div className="ring-4 ring-[#c4956a]/30 rounded-full">
-            <AvatarImage size={120} priority />
+    <div className="max-w-4xl mx-auto space-y-10 pb-12">
+      <motion.div {...fadeUp} className="rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+        <div className="flex flex-col gap-6 md:flex-row md:items-start">
+          <div className="shrink-0">
+            <div className="inline-flex rounded-full ring-4 ring-[#c4956a]/20">
+              <AvatarImage size={108} priority />
+            </div>
           </div>
-        </div>
-        <div>
-          <h1 className="text-3xl md:text-4xl font-extrabold text-neutral-900 mb-2">
-            {language === "en" ? "About Me" : "Tentang Saya"}
-          </h1>
-          <p className="text-neutral-500 text-sm md:text-base leading-relaxed">
-            {language === "en"
-              ? "Developer, builder, and comeback story in progress."
-              : "Developer, builder, dan comeback story yang sedang berjalan."}
-          </p>
+
+          <div className="space-y-4">
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#c4956a]/20 bg-[#f7f3e8] px-3 py-1 text-xs font-semibold text-[#a67d55]">
+              <Building2 className="h-3.5 w-3.5" />
+              {isEn ? "Founder-led studio" : "Founder-led studio"}
+            </div>
+
+            <div className="space-y-3">
+              <h1 className="text-3xl font-extrabold tracking-tight text-neutral-900 md:text-4xl">
+                {isEn ? "The founder behind nasaq.id" : "Founder di balik nasaq.id"}
+              </h1>
+              <p className="text-sm leading-relaxed text-neutral-600 md:text-base">
+                {isEn
+                  ? "nasaq.id is built as a practical studio for businesses that need a sharper web presence and cleaner internal workflows. The goal is simple: make the business look more trusted and make the team work with less friction."
+                  : "nasaq.id dibangun sebagai studio yang praktis untuk bisnis yang butuh web presence lebih tajam dan workflow internal yang lebih rapi. Tujuannya sederhana: bikin bisnis terlihat lebih dipercaya dan tim bekerja dengan friction yang lebih kecil."}
+              </p>
+              <p className="text-sm leading-relaxed text-neutral-600 md:text-base">
+                {isEn
+                  ? "My background is not agency-only or purely design-first. I spent years around real operations, logistics, retail, and field processes. That is why the work here tends to stay grounded: the page must help sales, the dashboard must help the team, and the system must match reality."
+                  : "Latar saya bukan cuma agency atau murni design-first. Saya bertahun-tahun dekat dengan operasional nyata, logistik, ritel, dan proses lapangan. Itu sebabnya pekerjaan di sini cenderung membumi: page harus bantu sales, dashboard harus bantu tim, dan sistem harus cocok dengan kenyataan di lapangan."}
+              </p>
+            </div>
+          </div>
         </div>
       </motion.div>
 
-      {/* The Comeback Story */}
       <ScrollReveal>
-        <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 space-y-4">
-          <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
-            <Rocket className="w-5 h-5 text-[#c4956a]" />
-            {language === "en" ? "The Comeback Story" : "Cerita Comeback"}
+        <div className="space-y-4 rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6">
+          <h2 className="flex items-center gap-2 text-xl font-bold text-neutral-900">
+            <Target className="h-5 w-5 text-[#c4956a]" />
+            {isEn ? "What nasaq.id is built to solve" : "Masalah yang ingin diselesaikan nasaq.id"}
           </h2>
-          <div className="prose prose-sm max-w-none space-y-3 text-neutral-600">
-            <p>
-              {language === "en"
-                ? "I stepped away from serious tech work in 2015. Not by choice — life happened. I worked as a waiter, logistics admin, QC staff, and sales marketing. For 9 years, production-grade development was off the table — though I'd occasionally tinker with scripts and small tools on the side."
-                : "Saya meninggalkan pekerjaan serius di dunia tech di 2015. Bukan karena pilihan — kehidupan terjadi. Saya bekerja sebagai waiter, admin logistik, staf QC, dan sales marketing. Selama 9 tahun, development level production tidak ada di radar — walau sesekali iseng bikin script kecil dan tools sebagai project pribadi."}
-            </p>
-            <p>
-              {language === "en"
-                ? "In 2024, I came back. This time with modern tooling and a production-first mindset. Within 12 months, I shipped 7 production systems processing 250K+ records — from logistics QC at J&T Express to POS systems for real retail clients, trading dashboards to fleet tracking."
-                : "Di 2024, saya kembali. Kali ini dengan tooling modern dan mindset production-first. Dalam 12 bulan, saya mengirim 7 sistem production yang memproses 250K+ records — dari QC logistik di J&T Express sampai sistem POS untuk client ritel nyata, trading dashboard hingga fleet tracking."}
-            </p>
-            <p>
-              {language === "en"
-                ? "The 9-year gap wasn't wasted. Working in operations, logistics, and retail taught me how real businesses actually work — the pain points, the workflows, the things that matter. Now I build solutions for those problems because I've lived them."
-                : "Gap 9 tahun bukan sia-sia. Bekerja di operasional, logistik, dan ritel mengajarkan saya bagaimana bisnis nyata benar-benar berjalan — pain points, workflow, hal-hal yang penting. Sekarang saya membangun solusi untuk masalah-masalah itu karena saya pernah mengalaminya."}
-            </p>
-          </div>
-        </div>
-      </ScrollReveal>
 
-      {/* How I Work */}
-      <ScrollReveal>
-        <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 space-y-4">
-          <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
-            <Lightbulb className="w-5 h-5 text-[#c4956a]" />
-            {language === "en" ? "How I Work" : "Cara Saya Bekerja"}
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {[
-              {
-                icon: Zap,
-                title: language === "en" ? "Rapid Iteration" : "Iterasi Cepat",
-                desc: language === "en"
-                  ? "Modern tooling handles boilerplate. I focus on architecture, business logic, and the decisions that matter."
-                  : "Tooling modern menangani boilerplate. Saya fokus pada arsitektur, business logic, dan keputusan yang penting.",
-              },
-              {
-                icon: Target,
-                title: language === "en" ? "Production-First" : "Production-First",
-                desc: language === "en"
-                  ? "Every project ships to real users. No demo-ware, no portfolio toys. If it doesn't solve a real problem, I don't build it."
-                  : "Setiap project dikirim ke user nyata. Bukan demo, bukan mainan portfolio. Kalau tidak menyelesaikan masalah nyata, saya tidak membangunnya.",
-              },
-              {
-                icon: Code,
-                title: language === "en" ? "Full-Stack Ownership" : "Full-Stack Ownership",
-                desc: language === "en"
-                  ? "Database design to deployment. I own the entire stack — not just a layer. DDD, clean architecture, type-safe end-to-end."
-                  : "Dari desain database ke deployment. Saya memiliki seluruh stack — bukan hanya satu layer. DDD, clean architecture, type-safe end-to-end.",
-              },
-              {
-                icon: Heart,
-                title: language === "en" ? "Ship Fast, Learn Faster" : "Ship Fast, Learn Faster",
-                desc: language === "en"
-                  ? "MVP in weeks, not months. Get it in front of real users, gather feedback, iterate. Speed is a feature."
-                  : "MVP dalam minggu, bukan bulan. Taruh di depan user nyata, kumpulkan feedback, iterasi. Kecepatan adalah fitur.",
-              },
-            ].map((item, i) => (
+          <div className="grid gap-4 md:grid-cols-3">
+            {studioTracks.map((item, index) => (
               <motion.div
-                key={i}
+                key={item.title}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * i }}
-                className="bg-[#FAFAFA] border border-neutral-400 rounded-[35px] p-4"
+                transition={{ delay: index * 0.08 }}
+                className="rounded-[28px] border border-neutral-400 bg-[#f7f3e8] p-5"
               >
-                <item.icon className="w-5 h-5 text-[#c4956a] mb-2" />
-                <h3 className="font-bold text-sm text-neutral-900 mb-1">
-                  {item.title}
-                </h3>
-                <p className="text-xs text-neutral-500 leading-relaxed">
-                  {item.desc}
-                </p>
+                <item.icon className="mb-3 h-5 w-5 text-[#c4956a]" />
+                <h3 className="mb-2 text-sm font-bold text-neutral-900">{item.title}</h3>
+                <p className="text-xs leading-relaxed text-neutral-600">{item.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </ScrollReveal>
 
-      {/* Industries I Build For */}
       <ScrollReveal>
-        <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 space-y-4">
-          <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
-            <Building2 className="w-5 h-5 text-[#c4956a]" />
-            {language === "en" ? "Industries I Build For" : "Industri yang Saya Layani"}
+        <div className="space-y-4 rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6">
+          <h2 className="flex items-center gap-2 text-xl font-bold text-neutral-900">
+            <Zap className="h-5 w-5 text-[#c4956a]" />
+            {isEn ? "How the work is approached" : "Cara kerja yang dipakai"}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            {[
-              {
-                icon: Truck,
-                title: language === "en" ? "Logistics & Operations" : "Logistik & Operasional",
-                desc: language === "en"
-                  ? "QC systems, fleet tracking, barcode scanning. I've worked in logistics — I know the pain."
-                  : "Sistem QC, fleet tracking, barcode scanning. Saya pernah kerja di logistik — saya tahu sakitnya.",
-                projects: "Serat QC, TraceFlow",
-              },
-              {
-                icon: ShoppingCart,
-                title: language === "en" ? "Retail & UMKM" : "Ritel & UMKM",
-                desc: language === "en"
-                  ? "POS systems, e-commerce, warehouse management. Built for Indonesian businesses with real operations."
-                  : "Sistem POS, e-commerce, manajemen gudang. Dibangun untuk bisnis Indonesia dengan operasional nyata.",
-                projects: "LakuPOS, Qohira, WC Check",
-              },
-              {
-                icon: LinkIcon,
-                title: language === "en" ? "Web3 & Trading" : "Web3 & Trading",
-                desc: language === "en"
-                  ? "FHE protocols, trading dashboards, Solana agents. Cutting-edge tech with production discipline."
-                  : "Protokol FHE, trading dashboard, Solana agent. Teknologi cutting-edge dengan disiplin production.",
-                projects: "SignalFlow, ShadowBid",
-              },
-            ].map((item, i) => (
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {workStyle.map((item, index) => (
               <motion.div
-                key={i}
+                key={item.title}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * i }}
-                className="bg-[#FAFAFA] border border-neutral-400 rounded-[35px] p-4"
+                transition={{ delay: index * 0.08 }}
+                className="rounded-[28px] border border-neutral-400 bg-[#FAFAFA] p-5"
               >
-                <item.icon className="w-5 h-5 text-[#c4956a] mb-2" />
-                <h3 className="font-bold text-sm text-neutral-900 mb-1">
-                  {item.title}
-                </h3>
-                <p className="text-xs text-neutral-500 leading-relaxed mb-2">
-                  {item.desc}
-                </p>
-                <p className="text-[10px] font-medium text-[#a67d55]">
-                  {item.projects}
-                </p>
+                <item.icon className="mb-3 h-5 w-5 text-[#c4956a]" />
+                <h3 className="mb-2 text-sm font-bold text-neutral-900">{item.title}</h3>
+                <p className="text-xs leading-relaxed text-neutral-600">{item.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </ScrollReveal>
 
-      {/* Engineering Philosophy */}
       <ScrollReveal>
-        <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 space-y-4">
-          <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
-            <Code className="w-5 h-5 text-[#c4956a]" />
-            {language === "en" ? "How I Think About Code" : "Cara Saya Memikirkan Kode"}
+        <div className="space-y-4 rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6">
+          <h2 className="flex items-center gap-2 text-xl font-bold text-neutral-900">
+            <Lightbulb className="h-5 w-5 text-[#c4956a]" />
+            {isEn ? "Why the perspective is different" : "Kenapa sudut pandangnya terasa beda"}
           </h2>
-          <div className="prose prose-sm max-w-none space-y-3 text-neutral-600">
-            <p>
-              {language === "en"
-                ? "I don't write code for code's sake. Every function, every component, every database query exists to solve a business problem. If I can't explain why something exists in plain language, it shouldn't exist."
-                : "Saya tidak menulis kode demi kode itu sendiri. Setiap function, setiap component, setiap query database ada untuk menyelesaikan masalah bisnis. Kalau saya tidak bisa menjelaskan kenapa sesuatu ada dalam bahasa sederhana, seharusnya itu tidak ada."}
-            </p>
-            <p>
-              {language === "en"
-                ? "DDD isn't a buzzword to me — it's how I think. When I build a POS system, I think in terms of transactions, inventory, and outlets — not database tables and API routes. The architecture follows the domain, not the other way around."
-                : "DDD bukan buzzword bagi saya — itu cara saya berpikir. Saat membangun sistem POS, saya berpikir dalam transaksi, inventori, dan outlet — bukan tabel database dan route API. Arsitektur mengikuti domain, bukan sebaliknya."}
-            </p>
-            <p>
-              {language === "en"
-                ? "I learn by shipping. My first production system (Serat QC) was built while I was still relearning modern web dev. 80K+ records later, it's still running. The best way to learn is to build something real, deploy it, and watch it break — then fix it."
-                : "Saya belajar dengan mengirim. Sistem production pertama saya (Serat QC) dibangun saat saya masih belajar ulang web dev modern. 80K+ records kemudian, masih berjalan. Cara terbaik belajar adalah membangun sesuatu yang nyata, deploy, dan lihat dia pecah — lalu perbaiki."}
-            </p>
+
+          <p className="text-sm leading-relaxed text-neutral-600">
+            {isEn
+              ? "A lot of digital surfaces fail because they are designed too far from the people who actually use them. The point of nasaq.id is not to stack features. It is to build something that looks intentional, feels clear, and survives day-to-day usage."
+              : "Banyak surface digital gagal karena dirancang terlalu jauh dari orang yang benar-benar memakainya. Poin nasaq.id bukan menumpuk fitur. Poinnya adalah membangun sesuatu yang terasa sengaja dirancang, mudah dipahami, dan tahan dipakai sehari-hari."}
+          </p>
+
+          <div className="grid gap-4 md:grid-cols-3">
+            {fieldContext.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.08 }}
+                className="rounded-[28px] border border-neutral-400 bg-[#f7f3e8] p-5"
+              >
+                <item.icon className="mb-3 h-5 w-5 text-[#c4956a]" />
+                <h3 className="mb-2 text-sm font-bold text-neutral-900">{item.title}</h3>
+                <p className="text-xs leading-relaxed text-neutral-600">{item.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </ScrollReveal>
 
-      {/* What I'm Looking For */}
       <ScrollReveal>
-        <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 space-y-4">
-          <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
-            <Target className="w-5 h-5 text-[#c4956a]" />
-            {language === "en" ? "What I'm Looking For" : "Yang Saya Cari"}
-          </h2>
-          <div className="bg-[#FAFAFA] border border-neutral-400 rounded-[35px] p-5 space-y-3">
-            <ul className="space-y-2 text-sm text-neutral-700">
-              {(language === "en"
-                ? [
-                    "Full-time or contract roles as Full-stack Developer",
-                    "Teams that value shipping speed and real-world impact",
-                    "Projects where I can own the stack end-to-end",
-                    "Environments that value shipping velocity and clean code",
-                  ]
-                : [
-                    "Full-time atau kontrak sebagai Full-stack Developer",
-                    "Tim yang menghargai kecepatan shipping dan dampak nyata",
-                    "Project dimana saya bisa memiliki stack end-to-end",
-                    "Lingkungan yang menghargai kecepatan shipping dan kode bersih",
-                  ]
-              ).map((item, i) => (
-                <li key={i} className="flex items-start gap-2">
-                  <span className="text-[#c4956a] mt-0.5">✓</span>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </ScrollReveal>
+        <div className="rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-2xl space-y-2">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#a67d55]">
+                {isEn ? "Next step" : "Langkah berikutnya"}
+              </p>
+              <h2 className="text-2xl font-bold text-neutral-900">
+                {isEn ? "If the business is ready, send the brief." : "Kalau bisnisnya sudah siap, kirim brief-nya."}
+              </h2>
+              <p className="text-sm leading-relaxed text-neutral-600">
+                {isEn
+                  ? "The best projects usually start with a clear problem statement, a real workflow, and one priority outcome. That is enough to begin."
+                  : "Project yang paling enak dikerjakan biasanya dimulai dari problem statement yang jelas, workflow yang nyata, dan satu outcome prioritas. Itu sudah cukup untuk mulai."}
+              </p>
+            </div>
 
-      {/* Beyond Code */}
-      <ScrollReveal>
-        <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 space-y-4">
-          <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
-            <Heart className="w-5 h-5 text-[#c4956a]" />
-            {language === "en" ? "Beyond Code" : "Di Luar Coding"}
-          </h2>
-          <div className="text-sm text-neutral-600 space-y-2">
-            <p>
-              {language === "en"
-                ? "Military-trained (Resimen Mahasiswa & Korps Marinir — basic paratrooper). The discipline translates directly to how I approach engineering: structured, methodical, mission-oriented."
-                : "Latihan militer (Resimen Mahasiswa & Korps Marinir — pasukan udara dasar). Disiplin tersebut langsung tercermin dalam cara saya mendekati engineering: terstruktur, metodis, berorientasi misi."}
-            </p>
-            <p>
-              {language === "en"
-                ? "Based in Bandung, Indonesia. I speak Indonesian (native), Sundanese (native), and English (basic). When I'm not coding, I'm exploring Web3 protocols and building side projects on Solana."
-                : "Berdomisili di Bandung, Indonesia. Saya berbicara Bahasa Indonesia (asli), Bahasa Sunda (asli), dan Inggris (dasar). Saat tidak coding, saya mengeksplorasi protokol Web3 dan membangun side project di Solana."}
-            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/order"
+                className="group inline-flex items-center gap-2 rounded-xl bg-[#c4956a] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#a67d55]"
+              >
+                {isEn ? "Send project brief" : "Kirim brief project"}
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </Link>
+              <Link
+                href="/live"
+                className="inline-flex items-center gap-2 rounded-xl border border-neutral-400 px-5 py-2.5 text-sm font-semibold text-neutral-900 transition-all hover:bg-neutral-50"
+              >
+                {isEn ? "See live proof" : "Lihat live proof"}
+              </Link>
+            </div>
           </div>
-        </div>
-      </ScrollReveal>
-
-      {/* CTA */}
-      <ScrollReveal>
-        <div className="flex flex-wrap gap-3 pt-4">
-          <Link
-            href="/cv"
-            className="group inline-flex items-center gap-2 px-5 py-2.5 bg-[#c4956a] hover:bg-[#a67d55] text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-[#c4956a]/20"
-          >
-            {t.viewCV}
-            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-          </Link>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 border border-neutral-400 text-neutral-900 hover:bg-neutral-50 rounded-xl text-sm font-semibold transition-all"
-          >
-            {t.contactMe}
-          </Link>
         </div>
       </ScrollReveal>
     </div>

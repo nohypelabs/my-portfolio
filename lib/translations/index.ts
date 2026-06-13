@@ -24,9 +24,9 @@ export const translations = {
 
     // Nav
     home: "Home",
-    about: "About",
-    contact: "Contact",
-    cv: "Company Profile",
+    about: "Founder",
+    contact: "Consultation",
+    cv: "Studio Deck",
     backToProjects: "← Back to Projects",
     backToOngoing: "← Back to Ongoing",
 
@@ -217,9 +217,9 @@ export const translations = {
 
     // Nav
     home: "Beranda",
-    about: "Tentang",
-    contact: "Kontak",
-    cv: "Profil Perusahaan",
+    about: "Founder",
+    contact: "Konsultasi",
+    cv: "Profil Studio",
     backToProjects: "← Kembali ke Proyek",
     backToOngoing: "← Kembali ke Proyek Berjalan",
 

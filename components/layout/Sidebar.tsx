@@ -31,23 +31,23 @@ interface NavItem {
 }
 
 const mainNavItems: NavItem[] = [
-  { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, path: '/' },
+  { id: 'dashboard', label: 'Beranda', icon: LayoutDashboard, path: '/' },
   { id: 'services', label: 'Layanan', icon: Briefcase, path: '/services' },
   { id: 'process', label: 'Proses Kerja', icon: Route, path: '/process' },
   { id: 'pricing', label: 'Harga', icon: DollarSign, path: '/pricing' },
-  { id: 'projects', label: 'Projects', icon: FolderKanban, path: '/projects' },
-  { id: 'testimonials', label: 'Testimoni', icon: MessageSquare, path: '/testimonials' },
+  { id: 'projects', label: 'Case Studies', icon: FolderKanban, path: '/projects' },
+  { id: 'testimonials', label: 'Review Klien', icon: MessageSquare, path: '/testimonials' },
   { id: 'faq', label: 'FAQ', icon: HelpCircle, path: '/faq' },
-  { id: 'live', label: 'Live', icon: Radio, path: '/live' },
-  { id: 'blog', label: 'Blog', icon: BookOpen, path: '/blog' },
-  { id: 'about', label: 'About Me', icon: User, path: '/about' },
-  { id: 'contact', label: 'Contact', icon: Mail, path: '/contact' },
+  { id: 'live', label: 'Live Proof', icon: Radio, path: '/live' },
+  { id: 'blog', label: 'Insight', icon: BookOpen, path: '/blog' },
+  { id: 'about', label: 'Founder', icon: User, path: '/about' },
+  { id: 'contact', label: 'Konsultasi', icon: Mail, path: '/contact' },
 ];
 
 // Pages shown in the chevron dropdown menu
 const menuNavItems: NavItem[] = [
   { id: 'admin', label: 'Admin Panel', icon: Shield, path: '/admin/dashboard' },
-  { id: 'cv', label: 'Company Profile', icon: Building2, path: '/cv' },
+  { id: 'cv', label: 'Profil Studio', icon: Building2, path: '/cv' },
 ];
 
 export const Sidebar = () => {
@@ -88,17 +88,20 @@ export const Sidebar = () => {
       <button
         onClick={() => router.push(item.path)}
         className={clsx(
-          'w-full flex items-center gap-2.5 rounded-lg transition-colors text-left text-[13px]',
-          isCollapsed ? 'px-0 py-[7px] justify-center' : 'px-3 py-[7px]',
+          'w-full flex items-center gap-2.5 rounded-xl transition-all duration-200 text-left text-[13px] relative group',
+          isCollapsed ? 'px-0 py-[8px] justify-center' : 'px-3 py-[8px]',
           isActive
-            ? 'bg-[#FAFAFA] text-[#a67d55] font-medium'
-            : 'text-neutral-900 hover:bg-neutral-100 hover:text-neutral-900'
+            ? 'bg-[#FAFAFA] text-[#a67d55] font-medium shadow-sm border border-neutral-200'
+            : 'text-neutral-600 hover:bg-neutral-100/80 hover:text-neutral-900 border border-transparent'
         )}
       >
+        {isActive && !isCollapsed && (
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-4 bg-[#c4956a] rounded-r-full" />
+        )}
         <Icon
           className={clsx(
-            'w-[18px] h-[18px] flex-shrink-0',
-            isActive ? 'text-[#c4956a]' : 'text-neutral-900'
+            'w-[18px] h-[18px] flex-shrink-0 transition-colors',
+            isActive ? 'text-[#c4956a]' : 'text-neutral-400 group-hover:text-neutral-600'
           )}
           strokeWidth={1.5}
         />
@@ -239,7 +242,7 @@ export const Sidebar = () => {
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="text-[13px] font-medium text-[#2d2a26] truncate leading-tight">nasaq.id</p>
-                  <p className="text-[11px] text-neutral-500 truncate leading-tight">Full-stack Developer</p>
+                  <p className="text-[11px] text-neutral-500 truncate leading-tight">Founder-led digital studio</p>
                 </div>
               </button>
             )}

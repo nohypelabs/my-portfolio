@@ -3,100 +3,60 @@
 import { personalInfo } from "@/lib/data/personalInfo";
 import { useLanguage } from "@/lib/context/LanguageContext";
 import { translations } from "@/lib/translations";
-import {
-  Layout,
-  Server,
-  Database,
-  Wrench,
-  Zap,
-} from "lucide-react";
-
-const categories = [
-  { key: "frontend" as const, icon: Layout },
-  { key: "backend" as const, icon: Server },
-  { key: "database" as const, icon: Database },
-  { key: "tools" as const, icon: Wrench },
-  { key: "specialties" as const, icon: Zap },
-];
+import { Marquee } from "@/components/Marquee";
+import { motion } from "framer-motion";
 
 export function TechStackStrip() {
   const { language } = useLanguage();
   const t = translations[language];
 
-  const labelMap: Record<string, string> = {
-    frontend: t.frontend,
-    backend: t.backend,
-    database: t.database,
-    tools: t.tools,
-    specialties: t.specialties,
-  };
+  const allTechs = [
+    ...personalInfo.skills.frontend,
+    ...personalInfo.skills.backend,
+    ...personalInfo.skills.database,
+    ...personalInfo.skills.tools,
+    ...personalInfo.skills.specialties,
+  ];
 
-  const proficiencyLabels = {
-    advanced: language === "en" ? "Advanced" : "Mahir",
-    intermediate: language === "en" ? "Intermediate" : "Menengah",
-    familiar: language === "en" ? "Familiar" : "Kenal",
-  };
-
-  const proficiencyColors = {
-    advanced: "bg-[#FAFAFA] text-[#c4956a] border-[#c4956a]/30",
-    intermediate: "bg-blue-50 text-blue-700 border-blue-300",
-    familiar: "bg-neutral-100 text-neutral-600 border-neutral-300",
-  };
+  const uniqueTechs = [...new Set(allTechs)];
 
   return (
-    <section>
-      <h2 className="text-lg font-bold text-foreground mb-4">
-        {t.techStack}
-      </h2>
-      <div className="bg-[#FAFAFA] rounded-2xl border border-neutral-400 p-4 space-y-3">
-        {categories.map(({ key, icon: Icon }) => (
-          <div key={key} className="flex items-start gap-3">
-            <div className="p-1.5 rounded-lg bg-border/50 mt-0.5 shrink-0">
-              <Icon className="w-3.5 h-3.5 text-muted" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <span className="text-xs font-semibold text-muted uppercase tracking-wider">
-                {labelMap[key]}
+    <section className="space-y-4">
+      <h2 className="text-lg font-bold text-foreground">{t.techStack}</h2>
+
+      {/* Marquee strip */}
+      <div className="bg-[#FAFAFA] border border-neutral-300 rounded-2xl overflow-hidden py-4">
+        <Marquee speed={25} pauseOnHover>
+          {uniqueTechs.map((tech, i) => (
+            <motion.div
+              key={tech}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.02 }}
+              className="flex items-center gap-2 px-4 py-2 bg-[#f7f3e8] border border-neutral-200 rounded-full hover:border-[#c4956a]/30 hover:bg-[#c4956a]/5 transition-all cursor-default group"
+            >
+              <div className="w-1.5 h-1.5 rounded-full bg-[#c4956a]/40 group-hover:bg-[#c4956a] transition-colors" />
+              <span className="text-[12px] font-medium text-neutral-700 group-hover:text-neutral-900 whitespace-nowrap transition-colors">
+                {tech}
               </span>
-              <div className="flex flex-wrap gap-1 mt-1">
-                {personalInfo.skills[key].map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2 py-0.5 rounded-full text-[11px] font-medium bg-border/50 text-foreground/70"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
+            </motion.div>
+          ))}
+        </Marquee>
+      </div>
+
+      {/* Proficiency legend */}
+      <div className="flex items-center gap-4 justify-center">
+        {[
+          { level: 'advanced', label: language === 'en' ? 'Advanced' : 'Mahir', color: 'bg-[#c4956a]' },
+          { level: 'intermediate', label: language === 'en' ? 'Intermediate' : 'Menengah', color: 'bg-blue-500' },
+          { level: 'familiar', label: language === 'en' ? 'Familiar' : 'Kenal', color: 'bg-neutral-400' },
+        ].map(({ level, label, color }) => (
+          <div key={level} className="flex items-center gap-1.5">
+            <div className={`w-2 h-2 rounded-full ${color}`} />
+            <span className="text-[10px] text-neutral-500">{label}</span>
           </div>
         ))}
-
-        {/* Proficiency Levels */}
-        <div className="pt-2 border-t border-border">
-          <span className="text-xs font-semibold text-muted uppercase tracking-wider">
-            {language === "en" ? "Proficiency" : "Kemahiran"}
-          </span>
-          <div className="mt-2 space-y-2">
-            {(Object.keys(proficiencyLabels) as Array<keyof typeof proficiencyLabels>).map((level) => (
-              <div key={level} className="flex items-start gap-2">
-                <span className="text-[10px] font-semibold text-muted uppercase w-20 shrink-0 pt-0.5">
-                  {proficiencyLabels[level]}
-                </span>
-                <div className="flex flex-wrap gap-1">
-                  {personalInfo.skills.proficiency[level].map((tech) => (
-                    <span
-                      key={tech}
-                      className={`px-2 py-0.5 rounded-full text-[10px] font-medium border ${proficiencyColors[level]}`}
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

@@ -35,7 +35,7 @@ export async function GET(request: Request) {
     return new NextResponse(stream, {
       headers: {
         "Content-Type": "application/pdf",
-        "Content-Disposition": `attachment; filename="abdul-gofur-cv-${lang}.pdf"`,
+        "Content-Disposition": `attachment; filename="nasaq-id-founder-profile-${lang}.pdf"`,
         "Cache-Control": "no-store",
       },
     });

@@ -4,10 +4,24 @@ import { ongoingProjects } from '@/lib/data/ongoingProjects'
 import { blogPosts } from '@/lib/data/blogPosts'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://abdulgofur.vercel.app'
+  const baseUrl = 'https://nasaq.id'
 
   // Static pages
-  const routes = ['', '/projects', '/about', '/blog', '/cv', '/contact', '/live'].map((route) => ({
+  const routes = [
+    '',
+    '/services',
+    '/process',
+    '/pricing',
+    '/projects',
+    '/testimonials',
+    '/faq',
+    '/about',
+    '/blog',
+    '/cv',
+    '/contact',
+    '/live',
+    '/order',
+  ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
     changeFrequency: 'monthly' as const,

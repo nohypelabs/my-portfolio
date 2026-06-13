@@ -7,7 +7,7 @@ interface ScrollRevealProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
-  direction?: "up" | "left" | "right";
+  direction?: "up" | "left" | "right" | "scale";
 }
 
 export function ScrollReveal({
@@ -17,25 +17,30 @@ export function ScrollReveal({
   direction = "up",
 }: ScrollRevealProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-80px" });
+  const isInView = useInView(ref, { once: true, margin: "-60px" });
 
-  const offsets = {
-    up: { y: 40, x: 0 },
-    left: { y: 0, x: -40 },
-    right: { y: 0, x: 40 },
+  const variants = {
+    up: { y: 40, x: 0, scale: 1 },
+    left: { y: 0, x: -40, scale: 1 },
+    right: { y: 0, x: 40, scale: 1 },
+    scale: { y: 0, x: 0, scale: 0.92 },
   };
 
-  const offset = offsets[direction];
+  const offset = variants[direction];
 
   return (
     <motion.div
       ref={ref}
       initial={{ opacity: 0, ...offset }}
-      animate={isInView ? { opacity: 1, y: 0, x: 0 } : {}}
+      animate={
+        isInView
+          ? { opacity: 1, y: 0, x: 0, scale: 1 }
+          : {}
+      }
       transition={{
         delay,
-        duration: 0.6,
-        ease: [0.25, 0.1, 0.25, 1],
+        duration: 0.7,
+        ease: [0.23, 1, 0.32, 1],
       }}
       className={className}
     >

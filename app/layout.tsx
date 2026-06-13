@@ -17,31 +17,22 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://nasaq.id'),
   title: {
-    default: "nasaq — Full-stack Developer Portfolio",
+    default: "nasaq.id — Website, Company Profile & Custom Systems",
     template: "%s | nasaq.id"
   },
-  description: "nasaq.id — Full-stack development studio. Production-grade web & Android systems. Specializing in Next.js, TypeScript, tRPC, PostgreSQL. Featured: WC Check, LakuPOS, Serat QC, TraceFlow.",
+  description: "nasaq.id adalah founder-led digital product studio untuk company profile, website bisnis, dashboard internal, dan sistem custom yang benar-benar dipakai tim. Cocok untuk bisnis yang butuh surface lebih meyakinkan dan workflow lebih rapi.",
   keywords: [
     "nasaq.id",
-    "nasaq",
-    "Full-stack Developer",
-    "Full-stack Engineer",
-    "Web Developer",
-    "Next.js Developer",
-    "React Developer",
-    "TypeScript",
-    "tRPC",
-    "Prisma",
-    "Portfolio",
-    "Indonesia Developer",
-    "WC Check",
-    "Eduvate",
-    "E-Commerce",
-    "AGDS POS",
-    "Selisih Berat",
-    "School Management System",
-    "Solana",
-    "Web3"
+    "jasa pembuatan website",
+    "company profile",
+    "website bisnis",
+    "dashboard internal",
+    "sistem operasional",
+    "aplikasi android",
+    "web app custom",
+    "digital product studio",
+    "software house indonesia",
+    "next.js indonesia"
   ],
   authors: [{ name: "nasaq.id", url: "https://github.com/nohypelabs" }],
   creator: "nasaq.id",
@@ -53,34 +44,34 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/avatar.jpg' },
+      { url: '/picture/nasaq-id-photo.png' },
       { url: '/favicon.ico' },
     ],
-    apple: '/avatar.jpg',
+    apple: '/picture/nasaq-id-photo.png',
   },
   manifest: '/manifest.json',
   openGraph: {
     type: 'website',
-    locale: 'en_US',
+    locale: 'id_ID',
     url: 'https://nasaq.id',
-    title: 'nasaq — Full-stack Developer',
-    description: '7 production systems shipped in <1 year, 250K+ records processed. Next.js, TypeScript, tRPC, PostgreSQL. From logistics QC to POS systems.',
-    siteName: 'nasaq Portfolio',
+    title: 'nasaq.id — Founder-led Digital Product Studio',
+    description: 'Website bisnis, company profile, dashboard internal, dan sistem custom untuk tim yang butuh surface lebih serius dan workflow yang lebih rapi.',
+    siteName: 'nasaq.id',
     images: [
       {
-        url: '/avatar.jpg',
+        url: '/picture/nasaq-id-photo.png',
         width: 800,
         height: 800,
-        alt: 'nasaq Profile',
+        alt: 'nasaq.id',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'nasaq — Full-stack Developer',
-    description: '7 production systems | 250K+ records | Next.js, tRPC, PostgreSQL | Logistics, Retail',
+    title: 'nasaq.id — Website, Company Profile & Custom Systems',
+    description: 'Founder-led digital product studio untuk company profile, dashboard internal, dan sistem custom.',
     creator: '@agdscID',
-    images: ['/avatar.jpg'],
+    images: ['/picture/nasaq-id-photo.png'],
   },
   robots: {
     index: true,
@@ -104,7 +95,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning data-scroll-behavior="smooth">
+    <html lang="id" suppressHydrationWarning data-scroll-behavior="smooth">
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}
       >

@@ -1,300 +1,486 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Globe, Smartphone, Server, Wrench, MessageCircle, CheckCircle, Rocket, Code, Search, Palette, Headphones, Star, ArrowUpRight } from 'lucide-react';
+import {
+  ArrowRight,
+  ArrowUpRight,
+  CheckCircle2,
+  Code,
+  Globe,
+  Headphones,
+  Palette,
+  Rocket,
+  Search,
+  Server,
+  Smartphone,
+  Wrench,
+} from 'lucide-react';
 import Link from 'next/link';
 import { staggerContainer, fadeInUp } from '@/lib/animations';
 import { ScrollReveal } from '@/components/ScrollReveal';
-import { CursorSpotlight } from '@/components/CursorSpotlight';
-import { ProjectMosaic } from '@/components/ProjectMosaic';
+import { HeroSection } from '@/components/sections/HeroSection';
 import { FeaturedProjects } from '@/components/sections/FeaturedProjects';
-import { TechStackStrip } from '@/components/sections/TechStackStrip';
-import { StatsStrip } from '@/components/sections/StatsStrip';
 import { ClientLogos } from '@/components/sections/ClientLogos';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
+import { CaseStudyCards } from '@/components/sections/CaseStudyCards';
+import { FloatingChatWidget } from '@/components/FloatingChatWidget';
+import { MagneticButton } from '@/components/MagneticButton';
+import { GradientText } from '@/components/GradientText';
+import { TiltCard } from '@/components/TiltCard';
 
-const services = [
-  { icon: Globe, title: 'Web Application', desc: 'Sistem manajemen, dashboard, POS, inventory' },
-  { icon: Smartphone, title: 'Mobile App', desc: 'Android native & cross-platform' },
-  { icon: Server, title: 'API & Backend', desc: 'REST API, database, cloud deploy' },
-  { icon: Wrench, title: 'Maintenance', desc: 'Bug fix, update, monitoring' },
-  { icon: MessageCircle, title: 'Konsultasi', desc: 'Analisis kebutuhan & arsitektur' },
+const proofPoints = [
+  {
+    value: '7+',
+    label: 'sistem production shipped',
+    detail: 'dari company profile sampai dashboard operasional',
+  },
+  {
+    value: '250K+',
+    label: 'records dan aktivitas terproses',
+    detail: 'QC, inspeksi, transaksi, dan workflow lapangan',
+  },
+  {
+    value: '3 sektor',
+    label: 'logistik, retail, dan internal ops',
+    detail: 'solusi dibentuk dari konteks bisnis, bukan template generik',
+  },
+  {
+    value: '<=24 jam',
+    label: 'respon awal dan breakdown kebutuhan',
+    detail: 'biar brief cepat berubah jadi scope yang jelas',
+  },
 ];
 
-const processSteps = [
-  { icon: Search, label: 'Discovery' },
-  { icon: Palette, label: 'Design' },
-  { icon: Code, label: 'Development' },
-  { icon: CheckCircle, label: 'Testing' },
-  { icon: Rocket, label: 'Deploy' },
-  { icon: Headphones, label: 'Support' },
+const solutionTracks = [
+  {
+    icon: Globe,
+    title: 'Company Profile & Website',
+    desc: 'Untuk bisnis yang butuh surface lebih serius, CTA lebih jelas, dan presentasi brand yang lebih rapi di mata calon client.',
+    items: [
+      'Landing page dan company profile multi-halaman',
+      'Copy hierarchy yang lebih meyakinkan',
+      'SEO, mobile-friendly, dan siap diarahkan ke order',
+    ],
+  },
+  {
+    icon: Server,
+    title: 'Dashboard & Sistem Operasional',
+    desc: 'Untuk tim yang capek kerja di Excel, chat, atau form manual dan butuh dashboard yang mempermudah kontrol harian.',
+    items: [
+      'Admin panel, role, dan workflow internal',
+      'QC, POS, inspection, tracking, dan reporting',
+      'Database, API, dan handoff operasional yang jelas',
+    ],
+  },
+  {
+    icon: Smartphone,
+    title: 'Web App & Android Companion',
+    desc: 'Untuk use case yang butuh login, notifikasi, data real-time, atau tim lapangan yang harus tetap bisa kerja dari mobile.',
+    items: [
+      'Web app custom dengan backend production-grade',
+      'Android companion untuk field team',
+      'Build bertahap dari MVP sampai scale-up',
+    ],
+  },
 ];
 
 const pricingPreview = [
-  { name: 'Starter', price: '500rb', desc: 'Landing page & company profile' },
-  { name: 'Basic', price: '2jt', desc: 'Company profile multi-halaman', popular: true },
-  { name: 'Standard', price: '5jt', desc: 'Web app + admin dashboard' },
+  {
+    name: 'Starter',
+    price: '500rb+',
+    desc: 'Landing page, simple profile, atau halaman campaign yang butuh cepat tayang.',
+  },
+  {
+    name: 'Growth',
+    price: '2jt+',
+    desc: 'Company profile multi-halaman, CTA jelas, dan fondasi yang lebih siap dipakai closing.',
+    popular: true,
+  },
+  {
+    name: 'Custom System',
+    price: '5jt+',
+    desc: 'Dashboard internal, workflow operasional, atau web app yang butuh logic dan database.',
+  },
+];
+
+const decisionReasons = [
+  {
+    icon: Search,
+    title: 'Ngerti problem operasional, bukan cuma layout',
+    desc: 'Banyak project kami lahir dari alur kerja yang berantakan di lapangan. Jadi output-nya bukan sekadar cantik, tapi lebih gampang dipakai tim.',
+  },
+  {
+    icon: Rocket,
+    title: 'Scope realistis dan bisa tumbuh bertahap',
+    desc: 'Kalau belum perlu sistem besar, kami mulai dari surface yang paling berdampak dulu. Landing page sekarang, dashboard menyusul saat bisnis siap.',
+  },
+  {
+    icon: Wrench,
+    title: 'End-to-end ownership sampai launch',
+    desc: 'UI, backend, database, deploy, dan maintenance awal tidak dilempar-lempar. Satu jalur, lebih mudah dieksekusi dan dikontrol.',
+  },
+];
+
+const processSteps = [
+  {
+    icon: Search,
+    label: 'Bedah Kebutuhan',
+    duration: '1-2 hari',
+    desc: 'Kami pecah dulu tujuan bisnis, pain point, dan CTA utama sebelum ngomong desain.',
+  },
+  {
+    icon: Palette,
+    label: 'Flow & Visual Direction',
+    duration: '2-4 hari',
+    desc: 'Struktur halaman, hirarki copy, dan arah visual dibikin jelas biar eksekusi tidak muter.',
+  },
+  {
+    icon: Code,
+    label: 'Build & Integration',
+    duration: '1-6 minggu',
+    desc: 'Mulai dari surface yang paling penting, lanjut ke backend, form, dashboard, atau integrasi jika dibutuhkan.',
+  },
+  {
+    icon: Headphones,
+    label: 'Launch & Support',
+    duration: 'ongoing',
+    desc: 'Setelah live, kami bantu rapikan feedback, monitoring, dan improvement yang memang relevan.',
+  },
 ];
 
 export default function DashboardPage() {
   return (
-    <motion.div variants={staggerContainer} initial="initial" animate="animate" className="space-y-12 pb-12">
-      {/* ── Hero: Service Provider (with Cursor Spotlight Reveal) ── */}
-      <motion.div variants={fadeInUp}>
-        <CursorSpotlight
-          overlayColor="#FAFAFA"
-          radius={220}
-          backgroundContent={<ProjectMosaic />}
-          className="rounded-[35px] border border-neutral-300 shadow-sm"
-        >
-          <div className="p-8 md:p-14 text-neutral-900">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#c4956a]/8 border border-[#c4956a]/15 rounded-full text-[11px] font-semibold text-[#c4956a] mb-6 tracking-wide">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#c4956a] animate-pulse" />
-              JASA PEMBUATAN SISTEM WEB & ANDROID
-            </div>
+    <motion.div variants={staggerContainer} initial="initial" animate="animate" className="space-y-16 pb-12">
+      <HeroSection />
 
-            {/* Headline */}
-            <h1 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold leading-[1.1] mb-5 tracking-tight">
-              Bangun Sistem<br />
-              Bisnis Anda<br />
-              <span className="text-[#c4956a]">Bersama nasaq.id</span>
-            </h1>
-
-            {/* Subtitle */}
-            <p className="text-neutral-500 max-w-lg mb-10 text-[15px] leading-[1.7]">
-              Transformasi digital bisnis Anda dengan sistem web & Android yang
-              production-grade. Dari ide hingga deploy, dari UMKM hingga enterprise.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/pricing"
-                className="group inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#c4956a] hover:bg-[#a67d55] text-white rounded-xl text-[13px] font-semibold transition-all shadow-lg shadow-[#c4956a]/25 hover:shadow-[#c4956a]/40 hover:-translate-y-0.5"
-              >
-                Lihat Harga
-                <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-              </Link>
-              <Link
-                href="/order"
-                className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#f7f3e8] border border-neutral-300 hover:border-neutral-400 text-neutral-900 rounded-xl text-[13px] font-semibold transition-all hover:-translate-y-0.5"
-              >
-                Pesan Sekarang
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-
-            {/* Hover hint */}
-            <div className="mt-10 flex items-center gap-6">
-              <p className="text-[10px] text-neutral-400 flex items-center gap-2">
-                <span className="inline-block w-1 h-1 rounded-full bg-[#c4956a]/50 animate-pulse" />
-                Hover untuk reveal portfolio
-              </p>
-              <div className="hidden md:flex items-center gap-4 text-[10px] text-neutral-400">
-                <span className="flex items-center gap-1.5">
-                  <span className="w-3 h-3 rounded border border-neutral-300 flex items-center justify-center text-[7px]">8</span>
-                  Project Shipped
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <span className="w-3 h-3 rounded border border-neutral-300 flex items-center justify-center text-[7px]">3</span>
-                  Years Experience
-                </span>
-              </div>
-            </div>
-          </div>
-        </CursorSpotlight>
-      </motion.div>
-
-      {/* ── Services Quick Overview ── */}
-      <motion.section variants={fadeInUp}>
-        <div className="flex items-center justify-between mb-5">
-          <h2 className="text-lg font-bold text-neutral-900">Layanan Kami</h2>
-          <Link href="/services" className="text-[12px] text-[#c4956a] hover:underline flex items-center gap-1">
-            Lihat Semua <ArrowRight className="w-3 h-3" />
-          </Link>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-          {services.map((svc, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="bg-[#FAFAFA] border border-neutral-300 rounded-xl p-4 hover:border-[#c4956a]/30 hover:shadow-sm transition-all text-center"
-            >
-              <svc.icon className="w-6 h-6 text-[#c4956a] mx-auto mb-2" strokeWidth={1.5} />
-              <h3 className="text-[12px] font-semibold text-neutral-900 mb-0.5">{svc.title}</h3>
-              <p className="text-[10px] text-neutral-500">{svc.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
-
-      {/* ── Stats Strip (Social Proof) ── */}
       <ScrollReveal>
-        <StatsStrip />
+        <section className="grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
+          <motion.div
+            variants={fadeInUp}
+            className="rounded-[32px] border border-neutral-300 bg-[#FAFAFA] p-7 md:p-8"
+          >
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#c4956a]/20 bg-[#c4956a]/8 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#c4956a]">
+              Kenapa Client Order
+            </span>
+            <h2 className="mt-5 max-w-2xl text-2xl font-bold leading-tight text-neutral-900 md:text-3xl">
+              Website cantik itu bonus. Yang sebenarnya dicari client adalah
+              <span className="text-[#c4956a]"> bisnis yang terlihat lebih siap</span>{' '}
+              dan workflow yang terasa lebih rapi.
+            </h2>
+            <p className="mt-4 max-w-2xl text-sm leading-8 text-neutral-600 md:text-[15px]">
+              Karena itu, homepage ini kami arahkan bukan sekadar seperti
+              portfolio developer, tapi seperti studio yang bisa diajak
+              berpikir, ngasih scope yang realistis, lalu mengeksekusinya sampai
+              live.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 gap-3">
+            {proofPoints.map((item, index) => (
+              <motion.div
+                key={item.label}
+                variants={fadeInUp}
+                transition={{ delay: index * 0.06 }}
+                className="rounded-2xl border border-neutral-300 bg-[#FAFAFA] p-4 md:p-5"
+              >
+                <p className="text-xl font-extrabold text-neutral-900 md:text-2xl">
+                  {item.value}
+                </p>
+                <p className="mt-1 text-[11px] font-semibold text-neutral-700">
+                  {item.label}
+                </p>
+                <p className="mt-2 text-[11px] leading-relaxed text-neutral-500">
+                  {item.detail}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
       </ScrollReveal>
 
-      {/* ── Client Logos ── */}
       <ScrollReveal>
         <ClientLogos />
       </ScrollReveal>
 
-      {/* ── Testimonials ── */}
+      <ScrollReveal>
+        <section className="space-y-6">
+          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h2 className="text-2xl font-bold text-neutral-900 md:text-3xl">
+                Surface yang dijual rapi, sistem di belakangnya juga ikut kuat.
+              </h2>
+              <p className="mt-2 max-w-3xl text-sm leading-8 text-neutral-600 md:text-[15px]">
+                Ini tiga jalur kerja yang paling sering diminta client ke
+                nasaq.id. Kalau project Anda belum butuh semuanya, kami bisa
+                mulai dari yang paling berdampak dulu.
+              </p>
+            </div>
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-1 text-[12px] font-medium text-[#c4956a] hover:underline"
+            >
+              Lihat detail layanan <ArrowRight className="h-3 w-3" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+            {solutionTracks.map((track, index) => (
+              <TiltCard key={track.title}>
+                <motion.div
+                  variants={fadeInUp}
+                  transition={{ delay: index * 0.08 }}
+                  className="h-full rounded-[28px] border border-neutral-300 bg-[#FAFAFA] p-6 shadow-sm transition-all hover:border-[#c4956a]/25 hover:shadow-lg"
+                >
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#c4956a]/10">
+                    <track.icon className="h-5 w-5 text-[#c4956a]" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-lg font-semibold text-neutral-900">
+                    {track.title}
+                  </h3>
+                  <p className="mt-3 text-[13px] leading-7 text-neutral-600">
+                    {track.desc}
+                  </p>
+                  <div className="mt-5 space-y-3">
+                    {track.items.map((item) => (
+                      <div key={item} className="flex items-start gap-3">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#c4956a]" />
+                        <p className="text-[12px] leading-6 text-neutral-700">
+                          {item}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              </TiltCard>
+            ))}
+          </div>
+        </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <CaseStudyCards />
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <section className="space-y-6">
+          <div className="max-w-3xl">
+            <h2 className="text-2xl font-bold text-neutral-900 md:text-3xl">
+              Kenapa surface ini lebih kuat untuk closing dibanding portfolio
+              biasa.
+            </h2>
+            <p className="mt-2 text-sm leading-8 text-neutral-600 md:text-[15px]">
+              Yang kami kejar bukan sekadar impresi “wah”. Yang kami kejar
+              adalah trust yang cukup kuat untuk bikin calon client lanjut tanya
+              scope dan harga.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            {decisionReasons.map((item, index) => (
+              <TiltCard key={item.title}>
+                <motion.div
+                  variants={fadeInUp}
+                  transition={{ delay: index * 0.08 }}
+                  className="h-full rounded-[28px] border border-neutral-300 bg-[#FAFAFA] p-6"
+                >
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#c4956a]/10">
+                    <item.icon className="h-5 w-5 text-[#c4956a]" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-base font-semibold text-neutral-900">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-[13px] leading-7 text-neutral-600">
+                    {item.desc}
+                  </p>
+                </motion.div>
+              </TiltCard>
+            ))}
+          </div>
+        </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <section className="space-y-6">
+          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h2 className="text-2xl font-bold text-neutral-900 md:text-3xl">
+                Cara kami bekerja supaya project tidak muter di revisi yang
+                tidak perlu.
+              </h2>
+              <p className="mt-2 max-w-3xl text-sm leading-8 text-neutral-600 md:text-[15px]">
+                Kami sengaja bedah problem dan scope lebih dulu, baru masuk ke
+                visual dan build. Ini yang bikin delivery lebih cepat dan
+                ekspektasi lebih sinkron.
+              </p>
+            </div>
+            <Link
+              href="/process"
+              className="inline-flex items-center gap-1 text-[12px] font-medium text-[#c4956a] hover:underline"
+            >
+              Lihat proses lengkap <ArrowRight className="h-3 w-3" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
+            {processSteps.map((step, index) => (
+              <motion.div
+                key={step.label}
+                variants={fadeInUp}
+                transition={{ delay: index * 0.07 }}
+                className="rounded-[28px] border border-neutral-300 bg-[#FAFAFA] p-5"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#c4956a]/10">
+                    <step.icon className="h-5 w-5 text-[#c4956a]" strokeWidth={1.5} />
+                  </div>
+                  <span className="rounded-full border border-neutral-300 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500">
+                    0{index + 1}
+                  </span>
+                </div>
+                <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#c4956a]">
+                  {step.duration}
+                </p>
+                <h3 className="mt-2 text-base font-semibold text-neutral-900">
+                  {step.label}
+                </h3>
+                <p className="mt-3 text-[13px] leading-7 text-neutral-600">
+                  {step.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <section className="space-y-6">
+          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h2 className="text-2xl font-bold text-neutral-900 md:text-3xl">
+                Harga awal yang gampang dibaca, scope lanjutnya tetap fleksibel.
+              </h2>
+              <p className="mt-2 max-w-3xl text-sm leading-8 text-neutral-600 md:text-[15px]">
+                Ini bukan harga final untuk semua kebutuhan, tapi baseline yang
+                cukup membantu calon client paham titik masuknya.
+              </p>
+            </div>
+            <Link
+              href="/pricing"
+              className="inline-flex items-center gap-1 text-[12px] font-medium text-[#c4956a] hover:underline"
+            >
+              Lihat semua paket <ArrowRight className="h-3 w-3" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            {pricingPreview.map((pkg, index) => (
+              <TiltCard key={pkg.name}>
+                <motion.div
+                  variants={fadeInUp}
+                  transition={{ delay: index * 0.08 }}
+                  className={`relative h-full overflow-hidden rounded-[28px] border p-6 ${
+                    pkg.popular
+                      ? 'border-[#c4956a] bg-[#FAFAFA] shadow-lg ring-1 ring-[#c4956a]/20'
+                      : 'border-neutral-300 bg-[#FAFAFA]'
+                  }`}
+                >
+                  {pkg.popular && (
+                    <div className="absolute right-5 top-5 rounded-full bg-[#c4956a] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white">
+                      Paling dicari
+                    </div>
+                  )}
+                  <h3 className="text-lg font-semibold text-neutral-900">
+                    {pkg.name}
+                  </h3>
+                  <p className="mt-3 text-3xl font-extrabold text-[#c4956a]">
+                    {pkg.price}
+                  </p>
+                  <p className="mt-4 text-[13px] leading-7 text-neutral-600">
+                    {pkg.desc}
+                  </p>
+                  <Link
+                    href="/order"
+                    className="mt-6 inline-flex items-center gap-2 text-[12px] font-semibold text-neutral-900 hover:text-[#c4956a]"
+                  >
+                    Bahas scope project
+                    <ArrowUpRight className="h-3.5 w-3.5" />
+                  </Link>
+                </motion.div>
+              </TiltCard>
+            ))}
+          </div>
+        </section>
+      </ScrollReveal>
+
       <ScrollReveal>
         <TestimonialsSection />
       </ScrollReveal>
 
-      {/* ── Why Choose Us ── */}
       <ScrollReveal>
-        <section className="space-y-4">
-          <h2 className="text-lg font-bold text-neutral-900">Kenapa Pilih Kami?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            {[
-              { icon: Rocket, title: 'Production-Grade', desc: 'Bukan demo atau portfolio toys. Setiap sistem yang kami bangun dipakai user nyata dengan data nyata.' },
-              { icon: Globe, title: 'Full-Stack End-to-End', desc: 'Dari database design hingga deploy. Satu tim, satu ownership, tidak ada gap antar layer.' },
-              { icon: Star, title: 'Support Berkelanjutan', desc: 'Tidak tinggal setelah launch. Maintenance, monitoring, dan update sesuai kebutuhan bisnis Anda.' },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="bg-[#FAFAFA] border border-neutral-300 rounded-xl p-5 hover:shadow-sm transition-all"
-              >
-                <item.icon className="w-5 h-5 text-[#c4956a] mb-3" />
-                <h3 className="font-bold text-[13px] text-neutral-900 mb-1">{item.title}</h3>
-                <p className="text-[12px] text-neutral-500 leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Process Quick ── */}
-      <ScrollReveal>
-        <section>
-          <div className="flex items-center justify-between mb-5">
-            <h2 className="text-lg font-bold text-neutral-900">Cara Kami Bekerja</h2>
-            <Link href="/process" className="text-[12px] text-[#c4956a] hover:underline flex items-center gap-1">
-              Detail <ArrowRight className="w-3 h-3" />
-            </Link>
-          </div>
-          <div className="flex items-center justify-between gap-2 overflow-x-auto pb-2">
-            {processSteps.map((step, i) => (
-              <div key={i} className="flex items-center gap-2 flex-shrink-0">
-                <div className="flex flex-col items-center gap-1.5">
-                  <div className="w-10 h-10 rounded-full bg-[#c4956a]/10 flex items-center justify-center">
-                    <step.icon className="w-4 h-4 text-[#c4956a]" strokeWidth={1.5} />
-                  </div>
-                  <span className="text-[10px] font-medium text-neutral-600">{step.label}</span>
-                </div>
-                {i < processSteps.length - 1 && (
-                  <div className="w-6 h-px bg-neutral-300 flex-shrink-0 mt-[-20px]" />
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Pricing Preview ── */}
-      <ScrollReveal>
-        <section>
-          <div className="flex items-center justify-between mb-5">
-            <h2 className="text-lg font-bold text-neutral-900">Harga Mulai Dari</h2>
-            <Link href="/pricing" className="text-[12px] text-[#c4956a] hover:underline flex items-center gap-1">
-              Semua Paket <ArrowRight className="w-3 h-3" />
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            {pricingPreview.map((pkg, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className={`bg-[#FAFAFA] border rounded-xl p-5 transition-all relative ${
-                  pkg.popular
-                    ? 'border-[#c4956a] shadow-md ring-1 ring-[#c4956a]/20'
-                    : 'border-neutral-300 hover:border-[#c4956a]/30'
-                }`}
-              >
-                {pkg.popular && (
-                  <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-[10px] font-medium text-white bg-[#c4956a] px-2.5 py-0.5 rounded-full">
-                    Populer
-                  </div>
-                )}
-                <h3 className="text-[14px] font-semibold text-neutral-900">{pkg.name}</h3>
-                <div className="text-[20px] font-bold text-[#c4956a] my-1">Rp {pkg.price}</div>
-                <p className="text-[11px] text-neutral-500">{pkg.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-      </ScrollReveal>
-
-      {/* ── Tech Stack ── */}
-      <ScrollReveal>
-        <TechStackStrip />
-      </ScrollReveal>
-
-      {/* ── Featured Projects (Proof) ── */}
-      <ScrollReveal>
-        <section>
-          <div className="flex items-center justify-between mb-5">
+        <section className="space-y-6">
+          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="text-lg font-bold text-neutral-900">Project Yang Sudah Kami Bangun</h2>
-              <p className="text-[12px] text-neutral-500 mt-1">Bukti nyata, bukan janji</p>
+              <h2 className="text-2xl font-bold text-neutral-900 md:text-3xl">
+                Butuh bukti teknis yang lebih detail?
+              </h2>
+              <p className="mt-2 max-w-3xl text-sm leading-8 text-neutral-600 md:text-[15px]">
+                Di bawah ini tetap kami tampilkan portofolio engineering-nya,
+                supaya calon client yang teknis atau tim internal mereka bisa
+                cek stack, hasil build, dan konteks project dengan lebih dalam.
+              </p>
             </div>
-            <Link href="/projects" className="text-[12px] text-[#c4956a] hover:underline flex items-center gap-1">
-              Semua Project <ArrowRight className="w-3 h-3" />
+            <Link
+              href="/projects"
+              className="inline-flex items-center gap-1 text-[12px] font-medium text-[#c4956a] hover:underline"
+            >
+              Semua case study <ArrowRight className="h-3 w-3" />
             </Link>
           </div>
+
           <FeaturedProjects />
         </section>
       </ScrollReveal>
 
-      {/* ── CTA ── */}
       <ScrollReveal>
         <motion.section
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="noise-overlay relative overflow-hidden bg-[#FAFAFA] rounded-[35px] border border-neutral-400"
+          variants={fadeInUp}
+          className="relative overflow-hidden rounded-[35px] border border-neutral-400 bg-[#FAFAFA]"
         >
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-[#c4956a]/15 via-transparent to-transparent" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-[#c4956a]/50 to-transparent" />
-
-          <div className="relative p-8 md:p-12 text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-3">
-              Siap Membangun Sistem Anda?
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(196,149,106,0.18),_transparent_52%)]" />
+          <div className="relative p-8 text-center md:p-12">
+            <h2 className="text-2xl font-bold text-neutral-900 md:text-3xl">
+              Kalau kebutuhan Anda sudah kebayang, mari kita ubah jadi{' '}
+              <GradientText>scope yang enak dieksekusi</GradientText>.
             </h2>
-            <p className="text-neutral-500 max-w-md mx-auto mb-6">
-              Konsultasi gratis, tanpa komitmen. Ceritakan kebutuhan bisnis Anda, kami bantu cari solusinya.
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-8 text-neutral-600 md:text-[15px]">
+              Brief awal gratis. Anda bisa mulai dari company profile, landing
+              page, atau langsung ke dashboard dan sistem custom kalau memang
+              problem bisnisnya sudah jelas.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link
+            <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+              <MagneticButton
+                as="a"
                 href="/order"
-                className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#c4956a] hover:bg-[#a67d55] text-white rounded-xl font-semibold transition-all shadow-lg shadow-[#c4956a]/20 hover:shadow-[#c4956a]/30"
+                strength={0.15}
+                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#c4956a] px-8 py-4 font-semibold text-white shadow-lg shadow-[#c4956a]/20 transition-colors hover:bg-[#a67d55]"
               >
-                Pesan Sekarang
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-              <Link
+                Kirim Brief Project
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </MagneticButton>
+              <MagneticButton
+                as="a"
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#f7f3e8] border border-neutral-400 hover:bg-[#FAFAFA] text-neutral-900 rounded-xl font-semibold transition-all"
+                strength={0.15}
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-neutral-400 bg-[#f7f3e8] px-8 py-4 font-semibold text-neutral-900 transition-all hover:bg-[#FAFAFA]"
               >
-                Konsultasi Gratis
-              </Link>
+                Konsultasi Dulu
+              </MagneticButton>
             </div>
           </div>
         </motion.section>
       </ScrollReveal>
+
+      <FloatingChatWidget />
     </motion.div>
   );
 }

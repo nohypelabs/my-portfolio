@@ -94,13 +94,14 @@ function OrderForm() {
           </div>
           <h1 className="text-[20px] font-semibold text-neutral-900 mb-2">Pesanan Terkirim!</h1>
           <p className="text-[13px] text-neutral-500 mb-6">
-            Terima kasih! Kami akan review pesanan Anda dan menghubungi dalam 1×24 jam.
+            Terima kasih! Brief Anda sudah masuk. Kami akan review kebutuhan dan
+            menghubungi Anda dalam 1×24 jam.
           </p>
           <Link
             href="/"
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#c4956a] text-white rounded-lg text-[13px] font-medium hover:bg-[#a67d55] transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" /> Kembali ke Dashboard
+            <ArrowLeft className="w-4 h-4" /> Kembali ke Beranda
           </Link>
         </motion.div>
       </motion.div>
@@ -114,9 +115,10 @@ function OrderForm() {
         <Link href="/pricing" className="inline-flex items-center gap-1.5 text-[12px] text-neutral-500 hover:text-[#c4956a] mb-4 transition-colors">
           <ArrowLeft className="w-3.5 h-3.5" /> Kembali ke Harga
         </Link>
-        <h1 className="text-[22px] font-semibold text-neutral-900 mb-2">Pesan Layanan</h1>
+        <h1 className="text-[22px] font-semibold text-neutral-900 mb-2">Kirim Brief Project</h1>
         <p className="text-[14px] text-neutral-500">
-          Isi form di bawah untuk memesan. Kami akan menghubungi Anda untuk diskusi lebih lanjut.
+          Isi kebutuhan awal Anda di bawah ini. Kami akan bantu breakdown scope,
+          estimasi, dan langkah berikutnya.
         </p>
       </motion.div>
 

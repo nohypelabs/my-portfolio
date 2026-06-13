@@ -1,23 +1,25 @@
 'use client';
 
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, Github, ExternalLink } from 'lucide-react';
+import { ArrowRight, Github, Menu } from 'lucide-react';
 import { useSidebar } from '@/contexts/SidebarContext';
 import { clsx } from '@/lib/utils';
 
 const pageMeta: Record<string, { title: string; subtitle: string }> = {
-  '/': { title: 'Dashboard', subtitle: 'nasaq.id — Production-grade web & mobile systems' },
-  '/services': { title: 'Layanan', subtitle: 'Solusi teknologi end-to-end untuk bisnis Anda' },
-  '/process': { title: 'Proses Kerja', subtitle: 'Cara kami membangun sistem Anda' },
-  '/pricing': { title: 'Harga', subtitle: 'Paket transpran tanpa hidden cost' },
-  '/projects': { title: 'Projects', subtitle: 'Production systems & engineering work' },
-  '/testimonials': { title: 'Testimoni', subtitle: 'Apa kata klien tentang kami' },
+  '/': { title: 'Overview', subtitle: 'Website, company profile, dan sistem operasional untuk bisnis yang ingin naik kelas' },
+  '/services': { title: 'Layanan', subtitle: 'Company profile, dashboard internal, dan build custom yang bisa langsung dipakai' },
+  '/process': { title: 'Proses Kerja', subtitle: 'Bedah kebutuhan dulu, baru desain dan build' },
+  '/pricing': { title: 'Harga', subtitle: 'Paket awal transparan, scope lanjutnya tetap fleksibel' },
+  '/projects': { title: 'Case Studies', subtitle: 'Hasil build nyata dengan konteks bisnis yang jelas' },
+  '/testimonials': { title: 'Review Klien', subtitle: 'Apa yang berubah setelah sistem dipakai tim mereka' },
   '/faq': { title: 'FAQ', subtitle: 'Pertanyaan yang sering ditanyakan' },
-  '/live': { title: 'Live', subtitle: 'Real-time metrics & activity' },
-  '/blog': { title: 'Blog', subtitle: 'Thoughts on engineering & shipping' },
-  '/about': { title: 'About Me', subtitle: 'Background, skills & experience' },
-  '/contact': { title: 'Contact', subtitle: 'Let\'s build something together' },
-  '/order': { title: 'Pesan Layanan', subtitle: 'Mulai project Anda' },
+  '/live': { title: 'Live Proof', subtitle: 'Data dan aktivitas dari sistem yang benar-benar berjalan' },
+  '/blog': { title: 'Blog', subtitle: 'Catatan shipping, engineering, dan product thinking' },
+  '/about': { title: 'Founder', subtitle: 'Latar belakang, cara berpikir, dan kenapa nasaq.id dibangun' },
+  '/cv': { title: 'Profil Studio', subtitle: 'Ringkasan positioning, cara kerja, dan kenapa client order ke nasaq.id' },
+  '/contact': { title: 'Konsultasi', subtitle: 'Ceritakan kebutuhan Anda, kami bantu breakdown scope-nya' },
+  '/order': { title: 'Brief Project', subtitle: 'Kirim kebutuhan awal untuk estimasi dan langkah berikutnya' },
   '/admin/dashboard': { title: 'Admin Dashboard', subtitle: 'Kelola konten nasaq.id' },
   '/admin/pricing': { title: 'Kelola Harga', subtitle: 'Edit paket dan harga' },
   '/admin/services': { title: 'Kelola Layanan', subtitle: 'Edit layanan yang ditawarkan' },
@@ -36,7 +38,7 @@ export const Header = () => {
     const match = Object.entries(pageMeta).find(([key]) =>
       key !== '/' && pathname.startsWith(key)
     );
-    return match ? match[1] : { title: 'nasaq', subtitle: 'Enterprise Portfolio' };
+    return match ? match[1] : { title: 'nasaq.id', subtitle: 'Founder-led digital product studio' };
   })();
 
   return (
@@ -84,15 +86,13 @@ export const Header = () => {
           >
             <Github className="w-[18px] h-[18px]" strokeWidth={1.5} />
           </a>
-          <a
-            href="https://nasaq.id"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/order"
             className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-neutral-400 text-[12px] font-medium text-neutral-900 hover:bg-[#c4956a] hover:text-white hover:border-[#c4956a] transition-all"
           >
-            <span>Hire Me</span>
-            <ExternalLink className="w-3.5 h-3.5" strokeWidth={1.5} />
-          </a>
+            <span>Konsultasi</span>
+            <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.5} />
+          </Link>
         </div>
       </div>
     </header>

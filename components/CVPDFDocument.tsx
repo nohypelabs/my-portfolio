@@ -455,11 +455,11 @@ export default function CVPDFDocument({
         {/* Footer — exact match from web */}
         <View style={s.footer}>
           <Text>
-            Portfolio:{" "}
+            nasaq.id{" "}
             <Link src="https://nasaq.id" style={s.footerLink}>
               nasaq.id
             </Link>{" "}
-            | Created by {personalInfo.name} | 2026
+            | Founder profile by {personalInfo.name} | 2026
           </Text>
         </View>
       </Page>
