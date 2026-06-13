@@ -1,89 +1,78 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file gives current repo guidance for assistants working in this project.
 
 ## Project Overview
 
-Personal portfolio for Abdul Gofur — a Next.js 16 PWA deployed to Vercel at `abdulgofur.vercel.app`. Bilingual (EN/ID), dark/light themed. Compact single-scroll homepage with project showcase, designed for quick recruiter scanning.
+`nasaq.id` is a founder-led digital product studio profile built with Next.js. The site is no longer a generic personal portfolio; the main goal is to convert visitors into consultation and brief submissions through stronger positioning, trust proof, and clear service funnels.
 
 ## Commands
 
 ```bash
-pnpm dev          # Dev server (Turbopack) at localhost:3000
-pnpm build        # Production build
-pnpm start        # Serve production build
-pnpm lint         # ESLint (next/core-web-vitals + typescript)
-npx tsc --noEmit  # Type-check only (no emit)
+pnpm dev
+pnpm build
+pnpm start
+pnpm lint
+npx tsc --noEmit
+pnpm test
+pnpm test:watch
 ```
-
-```bash
-pnpm test         # Vitest — run all tests (data integrity checks)
-pnpm test:watch   # Vitest in watch mode
-```
-
-Tests use Vitest + @testing-library/react + jsdom. Test files live in `test/` (e.g. `test/data.test.ts`). Setup file: `test/setup.ts`. Run a single test file with `pnpm vitest run test/data.test.ts`.
 
 ## Tech Stack
 
-- **Next.js 16** (App Router) with **React 19** and React Compiler enabled
-- **TypeScript 5**, **Tailwind CSS v4** (PostCSS plugin), **Framer Motion** for animations
-- **next-themes** for dark/light mode (class strategy, `.dark` selector)
-- **@ducanh2912/next-pwa** — PWA is disabled in dev, enabled in production
-- **lucide-react** for icons
-- **pnpm** as package manager (not npm)
-- **postgres** (node-postgres) for direct Postgres queries in the live-metrics API route
+- Next.js 16 App Router with React 19 and TypeScript 5
+- Tailwind CSS v4 and Framer Motion
+- `next-themes` for theme support
+- `@ducanh2912/next-pwa` for production PWA support
+- `@react-pdf/renderer` for the founder profile PDF
+- `postgres` for live metrics data access
 
-## Architecture
+## Active Architecture
 
-### Routing (App Router)
+### Routing
 
-`app/(dashboard)/` is a route group that shares a NavBar layout (`app/(dashboard)/layout.tsx`). Pages inside: `page.tsx` (home), `about/`, `blog/`, `blog/[slug]/`, `contact/`, `cv/`, `live/`, `projects/`, `projects/[id]/`, `ongoing/[id]/`. The `(dashboard)` prefix does not appear in URLs. Old routes `/skills`, `/ongoing` redirect to `/` via `next.config.ts`.
+The main site lives under `app/(dashboard)/`. Important business-facing routes include:
 
-`app/layout.tsx` is the root layout — wraps everything in `ThemeProvider` and `LanguageProvider`.
+- `/` for the homepage funnel
+- `/about` for the founder story and trust surface
+- `/services`, `/process`, `/pricing`, `/testimonials`, `/faq`
+- `/contact` and `/order` for consultation and brief flow
+- `/live` for production-proof metrics
+- `/cv` for the Studio Deck / founder profile
+- `/projects`, `/ongoing`, and `/blog` for supporting proof content
 
-Navigation: sticky top NavBar (desktop) + bottom dock (mobile), 4 items: Home, Projects, CV, Contact.
+### Shell
 
-### Data Layer
+`app/(dashboard)/layout.tsx` uses the current sidebar shell:
 
-All portfolio content is static TypeScript in `lib/data/`:
-- `projects.ts` — completed projects (typed as `Project[]` from `lib/domain/entities/Project.ts`)
-- `ongoingProjects.ts` — in-progress projects (typed as `OngoingProject[]`)
-- `personalInfo.ts`, `achievements.ts`, `testimonials.ts`, `blogPosts.ts`, `cvData.ts`
+- `components/layout/Sidebar.tsx`
+- `components/layout/Header.tsx`
+- `components/layout/MobileSidebarWrapper.tsx`
+- `contexts/SidebarContext.tsx`
+- `components/PageTransition.tsx`
 
-Domain entities are in `lib/domain/entities/`. When adding fields to projects, update both the entity interface and the data file.
+Do not reintroduce the old top-nav/footer shell without an explicit product decision.
 
-### i18n
+### Data and Content
 
-Custom implementation (not next-intl). `LanguageContext` holds `"en" | "id"`. All user-facing strings live in `lib/translations/index.ts` as a flat `translations.en` / `translations.id` object. Components access translations via `const { language } = useLanguage(); const t = translations[language];`.
+Shared copy and structured content live in `lib/data/` and `lib/translations/index.ts`.
 
-When adding new UI text, add keys to both `en` and `id` in `lib/translations/index.ts`.
+- `lib/data/personalInfo.ts` now represents founder/studio positioning, not a recruiter-facing bio
+- `lib/data/testimonials.ts`, `projects.ts`, `ongoingProjects.ts`, and `cvData.ts` support trust and proof surfaces
+- When adding UI copy, update both `en` and `id` entries in `lib/translations/index.ts`
 
-### Live Metrics API
+### PDF and SEO
 
-`app/api/live-metrics/route.ts` fetches real-time counts from multiple Supabase projects and a Postgres database (ecommerce). Falls back to hardcoded values if any source is unreachable. Environment variables required: `SERAT_QC_SUPABASE_URL`, `SERAT_QC_SUPABASE_ANON_KEY`, `WC_CHECK_SUPABASE_URL`, `WC_CHECK_SUPABASE_ANON_KEY`, `LAKUPOS_SUPABASE_URL`, `LAKUPOS_SUPABASE_SERVICE_KEY`, `ECOMMERCE_DATABASE_URL`.
+- `app/api/cv/pdf/route.ts` serves the nasaq.id founder profile PDF
+- `components/CVPDFDocument.tsx` renders the PDF content
+- `app/layout.tsx`, `app/sitemap.ts`, `app/robots.ts`, and `public/manifest.json` should stay aligned to `https://nasaq.id`
 
-### CV PDF API
+## UI Direction
 
-`app/api/cv/pdf/route.ts` generates a PDF CV on-the-fly using `@react-pdf/renderer`. The PDF component is in `components/CVPDFDocument.tsx`, data from `lib/data/cvData.ts`.
+- Optimize for clarity, trust, and conversion, not demo-heavy effects
+- Keep the feel closer to a premium studio/company profile than a developer resume
+- Preserve the current funnel direction across homepage, founder, consultation, pricing, and brief surfaces
 
-### Theming
+## Legacy Notes
 
-Dark/light mode uses CSS custom properties defined in `app/globals.css` (`:root` for light, `.dark` for dark). Custom utility classes: `.noise-overlay` (texture), `.glass-card` (frosted glass effect).
-
-### Component Organization
-
-- `components/layout/` — NavBar (top nav + mobile bottom dock), Footer, ThemeProvider, ThemeToggle
-- `components/sections/` — homepage sections (FeaturedProjects, TechStackStrip, OngoingStrip, ContactSection)
-- `components/ui/` — reusable cards (ProjectCard, TechBadge)
-- `components/` (root) — cross-cutting features (CommandPalette, AvatarImage, LanguageSwitcher, PWAInstallPrompt, ScrollReveal, TextReveal, TiltCard, Marquee, HeroBackground)
-
-### Key Patterns
-
-- Nearly all components are `"use client"` — the app is client-rendered with motion animations
-- `CommandPalette` (Ctrl+K) provides keyboard-driven navigation across all pages and projects
-- `ScrollReveal` and `TextReveal` wrap content in intersection-observer-based reveal animations
-- `HeroBackground` provides the animated gradient on the home page hero
-
-## Deployment
-
-Vercel. `app/sitemap.ts` and `app/robots.ts` generate SEO files referencing `https://abdulgofur.vercel.app`.
+The old portfolio-era shell pieces and recruiter-style enhancements are intentionally deprecated. If they resurface in docs or new code, treat that as drift and verify whether the current layout still uses them before expanding the feature set.

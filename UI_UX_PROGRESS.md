@@ -1,48 +1,46 @@
-# UI/UX Improvement Plan
+# UI/UX Snapshot
 
-## Session 1 — WOW Factor (Core Visual Impact)
-- [x] Page Transitions (route animation with AnimatePresence)
-- [x] 3D Tilt Card Hover (Featured Projects — desktop)
-- [x] Animated Background di Hero (subtle mesh/dot grid)
-- [x] Dock-Style Bottom Nav (macOS magnification effect)
+This file tracks the current direction of the nasaq.id surface. It is no longer a historical checklist of experimental portfolio effects.
 
-## Session 2 — Polish & Professional Feel
-- [x] Skeleton Loading (Live Metrics shimmer)
-- [x] Scroll Progress Bar (emerald thin line di top)
-- [x] Staggered Text Reveal (Hero headline per-word)
-- [x] Animated Skill Bars (About page — fill on scroll)
+## Current Product Direction
 
-## Session 3 — Power User & Finishing Touch
-- [x] Command Palette (Cmd+K quick navigation)
-- [x] Scroll-Driven Section Reveals (parallax offset)
-- [x] Custom Cursor (desktop — shape shift on hover)
-- [x] Noise Texture + Glassmorphism Cards
+- Reposition the site as a founder-led digital product studio
+- Make the company profile easier to trust and easier to order from
+- Prioritize narrative clarity, credibility, and conversion over decorative UI volume
 
----
+## Active Conversion Surfaces
 
-## Progress Log
+- Homepage funnel in `app/(dashboard)/page.tsx`
+- Hero messaging in `components/sections/HeroSection.tsx`
+- Founder trust page in `app/(dashboard)/about/page.tsx`
+- Consultation page in `app/(dashboard)/contact/page.tsx`
+- Live proof page in `app/(dashboard)/live/page.tsx`
+- Studio Deck in `app/(dashboard)/cv/page.tsx`
+- Pricing, process, services, testimonials, faq, and order routes as supporting decision pages
 
-### Session 1 — COMPLETED (2026-05-03)
-- `components/PageTransition.tsx` — smooth fade+slide on route changes
-- `components/TiltCard.tsx` — 3D perspective tilt following mouse on desktop
-- `components/HeroBackground.tsx` — animated dot network with emerald connections (canvas)
-- `components/layout/BottomNav.tsx` — macOS dock magnification, spring physics, glow effect
-- `app/(dashboard)/layout.tsx` — integrated PageTransition wrapper
-- `app/(dashboard)/page.tsx` — integrated HeroBackground + TiltCard on featured projects
+## Active Shell
 
-### Session 2 — COMPLETED (2026-05-03)
-- `components/ScrollProgress.tsx` — emerald scroll progress bar at top of page
-- `components/TextReveal.tsx` — per-word staggered blur-to-sharp text animation
-- `components/sections/LiveMetrics.tsx` — skeleton shimmer loading state before data arrives
-- `app/(dashboard)/about/page.tsx` — animated skill bars with color-coded fill on scroll
-- `app/globals.css` — added shimmer keyframe animation
-- `app/(dashboard)/layout.tsx` — integrated ScrollProgress
+- `app/(dashboard)/layout.tsx`
+- `components/layout/Sidebar.tsx`
+- `components/layout/Header.tsx`
+- `components/layout/MobileSidebarWrapper.tsx`
+- `components/PageTransition.tsx`
 
-### Session 3 — COMPLETED (2026-05-03)
-- `components/CommandPalette.tsx` — Cmd+K quick nav with search, keyboard nav, grouped results
-- `components/ScrollReveal.tsx` — scroll-triggered fade+slide animation wrapper
-- `components/CustomCursor.tsx` — emerald ring cursor that expands on interactive elements (desktop only)
-- `components/layout/TopBar.tsx` — added Cmd+K search hint button
-- `app/globals.css` — noise texture overlay, glassmorphism card class
-- `app/(dashboard)/page.tsx` — noise on hero/CTA, ScrollReveal on lower sections
-- `components/sections/LiveMetrics.tsx` — noise overlay on section
+## Reusable Visual Helpers Still In Play
+
+- `components/ScrollReveal.tsx`
+- `components/TextReveal.tsx`
+- `components/TiltCard.tsx`
+- `components/HeroBackground.tsx`
+
+These support the presentation, but they are secondary to trust, readability, and CTA clarity.
+
+## Legacy Cleanup Status
+
+The repo has moved away from several older portfolio-era pieces such as recruiter-style shell components, global novelty effects, and dead backup pages. Keep future polish aligned with the current studio funnel instead of reviving unused experiments.
+
+## Next Polish Priorities
+
+- Tighten case-study storytelling and before/after proof
+- Improve mobile spacing and CTA consistency
+- Keep founder credibility, offer clarity, and order flow aligned across pages
