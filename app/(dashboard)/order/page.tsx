@@ -89,8 +89,8 @@ function OrderForm() {
     return (
       <motion.div variants={staggerContainer} initial="initial" animate="animate" className="max-w-lg mx-auto text-center py-16">
         <motion.div variants={fadeInUp}>
-          <div className="w-16 h-16 rounded-full bg-[#0D9488]/10 flex items-center justify-center mx-auto mb-5">
-            <CheckCircle className="w-8 h-8 text-[#0D9488]" />
+          <div className="w-16 h-16 rounded-full bg-[#c4956a]/10 flex items-center justify-center mx-auto mb-5">
+            <CheckCircle className="w-8 h-8 text-[#c4956a]" />
           </div>
           <h1 className="text-[20px] font-semibold text-neutral-900 mb-2">Pesanan Terkirim!</h1>
           <p className="text-[13px] text-neutral-500 mb-6">
@@ -98,7 +98,7 @@ function OrderForm() {
           </p>
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0D9488] text-white rounded-lg text-[13px] font-medium hover:bg-[#0F766E] transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#c4956a] text-white rounded-lg text-[13px] font-medium hover:bg-[#a67d55] transition-colors"
           >
             <ArrowLeft className="w-4 h-4" /> Kembali ke Dashboard
           </Link>
@@ -111,7 +111,7 @@ function OrderForm() {
     <motion.div variants={staggerContainer} initial="initial" animate="animate" className="max-w-2xl mx-auto space-y-8">
       {/* Header */}
       <motion.div variants={fadeInUp}>
-        <Link href="/pricing" className="inline-flex items-center gap-1.5 text-[12px] text-neutral-500 hover:text-[#0D9488] mb-4 transition-colors">
+        <Link href="/pricing" className="inline-flex items-center gap-1.5 text-[12px] text-neutral-500 hover:text-[#c4956a] mb-4 transition-colors">
           <ArrowLeft className="w-3.5 h-3.5" /> Kembali ke Harga
         </Link>
         <h1 className="text-[22px] font-semibold text-neutral-900 mb-2">Pesan Layanan</h1>
@@ -128,7 +128,7 @@ function OrderForm() {
       )}
 
       {/* Form */}
-      <motion.form variants={fadeInUp} onSubmit={handleSubmit} className="bg-white border border-neutral-200 rounded-xl p-6 space-y-5">
+      <motion.form variants={fadeInUp} onSubmit={handleSubmit} className="bg-[#f7f3e8] border border-neutral-200 rounded-xl p-6 space-y-5">
         {/* Name */}
         <div>
           <label className="block text-[12px] font-medium text-neutral-700 mb-1.5">Nama Lengkap *</label>
@@ -137,7 +137,7 @@ function OrderForm() {
             required
             value={form.customer_name}
             onChange={e => setForm({ ...form, customer_name: e.target.value })}
-            className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20 transition-colors"
+            className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors"
             placeholder="John Doe"
           />
         </div>
@@ -151,7 +151,7 @@ function OrderForm() {
               required
               value={form.customer_email}
               onChange={e => setForm({ ...form, customer_email: e.target.value })}
-              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20 transition-colors"
+              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors"
               placeholder="john@email.com"
             />
           </div>
@@ -161,7 +161,7 @@ function OrderForm() {
               type="tel"
               value={form.customer_phone}
               onChange={e => setForm({ ...form, customer_phone: e.target.value })}
-              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20 transition-colors"
+              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors"
               placeholder="+62812345678"
             />
           </div>
@@ -174,7 +174,7 @@ function OrderForm() {
             <select
               value={form.service_id}
               onChange={e => setForm({ ...form, service_id: e.target.value })}
-              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20 transition-colors bg-white"
+              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors bg-[#f7f3e8]"
             >
               <option value="">Pilih layanan</option>
               {services.map(s => (
@@ -187,7 +187,7 @@ function OrderForm() {
             <select
               value={form.package_id}
               onChange={e => setForm({ ...form, package_id: e.target.value })}
-              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20 transition-colors bg-white"
+              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors bg-[#f7f3e8]"
             >
               <option value="">Pilih paket</option>
               {packages.map(p => (
@@ -204,7 +204,7 @@ function OrderForm() {
             <select
               value={form.budget_range}
               onChange={e => setForm({ ...form, budget_range: e.target.value })}
-              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20 transition-colors bg-white"
+              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors bg-[#f7f3e8]"
             >
               <option value="">Pilih range</option>
               <option value="< 5jt">&lt; Rp 5jt</option>
@@ -219,7 +219,7 @@ function OrderForm() {
             <select
               value={form.timeline}
               onChange={e => setForm({ ...form, timeline: e.target.value })}
-              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20 transition-colors bg-white"
+              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors bg-[#f7f3e8]"
             >
               <option value="">Pilih timeline</option>
               <option value="1-2 minggu">1-2 minggu</option>
@@ -239,7 +239,7 @@ function OrderForm() {
             rows={5}
             value={form.project_description}
             onChange={e => setForm({ ...form, project_description: e.target.value })}
-            className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20 transition-colors resize-none"
+            className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors resize-none"
             placeholder="Jelaskan project yang ingin Anda bangun. Masalah apa yang ingin diselesaikan? Fitur apa saja yang dibutuhkan?"
           />
         </div>
@@ -248,7 +248,7 @@ function OrderForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full flex items-center justify-center gap-2 py-3 bg-[#0D9488] text-white rounded-lg text-[13px] font-medium hover:bg-[#0F766E] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full flex items-center justify-center gap-2 py-3 bg-[#c4956a] text-white rounded-lg text-[13px] font-medium hover:bg-[#a67d55] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {loading ? (
             <><Loader2 className="w-4 h-4 animate-spin" /> Mengirim...</>
@@ -263,7 +263,7 @@ function OrderForm() {
 
 export default function OrderPage() {
   return (
-    <Suspense fallback={<div className="flex items-center justify-center py-16"><Loader2 className="w-6 h-6 animate-spin text-[#0D9488]" /></div>}>
+    <Suspense fallback={<div className="flex items-center justify-center py-16"><Loader2 className="w-6 h-6 animate-spin text-[#c4956a]" /></div>}>
       <OrderForm />
     </Suspense>
   );

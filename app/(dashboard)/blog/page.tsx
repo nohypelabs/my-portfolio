@@ -32,11 +32,11 @@ export default function BlogPage() {
           <ScrollReveal key={post.slug}>
             <Link
               href={`/blog/${post.slug}`}
-              className="group block bg-[#FAFAFA] border border-neutral-400 rounded-[35px] p-5 hover:border-[#0D9488]/30 hover:shadow-sm transition-all"
+              className="group block bg-[#FAFAFA] border border-neutral-400 rounded-[35px] p-5 hover:border-[#c4956a]/30 hover:shadow-sm transition-all"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
-                  <h2 className="font-bold text-neutral-900 group-hover:text-[#0D9488] transition-colors mb-2">
+                  <h2 className="font-bold text-neutral-900 group-hover:text-[#c4956a] transition-colors mb-2">
                     {post.title}
                   </h2>
                   <p className="text-sm text-neutral-500 mb-3 line-clamp-2">
@@ -67,7 +67,7 @@ export default function BlogPage() {
                     </div>
                   </div>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-[#0D9488] transition-colors shrink-0 mt-1" />
+                <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-[#c4956a] transition-colors shrink-0 mt-1" />
               </div>
             </Link>
           </ScrollReveal>

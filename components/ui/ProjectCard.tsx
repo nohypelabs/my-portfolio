@@ -33,7 +33,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
     >
       <Link
         href={`/projects/${project.id}`}
-        className="group block bg-[#FAFAFA] rounded-2xl border border-neutral-300 overflow-hidden hover:border-[#0D9488]/40 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
+        className="group block bg-[#FAFAFA] rounded-2xl border border-neutral-300 overflow-hidden hover:border-[#c4956a]/40 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300"
       >
         {/* Image */}
         <div className="aspect-video relative overflow-hidden bg-neutral-100">
@@ -57,7 +57,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
           {/* Arrow */}
           <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-            <div className="w-7 h-7 rounded-full bg-white/90 flex items-center justify-center">
+            <div className="w-7 h-7 rounded-full bg-[#f7f3e8]/90 flex items-center justify-center">
               <ArrowUpRight className="w-3.5 h-3.5 text-neutral-900" />
             </div>
           </div>
@@ -66,7 +66,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         {/* Content */}
         <div className="p-4 space-y-3">
           <div>
-            <h3 className="font-bold text-sm text-neutral-900 group-hover:text-[#0D9488] transition-colors mb-1">
+            <h3 className="font-bold text-sm text-neutral-900 group-hover:text-[#c4956a] transition-colors mb-1">
               {project.title}
             </h3>
             <p className="text-xs text-neutral-500 line-clamp-2 leading-relaxed">
@@ -76,7 +76,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
           {/* Impact metric */}
           {impactLabel && (
-            <div className="flex items-center gap-1.5 text-[10px] text-[#0D9488] font-medium">
+            <div className="flex items-center gap-1.5 text-[10px] text-[#c4956a] font-medium">
               <TrendingUp className="w-3 h-3" />
               <span className="truncate">{impactLabel}</span>
             </div>

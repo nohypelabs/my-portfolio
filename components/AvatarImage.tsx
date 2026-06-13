@@ -24,7 +24,7 @@ export function AvatarImage({ className = "", size = 40, priority = false }: Ava
       >
         <Image
           src="/avatar.jpg"
-          alt="Abdul Gofur"
+          alt="nasaq.id"
           fill
           className="object-cover"
           sizes={`${size}px`}
@@ -45,7 +45,7 @@ export function AvatarImage({ className = "", size = 40, priority = false }: Ava
             {/* Close Button */}
             <button
               onClick={() => setIsOpen(false)}
-              className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              className="absolute top-4 right-4 p-2 rounded-full bg-[#f7f3e8]/10 hover:bg-[#f7f3e8]/20 transition-colors"
               aria-label="Close"
             >
               <X className="w-6 h-6 text-white" />
@@ -62,7 +62,7 @@ export function AvatarImage({ className = "", size = 40, priority = false }: Ava
             >
               <Image
                 src="/avatar.jpg"
-                alt="Abdul Gofur - Full size"
+                alt="nasaq.id - Full size"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 672px"

@@ -46,7 +46,7 @@ export function ProjectMosaic() {
                     {project.tag}
                   </p>
                 </div>
-                <div className="w-1.5 h-1.5 rounded-full bg-[#0D9488]" />
+                <div className="w-1.5 h-1.5 rounded-full bg-[#c4956a]" />
               </div>
             </div>
 

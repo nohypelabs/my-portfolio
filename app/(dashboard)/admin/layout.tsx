@@ -36,7 +36,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <Loader2 className="w-6 h-6 animate-spin text-[#0D9488]" />
+        <Loader2 className="w-6 h-6 animate-spin text-[#c4956a]" />
       </div>
     );
   }

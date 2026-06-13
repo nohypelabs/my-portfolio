@@ -25,9 +25,9 @@ export function ClientLogos() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.06 }}
-            className="flex items-center gap-2 px-4 py-2.5 bg-[#FAFAFA] border border-neutral-200 rounded-lg hover:border-[#0D9488]/30 transition-all group"
+            className="flex items-center gap-2 px-4 py-2.5 bg-[#FAFAFA] border border-neutral-200 rounded-lg hover:border-[#c4956a]/30 transition-all group"
           >
-            <div className="w-7 h-7 rounded-md bg-[#0D9488]/10 flex items-center justify-center text-[10px] font-bold text-[#0D9488] group-hover:bg-[#0D9488]/15 transition-colors">
+            <div className="w-7 h-7 rounded-md bg-[#c4956a]/10 flex items-center justify-center text-[10px] font-bold text-[#c4956a] group-hover:bg-[#c4956a]/15 transition-colors">
               {client.initial}
             </div>
             <span className="text-[12px] font-medium text-neutral-600 group-hover:text-neutral-900 transition-colors">

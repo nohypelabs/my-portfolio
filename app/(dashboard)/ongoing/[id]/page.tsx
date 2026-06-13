@@ -22,8 +22,8 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
   }
 
   const statusColors = {
-    'Planning': { bg: 'bg-[#FAFAFA]', text: 'text-[#0D9488]' },
-    'In Progress': { bg: 'bg-[#FAFAFA]', text: 'text-[#0D9488]' },
+    'Planning': { bg: 'bg-[#FAFAFA]', text: 'text-[#c4956a]' },
+    'In Progress': { bg: 'bg-[#FAFAFA]', text: 'text-[#c4956a]' },
     'On Hold': { bg: 'bg-yellow-100', text: 'text-yellow-600' }
   };
 
@@ -66,14 +66,14 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div className="flex items-center gap-3">
-            <Calendar className="w-5 h-5 text-[#0D9488]" />
+            <Calendar className="w-5 h-5 text-[#c4956a]" />
             <div>
               <p className="text-sm text-neutral-500">{t.startDate}</p>
               <p className="font-medium">{project.startDate}</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <Clock className="w-5 h-5 text-[#0D9488]" />
+            <Clock className="w-5 h-5 text-[#c4956a]" />
             <div>
               <p className="text-sm text-neutral-500">{t.estimatedCompletion}</p>
               <p className="font-medium">{project.estimatedCompletion}</p>
@@ -85,14 +85,14 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
           <div>
             <div className="flex justify-between mb-2">
               <span className="text-sm font-medium">{t.overallProgress}</span>
-              <span className="text-sm font-bold text-[#0D9488]">{project.progress}%</span>
+              <span className="text-sm font-bold text-[#c4956a]">{project.progress}%</span>
             </div>
             <div className="w-full bg-border rounded-full h-3">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${project.progress}%` }}
                 transition={{ duration: 1, delay: 0.3 }}
-                className="bg-gradient-to-r from-[#0D9488] to-[#14B8A6] h-3 rounded-full"
+                className="bg-gradient-to-r from-[#c4956a] to-[#d4aa82] h-3 rounded-full"
               />
             </div>
           </div>
@@ -108,7 +108,7 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
           className="bg-[#FAFAFA] rounded-[35px] p-6 border border-neutral-400"
         >
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-            <Target className="w-6 h-6 text-[#0D9488]" />
+            <Target className="w-6 h-6 text-[#c4956a]" />
             {t.keyGoals}
           </h2>
           <ul className="space-y-3">
@@ -120,7 +120,7 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
                 transition={{ delay: 0.3 + idx * 0.1 }}
                 className="flex items-start gap-3"
               >
-                <div className="w-2 h-2 rounded-full bg-[#0D9488] mt-2" />
+                <div className="w-2 h-2 rounded-full bg-[#c4956a] mt-2" />
                 <span>{goal}</span>
               </motion.li>
             ))}
@@ -150,9 +150,9 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
         transition={{ delay: 0.5 }}
         className={`rounded-xl p-6 ${
           project.status === 'In Progress'
-            ? 'bg-gradient-to-br from-[#0D9488] to-[#14B8A6]'
+            ? 'bg-gradient-to-br from-[#c4956a] to-[#d4aa82]'
             : project.status === 'Planning'
-            ? 'bg-gradient-to-br from-[#0D9488] to-[#99F6E4]'
+            ? 'bg-gradient-to-br from-[#c4956a] to-[#d4aa82]'
             : 'bg-gradient-to-br from-yellow-600 to-orange-600'
         } text-white`}
       >

@@ -337,7 +337,7 @@ export default function CVPDFDocument({
   translations: t,
   baseUrl = "",
 }: Props) {
-  const photoUrl = `${baseUrl}/picture/abdulgofur-photo.png`;
+  const photoUrl = `${baseUrl}/picture/nasaq-id-photo.png`;
   const productionProjects = projects.filter((p) => p.status === "production");
 
   return (
@@ -456,8 +456,8 @@ export default function CVPDFDocument({
         <View style={s.footer}>
           <Text>
             Portfolio:{" "}
-            <Link src="https://abdulgofur-builder.vercel.app" style={s.footerLink}>
-              abdulgofur-builder.vercel.app
+            <Link src="https://nasaq.id" style={s.footerLink}>
+              nasaq.id
             </Link>{" "}
             | Created by {personalInfo.name} | 2026
           </Text>

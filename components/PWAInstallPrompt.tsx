@@ -94,14 +94,14 @@ export function PWAInstallPrompt() {
         <div className="bg-gradient-to-br from-emerald-500 to-teal-500 rounded-2xl shadow-2xl p-6 text-white">
           <button
             onClick={handleDismiss}
-            className="absolute top-3 right-3 p-1 hover:bg-white/20 rounded-full transition-colors"
+            className="absolute top-3 right-3 p-1 hover:bg-[#f7f3e8]/20 rounded-full transition-colors"
             aria-label="Dismiss"
           >
             <X className="w-5 h-5" />
           </button>
 
           <div className="flex items-start gap-4">
-            <div className="p-3 bg-white/20 rounded-xl shrink-0">
+            <div className="p-3 bg-[#f7f3e8]/20 rounded-xl shrink-0">
               <Download className="w-6 h-6" />
             </div>
 
@@ -126,7 +126,7 @@ export function PWAInstallPrompt() {
               {!isIOS && deferredPrompt && (
                 <button
                   onClick={handleInstallClick}
-                  className="mt-3 px-4 py-2 bg-white text-emerald-600 rounded-lg font-semibold hover:bg-neutral-100 transition-colors text-sm"
+                  className="mt-3 px-4 py-2 bg-[#f7f3e8] text-emerald-600 rounded-lg font-semibold hover:bg-neutral-100 transition-colors text-sm"
                 >
                   Install Now
                 </button>

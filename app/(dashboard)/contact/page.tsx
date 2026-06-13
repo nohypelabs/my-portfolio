@@ -46,7 +46,7 @@ const socialLinks = [
     name: "LinkedIn",
     icon: Linkedin,
     url: personalInfo.contact.linkedin,
-    handle: "Abdul Gofur",
+    handle: "nasaq.id",
     color: "blue",
   },
   {
@@ -59,8 +59,8 @@ const socialLinks = [
 ];
 
 const colorMap: Record<string, { icon: string; hover: string; bg: string; ring: string }> = {
-  green: { icon: "text-green-600", hover: "hover:border-neutral-400", bg: "bg-[#FAFAFA]", ring: "ring-[#0D9488]/20" },
-  emerald: { icon: "text-[#0D9488]", hover: "hover:border-neutral-400", bg: "bg-[#FAFAFA]", ring: "ring-[#0D9488]/20" },
+  green: { icon: "text-green-600", hover: "hover:border-neutral-400", bg: "bg-[#FAFAFA]", ring: "ring-[#c4956a]/20" },
+  emerald: { icon: "text-[#c4956a]", hover: "hover:border-neutral-400", bg: "bg-[#FAFAFA]", ring: "ring-[#c4956a]/20" },
   blue: { icon: "text-blue-600", hover: "hover:border-neutral-400", bg: "bg-blue-50", ring: "ring-blue-500/20" },
   zinc: { icon: "text-neutral-700", hover: "hover:border-neutral-400", bg: "bg-neutral-100", ring: "ring-neutral-300" },
 };
@@ -86,7 +86,7 @@ export default function ContactPage() {
         animate={{ opacity: 1, y: 0 }}
         className="text-center"
       >
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAFAFA] border border-[#0D9488]/20 text-[#0D9488] text-xs font-semibold mb-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAFAFA] border border-[#c4956a]/20 text-[#c4956a] text-xs font-semibold mb-4">
           <Rocket className="w-3.5 h-3.5" />
           {language === "en" ? "Let's connect" : "Mari terhubung"}
         </div>
@@ -104,9 +104,9 @@ export default function ContactPage() {
         className="grid grid-cols-1 sm:grid-cols-3 gap-3"
       >
         <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#FAFAFA] border border-neutral-400">
-          <Circle className="w-3 h-3 text-[#0D9488] fill-[#0D9488] animate-pulse" />
+          <Circle className="w-3 h-3 text-[#c4956a] fill-[#c4956a] animate-pulse" />
           <div>
-            <p className="text-xs font-semibold text-[#0D9488]">
+            <p className="text-xs font-semibold text-[#c4956a]">
               {language === "en" ? "Available now" : "Tersedia sekarang"}
             </p>
             <p className="text-[10px] text-neutral-500">
@@ -168,7 +168,7 @@ export default function ContactPage() {
                       title={copied ? "Copied!" : "Copy email"}
                     >
                       {copied ? (
-                        <Check className="w-3.5 h-3.5 text-[#0D9488]" />
+                        <Check className="w-3.5 h-3.5 text-[#c4956a]" />
                       ) : (
                         <Copy className="w-3.5 h-3.5 text-neutral-500" />
                       )}
@@ -220,7 +220,7 @@ export default function ContactPage() {
                 name="name"
                 required
                 placeholder={language === "en" ? "Your name" : "Nama kamu"}
-                className="w-full px-3 py-2 rounded-xl border border-neutral-400 bg-white text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0D9488]/50 focus:border-[#0D9488]"
+                className="w-full px-3 py-2 rounded-xl border border-neutral-400 bg-[#f7f3e8] text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#c4956a]/50 focus:border-[#c4956a]"
               />
             </div>
             <div>
@@ -232,7 +232,7 @@ export default function ContactPage() {
                 name="email"
                 required
                 placeholder="you@example.com"
-                className="w-full px-3 py-2 rounded-xl border border-neutral-400 bg-white text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0D9488]/50 focus:border-[#0D9488]"
+                className="w-full px-3 py-2 rounded-xl border border-neutral-400 bg-[#f7f3e8] text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#c4956a]/50 focus:border-[#c4956a]"
               />
             </div>
           </div>
@@ -245,12 +245,12 @@ export default function ContactPage() {
               required
               rows={4}
               placeholder={language === "en" ? "Tell me about your project..." : "Ceritakan tentang project kamu..."}
-              className="w-full px-3 py-2 rounded-xl border border-neutral-400 bg-white text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#0D9488]/50 focus:border-[#0D9488] resize-none"
+              className="w-full px-3 py-2 rounded-xl border border-neutral-400 bg-[#f7f3e8] text-sm text-neutral-900 placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-[#c4956a]/50 focus:border-[#c4956a] resize-none"
             />
           </div>
           <button
             type="submit"
-            className="w-full sm:w-auto px-6 py-2.5 bg-[#0D9488] hover:bg-[#0F766E] text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-[#0D9488]/20"
+            className="w-full sm:w-auto px-6 py-2.5 bg-[#c4956a] hover:bg-[#a67d55] text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-[#c4956a]/20"
           >
             {language === "en" ? "Send Message" : "Kirim Pesan"}
           </button>
@@ -270,14 +270,14 @@ export default function ContactPage() {
           data-size="medium"
           data-theme="light"
           data-type="VERTICAL"
-          data-vanity="abdul-gofur-505345344"
+          data-vanity="nasaq-id"
           data-version="v1"
         >
           <a
             className="badge-base__link LI-simple-link"
             href="https://id.linkedin.com/in/abdul-gofur-505345344?trk=profile-badge"
           >
-            Abdul Gofur
+            nasaq.id
           </a>
         </div>
         <Script src="https://platform.linkedin.com/badges/js/profile.js" strategy="lazyOnload" />
@@ -290,8 +290,8 @@ export default function ContactPage() {
         transition={{ delay: 0.4 }}
         className="relative overflow-hidden bg-[#FAFAFA] rounded-[35px] border border-neutral-400"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[#0D9488]/5 via-transparent to-transparent" />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-[#0D9488]/30 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[#c4956a]/5 via-transparent to-transparent" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-[#c4956a]/30 to-transparent" />
 
         <div className="relative p-8 md:p-10 text-center">
           <h2 className="text-2xl font-bold text-neutral-900 mb-2">{t.letsBuildTogether}</h2>
@@ -300,7 +300,7 @@ export default function ContactPage() {
           </p>
           <a
             href={`mailto:${personalInfo.contact.email}`}
-            className="group inline-flex items-center gap-2 px-6 py-3 bg-[#0D9488] hover:bg-[#0F766E] text-white rounded-xl font-semibold transition-all shadow-lg shadow-[#0D9488]/20 hover:shadow-[#0D9488]/30"
+            className="group inline-flex items-center gap-2 px-6 py-3 bg-[#c4956a] hover:bg-[#a67d55] text-white rounded-xl font-semibold transition-all shadow-lg shadow-[#c4956a]/20 hover:shadow-[#c4956a]/30"
           >
             <Mail className="w-4 h-4" />
             {t.sendMeEmail}

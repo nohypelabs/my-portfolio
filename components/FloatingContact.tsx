@@ -6,7 +6,7 @@ import { MessageCircle, Mail, X } from "lucide-react";
 import { personalInfo } from "@/lib/data/personalInfo";
 
 const waNumber = personalInfo.contact.phone.replace(/^0/, "62");
-const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent("Hi Abdul, I saw your portfolio and would like to connect!")}`;
+const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent("Hi nasaq.id, I saw your portfolio and would like to connect!")}`;
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -94,7 +94,7 @@ export function FloatingContact() {
             className={`p-3.5 rounded-full text-white shadow-lg transition-all duration-300 ${
               open
                 ? "bg-neutral-900 hover:bg-neutral-800 shadow-neutral-900/30 rotate-0"
-                : "bg-[#0D9488] hover:bg-[#14B8A6] shadow-[#0D9488]/30"
+                : "bg-[#c4956a] hover:bg-[#d4aa82] shadow-[#c4956a]/30"
             }`}
             aria-label={open ? "Close contact menu" : "Open contact menu"}
           >

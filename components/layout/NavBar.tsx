@@ -156,7 +156,7 @@ export function NavBar() {
             <AvatarImage size={32} priority />
             <div>
               <h1 className="text-sm font-bold text-foreground leading-none">
-                Abdul Gofur
+                nasaq.id
               </h1>
               <p className="text-[11px] text-muted leading-none mt-0.5">
                 {t.fullstackDev}
@@ -205,7 +205,7 @@ export function NavBar() {
           <Link href="/" className="flex items-center gap-2.5">
             <AvatarImage size={28} priority />
             <h1 className="text-sm font-bold text-foreground">
-              Abdul Gofur
+              nasaq.id
             </h1>
           </Link>
           <div className="flex items-center gap-2">

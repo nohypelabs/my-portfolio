@@ -80,19 +80,19 @@ export default function AdminTestimonialsPage() {
   };
 
   if (loading) {
-    return <div className="flex items-center justify-center min-h-[60vh]"><Loader2 className="w-6 h-6 animate-spin text-[#0D9488]" /></div>;
+    return <div className="flex items-center justify-center min-h-[60vh]"><Loader2 className="w-6 h-6 animate-spin text-[#c4956a]" /></div>;
   }
 
   return (
     <motion.div variants={staggerContainer} initial="initial" animate="animate" className="space-y-8">
       <motion.div variants={fadeInUp} className="flex items-center justify-between">
         <div>
-          <Link href="/admin/dashboard" className="inline-flex items-center gap-1.5 text-[12px] text-neutral-500 hover:text-[#0D9488] mb-2 transition-colors">
+          <Link href="/admin/dashboard" className="inline-flex items-center gap-1.5 text-[12px] text-neutral-500 hover:text-[#c4956a] mb-2 transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" /> Dashboard
           </Link>
           <h1 className="text-[20px] font-semibold text-neutral-900">Kelola Testimoni</h1>
         </div>
-        <button onClick={addTestimonial} className="flex items-center gap-1.5 px-3 py-2 bg-[#0D9488] text-white rounded-lg text-[12px] font-medium hover:bg-[#0F766E] transition-colors">
+        <button onClick={addTestimonial} className="flex items-center gap-1.5 px-3 py-2 bg-[#c4956a] text-white rounded-lg text-[12px] font-medium hover:bg-[#a67d55] transition-colors">
           <Plus className="w-3.5 h-3.5" /> Tambah
         </button>
       </motion.div>
@@ -106,7 +106,7 @@ export default function AdminTestimonialsPage() {
 
       <div className="space-y-4">
         {testimonials.map((t) => (
-          <motion.div key={t.id} variants={fadeInUp} className="bg-white border border-neutral-200 rounded-xl p-5">
+          <motion.div key={t.id} variants={fadeInUp} className="bg-[#f7f3e8] border border-neutral-200 rounded-xl p-5">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <div className="flex gap-0.5">
@@ -114,11 +114,11 @@ export default function AdminTestimonialsPage() {
                     <Star key={i} className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
                   ))}
                 </div>
-                {t.is_featured && <span className="text-[10px] font-medium text-[#0D9488] bg-[#0D9488]/10 px-2 py-0.5 rounded-full">Featured</span>}
+                {t.is_featured && <span className="text-[10px] font-medium text-[#c4956a] bg-[#c4956a]/10 px-2 py-0.5 rounded-full">Featured</span>}
               </div>
               <div className="flex items-center gap-2">
                 <button onClick={() => saveTestimonial(t)} disabled={saving === t.id}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0D9488] text-white rounded-lg text-[11px] font-medium hover:bg-[#0F766E] transition-colors disabled:opacity-50">
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-[#c4956a] text-white rounded-lg text-[11px] font-medium hover:bg-[#a67d55] transition-colors disabled:opacity-50">
                   {saving === t.id ? <Loader2 className="w-3 h-3 animate-spin" /> : <Save className="w-3 h-3" />} Simpan
                 </button>
                 <button onClick={() => deleteTestimonial(t.id)} className="p-1.5 text-neutral-400 hover:text-red-500 transition-colors">
@@ -129,29 +129,29 @@ export default function AdminTestimonialsPage() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
               <input type="text" value={t.name} onChange={e => updateField(t.id, 'name', e.target.value)} placeholder="Nama"
-                className="px-3 py-2 border border-neutral-300 rounded-lg text-[12px] focus:outline-none focus:border-[#0D9488]" />
+                className="px-3 py-2 border border-neutral-300 rounded-lg text-[12px] focus:outline-none focus:border-[#c4956a]" />
               <input type="text" value={t.position || ''} onChange={e => updateField(t.id, 'position', e.target.value)} placeholder="Posisi"
-                className="px-3 py-2 border border-neutral-300 rounded-lg text-[12px] focus:outline-none focus:border-[#0D9488]" />
+                className="px-3 py-2 border border-neutral-300 rounded-lg text-[12px] focus:outline-none focus:border-[#c4956a]" />
               <input type="text" value={t.company || ''} onChange={e => updateField(t.id, 'company', e.target.value)} placeholder="Perusahaan"
-                className="px-3 py-2 border border-neutral-300 rounded-lg text-[12px] focus:outline-none focus:border-[#0D9488]" />
+                className="px-3 py-2 border border-neutral-300 rounded-lg text-[12px] focus:outline-none focus:border-[#c4956a]" />
             </div>
 
             <textarea value={t.content} onChange={e => updateField(t.id, 'content', e.target.value)} rows={2} placeholder="Isi testimoni..."
-              className="w-full px-3 py-2 border border-neutral-300 rounded-lg text-[12px] focus:outline-none focus:border-[#0D9488] resize-none mb-3" />
+              className="w-full px-3 py-2 border border-neutral-300 rounded-lg text-[12px] focus:outline-none focus:border-[#c4956a] resize-none mb-3" />
 
             <div className="flex items-center gap-4">
               <label className="flex items-center gap-2 text-[11px] text-neutral-700 cursor-pointer">
                 <input type="checkbox" checked={t.is_featured} onChange={e => updateField(t.id, 'is_featured', e.target.checked)}
-                  className="w-3.5 h-3.5 rounded border-neutral-300 text-[#0D9488]" /> Featured
+                  className="w-3.5 h-3.5 rounded border-neutral-300 text-[#c4956a]" /> Featured
               </label>
               <label className="flex items-center gap-2 text-[11px] text-neutral-700 cursor-pointer">
                 <input type="checkbox" checked={t.is_active} onChange={e => updateField(t.id, 'is_active', e.target.checked)}
-                  className="w-3.5 h-3.5 rounded border-neutral-300 text-[#0D9488]" /> Aktif
+                  className="w-3.5 h-3.5 rounded border-neutral-300 text-[#c4956a]" /> Aktif
               </label>
               <div className="flex items-center gap-1">
                 <span className="text-[11px] text-neutral-500">Rating:</span>
                 <select value={t.rating} onChange={e => updateField(t.id, 'rating', parseInt(e.target.value))}
-                  className="px-2 py-1 border border-neutral-300 rounded text-[11px] focus:outline-none focus:border-[#0D9488]">
+                  className="px-2 py-1 border border-neutral-300 rounded text-[11px] focus:outline-none focus:border-[#c4956a]">
                   {[1,2,3,4,5].map(n => <option key={n} value={n}>{n}</option>)}
                 </select>
               </div>

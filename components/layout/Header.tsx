@@ -63,7 +63,7 @@ export const Header = () => {
             <h1
               className="text-[20px] font-extrabold text-neutral-900 tracking-tight"
               style={{ fontFamily: "'Inter', 'SF Pro Display', system-ui, sans-serif", letterSpacing: '-0.05em' }}
-            >nasaq<span className="text-[#0D9488]">.id</span></h1>
+            >nasaq<span className="text-[#c4956a]">.id</span></h1>
           </div>
 
           {/* Desktop page info */}
@@ -79,16 +79,16 @@ export const Header = () => {
             href="https://github.com/nohypelabs"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-9 h-9 rounded-lg flex items-center justify-center text-neutral-900 hover:bg-[#FAFAFA] hover:text-[#0D9488] transition-colors"
+            className="w-9 h-9 rounded-lg flex items-center justify-center text-neutral-900 hover:bg-[#FAFAFA] hover:text-[#c4956a] transition-colors"
             aria-label="GitHub"
           >
             <Github className="w-[18px] h-[18px]" strokeWidth={1.5} />
           </a>
           <a
-            href="https://abdulgofur-builder.vercel.app"
+            href="https://nasaq.id"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-neutral-400 text-[12px] font-medium text-neutral-900 hover:bg-[#0D9488] hover:text-white hover:border-[#0D9488] transition-all"
+            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-neutral-400 text-[12px] font-medium text-neutral-900 hover:bg-[#c4956a] hover:text-white hover:border-[#c4956a] transition-all"
           >
             <span>Hire Me</span>
             <ExternalLink className="w-3.5 h-3.5" strokeWidth={1.5} />

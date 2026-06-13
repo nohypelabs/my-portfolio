@@ -19,7 +19,7 @@ export function FeaturedProjects() {
         </h2>
         <Link
           href="/projects"
-          className="flex items-center gap-1 text-xs font-medium text-[#0D9488] hover:underline"
+          className="flex items-center gap-1 text-xs font-medium text-[#c4956a] hover:underline"
         >
           {t.viewAllProjects}
           <ArrowRight className="w-3 h-3" />

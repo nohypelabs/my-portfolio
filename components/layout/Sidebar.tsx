@@ -91,14 +91,14 @@ export const Sidebar = () => {
           'w-full flex items-center gap-2.5 rounded-lg transition-colors text-left text-[13px]',
           isCollapsed ? 'px-0 py-[7px] justify-center' : 'px-3 py-[7px]',
           isActive
-            ? 'bg-[#FAFAFA] text-[#0F766E] font-medium'
+            ? 'bg-[#FAFAFA] text-[#a67d55] font-medium'
             : 'text-neutral-900 hover:bg-neutral-100 hover:text-neutral-900'
         )}
       >
         <Icon
           className={clsx(
             'w-[18px] h-[18px] flex-shrink-0',
-            isActive ? 'text-[#0D9488]' : 'text-neutral-900'
+            isActive ? 'text-[#c4956a]' : 'text-neutral-900'
           )}
           strokeWidth={1.5}
         />
@@ -127,7 +127,7 @@ export const Sidebar = () => {
             <h1
               className="text-[22px] font-extrabold text-neutral-900 tracking-tight"
               style={{ fontFamily: "'Inter', 'SF Pro Display', system-ui, sans-serif", letterSpacing: '-0.05em' }}
-            >nasaq<span className="text-[#0D9488]">.id</span></h1>
+            >nasaq<span className="text-[#c4956a]">.id</span></h1>
           )}
           <button
             onClick={toggleCollapsed}
@@ -160,7 +160,7 @@ export const Sidebar = () => {
         >
           {/* Dropdown menu — pops upward */}
           {showMenu && (
-            <div className="absolute bottom-full left-3 right-3 mb-1 z-50 bg-white border border-neutral-300 rounded-[12px] shadow-lg overflow-hidden">
+            <div className="absolute bottom-full left-3 right-3 mb-1 z-50 bg-[#f7f3e8] border border-neutral-300 rounded-[12px] shadow-lg overflow-hidden">
               <div className="px-4 py-1.5">
                 <span className="text-[10px] font-medium text-neutral-700 uppercase tracking-wider">Navigasi</span>
               </div>
@@ -173,9 +173,9 @@ export const Sidebar = () => {
                       setShowMenu(false);
                       router.push(item.path);
                     }}
-                    className="w-full flex items-center gap-2.5 px-4 py-2.5 text-[13px] text-black hover:bg-neutral-50 transition-colors text-left"
+                    className="w-full flex items-center gap-2.5 px-4 py-2.5 text-[13px] text-[#2d2a26] hover:bg-neutral-50 transition-colors text-left"
                   >
-                    <Icon className="w-4 h-4 text-black" strokeWidth={1.5} />
+                    <Icon className="w-4 h-4 text-[#2d2a26]" strokeWidth={1.5} />
                     <span>{item.label}</span>
                   </button>
                 );
@@ -192,13 +192,13 @@ export const Sidebar = () => {
             {isCollapsed ? (
               <button
                 onClick={() => router.push('/about')}
-                title="Abdul Gofur"
+                title="nasaq.id"
                 className="rounded-lg hover:bg-neutral-200/40 transition-colors text-left w-full flex items-center justify-center py-1.5"
               >
                 <div className="rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 w-7 h-7">
                   <img
-                    src="/picture/abdulgofur-photo.png"
-                    alt="Abdul Gofur"
+                    src="/picture/nasaq-id-photo.png"
+                    alt="nasaq.id"
                     className="w-full h-full rounded-full object-cover"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
@@ -221,8 +221,8 @@ export const Sidebar = () => {
               >
                 <div className="rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 w-9 h-9 overflow-hidden">
                   <img
-                    src="/picture/abdulgofur-photo.png"
-                    alt="Abdul Gofur"
+                    src="/picture/nasaq-id-photo.png"
+                    alt="nasaq.id"
                     className="w-full h-full rounded-full object-cover"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
@@ -238,7 +238,7 @@ export const Sidebar = () => {
                   />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-[13px] font-medium text-black truncate leading-tight">Abdul Gofur</p>
+                  <p className="text-[13px] font-medium text-[#2d2a26] truncate leading-tight">nasaq.id</p>
                   <p className="text-[11px] text-neutral-500 truncate leading-tight">Full-stack Developer</p>
                 </div>
               </button>
@@ -251,7 +251,7 @@ export const Sidebar = () => {
                   e.stopPropagation();
                   setShowMenu((prev) => !prev);
                 }}
-                className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 text-black hover:bg-neutral-200/40 transition-colors"
+                className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 text-[#2d2a26] hover:bg-neutral-200/40 transition-colors"
                 aria-label="Menu opsi"
               >
                 <ChevronsUpDown className="w-4 h-4" strokeWidth={1} />

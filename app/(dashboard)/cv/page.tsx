@@ -156,7 +156,7 @@ export default function CompanyProfilePage() {
     <div className="max-w-4xl mx-auto space-y-12 pb-12">
       {/* Hero Header */}
       <motion.div {...fadeUp} className="text-center space-y-4 pt-4">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#0D9488]/10 rounded-full text-[#0D9488] text-xs font-semibold">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#c4956a]/10 rounded-full text-[#c4956a] text-xs font-semibold">
           <Building2 className="w-3.5 h-3.5" />
           {language === "en" ? "Company Profile" : "Profil Perusahaan"}
         </div>
@@ -186,7 +186,7 @@ export default function CompanyProfilePage() {
               transition={{ delay: 0.1 * i }}
               className="bg-[#FAFAFA] border border-neutral-400 rounded-[25px] p-5 text-center"
             >
-              <div className="text-2xl md:text-3xl font-extrabold text-[#0D9488]">{stat.value}</div>
+              <div className="text-2xl md:text-3xl font-extrabold text-[#c4956a]">{stat.value}</div>
               <div className="text-xs text-neutral-500 mt-1">{stat.label[language]}</div>
             </motion.div>
           ))}
@@ -197,12 +197,12 @@ export default function CompanyProfilePage() {
       <ScrollReveal>
         <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 md:p-8 space-y-4">
           <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
-            <Globe className="w-5 h-5 text-[#0D9488]" />
+            <Globe className="w-5 h-5 text-[#c4956a]" />
             {language === "en" ? "Vision & Mission" : "Visi & Misi"}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <h3 className="font-bold text-sm text-[#0D9488]">
+              <h3 className="font-bold text-sm text-[#c4956a]">
                 {language === "en" ? "Vision" : "Visi"}
               </h3>
               <p className="text-sm text-neutral-600 leading-relaxed">
@@ -212,7 +212,7 @@ export default function CompanyProfilePage() {
               </p>
             </div>
             <div className="space-y-2">
-              <h3 className="font-bold text-sm text-[#0D9488]">
+              <h3 className="font-bold text-sm text-[#c4956a]">
                 {language === "en" ? "Mission" : "Misi"}
               </h3>
               <ul className="space-y-1.5 text-sm text-neutral-600">
@@ -231,7 +231,7 @@ export default function CompanyProfilePage() {
                   },
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-2">
-                    <CheckCircle2 className="w-4 h-4 text-[#0D9488] shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-4 h-4 text-[#c4956a] shrink-0 mt-0.5" />
                     <span>{item[language]}</span>
                   </li>
                 ))}
@@ -245,7 +245,7 @@ export default function CompanyProfilePage() {
       <ScrollReveal>
         <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 md:p-8 space-y-4">
           <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
-            <Award className="w-5 h-5 text-[#0D9488]" />
+            <Award className="w-5 h-5 text-[#c4956a]" />
             {language === "en" ? "Core Values" : "Nilai Inti"}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -255,9 +255,9 @@ export default function CompanyProfilePage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * i }}
-                className="bg-white border border-neutral-200 rounded-[25px] p-5"
+                className="bg-[#f7f3e8] border border-neutral-200 rounded-[25px] p-5"
               >
-                <item.icon className="w-5 h-5 text-[#0D9488] mb-2" />
+                <item.icon className="w-5 h-5 text-[#c4956a] mb-2" />
                 <h3 className="font-bold text-sm text-neutral-900 mb-1">
                   {item.title[language]}
                 </h3>
@@ -274,7 +274,7 @@ export default function CompanyProfilePage() {
       <ScrollReveal>
         <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 md:p-8 space-y-4">
           <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
-            <Code2 className="w-5 h-5 text-[#0D9488]" />
+            <Code2 className="w-5 h-5 text-[#c4956a]" />
             {language === "en" ? "Our Services" : "Layanan Kami"}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -284,9 +284,9 @@ export default function CompanyProfilePage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.08 * i }}
-                className="bg-white border border-neutral-200 rounded-[25px] p-5"
+                className="bg-[#f7f3e8] border border-neutral-200 rounded-[25px] p-5"
               >
-                <item.icon className="w-5 h-5 text-[#0D9488] mb-2" />
+                <item.icon className="w-5 h-5 text-[#c4956a] mb-2" />
                 <h3 className="font-bold text-sm text-neutral-900 mb-1">
                   {item.title[language]}
                 </h3>
@@ -297,7 +297,7 @@ export default function CompanyProfilePage() {
                   {item.tech.map((tag) => (
                     <span
                       key={tag}
-                      className="text-[10px] font-medium px-2 py-0.5 bg-[#0D9488]/10 text-[#0F766E] rounded-full"
+                      className="text-[10px] font-medium px-2 py-0.5 bg-[#c4956a]/10 text-[#a67d55] rounded-full"
                     >
                       {tag}
                     </span>
@@ -313,7 +313,7 @@ export default function CompanyProfilePage() {
       <ScrollReveal>
         <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 md:p-8 space-y-4">
           <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
-            <Target className="w-5 h-5 text-[#0D9488]" />
+            <Target className="w-5 h-5 text-[#c4956a]" />
             {language === "en" ? "How We Work" : "Cara Kami Bekerja"}
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -325,7 +325,7 @@ export default function CompanyProfilePage() {
                 transition={{ delay: 0.08 * i }}
                 className="text-center space-y-2"
               >
-                <div className="w-10 h-10 mx-auto bg-[#0D9488] text-white rounded-full flex items-center justify-center text-xs font-bold">
+                <div className="w-10 h-10 mx-auto bg-[#c4956a] text-white rounded-full flex items-center justify-center text-xs font-bold">
                   {item.step}
                 </div>
                 <h3 className="font-bold text-sm text-neutral-900">
@@ -345,7 +345,7 @@ export default function CompanyProfilePage() {
         <div className="flex flex-wrap gap-3 pt-4 justify-center">
           <Link
             href="/order"
-            className="group inline-flex items-center gap-2 px-6 py-3 bg-[#0D9488] hover:bg-[#0F766E] text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-[#0D9488]/20"
+            className="group inline-flex items-center gap-2 px-6 py-3 bg-[#c4956a] hover:bg-[#a67d55] text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-[#c4956a]/20"
           >
             {language === "en" ? "Start Your Project" : "Mulai Project Anda"}
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

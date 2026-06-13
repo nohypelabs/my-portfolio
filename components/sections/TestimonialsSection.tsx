@@ -23,7 +23,7 @@ export function TestimonialsSection() {
             transition={{ delay: i * 0.08 }}
             className="bg-[#FAFAFA] border border-neutral-300 rounded-xl p-5 hover:shadow-sm transition-all relative"
           >
-            <Quote className="w-5 h-5 text-[#0D9488]/20 absolute top-4 right-4" />
+            <Quote className="w-5 h-5 text-[#c4956a]/20 absolute top-4 right-4" />
             <div className="flex items-center gap-0.5 mb-3">
               {Array.from({ length: t.rating }).map((_, j) => (
                 <Star key={j} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
@@ -33,7 +33,7 @@ export function TestimonialsSection() {
               &ldquo;{t.content}&rdquo;
             </p>
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-[#0D9488]/10 flex items-center justify-center text-[11px] font-bold text-[#0D9488]">
+              <div className="w-8 h-8 rounded-full bg-[#c4956a]/10 flex items-center justify-center text-[11px] font-bold text-[#c4956a]">
                 {t.name}
               </div>
               <div>
@@ -41,7 +41,7 @@ export function TestimonialsSection() {
                 <p className="text-[10px] text-neutral-500">{t.role}</p>
               </div>
               {t.project && (
-                <span className="ml-auto text-[9px] font-medium text-[#0D9488] bg-[#0D9488]/8 px-2 py-0.5 rounded-full">
+                <span className="ml-auto text-[9px] font-medium text-[#c4956a] bg-[#c4956a]/8 px-2 py-0.5 rounded-full">
                   {t.project}
                 </span>
               )}

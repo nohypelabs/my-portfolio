@@ -49,7 +49,7 @@ function renderMarkdown(content: string) {
       // Regular paragraph
       const formatted = block
         .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-        .replace(/`(.*?)`/g, '<code class="px-1.5 py-0.5 bg-[#FAFAFA] rounded text-sm font-mono text-[#0D9488]">$1</code>');
+        .replace(/`(.*?)`/g, '<code class="px-1.5 py-0.5 bg-[#FAFAFA] rounded text-sm font-mono text-[#c4956a]">$1</code>');
       return `<p class="text-neutral-900 leading-relaxed my-3">${formatted}</p>`;
     })
     .join("");
@@ -66,7 +66,7 @@ export default function BlogPostPage() {
         <h1 className="text-2xl font-bold text-neutral-900 mb-4">
           {language === "en" ? "Post not found" : "Artikel tidak ditemukan"}
         </h1>
-        <Link href="/blog" className="text-[#0D9488] hover:underline">
+        <Link href="/blog" className="text-[#c4956a] hover:underline">
           ← {language === "en" ? "Back to blog" : "Kembali ke blog"}
         </Link>
       </div>
@@ -82,7 +82,7 @@ export default function BlogPostPage() {
       >
         <Link
           href="/blog"
-          className="inline-flex items-center gap-1.5 text-sm text-neutral-500 hover:text-[#0D9488] transition-colors mb-6"
+          className="inline-flex items-center gap-1.5 text-sm text-neutral-500 hover:text-[#c4956a] transition-colors mb-6"
         >
           <ArrowLeft className="w-3.5 h-3.5" />
           {language === "en" ? "Back to blog" : "Kembali ke blog"}

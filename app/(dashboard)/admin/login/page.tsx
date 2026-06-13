@@ -41,10 +41,10 @@ export default function AdminLoginPage() {
   return (
     <div className="min-h-screen bg-[#FAFAFA] flex items-center justify-center p-4">
       <motion.div variants={staggerContainer} initial="initial" animate="animate" className="w-full max-w-sm">
-        <motion.div variants={fadeInUp} className="bg-white border border-neutral-200 rounded-xl p-6">
+        <motion.div variants={fadeInUp} className="bg-[#f7f3e8] border border-neutral-200 rounded-xl p-6">
           <div className="text-center mb-6">
-            <div className="w-12 h-12 rounded-full bg-[#0D9488]/10 flex items-center justify-center mx-auto mb-3">
-              <Shield className="w-5 h-5 text-[#0D9488]" />
+            <div className="w-12 h-12 rounded-full bg-[#c4956a]/10 flex items-center justify-center mx-auto mb-3">
+              <Shield className="w-5 h-5 text-[#c4956a]" />
             </div>
             <h1 className="text-[16px] font-semibold text-neutral-900">Admin Panel</h1>
             <p className="text-[12px] text-neutral-500">nasaq.id</p>
@@ -64,7 +64,7 @@ export default function AdminLoginPage() {
                 required
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20 transition-colors"
+                className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors"
                 placeholder="admin@nasaq.id"
               />
             </div>
@@ -77,7 +77,7 @@ export default function AdminLoginPage() {
                   required
                   value={password}
                   onChange={e => setPassword(e.target.value)}
-                  className="w-full px-3 py-2.5 pr-10 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20 transition-colors"
+                  className="w-full px-3 py-2.5 pr-10 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors"
                   placeholder="••••••••"
                 />
                 <button

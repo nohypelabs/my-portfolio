@@ -57,8 +57,8 @@ export function ContactSection() {
                 className="group bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 hover:shadow-lg transition-all hover:scale-105"
               >
                 <div className="flex flex-col items-center gap-4">
-                  <div className="p-4 rounded-full bg-[#FAFAFA] group-hover:bg-[#99F6E4]/30 transition-colors">
-                    <Icon className="w-6 h-6 text-[#0D9488] group-hover:text-[#0F766E] transition-colors" />
+                  <div className="p-4 rounded-full bg-[#FAFAFA] group-hover:bg-[#d4aa82]/30 transition-colors">
+                    <Icon className="w-6 h-6 text-[#c4956a] group-hover:text-[#a67d55] transition-colors" />
                   </div>
                   <div>
                     <h3 className="font-bold mb-1 text-neutral-900">{link.name}</h3>

@@ -49,8 +49,8 @@ export default function DashboardPage() {
         >
           <div className="p-8 md:p-14 text-neutral-900">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#0D9488]/8 border border-[#0D9488]/15 rounded-full text-[11px] font-semibold text-[#0D9488] mb-6 tracking-wide">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0D9488] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-[#c4956a]/8 border border-[#c4956a]/15 rounded-full text-[11px] font-semibold text-[#c4956a] mb-6 tracking-wide">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#c4956a] animate-pulse" />
               JASA PEMBUATAN SISTEM WEB & ANDROID
             </div>
 
@@ -58,7 +58,7 @@ export default function DashboardPage() {
             <h1 className="text-4xl md:text-5xl lg:text-[56px] font-extrabold leading-[1.1] mb-5 tracking-tight">
               Bangun Sistem<br />
               Bisnis Anda<br />
-              <span className="text-[#0D9488]">Bersama nasaq.id</span>
+              <span className="text-[#c4956a]">Bersama nasaq.id</span>
             </h1>
 
             {/* Subtitle */}
@@ -71,14 +71,14 @@ export default function DashboardPage() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/pricing"
-                className="group inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#0D9488] hover:bg-[#0F766E] text-white rounded-xl text-[13px] font-semibold transition-all shadow-lg shadow-[#0D9488]/25 hover:shadow-[#0D9488]/40 hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#c4956a] hover:bg-[#a67d55] text-white rounded-xl text-[13px] font-semibold transition-all shadow-lg shadow-[#c4956a]/25 hover:shadow-[#c4956a]/40 hover:-translate-y-0.5"
               >
                 Lihat Harga
                 <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </Link>
               <Link
                 href="/order"
-                className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-white border border-neutral-300 hover:border-neutral-400 text-neutral-900 rounded-xl text-[13px] font-semibold transition-all hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-[#f7f3e8] border border-neutral-300 hover:border-neutral-400 text-neutral-900 rounded-xl text-[13px] font-semibold transition-all hover:-translate-y-0.5"
               >
                 Pesan Sekarang
                 <ArrowRight className="w-4 h-4" />
@@ -88,7 +88,7 @@ export default function DashboardPage() {
             {/* Hover hint */}
             <div className="mt-10 flex items-center gap-6">
               <p className="text-[10px] text-neutral-400 flex items-center gap-2">
-                <span className="inline-block w-1 h-1 rounded-full bg-[#0D9488]/50 animate-pulse" />
+                <span className="inline-block w-1 h-1 rounded-full bg-[#c4956a]/50 animate-pulse" />
                 Hover untuk reveal portfolio
               </p>
               <div className="hidden md:flex items-center gap-4 text-[10px] text-neutral-400">
@@ -110,7 +110,7 @@ export default function DashboardPage() {
       <motion.section variants={fadeInUp}>
         <div className="flex items-center justify-between mb-5">
           <h2 className="text-lg font-bold text-neutral-900">Layanan Kami</h2>
-          <Link href="/services" className="text-[12px] text-[#0D9488] hover:underline flex items-center gap-1">
+          <Link href="/services" className="text-[12px] text-[#c4956a] hover:underline flex items-center gap-1">
             Lihat Semua <ArrowRight className="w-3 h-3" />
           </Link>
         </div>
@@ -122,9 +122,9 @@ export default function DashboardPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.05 }}
-              className="bg-[#FAFAFA] border border-neutral-300 rounded-xl p-4 hover:border-[#0D9488]/30 hover:shadow-sm transition-all text-center"
+              className="bg-[#FAFAFA] border border-neutral-300 rounded-xl p-4 hover:border-[#c4956a]/30 hover:shadow-sm transition-all text-center"
             >
-              <svc.icon className="w-6 h-6 text-[#0D9488] mx-auto mb-2" strokeWidth={1.5} />
+              <svc.icon className="w-6 h-6 text-[#c4956a] mx-auto mb-2" strokeWidth={1.5} />
               <h3 className="text-[12px] font-semibold text-neutral-900 mb-0.5">{svc.title}</h3>
               <p className="text-[10px] text-neutral-500">{svc.desc}</p>
             </motion.div>
@@ -165,7 +165,7 @@ export default function DashboardPage() {
                 transition={{ delay: i * 0.08 }}
                 className="bg-[#FAFAFA] border border-neutral-300 rounded-xl p-5 hover:shadow-sm transition-all"
               >
-                <item.icon className="w-5 h-5 text-[#0D9488] mb-3" />
+                <item.icon className="w-5 h-5 text-[#c4956a] mb-3" />
                 <h3 className="font-bold text-[13px] text-neutral-900 mb-1">{item.title}</h3>
                 <p className="text-[12px] text-neutral-500 leading-relaxed">{item.desc}</p>
               </motion.div>
@@ -179,7 +179,7 @@ export default function DashboardPage() {
         <section>
           <div className="flex items-center justify-between mb-5">
             <h2 className="text-lg font-bold text-neutral-900">Cara Kami Bekerja</h2>
-            <Link href="/process" className="text-[12px] text-[#0D9488] hover:underline flex items-center gap-1">
+            <Link href="/process" className="text-[12px] text-[#c4956a] hover:underline flex items-center gap-1">
               Detail <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
@@ -187,8 +187,8 @@ export default function DashboardPage() {
             {processSteps.map((step, i) => (
               <div key={i} className="flex items-center gap-2 flex-shrink-0">
                 <div className="flex flex-col items-center gap-1.5">
-                  <div className="w-10 h-10 rounded-full bg-[#0D9488]/10 flex items-center justify-center">
-                    <step.icon className="w-4 h-4 text-[#0D9488]" strokeWidth={1.5} />
+                  <div className="w-10 h-10 rounded-full bg-[#c4956a]/10 flex items-center justify-center">
+                    <step.icon className="w-4 h-4 text-[#c4956a]" strokeWidth={1.5} />
                   </div>
                   <span className="text-[10px] font-medium text-neutral-600">{step.label}</span>
                 </div>
@@ -206,7 +206,7 @@ export default function DashboardPage() {
         <section>
           <div className="flex items-center justify-between mb-5">
             <h2 className="text-lg font-bold text-neutral-900">Harga Mulai Dari</h2>
-            <Link href="/pricing" className="text-[12px] text-[#0D9488] hover:underline flex items-center gap-1">
+            <Link href="/pricing" className="text-[12px] text-[#c4956a] hover:underline flex items-center gap-1">
               Semua Paket <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
@@ -220,17 +220,17 @@ export default function DashboardPage() {
                 transition={{ delay: i * 0.08 }}
                 className={`bg-[#FAFAFA] border rounded-xl p-5 transition-all relative ${
                   pkg.popular
-                    ? 'border-[#0D9488] shadow-md ring-1 ring-[#0D9488]/20'
-                    : 'border-neutral-300 hover:border-[#0D9488]/30'
+                    ? 'border-[#c4956a] shadow-md ring-1 ring-[#c4956a]/20'
+                    : 'border-neutral-300 hover:border-[#c4956a]/30'
                 }`}
               >
                 {pkg.popular && (
-                  <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-[10px] font-medium text-white bg-[#0D9488] px-2.5 py-0.5 rounded-full">
+                  <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-[10px] font-medium text-white bg-[#c4956a] px-2.5 py-0.5 rounded-full">
                     Populer
                   </div>
                 )}
                 <h3 className="text-[14px] font-semibold text-neutral-900">{pkg.name}</h3>
-                <div className="text-[20px] font-bold text-[#0D9488] my-1">Rp {pkg.price}</div>
+                <div className="text-[20px] font-bold text-[#c4956a] my-1">Rp {pkg.price}</div>
                 <p className="text-[11px] text-neutral-500">{pkg.desc}</p>
               </motion.div>
             ))}
@@ -251,7 +251,7 @@ export default function DashboardPage() {
               <h2 className="text-lg font-bold text-neutral-900">Project Yang Sudah Kami Bangun</h2>
               <p className="text-[12px] text-neutral-500 mt-1">Bukti nyata, bukan janji</p>
             </div>
-            <Link href="/projects" className="text-[12px] text-[#0D9488] hover:underline flex items-center gap-1">
+            <Link href="/projects" className="text-[12px] text-[#c4956a] hover:underline flex items-center gap-1">
               Semua Project <ArrowRight className="w-3 h-3" />
             </Link>
           </div>
@@ -267,8 +267,8 @@ export default function DashboardPage() {
           viewport={{ once: true }}
           className="noise-overlay relative overflow-hidden bg-[#FAFAFA] rounded-[35px] border border-neutral-400"
         >
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-[#0D9488]/15 via-transparent to-transparent" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-[#0D9488]/50 to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-[#c4956a]/15 via-transparent to-transparent" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-px bg-gradient-to-r from-transparent via-[#c4956a]/50 to-transparent" />
 
           <div className="relative p-8 md:p-12 text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-neutral-900 mb-3">
@@ -280,14 +280,14 @@ export default function DashboardPage() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link
                 href="/order"
-                className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#0D9488] hover:bg-[#0F766E] text-white rounded-xl font-semibold transition-all shadow-lg shadow-[#0D9488]/20 hover:shadow-[#0D9488]/30"
+                className="group inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#c4956a] hover:bg-[#a67d55] text-white rounded-xl font-semibold transition-all shadow-lg shadow-[#c4956a]/20 hover:shadow-[#c4956a]/30"
               >
                 Pesan Sekarang
                 <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white border border-neutral-400 hover:bg-[#FAFAFA] text-neutral-900 rounded-xl font-semibold transition-all"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#f7f3e8] border border-neutral-400 hover:bg-[#FAFAFA] text-neutral-900 rounded-xl font-semibold transition-all"
               >
                 Konsultasi Gratis
               </Link>

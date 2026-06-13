@@ -75,19 +75,19 @@ export default function AdminFAQsPage() {
   };
 
   if (loading) {
-    return <div className="flex items-center justify-center min-h-[60vh]"><Loader2 className="w-6 h-6 animate-spin text-[#0D9488]" /></div>;
+    return <div className="flex items-center justify-center min-h-[60vh]"><Loader2 className="w-6 h-6 animate-spin text-[#c4956a]" /></div>;
   }
 
   return (
     <motion.div variants={staggerContainer} initial="initial" animate="animate" className="space-y-8">
       <motion.div variants={fadeInUp} className="flex items-center justify-between">
         <div>
-          <Link href="/admin/dashboard" className="inline-flex items-center gap-1.5 text-[12px] text-neutral-500 hover:text-[#0D9488] mb-2 transition-colors">
+          <Link href="/admin/dashboard" className="inline-flex items-center gap-1.5 text-[12px] text-neutral-500 hover:text-[#c4956a] mb-2 transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" /> Dashboard
           </Link>
           <h1 className="text-[20px] font-semibold text-neutral-900">Kelola FAQ</h1>
         </div>
-        <button onClick={addFaq} className="flex items-center gap-1.5 px-3 py-2 bg-[#0D9488] text-white rounded-lg text-[12px] font-medium hover:bg-[#0F766E] transition-colors">
+        <button onClick={addFaq} className="flex items-center gap-1.5 px-3 py-2 bg-[#c4956a] text-white rounded-lg text-[12px] font-medium hover:bg-[#a67d55] transition-colors">
           <Plus className="w-3.5 h-3.5" /> Tambah
         </button>
       </motion.div>
@@ -101,12 +101,12 @@ export default function AdminFAQsPage() {
 
       <div className="space-y-4">
         {faqs.map((faq) => (
-          <motion.div key={faq.id} variants={fadeInUp} className="bg-white border border-neutral-200 rounded-xl p-5">
+          <motion.div key={faq.id} variants={fadeInUp} className="bg-[#f7f3e8] border border-neutral-200 rounded-xl p-5">
             <div className="flex items-center justify-between mb-4">
               <span className="text-[10px] font-medium text-neutral-500 bg-neutral-100 px-2 py-0.5 rounded-full">{faq.category}</span>
               <div className="flex items-center gap-2">
                 <button onClick={() => saveFaq(faq)} disabled={saving === faq.id}
-                  className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0D9488] text-white rounded-lg text-[11px] font-medium hover:bg-[#0F766E] transition-colors disabled:opacity-50">
+                  className="flex items-center gap-1.5 px-3 py-1.5 bg-[#c4956a] text-white rounded-lg text-[11px] font-medium hover:bg-[#a67d55] transition-colors disabled:opacity-50">
                   {saving === faq.id ? <Loader2 className="w-3 h-3 animate-spin" /> : <Save className="w-3 h-3" />} Simpan
                 </button>
                 <button onClick={() => deleteFaq(faq.id)} className="p-1.5 text-neutral-400 hover:text-red-500 transition-colors">
@@ -117,12 +117,12 @@ export default function AdminFAQsPage() {
 
             <div className="space-y-3">
               <input type="text" value={faq.question} onChange={e => updateField(faq.id, 'question', e.target.value)} placeholder="Pertanyaan"
-                className="w-full px-3 py-2 border border-neutral-300 rounded-lg text-[13px] font-medium focus:outline-none focus:border-[#0D9488]" />
+                className="w-full px-3 py-2 border border-neutral-300 rounded-lg text-[13px] font-medium focus:outline-none focus:border-[#c4956a]" />
               <textarea value={faq.answer} onChange={e => updateField(faq.id, 'answer', e.target.value)} rows={3} placeholder="Jawaban"
-                className="w-full px-3 py-2 border border-neutral-300 rounded-lg text-[12px] focus:outline-none focus:border-[#0D9488] resize-none" />
+                className="w-full px-3 py-2 border border-neutral-300 rounded-lg text-[12px] focus:outline-none focus:border-[#c4956a] resize-none" />
               <div className="flex items-center gap-4">
                 <select value={faq.category} onChange={e => updateField(faq.id, 'category', e.target.value)}
-                  className="px-2 py-1 border border-neutral-300 rounded text-[11px] focus:outline-none focus:border-[#0D9488]">
+                  className="px-2 py-1 border border-neutral-300 rounded text-[11px] focus:outline-none focus:border-[#c4956a]">
                   <option value="general">General</option>
                   <option value="project">Project</option>
                   <option value="technical">Teknis</option>
@@ -131,7 +131,7 @@ export default function AdminFAQsPage() {
                 </select>
                 <label className="flex items-center gap-2 text-[11px] text-neutral-700 cursor-pointer">
                   <input type="checkbox" checked={faq.is_active} onChange={e => updateField(faq.id, 'is_active', e.target.checked)}
-                    className="w-3.5 h-3.5 rounded border-neutral-300 text-[#0D9488]" /> Aktif
+                    className="w-3.5 h-3.5 rounded border-neutral-300 text-[#c4956a]" /> Aktif
                 </label>
               </div>
             </div>

@@ -51,9 +51,9 @@ export default function RegisterPage() {
     return (
       <div className="min-h-screen bg-[#FAFAFA] flex items-center justify-center p-4">
         <motion.div variants={staggerContainer} initial="initial" animate="animate" className="w-full max-w-sm">
-          <motion.div variants={fadeInUp} className="bg-white border border-neutral-200 rounded-xl p-6 text-center">
-            <div className="w-14 h-14 rounded-full bg-[#0D9488]/10 flex items-center justify-center mx-auto mb-4">
-              <UserPlus className="w-6 h-6 text-[#0D9488]" />
+          <motion.div variants={fadeInUp} className="bg-[#f7f3e8] border border-neutral-200 rounded-xl p-6 text-center">
+            <div className="w-14 h-14 rounded-full bg-[#c4956a]/10 flex items-center justify-center mx-auto mb-4">
+              <UserPlus className="w-6 h-6 text-[#c4956a]" />
             </div>
             <h2 className="text-[16px] font-semibold text-neutral-900 mb-2">Registrasi Berhasil!</h2>
             <p className="text-[12px] text-neutral-500 mb-4">
@@ -61,7 +61,7 @@ export default function RegisterPage() {
             </p>
             <Link
               href="/auth/login"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0D9488] text-white rounded-lg text-[13px] font-medium hover:bg-[#0F766E] transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#c4956a] text-white rounded-lg text-[13px] font-medium hover:bg-[#a67d55] transition-colors"
             >
               Ke Halaman Login
             </Link>
@@ -74,7 +74,7 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen bg-[#FAFAFA] flex items-center justify-center p-4">
       <motion.div variants={staggerContainer} initial="initial" animate="animate" className="w-full max-w-sm">
-        <motion.div variants={fadeInUp} className="bg-white border border-neutral-200 rounded-xl p-6">
+        <motion.div variants={fadeInUp} className="bg-[#f7f3e8] border border-neutral-200 rounded-xl p-6">
           {/* Logo */}
           <div className="text-center mb-6">
             <h1
@@ -98,7 +98,7 @@ export default function RegisterPage() {
                 required
                 value={fullName}
                 onChange={e => setFullName(e.target.value)}
-                className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20 transition-colors"
+                className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors"
                 placeholder="John Doe"
               />
             </div>
@@ -110,7 +110,7 @@ export default function RegisterPage() {
                 required
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20 transition-colors"
+                className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors"
                 placeholder="email@example.com"
               />
             </div>
@@ -124,7 +124,7 @@ export default function RegisterPage() {
                   minLength={6}
                   value={password}
                   onChange={e => setPassword(e.target.value)}
-                  className="w-full px-3 py-2.5 pr-10 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20 transition-colors"
+                  className="w-full px-3 py-2.5 pr-10 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors"
                   placeholder="Min. 6 karakter"
                 />
                 <button
@@ -140,7 +140,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex items-center justify-center gap-2 py-2.5 bg-[#0D9488] text-white rounded-lg text-[13px] font-medium hover:bg-[#0F766E] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center gap-2 py-2.5 bg-[#c4956a] text-white rounded-lg text-[13px] font-medium hover:bg-[#a67d55] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <><Loader2 className="w-4 h-4 animate-spin" /> Mendaftar...</>
@@ -152,7 +152,7 @@ export default function RegisterPage() {
 
           <p className="mt-4 text-center text-[12px] text-neutral-500">
             Sudah punya akun?{' '}
-            <Link href="/auth/login" className="text-[#0D9488] hover:underline">Masuk</Link>
+            <Link href="/auth/login" className="text-[#c4956a] hover:underline">Masuk</Link>
           </p>
         </motion.div>
       </motion.div>

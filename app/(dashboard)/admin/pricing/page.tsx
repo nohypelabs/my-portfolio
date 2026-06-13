@@ -84,7 +84,7 @@ export default function AdminPricingPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <Loader2 className="w-6 h-6 animate-spin text-[#0D9488]" />
+        <Loader2 className="w-6 h-6 animate-spin text-[#c4956a]" />
       </div>
     );
   }
@@ -94,7 +94,7 @@ export default function AdminPricingPage() {
       {/* Header */}
       <motion.div variants={fadeInUp} className="flex items-center justify-between">
         <div>
-          <Link href="/admin/dashboard" className="inline-flex items-center gap-1.5 text-[12px] text-neutral-500 hover:text-[#0D9488] mb-2 transition-colors">
+          <Link href="/admin/dashboard" className="inline-flex items-center gap-1.5 text-[12px] text-neutral-500 hover:text-[#c4956a] mb-2 transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" /> Dashboard
           </Link>
           <h1 className="text-[20px] font-semibold text-neutral-900">Kelola Paket Harga</h1>
@@ -115,14 +115,14 @@ export default function AdminPricingPage() {
           <motion.div
             key={pkg.id}
             variants={fadeInUp}
-            className="bg-white border border-neutral-200 rounded-xl p-6"
+            className="bg-[#f7f3e8] border border-neutral-200 rounded-xl p-6"
           >
             <div className="flex items-center justify-between mb-5">
               <div className="flex items-center gap-3">
                 <GripVertical className="w-4 h-4 text-neutral-300" />
                 <h3 className="text-[15px] font-semibold text-neutral-900">{pkg.name}</h3>
                 {pkg.is_popular && (
-                  <span className="text-[10px] font-medium text-[#0D9488] bg-[#0D9488]/10 px-2 py-0.5 rounded-full">
+                  <span className="text-[10px] font-medium text-[#c4956a] bg-[#c4956a]/10 px-2 py-0.5 rounded-full">
                     Populer
                   </span>
                 )}
@@ -135,7 +135,7 @@ export default function AdminPricingPage() {
               <button
                 onClick={() => savePackage(pkg)}
                 disabled={saving === pkg.id}
-                className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0D9488] text-white rounded-lg text-[12px] font-medium hover:bg-[#0F766E] transition-colors disabled:opacity-50"
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-[#c4956a] text-white rounded-lg text-[12px] font-medium hover:bg-[#a67d55] transition-colors disabled:opacity-50"
               >
                 {saving === pkg.id ? (
                   <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Menyimpan...</>
@@ -153,7 +153,7 @@ export default function AdminPricingPage() {
                   type="text"
                   value={pkg.name}
                   onChange={e => updateField(pkg.id, 'name', e.target.value)}
-                  className="w-full px-3 py-2 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20"
+                  className="w-full px-3 py-2 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20"
                 />
               </div>
 
@@ -164,7 +164,7 @@ export default function AdminPricingPage() {
                   type="text"
                   value={pkg.description || ''}
                   onChange={e => updateField(pkg.id, 'description', e.target.value)}
-                  className="w-full px-3 py-2 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20"
+                  className="w-full px-3 py-2 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20"
                 />
               </div>
 
@@ -175,7 +175,7 @@ export default function AdminPricingPage() {
                   type="number"
                   value={pkg.price_min}
                   onChange={e => updateField(pkg.id, 'price_min', parseInt(e.target.value) || 0)}
-                  className="w-full px-3 py-2 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20"
+                  className="w-full px-3 py-2 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20"
                 />
               </div>
 
@@ -186,7 +186,7 @@ export default function AdminPricingPage() {
                   type="number"
                   value={pkg.price_max}
                   onChange={e => updateField(pkg.id, 'price_max', parseInt(e.target.value) || 0)}
-                  className="w-full px-3 py-2 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20"
+                  className="w-full px-3 py-2 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20"
                 />
               </div>
 
@@ -197,7 +197,7 @@ export default function AdminPricingPage() {
                   type="text"
                   value={pkg.cta_text}
                   onChange={e => updateField(pkg.id, 'cta_text', e.target.value)}
-                  className="w-full px-3 py-2 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20"
+                  className="w-full px-3 py-2 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20"
                 />
               </div>
 
@@ -208,7 +208,7 @@ export default function AdminPricingPage() {
                   type="number"
                   value={pkg.sort_order}
                   onChange={e => updateField(pkg.id, 'sort_order', parseInt(e.target.value) || 0)}
-                  className="w-full px-3 py-2 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20"
+                  className="w-full px-3 py-2 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20"
                 />
               </div>
             </div>
@@ -220,7 +220,7 @@ export default function AdminPricingPage() {
                   type="checkbox"
                   checked={pkg.is_popular}
                   onChange={e => updateField(pkg.id, 'is_popular', e.target.checked)}
-                  className="w-4 h-4 rounded border-neutral-300 text-[#0D9488] focus:ring-[#0D9488]"
+                  className="w-4 h-4 rounded border-neutral-300 text-[#c4956a] focus:ring-[#c4956a]"
                 />
                 Populer
               </label>
@@ -229,7 +229,7 @@ export default function AdminPricingPage() {
                   type="checkbox"
                   checked={pkg.is_active}
                   onChange={e => updateField(pkg.id, 'is_active', e.target.checked)}
-                  className="w-4 h-4 rounded border-neutral-300 text-[#0D9488] focus:ring-[#0D9488]"
+                  className="w-4 h-4 rounded border-neutral-300 text-[#c4956a] focus:ring-[#c4956a]"
                 />
                 Aktif
               </label>
@@ -245,7 +245,7 @@ export default function AdminPricingPage() {
                       type="text"
                       value={f}
                       onChange={e => updateFeature(pkg.id, i, e.target.value)}
-                      className="flex-1 px-3 py-2 border border-neutral-300 rounded-lg text-[12px] focus:outline-none focus:border-[#0D9488] focus:ring-1 focus:ring-[#0D9488]/20"
+                      className="flex-1 px-3 py-2 border border-neutral-300 rounded-lg text-[12px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20"
                     />
                     <button
                       onClick={() => removeFeature(pkg.id, i)}
@@ -257,7 +257,7 @@ export default function AdminPricingPage() {
                 ))}
                 <button
                   onClick={() => addFeature(pkg.id)}
-                  className="flex items-center gap-1.5 text-[12px] text-[#0D9488] hover:text-[#0F766E] transition-colors"
+                  className="flex items-center gap-1.5 text-[12px] text-[#c4956a] hover:text-[#a67d55] transition-colors"
                 >
                   <Plus className="w-3.5 h-3.5" /> Tambah Fitur
                 </button>

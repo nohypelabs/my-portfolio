@@ -15,15 +15,15 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://abdulgofur.vercel.app'),
+  metadataBase: new URL('https://nasaq.id'),
   title: {
     default: "nasaq — Full-stack Developer Portfolio",
-    template: "%s | Abdul Gofur"
+    template: "%s | nasaq.id"
   },
-  description: "Portfolio of Abdul Gofur, Full-stack Developer. 7 production systems shipped in <1 year with 250K+ records processed. Specializing in Next.js, TypeScript, tRPC, PostgreSQL. Featured: Serat QC, WC Check, LakuPOS, TraceFlow.",
+  description: "nasaq.id — Full-stack development studio. Production-grade web & Android systems. Specializing in Next.js, TypeScript, tRPC, PostgreSQL. Featured: WC Check, LakuPOS, Serat QC, TraceFlow.",
   keywords: [
-    "Abdul Gofur",
-    "agds-dev",
+    "nasaq.id",
+    "nasaq",
     "Full-stack Developer",
     "Full-stack Engineer",
     "Web Developer",
@@ -43,9 +43,9 @@ export const metadata: Metadata = {
     "Solana",
     "Web3"
   ],
-  authors: [{ name: "Abdul Gofur", url: "https://github.com/nohypelabs" }],
-  creator: "Abdul Gofur",
-  publisher: "Abdul Gofur",
+  authors: [{ name: "nasaq.id", url: "https://github.com/nohypelabs" }],
+  creator: "nasaq.id",
+  publisher: "nasaq.id",
   formatDetection: {
     email: false,
     address: false,
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://abdulgofur.vercel.app',
+    url: 'https://nasaq.id',
     title: 'nasaq — Full-stack Developer',
     description: '7 production systems shipped in <1 year, 250K+ records processed. Next.js, TypeScript, tRPC, PostgreSQL. From logistics QC to POS systems.',
     siteName: 'nasaq Portfolio',

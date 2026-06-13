@@ -8,7 +8,7 @@ import type { FAQ } from '@/lib/supabase/types';
 
 function AccordionItem({ faq, isOpen, onToggle }: { faq: FAQ; isOpen: boolean; onToggle: () => void }) {
   return (
-    <div className="border border-neutral-200 rounded-xl overflow-hidden hover:border-[#0D9488]/30 transition-colors">
+    <div className="border border-neutral-200 rounded-xl overflow-hidden hover:border-[#c4956a]/30 transition-colors">
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between p-5 text-left"

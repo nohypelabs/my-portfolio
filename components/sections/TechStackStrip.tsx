@@ -38,7 +38,7 @@ export function TechStackStrip() {
   };
 
   const proficiencyColors = {
-    advanced: "bg-[#FAFAFA] text-[#0D9488] border-[#0D9488]/30",
+    advanced: "bg-[#FAFAFA] text-[#c4956a] border-[#c4956a]/30",
     intermediate: "bg-blue-50 text-blue-700 border-blue-300",
     familiar: "bg-neutral-100 text-neutral-600 border-neutral-300",
   };

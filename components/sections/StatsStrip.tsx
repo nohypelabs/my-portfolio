@@ -54,7 +54,7 @@ export function StatsStrip() {
   const { totalData, activeProjects } = deriveStats(m);
 
   const stats = [
-    { value: String(activeProjects), labelKey: "productsShipped" as const, accent: "text-[#0D9488]" },
+    { value: String(activeProjects), labelKey: "productsShipped" as const, accent: "text-[#c4956a]" },
     { value: formatCompact(totalData), labelKey: "dataProcessed" as const, accent: "text-orange-500" },
     { value: String(activeProjects), labelKey: "activeProjects" as const, accent: "text-blue-500" },
     { value: "6", labelKey: "techMastered" as const, accent: "text-purple-500" },

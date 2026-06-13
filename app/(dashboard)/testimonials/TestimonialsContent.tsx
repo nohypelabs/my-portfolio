@@ -22,10 +22,10 @@ export function TestimonialsContent({ testimonials }: { testimonials: Testimonia
           <motion.div
             key={t.id}
             variants={fadeInUp}
-            className="bg-white border border-neutral-200 rounded-xl p-6 hover:border-[#0D9488]/30 hover:shadow-sm transition-all"
+            className="bg-[#f7f3e8] border border-neutral-200 rounded-xl p-6 hover:border-[#c4956a]/30 hover:shadow-sm transition-all"
           >
             <div className="flex items-start gap-3 mb-4">
-              <Quote className="w-8 h-8 text-[#0D9488]/20 flex-shrink-0" strokeWidth={1} />
+              <Quote className="w-8 h-8 text-[#c4956a]/20 flex-shrink-0" strokeWidth={1} />
               <div className="flex gap-0.5">
                 {Array.from({ length: t.rating }).map((_, i) => (
                   <Star key={i} className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
@@ -38,7 +38,7 @@ export function TestimonialsContent({ testimonials }: { testimonials: Testimonia
             </p>
 
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-[#0D9488]/10 flex items-center justify-center text-[13px] font-semibold text-[#0D9488]">
+              <div className="w-9 h-9 rounded-full bg-[#c4956a]/10 flex items-center justify-center text-[13px] font-semibold text-[#c4956a]">
                 {t.name.charAt(0)}
               </div>
               <div>

@@ -36,7 +36,7 @@ export default function AboutPage() {
       {/* Header */}
       <motion.div {...fadeUp} className="flex items-start gap-6">
         <div className="shrink-0 hidden md:block">
-          <div className="ring-4 ring-[#0D9488]/30 rounded-full">
+          <div className="ring-4 ring-[#c4956a]/30 rounded-full">
             <AvatarImage size={120} priority />
           </div>
         </div>
@@ -56,7 +56,7 @@ export default function AboutPage() {
       <ScrollReveal>
         <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 space-y-4">
           <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
-            <Rocket className="w-5 h-5 text-[#0D9488]" />
+            <Rocket className="w-5 h-5 text-[#c4956a]" />
             {language === "en" ? "The Comeback Story" : "Cerita Comeback"}
           </h2>
           <div className="prose prose-sm max-w-none space-y-3 text-neutral-600">
@@ -83,7 +83,7 @@ export default function AboutPage() {
       <ScrollReveal>
         <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 space-y-4">
           <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
-            <Lightbulb className="w-5 h-5 text-[#0D9488]" />
+            <Lightbulb className="w-5 h-5 text-[#c4956a]" />
             {language === "en" ? "How I Work" : "Cara Saya Bekerja"}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -124,7 +124,7 @@ export default function AboutPage() {
                 transition={{ delay: 0.1 * i }}
                 className="bg-[#FAFAFA] border border-neutral-400 rounded-[35px] p-4"
               >
-                <item.icon className="w-5 h-5 text-[#0D9488] mb-2" />
+                <item.icon className="w-5 h-5 text-[#c4956a] mb-2" />
                 <h3 className="font-bold text-sm text-neutral-900 mb-1">
                   {item.title}
                 </h3>
@@ -141,7 +141,7 @@ export default function AboutPage() {
       <ScrollReveal>
         <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 space-y-4">
           <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
-            <Building2 className="w-5 h-5 text-[#0D9488]" />
+            <Building2 className="w-5 h-5 text-[#c4956a]" />
             {language === "en" ? "Industries I Build For" : "Industri yang Saya Layani"}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -178,14 +178,14 @@ export default function AboutPage() {
                 transition={{ delay: 0.1 * i }}
                 className="bg-[#FAFAFA] border border-neutral-400 rounded-[35px] p-4"
               >
-                <item.icon className="w-5 h-5 text-[#0D9488] mb-2" />
+                <item.icon className="w-5 h-5 text-[#c4956a] mb-2" />
                 <h3 className="font-bold text-sm text-neutral-900 mb-1">
                   {item.title}
                 </h3>
                 <p className="text-xs text-neutral-500 leading-relaxed mb-2">
                   {item.desc}
                 </p>
-                <p className="text-[10px] font-medium text-[#0F766E]">
+                <p className="text-[10px] font-medium text-[#a67d55]">
                   {item.projects}
                 </p>
               </motion.div>
@@ -198,7 +198,7 @@ export default function AboutPage() {
       <ScrollReveal>
         <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 space-y-4">
           <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
-            <Code className="w-5 h-5 text-[#0D9488]" />
+            <Code className="w-5 h-5 text-[#c4956a]" />
             {language === "en" ? "How I Think About Code" : "Cara Saya Memikirkan Kode"}
           </h2>
           <div className="prose prose-sm max-w-none space-y-3 text-neutral-600">
@@ -225,7 +225,7 @@ export default function AboutPage() {
       <ScrollReveal>
         <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 space-y-4">
           <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
-            <Target className="w-5 h-5 text-[#0D9488]" />
+            <Target className="w-5 h-5 text-[#c4956a]" />
             {language === "en" ? "What I'm Looking For" : "Yang Saya Cari"}
           </h2>
           <div className="bg-[#FAFAFA] border border-neutral-400 rounded-[35px] p-5 space-y-3">
@@ -245,7 +245,7 @@ export default function AboutPage() {
                   ]
               ).map((item, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className="text-[#0D9488] mt-0.5">✓</span>
+                  <span className="text-[#c4956a] mt-0.5">✓</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -258,7 +258,7 @@ export default function AboutPage() {
       <ScrollReveal>
         <div className="bg-[#FAFAFA] rounded-[35px] border border-neutral-400 p-6 space-y-4">
           <h2 className="text-xl font-bold text-neutral-900 flex items-center gap-2">
-            <Heart className="w-5 h-5 text-[#0D9488]" />
+            <Heart className="w-5 h-5 text-[#c4956a]" />
             {language === "en" ? "Beyond Code" : "Di Luar Coding"}
           </h2>
           <div className="text-sm text-neutral-600 space-y-2">
@@ -281,7 +281,7 @@ export default function AboutPage() {
         <div className="flex flex-wrap gap-3 pt-4">
           <Link
             href="/cv"
-            className="group inline-flex items-center gap-2 px-5 py-2.5 bg-[#0D9488] hover:bg-[#0F766E] text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-[#0D9488]/20"
+            className="group inline-flex items-center gap-2 px-5 py-2.5 bg-[#c4956a] hover:bg-[#a67d55] text-white rounded-xl text-sm font-semibold transition-all shadow-lg shadow-[#c4956a]/20"
           >
             {t.viewCV}
             <ArrowUpRight className="w-4 h-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />

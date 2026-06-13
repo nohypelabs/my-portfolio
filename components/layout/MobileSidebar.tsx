@@ -56,7 +56,7 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
           <h1
             className="text-[22px] font-extrabold text-neutral-900 tracking-tight"
             style={{ fontFamily: "'Inter', 'SF Pro Display', system-ui, sans-serif", letterSpacing: '-0.05em' }}
-          >nasaq<span className="text-[#0D9488]">.id</span></h1>
+          >nasaq<span className="text-[#c4956a]">.id</span></h1>
           <button
             onClick={onClose}
             className="w-7 h-7 rounded-lg flex items-center justify-center text-neutral-900 hover:bg-neutral-100 transition-colors"
@@ -80,14 +80,14 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
                 className={clsx(
                   'w-full flex items-center gap-2.5 rounded-lg transition-colors text-left text-[13px] px-3 py-[7px]',
                   isActive
-                    ? 'bg-[#FAFAFA] text-[#0F766E] font-medium'
+                    ? 'bg-[#FAFAFA] text-[#a67d55] font-medium'
                     : 'text-neutral-900 hover:bg-neutral-100'
                 )}
               >
                 <Icon
                   className={clsx(
                     'w-[18px] h-[18px] flex-shrink-0',
-                    isActive ? 'text-[#0D9488]' : 'text-neutral-900'
+                    isActive ? 'text-[#c4956a]' : 'text-neutral-900'
                   )}
                   strokeWidth={1.5}
                 />
