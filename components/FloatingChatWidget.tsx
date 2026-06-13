@@ -22,7 +22,7 @@ export function FloatingChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-            className="mb-3 bg-[#FAFAFA] border border-neutral-300 rounded-2xl shadow-2xl overflow-hidden w-72"
+            className="mb-3 bg-[#FAFAFA] card-elevated rounded-2xl shadow-2xl overflow-hidden w-72"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-[#c4956a] to-[#a67d55] p-4">

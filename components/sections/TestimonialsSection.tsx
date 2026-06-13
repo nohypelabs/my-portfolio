@@ -64,7 +64,7 @@ export function TestimonialsSection() {
             transition={{ delay: i * 0.1 }}
             className="flex-shrink-0 w-[320px] md:w-[360px] snap-start"
           >
-            <div className="bg-[#FAFAFA] border border-neutral-300 rounded-2xl p-6 h-full hover:shadow-md hover:border-[#c4956a]/20 transition-all relative overflow-hidden group">
+            <div className="bg-[#FAFAFA] card-elevated rounded-2xl p-6 h-full hover:shadow-md transition-all relative overflow-hidden group">
               {/* Gradient accent */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c4956a]/0 via-[#c4956a]/40 to-[#c4956a]/0 opacity-0 group-hover:opacity-100 transition-opacity" />
 

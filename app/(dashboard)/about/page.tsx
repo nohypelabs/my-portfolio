@@ -110,7 +110,7 @@ export default function AboutPage() {
 
   return (
     <div className="max-w-4xl mx-auto space-y-10 pb-12">
-      <motion.div {...fadeUp} className="rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+      <motion.div {...fadeUp} className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
         <div className="flex flex-col gap-6 md:flex-row md:items-start">
           <div className="shrink-0">
             <div className="inline-flex rounded-full ring-4 ring-[#c4956a]/20">
@@ -144,7 +144,7 @@ export default function AboutPage() {
       </motion.div>
 
       <ScrollReveal>
-        <div className="space-y-4 rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6">
+        <div className="space-y-4 rounded-[35px] card-elevated bg-[#FAFAFA] p-6">
           <h2 className="flex items-center gap-2 text-xl font-bold text-neutral-900">
             <Target className="h-5 w-5 text-[#c4956a]" />
             {isEn ? "What nasaq.id is built to solve" : "Masalah yang ingin diselesaikan nasaq.id"}
@@ -157,7 +157,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.08 }}
-                className="rounded-[28px] border border-neutral-400 bg-[#f7f3e8] p-5"
+                className="rounded-[28px] card-elevated bg-[#f7f3e8] p-5"
               >
                 <item.icon className="mb-3 h-5 w-5 text-[#c4956a]" />
                 <h3 className="mb-2 text-sm font-bold text-neutral-900">{item.title}</h3>
@@ -169,7 +169,7 @@ export default function AboutPage() {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="space-y-4 rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6">
+        <div className="space-y-4 rounded-[35px] card-elevated bg-[#FAFAFA] p-6">
           <h2 className="flex items-center gap-2 text-xl font-bold text-neutral-900">
             <Zap className="h-5 w-5 text-[#c4956a]" />
             {isEn ? "How the work is approached" : "Cara kerja yang dipakai"}
@@ -182,7 +182,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.08 }}
-                className="rounded-[28px] border border-neutral-400 bg-[#FAFAFA] p-5"
+                className="rounded-[28px] card-elevated bg-[#FAFAFA] p-5"
               >
                 <item.icon className="mb-3 h-5 w-5 text-[#c4956a]" />
                 <h3 className="mb-2 text-sm font-bold text-neutral-900">{item.title}</h3>
@@ -194,7 +194,7 @@ export default function AboutPage() {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="space-y-4 rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6">
+        <div className="space-y-4 rounded-[35px] card-elevated bg-[#FAFAFA] p-6">
           <h2 className="flex items-center gap-2 text-xl font-bold text-neutral-900">
             <Lightbulb className="h-5 w-5 text-[#c4956a]" />
             {isEn ? "Why the perspective is different" : "Kenapa sudut pandangnya terasa beda"}
@@ -213,7 +213,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.08 }}
-                className="rounded-[28px] border border-neutral-400 bg-[#f7f3e8] p-5"
+                className="rounded-[28px] card-elevated bg-[#f7f3e8] p-5"
               >
                 <item.icon className="mb-3 h-5 w-5 text-[#c4956a]" />
                 <h3 className="mb-2 text-sm font-bold text-neutral-900">{item.title}</h3>
@@ -225,7 +225,7 @@ export default function AboutPage() {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+        <div className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl space-y-2">
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#a67d55]">

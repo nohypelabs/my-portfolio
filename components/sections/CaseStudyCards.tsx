@@ -72,7 +72,7 @@ export function CaseStudyCards() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="bg-[#FAFAFA] border border-neutral-300 rounded-2xl overflow-hidden hover:shadow-xl hover:border-[#c4956a]/30 transition-all group"
+              className="bg-[#FAFAFA] card-elevated rounded-2xl overflow-hidden hover:shadow-xl transition-all group"
             >
               {/* Image header */}
               <div className="relative h-36 overflow-hidden">

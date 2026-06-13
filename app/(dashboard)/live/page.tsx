@@ -38,7 +38,7 @@ export default function LivePage() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8"
+        className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8"
       >
         <div className="max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#c4956a]/20 bg-[#f7f3e8] px-3 py-1 text-xs font-semibold text-[#a67d55]">
@@ -63,7 +63,7 @@ export default function LivePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.08 * index }}
-            className="rounded-[28px] border border-neutral-400 bg-[#FAFAFA] p-5"
+            className="rounded-[28px] card-elevated bg-[#FAFAFA] p-5"
           >
             <item.icon className="mb-3 h-5 w-5 text-[#c4956a]" />
             <h2 className="mb-2 text-sm font-bold text-neutral-900">{item.title}</h2>

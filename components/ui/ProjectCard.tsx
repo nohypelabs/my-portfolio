@@ -35,7 +35,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       <TiltCard>
         <Link
           href={`/projects/${project.id}`}
-          className="group block bg-[#FAFAFA] rounded-2xl border border-neutral-300 overflow-hidden hover:border-[#c4956a]/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+          className="group block bg-[#FAFAFA] rounded-2xl card-elevated overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
         >
           {/* Image */}
           <div className="aspect-video relative overflow-hidden bg-neutral-100">

@@ -166,7 +166,7 @@ export default function StudioDeckPage() {
 
   return (
     <div className="mx-auto max-w-5xl space-y-10 pb-12">
-      <motion.div {...fadeUp} className="rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+      <motion.div {...fadeUp} className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
         <div className="max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#c4956a]/20 bg-[#f7f3e8] px-3 py-1 text-xs font-semibold text-[#a67d55]">
             <Building2 className="h-3.5 w-3.5" />
@@ -193,7 +193,7 @@ export default function StudioDeckPage() {
       <ScrollReveal>
         <div className="grid gap-4 md:grid-cols-4">
           {stats.map((item) => (
-            <div key={item.label} className="rounded-[28px] border border-neutral-400 bg-[#FAFAFA] p-5">
+            <div key={item.label} className="rounded-[28px] card-elevated bg-[#FAFAFA] p-5">
               <div className="text-2xl font-extrabold text-[#c4956a]">{item.value}</div>
               <p className="mt-2 text-xs leading-relaxed text-neutral-600">{item.label}</p>
             </div>
@@ -202,7 +202,7 @@ export default function StudioDeckPage() {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="space-y-4 rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+        <div className="space-y-4 rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
           <h2 className="text-xl font-bold text-neutral-900">
             {isEn ? "What businesses usually hire nasaq.id for" : "Kebutuhan yang paling sering dikerjakan nasaq.id"}
           </h2>
@@ -213,7 +213,7 @@ export default function StudioDeckPage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.08 }}
-                className="rounded-[28px] border border-neutral-400 bg-[#f7f3e8] p-5"
+                className="rounded-[28px] card-elevated bg-[#f7f3e8] p-5"
               >
                 <item.icon className="mb-3 h-5 w-5 text-[#c4956a]" />
                 <h3 className="mb-2 text-sm font-bold text-neutral-900">{item.title}</h3>
@@ -225,7 +225,7 @@ export default function StudioDeckPage() {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="space-y-4 rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+        <div className="space-y-4 rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
           <h2 className="text-xl font-bold text-neutral-900">
             {isEn ? "Why founder-led execution feels different" : "Kenapa execution founder-led terasa beda"}
           </h2>
@@ -236,7 +236,7 @@ export default function StudioDeckPage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.08 }}
-                className="rounded-[28px] border border-neutral-400 bg-[#FAFAFA] p-5"
+                className="rounded-[28px] card-elevated bg-[#FAFAFA] p-5"
               >
                 <item.icon className="mb-3 h-5 w-5 text-[#c4956a]" />
                 <h3 className="mb-2 text-sm font-bold text-neutral-900">{item.title}</h3>
@@ -248,7 +248,7 @@ export default function StudioDeckPage() {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="space-y-4 rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+        <div className="space-y-4 rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
           <h2 className="text-xl font-bold text-neutral-900">
             {isEn ? "Three common engagement formats" : "Tiga format kerja yang paling umum"}
           </h2>
@@ -259,7 +259,7 @@ export default function StudioDeckPage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.08 }}
-                className="rounded-[28px] border border-neutral-400 bg-[#f7f3e8] p-5"
+                className="rounded-[28px] card-elevated bg-[#f7f3e8] p-5"
               >
                 <item.icon className="mb-3 h-5 w-5 text-[#c4956a]" />
                 <h3 className="mb-2 text-sm font-bold text-neutral-900">{item.title}</h3>
@@ -271,7 +271,7 @@ export default function StudioDeckPage() {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="space-y-4 rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+        <div className="space-y-4 rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
           <h2 className="text-xl font-bold text-neutral-900">
             {isEn ? "Typical project rhythm" : "Ritme project yang biasanya dipakai"}
           </h2>
@@ -282,7 +282,7 @@ export default function StudioDeckPage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.08 }}
-                className="space-y-3 rounded-[28px] border border-neutral-400 bg-[#FAFAFA] p-5"
+                className="space-y-3 rounded-[28px] card-elevated bg-[#FAFAFA] p-5"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#c4956a] text-xs font-bold text-white">
                   {item.step}
@@ -297,7 +297,7 @@ export default function StudioDeckPage() {
 
       <ScrollReveal>
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+          <div className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
             <div className="mb-4 flex items-center gap-2">
               <CheckCircle2 className="h-5 w-5 text-[#c4956a]" />
               <h2 className="text-xl font-bold text-neutral-900">{isEn ? "Good fit" : "Cocok untuk"}</h2>
@@ -312,7 +312,7 @@ export default function StudioDeckPage() {
             </ul>
           </div>
 
-          <div className="rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+          <div className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#a67d55]">
               {isEn ? "Next step" : "Langkah berikutnya"}
             </p>

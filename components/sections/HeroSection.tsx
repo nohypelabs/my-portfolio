@@ -117,7 +117,7 @@ export function HeroSection() {
           </div>
 
           <motion.div variants={fadeUp} className="flex flex-col gap-4">
-            <div className="rounded-[30px] border border-neutral-300 bg-white/80 p-6 shadow-sm backdrop-blur-sm">
+            <div className="rounded-[30px] card-elevated bg-white/80 p-6 backdrop-blur-sm">
               <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-neutral-500">
                 Yang Paling Sering Dikerjakan
               </p>
@@ -137,7 +137,7 @@ export function HeroSection() {
               {proofItems.map((item) => (
                 <div
                   key={item.label}
-                  className="rounded-2xl border border-neutral-300 bg-[#FAFAFA]/95 p-4"
+                  className="rounded-2xl card-elevated bg-[#FAFAFA]/95 p-4"
                 >
                   <p className="text-xl font-extrabold text-neutral-900 md:text-2xl">
                     {item.value}

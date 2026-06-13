@@ -103,7 +103,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         {isEn ? "Back to case studies" : "Kembali ke case studies"}
       </Link>
 
-      <motion.div {...fadeUp} className="rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+      <motion.div {...fadeUp} className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-4">
             <div className="flex flex-wrap items-center gap-2">
@@ -131,7 +131,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
               </p>
             </div>
 
-            <div className="rounded-[24px] border border-neutral-300 bg-[#f7f3e8] p-4">
+            <div className="rounded-[24px] card-elevated bg-[#f7f3e8] p-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
                 {isEn ? "Context" : "Konteks"}
               </p>
@@ -173,7 +173,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-            <div className="rounded-[28px] border border-neutral-400 bg-[#f7f3e8] p-5">
+            <div className="rounded-[28px] card-elevated bg-[#f7f3e8] p-5">
               <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-[#c4956a]/20 bg-white">
                 <Building2 className="h-4 w-4 text-[#c4956a]" />
               </div>
@@ -183,7 +183,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
               <p className="mt-2 text-xs leading-relaxed text-neutral-600">{project.fullDescription}</p>
             </div>
 
-            <div className="rounded-[28px] border border-neutral-400 bg-[#FAFAFA] p-5">
+            <div className="rounded-[28px] card-elevated bg-[#FAFAFA] p-5">
               <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-[#c4956a]/20 bg-[#f7f3e8]">
                 <Sparkles className="h-4 w-4 text-[#c4956a]" />
               </div>
@@ -204,7 +204,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
       </motion.div>
 
       <ScrollReveal>
-        <div className="overflow-hidden rounded-[35px] border border-neutral-400 bg-[#FAFAFA]">
+        <div className="overflow-hidden rounded-[35px] card-elevated bg-[#FAFAFA]">
           <Image
             src={project.image}
             alt={`${project.title} screenshot`}
@@ -221,7 +221,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         <>
           <ScrollReveal>
             <div className="grid gap-5 lg:grid-cols-2">
-              <div className="rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+              <div className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
                 <div className="flex items-center gap-2">
                   <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-red-100 bg-red-50">
                     <AlertTriangle className="h-4 w-4 text-red-500" />
@@ -247,7 +247,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                 )}
               </div>
 
-              <div className="rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+              <div className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
                 <div className="flex items-center gap-2">
                   <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-emerald-100 bg-emerald-50">
                     <Zap className="h-4 w-4 text-emerald-600" />
@@ -258,7 +258,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                 </div>
                 <p className="mt-4 text-sm leading-relaxed text-neutral-700">{project.caseStudy.solution}</p>
 
-                <div className="mt-5 rounded-[24px] border border-neutral-300 bg-[#f7f3e8] p-4">
+                <div className="mt-5 rounded-[24px] card-elevated bg-[#f7f3e8] p-4">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
                     {isEn ? "Why it mattered" : "Kenapa ini penting"}
                   </p>
@@ -276,7 +276,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
 
           {project.caseStudy.metrics.length > 0 && (
             <ScrollReveal>
-              <div className="rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+              <div className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
                 <h2 className="text-2xl font-bold text-neutral-900">
                   {isEn ? "Before and after, in clearer terms" : "Sebelum dan sesudah, dalam bentuk yang lebih jelas"}
                 </h2>
@@ -290,7 +290,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                   {project.caseStudy.metrics.map((metric) => (
                     <div
                       key={metric.label}
-                      className="grid gap-3 rounded-[28px] border border-neutral-300 bg-[#f7f3e8] p-4 md:grid-cols-[0.9fr_1fr_1fr] md:items-center"
+                      className="grid gap-3 rounded-[28px] card-elevated bg-[#f7f3e8] p-4 md:grid-cols-[0.9fr_1fr_1fr] md:items-center"
                     >
                       <div>
                         <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
@@ -318,7 +318,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
 
           {project.caseStudy.testimonial && (
             <ScrollReveal>
-              <div className="rounded-[35px] border border-neutral-400 bg-[#f7f3e8] p-6 md:p-8">
+              <div className="rounded-[35px] card-elevated bg-[#f7f3e8] p-6 md:p-8">
                 <Quote className="h-9 w-9 text-[#c4956a]/35" />
                 <blockquote className="mt-4 text-lg font-medium leading-relaxed text-neutral-900 md:text-xl">
                   &ldquo;{project.caseStudy.testimonial.quote}&rdquo;
@@ -340,13 +340,13 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
 
       <ScrollReveal>
         <div className="grid gap-5 xl:grid-cols-[1fr_0.9fr]">
-          <div className="rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+          <div className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
             <h2 className="text-2xl font-bold text-neutral-900">
               {isEn ? "Key highlights of the build" : "Highlight utama dari build-nya"}
             </h2>
             <div className="mt-5 grid gap-4 md:grid-cols-2">
               {project.highlights.map((highlight) => (
-                <div key={highlight.title} className="rounded-[24px] border border-neutral-300 bg-[#f7f3e8] p-4">
+                <div key={highlight.title} className="rounded-[24px] card-elevated bg-[#f7f3e8] p-4">
                   <h3 className="text-sm font-bold text-neutral-900">{highlight.title}</h3>
                   <p className="mt-2 text-xs leading-relaxed text-neutral-600">{highlight.description}</p>
                 </div>
@@ -354,7 +354,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
             </div>
           </div>
 
-          <div className="rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+          <div className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
             <h2 className="text-2xl font-bold text-neutral-900">
               {isEn ? "Impact that stayed visible" : "Dampak yang tetap kelihatan"}
             </h2>
@@ -362,7 +362,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
               {proofLines.map((line) => (
                 <div
                   key={line}
-                  className="flex items-start gap-3 rounded-[22px] border border-neutral-300 bg-[#f7f3e8] px-4 py-4 text-sm leading-relaxed text-neutral-700"
+                  className="flex items-start gap-3 rounded-[22px] card-elevated bg-[#f7f3e8] px-4 py-4 text-sm leading-relaxed text-neutral-700"
                 >
                   <ShieldCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#c4956a]" />
                   <span>{line}</span>
@@ -375,13 +375,13 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
 
       <ScrollReveal>
         <div className="grid gap-5 xl:grid-cols-[1fr_0.9fr]">
-          <div className="rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+          <div className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
             <h2 className="text-2xl font-bold text-neutral-900">
               {isEn ? "What the system includes" : "Yang dibawa sistem ini"}
             </h2>
             <div className="mt-5 grid gap-3 lg:grid-cols-2">
               {project.features.map((feature) => (
-                <div key={feature} className="flex items-start gap-2 rounded-[20px] border border-neutral-300 bg-[#f7f3e8] px-4 py-3 text-sm leading-relaxed text-neutral-700">
+                <div key={feature} className="flex items-start gap-2 rounded-[20px] card-elevated bg-[#f7f3e8] px-4 py-3 text-sm leading-relaxed text-neutral-700">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#c4956a]" strokeWidth={1.6} />
                   <span>{feature}</span>
                 </div>
@@ -389,7 +389,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
             </div>
           </div>
 
-          <div className="rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+          <div className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
             <h2 className="text-2xl font-bold text-neutral-900">
               {isEn ? "Technology stack" : "Technology stack"}
             </h2>
@@ -410,7 +410,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="rounded-[35px] border border-neutral-400 bg-[#FAFAFA] p-6 md:p-8">
+        <div className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
           <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div className="space-y-3">
               <h2 className="text-2xl font-bold text-neutral-900">
