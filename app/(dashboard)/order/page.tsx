@@ -209,11 +209,11 @@ function OrderForm() {
               className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors bg-[#f7f3e8]"
             >
               <option value="">Pilih range</option>
-              <option value="< 5jt">&lt; Rp 5jt</option>
-              <option value="5-15jt">Rp 5jt — 15jt</option>
-              <option value="15-40jt">Rp 15jt — 40jt</option>
-              <option value="40-100jt">Rp 40jt — 100jt</option>
-              <option value="> 100jt">&gt; Rp 100jt</option>
+              <option value="< 1.5jt">&lt; Rp 1.5jt</option>
+                <option value="1.5-3jt">Rp 1.5jt — 3jt</option>
+                <option value="3-8jt">Rp 3jt — 8jt</option>
+                <option value="8-20jt">Rp 8jt — 20jt</option>
+                <option value="> 20jt">&gt; Rp 20jt</option>
             </select>
           </div>
           <div>

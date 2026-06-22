@@ -91,14 +91,14 @@ const pricingPreview = [
     desc: 'Landing page, simple profile, atau halaman campaign yang butuh cepat tayang.',
   },
   {
-    name: 'Growth',
-    price: '2jt+',
+    name: 'Basic',
+    price: '1.5jt+',
     desc: 'Company profile multi-halaman, CTA jelas, dan fondasi yang lebih siap dipakai closing.',
     popular: true,
   },
   {
     name: 'Custom System',
-    price: '5jt+',
+    price: '3jt+',
     desc: 'Dashboard internal, workflow operasional, atau web app yang butuh logic dan database.',
   },
 ];
