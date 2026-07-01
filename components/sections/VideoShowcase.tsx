@@ -92,10 +92,10 @@ export function VideoShowcase() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               onMouseEnter={() => setActiveIndex(i)}
-              className={`bg-[#FAFAFA] border rounded-2xl p-4 transition-all cursor-default group ${
+              className={`neo-surface rounded-2xl p-4 transition-all cursor-default group ${
                 activeIndex === i
-                  ? 'border-[#c4956a]/40 shadow-md'
-                  : 'border-neutral-300 hover:border-[#c4956a]/20'
+                  ? 'shadow-md'
+                  : ''
               }`}
             >
               <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>

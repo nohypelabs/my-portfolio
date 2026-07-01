@@ -32,7 +32,7 @@ export default function BlogPage() {
           <ScrollReveal key={post.slug}>
             <Link
               href={`/blog/${post.slug}`}
-              className="group block bg-[#FAFAFA] card-elevated rounded-[35px] p-5 hover:border-[#c4956a]/30 hover:shadow-sm transition-all"
+              className="group block neo-surface rounded-[35px] p-5 transition-all"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">

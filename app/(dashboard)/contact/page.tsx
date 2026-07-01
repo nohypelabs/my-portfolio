@@ -32,8 +32,8 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 const colorMap: Record<string, { icon: string; hover: string; bg: string; ring: string }> = {
-  green: { icon: "text-green-600", hover: "hover:border-neutral-400", bg: "bg-[#FAFAFA]", ring: "ring-[#c4956a]/20" },
-  emerald: { icon: "text-[#c4956a]", hover: "hover:border-neutral-400", bg: "bg-[#FAFAFA]", ring: "ring-[#c4956a]/20" },
+  green: { icon: "text-green-600", hover: "hover:border-neutral-400", bg: "bg-[#f0f0f0]", ring: "ring-[#c4956a]/20" },
+  emerald: { icon: "text-[#c4956a]", hover: "hover:border-neutral-400", bg: "bg-[#f0f0f0]", ring: "ring-[#c4956a]/20" },
   blue: { icon: "text-blue-600", hover: "hover:border-neutral-400", bg: "bg-blue-50", ring: "ring-blue-500/20" },
   zinc: { icon: "text-neutral-700", hover: "hover:border-neutral-400", bg: "bg-neutral-100", ring: "ring-neutral-300" },
 };
@@ -108,7 +108,7 @@ export default function ContactPage() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8"
+        className="rounded-[35px] neo-surface p-6 md:p-8"
       >
         <div className="max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#c4956a]/20 bg-[#f7f3e8] px-3 py-1 text-xs font-semibold text-[#a67d55]">
@@ -132,21 +132,21 @@ export default function ContactPage() {
         transition={{ delay: 0.08 }}
         className="grid grid-cols-1 gap-3 md:grid-cols-3"
       >
-        <div className="flex items-center gap-3 rounded-[26px] card-elevated bg-[#FAFAFA] px-4 py-4">
+        <div className="flex items-center gap-3 rounded-[26px] neo-surface px-4 py-4">
           <Clock className="h-4 w-4 text-[#c4956a]" />
           <div>
             <p className="text-xs font-semibold text-neutral-900">{isEn ? "Response rhythm" : "Waktu respons"}</p>
             <p className="text-[11px] text-neutral-500">{isEn ? "Usually within 1 x 24 hours" : "Biasanya dalam 1 x 24 jam"}</p>
           </div>
         </div>
-        <div className="flex items-center gap-3 rounded-[26px] card-elevated bg-[#FAFAFA] px-4 py-4">
+        <div className="flex items-center gap-3 rounded-[26px] neo-surface px-4 py-4">
           <ShieldCheck className="h-4 w-4 text-[#c4956a]" />
           <div>
             <p className="text-xs font-semibold text-neutral-900">{isEn ? "Preferred start" : "Cara mulai yang disukai"}</p>
             <p className="text-[11px] text-neutral-500">{isEn ? "Brief first, then estimate and direction" : "Mulai dari brief, lalu estimasi dan arah kerja"}</p>
           </div>
         </div>
-        <div className="flex items-center gap-3 rounded-[26px] card-elevated bg-[#FAFAFA] px-4 py-4">
+        <div className="flex items-center gap-3 rounded-[26px] neo-surface px-4 py-4">
           <Building2 className="h-4 w-4 text-[#c4956a]" />
           <div>
             <p className="text-xs font-semibold text-neutral-900">{isEn ? "Base" : "Domisili"}</p>
@@ -160,7 +160,7 @@ export default function ContactPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.12 }}
-          className="space-y-4 rounded-[35px] card-elevated bg-[#FAFAFA] p-6"
+          className="space-y-4 rounded-[35px] neo-surface p-6"
         >
           <div>
             <h2 className="text-xl font-bold text-neutral-900">
@@ -302,7 +302,7 @@ export default function ContactPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.22 + index * 0.06 }}
-                  className={`group rounded-[28px] card-elevated bg-[#FAFAFA] p-5 transition-all hover:shadow-lg ${colors.hover}`}
+                  className={`group rounded-[28px] neo-surface p-5 transition-all hover:shadow-lg ${colors.hover}`}
                 >
                   <div className="flex items-center gap-3">
                     <a
@@ -348,7 +348,7 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.28 }}
-            className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6"
+            className="rounded-[35px] neo-surface p-6"
           >
             <div className="mb-3 flex items-center gap-2">
               <Zap className="h-4 w-4 text-[#c4956a]" />
@@ -370,7 +370,7 @@ export default function ContactPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.32 }}
-        className="relative overflow-hidden rounded-[35px] card-elevated bg-[#FAFAFA]"
+        className="relative overflow-hidden rounded-[35px] neo-surface"
       >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[#c4956a]/5 via-transparent to-transparent" />
         <div className="relative flex flex-col gap-5 p-8 md:flex-row md:items-end md:justify-between md:p-10">
@@ -398,7 +398,7 @@ export default function ContactPage() {
             </Link>
             <a
               href={`mailto:${personalInfo.contact.email}`}
-              className="inline-flex items-center gap-2 rounded-xl border border-neutral-400 px-6 py-3 font-semibold text-neutral-900 transition-all hover:bg-neutral-50"
+              className="neo-button inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold text-neutral-900"
             >
               <Mail className="h-4 w-4" />
               {isEn ? "Send direct email" : "Kirim email langsung"}

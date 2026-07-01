@@ -221,7 +221,7 @@ export function LiveMetrics() {
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="relative overflow-hidden bg-[#FAFAFA] rounded-[35px] p-6 md:p-10 text-neutral-900 border border-neutral-400"
+      className="relative overflow-hidden neo-surface rounded-[35px] p-6 md:p-10 text-neutral-900"
     >
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-[#c4956a]/5 via-transparent to-transparent" />
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#c4956a]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
@@ -230,7 +230,7 @@ export function LiveMetrics() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <button onClick={() => setExpanded(!expanded)} className="flex items-center gap-3 group text-left">
-            <div className="p-2 rounded-xl bg-[#FAFAFA] border border-neutral-400">
+            <div className="p-2 rounded-xl bg-[#f0f0f0] border border-neutral-400">
               <Database className="w-5 h-5 text-[#c4956a]" />
             </div>
             <div>
@@ -255,13 +255,13 @@ export function LiveMetrics() {
               <button
                 onClick={() => fetchMetrics(true)}
                 disabled={refreshing}
-                className="group/btn flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#FAFAFA] border border-neutral-400 hover:bg-[#d4aa82]/30 disabled:opacity-60 disabled:cursor-not-allowed transition-all text-xs font-semibold text-[#c4956a]"
+                className="group/btn flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#f0f0f0] border border-neutral-400 hover:bg-[#d4aa82]/30 disabled:opacity-60 disabled:cursor-not-allowed transition-all text-xs font-semibold text-[#c4956a]"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? "animate-spin" : "group-hover/btn:rotate-180 transition-transform duration-500"}`} />
                 {refreshing ? t.fetching : t.fetchLatest}
               </button>
 
-              <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-[#FAFAFA] border border-neutral-400">
+              <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-[#f0f0f0] border border-neutral-400">
                 <span className="relative flex h-3 w-3">
                   <span
                     className={`absolute inline-flex h-full w-full rounded-full opacity-75 ${
@@ -313,10 +313,10 @@ export function LiveMetrics() {
           )}
           {metrics && projectGroups.map((group, gi) => {
             const accentMap: Record<string, { border: string; bg: string; icon: string; dot: string; btnBorder: string }> = {
-              emerald: { border: "border-l-[#c4956a]", bg: "bg-[#FAFAFA]", icon: "text-[#c4956a]", dot: "bg-[#c4956a]", btnBorder: "border-neutral-400" },
-              purple: { border: "border-l-purple-500", bg: "bg-purple-50", icon: "text-purple-600", dot: "bg-purple-500", btnBorder: "border-neutral-400" },
-              blue: { border: "border-l-blue-500", bg: "bg-blue-50", icon: "text-blue-600", dot: "bg-blue-500", btnBorder: "border-neutral-400" },
-              orange: { border: "border-l-orange-500", bg: "bg-orange-50", icon: "text-orange-600", dot: "bg-orange-500", btnBorder: "border-neutral-400" },
+              emerald: { border: "border-l-[#c4956a]", bg: "bg-[#f0f0f0]", icon: "text-[#c4956a]", dot: "bg-[#c4956a]", btnBorder: "border-neutral-400" },
+              purple: { border: "border-l-purple-500", bg: "bg-[#f0f0f0]", icon: "text-purple-600", dot: "bg-purple-500", btnBorder: "border-neutral-400" },
+              blue: { border: "border-l-blue-500", bg: "bg-[#f0f0f0]", icon: "text-blue-600", dot: "bg-blue-500", btnBorder: "border-neutral-400" },
+              orange: { border: "border-l-orange-500", bg: "bg-[#f0f0f0]", icon: "text-orange-600", dot: "bg-orange-500", btnBorder: "border-neutral-400" },
             };
             const accent = accentMap[group.accent] ?? accentMap.emerald;
 
@@ -373,10 +373,10 @@ export function LiveMetrics() {
                         delay: 0.15 + gi * 0.2 + ci * 0.1,
                         duration: 0.4,
                       }}
-                      className={`relative overflow-hidden rounded-xl md:rounded-2xl p-4 md:p-6 border transition-shadow hover:shadow-2xl ${
+                      className={`relative overflow-hidden rounded-xl md:rounded-2xl p-4 md:p-6 transition-shadow hover:shadow-2xl ${
                         isHero
-                          ? "bg-[#FAFAFA] border-[#c4956a]/30 hover:border-[#c4956a]/60"
-                          : "bg-[#FAFAFA] border-neutral-400 hover:border-neutral-400"
+                          ? "neo-pressed"
+                          : "bg-[#f0f0f0]"
                       }`}
                     >
                       {isHero && (
@@ -386,7 +386,7 @@ export function LiveMetrics() {
                         <div className="flex items-center gap-1.5 md:gap-2 mb-2 md:mb-3">
                           <div
                             className={`p-1 md:p-1.5 rounded-lg ${
-                              isHero ? "bg-[#FAFAFA]" : "bg-neutral-100"
+                              isHero ? "bg-[#f0f0f0]" : "bg-neutral-100"
                             }`}
                           >
                             <Icon
@@ -429,13 +429,13 @@ export function LiveMetrics() {
             {t.liveMetricsFooter}
           </p>
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-1 rounded-md bg-[#FAFAFA] border border-neutral-400 text-[10px] font-semibold text-[#c4956a] uppercase tracking-wider">
+            <span className="px-2.5 py-1 rounded-md bg-[#f0f0f0] border border-neutral-400 text-[10px] font-semibold text-[#c4956a] uppercase tracking-wider">
               Supabase
             </span>
             <span className="px-2.5 py-1 rounded-md bg-blue-50 border border-neutral-400 text-[10px] font-semibold text-blue-600 uppercase tracking-wider">
               PostgreSQL
             </span>
-            <span className="px-2.5 py-1 rounded-md bg-[#FAFAFA] border border-neutral-400 text-[10px] font-semibold text-neutral-500 uppercase tracking-wider">
+            <span className="px-2.5 py-1 rounded-md bg-[#f0f0f0] border border-neutral-400 text-[10px] font-semibold text-neutral-500 uppercase tracking-wider">
               4 {t.databases}
             </span>
           </div>

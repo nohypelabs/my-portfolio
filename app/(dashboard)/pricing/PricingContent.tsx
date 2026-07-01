@@ -159,7 +159,7 @@ export function PricingContent({ packages }: { packages: PricingPackage[] }) {
       animate="animate"
       className="mx-auto max-w-5xl space-y-10 pb-12"
     >
-      <motion.div {...fadeUp} className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
+      <motion.div {...fadeUp} className="rounded-[35px] neo-surface p-6 md:p-8">
         <div className="max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#c4956a]/20 bg-[#f7f3e8] px-3 py-1 text-xs font-semibold text-[#a67d55]">
             <Sparkles className="h-3.5 w-3.5" />
@@ -181,7 +181,7 @@ export function PricingContent({ packages }: { packages: PricingPackage[] }) {
       <ScrollReveal>
         <div className="grid gap-4 md:grid-cols-3">
           {guidePoints.map((item) => (
-            <div key={item.title} className="rounded-[28px] card-elevated bg-[#FAFAFA] p-5">
+            <div key={item.title} className="rounded-[28px] neo-surface p-5">
               <item.icon className="h-4 w-4 text-[#c4956a]" />
               <h2 className="mt-3 text-sm font-bold text-neutral-900">{item.title}</h2>
               <p className="mt-1 text-xs leading-relaxed text-neutral-600">{item.desc}</p>
@@ -191,7 +191,7 @@ export function PricingContent({ packages }: { packages: PricingPackage[] }) {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="space-y-5 rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
+        <div className="space-y-5 rounded-[35px] neo-surface p-6 md:p-8">
           <div className="max-w-2xl">
             <h2 className="text-xl font-bold text-neutral-900 md:text-2xl">
               {isEn ? 'Choose the package by the real level of complexity' : 'Pilih paket dari level kompleksitas yang sebenarnya'}
@@ -214,8 +214,8 @@ export function PricingContent({ packages }: { packages: PricingPackage[] }) {
                   variants={fadeInUp}
                   className={`relative rounded-[30px] p-5 transition-transform duration-200 hover:-translate-y-1 ${
                     pkg.is_popular
-                      ? 'border border-[#c4956a] bg-[#f7f3e8] shadow-[0_18px_45px_rgba(196,149,106,0.12)]'
-                      : 'card-elevated bg-[#FAFAFA]'
+                      ? 'neo-pressed border border-[#c4956a]/20'
+                      : 'neo-surface'
                   }`}
                 >
                   {pkg.is_popular && (
@@ -233,7 +233,7 @@ export function PricingContent({ packages }: { packages: PricingPackage[] }) {
                     <p className="mt-2 text-sm leading-relaxed text-neutral-600">{pkg.description ?? lens.note}</p>
                   </div>
 
-                  <div className="mt-5 grid gap-3 rounded-[24px] card-elevated bg-[#FAFAFA] p-4 sm:grid-cols-[1fr_1fr] sm:items-end">
+                  <div className="mt-5 grid gap-3 rounded-[24px] bg-[#f0f0f0] p-4 sm:grid-cols-[1fr_1fr] sm:items-end">
                     <div>
                       <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
                         {isEn ? 'Range' : 'Range'}
@@ -265,7 +265,7 @@ export function PricingContent({ packages }: { packages: PricingPackage[] }) {
                       className={`inline-flex items-center justify-center gap-2 rounded-[22px] px-4 py-3 text-sm font-semibold transition-colors ${
                         pkg.is_popular
                           ? 'bg-[#c4956a] text-white hover:bg-[#a67d55]'
-                          : 'border border-neutral-400 bg-[#f7f3e8] text-neutral-900 hover:bg-[#efe4cf]'
+                          : 'neo-button text-neutral-900'
                       }`}
                     >
                       {pkg.cta_text}
@@ -273,7 +273,7 @@ export function PricingContent({ packages }: { packages: PricingPackage[] }) {
                     </Link>
                     <Link
                       href="/contact"
-                      className="inline-flex items-center justify-center gap-2 rounded-[22px] card-elevated bg-[#FAFAFA] px-4 py-3 text-sm font-semibold text-neutral-700 transition-colors hover:border-neutral-400 hover:text-neutral-900"
+                      className="neo-button inline-flex items-center justify-center gap-2 rounded-[22px] px-4 py-3 text-sm font-semibold text-neutral-700"
                     >
                       {isEn ? 'Ask first' : 'Tanya dulu'}
                       <ArrowRight className="h-4 w-4" />
@@ -287,7 +287,7 @@ export function PricingContent({ packages }: { packages: PricingPackage[] }) {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
+        <div className="rounded-[35px] neo-surface p-6 md:p-8">
           <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div className="space-y-3">
               <h2 className="text-2xl font-bold text-neutral-900">
@@ -306,7 +306,7 @@ export function PricingContent({ packages }: { packages: PricingPackage[] }) {
             <div className="grid gap-3 sm:grid-cols-2">
               <Link
                 href="/process"
-                className="inline-flex items-center justify-center gap-2 rounded-[22px] border border-neutral-400 bg-[#f7f3e8] px-4 py-3 text-sm font-semibold text-neutral-900 transition-colors hover:bg-[#efe4cf]"
+                className="neo-button inline-flex items-center justify-center gap-2 rounded-[22px] px-4 py-3 text-sm font-semibold text-neutral-900"
               >
                 {isEn ? 'See the work model' : 'Lihat model kerja'}
                 <ArrowRight className="h-4 w-4" />

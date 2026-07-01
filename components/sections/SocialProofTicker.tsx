@@ -20,7 +20,7 @@ export function SocialProofTicker() {
         Aktivitas Real-time
       </p>
 
-      <div className="bg-[#FAFAFA] border border-neutral-300 rounded-2xl p-4 overflow-hidden">
+      <div className="neo-surface rounded-2xl p-4 overflow-hidden">
         <div className="flex gap-3 overflow-hidden">
           <motion.div
             className="flex gap-3"

@@ -156,9 +156,9 @@ export function ProcessContent({ steps }: { steps: ProcessStep[] }) {
       animate="animate"
       className="mx-auto max-w-5xl space-y-10 pb-12"
     >
-      <motion.div {...fadeUp} className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
+      <motion.div {...fadeUp} className="rounded-[35px] neo-surface p-6 md:p-8">
         <div className="max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#c4956a]/20 bg-[#f7f3e8] px-3 py-1 text-xs font-semibold text-[#a67d55]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#c4956a]/20 bg-[#f0f0f0] px-3 py-1 text-xs font-semibold text-[#a67d55]">
             <Zap className="h-3.5 w-3.5" />
             {isEn ? 'Working model' : 'Model kerja'}
           </div>
@@ -178,7 +178,7 @@ export function ProcessContent({ steps }: { steps: ProcessStep[] }) {
       <ScrollReveal>
         <div className="grid gap-4 md:grid-cols-3">
           {principles.map((item) => (
-            <div key={item.title} className="rounded-[28px] card-elevated bg-[#FAFAFA] p-5">
+            <div key={item.title} className="rounded-[28px] neo-surface p-5">
               <item.icon className="h-4 w-4 text-[#c4956a]" />
               <h2 className="mt-3 text-sm font-bold text-neutral-900">{item.title}</h2>
               <p className="mt-1 text-xs leading-relaxed text-neutral-600">{item.desc}</p>
@@ -188,7 +188,7 @@ export function ProcessContent({ steps }: { steps: ProcessStep[] }) {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="space-y-4 rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
+        <div className="space-y-4 rounded-[35px] neo-surface p-6 md:p-8">
           <div className="max-w-2xl">
             <h2 className="text-xl font-bold text-neutral-900 md:text-2xl">
               {isEn ? 'What happens at each stage' : 'Apa yang terjadi di setiap tahap'}
@@ -209,7 +209,7 @@ export function ProcessContent({ steps }: { steps: ProcessStep[] }) {
                 <motion.div
                   key={step.id}
                   variants={fadeInUp}
-                  className="grid gap-4 rounded-[30px] card-elevated bg-[#f7f3e8] p-5 md:grid-cols-[92px_1fr_230px] md:items-start"
+                  className="grid gap-4 rounded-[30px] neo-surface p-5 md:grid-cols-[92px_1fr_230px] md:items-start"
                 >
                   <div className="flex items-center gap-4 md:flex-col md:items-start">
                     <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#c4956a]/20 bg-[#FAFAFA]">
@@ -232,7 +232,7 @@ export function ProcessContent({ steps }: { steps: ProcessStep[] }) {
                     </p>
                   </div>
 
-                  <div className="rounded-[24px] card-elevated bg-[#FAFAFA] p-4">
+                  <div className="rounded-[24px] bg-[#f0f0f0] p-4">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
                       {isEn ? 'Client gets' : 'Client dapat'}
                     </p>
@@ -247,7 +247,7 @@ export function ProcessContent({ steps }: { steps: ProcessStep[] }) {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
+        <div className="rounded-[35px] neo-surface p-6 md:p-8">
           <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div className="space-y-3">
               <h2 className="text-2xl font-bold text-neutral-900">
@@ -266,7 +266,7 @@ export function ProcessContent({ steps }: { steps: ProcessStep[] }) {
             <div className="grid gap-3 sm:grid-cols-2">
               <Link
                 href="/pricing"
-                className="inline-flex items-center justify-center gap-2 rounded-[22px] border border-neutral-400 bg-[#f7f3e8] px-4 py-3 text-sm font-semibold text-neutral-900 transition-colors hover:bg-[#efe4cf]"
+                className="neo-button inline-flex items-center justify-center gap-2 rounded-[22px] px-4 py-3 text-sm font-semibold text-neutral-900"
               >
                 {isEn ? 'See price ranges' : 'Lihat range harga'}
                 <ArrowRight className="h-4 w-4" />

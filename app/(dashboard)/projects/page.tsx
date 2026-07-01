@@ -156,7 +156,7 @@ export default function ProjectsPage() {
 
   return (
     <div className="mx-auto max-w-6xl space-y-10 pb-12">
-      <motion.div {...fadeUp} className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
+      <motion.div {...fadeUp} className="rounded-[35px] neo-surface p-6 md:p-8">
         <div className="max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#c4956a]/20 bg-[#f7f3e8] px-3 py-1 text-xs font-semibold text-[#a67d55]">
             <FolderKanban className="h-3.5 w-3.5" />
@@ -176,7 +176,7 @@ export default function ProjectsPage() {
 
         <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
           {stats.map((stat) => (
-            <div key={stat.label} className="rounded-[24px] card-elevated bg-[#f7f3e8] p-4">
+            <div key={stat.label} className="rounded-[24px] neo-surface p-4">
               <div className="text-2xl font-extrabold text-[#a67d55]">{stat.value}</div>
               <p className="mt-2 text-xs leading-relaxed text-neutral-600">{stat.label}</p>
             </div>
@@ -187,7 +187,7 @@ export default function ProjectsPage() {
       <ScrollReveal>
         <div className="grid gap-4 md:grid-cols-3">
           {reviewLenses.map((lens) => (
-            <div key={lens.title} className="rounded-[28px] card-elevated bg-[#FAFAFA] p-5">
+            <div key={lens.title} className="rounded-[28px] neo-surface p-5">
               <lens.icon className="h-4 w-4 text-[#c4956a]" />
               <h2 className="mt-3 text-sm font-bold text-neutral-900">{lens.title}</h2>
               <p className="mt-1 text-xs leading-relaxed text-neutral-600">{lens.desc}</p>
@@ -198,7 +198,7 @@ export default function ProjectsPage() {
 
       {featuredProject && (
         <ScrollReveal>
-          <div className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
+          <div className="rounded-[35px] neo-surface p-6 md:p-8">
             <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
               <div className="max-w-2xl">
                 <div className="inline-flex items-center gap-2 rounded-full border border-[#c4956a]/20 bg-[#f7f3e8] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#a67d55]">
@@ -225,7 +225,7 @@ export default function ProjectsPage() {
             </div>
 
             <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-              <div className="overflow-hidden rounded-[28px] card-elevated bg-[#f7f3e8]">
+              <div className="overflow-hidden rounded-[28px] neo-surface">
                 <Image
                   src={featuredProject.image}
                   alt={featuredProject.title}
@@ -248,7 +248,7 @@ export default function ProjectsPage() {
                   </p>
                 </div>
 
-                <div className="rounded-[24px] card-elevated bg-[#f7f3e8] p-4">
+                <div className="rounded-[24px] neo-surface p-4">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
                     {isEn ? "Challenge" : "Challenge"}
                   </p>
@@ -262,7 +262,7 @@ export default function ProjectsPage() {
                     {featuredProject.caseStudy.metrics.slice(0, 3).map((metric) => (
                       <div
                         key={metric.label}
-                        className="grid gap-3 rounded-[24px] border border-neutral-300 bg-[#FAFAFA] p-4 md:grid-cols-[0.9fr_1fr_1fr] md:items-center"
+                        className="grid gap-3 rounded-[24px] border border-neutral-300 bg-[#f0f0f0] p-4 md:grid-cols-[0.9fr_1fr_1fr] md:items-center"
                       >
                         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500">
                           {metric.label}
@@ -286,12 +286,12 @@ export default function ProjectsPage() {
 
                 <div className="flex flex-wrap gap-2">
                   {featuredProject.impact?.users && (
-                    <span className="rounded-full border border-neutral-300 bg-[#FAFAFA] px-3 py-1 text-xs text-neutral-700">
+                    <span className="rounded-full border border-neutral-300 bg-[#f0f0f0] px-3 py-1 text-xs text-neutral-700">
                       {featuredProject.impact.users}
                     </span>
                   )}
                   {featuredProject.impact?.dataVolume && (
-                    <span className="rounded-full border border-neutral-300 bg-[#FAFAFA] px-3 py-1 text-xs text-neutral-700">
+                    <span className="rounded-full border border-neutral-300 bg-[#f0f0f0] px-3 py-1 text-xs text-neutral-700">
                       {featuredProject.impact.dataVolume}
                     </span>
                   )}
@@ -303,7 +303,7 @@ export default function ProjectsPage() {
       )}
 
       <ScrollReveal>
-        <div className="space-y-5 rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
+        <div className="space-y-5 rounded-[35px] neo-surface p-6 md:p-8">
           <div className="max-w-2xl">
             <h2 className="text-2xl font-bold text-neutral-900">
               {isEn ? "Browse each case by the kind of problem it solved" : "Lihat tiap case dari jenis problem yang berhasil diselesaikan"}
@@ -329,9 +329,9 @@ export default function ProjectsPage() {
                 >
                   <Link
                     href={`/projects/${project.id}`}
-                    className="group grid gap-5 rounded-[30px] card-elevated bg-[#f7f3e8] p-5 transition-all hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] lg:grid-cols-[320px_1fr]"
+                    className="group grid gap-5 rounded-[30px] neo-surface p-5 transition-all hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.06)] lg:grid-cols-[320px_1fr]"
                   >
-                    <div className="overflow-hidden rounded-[24px] card-elevated bg-[#FAFAFA]">
+                    <div className="overflow-hidden rounded-[24px] neo-surface">
                       <Image
                         src={project.image}
                         alt={project.title}
@@ -345,13 +345,13 @@ export default function ProjectsPage() {
                     <div className="flex flex-col justify-between gap-4">
                       <div className="space-y-4">
                         <div className="flex flex-wrap items-center gap-2">
-                          <span className="rounded-full border border-[#c4956a]/20 bg-[#FAFAFA] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#a67d55]">
+                          <span className="rounded-full border border-[#c4956a]/20 bg-[#f0f0f0] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#a67d55]">
                             {angle.label}
                           </span>
-                          <span className="rounded-full border border-neutral-300 bg-[#FAFAFA] px-3 py-1 text-[11px] font-medium text-neutral-600">
+                          <span className="rounded-full border border-neutral-300 bg-[#f0f0f0] px-3 py-1 text-[11px] font-medium text-neutral-600">
                             {project.year}
                           </span>
-                          <span className="rounded-full border border-neutral-300 bg-[#FAFAFA] px-3 py-1 text-[11px] font-medium text-neutral-600">
+                          <span className="rounded-full border border-neutral-300 bg-[#f0f0f0] px-3 py-1 text-[11px] font-medium text-neutral-600">
                             {project.status}
                           </span>
                         </div>
@@ -364,7 +364,7 @@ export default function ProjectsPage() {
                         </div>
 
                         <div className="grid gap-3 lg:grid-cols-2">
-                          <div className="rounded-[24px] card-elevated bg-[#FAFAFA] p-4">
+                          <div className="rounded-[24px] neo-surface p-4">
                             <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
                               {isEn ? "Problem seen on the ground" : "Problem yang terjadi di lapangan"}
                             </p>
@@ -372,7 +372,7 @@ export default function ProjectsPage() {
                               {project.caseStudy?.problem ?? angle.summary}
                             </p>
                           </div>
-                          <div className="rounded-[24px] card-elevated bg-[#FAFAFA] p-4">
+                          <div className="rounded-[24px] neo-surface p-4">
                             <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
                               {isEn ? "What changed" : "Apa yang berubah"}
                             </p>
@@ -385,7 +385,7 @@ export default function ProjectsPage() {
                         {metrics.length > 0 && (
                           <div className="grid gap-3 md:grid-cols-2">
                             {metrics.map((metric) => (
-                              <div key={metric.label} className="rounded-[24px] card-elevated bg-[#FAFAFA] p-4">
+                              <div key={metric.label} className="rounded-[24px] neo-surface p-4">
                                 <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
                                   {metric.label}
                                 </p>
@@ -410,7 +410,7 @@ export default function ProjectsPage() {
                       <div className="flex flex-col gap-3 border-t border-neutral-300 pt-4 md:flex-row md:items-center md:justify-between">
                         <div className="flex flex-wrap gap-2">
                           {project.tags.slice(0, 4).map((tag) => (
-                            <span key={tag} className="rounded-full border border-neutral-300 bg-[#FAFAFA] px-3 py-1 text-xs text-neutral-600">
+                            <span key={tag} className="rounded-full border border-neutral-300 bg-[#f0f0f0] px-3 py-1 text-xs text-neutral-600">
                               {tag}
                             </span>
                           ))}
@@ -455,7 +455,7 @@ export default function ProjectsPage() {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="rounded-[35px] card-elevated bg-[#FAFAFA] p-6 md:p-8">
+        <div className="rounded-[35px] neo-surface p-6 md:p-8">
           <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div className="space-y-3">
               <h2 className="text-2xl font-bold text-neutral-900">

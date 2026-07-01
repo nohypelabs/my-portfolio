@@ -44,7 +44,7 @@ export const Header = () => {
   return (
     <header
       className={clsx(
-        'bg-[#FAFAFA] border-b border-neutral-300 sticky top-0 z-30 transition-[padding-left] duration-200',
+        'bg-[#f0f0f0] border-b border-neutral-300 sticky top-0 z-30 transition-[padding-left] duration-200',
         isCollapsed ? 'lg:pl-[50px]' : 'lg:pl-[260px]'
       )}
     >
@@ -81,7 +81,7 @@ export const Header = () => {
             href="https://github.com/nohypelabs"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-9 h-9 rounded-lg flex items-center justify-center text-neutral-900 hover:bg-[#FAFAFA] hover:text-[#c4956a] transition-colors"
+            className="w-9 h-9 rounded-lg flex items-center justify-center text-neutral-900 hover:bg-[#f0f0f0] hover:text-[#c4956a] transition-colors"
             aria-label="GitHub"
           >
             <Github className="w-[18px] h-[18px]" strokeWidth={1.5} />

@@ -16,10 +16,9 @@ import {
   HelpCircle,
   Shield,
   ChevronsUpDown,
-  ExternalLink,
   Building2,
 } from 'lucide-react';
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { clsx } from '@/lib/utils';
 import { useSidebar } from '@/contexts/SidebarContext';
 
@@ -88,11 +87,11 @@ export const Sidebar = () => {
       <button
         onClick={() => router.push(item.path)}
         className={clsx(
-          'w-full flex items-center gap-2.5 rounded-xl transition-all duration-200 text-left text-[13px] relative group',
+          'w-full flex items-center gap-2.5 rounded-2xl transition-all duration-200 text-left text-[13px] relative group',
           isCollapsed ? 'px-0 py-[8px] justify-center' : 'px-3 py-[8px]',
           isActive
-            ? 'bg-[#FAFAFA] text-[#a67d55] font-medium shadow-sm border border-neutral-200'
-            : 'text-neutral-600 hover:bg-neutral-100/80 hover:text-neutral-900 border border-transparent'
+            ? 'neo-pressed text-[#a67d55] font-medium'
+            : 'neo-button text-neutral-600 hover:text-neutral-900'
         )}
       >
         {isActive && !isCollapsed && (
@@ -115,7 +114,7 @@ export const Sidebar = () => {
       {/* Desktop sidebar */}
       <aside
         className={clsx(
-          'hidden lg:flex lg:flex-col lg:fixed lg:inset-y-0 lg:left-0 lg:bg-[#FAFAFA] lg:border-r lg:border-neutral-300 lg:z-40 transition-[width] duration-200',
+          'neo-sidebar hidden lg:flex lg:flex-col lg:fixed lg:inset-y-0 lg:left-0 lg:z-40 transition-[width] duration-200',
           isCollapsed ? 'lg:w-[50px]' : 'lg:w-[260px]'
         )}
       >
@@ -134,7 +133,7 @@ export const Sidebar = () => {
           )}
           <button
             onClick={toggleCollapsed}
-            className="w-7 h-7 rounded-lg flex items-center justify-center text-neutral-900 hover:bg-neutral-100 transition-colors"
+            className="neo-button w-8 h-8 rounded-xl flex items-center justify-center text-neutral-900"
             aria-label="Toggle sidebar"
           >
             <PanelLeft className="w-4 h-4" strokeWidth={1.5} />
@@ -163,7 +162,7 @@ export const Sidebar = () => {
         >
           {/* Dropdown menu — pops upward */}
           {showMenu && (
-            <div className="absolute bottom-full left-3 right-3 mb-1 z-50 bg-[#f7f3e8] border border-neutral-300 rounded-[12px] shadow-lg overflow-hidden">
+            <div className="neo-surface absolute bottom-full left-3 right-3 mb-2 z-50 overflow-hidden rounded-[18px]">
               <div className="px-4 py-1.5">
                 <span className="text-[10px] font-medium text-neutral-700 uppercase tracking-wider">Navigasi</span>
               </div>
@@ -176,7 +175,7 @@ export const Sidebar = () => {
                       setShowMenu(false);
                       router.push(item.path);
                     }}
-                    className="w-full flex items-center gap-2.5 px-4 py-2.5 text-[13px] text-[#2d2a26] hover:bg-neutral-50 transition-colors text-left"
+                    className="w-full flex items-center gap-2.5 px-4 py-2.5 text-[13px] text-[#2d2a26] transition-colors text-left hover:text-[#a67d55]"
                   >
                     <Icon className="w-4 h-4 text-[#2d2a26]" strokeWidth={1.5} />
                     <span>{item.label}</span>
@@ -196,7 +195,7 @@ export const Sidebar = () => {
               <button
                 onClick={() => router.push('/about')}
                 title="nasaq.id"
-                className="rounded-lg hover:bg-neutral-200/40 transition-colors text-left w-full flex items-center justify-center py-1.5"
+                className="neo-button rounded-xl text-left w-full flex items-center justify-center py-1.5"
               >
                 <div className="rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 w-7 h-7">
                   <img
@@ -220,7 +219,7 @@ export const Sidebar = () => {
             ) : (
               <button
                 onClick={() => router.push('/about')}
-                className="rounded-lg hover:bg-neutral-200/40 transition-colors text-left flex items-center gap-2.5 flex-1 min-w-0 px-2 py-1.5 -ml-2"
+                className="neo-button rounded-2xl text-left flex items-center gap-2.5 flex-1 min-w-0 px-2 py-1.5 -ml-2"
               >
                 <div className="rounded-full bg-neutral-800 flex items-center justify-center flex-shrink-0 w-9 h-9 overflow-hidden">
                   <img
@@ -254,7 +253,7 @@ export const Sidebar = () => {
                   e.stopPropagation();
                   setShowMenu((prev) => !prev);
                 }}
-                className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 text-[#2d2a26] hover:bg-neutral-200/40 transition-colors"
+                className="neo-button w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 text-[#2d2a26]"
                 aria-label="Menu opsi"
               >
                 <ChevronsUpDown className="w-4 h-4" strokeWidth={1} />

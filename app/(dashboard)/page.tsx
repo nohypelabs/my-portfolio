@@ -157,7 +157,7 @@ export default function DashboardPage() {
         <section className="grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
           <motion.div
             variants={fadeInUp}
-            className="rounded-[32px] card-elevated bg-[#FAFAFA] p-7 md:p-8"
+            className="neo-surface rounded-[32px] p-7 md:p-8"
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-[#c4956a]/20 bg-[#c4956a]/8 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#c4956a]">
               Kenapa Client Order
@@ -181,7 +181,7 @@ export default function DashboardPage() {
                 key={item.label}
                 variants={fadeInUp}
                 transition={{ delay: index * 0.06 }}
-                className="rounded-2xl card-elevated bg-[#FAFAFA] p-4 md:p-5"
+                className="neo-surface rounded-2xl p-4 md:p-5"
               >
                 <p className="text-xl font-extrabold text-neutral-900 md:text-2xl">
                   {item.value}
@@ -229,7 +229,7 @@ export default function DashboardPage() {
                 <motion.div
                   variants={fadeInUp}
                   transition={{ delay: index * 0.08 }}
-                  className="h-full rounded-[28px] card-elevated bg-[#FAFAFA] p-6 transition-all hover:shadow-lg"
+                  className="neo-surface h-full rounded-[28px] p-6"
                 >
                   <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#c4956a]/10">
                     <track.icon className="h-5 w-5 text-[#c4956a]" strokeWidth={1.5} />
@@ -281,7 +281,7 @@ export default function DashboardPage() {
                 <motion.div
                   variants={fadeInUp}
                   transition={{ delay: index * 0.08 }}
-                  className="h-full rounded-[28px] card-elevated bg-[#FAFAFA] p-6"
+                  className="neo-surface h-full rounded-[28px] p-6"
                 >
                   <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#c4956a]/10">
                     <item.icon className="h-5 w-5 text-[#c4956a]" strokeWidth={1.5} />
@@ -327,7 +327,7 @@ export default function DashboardPage() {
                 key={step.label}
                 variants={fadeInUp}
                 transition={{ delay: index * 0.07 }}
-                className="rounded-[28px] card-elevated bg-[#FAFAFA] p-5"
+                className="neo-surface rounded-[28px] p-5"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#c4956a]/10">
@@ -380,8 +380,8 @@ export default function DashboardPage() {
                   transition={{ delay: index * 0.08 }}
                   className={`relative h-full overflow-hidden rounded-[28px] p-6 ${
                     pkg.popular
-                      ? 'border border-[#c4956a] bg-[#FAFAFA] shadow-lg ring-1 ring-[#c4956a]/20'
-                      : 'card-elevated bg-[#FAFAFA]'
+                      ? 'neo-pressed ring-1 ring-[#c4956a]/20'
+                      : 'neo-surface'
                   }`}
                 >
                   {pkg.popular && (
@@ -444,7 +444,7 @@ export default function DashboardPage() {
       <ScrollReveal>
         <motion.section
           variants={fadeInUp}
-          className="relative overflow-hidden rounded-[35px] border border-neutral-400 bg-[#FAFAFA]"
+          className="neo-surface relative overflow-hidden rounded-[35px]"
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(196,149,106,0.18),_transparent_52%)]" />
           <div className="relative p-8 text-center md:p-12">
@@ -471,7 +471,7 @@ export default function DashboardPage() {
                 as="a"
                 href="/contact"
                 strength={0.15}
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-neutral-400 bg-[#f7f3e8] px-8 py-4 font-semibold text-neutral-900 transition-all hover:bg-[#FAFAFA]"
+                className="neo-button inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold text-neutral-900"
               >
                 Konsultasi Dulu
               </MagneticButton>

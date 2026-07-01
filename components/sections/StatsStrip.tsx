@@ -66,7 +66,7 @@ export function StatsStrip() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: i * 0.06, duration: 0.5 }}
-          className="bg-[#FAFAFA] border border-neutral-300 rounded-2xl p-4 text-center hover:shadow-md hover:border-[#c4956a]/20 transition-all duration-300 group"
+          className="neo-surface rounded-2xl p-4 text-center transition-all duration-300 group"
         >
           <div className={`w-8 h-8 rounded-lg ${s.iconBg} flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform`}>
             <div className={`w-2 h-2 rounded-full ${s.accent.replace('text-', 'bg-')}`} />

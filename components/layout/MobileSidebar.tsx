@@ -100,7 +100,7 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-y-0 left-0 w-[260px] bg-[#FAFAFA] border-r border-neutral-300 flex flex-col shadow-2xl"
+            className="fixed inset-y-0 left-0 w-[260px] bg-[#f0f0f0] border-r border-neutral-300 flex flex-col shadow-2xl"
           >
             {/* Header */}
             <div className="h-[60px] flex items-center justify-between px-6">
@@ -143,7 +143,7 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
                     className={clsx(
                       'w-full flex items-center gap-2.5 rounded-lg transition-colors text-left text-[13px] px-3 py-[7px]',
                       isActive
-                        ? 'bg-[#FAFAFA] text-[#a67d55] font-medium'
+                        ? 'bg-[#f0f0f0] text-[#a67d55] font-medium'
                         : 'text-neutral-900 hover:bg-neutral-100'
                     )}
                   >

@@ -29,7 +29,7 @@ export function OngoingStrip() {
           <Link
             key={project.id}
             href={`/ongoing/${project.id}`}
-            className="group bg-[#FAFAFA] rounded-xl border border-neutral-400 p-3 hover:border-[#c4956a]/30 hover:shadow-sm transition-all duration-200"
+            className="group neo-surface rounded-xl p-3 transition-all duration-200"
           >
             <div className="flex items-center justify-between mb-2">
               <h3 className="text-xs font-semibold text-foreground truncate group-hover:text-[#c4956a] transition-colors">

@@ -22,7 +22,7 @@ export function TestimonialsContent({ testimonials }: { testimonials: Testimonia
           <motion.div
             key={t.id}
             variants={fadeInUp}
-            className="bg-[#f7f3e8] border border-neutral-200 rounded-xl p-6 hover:border-[#c4956a]/30 hover:shadow-sm transition-all"
+            className="neo-surface rounded-xl p-6 transition-all"
           >
             <div className="flex items-start gap-3 mb-4">
               <Quote className="w-8 h-8 text-[#c4956a]/20 flex-shrink-0" strokeWidth={1} />

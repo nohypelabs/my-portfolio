@@ -130,7 +130,7 @@ function OrderForm() {
       )}
 
       {/* Form */}
-      <motion.form variants={fadeInUp} onSubmit={handleSubmit} className="bg-[#f7f3e8] border border-neutral-200 rounded-xl p-6 space-y-5">
+      <motion.form variants={fadeInUp} onSubmit={handleSubmit} className="neo-surface rounded-xl p-6 space-y-5">
         {/* Name */}
         <div>
           <label className="block text-[12px] font-medium text-neutral-700 mb-1.5">Nama Lengkap *</label>
@@ -176,7 +176,7 @@ function OrderForm() {
             <select
               value={form.service_id}
               onChange={e => setForm({ ...form, service_id: e.target.value })}
-              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors bg-[#f7f3e8]"
+              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors bg-[#f0f0f0]"
             >
               <option value="">Pilih layanan</option>
               {services.map(s => (
@@ -189,7 +189,7 @@ function OrderForm() {
             <select
               value={form.package_id}
               onChange={e => setForm({ ...form, package_id: e.target.value })}
-              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors bg-[#f7f3e8]"
+              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors bg-[#f0f0f0]"
             >
               <option value="">Pilih paket</option>
               {packages.map(p => (
@@ -206,7 +206,7 @@ function OrderForm() {
             <select
               value={form.budget_range}
               onChange={e => setForm({ ...form, budget_range: e.target.value })}
-              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors bg-[#f7f3e8]"
+              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors bg-[#f0f0f0]"
             >
               <option value="">Pilih range</option>
               <option value="< 1.5jt">&lt; Rp 1.5jt</option>
@@ -221,7 +221,7 @@ function OrderForm() {
             <select
               value={form.timeline}
               onChange={e => setForm({ ...form, timeline: e.target.value })}
-              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors bg-[#f7f3e8]"
+              className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors bg-[#f0f0f0]"
             >
               <option value="">Pilih timeline</option>
               <option value="1-2 minggu">1-2 minggu</option>

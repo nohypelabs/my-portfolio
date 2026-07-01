@@ -25,7 +25,7 @@ export function TechStackStrip() {
       <h2 className="text-lg font-bold text-foreground">{t.techStack}</h2>
 
       {/* Marquee strip */}
-      <div className="bg-[#FAFAFA] border border-neutral-300 rounded-2xl overflow-hidden py-4">
+      <div className="neo-surface rounded-2xl overflow-hidden py-4">
         <Marquee speed={25} pauseOnHover>
           {uniqueTechs.map((tech, i) => (
             <motion.div

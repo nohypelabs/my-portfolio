@@ -19,7 +19,7 @@ export function ClientLogos() {
         Dipercaya oleh bisnis nyata
       </p>
 
-      <div className="bg-[#FAFAFA] card-elevated rounded-2xl py-5 overflow-hidden">
+      <div className="neo-surface rounded-2xl py-5 overflow-hidden">
         <Marquee speed={20} pauseOnHover>
           {[...clients, ...clients].map((client, i) => (
             <motion.div
