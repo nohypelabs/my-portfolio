@@ -49,7 +49,7 @@ export function StatsStrip() {
   const { totalData, activeProjects } = deriveStats(m);
 
   const stats = [
-    { value: activeProjects, labelKey: "productsShipped" as const, accent: "text-[#c4956a]", iconBg: "bg-[#c4956a]/10" },
+    { value: activeProjects, labelKey: "productsShipped" as const, accent: "text-accent", iconBg: "bg-accent/10" },
     { value: totalData, labelKey: "dataProcessed" as const, accent: "text-orange-500", iconBg: "bg-orange-500/10" },
     { value: activeProjects, labelKey: "activeProjects" as const, accent: "text-blue-500", iconBg: "bg-blue-500/10" },
     { value: 6, labelKey: "techMastered" as const, accent: "text-purple-500", iconBg: "bg-purple-500/10" },
@@ -66,7 +66,7 @@ export function StatsStrip() {
           whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: i * 0.06, duration: 0.5 }}
-          className="neo-surface rounded-2xl p-4 text-center transition-all duration-300 group"
+          className="neo-surface rounded-[8px] p-4 text-center transition-all duration-300 group"
         >
           <div className={`w-8 h-8 rounded-lg ${s.iconBg} flex items-center justify-center mx-auto mb-2 group-hover:scale-110 transition-transform`}>
             <div className={`w-2 h-2 rounded-full ${s.accent.replace('text-', 'bg-')}`} />

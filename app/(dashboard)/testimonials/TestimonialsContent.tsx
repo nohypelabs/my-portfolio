@@ -10,7 +10,7 @@ export function TestimonialsContent({ testimonials }: { testimonials: Testimonia
     <motion.div variants={staggerContainer} initial="initial" animate="animate" className="space-y-10">
       {/* Header */}
       <motion.div variants={fadeInUp}>
-        <h1 className="text-[22px] font-semibold text-neutral-900 mb-2">Testimoni Klien</h1>
+        <h1 className="text-[22px] font-semibold text-foreground mb-2">Testimoni Klien</h1>
         <p className="text-[14px] text-neutral-500 max-w-2xl">
           Apa kata mereka tentang sistem yang kami bangun.
         </p>
@@ -22,10 +22,10 @@ export function TestimonialsContent({ testimonials }: { testimonials: Testimonia
           <motion.div
             key={t.id}
             variants={fadeInUp}
-            className="neo-surface rounded-xl p-6 transition-all"
+            className="neo-surface rounded-[8px] p-6 transition-all"
           >
             <div className="flex items-start gap-3 mb-4">
-              <Quote className="w-8 h-8 text-[#c4956a]/20 flex-shrink-0" strokeWidth={1} />
+              <Quote className="w-8 h-8 text-accent/20 flex-shrink-0" strokeWidth={1} />
               <div className="flex gap-0.5">
                 {Array.from({ length: t.rating }).map((_, i) => (
                   <Star key={i} className="w-3.5 h-3.5 text-yellow-400 fill-yellow-400" />
@@ -38,11 +38,11 @@ export function TestimonialsContent({ testimonials }: { testimonials: Testimonia
             </p>
 
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-[#c4956a]/10 flex items-center justify-center text-[13px] font-semibold text-[#c4956a]">
+              <div className="w-9 h-9 rounded-full bg-accent/10 flex items-center justify-center text-[13px] font-semibold text-accent">
                 {t.name.charAt(0)}
               </div>
               <div>
-                <p className="text-[13px] font-medium text-neutral-900">{t.name}</p>
+                <p className="text-[13px] font-medium text-foreground">{t.name}</p>
                 <p className="text-[11px] text-neutral-500">{t.position} — {t.company}</p>
               </div>
             </div>

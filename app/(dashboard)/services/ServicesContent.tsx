@@ -159,13 +159,13 @@ export function ServicesContent({ services }: { services: Service[] }) {
       animate="animate"
       className="mx-auto max-w-5xl space-y-10 pb-12"
     >
-      <motion.div {...fadeUp} className="rounded-[35px] neo-surface p-6 md:p-8">
+      <motion.div {...fadeUp} className="rounded-[8px] neo-surface p-6 md:p-8">
         <div className="max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#c4956a]/20 bg-[#f0f0f0] px-3 py-1 text-xs font-semibold text-[#a67d55]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-surface px-3 py-1 text-xs font-semibold text-accent-dark">
             <Building2 className="h-3.5 w-3.5" />
             {isEn ? 'Offer tracks' : 'Track layanan'}
           </div>
-          <h1 className="text-3xl font-extrabold tracking-tight text-neutral-900 md:text-5xl">
+          <h1 className="text-3xl font-extrabold tracking-tight text-foreground md:text-5xl">
             {isEn
               ? 'Services built to make the business look more trusted and the workflow feel less messy.'
               : 'Layanan yang dibangun untuk membuat bisnis terlihat lebih dipercaya dan workflow terasa lebih rapi.'}
@@ -179,9 +179,9 @@ export function ServicesContent({ services }: { services: Service[] }) {
 
         <div className="mt-6 grid gap-3 md:grid-cols-3">
           {trustPoints.map((item) => (
-            <div key={item.title} className="rounded-[28px] neo-surface p-4">
-              <item.icon className="h-4 w-4 text-[#c4956a]" />
-              <h2 className="mt-3 text-sm font-bold text-neutral-900">{item.title}</h2>
+            <div key={item.title} className="rounded-[8px] neo-surface p-4">
+              <item.icon className="h-4 w-4 text-accent" />
+              <h2 className="mt-3 text-sm font-bold text-foreground">{item.title}</h2>
               <p className="mt-1 text-xs leading-relaxed text-neutral-600">{item.desc}</p>
             </div>
           ))}
@@ -189,10 +189,10 @@ export function ServicesContent({ services }: { services: Service[] }) {
       </motion.div>
 
       <ScrollReveal>
-        <div className="space-y-5 rounded-[35px] neo-surface p-6 md:p-8">
+        <div className="space-y-5 rounded-[8px] neo-surface p-6 md:p-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
-              <h2 className="text-xl font-bold text-neutral-900 md:text-2xl">
+              <h2 className="text-xl font-bold text-foreground md:text-2xl">
                 {isEn ? 'Choose the track that matches the actual problem' : 'Pilih track yang paling cocok dengan problem aslinya'}
               </h2>
               <p className="mt-2 text-sm leading-relaxed text-neutral-600">
@@ -204,7 +204,7 @@ export function ServicesContent({ services }: { services: Service[] }) {
 
             <Link
               href="/process"
-              className="inline-flex items-center gap-2 text-sm font-medium text-[#a67d55] transition-colors hover:text-[#8b6543]"
+              className="inline-flex items-center gap-2 text-sm font-medium text-accent-dark transition-colors hover:text-[#8b6543]"
             >
               {isEn ? 'See how the work runs' : 'Lihat cara kerjanya'}
               <ArrowRight className="h-4 w-4" />
@@ -220,24 +220,24 @@ export function ServicesContent({ services }: { services: Service[] }) {
                 <motion.div
                   key={service.id}
                   variants={fadeInUp}
-                  className="rounded-[30px] neo-surface p-5 transition-transform duration-200 hover:-translate-y-1"
+                  className="rounded-[8px] neo-surface p-5 transition-transform duration-200 hover:-translate-y-1"
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <div className="inline-flex rounded-full border border-[#c4956a]/20 bg-[#f0f0f0] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#a67d55]">
+                    <div className="inline-flex rounded-full border border-accent/20 bg-surface px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent-dark">
                       {lens.badge}
                     </div>
-                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-[#c4956a]/20 bg-[#f0f0f0]">
-                      <Icon className="h-5 w-5 text-[#c4956a]" strokeWidth={1.7} />
+                    <div className="flex h-11 w-11 items-center justify-center rounded-[8px] border border-accent/20 bg-surface">
+                      <Icon className="h-5 w-5 text-accent" strokeWidth={1.7} />
                     </div>
                   </div>
 
                   <div className="mt-4 space-y-3">
                     <div>
-                      <h3 className="text-lg font-bold text-neutral-900">{service.title}</h3>
+                      <h3 className="text-lg font-bold text-foreground">{service.title}</h3>
                       <p className="mt-2 text-sm leading-relaxed text-neutral-600">{lens.summary}</p>
                     </div>
 
-                    <div className="rounded-[24px] neo-surface p-4">
+                    <div className="rounded-[8px] neo-surface p-4">
                       <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
                         {isEn ? 'Best fit' : 'Paling cocok'}
                       </p>
@@ -247,17 +247,17 @@ export function ServicesContent({ services }: { services: Service[] }) {
                     <ul className="grid gap-2 sm:grid-cols-2">
                       {service.features.map((feature, index) => (
                         <li key={index} className="flex items-start gap-2 text-[12px] leading-relaxed text-neutral-700">
-                          <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-[#c4956a]" strokeWidth={1.6} />
+                          <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-accent" strokeWidth={1.6} />
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
 
-                    <div className="flex flex-col gap-3 border-t border-neutral-300 pt-4 md:flex-row md:items-center md:justify-between">
+                    <div className="flex flex-col gap-3 border-t border-foreground/30 pt-4 md:flex-row md:items-center md:justify-between">
                       <p className="text-xs leading-relaxed text-neutral-500">{lens.outcome}</p>
                       <Link
                         href="/contact"
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-[#a67d55] transition-colors hover:text-[#8b6543]"
+                        className="inline-flex items-center gap-2 text-sm font-semibold text-accent-dark transition-colors hover:text-[#8b6543]"
                       >
                         {isEn ? 'Discuss this track' : 'Diskusikan track ini'}
                         <ArrowRight className="h-4 w-4" />
@@ -272,10 +272,10 @@ export function ServicesContent({ services }: { services: Service[] }) {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="rounded-[35px] neo-surface p-6 md:p-8">
+        <div className="rounded-[8px] neo-surface p-6 md:p-8">
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="space-y-3">
-              <h2 className="text-2xl font-bold text-neutral-900">
+              <h2 className="text-2xl font-bold text-foreground">
                 {isEn ? 'Not sure which track fits?' : 'Belum yakin track mana yang paling pas?'}
               </h2>
               <p className="text-sm leading-relaxed text-neutral-600">
@@ -288,14 +288,14 @@ export function ServicesContent({ services }: { services: Service[] }) {
             <div className="grid gap-3 sm:grid-cols-2">
               <Link
                 href="/process"
-                className="inline-flex items-center justify-center gap-2 rounded-[22px] border border-neutral-400 bg-[#f0f0f0] px-4 py-3 text-sm font-semibold text-neutral-900 transition-colors hover:bg-[#efe4cf]"
+                className="inline-flex items-center justify-center gap-2 rounded-[8px] border border-foreground/40 bg-surface px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent-bg"
               >
                 {isEn ? 'See the process first' : 'Lihat proses dulu'}
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/order"
-                className="inline-flex items-center justify-center gap-2 rounded-[22px] bg-[#c4956a] px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#a67d55]"
+                className="inline-flex items-center justify-center gap-2 rounded-[8px] bg-accent-light px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent-dark hover:text-surface"
               >
                 {isEn ? 'Start the brief' : 'Mulai brief'}
                 <ArrowRight className="h-4 w-4" />

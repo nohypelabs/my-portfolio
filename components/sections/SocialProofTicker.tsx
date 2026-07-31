@@ -20,7 +20,7 @@ export function SocialProofTicker() {
         Aktivitas Real-time
       </p>
 
-      <div className="neo-surface rounded-2xl p-4 overflow-hidden">
+      <div className="neo-surface rounded-[8px] p-4 overflow-hidden">
         <div className="flex gap-3 overflow-hidden">
           <motion.div
             className="flex gap-3"
@@ -37,11 +37,11 @@ export function SocialProofTicker() {
             {[...activities, ...activities, ...activities].map((activity, i) => (
               <div
                 key={i}
-                className="flex items-center gap-2.5 px-4 py-2.5 bg-white border border-neutral-200 rounded-xl flex-shrink-0 hover:border-[#c4956a]/20 transition-colors"
+                className="flex items-center gap-2.5 px-4 py-2.5 bg-white border border-foreground/20 rounded-[8px] flex-shrink-0 hover:border-accent/20 transition-colors"
               >
                 <activity.icon className={`w-4 h-4 ${activity.color} flex-shrink-0`} />
                 <span className="text-[12px] text-neutral-700 whitespace-nowrap">{activity.text}</span>
-                <span className="text-[9px] font-medium text-[#c4956a] bg-[#c4956a]/8 px-1.5 py-0.5 rounded-full whitespace-nowrap">
+                <span className="text-[9px] font-medium text-accent bg-accent/10 px-1.5 py-0.5 rounded-full whitespace-nowrap">
                   {activity.time}
                 </span>
               </div>

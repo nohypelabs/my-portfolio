@@ -39,14 +39,14 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <motion.div variants={staggerContainer} initial="initial" animate="animate" className="w-full max-w-sm">
-        <motion.div variants={fadeInUp} className="bg-[#f7f3e8] border border-neutral-200 rounded-xl p-6">
+        <motion.div variants={fadeInUp} className="bg-surface border border-foreground/20 rounded-[8px] p-6">
           <div className="text-center mb-6">
-            <div className="w-12 h-12 rounded-full bg-[#c4956a]/10 flex items-center justify-center mx-auto mb-3">
-              <Shield className="w-5 h-5 text-[#c4956a]" />
+            <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-3">
+              <Shield className="w-5 h-5 text-accent" />
             </div>
-            <h1 className="text-[16px] font-semibold text-neutral-900">Admin Panel</h1>
+            <h1 className="text-[16px] font-semibold text-foreground">Admin Panel</h1>
             <p className="text-[12px] text-neutral-500">nasaq.id</p>
           </div>
 
@@ -64,7 +64,7 @@ export default function AdminLoginPage() {
                 required
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors"
+                className="w-full px-3 py-2.5 border border-foreground/30 rounded-lg text-[13px] focus:outline-none focus:border-accent focus:shadow-[4px_4px_0_0_var(--color-accent)] transition-colors"
                 placeholder="admin@nasaq.id"
               />
             </div>
@@ -77,7 +77,7 @@ export default function AdminLoginPage() {
                   required
                   value={password}
                   onChange={e => setPassword(e.target.value)}
-                  className="w-full px-3 py-2.5 pr-10 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors"
+                  className="w-full px-3 py-2.5 pr-10 border border-foreground/30 rounded-lg text-[13px] focus:outline-none focus:border-accent focus:shadow-[4px_4px_0_0_var(--color-accent)] transition-colors"
                   placeholder="••••••••"
                 />
                 <button
@@ -93,7 +93,7 @@ export default function AdminLoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex items-center justify-center gap-2 py-2.5 bg-neutral-900 text-white rounded-lg text-[13px] font-medium hover:bg-neutral-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center gap-2 py-2.5 bg-foreground text-white rounded-lg text-[13px] font-medium hover:bg-foreground transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <><Loader2 className="w-4 h-4 animate-spin" /> Masuk...</>

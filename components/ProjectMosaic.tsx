@@ -17,7 +17,7 @@ const projects = [
 
 export function ProjectMosaic() {
   return (
-    <div className="absolute inset-0 bg-neutral-950">
+    <div className="absolute inset-0 bg-foreground">
       <div className="absolute inset-0 grid grid-cols-4 grid-rows-2 gap-[2px]">
         {projects.map((project, i) => (
           <div
@@ -46,7 +46,7 @@ export function ProjectMosaic() {
                     {project.tag}
                   </p>
                 </div>
-                <div className="w-1.5 h-1.5 rounded-full bg-[#c4956a]" />
+                <div className="w-1.5 h-1.5 rounded-full bg-accent-light" />
               </div>
             </div>
 

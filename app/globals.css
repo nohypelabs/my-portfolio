@@ -1,182 +1,262 @@
 @import "tailwindcss";
 
-/* ── Light Gray Design System ── */
-:root {
-  color-scheme: light;
-  --color-background: #e8e8e8;
-  --color-foreground: #2d2a26;
-  --color-surface: #f0f0f0;
-  --color-border: #d8d8d8;
-  --color-muted: #6b6560;
-  --color-accent: #c4956a;
-  --color-accent-light: #d4aa82;
-  --color-accent-dark: #a67d55;
-  --color-accent-bg: #f0f0f0;
-  --color-accent-hover: #d4aa82;
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-jetbrains-mono);
-}
-
-/* ── Register as Tailwind utilities ── */
+/* ════════════════════════════════════════════════════════════
+   neo-brutalism design system — nasaq.id
+   ════════════════════════════════════════════════════════════ */
 @theme {
-  --color-background: var(--color-background);
-  --color-foreground: var(--color-foreground);
-  --color-surface: var(--color-surface);
-  --color-border: var(--color-border);
-  --color-muted: var(--color-muted);
-  --color-accent: var(--color-accent);
-  --color-accent-light: var(--color-accent-light);
-  --color-accent-dark: var(--color-accent-dark);
-  --color-accent-bg: var(--color-accent-bg);
-  --color-accent-hover: var(--color-accent-hover);
+  /* Core palette — CMY neo-brutalism on yellow paper */
+  --color-background: #fff3c4;  /* post-it yellow paper */
+  --color-foreground: #141414;  /* ink */
+  --color-surface: #ffffff;     /* card white */
+  --color-border: #141414;      /* thick ink border */
+  --color-muted: #6f6f6f;       /* secondary text */
+
+  /* CMY accents */
+  --color-accent: #d6007c;        /* magenta — links & icons */
+  --color-accent-light: #00d0ff;  /* cyan — CTA / hero blocks */
+  --color-accent-dark: #0090c7;   /* deep cyan — hover + chips */
+  --color-accent-bg: #ffd9ee;     /* light magenta tint */
+  --color-accent-hover: #e6007e;
+  --color-punch: #e6007e;         /* magenta — "On Hold" / semantic */
+  --color-double: #ff3d77;        /* magenta — stickers / pressed */
+  --color-money: #9be564;         /* lime */
+  --color-splash: #7c5cff;        /* purple */
+
+  /* Fonts */
   --font-sans: var(--font-inter);
+  --font-display: var(--font-space-grotesk);
   --font-mono: var(--font-jetbrains-mono);
+
+  /* Radius */
+  --radius-brutal: 8px;
+
+  /* All 1px `border` utilities render as thick 2px ink borders */
+  --default-border-width: 2px;
 }
 
 body {
   background-color: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth scroll behavior */
+/* Force light color-scheme for native controls (scrollbars, inputs) */
+:root {
+  color-scheme: light;
+}
+
+/* Display headings — chunky neo-brutal type */
+h1, h2, h3, h4 {
+  font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar for webkit browsers */
+/* ── Brutal scrollbar ── */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--color-background);
+  border-left: 2px solid var(--color-border);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #e8e0c8;
-  border-radius: 9999px;
+  background: var(--color-double);
+  border: 2px solid var(--color-border);
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #c4956a;
+  background: var(--color-accent-light);
 }
 
-/* ── Light Gray Card ── */
+/* ════════════════════════════════════════════════════════════
+   Core neo-brutal utilities
+   ════════════════════════════════════════════════════════════ */
+
+/* White brutal card */
+.neo-surface,
 .card-enterprise {
-  background: #f0f0f0;
-  border: 1px solid #d8d8d8;
-  border-radius: 40px;
-  transition: all 0.2s ease;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 6px 6px 0 0 var(--color-border);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
+.neo-surface:hover,
 .card-enterprise:hover {
-  box-shadow: 0 8px 32px rgba(45, 42, 38, 0.12);
+  box-shadow: 8px 8px 0 0 var(--color-border);
+  transform: translate(-2px, -2px);
 }
 
-/* ── Accent Layer Card ── */
+/* Yellow sticker card */
 .card-tosca {
-  background: #e8e8e8;
-  border: 1px solid #d8d8d8;
-  border-radius: 40px;
-  transition: all 0.2s ease;
+  background: var(--color-double);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 6px 6px 0 0 var(--color-border);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .card-tosca:hover {
-  box-shadow: 0 8px 32px rgba(196, 149, 106, 0.15);
-  border-color: #c4956a;
+  box-shadow: 8px 8px 0 0 var(--color-border);
+  transform: translate(-2px, -2px);
 }
 
-/* ── Accent background layer ── */
 .tosca-layer {
-  background: #f0f0f0;
+  background: var(--color-accent-bg);
 }
 
-/* ── Pill button ── */
+/* Pill button */
 .btn-pill {
-  background: #f0f0f0;
-  border: 1px solid #d8d8d8;
-  border-radius: 20px;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 999px;
   padding: 1rem 1.25rem;
-  transition: all 0.2s ease;
+  box-shadow: 4px 4px 0 0 var(--color-border);
+  transition: all 0.15s ease;
 }
 
 .btn-pill:hover {
-  border-color: #c4956a;
-  box-shadow: 0 4px 12px rgba(196, 149, 106, 0.15);
+  background: var(--color-double);
+  box-shadow: 6px 6px 0 0 var(--color-border);
+  transform: translate(-2px, -2px);
 }
 
-/* ── Elevated Card (no border, layered shadow) ── */
+/* Elevated card */
 .card-elevated {
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.04),
-    0 4px 12px rgba(0, 0, 0, 0.06);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 5px 5px 0 0 var(--color-border);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 .card-elevated:hover {
-  box-shadow:
-    0 2px 4px rgba(0, 0, 0, 0.06),
-    0 8px 24px rgba(0, 0, 0, 0.1),
-    0 0 0 1px rgba(196, 149, 106, 0.08);
+  box-shadow: 8px 8px 0 0 var(--color-border);
+  transform: translate(-3px, -3px);
 }
 
-/* ── Soft Neomorphism Layer ── */
-.neo-surface {
-  background: linear-gradient(145deg, #f5f5f5 0%, #e0e0e0 100%);
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  box-shadow:
-    12px 12px 28px rgba(160, 155, 150, 0.34),
-    -12px -12px 28px rgba(255, 255, 255, 0.86),
-    inset 1px 1px 0 rgba(255, 255, 255, 0.78);
+/* Chop every soft shadow into a hard offset shadow */
+.shadow-sm {
+  --tw-shadow: 2px 2px 0 0 var(--color-border);
+  --tw-shadow-colored: 2px 2px 0 0 var(--color-border);
 }
 
-.neo-surface:hover {
-  box-shadow:
-    16px 16px 34px rgba(160, 155, 150, 0.38),
-    -14px -14px 30px rgba(255, 255, 255, 0.9),
-    inset 1px 1px 0 rgba(255, 255, 255, 0.85);
-  transform: translateY(-1px);
+.shadow,
+.shadow-md {
+  --tw-shadow: 3px 3px 0 0 var(--color-border);
+  --tw-shadow-colored: 3px 3px 0 0 var(--color-border);
 }
 
-.neo-pressed {
-  background: linear-gradient(145deg, #e0e0e0 0%, #f2f2f2 100%);
-  border: 1px solid rgba(196, 149, 106, 0.2);
-  box-shadow:
-    inset 7px 7px 14px rgba(160, 155, 150, 0.28),
-    inset -7px -7px 14px rgba(255, 255, 255, 0.82);
+.shadow-lg {
+  --tw-shadow: 4px 4px 0 0 var(--color-border);
+  --tw-shadow-colored: 4px 4px 0 0 var(--color-border);
 }
 
+.shadow-xl,
+.shadow-2xl {
+  --tw-shadow: 6px 6px 0 0 var(--color-border);
+  --tw-shadow-colored: 6px 6px 0 0 var(--color-border);
+}
+
+/* Chunky brutal buttons */
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 2px solid var(--color-border);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.btn-primary {
+  background: var(--color-accent-light);
+  color: var(--color-foreground);
+  box-shadow: 5px 5px 0 0 var(--color-border);
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-dark);
+  color: var(--color-surface);
+  box-shadow: 7px 7px 0 0 var(--color-border);
+  transform: translate(-2px, -2px);
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 0 var(--color-border);
+}
+
+.btn-secondary {
+  background: var(--color-surface);
+  color: var(--color-foreground);
+  box-shadow: 5px 5px 0 0 var(--color-border);
+}
+
+.btn-secondary:hover {
+  background: var(--color-double);
+  box-shadow: 7px 7px 0 0 var(--color-border);
+  transform: translate(-2px, -2px);
+}
+
+/* Solid accent border → always thick (for 1px border-accent instances) */
+.border-accent,
+.border-accent\/5,
+.border-accent\/10,
+.border-accent\/15,
+.border-accent\/20,
+.border-accent\/25,
+.border-accent\/30,
+.border-accent\/40,
+.border-accent\/50 {
+  border-width: 2px;
+}
+
+/* Neo button (nav / generic) */
 .neo-button {
-  background: linear-gradient(145deg, #f2f2f2 0%, #e0e0e0 100%);
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow:
-    6px 6px 14px rgba(160, 155, 150, 0.3),
-    -6px -6px 14px rgba(255, 255, 255, 0.86);
-  transition: color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  box-shadow: 4px 4px 0 0 var(--color-border);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
 }
 
 .neo-button:hover {
-  box-shadow:
-    8px 8px 18px rgba(160, 155, 150, 0.34),
-    -8px -8px 18px rgba(255, 255, 255, 0.9);
-  transform: translateY(-1px);
+  background: var(--color-accent-bg);
+  box-shadow: 6px 6px 0 0 var(--color-border);
+  transform: translate(-2px, -2px);
 }
 
 .neo-button:active {
-  transform: translateY(0);
-  box-shadow:
-    inset 5px 5px 10px rgba(160, 155, 150, 0.28),
-    inset -5px -5px 10px rgba(255, 255, 255, 0.82);
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 0 var(--color-border);
 }
 
+/* Pressed / active state */
+.neo-pressed {
+  background: var(--color-double);
+  border: 2px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-foreground);
+  box-shadow: 0 0 0 0 var(--color-border);
+  transform: translate(2px, 2px);
+}
+
+/* Sidebar */
 .neo-sidebar {
-  background: linear-gradient(180deg, #f2f2f2 0%, #e4e4e4 100%);
-  box-shadow:
-    18px 0 34px rgba(160, 155, 150, 0.22),
-    inset -1px 0 0 rgba(255, 255, 255, 0.76);
+  background: var(--color-surface);
+  border-right: 2px solid var(--color-border);
 }
 
 /* ── Animations ── */
@@ -197,13 +277,8 @@ html {
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(196, 149, 106, 0.2); }
-  50% { box-shadow: 0 0 20px 4px rgba(196, 149, 106, 0.15); }
-}
-
-@keyframes gradient-shift {
-  0% { background-position: 0% center; }
-  100% { background-position: 200% center; }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(0, 208, 255, 0.3); }
+  50% { box-shadow: 0 0 20px 4px rgba(0, 208, 255, 0.2); }
 }
 
 .animate-fade-in {
@@ -218,23 +293,20 @@ html {
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
-.animate-gradient {
-  animation: gradient-shift 4s linear infinite;
-}
-
 /* ── Scrollbar hide utility ── */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
-/* ── Selection color ── */
+/* ── Selection — yellow highlighter ── */
 ::selection {
-  background: rgba(196, 149, 106, 0.25);
-  color: #2d2a26;
+  background: var(--color-accent-light);
+  color: var(--color-foreground);
 }
 
 /* ── Noise texture overlay ── */
@@ -242,7 +314,7 @@ html {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.02;
+  opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px;
@@ -271,12 +343,10 @@ html {
     background: white !important;
   }
 
-  /* Hide everything except the CV */
   nav, aside, header, footer, .print-hide, [data-theme-toggle], button {
     display: none !important;
   }
 
-  /* Reset page wrapper */
   .min-h-screen, main, [class*="layout"] {
     min-height: auto !important;
     height: auto !important;
@@ -286,7 +356,6 @@ html {
     display: block !important;
   }
 
-  /* CV page container */
   .cv-page {
     width: 100% !important;
     min-height: auto !important;
@@ -295,13 +364,11 @@ html {
     padding: 0.4in 0.5in !important;
   }
 
-  /* No page breaks inside entries */
   .cv-entry, .cv-grid > div {
     page-break-inside: avoid !important;
     break-inside: avoid !important;
   }
 
-  /* Links — no underline in print */
   a {
     text-decoration: none !important;
   }

@@ -28,21 +28,21 @@ export function TestimonialsSection() {
     <section className="space-y-5">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-lg font-bold text-neutral-900">Apa Kata Klien</h2>
+          <h2 className="text-lg font-bold text-foreground">Apa Kata Klien</h2>
           <p className="text-[12px] text-neutral-500 mt-1">Feedback dari pengguna sistem kami</p>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => scroll('left')}
             disabled={!canScrollLeft}
-            className="w-8 h-8 rounded-lg border border-neutral-300 flex items-center justify-center text-neutral-400 hover:text-neutral-900 hover:border-[#c4956a]/30 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+            className="w-8 h-8 rounded-lg border border-foreground/30 flex items-center justify-center text-neutral-400 hover:text-foreground hover:border-accent/30 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
           <button
             onClick={() => scroll('right')}
             disabled={!canScrollRight}
-            className="w-8 h-8 rounded-lg border border-neutral-300 flex items-center justify-center text-neutral-400 hover:text-neutral-900 hover:border-[#c4956a]/30 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+            className="w-8 h-8 rounded-lg border border-foreground/30 flex items-center justify-center text-neutral-400 hover:text-foreground hover:border-accent/30 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
@@ -64,11 +64,11 @@ export function TestimonialsSection() {
             transition={{ delay: i * 0.1 }}
             className="flex-shrink-0 w-[320px] md:w-[360px] snap-start"
           >
-            <div className="neo-surface rounded-2xl p-6 h-full hover:shadow-md transition-all relative overflow-hidden group">
-              {/* Gradient accent */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#c4956a]/0 via-[#c4956a]/40 to-[#c4956a]/0 opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="neo-surface rounded-[8px] p-6 h-full hover:shadow-md transition-all relative overflow-hidden group">
+              {/* Accent bar */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-accent opacity-0 group-hover:opacity-100 transition-opacity" />
 
-              <Quote className="w-8 h-8 text-[#c4956a]/10 absolute top-4 right-4" />
+              <Quote className="w-8 h-8 text-accent/10 absolute top-4 right-4" />
 
               {/* Stars */}
               <div className="flex items-center gap-0.5 mb-4">
@@ -84,15 +84,15 @@ export function TestimonialsSection() {
 
               {/* Author */}
               <div className="flex items-center gap-3 mt-auto">
-                <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#c4956a]/20 to-[#c4956a]/5 flex items-center justify-center text-[12px] font-bold text-[#c4956a]">
+                <div className="w-9 h-9 rounded-full bg-accent-bg border-2 border-foreground flex items-center justify-center text-[12px] font-bold text-accent">
                   {t.name}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-[12px] font-semibold text-neutral-900">{t.name}</p>
+                  <p className="text-[12px] font-semibold text-foreground">{t.name}</p>
                   <p className="text-[10px] text-neutral-500 truncate">{t.role}</p>
                 </div>
                 {t.project && (
-                  <span className="text-[9px] font-medium text-[#c4956a] bg-[#c4956a]/8 px-2 py-0.5 rounded-full flex-shrink-0">
+                  <span className="text-[9px] font-medium text-accent bg-accent/10 px-2 py-0.5 rounded-full flex-shrink-0">
                     {t.project}
                   </span>
                 )}

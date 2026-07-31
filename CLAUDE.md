@@ -43,15 +43,14 @@ The main site lives under `app/(dashboard)/`. Important business-facing routes i
 
 ### Shell
 
-`app/(dashboard)/layout.tsx` uses the current sidebar shell:
+`app/(dashboard)/layout.tsx` uses the current top navigation shell:
 
-- `components/layout/Sidebar.tsx`
-- `components/layout/Header.tsx`
-- `components/layout/MobileSidebarWrapper.tsx`
-- `contexts/SidebarContext.tsx`
+- `components/layout/Header.tsx` — brutalist top nav: logo sticker, primary links, "Lainnya" dropdown, CTA
+- `components/layout/MobileSidebar.tsx` (+ `MobileSidebarWrapper.tsx`) — mobile slide-over menu
+- `contexts/SidebarContext.tsx` — mobile drawer open state only
 - `components/PageTransition.tsx`
 
-Do not reintroduce the old top-nav/footer shell without an explicit product decision.
+The admin-panel sidebar shell was intentionally removed (product decision). Do not reintroduce it.
 
 ### Data and Content
 

@@ -97,25 +97,25 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
     <div className="mx-auto max-w-6xl space-y-8 pb-12">
       <Link
         href="/projects"
-        className="inline-flex items-center gap-2 text-sm font-medium text-neutral-600 transition-colors hover:text-neutral-900"
+        className="inline-flex items-center gap-2 text-sm font-medium text-neutral-600 transition-colors hover:text-foreground"
       >
         <ArrowLeft className="h-4 w-4" />
         {isEn ? "Back to case studies" : "Kembali ke case studies"}
       </Link>
 
-      <motion.div {...fadeUp} className="rounded-[35px] neo-surface p-6 md:p-8">
+      <motion.div {...fadeUp} className="rounded-[8px] neo-surface p-6 md:p-8">
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-4">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="rounded-full border border-[#c4956a]/20 bg-[#f0f0f0] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#a67d55]">
+              <span className="rounded-full border border-accent/20 bg-surface px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent-dark">
                 {getStatusLabel(project, isEn)}
               </span>
-              <span className="inline-flex items-center gap-1 rounded-full border border-neutral-300 bg-white px-3 py-1 text-[11px] font-medium text-neutral-600">
+              <span className="inline-flex items-center gap-1 rounded-full border border-foreground/30 bg-white px-3 py-1 text-[11px] font-medium text-neutral-600">
                 <Calendar className="h-3.5 w-3.5" />
                 {project.year}
               </span>
               {project.caseStudy?.timeline && (
-                <span className="inline-flex items-center gap-1 rounded-full border border-neutral-300 bg-white px-3 py-1 text-[11px] font-medium text-neutral-600">
+                <span className="inline-flex items-center gap-1 rounded-full border border-foreground/30 bg-white px-3 py-1 text-[11px] font-medium text-neutral-600">
                   <Clock3 className="h-3.5 w-3.5" />
                   {project.caseStudy.timeline}
                 </span>
@@ -123,7 +123,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
             </div>
 
             <div>
-              <h1 className="text-3xl font-extrabold tracking-tight text-neutral-900 md:text-5xl">
+              <h1 className="text-3xl font-extrabold tracking-tight text-foreground md:text-5xl">
                 {project.title}
               </h1>
               <p className="mt-3 text-sm leading-relaxed text-neutral-600 md:text-base">
@@ -131,7 +131,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
               </p>
             </div>
 
-            <div className="rounded-[24px] neo-surface p-4">
+            <div className="rounded-[8px] neo-surface p-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
                 {isEn ? "Context" : "Konteks"}
               </p>
@@ -140,7 +140,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
 
             <div className="flex flex-wrap gap-2">
               {project.tags.map((tag) => (
-                <span key={tag} className="rounded-full border border-neutral-300 bg-white px-3 py-1 text-xs text-neutral-600">
+                <span key={tag} className="rounded-full border border-foreground/30 bg-white px-3 py-1 text-xs text-neutral-600">
                   {tag}
                 </span>
               ))}
@@ -152,7 +152,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-[22px] bg-[#c4956a] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#a67d55]"
+                  className="inline-flex items-center justify-center gap-2 rounded-[8px] bg-accent-light px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent-dark hover:text-surface"
                 >
                   {isEn ? "Visit live project" : "Kunjungi project live"}
                   <ExternalLink className="h-4 w-4" />
@@ -163,7 +163,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-[22px] border border-neutral-400 bg-white px-5 py-3 text-sm font-semibold text-neutral-900 transition-colors hover:bg-[#f0f0f0]"
+                  className="inline-flex items-center justify-center gap-2 rounded-[8px] border border-foreground/40 bg-white px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-surface"
                 >
                   {isEn ? "View source" : "Lihat source"}
                   <Github className="h-4 w-4" />
@@ -173,27 +173,27 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-            <div className="rounded-[28px] neo-surface p-5">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-[#c4956a]/20 bg-white">
-                <Building2 className="h-4 w-4 text-[#c4956a]" />
+            <div className="rounded-[8px] neo-surface p-5">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-[8px] border border-accent/20 bg-white">
+                <Building2 className="h-4 w-4 text-accent" />
               </div>
-              <h2 className="mt-4 text-sm font-bold text-neutral-900">
+              <h2 className="mt-4 text-sm font-bold text-foreground">
                 {isEn ? "Project at a glance" : "Sekilas project"}
               </h2>
               <p className="mt-2 text-xs leading-relaxed text-neutral-600">{project.fullDescription}</p>
             </div>
 
-            <div className="rounded-[28px] neo-surface p-5">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-[#c4956a]/20 bg-[#f0f0f0]">
-                <Sparkles className="h-4 w-4 text-[#c4956a]" />
+            <div className="rounded-[8px] neo-surface p-5">
+              <div className="inline-flex h-10 w-10 items-center justify-center rounded-[8px] border border-accent/20 bg-surface">
+                <Sparkles className="h-4 w-4 text-accent" />
               </div>
-              <h2 className="mt-4 text-sm font-bold text-neutral-900">
+              <h2 className="mt-4 text-sm font-bold text-foreground">
                 {isEn ? "What this case helps prove" : "Apa yang dibuktikan case ini"}
               </h2>
               <div className="mt-3 space-y-2">
                 {proofLines.slice(0, 3).map((line) => (
                   <div key={line} className="flex items-start gap-2 text-xs leading-relaxed text-neutral-600">
-                    <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-[#c4956a]" strokeWidth={1.6} />
+                    <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-accent" strokeWidth={1.6} />
                     <span>{line}</span>
                   </div>
                 ))}
@@ -204,7 +204,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
       </motion.div>
 
       <ScrollReveal>
-        <div className="overflow-hidden rounded-[35px] neo-surface">
+        <div className="overflow-hidden rounded-[8px] neo-surface">
           <Image
             src={project.image}
             alt={`${project.title} screenshot`}
@@ -221,12 +221,12 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         <>
           <ScrollReveal>
             <div className="grid gap-5 lg:grid-cols-2">
-              <div className="rounded-[35px] neo-surface p-6 md:p-8">
+              <div className="rounded-[8px] neo-surface p-6 md:p-8">
                 <div className="flex items-center gap-2">
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-red-100 bg-red-50">
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-[8px] border border-red-100 bg-red-50">
                     <AlertTriangle className="h-4 w-4 text-red-500" />
                   </div>
-                  <h2 className="text-xl font-bold text-neutral-900">
+                  <h2 className="text-xl font-bold text-foreground">
                     {isEn ? "The challenge" : "Challenge-nya"}
                   </h2>
                 </div>
@@ -237,7 +237,7 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                     {project.caseStudy.painPoints.map((point) => (
                       <div
                         key={point}
-                        className="flex items-start gap-2 rounded-[20px] border border-red-100 bg-red-50 px-4 py-3 text-sm leading-relaxed text-neutral-700"
+                        className="flex items-start gap-2 rounded-[8px] border border-red-100 bg-red-50 px-4 py-3 text-sm leading-relaxed text-neutral-700"
                       >
                         <span className="mt-0.5 text-red-500">•</span>
                         <span>{point}</span>
@@ -247,18 +247,18 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                 )}
               </div>
 
-              <div className="rounded-[35px] neo-surface p-6 md:p-8">
+              <div className="rounded-[8px] neo-surface p-6 md:p-8">
                 <div className="flex items-center gap-2">
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-emerald-100 bg-emerald-50">
+                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-[8px] border border-emerald-100 bg-emerald-50">
                     <Zap className="h-4 w-4 text-emerald-600" />
                   </div>
-                  <h2 className="text-xl font-bold text-neutral-900">
+                  <h2 className="text-xl font-bold text-foreground">
                     {isEn ? "The response" : "Respons yang dibangun"}
                   </h2>
                 </div>
                 <p className="mt-4 text-sm leading-relaxed text-neutral-700">{project.caseStudy.solution}</p>
 
-                <div className="mt-5 rounded-[24px] neo-surface p-4">
+                <div className="mt-5 rounded-[8px] neo-surface p-4">
                   <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
                     {isEn ? "Why it mattered" : "Kenapa ini penting"}
                   </p>
@@ -276,8 +276,8 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
 
           {project.caseStudy.metrics.length > 0 && (
             <ScrollReveal>
-              <div className="rounded-[35px] neo-surface p-6 md:p-8">
-                <h2 className="text-2xl font-bold text-neutral-900">
+              <div className="rounded-[8px] neo-surface p-6 md:p-8">
+                <h2 className="text-2xl font-bold text-foreground">
                   {isEn ? "Before and after, in clearer terms" : "Sebelum dan sesudah, dalam bentuk yang lebih jelas"}
                 </h2>
                 <p className="mt-2 max-w-2xl text-sm leading-relaxed text-neutral-600">
@@ -290,20 +290,20 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                   {project.caseStudy.metrics.map((metric) => (
                     <div
                       key={metric.label}
-                      className="grid gap-3 rounded-[28px] neo-surface p-4 md:grid-cols-[0.9fr_1fr_1fr] md:items-center"
+                      className="grid gap-3 rounded-[8px] neo-surface p-4 md:grid-cols-[0.9fr_1fr_1fr] md:items-center"
                     >
                       <div>
                         <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
                           {metric.label}
                         </p>
                       </div>
-                      <div className="rounded-[20px] border border-red-100 bg-red-50 p-4">
+                      <div className="rounded-[8px] border border-red-100 bg-red-50 p-4">
                         <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-red-500">
                           {isEn ? "Before" : "Sebelum"}
                         </p>
                         <p className="mt-1 text-sm font-medium text-neutral-800">{metric.before}</p>
                       </div>
-                      <div className="rounded-[20px] border border-emerald-100 bg-emerald-50 p-4">
+                      <div className="rounded-[8px] border border-emerald-100 bg-emerald-50 p-4">
                         <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-emerald-600">
                           {isEn ? "After" : "Sesudah"}
                         </p>
@@ -318,17 +318,17 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
 
           {project.caseStudy.testimonial && (
             <ScrollReveal>
-              <div className="rounded-[35px] neo-surface p-6 md:p-8">
-                <Quote className="h-9 w-9 text-[#c4956a]/35" />
-                <blockquote className="mt-4 text-lg font-medium leading-relaxed text-neutral-900 md:text-xl">
+              <div className="rounded-[8px] neo-surface p-6 md:p-8">
+                <Quote className="h-9 w-9 text-accent/20" />
+                <blockquote className="mt-4 text-lg font-medium leading-relaxed text-foreground md:text-xl">
                   &ldquo;{project.caseStudy.testimonial.quote}&rdquo;
                 </blockquote>
                 <div className="mt-5 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#c4956a]/15 font-bold text-[#a67d55]">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/15 font-bold text-accent-dark">
                     {project.caseStudy.testimonial.author.charAt(0)}
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-neutral-900">{project.caseStudy.testimonial.author}</p>
+                    <p className="text-sm font-semibold text-foreground">{project.caseStudy.testimonial.author}</p>
                     <p className="text-xs text-neutral-500">{project.caseStudy.testimonial.role}</p>
                   </div>
                 </div>
@@ -340,31 +340,31 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
 
       <ScrollReveal>
         <div className="grid gap-5 xl:grid-cols-[1fr_0.9fr]">
-          <div className="rounded-[35px] neo-surface p-6 md:p-8">
-            <h2 className="text-2xl font-bold text-neutral-900">
+          <div className="rounded-[8px] neo-surface p-6 md:p-8">
+            <h2 className="text-2xl font-bold text-foreground">
               {isEn ? "Key highlights of the build" : "Highlight utama dari build-nya"}
             </h2>
             <div className="mt-5 grid gap-4 md:grid-cols-2">
               {project.highlights.map((highlight) => (
-                <div key={highlight.title} className="rounded-[24px] neo-surface p-4">
-                  <h3 className="text-sm font-bold text-neutral-900">{highlight.title}</h3>
+                <div key={highlight.title} className="rounded-[8px] neo-surface p-4">
+                  <h3 className="text-sm font-bold text-foreground">{highlight.title}</h3>
                   <p className="mt-2 text-xs leading-relaxed text-neutral-600">{highlight.description}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="rounded-[35px] neo-surface p-6 md:p-8">
-            <h2 className="text-2xl font-bold text-neutral-900">
+          <div className="rounded-[8px] neo-surface p-6 md:p-8">
+            <h2 className="text-2xl font-bold text-foreground">
               {isEn ? "Impact that stayed visible" : "Dampak yang tetap kelihatan"}
             </h2>
             <div className="mt-5 space-y-3">
               {proofLines.map((line) => (
                 <div
                   key={line}
-                  className="flex items-start gap-3 rounded-[22px] neo-surface px-4 py-4 text-sm leading-relaxed text-neutral-700"
+                  className="flex items-start gap-3 rounded-[8px] neo-surface px-4 py-4 text-sm leading-relaxed text-neutral-700"
                 >
-                  <ShieldCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#c4956a]" />
+                  <ShieldCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" />
                   <span>{line}</span>
                 </div>
               ))}
@@ -375,28 +375,28 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
 
       <ScrollReveal>
         <div className="grid gap-5 xl:grid-cols-[1fr_0.9fr]">
-          <div className="rounded-[35px] neo-surface p-6 md:p-8">
-            <h2 className="text-2xl font-bold text-neutral-900">
+          <div className="rounded-[8px] neo-surface p-6 md:p-8">
+            <h2 className="text-2xl font-bold text-foreground">
               {isEn ? "What the system includes" : "Yang dibawa sistem ini"}
             </h2>
             <div className="mt-5 grid gap-3 lg:grid-cols-2">
               {project.features.map((feature) => (
-                <div key={feature} className="flex items-start gap-2 rounded-[20px] neo-surface px-4 py-3 text-sm leading-relaxed text-neutral-700">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#c4956a]" strokeWidth={1.6} />
+                <div key={feature} className="flex items-start gap-2 rounded-[8px] neo-surface px-4 py-3 text-sm leading-relaxed text-neutral-700">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" strokeWidth={1.6} />
                   <span>{feature}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="rounded-[35px] neo-surface p-6 md:p-8">
-            <h2 className="text-2xl font-bold text-neutral-900">
+          <div className="rounded-[8px] neo-surface p-6 md:p-8">
+            <h2 className="text-2xl font-bold text-foreground">
               {isEn ? "Technology stack" : "Technology stack"}
             </h2>
             <div className="mt-5 space-y-5">
               {project.techStack.map((stack) => (
                 <div key={stack.category}>
-                  <h3 className="text-sm font-bold text-[#a67d55]">{stack.category}</h3>
+                  <h3 className="text-sm font-bold text-accent-dark">{stack.category}</h3>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {stack.technologies.map((tech) => (
                       <TechBadge key={tech} tech={tech} />
@@ -410,10 +410,10 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="rounded-[35px] neo-surface p-6 md:p-8">
+        <div className="rounded-[8px] neo-surface p-6 md:p-8">
           <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div className="space-y-3">
-              <h2 className="text-2xl font-bold text-neutral-900">
+              <h2 className="text-2xl font-bold text-foreground">
                 {isEn
                   ? "If this kind of operational shift is what you need, start from the problem."
                   : "Kalau kamu butuh perubahan operasional seperti ini, mulainya dari problem-nya dulu."}
@@ -428,14 +428,14 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
             <div className="grid gap-3 sm:grid-cols-2">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-[22px] border border-neutral-400 bg-[#f0f0f0] px-4 py-3 text-sm font-semibold text-neutral-900 transition-colors hover:bg-[#efe4cf]"
+                className="inline-flex items-center justify-center gap-2 rounded-[8px] border border-foreground/40 bg-surface px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent-bg"
               >
                 {isEn ? "Discuss a similar case" : "Diskusikan kasus serupa"}
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/order"
-                className="inline-flex items-center justify-center gap-2 rounded-[22px] bg-[#c4956a] px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#a67d55]"
+                className="inline-flex items-center justify-center gap-2 rounded-[8px] bg-accent-light px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent-dark hover:text-surface"
               >
                 {isEn ? "Start the brief" : "Mulai brief"}
                 <ArrowRight className="h-4 w-4" />

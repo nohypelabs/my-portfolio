@@ -22,13 +22,13 @@ Font.register({
 });
 
 // ── Colors (exact match from web) ──────────────
-const TEAL = "#10b981";
-const DARK = "#0f172a";
-const GRAY_600 = "#475569";
-const GRAY_500 = "#64748b";
-const GRAY_400 = "#94a3b8";
-const BORDER = "#e2e8f0";
-const BG_CARD = "#f8fafc";
+const ACCENT = "#d6007c";
+const DARK = "#141414";
+const GRAY_600 = "#6f6f6f";
+const GRAY_500 = "#6f6f6f";
+const GRAY_400 = "#a1a1a1";
+const BORDER = "#e2e2e2";
+const BG_CARD = "#ffffff";
 
 // ── Styles (exact match from web page.tsx inline styles) ──
 const s = StyleSheet.create({
@@ -55,7 +55,7 @@ const s = StyleSheet.create({
     borderRadius: 25,
     marginRight: 12,
     borderWidth: 2,
-    borderColor: TEAL,
+    borderColor: ACCENT,
     borderStyle: "solid",
   },
   headerInfo: {
@@ -71,7 +71,7 @@ const s = StyleSheet.create({
   headerRole: {
     fontSize: 10,
     fontWeight: 300,
-    color: TEAL,
+    color: ACCENT,
     marginBottom: 6,
   },
   // Contact: 2-column grid — matches web: gap: 12pt, fontSize: 7.5pt
@@ -91,7 +91,7 @@ const s = StyleSheet.create({
     marginBottom: 2,
   },
   contactLabel: {
-    color: TEAL,
+    color: ACCENT,
     fontWeight: "bold",
     fontSize: 7.5,
     width: 14,
@@ -122,7 +122,7 @@ const s = StyleSheet.create({
     textTransform: "uppercase",
     letterSpacing: 0.8,
     borderBottomWidth: 2,
-    borderBottomColor: TEAL,
+    borderBottomColor: ACCENT,
     borderBottomStyle: "solid",
     paddingBottom: 3,
     marginBottom: 8,
@@ -135,7 +135,7 @@ const s = StyleSheet.create({
     textTransform: "uppercase",
     letterSpacing: 0.8,
     borderBottomWidth: 2,
-    borderBottomColor: TEAL,
+    borderBottomColor: ACCENT,
     borderBottomStyle: "solid",
     paddingBottom: 3,
     marginBottom: 8,
@@ -160,7 +160,7 @@ const s = StyleSheet.create({
   entryYear: {
     fontSize: 7,
     fontWeight: "bold",
-    color: TEAL,
+    color: ACCENT,
     textTransform: "uppercase",
     letterSpacing: 0.3,
   },
@@ -186,7 +186,7 @@ const s = StyleSheet.create({
   skillCard: {
     backgroundColor: BG_CARD,
     borderLeftWidth: 2.5,
-    borderLeftColor: TEAL,
+    borderLeftColor: ACCENT,
     borderLeftStyle: "solid",
     padding: "4pt 6pt",
     borderRadius: 3,
@@ -215,7 +215,7 @@ const s = StyleSheet.create({
   },
   langBadge: {
     backgroundColor: DARK,
-    color: TEAL,
+    color: ACCENT,
     fontSize: 6,
     fontWeight: "bold",
     padding: "3pt 6pt",
@@ -225,7 +225,7 @@ const s = StyleSheet.create({
   langName: {
     fontSize: 7,
     fontWeight: "bold",
-    color: "#334155",
+    color: "#3f3f3f",
     textAlign: "center",
     marginTop: 2,
   },
@@ -234,7 +234,7 @@ const s = StyleSheet.create({
   projectCard: {
     backgroundColor: BG_CARD,
     borderLeftWidth: 2.5,
-    borderLeftColor: TEAL,
+    borderLeftColor: ACCENT,
     borderLeftStyle: "solid",
     padding: "4pt 6pt",
     borderRadius: 3,
@@ -253,7 +253,7 @@ const s = StyleSheet.create({
   },
   projectLink: {
     fontSize: 6,
-    color: TEAL,
+    color: ACCENT,
     textDecoration: "none",
     flexShrink: 0,
   },
@@ -283,7 +283,7 @@ const s = StyleSheet.create({
     marginTop: 12,
   },
   footerLink: {
-    color: TEAL,
+    color: ACCENT,
     textDecoration: "none",
     fontWeight: "bold",
   },
@@ -297,7 +297,7 @@ function Highlights({ items }: { items: string[] }) {
     <View style={{ marginTop: 3 }}>
       {items.map((h, i) => (
         <View key={i} style={{ flexDirection: "row", marginTop: 1 }}>
-          <Text style={{ color: TEAL, fontSize: 6, marginRight: 3 }}>▸</Text>
+          <Text style={{ color: ACCENT, fontSize: 6, marginRight: 3 }}>▸</Text>
           <Text style={s.bulletItem}>{h}</Text>
         </View>
       ))}

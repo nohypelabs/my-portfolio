@@ -9,25 +9,25 @@ const showcases = [
     title: 'Dashboard Analytics',
     desc: 'Real-time monitoring dengan chart interaktif',
     icon: Monitor,
-    gradient: 'from-blue-500/20 to-indigo-500/20',
+    color: 'bg-accent-light',
   },
   {
     title: 'Mobile-First Design',
     desc: 'Optimized untuk semua device',
     icon: Smartphone,
-    gradient: 'from-emerald-500/20 to-teal-500/20',
+    color: 'bg-money',
   },
   {
     title: 'Backend Architecture',
     desc: 'Scalable API & database design',
     icon: Server,
-    gradient: 'from-purple-500/20 to-violet-500/20',
+    color: 'bg-splash',
   },
   {
     title: 'Security & Auth',
     desc: 'Role-based access & encryption',
     icon: Shield,
-    gradient: 'from-orange-500/20 to-red-500/20',
+    color: 'bg-double',
   },
 ];
 
@@ -37,7 +37,7 @@ export function VideoShowcase() {
   return (
     <section className="space-y-5">
       <div>
-        <h2 className="text-lg font-bold text-neutral-900">Bagaimana Kami Membangun</h2>
+        <h2 className="text-lg font-bold text-foreground">Bagaimana Kami Membangun</h2>
         <p className="text-[12px] text-neutral-500 mt-1">Behind the scene dari setiap project</p>
       </div>
 
@@ -47,7 +47,7 @@ export function VideoShowcase() {
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          className="relative bg-gradient-to-br from-neutral-900 to-neutral-800 rounded-2xl overflow-hidden aspect-video group cursor-pointer"
+          className="relative bg-foreground rounded-[8px] overflow-hidden aspect-video group cursor-pointer"
         >
           {/* Grid pattern */}
           <div
@@ -66,9 +66,9 @@ export function VideoShowcase() {
             <motion.div
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="w-16 h-16 rounded-full bg-[#c4956a]/90 flex items-center justify-center shadow-xl shadow-[#c4956a]/30 group-hover:bg-[#c4956a] transition-colors"
+              className="w-16 h-16 rounded-full bg-accent-light border-2 border-foreground shadow-[6px_6px_0_0_var(--color-border)] flex items-center justify-center group-hover:bg-double transition-colors"
             >
-              <Play className="w-6 h-6 text-white ml-1" fill="white" />
+              <Play className="w-6 h-6 text-foreground ml-1" fill="currentColor" />
             </motion.div>
           </div>
 
@@ -92,16 +92,16 @@ export function VideoShowcase() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               onMouseEnter={() => setActiveIndex(i)}
-              className={`neo-surface rounded-2xl p-4 transition-all cursor-default group ${
+              className={`neo-surface rounded-[8px] p-4 transition-all cursor-default group ${
                 activeIndex === i
                   ? 'shadow-md'
                   : ''
               }`}
             >
-              <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${item.gradient} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
-                <item.icon className={`w-5 h-5 ${activeIndex === i ? 'text-[#c4956a]' : 'text-neutral-500'} transition-colors`} />
+              <div className={`w-10 h-10 rounded-[8px] border-2 border-foreground ${item.color} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
+                <item.icon className={`w-5 h-5 ${activeIndex === i ? 'text-foreground' : 'text-neutral-500'} transition-colors`} />
               </div>
-              <h3 className="text-[12px] font-semibold text-neutral-900 mb-1">{item.title}</h3>
+              <h3 className="text-[12px] font-semibold text-foreground mb-1">{item.title}</h3>
               <p className="text-[10px] text-neutral-500 leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}

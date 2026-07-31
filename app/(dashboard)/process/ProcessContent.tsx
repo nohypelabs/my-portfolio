@@ -156,13 +156,13 @@ export function ProcessContent({ steps }: { steps: ProcessStep[] }) {
       animate="animate"
       className="mx-auto max-w-5xl space-y-10 pb-12"
     >
-      <motion.div {...fadeUp} className="rounded-[35px] neo-surface p-6 md:p-8">
+      <motion.div {...fadeUp} className="rounded-[8px] neo-surface p-6 md:p-8">
         <div className="max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#c4956a]/20 bg-[#f0f0f0] px-3 py-1 text-xs font-semibold text-[#a67d55]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-surface px-3 py-1 text-xs font-semibold text-accent-dark">
             <Zap className="h-3.5 w-3.5" />
             {isEn ? 'Working model' : 'Model kerja'}
           </div>
-          <h1 className="text-3xl font-extrabold tracking-tight text-neutral-900 md:text-5xl">
+          <h1 className="text-3xl font-extrabold tracking-tight text-foreground md:text-5xl">
             {isEn
               ? 'A process that keeps the client informed, keeps the scope practical, and keeps the build moving.'
               : 'Proses kerja yang membuat client tetap paham, scope tetap praktis, dan build tetap bergerak.'}
@@ -178,9 +178,9 @@ export function ProcessContent({ steps }: { steps: ProcessStep[] }) {
       <ScrollReveal>
         <div className="grid gap-4 md:grid-cols-3">
           {principles.map((item) => (
-            <div key={item.title} className="rounded-[28px] neo-surface p-5">
-              <item.icon className="h-4 w-4 text-[#c4956a]" />
-              <h2 className="mt-3 text-sm font-bold text-neutral-900">{item.title}</h2>
+            <div key={item.title} className="rounded-[8px] neo-surface p-5">
+              <item.icon className="h-4 w-4 text-accent" />
+              <h2 className="mt-3 text-sm font-bold text-foreground">{item.title}</h2>
               <p className="mt-1 text-xs leading-relaxed text-neutral-600">{item.desc}</p>
             </div>
           ))}
@@ -188,9 +188,9 @@ export function ProcessContent({ steps }: { steps: ProcessStep[] }) {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="space-y-4 rounded-[35px] neo-surface p-6 md:p-8">
+        <div className="space-y-4 rounded-[8px] neo-surface p-6 md:p-8">
           <div className="max-w-2xl">
-            <h2 className="text-xl font-bold text-neutral-900 md:text-2xl">
+            <h2 className="text-xl font-bold text-foreground md:text-2xl">
               {isEn ? 'What happens at each stage' : 'Apa yang terjadi di setiap tahap'}
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-neutral-600">
@@ -209,30 +209,30 @@ export function ProcessContent({ steps }: { steps: ProcessStep[] }) {
                 <motion.div
                   key={step.id}
                   variants={fadeInUp}
-                  className="grid gap-4 rounded-[30px] neo-surface p-5 md:grid-cols-[92px_1fr_230px] md:items-start"
+                  className="grid gap-4 rounded-[8px] neo-surface p-5 md:grid-cols-[92px_1fr_230px] md:items-start"
                 >
                   <div className="flex items-center gap-4 md:flex-col md:items-start">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#c4956a]/20 bg-[#FAFAFA]">
-                      <Icon className="h-5 w-5 text-[#c4956a]" strokeWidth={1.7} />
+                    <div className="flex h-14 w-14 items-center justify-center rounded-[8px] border border-accent/20 bg-background">
+                      <Icon className="h-5 w-5 text-accent" strokeWidth={1.7} />
                     </div>
                     <div>
                       <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-neutral-500">
                         {lens.eyebrow}
                       </p>
-                      <p className="mt-1 text-2xl font-extrabold text-neutral-900">
+                      <p className="mt-1 text-2xl font-extrabold text-foreground">
                         {String(step.step_number).padStart(2, '0')}
                       </p>
                     </div>
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-bold text-neutral-900">{lens.title}</h3>
+                    <h3 className="text-lg font-bold text-foreground">{lens.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-neutral-600">
                       {isEn ? lens.description : step.description}
                     </p>
                   </div>
 
-                  <div className="rounded-[24px] bg-[#f0f0f0] p-4">
+                  <div className="rounded-[8px] bg-surface p-4">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
                       {isEn ? 'Client gets' : 'Client dapat'}
                     </p>
@@ -247,16 +247,16 @@ export function ProcessContent({ steps }: { steps: ProcessStep[] }) {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="rounded-[35px] neo-surface p-6 md:p-8">
+        <div className="rounded-[8px] neo-surface p-6 md:p-8">
           <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div className="space-y-3">
-              <h2 className="text-2xl font-bold text-neutral-900">
+              <h2 className="text-2xl font-bold text-foreground">
                 {isEn ? 'The point is to remove black-box project anxiety.' : 'Intinya adalah menghilangkan kecemasan project yang terasa seperti black box.'}
               </h2>
               <div className="space-y-2">
                 {closingNotes.map((note) => (
                   <div key={note} className="flex items-start gap-2 text-sm leading-relaxed text-neutral-600">
-                    <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#c4956a]" strokeWidth={1.6} />
+                    <CheckCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" strokeWidth={1.6} />
                     <span>{note}</span>
                   </div>
                 ))}
@@ -266,14 +266,14 @@ export function ProcessContent({ steps }: { steps: ProcessStep[] }) {
             <div className="grid gap-3 sm:grid-cols-2">
               <Link
                 href="/pricing"
-                className="neo-button inline-flex items-center justify-center gap-2 rounded-[22px] px-4 py-3 text-sm font-semibold text-neutral-900"
+                className="neo-button inline-flex items-center justify-center gap-2 rounded-[8px] px-4 py-3 text-sm font-semibold text-foreground"
               >
                 {isEn ? 'See price ranges' : 'Lihat range harga'}
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/order"
-                className="inline-flex items-center justify-center gap-2 rounded-[22px] bg-[#c4956a] px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#a67d55]"
+                className="inline-flex items-center justify-center gap-2 rounded-[8px] bg-accent-light px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent-dark hover:text-surface"
               >
                 {isEn ? 'Start the brief' : 'Mulai brief'}
                 <ArrowRight className="h-4 w-4" />

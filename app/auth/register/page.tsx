@@ -49,19 +49,19 @@ export default function RegisterPage() {
 
   if (success) {
     return (
-      <div className="min-h-screen bg-[#FAFAFA] flex items-center justify-center p-4">
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
         <motion.div variants={staggerContainer} initial="initial" animate="animate" className="w-full max-w-sm">
-          <motion.div variants={fadeInUp} className="bg-[#f7f3e8] border border-neutral-200 rounded-xl p-6 text-center">
-            <div className="w-14 h-14 rounded-full bg-[#c4956a]/10 flex items-center justify-center mx-auto mb-4">
-              <UserPlus className="w-6 h-6 text-[#c4956a]" />
+          <motion.div variants={fadeInUp} className="bg-surface border border-foreground/20 rounded-[8px] p-6 text-center">
+            <div className="w-14 h-14 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-4">
+              <UserPlus className="w-6 h-6 text-accent" />
             </div>
-            <h2 className="text-[16px] font-semibold text-neutral-900 mb-2">Registrasi Berhasil!</h2>
+            <h2 className="text-[16px] font-semibold text-foreground mb-2">Registrasi Berhasil!</h2>
             <p className="text-[12px] text-neutral-500 mb-4">
               Silakan cek email Anda untuk verifikasi. Setelah itu bisa login.
             </p>
             <Link
               href="/auth/login"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#c4956a] text-white rounded-lg text-[13px] font-medium hover:bg-[#a67d55] transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent-light text-foreground rounded-lg text-[13px] font-medium hover:bg-accent-dark hover:text-surface transition-colors"
             >
               Ke Halaman Login
             </Link>
@@ -72,13 +72,13 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <motion.div variants={staggerContainer} initial="initial" animate="animate" className="w-full max-w-sm">
-        <motion.div variants={fadeInUp} className="bg-[#f7f3e8] border border-neutral-200 rounded-xl p-6">
+        <motion.div variants={fadeInUp} className="bg-surface border border-foreground/20 rounded-[8px] p-6">
           {/* Logo */}
           <div className="text-center mb-6">
             <h1
-              className="text-[24px] text-neutral-900 mb-1"
+              className="text-[24px] text-foreground mb-1"
               style={{ fontFamily: "'Inter', system-ui, sans-serif", fontWeight: 350, letterSpacing: '-0.03em' }}
             >nasaq.id</h1>
             <p className="text-[12px] text-neutral-500">Buat akun baru</p>
@@ -98,7 +98,7 @@ export default function RegisterPage() {
                 required
                 value={fullName}
                 onChange={e => setFullName(e.target.value)}
-                className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors"
+                className="w-full px-3 py-2.5 border border-foreground/30 rounded-lg text-[13px] focus:outline-none focus:border-accent focus:shadow-[4px_4px_0_0_var(--color-accent)] transition-colors"
                 placeholder="John Doe"
               />
             </div>
@@ -110,7 +110,7 @@ export default function RegisterPage() {
                 required
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors"
+                className="w-full px-3 py-2.5 border border-foreground/30 rounded-lg text-[13px] focus:outline-none focus:border-accent focus:shadow-[4px_4px_0_0_var(--color-accent)] transition-colors"
                 placeholder="email@example.com"
               />
             </div>
@@ -124,7 +124,7 @@ export default function RegisterPage() {
                   minLength={6}
                   value={password}
                   onChange={e => setPassword(e.target.value)}
-                  className="w-full px-3 py-2.5 pr-10 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors"
+                  className="w-full px-3 py-2.5 pr-10 border border-foreground/30 rounded-lg text-[13px] focus:outline-none focus:border-accent focus:shadow-[4px_4px_0_0_var(--color-accent)] transition-colors"
                   placeholder="Min. 6 karakter"
                 />
                 <button
@@ -140,7 +140,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex items-center justify-center gap-2 py-2.5 bg-[#c4956a] text-white rounded-lg text-[13px] font-medium hover:bg-[#a67d55] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center gap-2 py-2.5 bg-accent-light text-foreground rounded-lg text-[13px] font-medium hover:bg-accent-dark hover:text-surface transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <><Loader2 className="w-4 h-4 animate-spin" /> Mendaftar...</>
@@ -152,7 +152,7 @@ export default function RegisterPage() {
 
           <p className="mt-4 text-center text-[12px] text-neutral-500">
             Sudah punya akun?{' '}
-            <Link href="/auth/login" className="text-[#c4956a] hover:underline">Masuk</Link>
+            <Link href="/auth/login" className="text-accent hover:underline">Masuk</Link>
           </p>
         </motion.div>
       </motion.div>

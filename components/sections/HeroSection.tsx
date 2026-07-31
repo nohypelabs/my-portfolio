@@ -44,17 +44,17 @@ export function HeroSection() {
   return (
     <motion.section variants={stagger} initial="hidden" animate="visible" className="relative">
       <CursorSpotlight
-        overlayColor="#FAFAFA"
+        overlayColor="#fff3c4"
         radius={260}
         backgroundContent={<ProjectMosaic />}
-        className="rounded-[35px] border border-neutral-300 shadow-sm overflow-hidden"
+        className="rounded-[8px] border-2 border-foreground overflow-hidden"
       >
         <FloatingParticles count={18} />
-        <div className="relative grid gap-8 p-8 text-neutral-900 md:p-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:p-20">
+        <div className="relative grid gap-8 p-8 text-foreground md:p-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:p-20">
           <div>
             <motion.div variants={fadeUp} className="mb-8">
-              <span className="inline-flex items-center gap-2.5 rounded-full border border-[#c4956a]/15 bg-[#c4956a]/8 px-4 py-2 text-[11px] font-semibold tracking-wide text-[#c4956a]">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#c4956a] animate-pulse" />
+              <span className="inline-flex items-center gap-2.5 rounded-full border-2 border-accent bg-accent/10 px-4 py-2 text-[11px] font-semibold tracking-wide text-accent">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent-light animate-pulse" />
                 FOUNDER-LED DIGITAL PRODUCT STUDIO
               </span>
             </motion.div>
@@ -83,7 +83,7 @@ export function HeroSection() {
                 as="a"
                 href="/order"
                 strength={0.2}
-                className="group inline-flex items-center gap-2.5 rounded-xl bg-[#c4956a] px-8 py-4 text-[13px] font-semibold text-white shadow-lg shadow-[#c4956a]/25 transition-colors hover:bg-[#a67d55] hover:shadow-[#c4956a]/40"
+                className="btn-primary group inline-flex items-center gap-2.5 px-8 py-4 text-[13px] font-semibold"
               >
                 Minta Estimasi Project
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
@@ -92,7 +92,7 @@ export function HeroSection() {
                 as="a"
                 href="/projects"
                 strength={0.2}
-                className="inline-flex items-center gap-2.5 rounded-xl border border-neutral-300 bg-[#f7f3e8] px-8 py-4 text-[13px] font-semibold text-neutral-900 transition-all hover:border-neutral-400"
+                className="btn-secondary group inline-flex items-center gap-2.5 px-8 py-4 text-[13px] font-semibold"
               >
                 Lihat Case Study
                 <ArrowRight className="h-4 w-4" />
@@ -109,7 +109,7 @@ export function HeroSection() {
                 'Bisa mulai dari company profile sampai sistem custom',
               ].map((item) => (
                 <span key={item} className="inline-flex items-center gap-2">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-[#c4956a]" />
+                  <CheckCircle2 className="h-3.5 w-3.5 text-accent" />
                   {item}
                 </span>
               ))}
@@ -117,14 +117,14 @@ export function HeroSection() {
           </div>
 
           <motion.div variants={fadeUp} className="flex flex-col gap-4">
-            <div className="rounded-[30px] neo-surface p-6">
+            <div className="rounded-[8px] neo-surface p-6">
               <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-neutral-500">
                 Yang Paling Sering Dikerjakan
               </p>
               <div className="space-y-3">
                 {serviceFits.map((item) => (
                   <div key={item} className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#c4956a]" />
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" />
                     <p className="text-[13px] leading-relaxed text-neutral-700">
                       {item}
                     </p>
@@ -137,9 +137,9 @@ export function HeroSection() {
               {proofItems.map((item) => (
                 <div
                   key={item.label}
-                  className="rounded-2xl neo-surface p-4"
+                  className="rounded-[8px] neo-surface p-4"
                 >
-                  <p className="text-xl font-extrabold text-neutral-900 md:text-2xl">
+                  <p className="text-xl font-extrabold text-foreground md:text-2xl">
                     {item.value}
                   </p>
                   <p className="mt-1 text-[11px] leading-relaxed text-neutral-500">

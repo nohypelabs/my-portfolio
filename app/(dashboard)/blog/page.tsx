@@ -17,7 +17,7 @@ export default function BlogPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
       >
-        <h1 className="text-2xl font-extrabold mb-1 text-neutral-900">
+        <h1 className="text-2xl font-extrabold mb-1 text-foreground">
           {language === "en" ? "Blog" : "Blog"}
         </h1>
         <p className="text-sm text-neutral-500">
@@ -32,11 +32,11 @@ export default function BlogPage() {
           <ScrollReveal key={post.slug}>
             <Link
               href={`/blog/${post.slug}`}
-              className="group block neo-surface rounded-[35px] p-5 transition-all"
+              className="group block neo-surface rounded-[8px] p-5 transition-all"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
-                  <h2 className="font-bold text-neutral-900 group-hover:text-[#c4956a] transition-colors mb-2">
+                  <h2 className="font-bold text-foreground group-hover:text-accent transition-colors mb-2">
                     {post.title}
                   </h2>
                   <p className="text-sm text-neutral-500 mb-3 line-clamp-2">
@@ -59,7 +59,7 @@ export default function BlogPage() {
                       {post.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="px-2 py-0.5 bg-[#FAFAFA] border border-neutral-400 rounded-full text-[10px] font-medium text-neutral-900"
+                          className="px-2 py-0.5 bg-background border border-foreground/40 rounded-full text-[10px] font-medium text-foreground"
                         >
                           {tag}
                         </span>
@@ -67,7 +67,7 @@ export default function BlogPage() {
                     </div>
                   </div>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-[#c4956a] transition-colors shrink-0 mt-1" />
+                <ArrowUpRight className="w-4 h-4 text-neutral-500 group-hover:text-accent transition-colors shrink-0 mt-1" />
               </div>
             </Link>
           </ScrollReveal>

@@ -100,7 +100,7 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-y-0 left-0 w-[260px] bg-[#f0f0f0] border-r border-neutral-300 flex flex-col shadow-2xl"
+            className="fixed inset-y-0 left-0 w-[260px] bg-surface border-r border-foreground/30 flex flex-col shadow-2xl"
           >
             {/* Header */}
             <div className="h-[60px] flex items-center justify-between px-6">
@@ -108,15 +108,15 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2, duration: 0.3 }}
-                className="text-[22px] font-extrabold text-neutral-900 tracking-tight"
+                className="text-[22px] font-extrabold text-foreground tracking-tight"
                 style={{ fontFamily: "'Inter', 'SF Pro Display', system-ui, sans-serif", letterSpacing: '-0.05em' }}
-              >nasaq<span className="text-[#c4956a]">.id</span></motion.h1>
+              >nasaq<span className="text-accent">.id</span></motion.h1>
               <motion.button
                 initial={{ opacity: 0, rotate: -90 }}
                 animate={{ opacity: 1, rotate: 0 }}
                 transition={{ delay: 0.25, duration: 0.3 }}
                 onClick={onClose}
-                className="w-7 h-7 rounded-lg flex items-center justify-center text-neutral-900 hover:bg-neutral-100 transition-colors"
+                className="w-7 h-7 rounded-lg flex items-center justify-center text-foreground hover:bg-accent-bg transition-colors"
               >
                 <X className="w-4 h-4" strokeWidth={1.5} />
               </motion.button>
@@ -143,14 +143,14 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
                     className={clsx(
                       'w-full flex items-center gap-2.5 rounded-lg transition-colors text-left text-[13px] px-3 py-[7px]',
                       isActive
-                        ? 'bg-[#f0f0f0] text-[#a67d55] font-medium'
-                        : 'text-neutral-900 hover:bg-neutral-100'
+                        ? 'bg-surface text-accent-dark font-medium'
+                        : 'text-foreground hover:bg-accent-bg'
                     )}
                   >
                     <Icon
                       className={clsx(
                         'w-[18px] h-[18px] flex-shrink-0',
-                        isActive ? 'text-[#c4956a]' : 'text-neutral-900'
+                        isActive ? 'text-accent' : 'text-foreground'
                       )}
                       strokeWidth={1.5}
                     />
@@ -165,7 +165,7 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.3 }}
-              className="border-t border-neutral-300 py-4 px-4"
+              className="border-t border-foreground/30 py-4 px-4"
             >
               <p className="text-[11px] text-neutral-500">© {new Date().getFullYear()} nasaq</p>
             </motion.div>

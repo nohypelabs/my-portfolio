@@ -1,98 +1,170 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { ArrowRight, Github, Menu } from 'lucide-react';
+import { usePathname, useRouter } from 'next/navigation';
+import {
+  ArrowRight,
+  BookOpen,
+  Building2,
+  ChevronDown,
+  Menu,
+  MessageSquare,
+  Radio,
+  Shield,
+  User,
+} from 'lucide-react';
 import { useSidebar } from '@/contexts/SidebarContext';
 import { clsx } from '@/lib/utils';
+import { useEffect, useRef, useState } from 'react';
 
-const pageMeta: Record<string, { title: string; subtitle: string }> = {
-  '/': { title: 'Overview', subtitle: 'Website, company profile, dan sistem operasional untuk bisnis yang ingin naik kelas' },
-  '/services': { title: 'Layanan', subtitle: 'Company profile, dashboard internal, dan build custom yang bisa langsung dipakai' },
-  '/process': { title: 'Proses Kerja', subtitle: 'Bedah kebutuhan dulu, baru desain dan build' },
-  '/pricing': { title: 'Harga', subtitle: 'Paket awal transparan, scope lanjutnya tetap fleksibel' },
-  '/projects': { title: 'Case Studies', subtitle: 'Hasil build nyata dengan konteks bisnis yang jelas' },
-  '/testimonials': { title: 'Review Klien', subtitle: 'Apa yang berubah setelah sistem dipakai tim mereka' },
-  '/faq': { title: 'FAQ', subtitle: 'Pertanyaan yang sering ditanyakan' },
-  '/live': { title: 'Live Proof', subtitle: 'Data dan aktivitas dari sistem yang benar-benar berjalan' },
-  '/blog': { title: 'Blog', subtitle: 'Catatan shipping, engineering, dan product thinking' },
-  '/about': { title: 'Founder', subtitle: 'Latar belakang, cara berpikir, dan kenapa nasaq.id dibangun' },
-  '/cv': { title: 'Profil Studio', subtitle: 'Ringkasan positioning, cara kerja, dan kenapa client order ke nasaq.id' },
-  '/contact': { title: 'Konsultasi', subtitle: 'Ceritakan kebutuhan Anda, kami bantu breakdown scope-nya' },
-  '/order': { title: 'Brief Project', subtitle: 'Kirim kebutuhan awal untuk estimasi dan langkah berikutnya' },
-  '/admin/dashboard': { title: 'Admin Dashboard', subtitle: 'Kelola konten nasaq.id' },
-  '/admin/pricing': { title: 'Kelola Harga', subtitle: 'Edit paket dan harga' },
-  '/admin/services': { title: 'Kelola Layanan', subtitle: 'Edit layanan yang ditawarkan' },
-  '/admin/testimonials': { title: 'Kelola Testimoni', subtitle: 'Edit testimoni klien' },
-  '/admin/faqs': { title: 'Kelola FAQ', subtitle: 'Edit pertanyaan umum' },
-  '/admin/orders': { title: 'Kelola Pesanan', subtitle: 'Lihat dan kelola pesanan' },
-  '/admin/login': { title: 'Admin Login', subtitle: 'Masuk ke panel admin' },
-};
+interface NavItem {
+  label: string;
+  path: string;
+}
+
+const primaryNav: NavItem[] = [
+  { label: 'Beranda', path: '/' },
+  { label: 'Layanan', path: '/services' },
+  { label: 'Proses', path: '/process' },
+  { label: 'Harga', path: '/pricing' },
+  { label: 'Case Studies', path: '/projects' },
+  { label: 'FAQ', path: '/faq' },
+];
+
+const moreNav: (NavItem & { icon: typeof User })[] = [
+  { label: 'Review Klien', path: '/testimonials', icon: MessageSquare },
+  { label: 'Live Proof', path: '/live', icon: Radio },
+  { label: 'Insight', path: '/blog', icon: BookOpen },
+  { label: 'Founder', path: '/about', icon: User },
+  { label: 'Profil Studio', path: '/cv', icon: Building2 },
+  { label: 'Admin Panel', path: '/admin/dashboard', icon: Shield },
+];
+
+function isActive(pathname: string, path: string) {
+  return pathname === path || (path !== '/' && pathname.startsWith(path));
+}
 
 export const Header = () => {
   const pathname = usePathname();
-  const { isCollapsed, openMobileSidebar } = useSidebar();
+  const router = useRouter();
+  const { openMobileSidebar } = useSidebar();
 
-  // Find matching page meta (handle dynamic routes)
-  const meta = pageMeta[pathname] || (() => {
-    const match = Object.entries(pageMeta).find(([key]) =>
-      key !== '/' && pathname.startsWith(key)
-    );
-    return match ? match[1] : { title: 'nasaq.id', subtitle: 'Founder-led digital product studio' };
-  })();
+  const [showMore, setShowMore] = useState(false);
+  const moreRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setShowMore(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!showMore) return;
+
+    const handleClickOutside = (e: MouseEvent) => {
+      if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
+        setShowMore(false);
+      }
+    };
+
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setShowMore(false);
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [showMore]);
 
   return (
-    <header
-      className={clsx(
-        'bg-[#f0f0f0] border-b border-neutral-300 sticky top-0 z-30 transition-[padding-left] duration-200',
-        isCollapsed ? 'lg:pl-[50px]' : 'lg:pl-[260px]'
-      )}
-    >
-      <div className="flex items-center justify-between h-[59px] px-4 lg:px-8 max-w-[1440px] mx-auto">
-        {/* Left: Mobile menu + Page info */}
-        <div className="flex items-center gap-3">
-          {/* Mobile menu button */}
+    <header className="sticky top-0 z-40 bg-surface border-b-2 border-foreground">
+      <div className="flex items-center justify-between gap-4 h-[64px] px-4 lg:px-8 max-w-[1440px] mx-auto">
+        {/* Logo — ink sticker */}
+        <Link
+          href="/"
+          className="flex items-center flex-shrink-0 text-[18px] font-extrabold tracking-tight bg-foreground text-background px-2.5 py-1 rounded-[6px] border-2 border-foreground shadow-[3px_3px_0_0_var(--color-accent)] transition-all hover:shadow-[5px_5px_0_0_var(--color-accent)] hover:-translate-x-0.5 hover:-translate-y-0.5"
+          style={{ letterSpacing: '-0.04em' }}
+        >
+          nasaq<span className="text-accent-light">.id</span>
+        </Link>
+
+        {/* Desktop nav */}
+        <nav className="hidden lg:flex items-center gap-1">
+          {primaryNav.map((item) => (
+            <Link
+              key={item.path}
+              href={item.path}
+              className={clsx(
+                'px-3 py-1.5 rounded-[8px] text-[13px] font-semibold border-2 transition-all',
+                isActive(pathname, item.path)
+                  ? 'bg-foreground text-background border-foreground'
+                  : 'border-transparent text-foreground hover:bg-accent-bg hover:border-foreground'
+              )}
+            >
+              {item.label}
+            </Link>
+          ))}
+
+          {/* Lainnya dropdown */}
+          <div className="relative" ref={moreRef}>
+            <button
+              onClick={() => setShowMore((prev) => !prev)}
+              className={clsx(
+                'flex items-center gap-1 px-3 py-1.5 rounded-[8px] text-[13px] font-semibold border-2 transition-all',
+                showMore
+                  ? 'bg-foreground text-background border-foreground'
+                  : 'border-transparent text-foreground hover:bg-accent-bg hover:border-foreground'
+              )}
+              aria-expanded={showMore}
+            >
+              <span>Lainnya</span>
+              <ChevronDown
+                className={clsx('w-3.5 h-3.5 transition-transform', showMore && 'rotate-180')}
+                strokeWidth={2}
+              />
+            </button>
+
+            {showMore && (
+              <div className="neo-surface absolute right-0 top-full mt-2 w-52 rounded-[8px] overflow-hidden z-50">
+                {moreNav.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <button
+                      key={item.path}
+                      onClick={() => router.push(item.path)}
+                      className={clsx(
+                        'w-full flex items-center gap-2.5 px-4 py-2.5 text-[13px] font-medium text-left transition-colors hover:bg-accent-bg',
+                        isActive(pathname, item.path) ? 'text-accent-dark font-semibold' : 'text-foreground'
+                      )}
+                    >
+                      <Icon className="w-4 h-4" strokeWidth={1.75} />
+                      {item.label}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        </nav>
+
+        {/* Right: CTA + mobile menu */}
+        <div className="flex items-center gap-2">
+          <Link
+            href="/contact"
+            className="hidden sm:inline-flex btn-primary rounded-[8px] px-4 py-2 text-[13px] font-semibold"
+          >
+            Konsultasi
+            <ArrowRight className="w-3.5 h-3.5" strokeWidth={2} />
+          </Link>
+
           <button
             onClick={openMobileSidebar}
-            className="lg:hidden w-9 h-9 rounded-lg flex items-center justify-center text-neutral-900 hover:bg-neutral-100 transition-colors"
+            className="lg:hidden neo-button w-9 h-9 rounded-[8px] flex items-center justify-center text-foreground"
             aria-label="Open menu"
           >
-            <Menu className="w-5 h-5" strokeWidth={1.5} />
+            <Menu className="w-5 h-5" strokeWidth={1.75} />
           </button>
-
-          {/* Mobile logo — standalone text */}
-          <div className="lg:hidden">
-            <h1
-              className="text-[20px] font-extrabold text-neutral-900 tracking-tight"
-              style={{ fontFamily: "'Inter', 'SF Pro Display', system-ui, sans-serif", letterSpacing: '-0.05em' }}
-            >nasaq<span className="text-[#c4956a]">.id</span></h1>
-          </div>
-
-          {/* Desktop page info */}
-          <div className="hidden lg:block">
-            <h1 className="text-[15px] font-medium text-neutral-900">{meta.title}</h1>
-            <p className="text-[11px] text-neutral-500">{meta.subtitle}</p>
-          </div>
-        </div>
-
-        {/* Right: Actions */}
-        <div className="flex items-center gap-2">
-          <a
-            href="https://github.com/nohypelabs"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-9 h-9 rounded-lg flex items-center justify-center text-neutral-900 hover:bg-[#f0f0f0] hover:text-[#c4956a] transition-colors"
-            aria-label="GitHub"
-          >
-            <Github className="w-[18px] h-[18px]" strokeWidth={1.5} />
-          </a>
-          <Link
-            href="/order"
-            className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-neutral-400 text-[12px] font-medium text-neutral-900 hover:bg-[#c4956a] hover:text-white hover:border-[#c4956a] transition-all"
-          >
-            <span>Konsultasi</span>
-            <ArrowRight className="w-3.5 h-3.5" strokeWidth={1.5} />
-          </Link>
         </div>
       </div>
     </header>

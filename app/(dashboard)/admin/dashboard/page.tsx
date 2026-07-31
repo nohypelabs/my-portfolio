@@ -49,7 +49,7 @@ export default function AdminDashboardPage() {
   return (
     <motion.div variants={staggerContainer} initial="initial" animate="animate" className="space-y-8">
       <motion.div variants={fadeInUp}>
-        <h1 className="text-[22px] font-semibold text-neutral-900 mb-1">Admin Dashboard</h1>
+        <h1 className="text-[22px] font-semibold text-foreground mb-1">Admin Dashboard</h1>
         <p className="text-[13px] text-neutral-500">Kelola konten dan pesanan nasaq.id</p>
       </motion.div>
 
@@ -60,14 +60,14 @@ export default function AdminDashboardPage() {
             <motion.div key={card.label} variants={fadeInUp}>
               <Link
                 href={card.href}
-                className="block bg-[#f7f3e8] border border-neutral-200 rounded-xl p-5 hover:border-[#c4956a]/30 hover:shadow-sm transition-all group"
+                className="block bg-surface border border-foreground/20 rounded-[8px] p-5 hover:border-accent/30 hover:shadow-sm transition-all group"
               >
                 <div className={`w-10 h-10 rounded-lg ${card.color} flex items-center justify-center mb-3`}>
                   <Icon className="w-5 h-5" strokeWidth={1.5} />
                 </div>
-                <p className="text-[20px] font-bold text-neutral-900">{card.count}</p>
+                <p className="text-[20px] font-bold text-foreground">{card.count}</p>
                 <p className="text-[12px] text-neutral-500">{card.label}</p>
-                <ArrowRight className="w-4 h-4 text-neutral-300 mt-2 group-hover:text-[#c4956a] transition-colors" />
+                <ArrowRight className="w-4 h-4 text-neutral-300 mt-2 group-hover:text-accent transition-colors" />
               </Link>
             </motion.div>
           );

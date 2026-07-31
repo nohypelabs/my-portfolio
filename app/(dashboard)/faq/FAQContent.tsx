@@ -8,12 +8,12 @@ import type { FAQ } from '@/lib/supabase/types';
 
 function AccordionItem({ faq, isOpen, onToggle }: { faq: FAQ; isOpen: boolean; onToggle: () => void }) {
   return (
-    <div className="neo-surface rounded-xl overflow-hidden">
+    <div className="neo-surface rounded-[8px] overflow-hidden">
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between p-5 text-left"
       >
-        <span className="text-[14px] font-medium text-neutral-900 pr-4">{faq.question}</span>
+        <span className="text-[14px] font-medium text-foreground pr-4">{faq.question}</span>
         <ChevronDown
           className={`w-4 h-4 text-neutral-400 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
         />
@@ -42,7 +42,7 @@ export function FAQContent({ faqs }: { faqs: FAQ[] }) {
     <motion.div variants={staggerContainer} initial="initial" animate="animate" className="space-y-10">
       {/* Header */}
       <motion.div variants={fadeInUp}>
-        <h1 className="text-[22px] font-semibold text-neutral-900 mb-2">Frequently Asked Questions</h1>
+        <h1 className="text-[22px] font-semibold text-foreground mb-2">Frequently Asked Questions</h1>
         <p className="text-[14px] text-neutral-500 max-w-2xl">
           Pertanyaan yang sering ditanyakan tentang layanan, harga, dan proses kerja kami.
         </p>
@@ -51,7 +51,7 @@ export function FAQContent({ faqs }: { faqs: FAQ[] }) {
       {/* FAQ by category */}
       {categories.map(cat => (
         <motion.div key={cat} variants={fadeInUp}>
-          <h2 className="text-[15px] font-semibold text-neutral-900 mb-4">
+          <h2 className="text-[15px] font-semibold text-foreground mb-4">
             {categoryLabels[cat] || cat}
           </h2>
           <div className="space-y-3">

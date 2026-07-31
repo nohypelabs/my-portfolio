@@ -25,7 +25,7 @@ export function TechStackStrip() {
       <h2 className="text-lg font-bold text-foreground">{t.techStack}</h2>
 
       {/* Marquee strip */}
-      <div className="neo-surface rounded-2xl overflow-hidden py-4">
+      <div className="neo-surface rounded-[8px] overflow-hidden py-4">
         <Marquee speed={25} pauseOnHover>
           {uniqueTechs.map((tech, i) => (
             <motion.div
@@ -34,10 +34,10 @@ export function TechStackStrip() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.02 }}
-              className="flex items-center gap-2 px-4 py-2 bg-[#f7f3e8] border border-neutral-200 rounded-full hover:border-[#c4956a]/30 hover:bg-[#c4956a]/5 transition-all cursor-default group"
+              className="flex items-center gap-2 px-4 py-2 bg-surface border border-foreground/20 rounded-full hover:border-accent/30 hover:bg-accent/5 transition-all cursor-default group"
             >
-              <div className="w-1.5 h-1.5 rounded-full bg-[#c4956a]/40 group-hover:bg-[#c4956a] transition-colors" />
-              <span className="text-[12px] font-medium text-neutral-700 group-hover:text-neutral-900 whitespace-nowrap transition-colors">
+              <div className="w-1.5 h-1.5 rounded-full bg-accent/40 group-hover:bg-accent-light transition-colors" />
+              <span className="text-[12px] font-medium text-neutral-700 group-hover:text-foreground whitespace-nowrap transition-colors">
                 {tech}
               </span>
             </motion.div>
@@ -48,7 +48,7 @@ export function TechStackStrip() {
       {/* Proficiency legend */}
       <div className="flex items-center gap-4 justify-center">
         {[
-          { level: 'advanced', label: language === 'en' ? 'Advanced' : 'Mahir', color: 'bg-[#c4956a]' },
+          { level: 'advanced', label: language === 'en' ? 'Advanced' : 'Mahir', color: 'bg-accent-light' },
           { level: 'intermediate', label: language === 'en' ? 'Intermediate' : 'Menengah', color: 'bg-blue-500' },
           { level: 'familiar', label: language === 'en' ? 'Familiar' : 'Kenal', color: 'bg-neutral-400' },
         ].map(({ level, label, color }) => (

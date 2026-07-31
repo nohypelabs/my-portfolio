@@ -19,7 +19,7 @@ const caseStudies = [
       { label: 'Total resi', before: 'Manual', after: '80K+ terproses', icon: Database },
       { label: 'Foto dokumentasi', before: 'Rename manual', after: '160K+ auto', icon: TrendingUp },
     ],
-    color: 'from-emerald-500 to-teal-600',
+    color: 'bg-emerald-600',
   },
   {
     id: 'wc-check',
@@ -33,7 +33,7 @@ const caseStudies = [
       { label: 'Users aktif', before: '0', after: '53 users', icon: Users },
       { label: 'Data historis', before: 'Tidak ada', after: '3.293 inspeksi', icon: Database },
     ],
-    color: 'from-blue-500 to-indigo-600',
+    color: 'bg-blue-600',
   },
   {
     id: 'lakupos',
@@ -47,7 +47,7 @@ const caseStudies = [
       { label: 'Stok antar outlet', before: 'Excel terpisah', after: 'Real-time sync', icon: Database },
       { label: 'Pembayaran', before: 'Cek rekening', after: 'QRIS auto', icon: TrendingUp },
     ],
-    color: 'from-purple-500 to-violet-600',
+    color: 'bg-purple-600',
   },
 ];
 
@@ -56,10 +56,10 @@ export function CaseStudyCards() {
     <section className="space-y-5">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-lg font-bold text-neutral-900">Case Study</h2>
+          <h2 className="text-lg font-bold text-foreground">Case Study</h2>
           <p className="text-[12px] text-neutral-500 mt-1">Before & after dari project nyata</p>
         </div>
-        <Link href="/projects" className="text-[12px] text-[#c4956a] hover:underline flex items-center gap-1">
+        <Link href="/projects" className="text-[12px] text-accent hover:underline flex items-center gap-1">
           Semua Project <ArrowRight className="w-3 h-3" />
         </Link>
       </div>
@@ -72,7 +72,7 @@ export function CaseStudyCards() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="neo-surface rounded-2xl overflow-hidden hover:shadow-xl transition-all group"
+              className="neo-surface rounded-[8px] overflow-hidden hover:shadow-xl transition-all group"
             >
               {/* Image header */}
               <div className="relative h-36 overflow-hidden">
@@ -85,14 +85,14 @@ export function CaseStudyCards() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                 <div className="absolute bottom-3 left-3 right-3">
-                  <span className={`inline-block px-2 py-0.5 rounded-full text-[9px] font-semibold text-white bg-gradient-to-r ${study.color} mb-1.5`}>
+                  <span className={`inline-block px-2 py-0.5 rounded-full text-[9px] font-semibold text-white ${study.color} mb-1.5`}>
                     {study.tag}
                   </span>
                   <h3 className="text-[13px] font-bold text-white leading-tight">{study.title}</h3>
                 </div>
                 <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
                   <Link href={`/projects/${study.id}`} className="w-7 h-7 rounded-full bg-white/90 flex items-center justify-center">
-                    <ArrowUpRight className="w-3.5 h-3.5 text-neutral-900" />
+                    <ArrowUpRight className="w-3.5 h-3.5 text-foreground" />
                   </Link>
                 </div>
               </div>
@@ -112,14 +112,14 @@ export function CaseStudyCards() {
                 </div>
 
                 {/* Metrics */}
-                <div className="space-y-1.5 pt-1 border-t border-neutral-200">
+                <div className="space-y-1.5 pt-1 border-t border-foreground/20">
                   {study.metrics.map((m, j) => (
                     <div key={j} className="flex items-center gap-2">
-                      <m.icon className="w-3 h-3 text-[#c4956a] flex-shrink-0" />
+                      <m.icon className="w-3 h-3 text-accent flex-shrink-0" />
                       <span className="text-[10px] text-neutral-400 w-20 flex-shrink-0">{m.label}</span>
                       <span className="text-[10px] text-neutral-400 line-through">{m.before}</span>
                       <span className="text-[10px] text-neutral-400">→</span>
-                      <span className="text-[10px] font-semibold text-[#c4956a]">{m.after}</span>
+                      <span className="text-[10px] font-semibold text-accent">{m.after}</span>
                     </div>
                   ))}
                 </div>

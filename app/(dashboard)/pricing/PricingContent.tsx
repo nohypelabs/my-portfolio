@@ -159,13 +159,13 @@ export function PricingContent({ packages }: { packages: PricingPackage[] }) {
       animate="animate"
       className="mx-auto max-w-5xl space-y-10 pb-12"
     >
-      <motion.div {...fadeUp} className="rounded-[35px] neo-surface p-6 md:p-8">
+      <motion.div {...fadeUp} className="rounded-[8px] neo-surface p-6 md:p-8">
         <div className="max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#c4956a]/20 bg-[#f7f3e8] px-3 py-1 text-xs font-semibold text-[#a67d55]">
+          <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-surface px-3 py-1 text-xs font-semibold text-accent-dark">
             <Sparkles className="h-3.5 w-3.5" />
             {isEn ? 'Pricing guide' : 'Panduan harga'}
           </div>
-          <h1 className="text-3xl font-extrabold tracking-tight text-neutral-900 md:text-5xl">
+          <h1 className="text-3xl font-extrabold tracking-tight text-foreground md:text-5xl">
             {isEn
               ? 'Pricing ranges that help clients choose the right starting scope, not guess blindly.'
               : 'Range harga yang membantu client memilih titik mulai yang tepat, bukan menebak-nebak secara buta.'}
@@ -181,9 +181,9 @@ export function PricingContent({ packages }: { packages: PricingPackage[] }) {
       <ScrollReveal>
         <div className="grid gap-4 md:grid-cols-3">
           {guidePoints.map((item) => (
-            <div key={item.title} className="rounded-[28px] neo-surface p-5">
-              <item.icon className="h-4 w-4 text-[#c4956a]" />
-              <h2 className="mt-3 text-sm font-bold text-neutral-900">{item.title}</h2>
+            <div key={item.title} className="rounded-[8px] neo-surface p-5">
+              <item.icon className="h-4 w-4 text-accent" />
+              <h2 className="mt-3 text-sm font-bold text-foreground">{item.title}</h2>
               <p className="mt-1 text-xs leading-relaxed text-neutral-600">{item.desc}</p>
             </div>
           ))}
@@ -191,9 +191,9 @@ export function PricingContent({ packages }: { packages: PricingPackage[] }) {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="space-y-5 rounded-[35px] neo-surface p-6 md:p-8">
+        <div className="space-y-5 rounded-[8px] neo-surface p-6 md:p-8">
           <div className="max-w-2xl">
-            <h2 className="text-xl font-bold text-neutral-900 md:text-2xl">
+            <h2 className="text-xl font-bold text-foreground md:text-2xl">
               {isEn ? 'Choose the package by the real level of complexity' : 'Pilih paket dari level kompleksitas yang sebenarnya'}
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-neutral-600">
@@ -212,33 +212,33 @@ export function PricingContent({ packages }: { packages: PricingPackage[] }) {
                 <motion.div
                   key={pkg.id}
                   variants={fadeInUp}
-                  className={`relative rounded-[30px] p-5 transition-transform duration-200 hover:-translate-y-1 ${
+                  className={`relative rounded-[8px] p-5 transition-transform duration-200 hover:-translate-y-1 ${
                     pkg.is_popular
-                      ? 'neo-pressed border border-[#c4956a]/20'
+                      ? 'neo-pressed border border-accent/20'
                       : 'neo-surface'
                   }`}
                 >
                   {pkg.is_popular && (
-                    <div className="absolute right-5 top-5 inline-flex items-center gap-1 rounded-full bg-[#c4956a] px-3 py-1 text-[11px] font-semibold text-white">
+                    <div className="absolute right-5 top-5 inline-flex items-center gap-1 rounded-full bg-accent-light px-3 py-1 text-[11px] font-semibold text-foreground">
                       <Star className="h-3 w-3" fill="currentColor" />
                       {isEn ? 'Most chosen' : 'Paling sering dipilih'}
                     </div>
                   )}
 
                   <div className="max-w-[85%]">
-                    <div className="inline-flex rounded-full border border-[#c4956a]/20 bg-[#f7f3e8] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#a67d55]">
+                    <div className="inline-flex rounded-full border border-accent/20 bg-surface px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent-dark">
                       {lens.badge}
                     </div>
-                    <h3 className="mt-4 text-2xl font-bold text-neutral-900">{pkg.name}</h3>
+                    <h3 className="mt-4 text-2xl font-bold text-foreground">{pkg.name}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-neutral-600">{pkg.description ?? lens.note}</p>
                   </div>
 
-                  <div className="mt-5 grid gap-3 rounded-[24px] bg-[#f0f0f0] p-4 sm:grid-cols-[1fr_1fr] sm:items-end">
+                  <div className="mt-5 grid gap-3 rounded-[8px] bg-surface p-4 sm:grid-cols-[1fr_1fr] sm:items-end">
                     <div>
                       <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
                         {isEn ? 'Range' : 'Range'}
                       </p>
-                      <div className="mt-2 text-2xl font-extrabold text-[#a67d55]">{formatPrice(pkg.price_min, pkg.price_max)}</div>
+                      <div className="mt-2 text-2xl font-extrabold text-accent-dark">{formatPrice(pkg.price_min, pkg.price_max)}</div>
                     </div>
                     <div>
                       <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
@@ -251,7 +251,7 @@ export function PricingContent({ packages }: { packages: PricingPackage[] }) {
                   <ul className="mt-5 space-y-2">
                     {pkg.features.map((feature, index) => (
                       <li key={index} className="flex items-start gap-2 text-[13px] leading-relaxed text-neutral-700">
-                        <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-[#c4956a]" strokeWidth={1.6} />
+                        <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-accent" strokeWidth={1.6} />
                         <span>{feature}</span>
                       </li>
                     ))}
@@ -262,10 +262,10 @@ export function PricingContent({ packages }: { packages: PricingPackage[] }) {
                   <div className="mt-6 grid gap-3 sm:grid-cols-2">
                     <Link
                       href={primaryHref}
-                      className={`inline-flex items-center justify-center gap-2 rounded-[22px] px-4 py-3 text-sm font-semibold transition-colors ${
+                      className={`inline-flex items-center justify-center gap-2 rounded-[8px] px-4 py-3 text-sm font-semibold transition-colors ${
                         pkg.is_popular
-                          ? 'bg-[#c4956a] text-white hover:bg-[#a67d55]'
-                          : 'neo-button text-neutral-900'
+                          ? 'bg-accent-light text-foreground hover:bg-accent-dark hover:text-surface'
+                          : 'neo-button text-foreground'
                       }`}
                     >
                       {pkg.cta_text}
@@ -273,7 +273,7 @@ export function PricingContent({ packages }: { packages: PricingPackage[] }) {
                     </Link>
                     <Link
                       href="/contact"
-                      className="neo-button inline-flex items-center justify-center gap-2 rounded-[22px] px-4 py-3 text-sm font-semibold text-neutral-700"
+                      className="neo-button inline-flex items-center justify-center gap-2 rounded-[8px] px-4 py-3 text-sm font-semibold text-neutral-700"
                     >
                       {isEn ? 'Ask first' : 'Tanya dulu'}
                       <ArrowRight className="h-4 w-4" />
@@ -287,16 +287,16 @@ export function PricingContent({ packages }: { packages: PricingPackage[] }) {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="rounded-[35px] neo-surface p-6 md:p-8">
+        <div className="rounded-[8px] neo-surface p-6 md:p-8">
           <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div className="space-y-3">
-              <h2 className="text-2xl font-bold text-neutral-900">
+              <h2 className="text-2xl font-bold text-foreground">
                 {isEn ? 'Important before you compare numbers only' : 'Hal penting sebelum membandingkan angka saja'}
               </h2>
               <div className="grid gap-2">
                 {notes.map((note) => (
                   <div key={note} className="flex items-start gap-2 text-sm leading-relaxed text-neutral-600">
-                    <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#c4956a]" strokeWidth={1.6} />
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" strokeWidth={1.6} />
                     <span>{note}</span>
                   </div>
                 ))}
@@ -306,14 +306,14 @@ export function PricingContent({ packages }: { packages: PricingPackage[] }) {
             <div className="grid gap-3 sm:grid-cols-2">
               <Link
                 href="/process"
-                className="neo-button inline-flex items-center justify-center gap-2 rounded-[22px] px-4 py-3 text-sm font-semibold text-neutral-900"
+                className="neo-button inline-flex items-center justify-center gap-2 rounded-[8px] px-4 py-3 text-sm font-semibold text-foreground"
               >
                 {isEn ? 'See the work model' : 'Lihat model kerja'}
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/order?package=custom"
-                className="inline-flex items-center justify-center gap-2 rounded-[22px] bg-[#c4956a] px-4 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#a67d55]"
+                className="inline-flex items-center justify-center gap-2 rounded-[8px] bg-accent-light px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent-dark hover:text-surface"
               >
                 {isEn ? 'Start custom brief' : 'Mulai brief custom'}
                 <ArrowRight className="h-4 w-4" />

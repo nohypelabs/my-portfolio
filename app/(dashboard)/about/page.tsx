@@ -110,22 +110,22 @@ export default function AboutPage() {
 
   return (
     <div className="max-w-4xl mx-auto space-y-10 pb-12">
-      <motion.div {...fadeUp} className="rounded-[35px] neo-surface p-6 md:p-8">
+      <motion.div {...fadeUp} className="rounded-[8px] neo-surface p-6 md:p-8">
         <div className="flex flex-col gap-6 md:flex-row md:items-start">
           <div className="shrink-0">
-            <div className="inline-flex rounded-full ring-4 ring-[#c4956a]/20">
+            <div className="inline-flex rounded-full border-4 border-foreground shadow-[4px_4px_0_0_var(--color-accent)]">
               <AvatarImage size={108} priority />
             </div>
           </div>
 
           <div className="space-y-4">
-            <div className="inline-flex items-center gap-2 rounded-full border border-[#c4956a]/20 bg-[#f7f3e8] px-3 py-1 text-xs font-semibold text-[#a67d55]">
+            <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-surface px-3 py-1 text-xs font-semibold text-accent-dark">
               <Building2 className="h-3.5 w-3.5" />
               {isEn ? "Founder-led studio" : "Founder-led studio"}
             </div>
 
             <div className="space-y-3">
-              <h1 className="text-3xl font-extrabold tracking-tight text-neutral-900 md:text-4xl">
+              <h1 className="text-3xl font-extrabold tracking-tight text-foreground md:text-4xl">
                 {isEn ? "The founder behind nasaq.id" : "Founder di balik nasaq.id"}
               </h1>
               <p className="text-sm leading-relaxed text-neutral-600 md:text-base">
@@ -144,9 +144,9 @@ export default function AboutPage() {
       </motion.div>
 
       <ScrollReveal>
-        <div className="space-y-4 rounded-[35px] neo-surface p-6">
-          <h2 className="flex items-center gap-2 text-xl font-bold text-neutral-900">
-            <Target className="h-5 w-5 text-[#c4956a]" />
+        <div className="space-y-4 rounded-[8px] neo-surface p-6">
+          <h2 className="flex items-center gap-2 text-xl font-bold text-foreground">
+            <Target className="h-5 w-5 text-accent" />
             {isEn ? "What nasaq.id is built to solve" : "Masalah yang ingin diselesaikan nasaq.id"}
           </h2>
 
@@ -157,10 +157,10 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.08 }}
-                className="rounded-[28px] neo-surface p-5"
+                className="rounded-[8px] neo-surface p-5"
               >
-                <item.icon className="mb-3 h-5 w-5 text-[#c4956a]" />
-                <h3 className="mb-2 text-sm font-bold text-neutral-900">{item.title}</h3>
+                <item.icon className="mb-3 h-5 w-5 text-accent" />
+                <h3 className="mb-2 text-sm font-bold text-foreground">{item.title}</h3>
                 <p className="text-xs leading-relaxed text-neutral-600">{item.desc}</p>
               </motion.div>
             ))}
@@ -169,9 +169,9 @@ export default function AboutPage() {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="space-y-4 rounded-[35px] neo-surface p-6">
-          <h2 className="flex items-center gap-2 text-xl font-bold text-neutral-900">
-            <Zap className="h-5 w-5 text-[#c4956a]" />
+        <div className="space-y-4 rounded-[8px] neo-surface p-6">
+          <h2 className="flex items-center gap-2 text-xl font-bold text-foreground">
+            <Zap className="h-5 w-5 text-accent" />
             {isEn ? "How the work is approached" : "Cara kerja yang dipakai"}
           </h2>
 
@@ -182,10 +182,10 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.08 }}
-                className="rounded-[28px] neo-surface p-5"
+                className="rounded-[8px] neo-surface p-5"
               >
-                <item.icon className="mb-3 h-5 w-5 text-[#c4956a]" />
-                <h3 className="mb-2 text-sm font-bold text-neutral-900">{item.title}</h3>
+                <item.icon className="mb-3 h-5 w-5 text-accent" />
+                <h3 className="mb-2 text-sm font-bold text-foreground">{item.title}</h3>
                 <p className="text-xs leading-relaxed text-neutral-600">{item.desc}</p>
               </motion.div>
             ))}
@@ -194,9 +194,9 @@ export default function AboutPage() {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="space-y-4 rounded-[35px] neo-surface p-6">
-          <h2 className="flex items-center gap-2 text-xl font-bold text-neutral-900">
-            <Lightbulb className="h-5 w-5 text-[#c4956a]" />
+        <div className="space-y-4 rounded-[8px] neo-surface p-6">
+          <h2 className="flex items-center gap-2 text-xl font-bold text-foreground">
+            <Lightbulb className="h-5 w-5 text-accent" />
             {isEn ? "Why the perspective is different" : "Kenapa sudut pandangnya terasa beda"}
           </h2>
 
@@ -213,10 +213,10 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.08 }}
-                className="rounded-[28px] neo-surface p-5"
+                className="rounded-[8px] neo-surface p-5"
               >
-                <item.icon className="mb-3 h-5 w-5 text-[#c4956a]" />
-                <h3 className="mb-2 text-sm font-bold text-neutral-900">{item.title}</h3>
+                <item.icon className="mb-3 h-5 w-5 text-accent" />
+                <h3 className="mb-2 text-sm font-bold text-foreground">{item.title}</h3>
                 <p className="text-xs leading-relaxed text-neutral-600">{item.desc}</p>
               </motion.div>
             ))}
@@ -225,13 +225,13 @@ export default function AboutPage() {
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="rounded-[35px] neo-surface p-6 md:p-8">
+        <div className="rounded-[8px] neo-surface p-6 md:p-8">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl space-y-2">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#a67d55]">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-accent-dark">
                 {isEn ? "Next step" : "Langkah berikutnya"}
               </p>
-              <h2 className="text-2xl font-bold text-neutral-900">
+              <h2 className="text-2xl font-bold text-foreground">
                 {isEn ? "If the business is ready, send the brief." : "Kalau bisnisnya sudah siap, kirim brief-nya."}
               </h2>
               <p className="text-sm leading-relaxed text-neutral-600">
@@ -244,14 +244,14 @@ export default function AboutPage() {
             <div className="flex flex-wrap gap-3">
               <Link
                 href="/order"
-                className="group inline-flex items-center gap-2 rounded-xl bg-[#c4956a] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#a67d55]"
+                className="group inline-flex items-center gap-2 rounded-[8px] bg-accent-light px-5 py-2.5 text-sm font-semibold text-foreground transition-all hover:bg-accent-dark hover:text-surface"
               >
                 {isEn ? "Send project brief" : "Kirim brief project"}
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </Link>
               <Link
                 href="/live"
-                className="inline-flex items-center gap-2 rounded-xl border border-neutral-400 px-5 py-2.5 text-sm font-semibold text-neutral-900 transition-all hover:bg-neutral-50"
+                className="inline-flex items-center gap-2 rounded-[8px] border border-foreground/40 px-5 py-2.5 text-sm font-semibold text-foreground transition-all hover:bg-neutral-50"
               >
                 {isEn ? "See live proof" : "Lihat live proof"}
               </Link>

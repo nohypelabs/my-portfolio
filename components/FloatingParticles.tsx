@@ -66,7 +66,7 @@ export function FloatingParticles({ count = 30, className = '' }: { count?: numb
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(196, 149, 106, ${alpha})`;
+        ctx.fillStyle = `rgba(0, 208, 255, ${alpha})`;
         ctx.fill();
       });
 

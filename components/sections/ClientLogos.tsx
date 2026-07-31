@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 import { Marquee } from "@/components/Marquee";
 
 const clients = [
-  { name: "J&T Express", initial: "J&T", color: "from-red-500 to-red-600" },
-  { name: "Serat QC", initial: "SQ", color: "from-emerald-500 to-emerald-600" },
-  { name: "WC Check", initial: "WC", color: "from-blue-500 to-blue-600" },
-  { name: "LakuPOS", initial: "LP", color: "from-purple-500 to-purple-600" },
-  { name: "Qohira", initial: "QH", color: "from-orange-500 to-orange-600" },
-  { name: "nasaq.id", initial: "NQ", color: "from-[#c4956a] to-[#a67d55]" },
+  { name: "J&T Express", initial: "J&T", color: "bg-double text-foreground" },
+  { name: "Serat QC", initial: "SQ", color: "bg-money text-foreground" },
+  { name: "WC Check", initial: "WC", color: "bg-accent-light text-foreground" },
+  { name: "LakuPOS", initial: "LP", color: "bg-splash text-background" },
+  { name: "Qohira", initial: "QH", color: "bg-accent text-background" },
+  { name: "nasaq.id", initial: "NQ", color: "bg-foreground text-background" },
 ];
 
 export function ClientLogos() {
@@ -19,7 +19,7 @@ export function ClientLogos() {
         Dipercaya oleh bisnis nyata
       </p>
 
-      <div className="neo-surface rounded-2xl py-5 overflow-hidden">
+      <div className="neo-surface rounded-[8px] py-5 overflow-hidden">
         <Marquee speed={20} pauseOnHover>
           {[...clients, ...clients].map((client, i) => (
             <motion.div
@@ -28,12 +28,12 @@ export function ClientLogos() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: (i % clients.length) * 0.06 }}
-              className="flex items-center gap-3 px-5 py-2.5 bg-white border border-neutral-200 rounded-xl hover:border-[#c4956a]/30 hover:shadow-sm transition-all group cursor-default"
+              className="flex items-center gap-3 px-5 py-2.5 bg-white border-2 border-foreground rounded-[8px] hover:shadow-sm transition-all group cursor-default"
             >
-              <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${client.color} flex items-center justify-center text-[10px] font-bold text-white shadow-sm group-hover:scale-110 transition-transform`}>
+              <div className={`w-8 h-8 rounded-lg ${client.color} border-2 border-foreground flex items-center justify-center text-[10px] font-bold`}>
                 {client.initial}
               </div>
-              <span className="text-[13px] font-medium text-neutral-700 group-hover:text-neutral-900 transition-colors whitespace-nowrap">
+              <span className="text-[13px] font-medium text-neutral-700 group-hover:text-foreground transition-colors whitespace-nowrap">
                 {client.name}
               </span>
             </motion.div>

@@ -29,18 +29,18 @@ export function OngoingStrip() {
           <Link
             key={project.id}
             href={`/ongoing/${project.id}`}
-            className="group neo-surface rounded-xl p-3 transition-all duration-200"
+            className="group neo-surface rounded-[8px] p-3 transition-all duration-200"
           >
             <div className="flex items-center justify-between mb-2">
-              <h3 className="text-xs font-semibold text-foreground truncate group-hover:text-[#c4956a] transition-colors">
+              <h3 className="text-xs font-semibold text-foreground truncate group-hover:text-accent transition-colors">
                 {project.name.split(" — ")[0]}
               </h3>
-              <ArrowRight className="w-3 h-3 text-muted group-hover:text-[#c4956a] transition-colors shrink-0" />
+              <ArrowRight className="w-3 h-3 text-muted group-hover:text-accent transition-colors shrink-0" />
             </div>
             <div className="flex items-center gap-2">
               <div className="flex-1 h-1.5 rounded-full bg-border/50 overflow-hidden">
                 <div
-                  className="h-full rounded-full bg-[#c4956a]"
+                  className="h-full rounded-full bg-accent-light"
                   style={{ width: `${project.progress ?? 0}%` }}
                 />
               </div>

@@ -43,15 +43,15 @@ export function FloatingContact() {
       label: "WhatsApp",
       href: waLink,
       icon: <WhatsAppIcon className="w-5 h-5" />,
-      bg: "bg-green-500 hover:bg-green-400",
-      shadow: "shadow-green-500/30",
+      bg: "bg-money hover:bg-double",
+      shadow: "shadow-foreground/20",
     },
     {
       label: "Email",
       href: `mailto:${personalInfo.contact.email}`,
       icon: <Mail className="w-5 h-5" />,
-      bg: "bg-blue-500 hover:bg-blue-400",
-      shadow: "shadow-blue-500/30",
+      bg: "bg-splash hover:bg-double",
+      shadow: "shadow-foreground/20",
     },
   ];
 
@@ -76,11 +76,11 @@ export function FloatingContact() {
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.5, y: 10 }}
                 transition={{ delay: i * 0.05, type: "spring", stiffness: 400, damping: 22 }}
-                className={`group relative p-3 rounded-full text-white shadow-lg ${action.bg} ${action.shadow} transition-colors`}
+                className={`group relative p-3 rounded-full border-2 border-foreground text-foreground shadow-lg ${action.bg} ${action.shadow} transition-colors`}
                 aria-label={action.label}
               >
                 {action.icon}
-                <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-lg bg-neutral-900 text-white text-xs font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
+                <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 px-2.5 py-1 rounded-lg bg-foreground text-white text-xs font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity">
                   {action.label}
                 </span>
               </motion.a>
@@ -91,10 +91,10 @@ export function FloatingContact() {
             onClick={() => setOpen(!open)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className={`p-3.5 rounded-full text-white shadow-lg transition-all duration-300 ${
+            className={`p-3.5 rounded-full border-2 border-foreground shadow-lg transition-all duration-300 ${
               open
-                ? "bg-neutral-900 hover:bg-neutral-800 shadow-neutral-900/30 rotate-0"
-                : "bg-[#c4956a] hover:bg-[#d4aa82] shadow-[#c4956a]/30"
+                ? "bg-foreground text-background shadow-foreground/20 rotate-0"
+                : "bg-accent-light text-foreground shadow-foreground/20"
             }`}
             aria-label={open ? "Close contact menu" : "Open contact menu"}
           >

@@ -14,7 +14,7 @@ interface CursorSpotlightProps {
 export function CursorSpotlight({
   backgroundContent,
   imageUrl,
-  overlayColor = '#FAFAFA',
+  overlayColor = '#fff3c4',
   radius = 200,
   children,
   className = '',
@@ -100,9 +100,9 @@ export function CursorSpotlight({
             className="absolute inset-0"
             style={{
               background: `
-                radial-gradient(ellipse at 30% 20%, rgba(13, 148, 136, 0.12) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 80%, rgba(13, 148, 136, 0.08) 0%, transparent 50%),
-                linear-gradient(135deg, #f0fdfa 0%, #f8fafc 50%, #ecfdf5 100%)
+                radial-gradient(ellipse at 30% 20%, rgba(0, 208, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 80%, rgba(214, 0, 124, 0.14) 0%, transparent 50%),
+                linear-gradient(135deg, #fff9d6 0%, #fff3c4 50%, #ffefad 100%)
               `,
             }}
           />
@@ -137,7 +137,7 @@ export function CursorSpotlight({
         style={{
           opacity: isHovering ? 0.15 : 0,
           transition: 'opacity 0.3s ease',
-          background: `radial-gradient(circle ${radius * 0.6}px at ${x}px ${y}px, rgba(13, 148, 136, 0.4) 0%, transparent 70%)`,
+          background: `radial-gradient(circle ${radius * 0.6}px at ${x}px ${y}px, rgba(0, 208, 255, 0.6) 0%, transparent 70%)`,
         }}
       />
 
@@ -147,7 +147,7 @@ export function CursorSpotlight({
         style={{
           opacity: isHovering ? 1 : 0,
           transition: 'opacity 0.3s ease',
-          background: `radial-gradient(circle ${radius * 1.1}px at ${x}px ${y}px, transparent 50%, rgba(13, 148, 136, 0.04) 60%, transparent 70%)`,
+          background: `radial-gradient(circle ${radius * 1.1}px at ${x}px ${y}px, transparent 50%, rgba(214, 0, 124, 0.12) 60%, transparent 70%)`,
         }}
       />
 

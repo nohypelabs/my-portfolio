@@ -157,14 +157,14 @@ export default function DashboardPage() {
         <section className="grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)]">
           <motion.div
             variants={fadeInUp}
-            className="neo-surface rounded-[32px] p-7 md:p-8"
+            className="neo-surface rounded-[8px] p-7 md:p-8"
           >
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#c4956a]/20 bg-[#c4956a]/8 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#c4956a]">
+            <span className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-accent">
               Kenapa Client Order
             </span>
-            <h2 className="mt-5 max-w-2xl text-2xl font-bold leading-tight text-neutral-900 md:text-3xl">
+            <h2 className="mt-5 max-w-2xl text-2xl font-bold leading-tight text-foreground md:text-3xl">
               Website cantik itu bonus. Yang sebenarnya dicari client adalah
-              <span className="text-[#c4956a]"> bisnis yang terlihat lebih siap</span>{' '}
+              <span className="text-accent"> bisnis yang terlihat lebih siap</span>{' '}
               dan workflow yang terasa lebih rapi.
             </h2>
             <p className="mt-4 max-w-2xl text-sm leading-8 text-neutral-600 md:text-[15px]">
@@ -181,9 +181,9 @@ export default function DashboardPage() {
                 key={item.label}
                 variants={fadeInUp}
                 transition={{ delay: index * 0.06 }}
-                className="neo-surface rounded-2xl p-4 md:p-5"
+                className="neo-surface rounded-[8px] p-4 md:p-5"
               >
-                <p className="text-xl font-extrabold text-neutral-900 md:text-2xl">
+                <p className="text-xl font-extrabold text-foreground md:text-2xl">
                   {item.value}
                 </p>
                 <p className="mt-1 text-[11px] font-semibold text-neutral-700">
@@ -206,7 +206,7 @@ export default function DashboardPage() {
         <section className="space-y-6">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="text-2xl font-bold text-neutral-900 md:text-3xl">
+              <h2 className="text-2xl font-bold text-foreground md:text-3xl">
                 Surface yang dijual rapi, sistem di belakangnya juga ikut kuat.
               </h2>
               <p className="mt-2 max-w-3xl text-sm leading-8 text-neutral-600 md:text-[15px]">
@@ -217,7 +217,7 @@ export default function DashboardPage() {
             </div>
             <Link
               href="/services"
-              className="inline-flex items-center gap-1 text-[12px] font-medium text-[#c4956a] hover:underline"
+              className="inline-flex items-center gap-1 text-[12px] font-medium text-accent hover:underline"
             >
               Lihat detail layanan <ArrowRight className="h-3 w-3" />
             </Link>
@@ -229,12 +229,12 @@ export default function DashboardPage() {
                 <motion.div
                   variants={fadeInUp}
                   transition={{ delay: index * 0.08 }}
-                  className="neo-surface h-full rounded-[28px] p-6"
+                  className="neo-surface h-full rounded-[8px] p-6"
                 >
-                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#c4956a]/10">
-                    <track.icon className="h-5 w-5 text-[#c4956a]" strokeWidth={1.5} />
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-[8px] bg-accent/10">
+                    <track.icon className="h-5 w-5 text-accent" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-lg font-semibold text-neutral-900">
+                  <h3 className="text-lg font-semibold text-foreground">
                     {track.title}
                   </h3>
                   <p className="mt-3 text-[13px] leading-7 text-neutral-600">
@@ -243,7 +243,7 @@ export default function DashboardPage() {
                   <div className="mt-5 space-y-3">
                     {track.items.map((item) => (
                       <div key={item} className="flex items-start gap-3">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#c4956a]" />
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" />
                         <p className="text-[12px] leading-6 text-neutral-700">
                           {item}
                         </p>
@@ -264,7 +264,7 @@ export default function DashboardPage() {
       <ScrollReveal>
         <section className="space-y-6">
           <div className="max-w-3xl">
-            <h2 className="text-2xl font-bold text-neutral-900 md:text-3xl">
+            <h2 className="text-2xl font-bold text-foreground md:text-3xl">
               Kenapa surface ini lebih kuat untuk closing dibanding portfolio
               biasa.
             </h2>
@@ -281,12 +281,12 @@ export default function DashboardPage() {
                 <motion.div
                   variants={fadeInUp}
                   transition={{ delay: index * 0.08 }}
-                  className="neo-surface h-full rounded-[28px] p-6"
+                  className="neo-surface h-full rounded-[8px] p-6"
                 >
-                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-2xl bg-[#c4956a]/10">
-                    <item.icon className="h-5 w-5 text-[#c4956a]" strokeWidth={1.5} />
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-[8px] bg-accent/10">
+                    <item.icon className="h-5 w-5 text-accent" strokeWidth={1.5} />
                   </div>
-                  <h3 className="text-base font-semibold text-neutral-900">
+                  <h3 className="text-base font-semibold text-foreground">
                     {item.title}
                   </h3>
                   <p className="mt-3 text-[13px] leading-7 text-neutral-600">
@@ -303,7 +303,7 @@ export default function DashboardPage() {
         <section className="space-y-6">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="text-2xl font-bold text-neutral-900 md:text-3xl">
+              <h2 className="text-2xl font-bold text-foreground md:text-3xl">
                 Cara kami bekerja supaya project tidak muter di revisi yang
                 tidak perlu.
               </h2>
@@ -315,7 +315,7 @@ export default function DashboardPage() {
             </div>
             <Link
               href="/process"
-              className="inline-flex items-center gap-1 text-[12px] font-medium text-[#c4956a] hover:underline"
+              className="inline-flex items-center gap-1 text-[12px] font-medium text-accent hover:underline"
             >
               Lihat proses lengkap <ArrowRight className="h-3 w-3" />
             </Link>
@@ -327,20 +327,20 @@ export default function DashboardPage() {
                 key={step.label}
                 variants={fadeInUp}
                 transition={{ delay: index * 0.07 }}
-                className="neo-surface rounded-[28px] p-5"
+                className="neo-surface rounded-[8px] p-5"
               >
                 <div className="flex items-start justify-between gap-4">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#c4956a]/10">
-                    <step.icon className="h-5 w-5 text-[#c4956a]" strokeWidth={1.5} />
+                  <div className="flex h-11 w-11 items-center justify-center rounded-[8px] bg-accent/10">
+                    <step.icon className="h-5 w-5 text-accent" strokeWidth={1.5} />
                   </div>
-                  <span className="rounded-full border border-neutral-300 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500">
+                  <span className="rounded-full border border-foreground/30 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500">
                     0{index + 1}
                   </span>
                 </div>
-                <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-[#c4956a]">
+                <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-accent">
                   {step.duration}
                 </p>
-                <h3 className="mt-2 text-base font-semibold text-neutral-900">
+                <h3 className="mt-2 text-base font-semibold text-foreground">
                   {step.label}
                 </h3>
                 <p className="mt-3 text-[13px] leading-7 text-neutral-600">
@@ -356,7 +356,7 @@ export default function DashboardPage() {
         <section className="space-y-6">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="text-2xl font-bold text-neutral-900 md:text-3xl">
+              <h2 className="text-2xl font-bold text-foreground md:text-3xl">
                 Harga awal yang gampang dibaca, scope lanjutnya tetap fleksibel.
               </h2>
               <p className="mt-2 max-w-3xl text-sm leading-8 text-neutral-600 md:text-[15px]">
@@ -366,7 +366,7 @@ export default function DashboardPage() {
             </div>
             <Link
               href="/pricing"
-              className="inline-flex items-center gap-1 text-[12px] font-medium text-[#c4956a] hover:underline"
+              className="inline-flex items-center gap-1 text-[12px] font-medium text-accent hover:underline"
             >
               Lihat semua paket <ArrowRight className="h-3 w-3" />
             </Link>
@@ -378,21 +378,21 @@ export default function DashboardPage() {
                 <motion.div
                   variants={fadeInUp}
                   transition={{ delay: index * 0.08 }}
-                  className={`relative h-full overflow-hidden rounded-[28px] p-6 ${
+                  className={`relative h-full overflow-hidden rounded-[8px] p-6 ${
                     pkg.popular
-                      ? 'neo-pressed ring-1 ring-[#c4956a]/20'
+                      ? 'neo-pressed'
                       : 'neo-surface'
                   }`}
                 >
                   {pkg.popular && (
-                    <div className="absolute right-5 top-5 rounded-full bg-[#c4956a] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-white">
+                    <div className="absolute right-5 top-5 rounded-full bg-double border-2 border-foreground px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-foreground">
                       Paling dicari
                     </div>
                   )}
-                  <h3 className="text-lg font-semibold text-neutral-900">
+                  <h3 className="text-lg font-semibold text-foreground">
                     {pkg.name}
                   </h3>
-                  <p className="mt-3 text-3xl font-extrabold text-[#c4956a]">
+                  <p className="mt-3 text-3xl font-extrabold text-accent">
                     {pkg.price}
                   </p>
                   <p className="mt-4 text-[13px] leading-7 text-neutral-600">
@@ -400,7 +400,7 @@ export default function DashboardPage() {
                   </p>
                   <Link
                     href="/order"
-                    className="mt-6 inline-flex items-center gap-2 text-[12px] font-semibold text-neutral-900 hover:text-[#c4956a]"
+                    className="mt-6 inline-flex items-center gap-2 text-[12px] font-semibold text-foreground hover:text-accent"
                   >
                     Bahas scope project
                     <ArrowUpRight className="h-3.5 w-3.5" />
@@ -420,7 +420,7 @@ export default function DashboardPage() {
         <section className="space-y-6">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div>
-              <h2 className="text-2xl font-bold text-neutral-900 md:text-3xl">
+              <h2 className="text-2xl font-bold text-foreground md:text-3xl">
                 Butuh bukti teknis yang lebih detail?
               </h2>
               <p className="mt-2 max-w-3xl text-sm leading-8 text-neutral-600 md:text-[15px]">
@@ -431,7 +431,7 @@ export default function DashboardPage() {
             </div>
             <Link
               href="/projects"
-              className="inline-flex items-center gap-1 text-[12px] font-medium text-[#c4956a] hover:underline"
+              className="inline-flex items-center gap-1 text-[12px] font-medium text-accent hover:underline"
             >
               Semua case study <ArrowRight className="h-3 w-3" />
             </Link>
@@ -444,11 +444,11 @@ export default function DashboardPage() {
       <ScrollReveal>
         <motion.section
           variants={fadeInUp}
-          className="neo-surface relative overflow-hidden rounded-[35px]"
+          className="neo-surface relative overflow-hidden rounded-[8px]"
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(196,149,106,0.18),_transparent_52%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(0,208,255,0.16),_transparent_52%)]" />
           <div className="relative p-8 text-center md:p-12">
-            <h2 className="text-2xl font-bold text-neutral-900 md:text-3xl">
+            <h2 className="text-2xl font-bold text-foreground md:text-3xl">
               Kalau kebutuhan Anda sudah kebayang, mari kita ubah jadi{' '}
               <GradientText>scope yang enak dieksekusi</GradientText>.
             </h2>
@@ -462,7 +462,7 @@ export default function DashboardPage() {
                 as="a"
                 href="/order"
                 strength={0.15}
-                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-[#c4956a] px-8 py-4 font-semibold text-white shadow-lg shadow-[#c4956a]/20 transition-colors hover:bg-[#a67d55]"
+                className="btn-primary group inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold"
               >
                 Kirim Brief Project
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -471,7 +471,7 @@ export default function DashboardPage() {
                 as="a"
                 href="/contact"
                 strength={0.15}
-                className="neo-button inline-flex items-center justify-center gap-2 rounded-xl px-8 py-4 font-semibold text-neutral-900"
+                className="neo-button inline-flex items-center justify-center gap-2 rounded-[8px] px-8 py-4 font-semibold text-foreground"
               >
                 Konsultasi Dulu
               </MagneticButton>

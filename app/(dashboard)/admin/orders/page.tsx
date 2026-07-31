@@ -52,7 +52,7 @@ export default function AdminOrdersPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <Loader2 className="w-6 h-6 animate-spin text-[#c4956a]" />
+        <Loader2 className="w-6 h-6 animate-spin text-accent" />
       </div>
     );
   }
@@ -60,10 +60,10 @@ export default function AdminOrdersPage() {
   return (
     <motion.div variants={staggerContainer} initial="initial" animate="animate" className="space-y-8">
       <motion.div variants={fadeInUp}>
-        <Link href="/admin/dashboard" className="inline-flex items-center gap-1.5 text-[12px] text-neutral-500 hover:text-[#c4956a] mb-2 transition-colors">
+        <Link href="/admin/dashboard" className="inline-flex items-center gap-1.5 text-[12px] text-neutral-500 hover:text-accent mb-2 transition-colors">
           <ArrowLeft className="w-3.5 h-3.5" /> Dashboard
         </Link>
-        <h1 className="text-[20px] font-semibold text-neutral-900">Kelola Pesanan</h1>
+        <h1 className="text-[20px] font-semibold text-foreground">Kelola Pesanan</h1>
         <p className="text-[13px] text-neutral-500">{orders.length} pesanan total</p>
       </motion.div>
 
@@ -81,11 +81,11 @@ export default function AdminOrdersPage() {
               <motion.div
                 key={order.id}
                 variants={fadeInUp}
-                className="bg-[#f7f3e8] border border-neutral-200 rounded-xl p-5"
+                className="bg-surface border border-foreground/20 rounded-[8px] p-5"
               >
                 <div className="flex items-start justify-between mb-3">
                   <div>
-                    <h3 className="text-[14px] font-semibold text-neutral-900">{order.customer_name}</h3>
+                    <h3 className="text-[14px] font-semibold text-foreground">{order.customer_name}</h3>
                     <p className="text-[12px] text-neutral-500">{order.customer_email} · {order.customer_phone || '-'}</p>
                   </div>
                   <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-medium border ${status.color}`}>
@@ -113,7 +113,7 @@ export default function AdminOrdersPage() {
                       className={`px-2.5 py-1 rounded-lg text-[11px] font-medium border transition-colors ${
                         order.status === key
                           ? 'opacity-50 cursor-default ' + cfg.color
-                          : 'border-neutral-200 text-neutral-500 hover:border-[#c4956a] hover:text-[#c4956a]'
+                          : 'border-foreground/20 text-neutral-500 hover:border-accent hover:text-accent'
                       }`}
                     >
                       {cfg.label}

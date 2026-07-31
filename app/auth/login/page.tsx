@@ -40,13 +40,13 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
       <motion.div variants={staggerContainer} initial="initial" animate="animate" className="w-full max-w-sm">
-        <motion.div variants={fadeInUp} className="bg-[#f7f3e8] border border-neutral-200 rounded-xl p-6">
+        <motion.div variants={fadeInUp} className="bg-surface border border-foreground/20 rounded-[8px] p-6">
           {/* Logo */}
           <div className="text-center mb-6">
             <h1
-              className="text-[24px] text-neutral-900 mb-1"
+              className="text-[24px] text-foreground mb-1"
               style={{ fontFamily: "'Inter', system-ui, sans-serif", fontWeight: 350, letterSpacing: '-0.03em' }}
             >nasaq.id</h1>
             <p className="text-[12px] text-neutral-500">Masuk ke akun Anda</p>
@@ -66,7 +66,7 @@ export default function LoginPage() {
                 required
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                className="w-full px-3 py-2.5 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors"
+                className="w-full px-3 py-2.5 border border-foreground/30 rounded-lg text-[13px] focus:outline-none focus:border-accent focus:shadow-[4px_4px_0_0_var(--color-accent)] transition-colors"
                 placeholder="email@example.com"
               />
             </div>
@@ -79,7 +79,7 @@ export default function LoginPage() {
                   required
                   value={password}
                   onChange={e => setPassword(e.target.value)}
-                  className="w-full px-3 py-2.5 pr-10 border border-neutral-300 rounded-lg text-[13px] focus:outline-none focus:border-[#c4956a] focus:ring-1 focus:ring-[#c4956a]/20 transition-colors"
+                  className="w-full px-3 py-2.5 pr-10 border border-foreground/30 rounded-lg text-[13px] focus:outline-none focus:border-accent focus:shadow-[4px_4px_0_0_var(--color-accent)] transition-colors"
                   placeholder="••••••••"
                 />
                 <button
@@ -95,7 +95,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex items-center justify-center gap-2 py-2.5 bg-[#c4956a] text-white rounded-lg text-[13px] font-medium hover:bg-[#a67d55] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex items-center justify-center gap-2 py-2.5 bg-accent-light text-foreground rounded-lg text-[13px] font-medium hover:bg-accent-dark hover:text-surface transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <><Loader2 className="w-4 h-4 animate-spin" /> Masuk...</>
@@ -107,7 +107,7 @@ export default function LoginPage() {
 
           <p className="mt-4 text-center text-[12px] text-neutral-500">
             Belum punya akun?{' '}
-            <Link href="/auth/register" className="text-[#c4956a] hover:underline">Daftar</Link>
+            <Link href="/auth/register" className="text-accent hover:underline">Daftar</Link>
           </p>
         </motion.div>
       </motion.div>

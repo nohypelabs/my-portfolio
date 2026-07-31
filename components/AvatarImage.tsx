@@ -18,7 +18,7 @@ export function AvatarImage({ className = "", size = 40, priority = false }: Ava
     <>
       {/* Avatar */}
       <div
-        className={`relative rounded-full overflow-hidden ring-2 ring-emerald-500/20 shrink-0 cursor-pointer hover:ring-emerald-500/40 transition-all ${className}`}
+        className={`relative rounded-full overflow-hidden border-2 border-foreground shrink-0 cursor-pointer transition-all ${className}`}
         style={{ width: size, height: size }}
         onClick={() => setIsOpen(true)}
       >
@@ -45,7 +45,7 @@ export function AvatarImage({ className = "", size = 40, priority = false }: Ava
             {/* Close Button */}
             <button
               onClick={() => setIsOpen(false)}
-              className="absolute top-4 right-4 p-2 rounded-full bg-[#f7f3e8]/10 hover:bg-[#f7f3e8]/20 transition-colors"
+              className="absolute top-4 right-4 p-2 rounded-full bg-black/10 hover:bg-black/20 transition-colors"
               aria-label="Close"
             >
               <X className="w-6 h-6 text-white" />
@@ -57,7 +57,7 @@ export function AvatarImage({ className = "", size = 40, priority = false }: Ava
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: "spring", damping: 20, stiffness: 300 }}
-              className="relative w-full max-w-2xl aspect-square rounded-2xl overflow-hidden"
+              className="relative w-full max-w-2xl aspect-square rounded-[8px] overflow-hidden"
               onClick={(e) => e.stopPropagation()}
             >
               <Image

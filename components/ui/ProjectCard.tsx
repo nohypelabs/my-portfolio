@@ -35,10 +35,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       <TiltCard>
         <Link
           href={`/projects/${project.id}`}
-          className="group block neo-surface rounded-2xl overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+          className="group block neo-surface rounded-[8px] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
         >
           {/* Image */}
-          <div className="aspect-video relative overflow-hidden bg-neutral-100">
+          <div className="aspect-video relative overflow-hidden bg-accent-bg">
             <Image
               src={project.image}
               alt={project.title}
@@ -52,10 +52,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
             {/* Status badge */}
             <div className="absolute top-3 left-3">
-              <span className={`px-2.5 py-1 rounded-full text-[10px] font-semibold backdrop-blur-sm ${
+              <span className={`px-2.5 py-1 rounded-full text-[10px] font-semibold border-2 ${
                 isProduction
-                  ? "bg-emerald-500/90 text-white"
-                  : "bg-neutral-800/80 text-white"
+                  ? "bg-money text-foreground border-foreground"
+                  : "bg-foreground text-background border-foreground"
               }`}>
                 {isProduction ? "Production" : "Development"}
               </span>
@@ -63,8 +63,8 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
             {/* Arrow */}
             <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
-              <div className="w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-sm">
-                <ArrowUpRight className="w-4 h-4 text-neutral-900" />
+              <div className="w-8 h-8 rounded-full bg-surface border-2 border-foreground flex items-center justify-center">
+                <ArrowUpRight className="w-4 h-4 text-foreground" />
               </div>
             </div>
           </div>
@@ -72,7 +72,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           {/* Content */}
           <div className="p-5 space-y-3">
             <div>
-              <h3 className="font-bold text-[14px] text-neutral-900 group-hover:text-[#c4956a] transition-colors mb-1.5">
+              <h3 className="font-bold text-[14px] text-foreground group-hover:text-accent transition-colors mb-1.5">
                 {project.title}
               </h3>
               <p className="text-[12px] text-neutral-500 line-clamp-2 leading-relaxed">
@@ -82,7 +82,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
             {/* Impact metric */}
             {impactLabel && (
-              <div className="flex items-center gap-1.5 text-[10px] text-[#c4956a] font-medium">
+              <div className="flex items-center gap-1.5 text-[10px] text-accent font-medium">
                 <TrendingUp className="w-3 h-3" />
                 <span className="truncate">{impactLabel}</span>
               </div>

@@ -74,7 +74,7 @@ function AnimatedNumber({
 
 function SkeletonCard({ wide = false }: { wide?: boolean }) {
   return (
-    <div className={`relative overflow-hidden rounded-xl md:rounded-2xl p-4 md:p-6 border bg-[#f7f3e8] border-neutral-200`}>
+    <div className={`relative overflow-hidden rounded-[8px] md:rounded-[8px] p-4 md:p-6 border bg-surface border-foreground/20`}>
       <div className="animate-pulse">
         <div className="flex items-center gap-2 mb-3">
           <div className="w-7 h-7 rounded-lg bg-neutral-200" />
@@ -221,24 +221,21 @@ export function LiveMetrics() {
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="relative overflow-hidden neo-surface rounded-[35px] p-6 md:p-10 text-neutral-900"
+      className="relative overflow-hidden neo-surface rounded-[8px] p-6 md:p-10 text-foreground"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-[#c4956a]/5 via-transparent to-transparent" />
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#c4956a]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-
       <div className="relative">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <button onClick={() => setExpanded(!expanded)} className="flex items-center gap-3 group text-left">
-            <div className="p-2 rounded-xl bg-[#f0f0f0] border border-neutral-400">
-              <Database className="w-5 h-5 text-[#c4956a]" />
+            <div className="p-2 rounded-[8px] bg-surface border border-foreground/40">
+              <Database className="w-5 h-5 text-accent" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-neutral-900">
+                <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight text-foreground">
                   {t.liveProductionData}
                 </h2>
-                <div className="p-1 rounded-lg bg-neutral-100 group-hover:bg-neutral-200 transition-colors">
+                <div className="p-1 rounded-lg bg-accent-bg group-hover:bg-accent-light/40 transition-colors">
                   <motion.div animate={{ rotate: expanded ? 0 : -90 }} transition={{ duration: 0.2 }}>
                     <ChevronDown className="w-4 h-4 text-neutral-500" />
                   </motion.div>
@@ -255,27 +252,27 @@ export function LiveMetrics() {
               <button
                 onClick={() => fetchMetrics(true)}
                 disabled={refreshing}
-                className="group/btn flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#f0f0f0] border border-neutral-400 hover:bg-[#d4aa82]/30 disabled:opacity-60 disabled:cursor-not-allowed transition-all text-xs font-semibold text-[#c4956a]"
+                className="group/btn flex items-center gap-2 px-4 py-2.5 rounded-[8px] bg-surface border border-foreground/40 hover:bg-accent-light/30 disabled:opacity-60 disabled:cursor-not-allowed transition-all text-xs font-semibold text-accent"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? "animate-spin" : "group-hover/btn:rotate-180 transition-transform duration-500"}`} />
                 {refreshing ? t.fetching : t.fetchLatest}
               </button>
 
-              <div className="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-[#f0f0f0] border border-neutral-400">
+              <div className="flex items-center gap-3 px-4 py-2.5 rounded-[8px] bg-surface border border-foreground/40">
                 <span className="relative flex h-3 w-3">
                   <span
                     className={`absolute inline-flex h-full w-full rounded-full opacity-75 ${
-                      isLive ? "animate-ping bg-[#c4956a]" : "bg-yellow-400"
+                      isLive ? "animate-ping bg-accent-light" : "bg-yellow-400"
                     }`}
                   />
                   <span
                     className={`relative inline-flex rounded-full h-3 w-3 ${
-                      isLive ? "bg-[#c4956a]" : "bg-yellow-500"
+                      isLive ? "bg-accent-light" : "bg-yellow-500"
                     }`}
                   />
                 </span>
                 <div className="text-xs">
-                  <p className="font-semibold text-neutral-900">
+                  <p className="font-semibold text-foreground">
                     {isLive ? "LIVE" : t.loading}
                   </p>
                   {isLive && metrics?.fetchedAt && (
@@ -313,22 +310,22 @@ export function LiveMetrics() {
           )}
           {metrics && projectGroups.map((group, gi) => {
             const accentMap: Record<string, { border: string; bg: string; icon: string; dot: string; btnBorder: string }> = {
-              emerald: { border: "border-l-[#c4956a]", bg: "bg-[#f0f0f0]", icon: "text-[#c4956a]", dot: "bg-[#c4956a]", btnBorder: "border-neutral-400" },
-              purple: { border: "border-l-purple-500", bg: "bg-[#f0f0f0]", icon: "text-purple-600", dot: "bg-purple-500", btnBorder: "border-neutral-400" },
-              blue: { border: "border-l-blue-500", bg: "bg-[#f0f0f0]", icon: "text-blue-600", dot: "bg-blue-500", btnBorder: "border-neutral-400" },
-              orange: { border: "border-l-orange-500", bg: "bg-[#f0f0f0]", icon: "text-orange-600", dot: "bg-orange-500", btnBorder: "border-neutral-400" },
+              emerald: { border: "border-l-accent", bg: "bg-surface", icon: "text-accent", dot: "bg-accent-light", btnBorder: "border-foreground/40" },
+              purple: { border: "border-l-purple-500", bg: "bg-surface", icon: "text-purple-600", dot: "bg-purple-500", btnBorder: "border-foreground/40" },
+              blue: { border: "border-l-blue-500", bg: "bg-surface", icon: "text-blue-600", dot: "bg-blue-500", btnBorder: "border-foreground/40" },
+              orange: { border: "border-l-orange-500", bg: "bg-surface", icon: "text-orange-600", dot: "bg-orange-500", btnBorder: "border-foreground/40" },
             };
             const accent = accentMap[group.accent] ?? accentMap.emerald;
 
             return (
             <div
               key={group.name}
-              className={`rounded-xl ${accent.bg} border border-neutral-400 ${accent.border} border-l-2 p-4 md:p-5`}
+              className={`rounded-[8px] ${accent.bg} border border-foreground/40 ${accent.border} border-l-2 p-4 md:p-5`}
             >
               <div className="flex items-center justify-between mb-4">
                 <Link
                   href={group.link}
-                  className="group flex items-center gap-2 text-sm font-semibold text-neutral-700 hover:text-neutral-900 transition-colors"
+                  className="group flex items-center gap-2 text-sm font-semibold text-neutral-700 hover:text-foreground transition-colors"
                 >
                   <span className={`w-2 h-2 rounded-full ${accent.dot}`} />
                   {group.name}
@@ -343,7 +340,7 @@ export function LiveMetrics() {
                   href={group.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`text-[10px] sm:text-xs font-semibold flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all bg-[#f7f3e8] ${accent.btnBorder} ${accent.icon} hover:bg-neutral-50`}
+                  className={`text-[10px] sm:text-xs font-semibold flex items-center gap-1.5 px-3 py-1.5 rounded-lg border transition-all bg-surface ${accent.btnBorder} ${accent.icon} hover:bg-accent-bg`}
                 >
                   {t.visitApp} <ExternalLink className="w-3 h-3" />
                 </a>
@@ -373,25 +370,22 @@ export function LiveMetrics() {
                         delay: 0.15 + gi * 0.2 + ci * 0.1,
                         duration: 0.4,
                       }}
-                      className={`relative overflow-hidden rounded-xl md:rounded-2xl p-4 md:p-6 transition-shadow hover:shadow-2xl ${
+                      className={`relative overflow-hidden rounded-[8px] md:rounded-[8px] p-4 md:p-6 transition-shadow hover:shadow-2xl ${
                         isHero
                           ? "neo-pressed"
-                          : "bg-[#f0f0f0]"
+                          : "bg-surface"
                       }`}
                     >
-                      {isHero && (
-                        <div className="absolute top-0 right-0 w-32 h-32 bg-[#c4956a]/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2" />
-                      )}
                       <div className="relative">
                         <div className="flex items-center gap-1.5 md:gap-2 mb-2 md:mb-3">
                           <div
                             className={`p-1 md:p-1.5 rounded-lg ${
-                              isHero ? "bg-[#f0f0f0]" : "bg-neutral-100"
+                              isHero ? "bg-surface" : "bg-accent-bg"
                             }`}
                           >
                             <Icon
                               className={`w-3.5 h-3.5 md:w-4 md:h-4 ${
-                                isHero ? "text-[#c4956a]" : "text-neutral-500"
+                                isHero ? "text-accent" : "text-neutral-500"
                               }`}
                             />
                           </div>
@@ -402,8 +396,8 @@ export function LiveMetrics() {
                         <p
                           className={`font-extrabold tracking-tight ${
                             isHero
-                              ? "text-2xl sm:text-4xl md:text-5xl bg-gradient-to-r from-[#c4956a] to-[#d4aa82] bg-clip-text text-transparent"
-                              : "text-xl sm:text-3xl md:text-4xl text-neutral-900"
+                              ? "text-2xl sm:text-4xl md:text-5xl text-accent"
+                              : "text-xl sm:text-3xl md:text-4xl text-foreground"
                           }`}
                         >
                           <AnimatedNumber
@@ -424,18 +418,18 @@ export function LiveMetrics() {
         </div>
 
         {/* Footer */}
-        <div className="mt-8 pt-6 border-t border-neutral-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div className="mt-8 pt-6 border-t border-foreground/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <p className="text-xs text-neutral-400">
             {t.liveMetricsFooter}
           </p>
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-1 rounded-md bg-[#f0f0f0] border border-neutral-400 text-[10px] font-semibold text-[#c4956a] uppercase tracking-wider">
+            <span className="px-2.5 py-1 rounded-md bg-surface border border-foreground/40 text-[10px] font-semibold text-accent uppercase tracking-wider">
               Supabase
             </span>
-            <span className="px-2.5 py-1 rounded-md bg-blue-50 border border-neutral-400 text-[10px] font-semibold text-blue-600 uppercase tracking-wider">
+            <span className="px-2.5 py-1 rounded-md bg-surface border border-foreground/40 text-[10px] font-semibold text-blue-600 uppercase tracking-wider">
               PostgreSQL
             </span>
-            <span className="px-2.5 py-1 rounded-md bg-[#f0f0f0] border border-neutral-400 text-[10px] font-semibold text-neutral-500 uppercase tracking-wider">
+            <span className="px-2.5 py-1 rounded-md bg-surface border border-foreground/40 text-[10px] font-semibold text-neutral-500 uppercase tracking-wider">
               4 {t.databases}
             </span>
           </div>

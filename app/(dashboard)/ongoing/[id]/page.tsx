@@ -22,8 +22,8 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
   }
 
   const statusColors = {
-    'Planning': { bg: 'bg-[#FAFAFA]', text: 'text-[#c4956a]' },
-    'In Progress': { bg: 'bg-[#FAFAFA]', text: 'text-[#c4956a]' },
+    'Planning': { bg: 'bg-background', text: 'text-accent' },
+    'In Progress': { bg: 'bg-background', text: 'text-accent' },
     'On Hold': { bg: 'bg-yellow-100', text: 'text-yellow-600' }
   };
 
@@ -32,7 +32,7 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
       {/* Back Button */}
       <Link
         href="/ongoing"
-        className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-neutral-900"
+        className="inline-flex items-center gap-2 text-sm text-neutral-500 hover:text-foreground"
       >
         {t.backToOngoing}
       </Link>
@@ -60,20 +60,20 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="bg-[#FAFAFA] rounded-[35px] p-6 border border-neutral-400"
+        className="bg-background rounded-[8px] p-6 border border-foreground/40"
       >
         <h2 className="text-2xl font-bold mb-6">{t.timelineProgress}</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div className="flex items-center gap-3">
-            <Calendar className="w-5 h-5 text-[#c4956a]" />
+            <Calendar className="w-5 h-5 text-accent" />
             <div>
               <p className="text-sm text-neutral-500">{t.startDate}</p>
               <p className="font-medium">{project.startDate}</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <Clock className="w-5 h-5 text-[#c4956a]" />
+            <Clock className="w-5 h-5 text-accent" />
             <div>
               <p className="text-sm text-neutral-500">{t.estimatedCompletion}</p>
               <p className="font-medium">{project.estimatedCompletion}</p>
@@ -85,14 +85,14 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
           <div>
             <div className="flex justify-between mb-2">
               <span className="text-sm font-medium">{t.overallProgress}</span>
-              <span className="text-sm font-bold text-[#c4956a]">{project.progress}%</span>
+              <span className="text-sm font-bold text-accent">{project.progress}%</span>
             </div>
             <div className="w-full bg-border rounded-full h-3">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${project.progress}%` }}
                 transition={{ duration: 1, delay: 0.3 }}
-                className="bg-gradient-to-r from-[#c4956a] to-[#d4aa82] h-3 rounded-full"
+                className="bg-accent-light h-3 rounded-full"
               />
             </div>
           </div>
@@ -105,10 +105,10 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="bg-[#FAFAFA] rounded-[35px] p-6 border border-neutral-400"
+          className="bg-background rounded-[8px] p-6 border border-foreground/40"
         >
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-            <Target className="w-6 h-6 text-[#c4956a]" />
+            <Target className="w-6 h-6 text-accent" />
             {t.keyGoals}
           </h2>
           <ul className="space-y-3">
@@ -120,7 +120,7 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
                 transition={{ delay: 0.3 + idx * 0.1 }}
                 className="flex items-start gap-3"
               >
-                <div className="w-2 h-2 rounded-full bg-[#c4956a] mt-2" />
+                <div className="w-2 h-2 rounded-full bg-accent-light mt-2" />
                 <span>{goal}</span>
               </motion.li>
             ))}
@@ -133,7 +133,7 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
-        className="bg-[#FAFAFA] rounded-[35px] p-6 border border-neutral-400"
+        className="bg-background rounded-[8px] p-6 border border-foreground/40"
       >
         <h2 className="text-2xl font-bold mb-6">{t.plannedTechStack}</h2>
         <div className="flex flex-wrap gap-2">
@@ -148,13 +148,11 @@ export default function OngoingProjectDetailPage({ params }: { params: Promise<{
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
-        className={`rounded-xl p-6 ${
-          project.status === 'In Progress'
-            ? 'bg-gradient-to-br from-[#c4956a] to-[#d4aa82]'
-            : project.status === 'Planning'
-            ? 'bg-gradient-to-br from-[#c4956a] to-[#d4aa82]'
-            : 'bg-gradient-to-br from-yellow-600 to-orange-600'
-        } text-white`}
+        className={`rounded-[8px] p-6 border-2 border-foreground ${
+          project.status === 'In Progress' || project.status === 'Planning'
+            ? 'bg-accent-light text-foreground'
+            : 'bg-punch text-foreground'
+        }`}
       >
         <TrendingUp className="w-8 h-8 mb-3" />
         <h3 className="text-xl font-bold mb-2">{t.projectStatus}</h3>

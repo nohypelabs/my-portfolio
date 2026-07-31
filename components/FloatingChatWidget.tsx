@@ -22,32 +22,32 @@ export function FloatingChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
             transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-            className="mb-3 neo-surface rounded-2xl shadow-2xl overflow-hidden w-72"
+            className="mb-3 neo-surface rounded-[8px] shadow-2xl overflow-hidden w-72"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-[#c4956a] to-[#a67d55] p-4">
+            <div className="bg-accent-light border-b-2 border-foreground p-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-                    <MessageCircle className="w-4 h-4 text-white" />
+                  <div className="w-8 h-8 rounded-full border-2 border-foreground bg-surface flex items-center justify-center">
+                    <MessageCircle className="w-4 h-4 text-foreground" />
                   </div>
                   <div>
-                    <p className="text-[13px] font-semibold text-white">nasaq.id</p>
-                    <p className="text-[10px] text-white/70">Biasanya online</p>
+                    <p className="text-[13px] font-semibold text-foreground">nasaq.id</p>
+                    <p className="text-[10px] text-foreground/70">Biasanya online</p>
                   </div>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                  className="w-7 h-7 rounded-full border-2 border-foreground bg-surface hover:bg-double flex items-center justify-center transition-colors"
                 >
-                  <X className="w-3.5 h-3.5 text-white" />
+                  <X className="w-3.5 h-3.5 text-foreground" />
                 </button>
               </div>
             </div>
 
             {/* Body */}
             <div className="p-4 space-y-3">
-              <div className="bg-[#f7f3e8] rounded-xl rounded-tl-sm p-3">
+              <div className="bg-surface border-2 border-foreground rounded-[8px] rounded-tl-sm p-3">
                 <p className="text-[12px] text-neutral-700 leading-relaxed">
                   Halo! Butuh bantuan bikin sistem web atau app? Konsultasi gratis, langsung chat aja!
                 </p>
@@ -59,21 +59,21 @@ export function FloatingChatWidget() {
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 w-full px-4 py-3 bg-emerald-500 hover:bg-emerald-600 text-white rounded-xl transition-colors group"
+                  className="flex items-center gap-3 w-full px-4 py-3 bg-money hover:bg-double text-foreground border-2 border-foreground rounded-[8px] transition-colors group"
                 >
                   <Phone className="w-4 h-4" />
                   <div className="flex-1 text-left">
                     <p className="text-[12px] font-semibold">Chat WhatsApp</p>
-                    <p className="text-[10px] text-white/70">Respon cepat</p>
+                    <p className="text-[10px] text-foreground/70">Respon cepat</p>
                   </div>
                   <Send className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
                 <Link
                   href="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-3 w-full px-4 py-3 bg-[#f7f3e8] hover:bg-neutral-200/60 text-neutral-900 rounded-xl transition-colors"
+                  className="flex items-center gap-3 w-full px-4 py-3 bg-surface hover:bg-double text-foreground border-2 border-foreground rounded-[8px] transition-colors"
                 >
-                  <MessageCircle className="w-4 h-4 text-[#c4956a]" />
+                  <MessageCircle className="w-4 h-4 text-accent" />
                   <div className="flex-1 text-left">
                     <p className="text-[12px] font-semibold">Form Kontak</p>
                     <p className="text-[10px] text-neutral-500">Email response</p>
@@ -90,7 +90,7 @@ export function FloatingChatWidget() {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="relative w-14 h-14 rounded-full bg-gradient-to-br from-[#c4956a] to-[#a67d55] text-white shadow-lg shadow-[#c4956a]/30 flex items-center justify-center hover:shadow-xl hover:shadow-[#c4956a]/40 transition-shadow"
+        className="relative w-14 h-14 rounded-full bg-accent-light text-foreground border-2 border-foreground shadow-lg flex items-center justify-center hover:bg-double hover:shadow-xl transition-all"
       >
         <AnimatePresence mode="wait">
           {isOpen ? (
@@ -118,7 +118,7 @@ export function FloatingChatWidget() {
 
         {/* Pulse ring */}
         {!isOpen && (
-          <span className="absolute inset-0 rounded-full bg-[#c4956a] animate-ping opacity-20" />
+          <span className="absolute inset-0 rounded-full bg-accent-light animate-ping opacity-20" />
         )}
       </motion.button>
     </div>
