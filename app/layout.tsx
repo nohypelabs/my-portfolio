@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     default: "nasaq.id — Website, Company Profile & Custom Systems",
     template: "%s | nasaq.id"
   },
-  description: "nasaq.id adalah founder-led digital product studio untuk company profile, website bisnis, dashboard internal, dan sistem custom yang benar-benar dipakai tim. Cocok untuk bisnis yang butuh surface lebih meyakinkan dan workflow lebih rapi.",
+  description: "nasaq.id adalah digital product studio untuk company profile, website bisnis, dashboard internal, dan sistem custom yang benar-benar dipakai tim. Cocok untuk bisnis yang butuh surface lebih meyakinkan dan workflow lebih rapi.",
   keywords: [
     "nasaq.id",
     "jasa pembuatan website",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'id_ID',
     url: 'https://nasaq.id',
-    title: 'nasaq.id — Founder-led Digital Product Studio',
+    title: 'nasaq.id — Digital Product Studio',
     description: 'Website bisnis, company profile, dashboard internal, dan sistem custom untuk tim yang butuh surface lebih serius dan workflow yang lebih rapi.',
     siteName: 'nasaq.id',
     images: [
@@ -75,7 +75,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'nasaq.id — Website, Company Profile & Custom Systems',
-    description: 'Founder-led digital product studio untuk company profile, dashboard internal, dan sistem custom.',
+    description: 'Digital product studio untuk company profile, dashboard internal, dan sistem custom.',
     creator: '@agdscID',
     images: ['/picture/nasaq-id-photo.png'],
   },

@@ -34,7 +34,7 @@ export default function AboutPage() {
       label: 'resi logistik terproses otomatis',
     },
     {
-      value: 'Founder-led',
+      value: 'Langsung',
       label: 'komunikasi langsung tanpa perantara',
     },
     {
@@ -82,7 +82,7 @@ export default function AboutPage() {
           <div className="space-y-4 text-center md:text-left flex-1">
             <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-surface px-3 py-1 text-xs font-semibold text-accent-dark">
               <Building2 className="h-3.5 w-3.5" />
-              Founder-Led Studio
+              Digital Product Studio
             </div>
 
             <div className="space-y-3">

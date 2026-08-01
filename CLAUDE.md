@@ -4,7 +4,7 @@ This file gives current repo guidance for assistants working in this project.
 
 ## Project Overview
 
-`nasaq.id` is a founder-led digital product studio profile built with Next.js. The site is no longer a generic personal portfolio; the main goal is to convert visitors into consultation and brief submissions through stronger positioning, trust proof, and clear service funnels.
+`nasaq.id` is a digital product studio profile built with Next.js. The site is no longer a generic personal portfolio; the main goal is to convert visitors into consultation and brief submissions through stronger positioning, trust proof, and clear service funnels.
 
 ## Commands
 

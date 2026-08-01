@@ -55,7 +55,7 @@ export function HeroSection() {
             <motion.div variants={fadeUp} className="mb-8">
               <span className="inline-flex items-center gap-2.5 rounded-[4px] border-2 border-foreground bg-accent-light px-4 py-2 text-[11px] font-extrabold tracking-wide text-foreground shadow-[2px_2px_0px_#141414] font-mono">
                 <span className="h-2.5 w-2.5 border-2 border-foreground rounded-full bg-[#ff3d77] animate-pulse" />
-                FOUNDER-LED DIGITAL PRODUCT STUDIO
+                DIGITAL PRODUCT STUDIO
               </span>
             </motion.div>
 
