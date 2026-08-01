@@ -1,35 +1,25 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { LiveMetrics } from "@/components/sections/LiveMetrics";
-import { useLanguage } from "@/lib/context/LanguageContext";
-import { Activity, Database, ShieldCheck, Zap } from "lucide-react";
+import { motion } from 'framer-motion';
+import { LiveMetrics } from '@/components/sections/LiveMetrics';
+import { Activity, Database, ShieldCheck, Zap } from 'lucide-react';
 
 export default function LivePage() {
-  const { language } = useLanguage();
-  const isEn = language === "en";
-
   const proofPoints = [
     {
       icon: Database,
-      title: isEn ? "Real usage signals" : "Sinyal penggunaan nyata",
-      desc: isEn
-        ? "This page exists to show that the work is not just mockup-deep. Some projects already process real records and daily activity."
-        : "Halaman ini ada untuk menunjukkan bahwa kerjaannya bukan berhenti di mockup. Beberapa project sudah memproses record nyata dan aktivitas harian.",
+      title: 'Sinyal penggunaan nyata',
+      desc: 'Halaman ini ada untuk menunjukkan bahwa pekerjaan kami tidak berhenti di mockup. Sistem kustom kami telah memproses transaksi operasional dan aktivitas bisnis harian secara nyata.',
     },
     {
       icon: ShieldCheck,
-      title: isEn ? "Proof before claims" : "Bukti sebelum klaim",
-      desc: isEn
-        ? "Instead of asking clients to imagine capability, nasaq.id surfaces live or recently fetched metrics from working systems."
-        : "Daripada minta client membayangkan kapabilitas, nasaq.id menampilkan metrik live atau metrik yang baru diambil dari sistem yang berjalan.",
+      title: 'Bukti sebelum klaim',
+      desc: 'Daripada meminta klien membayangkan kapabilitas kami, nasaq.id menampilkan metrik live atau metrik yang baru diambil langsung dari database produksi aktif.',
     },
     {
       icon: Zap,
-      title: isEn ? "Operational relevance" : "Relevansi operasional",
-      desc: isEn
-        ? "The important part is not animation. It is whether the system is actually used, updated, and helpful to the team."
-        : "Yang penting bukan animasinya. Yang penting apakah sistemnya benar-benar dipakai, ter-update, dan berguna buat tim.",
+      title: 'Relevansi operasional',
+      desc: 'Yang terpenting dari software bukanlah visual atau animasinya. Yang terpenting adalah apakah sistem tersebut benar-benar mempermudah kerja tim harian Anda.',
     },
   ];
 
@@ -43,15 +33,13 @@ export default function LivePage() {
         <div className="max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-surface px-3 py-1 text-xs font-semibold text-accent-dark">
             <Activity className="h-3.5 w-3.5" />
-            {isEn ? "Live proof" : "Live proof"}
+            Live Proof
           </div>
           <h1 className="text-3xl font-extrabold tracking-tight text-foreground md:text-4xl">
-            {isEn ? "Running systems are the strongest credibility layer." : "Sistem yang benar-benar berjalan adalah lapisan trust paling kuat."}
+            Sistem yang aktif berjalan adalah bukti kredibilitas terbaik.
           </h1>
           <p className="text-sm leading-relaxed text-neutral-600 md:text-base">
-            {isEn
-              ? "For service businesses, trust does not only come from design polish. It also comes from proof that the team can ship, connect data, and maintain something that stays useful after launch."
-              : "Untuk bisnis jasa, trust tidak datang dari design polish saja. Trust juga datang dari bukti bahwa timnya bisa shipping, menghubungkan data, dan menjaga sesuatu tetap berguna setelah launch."}
+            Bagi kami, kepercayaan dibangun bukan dari presentasi visual yang glamor saja. Kepercayaan lahir dari bukti bahwa kami mampu mendeploy, menghubungkan database, dan merawat sistem agar tetap berjalan andal pasca-launch.
           </p>
         </div>
       </motion.div>
@@ -63,7 +51,7 @@ export default function LivePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.08 * index }}
-            className="rounded-[8px] neo-surface p-5"
+            className="rounded-[8px] neo-surface p-5 bg-surface"
           >
             <item.icon className="mb-3 h-5 w-5 text-accent" />
             <h2 className="mb-2 text-sm font-bold text-foreground">{item.title}</h2>

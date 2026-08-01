@@ -1,8 +1,7 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import Link from "next/link";
-import { personalInfo } from "@/lib/data/personalInfo";
+import { motion } from 'framer-motion';
+import { personalInfo } from '@/lib/data/personalInfo';
 import {
   ArrowUpRight,
   Building2,
@@ -17,11 +16,10 @@ import {
   ShieldCheck,
   Twitter,
   Zap,
-} from "lucide-react";
-import { useLanguage } from "@/lib/context/LanguageContext";
-import { useState } from "react";
+} from 'lucide-react';
+import { useState } from 'react';
 
-const waNumber = personalInfo.contact.phone.replace(/^0/, "62");
+const waNumber = personalInfo.contact.phone.replace(/^0/, '62');
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -32,68 +30,60 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 const colorMap: Record<string, { icon: string; hover: string; bg: string }> = {
-  green: { icon: "text-green-600", hover: "hover:border-foreground/40", bg: "bg-surface" },
-  emerald: { icon: "text-accent", hover: "hover:border-foreground/40", bg: "bg-surface" },
-  blue: { icon: "text-blue-600", hover: "hover:border-foreground/40", bg: "bg-accent-bg" },
-  zinc: { icon: "text-neutral-700", hover: "hover:border-foreground/40", bg: "bg-surface" },
+  green: { icon: 'text-green-600', hover: 'hover:border-foreground/40', bg: 'bg-surface' },
+  emerald: { icon: 'text-accent', hover: 'hover:border-foreground/40', bg: 'bg-surface' },
+  blue: { icon: 'text-blue-600', hover: 'hover:border-foreground/40', bg: 'bg-accent-bg' },
+  zinc: { icon: 'text-neutral-700', hover: 'hover:border-foreground/40', bg: 'bg-surface' },
 };
 
 export default function ContactPage() {
-  const { language } = useLanguage();
   const [copied, setCopied] = useState(false);
-  const isEn = language === "en";
 
   const socialLinks = [
     {
-      name: "WhatsApp",
+      name: 'WhatsApp',
       icon: Phone,
       customIcon: WhatsAppIcon,
       url: `https://wa.me/${waNumber}`,
-      handle: isEn ? "Quick project chat" : "Chat cepat soal project",
-      color: "green",
+      handle: 'Chat cepat soal proyek',
+      color: 'green',
     },
     {
-      name: "Email",
+      name: 'Email',
       icon: Mail,
       url: `mailto:${personalInfo.contact.email}`,
       handle: personalInfo.contact.email,
-      color: "emerald",
+      color: 'emerald',
       copyable: true,
     },
     {
-      name: "LinkedIn",
+      name: 'LinkedIn',
       icon: Linkedin,
       url: personalInfo.contact.linkedin,
-      handle: "nasaq.id",
-      color: "blue",
+      handle: 'nasaq.id',
+      color: 'blue',
     },
     {
-      name: "GitHub",
+      name: 'GitHub',
       icon: Github,
       url: personalInfo.contact.github,
-      handle: "@nohypelabs",
-      color: "zinc",
+      handle: '@nohypelabs',
+      color: 'zinc',
     },
     {
-      name: "X",
+      name: 'X',
       icon: Twitter,
       url: personalInfo.contact.twitter,
-      handle: "@nohypelabs",
-      color: "zinc",
+      handle: '@nohypelabs',
+      color: 'zinc',
     },
   ];
 
-  const goodFit = isEn
-    ? [
-        "Company profile or landing page that needs better trust and clearer CTA.",
-        "Internal dashboard or admin workflow that still feels manual and messy.",
-        "Custom web app where the business flow matters more than showing off features.",
-      ]
-    : [
-        "Company profile atau landing page yang perlu trust lebih kuat dan CTA lebih jelas.",
-        "Dashboard internal atau workflow admin yang masih terasa manual dan berantakan.",
-        "Web app custom di mana flow bisnis lebih penting daripada pamer fitur.",
-      ];
+  const goodFit = [
+    'Company profile atau landing page yang perlu trust lebih kuat dan CTA lebih jelas.',
+    'Dashboard internal atau workflow admin yang masih terasa manual dan berantakan.',
+    'Web app custom di mana flow bisnis lebih penting daripada sekadar pamer fitur visual.',
+  ];
 
   const copyEmail = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -105,6 +95,7 @@ export default function ContactPage() {
 
   return (
     <div className="mx-auto max-w-5xl space-y-8 pb-12">
+      {/* HEADER CARD */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -113,63 +104,61 @@ export default function ContactPage() {
         <div className="max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-surface px-3 py-1 text-xs font-semibold text-accent-dark">
             <Rocket className="h-3.5 w-3.5" />
-            {isEn ? "Project consultation" : "Konsultasi project"}
+            Konsultasi Proyek
           </div>
           <h1 className="text-3xl font-extrabold tracking-tight text-foreground md:text-4xl">
-            {isEn ? "Discuss the project before it gets more complicated." : "Diskusikan project sebelum makin ribet."}
+            Diskusikan proyek sistem Anda sebelum makin rumit.
           </h1>
           <p className="text-sm leading-relaxed text-neutral-600 md:text-base">
-            {isEn
-              ? "If you need a sharper company profile, a cleaner internal dashboard, or a custom web system that matches real operations, start here. The first goal is clarity: problem, scope, priority, and the fastest safe build path."
-              : "Kalau kamu butuh company profile yang lebih tajam, dashboard internal yang lebih rapi, atau sistem web custom yang cocok dengan operasional nyata, mulai dari sini. Tujuan pertama adalah kejelasan: problem, scope, prioritas, dan jalur build tercepat yang tetap aman."}
+            Jika bisnis Anda membutuhkan landing page konversi, dashboard admin untuk operasional internal, atau sistem database kustom yang berjalan stabil di lapangan, mulailah dari sini. Fokus utama diskusi pertama kami adalah mencari kejelasan scope dan timeline pengerjaan yang realistis.
           </p>
         </div>
       </motion.div>
 
+      {/* READOUT CARDS */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.08 }}
-        className="grid grid-cols-1 gap-3 md:grid-cols-3"
+        className="grid grid-cols-1 gap-3 md:grid-cols-3 font-mono text-[11px]"
       >
-        <div className="flex items-center gap-3 rounded-[8px] neo-surface px-4 py-4">
-          <Clock className="h-4 w-4 text-accent" />
+        <div className="flex items-center gap-3 rounded-[8px] neo-surface px-4 py-3 bg-surface">
+          <Clock className="h-4 w-4 text-accent" strokeWidth={2.2} />
           <div>
-            <p className="text-xs font-semibold text-foreground">{isEn ? "Response rhythm" : "Waktu respons"}</p>
-            <p className="text-[11px] text-neutral-500">{isEn ? "Usually within 1 x 24 hours" : "Biasanya dalam 1 x 24 jam"}</p>
+            <p className="font-bold text-foreground">Waktu Respons</p>
+            <p className="text-neutral-500">Merespons dalam waktu 24 jam</p>
           </div>
         </div>
-        <div className="flex items-center gap-3 rounded-[8px] neo-surface px-4 py-4">
-          <ShieldCheck className="h-4 w-4 text-accent" />
+        <div className="flex items-center gap-3 rounded-[8px] neo-surface px-4 py-3 bg-surface">
+          <ShieldCheck className="h-4 w-4 text-accent" strokeWidth={2.2} />
           <div>
-            <p className="text-xs font-semibold text-foreground">{isEn ? "Preferred start" : "Cara mulai yang disukai"}</p>
-            <p className="text-[11px] text-neutral-500">{isEn ? "Brief first, then estimate and direction" : "Mulai dari brief, lalu estimasi dan arah kerja"}</p>
+            <p className="font-bold text-foreground">Cara Mulai</p>
+            <p className="text-neutral-500">Kirim brief detail di bawah</p>
           </div>
         </div>
-        <div className="flex items-center gap-3 rounded-[8px] neo-surface px-4 py-4">
-          <Building2 className="h-4 w-4 text-accent" />
+        <div className="flex items-center gap-3 rounded-[8px] neo-surface px-4 py-3 bg-surface">
+          <Building2 className="h-4 w-4 text-accent" strokeWidth={2.2} />
           <div>
-            <p className="text-xs font-semibold text-foreground">{isEn ? "Base" : "Domisili"}</p>
-            <p className="text-[11px] text-neutral-500">{isEn ? "Bandung, remote across Indonesia" : "Bandung, remote untuk client di seluruh Indonesia"}</p>
+            <p className="font-bold text-foreground">Domisili Kerja</p>
+            <p className="text-neutral-500">Bandung, remote seluruh Indonesia</p>
           </div>
         </div>
       </motion.div>
 
-      <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+      <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+        {/* CONTACT FORM */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.12 }}
-          className="space-y-4 rounded-[8px] neo-surface p-6"
+          className="space-y-4 rounded-[8px] neo-surface p-6 bg-surface"
         >
           <div>
-            <h2 className="text-xl font-bold text-foreground">
-              {isEn ? "Quick brief by email" : "Kirim brief cepat lewat email"}
+            <h2 className="text-lg font-bold text-foreground">
+              Kirim Brief Proyek Singkat
             </h2>
-            <p className="mt-1 text-sm text-neutral-500">
-              {isEn
-                ? "For early discussion, a short but structured brief is enough."
-                : "Untuk diskusi awal, brief singkat tapi terstruktur sudah cukup."}
+            <p className="mt-1 text-xs text-neutral-500 font-mono">
+              Silakan lengkapi formulir di bawah ini untuk membantu kami memahami tantangan operasional bisnis Anda.
             </p>
           </div>
 
@@ -177,114 +166,107 @@ export default function ContactPage() {
             onSubmit={(e) => {
               e.preventDefault();
               const formData = new FormData(e.currentTarget);
-              const name = String(formData.get("name") ?? "");
-              const company = String(formData.get("company") ?? "");
-              const projectType = String(formData.get("projectType") ?? "");
-              const budget = String(formData.get("budget") ?? "");
-              const message = String(formData.get("message") ?? "");
+              const name = String(formData.get('name') ?? '');
+              const company = String(formData.get('company') ?? '');
+              const projectType = String(formData.get('projectType') ?? '');
+              const budget = String(formData.get('budget') ?? '');
+              const message = String(formData.get('message') ?? '');
 
-              const subject = encodeURIComponent(
-                isEn
-                  ? `Project Brief from ${company || name}`
-                  : `Brief Project dari ${company || name}`
-              );
+              const subject = encodeURIComponent(`Brief Proyek dari ${company || name}`);
 
               const body = encodeURIComponent(
                 [
-                  `Name: ${name}`,
-                  `Company: ${company}`,
-                  `Project Type: ${projectType}`,
-                  `Budget Range: ${budget}`,
-                  "",
-                  "Project Notes:",
+                  `Nama Kontak: ${name}`,
+                  `Nama Bisnis / Brand: ${company}`,
+                  `Jenis Proyek: ${projectType}`,
+                  `Estimasi Budget: ${budget}`,
+                  '',
+                  'Catatan Kebutuhan Operasional:',
                   message,
-                ].join("\n")
+                ].join('\n')
               );
 
               window.open(`mailto:${personalInfo.contact.email}?subject=${subject}&body=${body}`);
             }}
-            className="space-y-4"
+            className="space-y-4 font-mono text-[12px]"
           >
             <div className="grid gap-3 sm:grid-cols-2">
               <div>
-                <label className="mb-1 block text-xs font-medium text-neutral-700">
-                  {isEn ? "Name" : "Nama"}
+                <label className="mb-1 block font-bold text-neutral-700">
+                  Nama Anda
                 </label>
                 <input
                   type="text"
                   name="name"
                   required
-                  placeholder={isEn ? "Your name" : "Nama kamu"}
-                  className="w-full rounded-[8px] border border-foreground/40 bg-surface px-3 py-2 text-sm text-foreground placeholder:text-neutral-400 focus:border-accent focus:outline-none focus:shadow-[4px_4px_0_0_var(--color-accent)]"
+                  placeholder="Nama lengkap"
+                  className="w-full rounded-[4px] border-2 border-foreground bg-background px-3 py-2 text-sm text-foreground placeholder:text-neutral-400 focus:outline-none focus:shadow-[2px_2px_0px_#141414]"
                 />
               </div>
               <div>
-                <label className="mb-1 block text-xs font-medium text-neutral-700">
-                  {isEn ? "Company / Brand" : "Perusahaan / Brand"}
+                <label className="mb-1 block font-bold text-neutral-700">
+                  Bisnis / Perusahaan
                 </label>
                 <input
                   type="text"
                   name="company"
                   required
-                  placeholder={isEn ? "Business name" : "Nama bisnis"}
-                  className="w-full rounded-[8px] border border-foreground/40 bg-surface px-3 py-2 text-sm text-foreground placeholder:text-neutral-400 focus:border-accent focus:outline-none focus:shadow-[4px_4px_0_0_var(--color-accent)]"
+                  placeholder="Nama perusahaan"
+                  className="w-full rounded-[4px] border-2 border-foreground bg-background px-3 py-2 text-sm text-foreground placeholder:text-neutral-400 focus:outline-none focus:shadow-[2px_2px_0px_#141414]"
                 />
               </div>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
               <div>
-                <label className="mb-1 block text-xs font-medium text-neutral-700">
-                  {isEn ? "Project type" : "Tipe project"}
+                <label className="mb-1 block font-bold text-neutral-700">
+                  Tipe Proyek
                 </label>
                 <input
                   type="text"
                   name="projectType"
                   required
-                  placeholder={isEn ? "Company profile, dashboard, custom app" : "Company profile, dashboard, custom app"}
-                  className="w-full rounded-[8px] border border-foreground/40 bg-surface px-3 py-2 text-sm text-foreground placeholder:text-neutral-400 focus:border-accent focus:outline-none focus:shadow-[4px_4px_0_0_var(--color-accent)]"
+                  placeholder="Contoh: Landing Page, Dashboard Admin, App Android"
+                  className="w-full rounded-[4px] border-2 border-foreground bg-background px-3 py-2 text-sm text-foreground placeholder:text-neutral-400 focus:outline-none focus:shadow-[2px_2px_0px_#141414]"
                 />
               </div>
               <div>
-                <label className="mb-1 block text-xs font-medium text-neutral-700">
-                  {isEn ? "Budget range" : "Range budget"}
+                <label className="mb-1 block font-bold text-neutral-700">
+                  Estimasi Budget (Rp)
                 </label>
                 <input
                   type="text"
                   name="budget"
-                  placeholder={isEn ? "Optional" : "Opsional"}
-                  className="w-full rounded-[8px] border border-foreground/40 bg-surface px-3 py-2 text-sm text-foreground placeholder:text-neutral-400 focus:border-accent focus:outline-none focus:shadow-[4px_4px_0_0_var(--color-accent)]"
+                  placeholder="Opsional"
+                  className="w-full rounded-[4px] border-2 border-foreground bg-background px-3 py-2 text-sm text-foreground placeholder:text-neutral-400 focus:outline-none focus:shadow-[2px_2px_0px_#141414]"
                 />
               </div>
             </div>
 
             <div>
-              <label className="mb-1 block text-xs font-medium text-neutral-700">
-                {isEn ? "What needs to happen?" : "Apa yang perlu dibangun atau dibenahi?"}
+              <label className="mb-1 block font-bold text-neutral-700">
+                Apa tantangan operasional atau kebutuhan sistem yang ingin dibenahi?
               </label>
               <textarea
                 name="message"
                 required
                 rows={6}
-                placeholder={
-                  isEn
-                    ? "Write the current problem, the target result, and anything that already exists."
-                    : "Tulis problem saat ini, hasil yang diinginkan, dan apa saja yang sudah ada."
-                }
-                className="w-full resize-none rounded-[8px] border border-foreground/40 bg-surface px-3 py-2 text-sm text-foreground placeholder:text-neutral-400 focus:border-accent focus:outline-none focus:shadow-[4px_4px_0_0_var(--color-accent)]"
+                placeholder="Tulis masalah saat ini di lapangan, alur manual yang ingin diotomasi, dan sistem apa saja yang sudah berjalan saat ini."
+                className="w-full resize-none rounded-[4px] border-2 border-foreground bg-background px-3 py-2 text-sm text-foreground placeholder:text-neutral-400 focus:outline-none focus:shadow-[2px_2px_0px_#141414]"
               />
             </div>
 
             <button
               type="submit"
-              className="btn-primary rounded-[8px] px-6 py-2.5 text-sm font-semibold"
+              className="w-full inline-flex items-center justify-center gap-2 rounded-[4px] border-2 border-foreground bg-foreground text-background py-3 text-xs font-extrabold shadow-[3px_3px_0px_var(--color-accent)] hover:-translate-y-0.5 transition-all"
             >
               <Mail className="h-4 w-4" />
-              {isEn ? "Open email draft" : "Buka draft email"}
+              Kirim Brief via Email
             </button>
           </form>
         </motion.div>
 
+        {/* SOCIAL LINKS & GOOD FIT */}
         <div className="space-y-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -302,39 +284,39 @@ export default function ContactPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.22 + index * 0.06 }}
-                  className={`group rounded-[8px] neo-surface p-5 transition-all hover:shadow-lg ${colors.hover}`}
+                  className={`group rounded-[8px] neo-surface p-4 transition-all bg-surface hover:shadow-lg ${colors.hover}`}
                 >
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center justify-between">
                     <a
                       href={link.url}
-                      target={link.url.startsWith("mailto") ? undefined : "_blank"}
+                      target={link.url.startsWith('mailto') ? undefined : '_blank'}
                       rel="noopener noreferrer"
                       className="flex min-w-0 flex-1 items-center gap-4"
                     >
-                      <div className={`rounded-[8px] border-2 border-foreground p-3 ${colors.bg}`}>
+                      <div className="flex h-9 w-9 items-center justify-center rounded-[4px] border-2 border-foreground bg-surface shadow-[1.5px_1.5px_0px_#141414]">
                         {link.customIcon ? (
-                          <link.customIcon className={`h-5 w-5 ${colors.icon}`} />
+                          <link.customIcon className={`h-4 w-4 ${colors.icon}`} />
                         ) : (
-                          <Icon className={`h-5 w-5 ${colors.icon}`} />
+                          <Icon className={`h-4 w-4 ${colors.icon}`} strokeWidth={2.2} />
                         )}
                       </div>
-                      <div className="min-w-0 flex-1">
-                        <h3 className="mb-0.5 text-sm font-bold text-foreground">{link.name}</h3>
-                        <p className="truncate text-xs text-neutral-500">{link.handle}</p>
+                      <div className="min-w-0 flex-1 font-mono">
+                        <h3 className="text-xs font-bold text-foreground">{link.name}</h3>
+                        <p className="truncate text-[10px] text-neutral-400">{link.handle}</p>
                       </div>
-                      <ArrowUpRight className="h-4 w-4 shrink-0 text-neutral-500 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
+                      <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-neutral-500 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" strokeWidth={2.5} />
                     </a>
 
                     {link.copyable && (
                       <button
                         onClick={copyEmail}
-                        className="rounded-[8px] border-2 border-foreground bg-surface p-2 transition-colors hover:bg-accent-bg"
-                        title={copied ? "Copied!" : "Copy email"}
+                        className="flex h-7.5 w-7.5 items-center justify-center rounded-[4px] border-2 border-foreground bg-surface shadow-[1px_1px_0px_#141414] hover:bg-accent-bg"
+                        title="Copy email"
                       >
                         {copied ? (
-                          <Check className="h-3.5 w-3.5 text-accent" />
+                          <Check className="h-3.5 w-3.5 text-accent" strokeWidth={2.5} />
                         ) : (
-                          <Copy className="h-3.5 w-3.5 text-neutral-500" />
+                          <Copy className="h-3.5 w-3.5 text-neutral-500" strokeWidth={2.2} />
                         )}
                       </button>
                     )}
@@ -348,16 +330,16 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.28 }}
-            className="rounded-[8px] neo-surface p-6"
+            className="rounded-[8px] neo-surface p-5 bg-surface"
           >
             <div className="mb-3 flex items-center gap-2">
-              <Zap className="h-4 w-4 text-accent" />
-              <h2 className="text-lg font-bold text-foreground">{isEn ? "Best fit" : "Cocok untuk"}</h2>
+              <Zap className="h-4 w-4 text-accent" strokeWidth={2.2} />
+              <h2 className="text-sm font-bold text-foreground">Sangat Cocok Untuk:</h2>
             </div>
-            <ul className="space-y-3 text-sm text-neutral-600">
+            <ul className="space-y-3 text-xs text-neutral-600 font-mono">
               {goodFit.map((item) => (
                 <li key={item} className="flex items-start gap-2">
-                  <span className="mt-0.5 text-accent">•</span>
+                  <span className="text-accent font-extrabold">•</span>
                   <span>{item}</span>
                 </li>
               ))}
@@ -365,46 +347,6 @@ export default function ContactPage() {
           </motion.div>
         </div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.32 }}
-        className="relative overflow-hidden rounded-[8px] neo-surface"
-      >
-        <div className="relative flex flex-col gap-5 p-8 md:flex-row md:items-end md:justify-between md:p-10">
-          <div className="max-w-2xl space-y-2">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-accent-dark">
-              {isEn ? "Structured route" : "Route yang lebih rapi"}
-            </p>
-            <h2 className="text-2xl font-bold text-foreground">
-              {isEn ? "If the scope is clearer, use the order form." : "Kalau scope-nya sudah lebih jelas, pakai form order."}
-            </h2>
-            <p className="text-sm leading-relaxed text-neutral-600">
-              {isEn
-                ? "The order page is better when you already know the project type, target timeline, and the rough outcome you want."
-                : "Halaman order lebih cocok kalau kamu sudah tahu tipe project, target timeline, dan outcome kasar yang kamu mau."}
-            </p>
-          </div>
-
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/order"
-              className="group inline-flex items-center gap-2 rounded-[8px] bg-accent-light px-6 py-3 font-semibold text-foreground transition-all hover:bg-accent-dark hover:text-surface"
-            >
-              {isEn ? "Open project brief" : "Buka brief project"}
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </Link>
-            <a
-              href={`mailto:${personalInfo.contact.email}`}
-              className="neo-button inline-flex items-center gap-2 rounded-[8px] px-6 py-3 font-semibold text-foreground"
-            >
-              <Mail className="h-4 w-4" />
-              {isEn ? "Send direct email" : "Kirim email langsung"}
-            </a>
-          </div>
-        </div>
-      </motion.div>
     </div>
   );
 }

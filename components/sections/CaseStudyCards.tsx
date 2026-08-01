@@ -85,7 +85,9 @@ export function CaseStudyCards() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                 <div className="absolute bottom-3 left-3 right-3">
-                  <span className={`inline-block px-2 py-0.5 rounded-full text-[9px] font-semibold text-white ${study.color} mb-1.5`}>
+                  <span className={`inline-block px-2.5 py-1 rounded-[4px] text-[10px] font-bold border-2 border-foreground shadow-[2px_2px_0px_#141414] text-foreground font-mono mb-1.5 ${
+                    study.id === 'selisih-berat' ? 'bg-money' : study.id === 'wc-check' ? 'bg-accent-light' : 'bg-splash text-white'
+                  }`}>
                     {study.tag}
                   </span>
                   <h3 className="text-[13px] font-bold text-white leading-tight">{study.title}</h3>
@@ -102,24 +104,24 @@ export function CaseStudyCards() {
                 {/* Problem → Solution */}
                 <div className="space-y-2">
                   <div className="flex items-start gap-2">
-                    <span className="text-[9px] font-bold text-red-500 bg-red-50 px-1.5 py-0.5 rounded mt-0.5 flex-shrink-0">SEBELUM</span>
-                    <p className="text-[11px] text-neutral-500 leading-relaxed">{study.problem}</p>
+                    <span className="text-[10px] font-extrabold text-foreground bg-double border-2 border-foreground px-1.5 py-0.5 rounded-[4px] shadow-[1px_1px_0px_#141414] font-mono mt-0.5 flex-shrink-0">SEBELUM</span>
+                    <p className="text-[11px] text-neutral-600 leading-relaxed">{study.problem}</p>
                   </div>
                   <div className="flex items-start gap-2">
-                    <span className="text-[9px] font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded mt-0.5 flex-shrink-0">SETELAH</span>
-                    <p className="text-[11px] text-neutral-600 leading-relaxed">{study.solution}</p>
+                    <span className="text-[10px] font-extrabold text-foreground bg-money border-2 border-foreground px-1.5 py-0.5 rounded-[4px] shadow-[1px_1px_0px_#141414] font-mono mt-0.5 flex-shrink-0">SETELAH</span>
+                    <p className="text-[11px] text-foreground font-semibold leading-relaxed">{study.solution}</p>
                   </div>
                 </div>
 
                 {/* Metrics */}
-                <div className="space-y-1.5 pt-1 border-t border-foreground/20">
+                <div className="space-y-2 pt-2.5 border-t-2 border-foreground/20">
                   {study.metrics.map((m, j) => (
                     <div key={j} className="flex items-center gap-2">
-                      <m.icon className="w-3 h-3 text-accent flex-shrink-0" />
-                      <span className="text-[10px] text-neutral-400 w-20 flex-shrink-0">{m.label}</span>
-                      <span className="text-[10px] text-neutral-400 line-through">{m.before}</span>
-                      <span className="text-[10px] text-neutral-400">→</span>
-                      <span className="text-[10px] font-semibold text-accent">{m.after}</span>
+                      <m.icon className="w-3.5 h-3.5 text-foreground flex-shrink-0" />
+                      <span className="text-[10px] font-bold text-foreground w-20 flex-shrink-0">{m.label}</span>
+                      <span className="text-[10px] text-neutral-500 line-through decoration-2 decoration-double">{m.before}</span>
+                      <span className="text-[10px] text-foreground font-bold font-mono">→</span>
+                      <span className="text-[10px] font-extrabold text-accent-dark bg-accent-bg border border-foreground/20 px-1.5 py-0.5 rounded font-mono shadow-[1px_1px_0px_#141414]">{m.after}</span>
                     </div>
                   ))}
                 </div>

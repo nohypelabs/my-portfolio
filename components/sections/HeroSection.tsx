@@ -53,8 +53,8 @@ export function HeroSection() {
         <div className="relative grid gap-8 p-8 text-foreground md:p-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:p-20">
           <div>
             <motion.div variants={fadeUp} className="mb-8">
-              <span className="inline-flex items-center gap-2.5 rounded-full border-2 border-accent bg-accent/10 px-4 py-2 text-[11px] font-semibold tracking-wide text-accent">
-                <span className="h-1.5 w-1.5 rounded-full bg-accent-light animate-pulse" />
+              <span className="inline-flex items-center gap-2.5 rounded-[4px] border-2 border-foreground bg-accent-light px-4 py-2 text-[11px] font-extrabold tracking-wide text-foreground shadow-[2px_2px_0px_#141414] font-mono">
+                <span className="h-2.5 w-2.5 border-2 border-foreground rounded-full bg-[#ff3d77] animate-pulse" />
                 FOUNDER-LED DIGITAL PRODUCT STUDIO
               </span>
             </motion.div>

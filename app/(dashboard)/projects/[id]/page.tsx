@@ -1,13 +1,12 @@
-"use client";
+'use client';
 
-import { use } from "react";
-import { motion } from "framer-motion";
-import { projects } from "@/lib/data/projects";
-import { ScrollReveal } from "@/components/ScrollReveal";
-import { TechBadge } from "@/components/ui/TechBadge";
-import { useLanguage } from "@/lib/context/LanguageContext";
-import type { Project } from "@/lib/domain/entities/Project";
-import { notFound } from "next/navigation";
+import { use } from 'react';
+import { motion } from 'framer-motion';
+import { projects } from '@/lib/data/projects';
+import { ScrollReveal } from '@/components/ScrollReveal';
+import { TechBadge } from '@/components/ui/TechBadge';
+import type { Project } from '@/lib/domain/entities/Project';
+import { notFound } from 'next/navigation';
 import {
   AlertTriangle,
   ArrowLeft,
@@ -20,11 +19,10 @@ import {
   Github,
   Quote,
   ShieldCheck,
-  Sparkles,
   Zap,
-} from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
+} from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -32,55 +30,41 @@ const fadeUp = {
   transition: { duration: 0.5 },
 };
 
-function getStatusLabel(project: Project, isEn: boolean) {
-  if (project.status === "production") {
-    return isEn ? "Live production" : "Production aktif";
+function getStatusLabel(project: Project) {
+  if (project.status === 'production') {
+    return 'Live Produksi';
   }
-
-  if (project.status === "development") {
-    return isEn ? "In development" : "Dalam development";
+  if (project.status === 'development') {
+    return 'Dalam Development';
   }
-
-  return isEn ? "Archived" : "Arsip";
+  return 'Arsip';
 }
 
-function getContextNote(project: Project, isEn: boolean) {
+function getContextNote(project: Project) {
   const title = project.title.toLowerCase();
 
-  if (title.includes("serat") || title.includes("j&t")) {
-    return isEn
-      ? "A field-heavy logistics workflow where speed and auditability mattered more than visual novelty."
-      : "Workflow logistik yang berat di lapangan, di mana kecepatan dan auditability jauh lebih penting daripada visual novelty.";
+  if (title.includes('serat') || title.includes('j&t')) {
+    return 'Workflow logistik yang berat di operasional lapangan, di mana kecepatan audit dan pemrosesan data jauh lebih penting daripada ornamen visual.';
   }
 
-  if (title.includes("wc check")) {
-    return isEn
-      ? "A monitoring system built to replace paper-based inspection and make reporting visible in real time."
-      : "Sistem monitoring yang dibangun untuk mengganti inspeksi berbasis kertas dan membuat reporting terlihat real time.";
+  if (title.includes('wc check')) {
+    return 'Sistem monitoring kebersihan fasilitas gedung untuk menggantikan checklist kertas manual dengan pelaporan digital real-time terpusat.';
   }
 
-  if (title.includes("lakupos")) {
-    return isEn
-      ? "A real retail operations surface that had to work for cashier flow, stock movement, and multi-outlet reality."
-      : "Surface operasional retail nyata yang harus bekerja untuk flow kasir, pergerakan stok, dan realita multi-outlet.";
+  if (title.includes('lakupos')) {
+    return 'Sistem kasir pintar (POS) ritel yang mengintegrasikan transaksi kasir harian, sinkronisasi stok otomatis, dan multi-outlet dalam satu platform.';
   }
 
-  if (title.includes("qohira")) {
-    return isEn
-      ? "A commerce workflow where the important layer was not style alone, but order verification and admin clarity."
-      : "Workflow commerce di mana lapisan pentingnya bukan style saja, tapi verifikasi order dan kejelasan admin.";
+  if (title.includes('qohira')) {
+    return 'Workflow verifikasi pesanan dan konfirmasi pembayaran otomatis e-commerce untuk merapikan pencatatan admin toko.';
   }
 
-  return isEn
-    ? "A custom build where the business flow mattered more than plugging in a generic template."
-    : "Build custom di mana flow bisnisnya jauh lebih penting daripada sekadar memasang template generik.";
+  return 'Pengembangan sistem kustom untuk mengubah bottleneck operasional harian menjadi alur kerja web yang efisien dan praktis.';
 }
 
 export default function ProjectDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
   const project = projects.find((item) => item.id === id);
-  const { language } = useLanguage();
-  const isEn = language === "en";
 
   if (!project) {
     notFound();
@@ -94,67 +78,65 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
   ].filter(Boolean) as string[];
 
   return (
-    <div className="mx-auto max-w-6xl space-y-8 pb-12">
+    <div className="mx-auto max-w-5xl space-y-8 pb-12">
       <Link
         href="/projects"
-        className="inline-flex items-center gap-2 text-sm font-medium text-neutral-600 transition-colors hover:text-foreground"
+        className="inline-flex items-center gap-2 text-xs font-bold text-neutral-600 transition-colors hover:text-foreground font-mono"
       >
         <ArrowLeft className="h-4 w-4" />
-        {isEn ? "Back to case studies" : "Kembali ke case studies"}
+        Kembali ke Showcase
       </Link>
 
-      <motion.div {...fadeUp} className="rounded-[8px] neo-surface p-6 md:p-8">
+      <motion.div {...fadeUp} className="rounded-[8px] neo-surface p-6 md:p-8 bg-surface">
         <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="space-y-4">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="rounded-full border border-accent/20 bg-surface px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent-dark">
-                {getStatusLabel(project, isEn)}
+              <span className="rounded-full border-2 border-foreground bg-accent-bg px-3 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em] text-foreground shadow-[1px_1px_0px_#141414]">
+                {getStatusLabel(project)}
               </span>
-              <span className="inline-flex items-center gap-1 rounded-full border border-foreground/30 bg-white px-3 py-1 text-[11px] font-medium text-neutral-600">
+              <span className="inline-flex items-center gap-1 rounded-[4px] border border-foreground/30 bg-background px-3 py-1 text-[11px] font-bold font-mono text-neutral-600">
                 <Calendar className="h-3.5 w-3.5" />
-                {project.year}
+                Tahun {project.year}
               </span>
               {project.caseStudy?.timeline && (
-                <span className="inline-flex items-center gap-1 rounded-full border border-foreground/30 bg-white px-3 py-1 text-[11px] font-medium text-neutral-600">
+                <span className="inline-flex items-center gap-1 rounded-[4px] border border-foreground/30 bg-background px-3 py-1 text-[11px] font-bold font-mono text-neutral-600">
                   <Clock3 className="h-3.5 w-3.5" />
-                  {project.caseStudy.timeline}
+                  Waktu: {project.caseStudy.timeline}
                 </span>
               )}
             </div>
 
             <div>
-              <h1 className="text-3xl font-extrabold tracking-tight text-foreground md:text-5xl">
+              <h1 className="text-3xl font-extrabold tracking-tight text-foreground md:text-4xl">
                 {project.title}
               </h1>
-              <p className="mt-3 text-sm leading-relaxed text-neutral-600 md:text-base">
+              <p className="mt-3 text-sm leading-relaxed text-neutral-600">
                 {project.shortDescription}
               </p>
             </div>
 
-            <div className="rounded-[8px] neo-surface p-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
-                {isEn ? "Context" : "Konteks"}
-              </p>
-              <p className="mt-2 text-sm leading-relaxed text-neutral-800">{getContextNote(project, isEn)}</p>
+            <div className="rounded-[4px] border border-foreground/20 bg-background/50 p-4 font-mono text-[12px] leading-relaxed text-neutral-600">
+              <p className="font-bold text-foreground/80 uppercase text-[10px] tracking-wider mb-1">Konteks & Latar Proyek:</p>
+              <p>{getContextNote(project)}</p>
             </div>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-1.5">
               {project.tags.map((tag) => (
-                <span key={tag} className="rounded-full border border-foreground/30 bg-white px-3 py-1 text-xs text-neutral-600">
+                <span key={tag} className="rounded-[4px] border border-foreground/30 bg-background px-2.5 py-0.5 text-[10px] font-mono font-bold text-neutral-600 shadow-[1px_1px_0px_#141414]">
                   {tag}
                 </span>
               ))}
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row">
+            <div className="flex flex-col gap-3 sm:flex-row pt-2">
               {project.demo && (
                 <a
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-[8px] bg-accent-light px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent-dark hover:text-surface"
+                  className="inline-flex items-center justify-center gap-2 rounded-[4px] border-2 border-foreground bg-accent-light px-5 py-3 text-xs font-bold text-foreground shadow-[3px_3px_0px_#141414] hover:-translate-y-0.5 transition-all"
                 >
-                  {isEn ? "Visit live project" : "Kunjungi project live"}
+                  Kunjungi Aplikasi Live
                   <ExternalLink className="h-4 w-4" />
                 </a>
               )}
@@ -163,9 +145,9 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-[8px] border border-foreground/40 bg-white px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-surface"
+                  className="inline-flex items-center justify-center gap-2 rounded-[4px] border-2 border-foreground bg-surface px-5 py-3 text-xs font-bold text-foreground shadow-[3px_3px_0px_#141414] hover:-translate-y-0.5 transition-all"
                 >
-                  {isEn ? "View source" : "Lihat source"}
+                  Lihat Source Code
                   <Github className="h-4 w-4" />
                 </a>
               )}
@@ -173,27 +155,27 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-            <div className="rounded-[8px] neo-surface p-5">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-[8px] border border-accent/20 bg-white">
-                <Building2 className="h-4 w-4 text-accent" />
+            <div className="rounded-[6px] border border-foreground/20 p-5 bg-background">
+              <div className="inline-flex h-9 w-9 items-center justify-center rounded-[4px] border-2 border-foreground bg-surface shadow-[1.5px_1.5px_0px_#141414]">
+                <Building2 className="h-4.5 w-4.5 text-foreground" strokeWidth={2.2} />
               </div>
-              <h2 className="mt-4 text-sm font-bold text-foreground">
-                {isEn ? "Project at a glance" : "Sekilas project"}
+              <h2 className="mt-4 text-xs font-bold font-mono text-foreground uppercase tracking-wide">
+                Sekilas Deskripsi
               </h2>
-              <p className="mt-2 text-xs leading-relaxed text-neutral-600">{project.fullDescription}</p>
+              <p className="mt-2 text-[11px] font-mono leading-relaxed text-neutral-500">{project.fullDescription}</p>
             </div>
 
-            <div className="rounded-[8px] neo-surface p-5">
-              <div className="inline-flex h-10 w-10 items-center justify-center rounded-[8px] border border-accent/20 bg-surface">
-                <Sparkles className="h-4 w-4 text-accent" />
+            <div className="rounded-[6px] border border-foreground/20 p-5 bg-background">
+              <div className="inline-flex h-9 w-9 items-center justify-center rounded-[4px] border-2 border-foreground bg-surface shadow-[1.5px_1.5px_0px_#141414]">
+                <ShieldCheck className="h-4.5 w-4.5 text-foreground" strokeWidth={2.2} />
               </div>
-              <h2 className="mt-4 text-sm font-bold text-foreground">
-                {isEn ? "What this case helps prove" : "Apa yang dibuktikan case ini"}
+              <h2 className="mt-4 text-xs font-bold font-mono text-foreground uppercase tracking-wide">
+                Dampak & Manfaat Nyata
               </h2>
-              <div className="mt-3 space-y-2">
+              <div className="mt-3 space-y-2.5">
                 {proofLines.slice(0, 3).map((line) => (
-                  <div key={line} className="flex items-start gap-2 text-xs leading-relaxed text-neutral-600">
-                    <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-accent" strokeWidth={1.6} />
+                  <div key={line} className="flex items-start gap-2 text-[11px] leading-relaxed text-neutral-600 font-mono">
+                    <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-money" strokeWidth={2.5} />
                     <span>{line}</span>
                   </div>
                 ))}
@@ -203,8 +185,9 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         </div>
       </motion.div>
 
+      {/* SCREENSHOT IMAGE */}
       <ScrollReveal>
-        <div className="overflow-hidden rounded-[8px] neo-surface">
+        <div className="overflow-hidden rounded-[8px] border-2 border-foreground shadow-[4px_4px_0px_#141414]">
           <Image
             src={project.image}
             alt={`${project.title} screenshot`}
@@ -217,29 +200,30 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         </div>
       </ScrollReveal>
 
+      {/* CASE STUDY SECTIONS */}
       {project.caseStudy && (
         <>
           <ScrollReveal>
             <div className="grid gap-5 lg:grid-cols-2">
-              <div className="rounded-[8px] neo-surface p-6 md:p-8">
+              <div className="rounded-[8px] neo-surface p-6 bg-surface">
                 <div className="flex items-center gap-2">
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-[8px] border border-red-100 bg-red-50">
-                    <AlertTriangle className="h-4 w-4 text-red-500" />
+                  <div className="flex h-9 w-9 items-center justify-center rounded-[4px] border-2 border-foreground bg-double shadow-[1.5px_1.5px_0px_#141414]">
+                    <AlertTriangle className="h-4.5 w-4.5 text-foreground" strokeWidth={2.2} />
                   </div>
-                  <h2 className="text-xl font-bold text-foreground">
-                    {isEn ? "The challenge" : "Challenge-nya"}
+                  <h2 className="text-base font-extrabold text-foreground">
+                    Tantangan di Lapangan
                   </h2>
                 </div>
-                <p className="mt-4 text-sm leading-relaxed text-neutral-700">{project.caseStudy.problem}</p>
+                <p className="mt-4 text-xs leading-relaxed text-neutral-600 font-mono">{project.caseStudy.problem}</p>
 
                 {project.caseStudy.painPoints.length > 0 && (
                   <div className="mt-5 space-y-2">
                     {project.caseStudy.painPoints.map((point) => (
                       <div
                         key={point}
-                        className="flex items-start gap-2 rounded-[8px] border border-red-100 bg-red-50 px-4 py-3 text-sm leading-relaxed text-neutral-700"
+                        className="flex items-start gap-2 rounded-[4px] border border-foreground/20 bg-background/50 px-4 py-3 text-xs leading-relaxed text-neutral-600 font-mono"
                       >
-                        <span className="mt-0.5 text-red-500">•</span>
+                        <span className="text-red-500 font-extrabold">•</span>
                         <span>{point}</span>
                       </div>
                     ))}
@@ -247,67 +231,62 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
                 )}
               </div>
 
-              <div className="rounded-[8px] neo-surface p-6 md:p-8">
+              <div className="rounded-[8px] neo-surface p-6 bg-surface">
                 <div className="flex items-center gap-2">
-                  <div className="inline-flex h-10 w-10 items-center justify-center rounded-[8px] border border-emerald-100 bg-emerald-50">
-                    <Zap className="h-4 w-4 text-emerald-600" />
+                  <div className="flex h-9 w-9 items-center justify-center rounded-[4px] border-2 border-foreground bg-money shadow-[1.5px_1.5px_0px_#141414]">
+                    <Zap className="h-4.5 w-4.5 text-foreground" strokeWidth={2.2} />
                   </div>
-                  <h2 className="text-xl font-bold text-foreground">
-                    {isEn ? "The response" : "Respons yang dibangun"}
+                  <h2 className="text-base font-extrabold text-foreground">
+                    Solusi yang Di-deploy
                   </h2>
                 </div>
-                <p className="mt-4 text-sm leading-relaxed text-neutral-700">{project.caseStudy.solution}</p>
+                <p className="mt-4 text-xs leading-relaxed text-neutral-600 font-mono">{project.caseStudy.solution}</p>
 
-                <div className="mt-5 rounded-[8px] neo-surface p-4">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
-                    {isEn ? "Why it mattered" : "Kenapa ini penting"}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-neutral-800">
+                <div className="mt-5 rounded-[4px] border border-foreground/20 bg-background/50 p-4 font-mono text-[11px] leading-relaxed text-neutral-600">
+                  <p className="font-bold text-foreground/80 uppercase text-[9px] tracking-wider mb-1">Kenapa Ini Signifikan:</p>
+                  <p>
                     {project.impact?.business ??
                       project.impact?.users ??
-                      (isEn
-                        ? "The build had to remove friction in the team's real workflow, not just look presentable."
-                        : "Build ini harus mengurangi friction di workflow nyata tim, bukan cuma terlihat presentable.")}
+                      'Sistem kustom ini memotong birokrasi penulisan manual dan memastikan validitas data secara real-time.'}
                   </p>
                 </div>
               </div>
             </div>
           </ScrollReveal>
 
+          {/* METRICS COMPARISON */}
           {project.caseStudy.metrics.length > 0 && (
             <ScrollReveal>
-              <div className="rounded-[8px] neo-surface p-6 md:p-8">
-                <h2 className="text-2xl font-bold text-foreground">
-                  {isEn ? "Before and after, in clearer terms" : "Sebelum dan sesudah, dalam bentuk yang lebih jelas"}
+              <div className="rounded-[8px] neo-surface p-6 bg-surface">
+                <h2 className="text-lg font-bold text-foreground">
+                  Sebelum vs Sesudah (Metrik Efisiensi)
                 </h2>
-                <p className="mt-2 max-w-2xl text-sm leading-relaxed text-neutral-600">
-                  {isEn
-                    ? "The point of this section is not decoration. It is to show the operational shift in terms the client team can immediately recognize."
-                    : "Tujuan bagian ini bukan dekorasi. Tujuannya adalah menunjukkan pergeseran operasional dalam istilah yang langsung dikenali tim client."}
+                <p className="mt-1.5 text-xs leading-relaxed text-neutral-500 font-mono">
+                  Bukti terkuat dari efisiensi sistem di lapangan: perbandingan data performa kerja sebelum dan sesudah sistem live.
                 </p>
 
                 <div className="mt-6 grid gap-4">
                   {project.caseStudy.metrics.map((metric) => (
                     <div
                       key={metric.label}
-                      className="grid gap-3 rounded-[8px] neo-surface p-4 md:grid-cols-[0.9fr_1fr_1fr] md:items-center"
+                      className="grid gap-3 rounded-[6px] border border-foreground/20 bg-background/30 p-4 md:grid-cols-[0.9fr_1fr_1fr] md:items-center font-mono text-[11px]"
                     >
                       <div>
-                        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
+                        <p className="font-bold text-foreground/80 uppercase text-[10px]">
                           {metric.label}
                         </p>
                       </div>
-                      <div className="rounded-[8px] border border-red-100 bg-red-50 p-4">
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-red-500">
-                          {isEn ? "Before" : "Sebelum"}
+                      <div className="rounded-[4px] border-2 border-foreground bg-double p-4 shadow-[2px_2px_0px_#141414]">
+                        <p className="text-[10px] font-bold uppercase text-foreground">
+                          Sebelum
                         </p>
-                        <p className="mt-1 text-sm font-medium text-neutral-800">{metric.before}</p>
+                        <p className="mt-1 font-bold text-foreground">{metric.before}</p>
                       </div>
-                      <div className="rounded-[8px] border border-emerald-100 bg-emerald-50 p-4">
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-emerald-600">
-                          {isEn ? "After" : "Sesudah"}
+                      <div className="rounded-[4px] border-2 border-foreground bg-money p-4 shadow-[2px_2px_0px_#141414]">
+                        <p className="text-[10px] font-bold uppercase text-foreground">
+                          Sesudah
                         </p>
-                        <p className="mt-1 text-sm font-medium text-neutral-800">{metric.after}</p>
+                        <p className="mt-1 font-bold text-foreground">{metric.after}</p>
                       </div>
                     </div>
                   ))}
@@ -316,20 +295,21 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
             </ScrollReveal>
           )}
 
+          {/* CLIENT QUOTE */}
           {project.caseStudy.testimonial && (
             <ScrollReveal>
-              <div className="rounded-[8px] neo-surface p-6 md:p-8">
+              <div className="rounded-[8px] neo-surface p-6 md:p-8 bg-surface">
                 <Quote className="h-9 w-9 text-accent/20" />
-                <blockquote className="mt-4 text-lg font-medium leading-relaxed text-foreground md:text-xl">
+                <blockquote className="mt-4 text-base font-medium leading-relaxed text-foreground font-mono italic">
                   &ldquo;{project.caseStudy.testimonial.quote}&rdquo;
                 </blockquote>
-                <div className="mt-5 flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/15 font-bold text-accent-dark">
+                <div className="mt-5 flex items-center gap-3 font-mono">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accent-light border-2 border-foreground font-extrabold text-foreground shadow-[1px_1px_0px_#141414]">
                     {project.caseStudy.testimonial.author.charAt(0)}
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-foreground">{project.caseStudy.testimonial.author}</p>
-                    <p className="text-xs text-neutral-500">{project.caseStudy.testimonial.role}</p>
+                    <p className="text-xs font-bold text-foreground">{project.caseStudy.testimonial.author}</p>
+                    <p className="text-[10px] text-neutral-400">{project.caseStudy.testimonial.role}</p>
                   </div>
                 </div>
               </div>
@@ -338,33 +318,34 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         </>
       )}
 
+      {/* HIGHLIGHTS & IMPACT */}
       <ScrollReveal>
         <div className="grid gap-5 xl:grid-cols-[1fr_0.9fr]">
-          <div className="rounded-[8px] neo-surface p-6 md:p-8">
-            <h2 className="text-2xl font-bold text-foreground">
-              {isEn ? "Key highlights of the build" : "Highlight utama dari build-nya"}
+          <div className="rounded-[8px] neo-surface p-6 bg-surface">
+            <h2 className="text-base font-bold text-foreground">
+              Fitur & Poin Utama Sistem
             </h2>
             <div className="mt-5 grid gap-4 md:grid-cols-2">
               {project.highlights.map((highlight) => (
-                <div key={highlight.title} className="rounded-[8px] neo-surface p-4">
-                  <h3 className="text-sm font-bold text-foreground">{highlight.title}</h3>
-                  <p className="mt-2 text-xs leading-relaxed text-neutral-600">{highlight.description}</p>
+                <div key={highlight.title} className="rounded-[4px] border border-foreground/15 p-4 bg-background font-mono text-[11px]">
+                  <h3 className="font-bold text-foreground">{highlight.title}</h3>
+                  <p className="mt-1.5 leading-relaxed text-neutral-500">{highlight.description}</p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="rounded-[8px] neo-surface p-6 md:p-8">
-            <h2 className="text-2xl font-bold text-foreground">
-              {isEn ? "Impact that stayed visible" : "Dampak yang tetap kelihatan"}
+          <div className="rounded-[8px] neo-surface p-6 bg-surface">
+            <h2 className="text-base font-bold text-foreground">
+              Kelebihan & Dampak Berkelanjutan
             </h2>
-            <div className="mt-5 space-y-3">
+            <div className="mt-5 space-y-3 font-mono text-[11px]">
               {proofLines.map((line) => (
                 <div
                   key={line}
-                  className="flex items-start gap-3 rounded-[8px] neo-surface px-4 py-4 text-sm leading-relaxed text-neutral-700"
+                  className="flex items-start gap-3 rounded-[4px] border border-foreground/15 px-4 py-3 bg-background leading-relaxed text-neutral-600"
                 >
-                  <ShieldCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" />
+                  <ShieldCheck className="mt-0.5 h-4.5 w-4.5 flex-shrink-0 text-money" strokeWidth={2.2} />
                   <span>{line}</span>
                 </div>
               ))}
@@ -373,30 +354,31 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         </div>
       </ScrollReveal>
 
+      {/* INCLUDED FEATURES & TECH STACK */}
       <ScrollReveal>
         <div className="grid gap-5 xl:grid-cols-[1fr_0.9fr]">
-          <div className="rounded-[8px] neo-surface p-6 md:p-8">
-            <h2 className="text-2xl font-bold text-foreground">
-              {isEn ? "What the system includes" : "Yang dibawa sistem ini"}
+          <div className="rounded-[8px] neo-surface p-6 bg-surface">
+            <h2 className="text-base font-bold text-foreground">
+              Cakupan Fitur Bawaan
             </h2>
             <div className="mt-5 grid gap-3 lg:grid-cols-2">
               {project.features.map((feature) => (
-                <div key={feature} className="flex items-start gap-2 rounded-[8px] neo-surface px-4 py-3 text-sm leading-relaxed text-neutral-700">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" strokeWidth={1.6} />
+                <div key={feature} className="flex items-start gap-2 rounded-[4px] border border-foreground/15 px-4 py-3 bg-background text-[11px] leading-relaxed text-neutral-600 font-mono">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-money" strokeWidth={2.5} />
                   <span>{feature}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="rounded-[8px] neo-surface p-6 md:p-8">
-            <h2 className="text-2xl font-bold text-foreground">
-              {isEn ? "Technology stack" : "Technology stack"}
+          <div className="rounded-[8px] neo-surface p-6 bg-surface">
+            <h2 className="text-base font-bold text-foreground">
+              Tumpukan Teknologi (Tech Stack)
             </h2>
             <div className="mt-5 space-y-5">
               {project.techStack.map((stack) => (
                 <div key={stack.category}>
-                  <h3 className="text-sm font-bold text-accent-dark">{stack.category}</h3>
+                  <h3 className="text-xs font-bold text-accent-dark font-mono uppercase tracking-wider">{stack.category}</h3>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {stack.technologies.map((tech) => (
                       <TechBadge key={tech} tech={tech} />
@@ -409,36 +391,26 @@ export default function ProjectDetailPage({ params }: { params: Promise<{ id: st
         </div>
       </ScrollReveal>
 
+      {/* FOOTER CTA */}
       <ScrollReveal>
-        <div className="rounded-[8px] neo-surface p-6 md:p-8">
+        <div className="rounded-[8px] neo-surface p-6 md:p-8 bg-surface">
           <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div className="space-y-3">
-              <h2 className="text-2xl font-bold text-foreground">
-                {isEn
-                  ? "If this kind of operational shift is what you need, start from the problem."
-                  : "Kalau kamu butuh perubahan operasional seperti ini, mulainya dari problem-nya dulu."}
+              <h2 className="text-2xl font-extrabold text-foreground">
+                Menghadapi Tantangan Operasional yang Serupa?
               </h2>
               <p className="text-sm leading-relaxed text-neutral-600">
-                {isEn
-                  ? "The fastest useful next step is not asking for a random feature list. It is clarifying what feels weak today, what friction the team still carries, and what a cleaner first version should solve."
-                  : "Langkah berikutnya yang paling berguna bukan meminta daftar fitur acak. Yang lebih penting adalah menjelaskan apa yang terasa lemah hari ini, friction apa yang masih ditanggung tim, dan versi pertama yang lebih rapi harus menyelesaikan apa."}
+                Langkah awal terbaik adalah memetakan bottleneck operasional Anda dan merumuskan scope proyek yang paling pragmatis. Hubungi kami untuk memulai.
               </p>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-[8px] border border-foreground/40 bg-surface px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent-bg"
+                className="inline-flex items-center justify-center gap-2 rounded-[4px] border-2 border-foreground bg-foreground text-background px-5 py-3 text-xs font-bold shadow-[3px_3px_0px_var(--color-accent)] hover:-translate-y-0.5 transition-all"
               >
-                {isEn ? "Discuss a similar case" : "Diskusikan kasus serupa"}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/order"
-                className="inline-flex items-center justify-center gap-2 rounded-[8px] bg-accent-light px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent-dark hover:text-surface"
-              >
-                {isEn ? "Start the brief" : "Mulai brief"}
-                <ArrowRight className="h-4 w-4" />
+                Mulai Diskusi Kasus Anda
+                <ArrowRight className="h-4.5 w-4.5" strokeWidth={2.5} />
               </Link>
             </div>
           </div>

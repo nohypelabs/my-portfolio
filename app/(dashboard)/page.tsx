@@ -31,12 +31,12 @@ import { TiltCard } from '@/components/TiltCard';
 const proofPoints = [
   {
     value: '7+',
-    label: 'sistem production shipped',
+    label: 'sistem skala produksi rilis',
     detail: 'dari company profile sampai dashboard operasional',
   },
   {
     value: '250K+',
-    label: 'records dan aktivitas terproses',
+    label: 'resi logistik terproses',
     detail: 'QC, inspeksi, transaksi, dan workflow lapangan',
   },
   {
@@ -46,7 +46,7 @@ const proofPoints = [
   },
   {
     value: '<=24 jam',
-    label: 'respon awal dan breakdown kebutuhan',
+    label: 'respon cepat via brief',
     detail: 'biar brief cepat berubah jadi scope yang jelas',
   },
 ];
@@ -314,7 +314,7 @@ export default function DashboardPage() {
               </p>
             </div>
             <Link
-              href="/process"
+              href="/services"
               className="inline-flex items-center gap-1 text-[12px] font-medium text-accent hover:underline"
             >
               Lihat proses lengkap <ArrowRight className="h-3 w-3" />
@@ -365,7 +365,7 @@ export default function DashboardPage() {
               </p>
             </div>
             <Link
-              href="/pricing"
+              href="/services"
               className="inline-flex items-center gap-1 text-[12px] font-medium text-accent hover:underline"
             >
               Lihat semua paket <ArrowRight className="h-3 w-3" />
@@ -399,10 +399,10 @@ export default function DashboardPage() {
                     {pkg.desc}
                   </p>
                   <Link
-                    href="/order"
+                    href="/contact"
                     className="mt-6 inline-flex items-center gap-2 text-[12px] font-semibold text-foreground hover:text-accent"
                   >
-                    Bahas scope project
+                    Bahas scope proyek
                     <ArrowUpRight className="h-3.5 w-3.5" />
                   </Link>
                 </motion.div>
@@ -460,11 +460,11 @@ export default function DashboardPage() {
             <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
               <MagneticButton
                 as="a"
-                href="/order"
+                href="/contact"
                 strength={0.15}
                 className="btn-primary group inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold"
               >
-                Kirim Brief Project
+                Kirim Brief Proyek
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </MagneticButton>
               <MagneticButton

@@ -4,18 +4,12 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import {
   ArrowRight,
-  BookOpen,
-  Building2,
-  ChevronDown,
   Menu,
-  MessageSquare,
-  Radio,
-  Shield,
-  User,
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { useSidebar } from '@/contexts/SidebarContext';
 import { clsx } from '@/lib/utils';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface NavItem {
   label: string;
@@ -23,21 +17,10 @@ interface NavItem {
 }
 
 const primaryNav: NavItem[] = [
-  { label: 'Beranda', path: '/' },
-  { label: 'Layanan', path: '/services' },
-  { label: 'Proses', path: '/process' },
-  { label: 'Harga', path: '/pricing' },
-  { label: 'Case Studies', path: '/projects' },
-  { label: 'FAQ', path: '/faq' },
-];
-
-const moreNav: (NavItem & { icon: typeof User })[] = [
-  { label: 'Review Klien', path: '/testimonials', icon: MessageSquare },
-  { label: 'Live Proof', path: '/live', icon: Radio },
-  { label: 'Insight', path: '/blog', icon: BookOpen },
-  { label: 'Founder', path: '/about', icon: User },
-  { label: 'Profil Studio', path: '/cv', icon: Building2 },
-  { label: 'Admin Panel', path: '/admin/dashboard', icon: Shield },
+  { label: 'Layanan & Harga', path: '/services' },
+  { label: 'Portfolio', path: '/projects' },
+  { label: 'Tentang Founder', path: '/about' },
+  { label: 'Hubungi Kami', path: '/contact' },
 ];
 
 function isActive(pathname: string, path: string) {
@@ -46,110 +29,109 @@ function isActive(pathname: string, path: string) {
 
 export const Header = () => {
   const pathname = usePathname();
-  const router = useRouter();
   const { openMobileSidebar } = useSidebar();
 
-  const [openAt, setOpenAt] = useState<string | null>(null);
-  const showMore = openAt === pathname;
-  const moreRef = useRef<HTMLDivElement>(null);
+  // States for modern/complex dock interactions
+  const [hoveredPath, setHoveredPath] = useState<string | null>(null);
+  const [timeStr, setTimeStr] = useState<string>('');
+  const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!showMore) return;
+    const handle = setTimeout(() => {
+      setMounted(true);
+    }, 0);
 
-    const handleClickOutside = (e: MouseEvent) => {
-      if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
-        setOpenAt(null);
-      }
+    const updateClock = () => {
+      const date = new Date();
+      setTimeStr(
+        date.toLocaleTimeString('id-ID', {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false,
+        })
+      );
     };
-
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setOpenAt(null);
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleEscape);
+    updateClock();
+    const timer = setInterval(updateClock, 1000);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleEscape);
+      clearTimeout(handle);
+      clearInterval(timer);
     };
-  }, [showMore]);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-40 bg-surface border-b-2 border-foreground">
-      <div className="flex items-center justify-between gap-4 h-[64px] px-4 lg:px-8 max-w-[1440px] mx-auto">
-        {/* Logo — ink sticker */}
-        <Link
-          href="/"
-          className="flex items-center flex-shrink-0 text-[18px] font-extrabold tracking-tight bg-foreground text-background px-2.5 py-1 rounded-[6px] border-2 border-foreground shadow-[3px_3px_0_0_var(--color-accent)] transition-all hover:shadow-[5px_5px_0_0_var(--color-accent)] hover:-translate-x-0.5 hover:-translate-y-0.5"
-          style={{ letterSpacing: '-0.04em' }}
-        >
-          nasaq<span className="text-accent-light">.id</span>
-        </Link>
+    <header className="sticky top-4 mx-4 md:mx-6 z-40 bg-background/95 backdrop-blur-md border-2 border-foreground shadow-[4px_4px_0px_#141414] rounded-[10px] transition-all duration-300">
+      {/* Corner Coordinate Crosshairs (Design Details) */}
+      <span className="absolute -top-1.5 -left-1.5 text-[10px] font-extrabold text-foreground pointer-events-none select-none">+</span>
+      <span className="absolute -top-1.5 -right-1.5 text-[10px] font-extrabold text-foreground pointer-events-none select-none">+</span>
+      <span className="absolute -bottom-1.5 -left-1.5 text-[10px] font-extrabold text-foreground pointer-events-none select-none">+</span>
+      <span className="absolute -bottom-1.5 -right-1.5 text-[10px] font-extrabold text-foreground pointer-events-none select-none">+</span>
 
-        {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-1">
+      <div className="flex items-center justify-between gap-4 h-[60px] px-4 lg:px-6 max-w-[1400px] mx-auto relative">
+        {/* Left: Logo & Status Monitor */}
+        <div className="flex items-center gap-4 flex-shrink-0">
+          {/* Logo — ink sticker */}
+          <Link
+            href="/"
+            className="flex items-center flex-shrink-0 text-[18px] font-extrabold tracking-tight bg-foreground text-background px-2.5 py-1 rounded-[4px] border-2 border-foreground shadow-[3px_3px_0_0_var(--color-accent)] transition-all hover:shadow-[5px_5px_0_0_var(--color-accent)] hover:-translate-x-0.5 hover:-translate-y-0.5"
+            style={{ letterSpacing: '-0.04em' }}
+          >
+            nasaq<span className="text-accent-light">.id</span>
+          </Link>
+
+          {/* Studio Monitor Panel (Technical Vibe, links to /live) */}
+          <Link
+            href="/live"
+            className="hidden xl:flex items-center gap-2.5 px-2.5 py-1 border-2 border-foreground bg-surface rounded-[4px] shadow-[2px_2px_0px_#141414] text-[10px] font-bold font-mono hover:bg-accent-bg transition-colors"
+          >
+            <span className="inline-flex items-center gap-1.5">
+              <span className="h-1.5 w-1.5 rounded-full bg-money animate-pulse border border-foreground" />
+              SYS: ACTIVE
+            </span>
+            <span className="text-foreground/30">|</span>
+            <span>
+              JKT: {mounted ? timeStr : '--:--:--'}
+            </span>
+          </Link>
+        </div>
+
+        {/* Center: Desktop Nav with Sliding spring hover highlights */}
+        <nav className="hidden lg:flex items-center gap-1.5 relative z-10">
           {primaryNav.map((item) => (
             <Link
               key={item.path}
               href={item.path}
               className={clsx(
-                'px-3 py-1.5 rounded-[8px] text-[13px] font-semibold border-2 transition-all',
+                'relative px-3.5 py-1.5 text-[13px] font-bold border-2 rounded-[4px] transition-all duration-200 z-10 select-none',
                 isActive(pathname, item.path)
-                  ? 'bg-foreground text-background border-foreground'
-                  : 'border-transparent text-foreground hover:bg-accent-bg hover:border-foreground'
+                  ? 'bg-foreground text-background border-foreground shadow-[2px_2px_0px_#141414]'
+                  : 'border-transparent text-foreground hover:text-foreground'
               )}
+              onMouseEnter={() => setHoveredPath(item.path)}
+              onMouseLeave={() => setHoveredPath(null)}
             >
-              {item.label}
+              {/* Sliding Background highlight on hover */}
+              {hoveredPath === item.path && !isActive(pathname, item.path) && (
+                <motion.span
+                  layoutId="nav-hover-highlight"
+                  className="absolute inset-0 bg-accent-bg border-2 border-foreground rounded-[4px] z-[-1] shadow-[2px_2px_0px_#141414]"
+                  initial={{ scale: 0.95, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.95, opacity: 0 }}
+                  transition={{ type: 'spring', stiffness: 380, damping: 26 }}
+                />
+              )}
+              <span className="relative z-10">{item.label}</span>
             </Link>
           ))}
-
-          {/* Lainnya dropdown */}
-          <div className="relative" ref={moreRef}>
-            <button
-              onClick={() => setOpenAt(showMore ? null : pathname)}
-              className={clsx(
-                'flex items-center gap-1 px-3 py-1.5 rounded-[8px] text-[13px] font-semibold border-2 transition-all',
-                showMore
-                  ? 'bg-foreground text-background border-foreground'
-                  : 'border-transparent text-foreground hover:bg-accent-bg hover:border-foreground'
-              )}
-              aria-expanded={showMore}
-            >
-              <span>Lainnya</span>
-              <ChevronDown
-                className={clsx('w-3.5 h-3.5 transition-transform', showMore && 'rotate-180')}
-                strokeWidth={2}
-              />
-            </button>
-
-            {showMore && (
-              <div className="neo-surface absolute right-0 top-full mt-2 w-52 rounded-[8px] overflow-hidden z-50">
-                {moreNav.map((item) => {
-                  const Icon = item.icon;
-                  return (
-                    <button
-                      key={item.path}
-                      onClick={() => router.push(item.path)}
-                      className={clsx(
-                        'w-full flex items-center gap-2.5 px-4 py-2.5 text-[13px] font-medium text-left transition-colors hover:bg-accent-bg',
-                        isActive(pathname, item.path) ? 'text-accent-dark font-semibold' : 'text-foreground'
-                      )}
-                    >
-                      <Icon className="w-4 h-4" strokeWidth={1.75} />
-                      {item.label}
-                    </button>
-                  );
-                })}
-              </div>
-            )}
-          </div>
         </nav>
 
         {/* Right: CTA + mobile menu */}
         <div className="flex items-center gap-2">
           <Link
             href="/contact"
-            className="hidden sm:inline-flex btn-primary rounded-[8px] px-4 py-2 text-[13px] font-semibold"
+            className="hidden sm:inline-flex btn-primary rounded-[4px] px-4 py-2 text-[13px] font-semibold shadow-[2px_2px_0px_#141414]"
           >
             Konsultasi
             <ArrowRight className="w-3.5 h-3.5" strokeWidth={2} />
@@ -157,7 +139,7 @@ export const Header = () => {
 
           <button
             onClick={openMobileSidebar}
-            className="lg:hidden neo-button w-9 h-9 rounded-[8px] flex items-center justify-center text-foreground"
+            className="lg:hidden neo-button w-9 h-9 rounded-[4px] flex items-center justify-center text-foreground"
             aria-label="Open menu"
           >
             <Menu className="w-5 h-5" strokeWidth={1.75} />

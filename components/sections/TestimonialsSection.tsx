@@ -35,16 +35,16 @@ export function TestimonialsSection() {
           <button
             onClick={() => scroll('left')}
             disabled={!canScrollLeft}
-            className="w-8 h-8 rounded-lg border border-foreground/30 flex items-center justify-center text-neutral-400 hover:text-foreground hover:border-accent/30 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+            className="w-9 h-9 border-2 border-foreground bg-surface text-foreground shadow-[2px_2px_0px_#141414] hover:bg-accent-bg hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_#141414] active:translate-x-0 active:translate-y-0 active:shadow-none transition-all disabled:opacity-40 disabled:pointer-events-none disabled:translate-x-0 disabled:translate-y-0 disabled:shadow-none flex items-center justify-center rounded-[6px]"
           >
-            <ChevronLeft className="w-4 h-4" />
+            <ChevronLeft className="w-4 h-4" strokeWidth={2.5} />
           </button>
           <button
             onClick={() => scroll('right')}
             disabled={!canScrollRight}
-            className="w-8 h-8 rounded-lg border border-foreground/30 flex items-center justify-center text-neutral-400 hover:text-foreground hover:border-accent/30 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+            className="w-9 h-9 border-2 border-foreground bg-surface text-foreground shadow-[2px_2px_0px_#141414] hover:bg-accent-bg hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_#141414] active:translate-x-0 active:translate-y-0 active:shadow-none transition-all disabled:opacity-40 disabled:pointer-events-none disabled:translate-x-0 disabled:translate-y-0 disabled:shadow-none flex items-center justify-center rounded-[6px]"
           >
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-4 h-4" strokeWidth={2.5} />
           </button>
         </div>
       </div>
@@ -92,7 +92,7 @@ export function TestimonialsSection() {
                   <p className="text-[10px] text-neutral-500 truncate">{t.role}</p>
                 </div>
                 {t.project && (
-                  <span className="text-[9px] font-medium text-accent bg-accent/10 px-2 py-0.5 rounded-full flex-shrink-0">
+                  <span className="text-[10px] font-bold text-foreground bg-accent-bg border-2 border-foreground px-2 py-0.5 rounded-[4px] font-mono shadow-[1px_1px_0px_#141414] flex-shrink-0">
                     {t.project}
                   </span>
                 )}

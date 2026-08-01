@@ -27,17 +27,11 @@ interface MobileSidebarProps {
 
 const navItems = [
   { id: 'dashboard', label: 'Beranda', icon: LayoutDashboard, path: '/' },
-  { id: 'services', label: 'Layanan', icon: Briefcase, path: '/services' },
-  { id: 'process', label: 'Proses Kerja', icon: Route, path: '/process' },
-  { id: 'pricing', label: 'Harga', icon: DollarSign, path: '/pricing' },
-  { id: 'projects', label: 'Case Studies', icon: FolderKanban, path: '/projects' },
-  { id: 'testimonials', label: 'Testimoni', icon: MessageSquare, path: '/testimonials' },
-  { id: 'faq', label: 'FAQ', icon: HelpCircle, path: '/faq' },
+  { id: 'services', label: 'Layanan & Harga', icon: Briefcase, path: '/services' },
+  { id: 'projects', label: 'Portfolio & Proyek', icon: FolderKanban, path: '/projects' },
   { id: 'live', label: 'Live Proof', icon: Radio, path: '/live' },
-  { id: 'blog', label: 'Blog', icon: BookOpen, path: '/blog' },
-  { id: 'about', label: 'Founder', icon: User, path: '/about' },
-  { id: 'cv', label: 'Profil Studio', icon: Building2, path: '/cv' },
-  { id: 'contact', label: 'Konsultasi', icon: Mail, path: '/contact' },
+  { id: 'about', label: 'Tentang Founder', icon: User, path: '/about' },
+  { id: 'contact', label: 'Hubungi Kami', icon: Mail, path: '/contact' },
   { id: 'admin', label: 'Admin', icon: Shield, path: '/admin/dashboard' },
 ];
 

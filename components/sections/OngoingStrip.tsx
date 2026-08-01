@@ -37,14 +37,14 @@ export function OngoingStrip() {
               </h3>
               <ArrowRight className="w-3 h-3 text-muted group-hover:text-accent transition-colors shrink-0" />
             </div>
-            <div className="flex items-center gap-2">
-              <div className="flex-1 h-1.5 rounded-full bg-border/50 overflow-hidden">
+            <div className="flex items-center gap-2 mt-1">
+              <div className="flex-1 h-4 border-2 border-foreground bg-surface rounded-none overflow-hidden relative shadow-[1px_1px_0px_#141414]">
                 <div
-                  className="h-full rounded-full bg-accent-light"
+                  className="h-full bg-money border-r-2 border-foreground transition-all duration-500"
                   style={{ width: `${project.progress ?? 0}%` }}
                 />
               </div>
-              <span className="text-[10px] font-semibold text-muted tabular-nums">
+              <span className="text-[11px] font-bold text-foreground font-mono tabular-nums shrink-0">
                 {project.progress ?? 0}%
               </span>
             </div>

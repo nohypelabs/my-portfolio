@@ -1,10 +1,11 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { projects } from "@/lib/data/projects";
-import { ScrollReveal } from "@/components/ScrollReveal";
-import { useLanguage } from "@/lib/context/LanguageContext";
-import type { Project } from "@/lib/domain/entities/Project";
+import { motion } from 'framer-motion';
+import { projects } from '@/lib/data/projects';
+import { ongoingProjects } from '@/lib/data/ongoingProjects';
+import { testimonials } from '@/lib/data/testimonials';
+import { ScrollReveal } from '@/components/ScrollReveal';
+import type { Project } from '@/lib/domain/entities/Project';
 import {
   ArrowRight,
   ArrowUpRight,
@@ -14,9 +15,11 @@ import {
   Gauge,
   Globe2,
   Sparkles,
-} from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
+  Star,
+  Clock,
+} from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -24,62 +27,50 @@ const fadeUp = {
   transition: { duration: 0.5 },
 };
 
-const productionProjects = projects.filter((project) => project.status === "production");
+const productionProjects = projects.filter((project) => project.status === 'production');
 
 function getFeaturedProject() {
-  return productionProjects.find((project) => project.id === "selisih-berat") ?? productionProjects[0];
+  return productionProjects.find((project) => project.id === 'selisih-berat') ?? productionProjects[0];
 }
 
-function getProjectAngle(project: Project, isEn: boolean) {
+function getProjectAngle(project: Project) {
   const title = project.title.toLowerCase();
 
-  if (title.includes("logistics") || title.includes("j&t") || title.includes("serat")) {
+  if (title.includes('logistics') || title.includes('j&t') || title.includes('serat')) {
     return {
-      label: isEn ? "Operations proof" : "Bukti operasional",
-      summary: isEn
-        ? "A clear example of how a repetitive field workflow was turned into a much faster, auditable system."
-        : "Contoh yang jelas bagaimana workflow lapangan yang repetitif diubah menjadi sistem yang jauh lebih cepat dan bisa diaudit.",
+      label: 'Bukti Operasional',
+      summary: 'Contoh nyata bagaimana alur kerja lapangan yang repetitif diotomasi menjadi sistem yang jauh lebih cepat dan terpantau.',
     };
   }
 
-  if (title.includes("wc check") || title.includes("inspection")) {
+  if (title.includes('wc check') || title.includes('inspection')) {
     return {
-      label: isEn ? "Monitoring proof" : "Bukti monitoring",
-      summary: isEn
-        ? "A proof point for replacing paper-based inspection and reporting with live, traceable data."
-        : "Bukti bahwa inspeksi dan reporting berbasis kertas bisa diganti menjadi data live yang bisa ditelusuri.",
+      label: 'Bukti Monitoring',
+      summary: 'Studi kasus penggantian pelaporan kertas manual menjadi data digital real-time yang bisa ditelusuri riwayatnya.',
     };
   }
 
-  if (title.includes("pos") || title.includes("warehouse")) {
+  if (title.includes('pos') || title.includes('warehouse')) {
     return {
-      label: isEn ? "Retail workflow" : "Workflow retail",
-      summary: isEn
-        ? "Shows how a real business workflow can move from scattered tools into one usable operating surface."
-        : "Menunjukkan bagaimana workflow bisnis nyata bisa pindah dari tools yang terpencar ke satu surface operasional yang bisa dipakai.",
+      label: 'Workflow Retail',
+      summary: 'Menunjukkan bagaimana operasional kasir dan manajemen stok disatukan dalam satu antarmuka kasir pintar.',
     };
   }
 
-  if (title.includes("e-commerce") || title.includes("qohira")) {
+  if (title.includes('e-commerce') || title.includes('qohira')) {
     return {
-      label: isEn ? "Commerce workflow" : "Workflow commerce",
-      summary: isEn
-        ? "Useful for clients who need a more controlled order, payment, and admin flow instead of ad-hoc handling."
-        : "Relevan untuk client yang butuh alur order, pembayaran, dan admin yang lebih terkontrol daripada handling yang ad-hoc.",
+      label: 'Workflow Commerce',
+      summary: 'Pusat kelola pesanan dan konfirmasi pembayaran otomatis untuk merapikan alur masuk transaksi pembeli.',
     };
   }
 
   return {
-    label: isEn ? "System build" : "Build sistem",
-    summary: isEn
-      ? "A case study focused on turning a business bottleneck into a more practical web-based workflow."
-      : "Case study yang berfokus mengubah bottleneck bisnis menjadi workflow berbasis web yang lebih praktis.",
+    label: 'Build Sistem',
+    summary: 'Pengembangan sistem kustom untuk mengubah bottleneck operasional menjadi alur kerja web yang pragmatis.',
   };
 }
 
 export default function ProjectsPage() {
-  const { language } = useLanguage();
-  const isEn = language === "en";
   const featuredProject = getFeaturedProject();
 
   const liveDemoCount = productionProjects.filter((project) => Boolean(project.demo)).length;
@@ -88,129 +79,103 @@ export default function ProjectsPage() {
     (count, project) => count + (project.caseStudy?.metrics.length ?? 0),
     0
   );
-  const years = productionProjects
-    .map((project) => Number(project.year))
-    .filter((year) => Number.isFinite(year));
-  const shipWindow =
-    years.length > 0 ? `${Math.min(...years)}-${Math.max(...years)}` : isEn ? "Recent" : "Terbaru";
 
   const stats = [
     {
       value: String(productionProjects.length),
-      label: isEn ? "production systems" : "sistem production",
+      label: 'sistem rilis aktif',
     },
     {
       value: String(liveDemoCount),
-      label: isEn ? "live demos available" : "demo live tersedia",
+      label: 'demo live tersedia',
     },
     {
       value: String(documentedStudies),
-      label: isEn ? "documented case studies" : "case study terdokumentasi",
+      label: 'studi kasus lengkap',
     },
     {
       value: `${proofMetricsCount}+`,
-      label: isEn ? "before/after proof points" : "titik bukti sebelum/sesudah",
+      label: 'titik bukti efisiensi',
     },
     {
-      value: shipWindow,
-      label: isEn ? "shipping window" : "rentang shipping",
+      value: '2024-2026',
+      label: 'rentang pengerjaan',
     },
   ];
 
-  const reviewLenses = isEn
-    ? [
-        {
-          icon: Building2,
-          title: "Business context first",
-          desc: "Each project is framed around the operational or conversion problem, not just the tech stack.",
-        },
-        {
-          icon: Gauge,
-          title: "Before versus after",
-          desc: "The strongest proof is not visual polish alone, but the shift in speed, clarity, or workflow friction.",
-        },
-        {
-          icon: Globe2,
-          title: "Real usage matters",
-          desc: "These are meant to show what changed when the build was actually used in day-to-day work.",
-        },
-      ]
-    : [
-        {
-          icon: Building2,
-          title: "Konteks bisnis dulu",
-          desc: "Setiap project dibingkai dari problem operasional atau conversion, bukan cuma tumpukan tech stack.",
-        },
-        {
-          icon: Gauge,
-          title: "Sebelum versus sesudah",
-          desc: "Bukti terkuat bukan cuma polish visual, tapi perubahan kecepatan, kejelasan, atau friction workflow.",
-        },
-        {
-          icon: Globe2,
-          title: "Penggunaan nyata itu penting",
-          desc: "Tujuan halaman ini adalah menunjukkan apa yang berubah saat build-nya benar-benar dipakai sehari-hari.",
-        },
-      ];
+  const reviewLenses = [
+    {
+      icon: Building2,
+      title: 'Konteks bisnis riil',
+      desc: 'Setiap sistem dirancang untuk memecahkan hambatan operasional nyata, bukan sekadar demo.',
+    },
+    {
+      icon: Gauge,
+      title: 'Sebelum vs sesudah',
+      desc: 'Bukti pengerjaan kami diukur dari perubahan kecepatan kerja, kejelasan data, dan hilangnya friction.',
+    },
+    {
+      icon: Globe2,
+      title: 'Teruji di lapangan',
+      desc: 'Aplikasi didesain untuk bertahan menghadapi beban kerja riil operasional harian tim Anda.',
+    },
+  ];
 
   return (
-    <div className="mx-auto max-w-6xl space-y-10 pb-12">
+    <div className="mx-auto max-w-5xl space-y-12 pb-12">
+      {/* 1. HERO PORTFOLIO */}
       <motion.div {...fadeUp} className="rounded-[8px] neo-surface p-6 md:p-8">
         <div className="max-w-3xl space-y-4">
           <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-surface px-3 py-1 text-xs font-semibold text-accent-dark">
             <FolderKanban className="h-3.5 w-3.5" />
-            {isEn ? "Case studies" : "Case studies"}
+            Showcase Portofolio
           </div>
           <h1 className="text-3xl font-extrabold tracking-tight text-foreground md:text-5xl">
-            {isEn
-              ? "Proof from real builds, with the business context still visible."
-              : "Bukti dari build nyata, dengan konteks bisnis yang tetap kelihatan."}
+            Sistem kustom yang benar-benar rilis dan dipakai kerja.
           </h1>
           <p className="text-sm leading-relaxed text-neutral-600 md:text-base">
-            {isEn
-              ? "This page is not a gallery of random screenshots. It is a closer look at what was weak before, what changed in the system, and why the output mattered to the team or the business after launch."
-              : "Halaman ini bukan galeri screenshot acak. Ini adalah rangkuman yang lebih dekat tentang apa yang lemah sebelumnya, apa yang berubah di sistemnya, dan kenapa output itu penting buat tim atau bisnis setelah dipakai."}
+            Halaman ini bukan sekadar galeri tangkapan layar. Di sini kami merangkum tantangan awal di lapangan, solusi arsitektur yang kami bangun, serta metrik perbaikan nyata setelah rilis.
           </p>
         </div>
 
         <div className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
           {stats.map((stat) => (
-            <div key={stat.label} className="rounded-[8px] neo-surface p-4">
-              <div className="text-2xl font-extrabold text-accent-dark">{stat.value}</div>
-              <p className="mt-2 text-xs leading-relaxed text-neutral-600">{stat.label}</p>
+            <div key={stat.label} className="rounded-[8px] neo-surface p-4 bg-surface">
+              <div className="text-2xl font-extrabold text-accent-dark font-mono">{stat.value}</div>
+              <p className="mt-2 text-xs leading-relaxed text-neutral-500">{stat.label}</p>
             </div>
           ))}
         </div>
       </motion.div>
 
+      {/* Lenses */}
       <ScrollReveal>
         <div className="grid gap-4 md:grid-cols-3">
           {reviewLenses.map((lens) => (
-            <div key={lens.title} className="rounded-[8px] neo-surface p-5">
-              <lens.icon className="h-4 w-4 text-accent" />
+            <div key={lens.title} className="rounded-[8px] neo-surface p-5 bg-surface">
+              <lens.icon className="h-4.5 w-4.5 text-accent" strokeWidth={2.2} />
               <h2 className="mt-3 text-sm font-bold text-foreground">{lens.title}</h2>
-              <p className="mt-1 text-xs leading-relaxed text-neutral-600">{lens.desc}</p>
+              <p className="mt-1 text-xs leading-relaxed text-neutral-500">{lens.desc}</p>
             </div>
           ))}
         </div>
       </ScrollReveal>
 
+      {/* 2. CASE STUDY UTAMA (FEATURED PROOF) */}
       {featuredProject && (
         <ScrollReveal>
-          <div className="rounded-[8px] neo-surface p-6 md:p-8">
+          <div className="rounded-[8px] neo-surface p-6 md:p-8 bg-surface">
             <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
               <div className="max-w-2xl">
                 <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-surface px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent-dark">
                   <Sparkles className="h-3 w-3" />
-                  {isEn ? "Featured proof" : "Proof utama"}
+                  Studi Kasus Utama
                 </div>
                 <h2 className="mt-3 text-2xl font-bold text-foreground md:text-3xl">
-                  {isEn ? "A case study worth scanning first" : "Case study yang paling enak discan dulu"}
+                  Rekomendasi Studi Kasus Pilihan
                 </h2>
-                <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-                  {isEn
-                    ? "Start here if you want the fastest picture of how nasaq.id frames operational pain, turns it into a system, and then measures the change."
-                    : "Mulai dari sini kalau kamu ingin gambaran tercepat tentang bagaimana nasaq.id membaca pain operasional, mengubahnya jadi sistem, lalu mengukur perubahannya."}
+                <p className="mt-2 text-sm leading-relaxed text-neutral-500">
+                  Pelajari bagaimana kami mengidentifikasi masalah penimbangan manual di logistik J&T Express, mendesain verifikasi GPS otomatis, dan mempercepat alur kerja hingga 8x lipat.
                 </p>
               </div>
 
@@ -218,13 +183,13 @@ export default function ProjectsPage() {
                 href={`/projects/${featuredProject.id}`}
                 className="inline-flex items-center gap-2 text-sm font-semibold text-accent-dark transition-colors hover:text-[#8b6543]"
               >
-                {isEn ? "Read full case study" : "Baca case study lengkap"}
+                Baca Studi Kasus Lengkap
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
             <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-              <div className="overflow-hidden rounded-[8px] neo-surface">
+              <div className="overflow-hidden rounded-[8px] border-2 border-foreground shadow-[3px_3px_0px_#141414]">
                 <Image
                   src={featuredProject.image}
                   alt={featuredProject.title}
@@ -238,22 +203,18 @@ export default function ProjectsPage() {
 
               <div className="space-y-4">
                 <div>
-                  <div className="inline-flex rounded-full border border-accent/20 bg-surface px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent-dark">
-                    {getProjectAngle(featuredProject, isEn).label}
+                  <div className="inline-flex rounded-full border-2 border-foreground bg-accent-bg px-3 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em] text-foreground shadow-[1px_1px_0px_#141414]">
+                    {getProjectAngle(featuredProject).label}
                   </div>
                   <h3 className="mt-3 text-2xl font-bold text-foreground">{featuredProject.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-                    {getProjectAngle(featuredProject, isEn).summary}
+                  <p className="mt-2 text-sm leading-relaxed text-neutral-500 font-mono">
+                    {getProjectAngle(featuredProject).summary}
                   </p>
                 </div>
 
-                <div className="rounded-[8px] neo-surface p-4">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
-                    {isEn ? "Challenge" : "Challenge"}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-neutral-800">
-                    {featuredProject.caseStudy?.problem ?? featuredProject.shortDescription}
-                  </p>
+                <div className="rounded-[4px] border border-foreground/20 bg-background/50 p-4 font-mono text-[12px] leading-relaxed text-neutral-600">
+                  <p className="font-bold text-foreground/80 uppercase text-[10px] tracking-wider mb-1">Masalah Lapangan:</p>
+                  <p>{featuredProject.caseStudy?.problem ?? featuredProject.shortDescription}</p>
                 </div>
 
                 {featuredProject.caseStudy?.metrics?.length ? (
@@ -261,62 +222,48 @@ export default function ProjectsPage() {
                     {featuredProject.caseStudy.metrics.slice(0, 3).map((metric) => (
                       <div
                         key={metric.label}
-                        className="grid gap-3 rounded-[8px] border border-foreground/30 bg-surface p-4 md:grid-cols-[0.9fr_1fr_1fr] md:items-center"
+                        className="grid gap-3 rounded-[6px] border border-foreground/30 bg-surface p-4 md:grid-cols-[0.9fr_1fr_1fr] md:items-center"
                       >
-                        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500">
+                        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500 font-mono">
                           {metric.label}
                         </p>
-                        <div className="rounded-[8px] border border-red-100 bg-red-50 px-3 py-3">
-                          <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-red-500">
-                            {isEn ? "Before" : "Sebelum"}
+                        <div className="rounded-[4px] border-2 border-foreground bg-double px-3 py-2 shadow-[2px_2px_0px_#141414]">
+                          <p className="text-[10px] font-bold uppercase text-foreground font-mono">
+                            Sebelum
                           </p>
-                          <p className="mt-1 text-sm font-medium text-neutral-800">{metric.before}</p>
+                          <p className="mt-1 text-xs font-mono font-bold text-foreground">{metric.before}</p>
                         </div>
-                        <div className="rounded-[8px] border border-emerald-100 bg-emerald-50 px-3 py-3">
-                          <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-emerald-600">
-                            {isEn ? "After" : "Sesudah"}
+                        <div className="rounded-[4px] border-2 border-foreground bg-money px-3 py-2 shadow-[2px_2px_0px_#141414]">
+                          <p className="text-[10px] font-bold uppercase text-foreground font-mono">
+                            Sesudah
                           </p>
-                          <p className="mt-1 text-sm font-medium text-neutral-800">{metric.after}</p>
+                          <p className="mt-1 text-xs font-mono font-bold text-foreground">{metric.after}</p>
                         </div>
                       </div>
                     ))}
                   </div>
                 ) : null}
-
-                <div className="flex flex-wrap gap-2">
-                  {featuredProject.impact?.users && (
-                    <span className="rounded-full border border-foreground/30 bg-surface px-3 py-1 text-xs text-neutral-700">
-                      {featuredProject.impact.users}
-                    </span>
-                  )}
-                  {featuredProject.impact?.dataVolume && (
-                    <span className="rounded-full border border-foreground/30 bg-surface px-3 py-1 text-xs text-neutral-700">
-                      {featuredProject.impact.dataVolume}
-                    </span>
-                  )}
-                </div>
               </div>
             </div>
           </div>
         </ScrollReveal>
       )}
 
+      {/* 3. CASE STUDIES GRID (PROYEK SELESAI) */}
       <ScrollReveal>
-        <div className="space-y-5 rounded-[8px] neo-surface p-6 md:p-8">
+        <div className="space-y-6">
           <div className="max-w-2xl">
-            <h2 className="text-2xl font-bold text-foreground">
-              {isEn ? "Browse each case by the kind of problem it solved" : "Lihat tiap case dari jenis problem yang berhasil diselesaikan"}
+            <h2 className="text-xl font-bold text-foreground md:text-2xl">
+              Selusuri Studi Kasus Berdasarkan Masalah
             </h2>
-            <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-              {isEn
-                ? "Each card below keeps the business problem visible, so the page reads more like proof and less like a portfolio catalog."
-                : "Setiap card di bawah ini menjaga problem bisnisnya tetap terlihat, jadi halamannya terasa seperti proof, bukan katalog portfolio biasa."}
+            <p className="mt-1.5 text-sm leading-relaxed text-neutral-500">
+              Berikut adalah daftar sistem berskala produksi yang telah kami deploy. Kami menyertakan detail teknis, alur, dan tautan uji coba jika tersedia.
             </p>
           </div>
 
-          <div className="grid gap-5">
+          <div className="grid gap-6">
             {productionProjects.map((project, index) => {
-              const angle = getProjectAngle(project, isEn);
+              const angle = getProjectAngle(project);
               const metrics = project.caseStudy?.metrics.slice(0, 2) ?? [];
 
               return (
@@ -325,18 +272,16 @@ export default function ProjectsPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.08 + index * 0.05, duration: 0.45 }}
+                  className="rounded-[8px] neo-surface p-5 bg-surface"
                 >
-                  <Link
-                    href={`/projects/${project.id}`}
-                    className="group grid gap-5 rounded-[8px] neo-surface p-5 transition-all hover:-translate-y-1 hover:shadow-2xl lg:grid-cols-[320px_1fr]"
-                  >
-                    <div className="overflow-hidden rounded-[8px] neo-surface">
+                  <div className="grid gap-6 lg:grid-cols-[320px_1fr]">
+                    <div className="overflow-hidden rounded-[8px] border-2 border-foreground shadow-[3px_3px_0px_#141414] h-[220px] lg:h-full relative">
                       <Image
                         src={project.image}
                         alt={project.title}
                         width={1200}
                         height={900}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        className="h-full w-full object-cover"
                         sizes="(max-width: 1024px) 100vw, 320px"
                       />
                     </div>
@@ -344,61 +289,47 @@ export default function ProjectsPage() {
                     <div className="flex flex-col justify-between gap-4">
                       <div className="space-y-4">
                         <div className="flex flex-wrap items-center gap-2">
-                          <span className="rounded-full border border-accent/20 bg-surface px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent-dark">
+                          <span className="rounded-full border-2 border-foreground bg-accent-bg px-3 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em] text-foreground shadow-[1px_1px_0px_#141414]">
                             {angle.label}
                           </span>
-                          <span className="rounded-full border border-foreground/30 bg-surface px-3 py-1 text-[11px] font-medium text-neutral-600">
-                            {project.year}
+                          <span className="rounded-[4px] border border-foreground/30 bg-surface px-2.5 py-0.5 text-[10px] font-bold font-mono text-neutral-600">
+                            Tahun {project.year}
                           </span>
-                          <span className="rounded-full border border-foreground/30 bg-surface px-3 py-1 text-[11px] font-medium text-neutral-600">
-                            {project.status}
+                          <span className="rounded-[4px] border border-foreground/30 bg-surface px-2.5 py-0.5 text-[10px] font-bold font-mono uppercase text-neutral-600">
+                            {project.status === 'production' ? 'Live Produksi' : 'Pengerjaan'}
                           </span>
                         </div>
 
                         <div>
-                          <h3 className="text-2xl font-bold text-foreground transition-colors group-hover:text-accent-dark">
+                          <h3 className="text-xl font-extrabold text-foreground">
                             {project.title}
                           </h3>
-                          <p className="mt-2 text-sm leading-relaxed text-neutral-600">{project.shortDescription}</p>
+                          <p className="mt-1.5 text-xs leading-relaxed text-neutral-500 font-mono">{project.shortDescription}</p>
                         </div>
 
                         <div className="grid gap-3 lg:grid-cols-2">
-                          <div className="rounded-[8px] neo-surface p-4">
-                            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
-                              {isEn ? "Problem seen on the ground" : "Problem yang terjadi di lapangan"}
-                            </p>
-                            <p className="mt-2 text-sm leading-relaxed text-neutral-800">
-                              {project.caseStudy?.problem ?? angle.summary}
-                            </p>
+                          <div className="rounded-[4px] border border-foreground/20 bg-background/50 p-3 font-mono text-[11px] leading-relaxed text-neutral-600">
+                            <p className="font-bold text-foreground/80 uppercase text-[9px] tracking-wider mb-1">Masalah Lapangan:</p>
+                            <p>{project.caseStudy?.problem ?? angle.summary}</p>
                           </div>
-                          <div className="rounded-[8px] neo-surface p-4">
-                            <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
-                              {isEn ? "What changed" : "Apa yang berubah"}
-                            </p>
-                            <p className="mt-2 text-sm leading-relaxed text-neutral-800">
-                              {project.caseStudy?.solution ?? project.fullDescription}
-                            </p>
+                          <div className="rounded-[4px] border border-foreground/20 bg-background/50 p-3 font-mono text-[11px] leading-relaxed text-neutral-600">
+                            <p className="font-bold text-foreground/80 uppercase text-[9px] tracking-wider mb-1">Apa yang Berubah:</p>
+                            <p>{project.caseStudy?.solution ?? project.fullDescription}</p>
                           </div>
                         </div>
 
                         {metrics.length > 0 && (
-                          <div className="grid gap-3 md:grid-cols-2">
+                          <div className="grid gap-2 md:grid-cols-2 pt-1">
                             {metrics.map((metric) => (
-                              <div key={metric.label} className="rounded-[8px] neo-surface p-4">
-                                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-neutral-500">
-                                  {metric.label}
-                                </p>
-                                <div className="mt-3 flex items-center gap-2 text-xs">
-                                  <span className="rounded-full bg-red-50 px-2 py-1 font-semibold text-red-500">
-                                    {isEn ? "Before" : "Sebelum"}
-                                  </span>
+                              <div key={metric.label} className="rounded-[4px] border border-foreground/20 bg-background/30 p-3 font-mono text-[11px]">
+                                <p className="font-bold text-foreground/80 text-[10px] uppercase mb-1.5">{metric.label}</p>
+                                <div className="flex items-center gap-2">
+                                  <span className="bg-double border border-foreground px-1.5 py-0.5 text-[9px] font-bold uppercase rounded-[2px]">Sebelum</span>
                                   <span className="text-neutral-600">{metric.before}</span>
                                 </div>
-                                <div className="mt-2 flex items-center gap-2 text-xs">
-                                  <span className="rounded-full bg-emerald-50 px-2 py-1 font-semibold text-emerald-600">
-                                    {isEn ? "After" : "Sesudah"}
-                                  </span>
-                                  <span className="text-neutral-800">{metric.after}</span>
+                                <div className="mt-1.5 flex items-center gap-2">
+                                  <span className="bg-money border border-foreground px-1.5 py-0.5 text-[9px] font-bold uppercase rounded-[2px]">Sesudah</span>
+                                  <span className="text-foreground font-bold">{metric.after}</span>
                                 </div>
                               </div>
                             ))}
@@ -406,46 +337,41 @@ export default function ProjectsPage() {
                         )}
                       </div>
 
-                      <div className="flex flex-col gap-3 border-t border-foreground/30 pt-4 md:flex-row md:items-center md:justify-between">
-                        <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-col gap-3 border-t border-foreground/10 pt-4 md:flex-row md:items-center md:justify-between">
+                        <div className="flex flex-wrap gap-1.5">
                           {project.tags.slice(0, 4).map((tag) => (
-                            <span key={tag} className="rounded-full border border-foreground/30 bg-surface px-3 py-1 text-xs text-neutral-600">
+                            <span
+                              key={tag}
+                              className="rounded-[4px] border border-foreground/30 bg-surface px-2.5 py-0.5 text-[10px] font-mono font-bold text-neutral-500 shadow-[1px_1px_0px_#141414]"
+                            >
                               {tag}
                             </span>
                           ))}
                         </div>
 
-                        <div className="flex flex-wrap items-center gap-2">
+                        <div className="flex flex-wrap items-center gap-3">
                           {project.demo && (
-                            <span
-                              role="link"
-                              tabIndex={0}
-                              onClick={(event) => {
-                                event.preventDefault();
-                                event.stopPropagation();
-                                window.open(project.demo, "_blank", "noopener,noreferrer");
-                              }}
-                              onKeyDown={(event) => {
-                                if (event.key === "Enter") {
-                                  event.preventDefault();
-                                  event.stopPropagation();
-                                  window.open(project.demo, "_blank", "noopener,noreferrer");
-                                }
-                              }}
-                              className="inline-flex cursor-pointer items-center gap-2 rounded-[8px] bg-accent-light px-4 py-2 text-xs font-semibold text-foreground transition-colors hover:bg-accent-dark hover:text-surface"
+                            <a
+                              href={project.demo}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 rounded-[4px] border-2 border-foreground bg-accent-light px-3.5 py-1.5 text-xs font-bold text-foreground shadow-[2px_2px_0px_#141414] hover:-translate-y-0.5 active:translate-y-0 active:shadow-none"
                             >
-                              {isEn ? "Visit live" : "Lihat live"}
+                              Lihat Live
                               <ExternalLink className="h-3.5 w-3.5" />
-                            </span>
+                            </a>
                           )}
-                          <span className="inline-flex items-center gap-1 text-sm font-semibold text-accent-dark">
-                            {isEn ? "Open full case study" : "Buka case study lengkap"}
-                            <ArrowUpRight className="h-4 w-4" />
-                          </span>
+                          <Link
+                            href={`/projects/${project.id}`}
+                            className="inline-flex items-center gap-1 text-xs font-bold text-foreground hover:underline"
+                          >
+                            Buka Detail Kasus
+                            <ArrowUpRight className="h-4 w-4 text-accent" strokeWidth={2.5} />
+                          </Link>
                         </div>
                       </div>
                     </div>
-                  </Link>
+                  </div>
                 </motion.div>
               );
             })}
@@ -453,36 +379,146 @@ export default function ProjectsPage() {
         </div>
       </ScrollReveal>
 
+      {/* 4. ONGOING PROJECTS (PROYEK YANG SEDANG BERJALAN) */}
       <ScrollReveal>
-        <div className="rounded-[8px] neo-surface p-6 md:p-8">
-          <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-            <div className="space-y-3">
-              <h2 className="text-2xl font-bold text-foreground">
-                {isEn
-                  ? "If one of these problems feels familiar, the next step is not guessing."
-                  : "Kalau salah satu problem di atas terasa familiar, langkah berikutnya bukan menebak-nebak."}
+        <div className="space-y-6 rounded-[8px] neo-surface p-6 md:p-8 bg-surface">
+          <div className="max-w-2xl">
+            <h2 className="text-xl font-bold text-foreground md:text-2xl">
+              Sistem yang Sedang Dibangun (Ongoing)
+            </h2>
+            <p className="mt-1.5 text-sm leading-relaxed text-neutral-500">
+              Transparansi progres adalah kunci. Di bawah ini adalah daftar proyek aktif yang sedang kami beri kode (development) beserta estimasi waktu rilisnya.
+            </p>
+          </div>
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {ongoingProjects.map((item) => (
+              <div
+                key={item.id}
+                className="rounded-[6px] border-2 border-foreground bg-background p-4 shadow-[3px_3px_0px_#141414] flex flex-col justify-between"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-bold font-mono text-neutral-400">MULAI: {item.startDate}</span>
+                    <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[9px] font-extrabold uppercase font-mono bg-accent-bg border border-foreground rounded-[2px]">
+                      <Clock className="w-3 h-3" /> CODING AKTIF
+                    </span>
+                  </div>
+
+                  <div>
+                    <h3 className="text-base font-extrabold text-foreground">{item.name}</h3>
+                    <p className="mt-1 text-xs leading-relaxed text-neutral-500 font-mono">{item.description}</p>
+                  </div>
+
+                  {/* Retro Progress Bar */}
+                  <div className="space-y-1">
+                    <div className="flex justify-between text-[10px] font-bold font-mono text-neutral-500">
+                      <span>PROGRES CODING</span>
+                      <span>{item.progress}%</span>
+                    </div>
+                    <div className="h-4 border-2 border-foreground bg-surface rounded-[4px] shadow-[1px_1px_0px_#141414] overflow-hidden relative">
+                      <div
+                        className="h-full bg-money border-r-2 border-foreground transition-all duration-500"
+                        style={{ width: `${item.progress}%` }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1 pt-1">
+                    <p className="text-[10px] font-bold font-mono text-foreground/70 uppercase">Target Rilis:</p>
+                    <ul className="space-y-1">
+                      {item.keyGoals?.slice(0, 3).map((goal, i) => (
+                        <li key={i} className="flex items-start gap-1.5 text-[10px] leading-relaxed text-neutral-500 font-mono">
+                          <span className="text-accent-dark font-extrabold">•</span>
+                          <span>{goal}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between border-t border-foreground/10 pt-3 mt-4">
+                  <div className="flex flex-wrap gap-1">
+                    {item.techStack.slice(0, 3).map((t) => (
+                      <span key={t} className="text-[9px] font-bold font-mono text-neutral-500 px-1 border border-foreground/15 rounded-[2px]">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <span className="text-[10px] font-bold font-mono text-accent-dark">
+                    ESTIMASI RILIS: {item.estimatedCompletion}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </ScrollReveal>
+
+      {/* 5. TESTIMONIALS (ULASAN KLIEN) */}
+      <ScrollReveal>
+        <div className="space-y-6">
+          <div className="max-w-2xl">
+            <h2 className="text-xl font-bold text-foreground md:text-2xl">
+              Ulasan Pengguna & Klien Kami
+            </h2>
+            <p className="mt-1.5 text-sm leading-relaxed text-neutral-500">
+              Berikut testimoni langsung dari manajer operasional dan pemilik bisnis yang menggunakan sistem buatan kami sehari-hari.
+            </p>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2">
+            {testimonials.map((item) => (
+              <div
+                key={item.id}
+                className="rounded-[8px] border-2 border-foreground bg-surface p-5 shadow-[4px_4px_0px_#141414] flex flex-col justify-between"
+              >
+                <div className="space-y-3">
+                  <div className="flex gap-0.5">
+                    {[...Array(item.rating)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-accent text-accent" />
+                    ))}
+                  </div>
+                  <p className="text-xs leading-relaxed text-neutral-600 font-mono italic">
+                    &ldquo;{item.content}&rdquo;
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between border-t border-foreground/10 pt-4 mt-4 font-mono">
+                  <div>
+                    <h4 className="text-xs font-extrabold text-foreground">{item.name}</h4>
+                    <p className="text-[10px] text-neutral-400">{item.role}, {item.company}</p>
+                  </div>
+                  <span className="rounded-[4px] border border-foreground/20 bg-background px-2.5 py-0.5 text-[9px] font-bold text-neutral-500 uppercase">
+                    PROYEK: {item.project}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </ScrollReveal>
+
+      {/* FOOTER CTA */}
+      <ScrollReveal>
+        <div className="rounded-[8px] border-2 border-foreground bg-accent-bg p-6 md:p-8 shadow-[4px_4px_0px_#141414]">
+          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div className="space-y-2">
+              <h2 className="text-2xl font-extrabold text-foreground">
+                Punya Masalah Operasional Lapangan?
               </h2>
               <p className="text-sm leading-relaxed text-neutral-600">
-                {isEn
-                  ? "Bring the current bottleneck, the team reality, and the target outcome. The first job is to narrow the right scope, not to sell the largest build by default."
-                  : "Bawa bottleneck yang sedang terjadi, realita timnya, dan target hasil yang diinginkan. Tugas pertama bukan menjual build terbesar, tapi mempersempit scope yang paling tepat."}
+                Jangan biarkan tim Anda membuang jam kerja untuk entri manual. Mari diskusikan solusi digital pragmatis untuk mempercepat operasional Anda.
               </p>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-[8px] border border-foreground/40 bg-surface px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent-bg"
+                className="inline-flex items-center justify-center gap-2 rounded-[4px] bg-foreground text-background px-5 py-3 text-sm font-extrabold shadow-[3px_3px_0px_var(--color-accent)] border-2 border-foreground hover:-translate-y-0.5 transition-all"
               >
-                {isEn ? "Discuss the problem" : "Diskusikan problemnya"}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/order"
-                className="inline-flex items-center justify-center gap-2 rounded-[8px] bg-accent-light px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-accent-dark hover:text-surface"
-              >
-                {isEn ? "Start the brief" : "Mulai brief"}
-                <ArrowRight className="h-4 w-4" />
+                Mulai Diskusi Sekarang
+                <ArrowRight className="h-4.5 w-4.5" strokeWidth={2.5} />
               </Link>
             </div>
           </div>

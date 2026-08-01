@@ -34,10 +34,10 @@ export function TechStackStrip() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.02 }}
-              className="flex items-center gap-2 px-4 py-2 bg-surface border border-foreground/20 rounded-full hover:border-accent/30 hover:bg-accent/5 transition-all cursor-default group"
+              className="flex items-center gap-2 px-3 py-1.5 bg-surface border-2 border-foreground rounded-[6px] shadow-[2px_2px_0px_#141414] hover:bg-accent-bg hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[3px_3px_0px_#141414] transition-all cursor-default group"
             >
-              <div className="w-1.5 h-1.5 rounded-full bg-accent/40 group-hover:bg-accent-light transition-colors" />
-              <span className="text-[12px] font-medium text-neutral-700 group-hover:text-foreground whitespace-nowrap transition-colors">
+              <div className="w-2.5 h-2.5 rounded-full bg-accent/40 border border-foreground group-hover:bg-accent-light transition-colors" />
+              <span className="text-[11px] font-bold text-foreground font-mono whitespace-nowrap">
                 {tech}
               </span>
             </motion.div>
@@ -48,13 +48,13 @@ export function TechStackStrip() {
       {/* Proficiency legend */}
       <div className="flex items-center gap-4 justify-center">
         {[
-          { level: 'advanced', label: language === 'en' ? 'Advanced' : 'Mahir', color: 'bg-accent-light' },
-          { level: 'intermediate', label: language === 'en' ? 'Intermediate' : 'Menengah', color: 'bg-blue-500' },
-          { level: 'familiar', label: language === 'en' ? 'Familiar' : 'Kenal', color: 'bg-neutral-400' },
+          { level: 'advanced', label: 'Mahir', color: 'bg-accent-light' },
+          { level: 'intermediate', label: 'Menengah', color: 'bg-blue-500' },
+          { level: 'familiar', label: 'Kenal', color: 'bg-neutral-400' },
         ].map(({ level, label, color }) => (
           <div key={level} className="flex items-center gap-1.5">
-            <div className={`w-2 h-2 rounded-full ${color}`} />
-            <span className="text-[10px] text-neutral-500">{label}</span>
+            <div className={`w-3.5 h-3.5 border-2 border-foreground rounded-[2px] ${color}`} />
+            <span className="text-[10px] font-bold text-foreground font-mono">{label}</span>
           </div>
         ))}
       </div>

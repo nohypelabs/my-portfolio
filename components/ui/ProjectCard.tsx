@@ -52,10 +52,10 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
             {/* Status badge */}
             <div className="absolute top-3 left-3">
-              <span className={`px-2.5 py-1 rounded-full text-[10px] font-semibold border-2 ${
+              <span className={`px-2.5 py-1 rounded-[4px] text-[10px] font-bold border-2 border-foreground font-mono shadow-[2px_2px_0px_#141414] ${
                 isProduction
-                  ? "bg-money text-foreground border-foreground"
-                  : "bg-foreground text-background border-foreground"
+                  ? "bg-money text-foreground"
+                  : "bg-foreground text-background"
               }`}>
                 {isProduction ? "Production" : "Development"}
               </span>
