@@ -31,7 +31,7 @@ interface Metrics {
 }
 
 const FALLBACK: Metrics = {
-  seratQc: { entries: 80187, photos: 160374 },
+  seratQc: { entries: 112796, photos: 225592 },
   wcCheck: { inspections: 3293, users: 53, locations: 49 },
   lakuPos: { transactions: 11, products: 2, outlets: 4 },
   ecommerce: { products: 16, orders: 6, users: 5 },

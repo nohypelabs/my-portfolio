@@ -1,7 +1,7 @@
 export const cvData = {
   profile: {
-    en: "Full-stack developer who shipped 7 production systems in 12 months — 250K+ records processed, real clients at J&T Express and retail sector. Tech stack: Next.js, TypeScript, tRPC, PostgreSQL. Also experienced in IT support: hardware troubleshooting, OS deployment, and network configuration. Returned to production-grade development after 9 years — building end-to-end systems that solve real business problems.",
-    id: "Full-stack developer yang mengirim 7 sistem production dalam 12 bulan — 250K+ records diproses, client nyata di J&T Express dan sektor ritel. Tech stack: Next.js, TypeScript, tRPC, PostgreSQL. Juga berpengalaman di IT support: troubleshooting hardware, deploy OS, dan konfigurasi jaringan. Kembali ke development production setelah 9 tahun — membangun sistem end-to-end yang menyelesaikan masalah bisnis nyata.",
+    en: "Full-stack developer who shipped 7 production systems in 12 months — 340K+ records processed, real clients at J&T Express and retail sector. Tech stack: Next.js, TypeScript, tRPC, PostgreSQL. Also experienced in IT support: hardware troubleshooting, OS deployment, and network configuration. Returned to production-grade development after 9 years — building end-to-end systems that solve real business problems.",
+    id: "Full-stack developer yang mengirim 7 sistem production dalam 12 bulan — 340K+ records diproses, client nyata di J&T Express dan sektor ritel. Tech stack: Next.js, TypeScript, tRPC, PostgreSQL. Juga berpengalaman di IT support: troubleshooting hardware, deploy OS, dan konfigurasi jaringan. Kembali ke development production setelah 9 tahun — membangun sistem end-to-end yang menyelesaikan masalah bisnis nyata.",
   },
 
   technicalExperience: [
@@ -13,7 +13,7 @@ export const cvData = {
         id: "Membangun dan mengirim 7 sistem production untuk client nyata di logistik, ritel, e-commerce, dan Web3. Ownership end-to-end: desain database, API development, frontend, deployment, dan maintenance. Stack utama: Next.js, TypeScript, tRPC, dan PostgreSQL/Supabase.",
       },
       highlights: [
-        "Serat QC — 80K+ resi, 160K+ foto GPS-watermarked untuk J&T Express",
+        "Serat QC — 112K+ resi, 225K+ foto GPS-watermarked untuk J&T Express",
         "WC Check — 3.293 inspeksi, 53 users, 49 lokasi (toilet monitoring)",
         "LakuPOS — POS & warehouse system multi-outlet dengan QRIS payment",
         "Qohira — E-commerce platform dengan manual payment verification",

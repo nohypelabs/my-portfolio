@@ -11,7 +11,7 @@ export const achievements: Achievement[] = [
   {
     id: "1",
     title: "Ship Fast, Ship Real",
-    description: "7 production systems in 12 months — 250K+ records processed across logistics QC, POS, e-commerce, and Web3. Used daily by real clients.",
+    description: "7 production systems in 12 months — 340K+ records processed across logistics QC, POS, e-commerce, and Web3. Used daily by real clients.",
     icon: "rocket",
     metric: "7 shipped"
   },
@@ -32,9 +32,9 @@ export const achievements: Achievement[] = [
   {
     id: "4",
     title: "Battle-Tested Systems",
-    description: "80K+ resi, 160K+ GPS photos, barcode scanning, multi-outlet POS — these aren't demos, they handle real operations daily.",
+    description: "112K+ resi, 225K+ GPS photos, barcode scanning, multi-outlet POS — these aren't demos, they handle real operations daily.",
     icon: "trending-up",
-    metric: "250K+ data"
+    metric: "340K+ data"
   },
   {
     id: "5",
@@ -94,7 +94,7 @@ export const metrics: Metric[] = [
   },
   {
     label: "Data Processed",
-    value: "250K+",
+    value: "340K+",
     description: "Records across logistics QC, POS, and inspections",
     icon: "database"
   },

@@ -35,7 +35,7 @@ const proofPoints = [
     detail: 'dari company profile sampai dashboard operasional',
   },
   {
-    value: '250K+',
+    value: '340K+',
     label: 'resi logistik terproses',
     detail: 'QC, inspeksi, transaksi, dan workflow lapangan',
   },

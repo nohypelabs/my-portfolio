@@ -30,7 +30,7 @@ export default function AboutPage() {
       label: 'sistem skala produksi rilis',
     },
     {
-      value: '250rb+',
+      value: '340rb+',
       label: 'resi logistik terproses otomatis',
     },
     {

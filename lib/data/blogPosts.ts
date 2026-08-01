@@ -12,7 +12,7 @@ export const blogPosts: BlogPost[] = [
   {
     slug: "shipped-4-production-systems-in-12-months",
     title: "How I Shipped 4 Production Systems in 12 Months After a 9-Year Break",
-    excerpt: "I left tech in 2015. In 2024, I came back with AI as my force multiplier and shipped 4 production systems processing 250K+ records. Here's the playbook.",
+    excerpt: "I left tech in 2015. In 2024, I came back with AI as my force multiplier and shipped 4 production systems processing 340K+ records. Here's the playbook.",
     date: "2026-04-15",
     readTime: "8 min",
     tags: ["career", "ai-augmented", "productivity"],
@@ -169,7 +169,7 @@ Every project ships to production within weeks, not months:
 
 With this workflow:
 - **4 production systems** in 12 months
-- **250K+ records** processed
+- **340K+ records** processed
 - **< 1 year** from comeback to shipping
 - **Ships in weeks, not months** — AI handles boilerplate, you focus on architecture
 

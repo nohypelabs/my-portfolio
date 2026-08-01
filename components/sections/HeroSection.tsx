@@ -35,7 +35,7 @@ const serviceFits = [
 
 const proofItems = [
   { value: '7+', label: 'sistem production shipped' },
-  { value: '250K+', label: 'records dan aktivitas terproses' },
+  { value: '340K+', label: 'records dan aktivitas terproses' },
   { value: '3', label: 'sektor utama: logistik, retail, operasional' },
   { value: '≤24 jam', label: 'respon awal untuk breakdown kebutuhan' },
 ];
@@ -81,11 +81,11 @@ export function HeroSection() {
             <motion.div variants={fadeUp} className="mt-10 flex flex-wrap gap-3">
               <MagneticButton
                 as="a"
-                href="/order"
+                href="/contact"
                 strength={0.2}
                 className="btn-primary group inline-flex items-center gap-2.5 px-8 py-4 text-[13px] font-semibold"
               >
-                Minta Estimasi Project
+                Minta Estimasi Proyek
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </MagneticButton>
               <MagneticButton

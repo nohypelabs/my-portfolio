@@ -94,25 +94,25 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-y-0 left-0 w-[260px] bg-surface border-r border-foreground/30 flex flex-col shadow-2xl"
+            className="fixed inset-y-0 left-0 w-[260px] bg-background border-r-2 border-foreground flex flex-col z-50"
           >
             {/* Header */}
-            <div className="h-[60px] flex items-center justify-between px-6">
+            <div className="h-[60px] flex items-center justify-between px-6 border-b-2 border-foreground bg-surface">
               <motion.h1
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2, duration: 0.3 }}
-                className="text-[22px] font-extrabold text-foreground tracking-tight"
-                style={{ fontFamily: "'Inter', 'SF Pro Display', system-ui, sans-serif", letterSpacing: '-0.05em' }}
-              >nasaq<span className="text-accent">.id</span></motion.h1>
+                className="text-[20px] font-extrabold text-foreground tracking-tight"
+                style={{ fontFamily: "'Space Grotesk', 'Inter', system-ui, sans-serif", letterSpacing: '-0.04em' }}
+              >nasaq<span className="text-accent-light">.id</span></motion.h1>
               <motion.button
                 initial={{ opacity: 0, rotate: -90 }}
                 animate={{ opacity: 1, rotate: 0 }}
                 transition={{ delay: 0.25, duration: 0.3 }}
                 onClick={onClose}
-                className="w-7 h-7 rounded-lg flex items-center justify-center text-foreground hover:bg-accent-bg transition-colors"
+                className="w-8 h-8 rounded-[4px] border-2 border-foreground bg-surface flex items-center justify-center text-foreground hover:bg-accent-bg shadow-[1.5px_1.5px_0px_#141414] transition-all"
               >
-                <X className="w-4 h-4" strokeWidth={1.5} />
+                <X className="w-4 h-4" strokeWidth={2.2} />
               </motion.button>
             </div>
 
@@ -121,7 +121,7 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
               variants={navContainerVariants}
               initial="hidden"
               animate="visible"
-              className="flex-1 overflow-y-auto py-3 px-3 space-y-0.5"
+              className="flex-1 overflow-y-auto py-5 px-4 space-y-3"
             >
               {navItems.map(item => {
                 const isActive = pathname === item.path || (item.path !== '/' && pathname.startsWith(item.path));
@@ -135,18 +135,18 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
                       onClose();
                     }}
                     className={clsx(
-                      'w-full flex items-center gap-2.5 rounded-lg transition-colors text-left text-[13px] px-3 py-[7px]',
+                      'w-full flex items-center gap-3 rounded-[4px] border-2 border-foreground transition-all text-left text-[12px] px-3.5 py-2.5 font-mono font-bold shadow-[2px_2px_0px_#141414] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[3.5px_3.5px_0px_#141414]',
                       isActive
-                        ? 'bg-surface text-accent-dark font-medium'
-                        : 'text-foreground hover:bg-accent-bg'
+                        ? 'bg-foreground text-background'
+                        : 'bg-surface text-foreground hover:bg-accent-bg'
                     )}
                   >
                     <Icon
                       className={clsx(
-                        'w-[18px] h-[18px] flex-shrink-0',
-                        isActive ? 'text-accent' : 'text-foreground'
+                        'w-4 h-4 flex-shrink-0',
+                        isActive ? 'text-accent-light' : 'text-foreground'
                       )}
-                      strokeWidth={1.5}
+                      strokeWidth={2.2}
                     />
                     <span>{item.label}</span>
                   </motion.button>
@@ -159,9 +159,9 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.3 }}
-              className="border-t border-foreground/30 py-4 px-4"
+              className="border-t-2 border-foreground bg-surface py-4 px-6 font-mono text-[10px]"
             >
-              <p className="text-[11px] text-neutral-500">© {new Date().getFullYear()} nasaq</p>
+              <p className="text-neutral-500 font-bold">© {new Date().getFullYear()} nasaq.id</p>
             </motion.div>
           </motion.div>
         </div>

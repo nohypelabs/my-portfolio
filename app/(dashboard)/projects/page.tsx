@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 import { projects } from '@/lib/data/projects';
 import { ongoingProjects } from '@/lib/data/ongoingProjects';
 import { testimonials } from '@/lib/data/testimonials';
@@ -72,6 +73,32 @@ function getProjectAngle(project: Project) {
 
 export default function ProjectsPage() {
   const featuredProject = getFeaturedProject();
+
+  const [liveMetrics, setLiveMetrics] = useState<any>(null);
+
+  useEffect(() => {
+    fetch('/api/live-metrics')
+      .then((r) => r.json())
+      .then((data) => setLiveMetrics(data))
+      .catch(() => {});
+  }, []);
+
+  const getLiveBadgeText = (pId: string) => {
+    if (!liveMetrics) return null;
+    if (pId === 'selisih-berat') {
+      return `● Live Database: ${liveMetrics.seratQc.entries.toLocaleString('id-ID')} resi terproses`;
+    }
+    if (pId === 'wc-check') {
+      return `● Live Database: ${liveMetrics.wcCheck.inspections.toLocaleString('id-ID')} inspeksi`;
+    }
+    if (pId === 'lakupos') {
+      return `● Live Database: ${liveMetrics.lakuPos.transactions.toLocaleString('id-ID')} transaksi`;
+    }
+    if (pId === 'ecommerce-manual') {
+      return `● Live Database: ${liveMetrics.ecommerce.orders.toLocaleString('id-ID')} pesanan`;
+    }
+    return null;
+  };
 
   const liveDemoCount = productionProjects.filter((project) => Boolean(project.demo)).length;
   const documentedStudies = productionProjects.filter((project) => Boolean(project.caseStudy)).length;
@@ -203,8 +230,15 @@ export default function ProjectsPage() {
 
               <div className="space-y-4">
                 <div>
-                  <div className="inline-flex rounded-full border-2 border-foreground bg-accent-bg px-3 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em] text-foreground shadow-[1px_1px_0px_#141414]">
-                    {getProjectAngle(featuredProject).label}
+                  <div className="flex flex-wrap items-center gap-2">
+                    <div className="inline-flex rounded-full border-2 border-foreground bg-accent-bg px-3 py-0.5 text-[10px] font-bold uppercase tracking-[0.16em] text-foreground shadow-[1px_1px_0px_#141414]">
+                      {getProjectAngle(featuredProject).label}
+                    </div>
+                    {getLiveBadgeText(featuredProject.id) && (
+                      <span className="rounded-[4px] border-2 border-foreground bg-money px-2.5 py-0.5 text-[10px] font-bold font-mono text-foreground shadow-[1px_1px_0px_#141414] animate-pulse">
+                        {getLiveBadgeText(featuredProject.id)}
+                      </span>
+                    )}
                   </div>
                   <h3 className="mt-3 text-2xl font-bold text-foreground">{featuredProject.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-neutral-500 font-mono">
@@ -298,6 +332,11 @@ export default function ProjectsPage() {
                           <span className="rounded-[4px] border border-foreground/30 bg-surface px-2.5 py-0.5 text-[10px] font-bold font-mono uppercase text-neutral-600">
                             {project.status === 'production' ? 'Live Produksi' : 'Pengerjaan'}
                           </span>
+                          {getLiveBadgeText(project.id) && (
+                            <span className="rounded-[4px] border-2 border-foreground bg-money px-2.5 py-0.5 text-[10px] font-bold font-mono text-foreground shadow-[1px_1px_0px_#141414] animate-pulse">
+                              {getLiveBadgeText(project.id)}
+                            </span>
+                          )}
                         </div>
 
                         <div>
