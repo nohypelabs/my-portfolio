@@ -2,7 +2,7 @@ const idTranslations = {
   // Dashboard
   welcome: "Selamat Datang! 👋",
   tagline: "Membangun sistem operasional yang nyata",
-  bio: "Digital product studio untuk bisnis Indonesia yang lelah dengan alur kerja manual, Excel berantakan, dan sistem kaku. Kami mendeploy sistem kustom yang bekerja di lapangan.",
+  bio: "Website dan android app development untuk bisnis Indonesia yang lelah dengan alur kerja manual, Excel berantakan, dan sistem kaku. Kami mendeploy sistem kustom yang bekerja di lapangan.",
 
   // Stats
   experience: "Pengalaman Kerja",
@@ -156,7 +156,7 @@ const idTranslations = {
   users: "User Terdaftar",
 
   // Hero content
-  heroRole: "Digital Product Studio",
+  heroRole: "Website & Android App Development",
   heroHeadline: "Mendeploy software kustom yang merapikan operasional bisnis Anda.",
   heroNarrative: "Kami merancang dan mendeploy aplikasi web kustom untuk merapikan alur kerja bisnis yang mulai kewalahan dengan Excel, pencatatan manual, atau sistem vendor kaku. Mulai dari sistem pergudangan logistik, POS kasir retail multi-outlet, hingga pelacakan kurir GPS.",
 

@@ -4,7 +4,7 @@ This file tracks the current direction of the nasaq.id surface. It is no longer 
 
 ## Current Product Direction
 
-- Reposition the site as a digital product studio
+- Reposition the site as a website and Android app development studio
 - Make the company profile easier to trust and easier to order from
 - Prioritize narrative clarity, credibility, and conversion over decorative UI volume
 
