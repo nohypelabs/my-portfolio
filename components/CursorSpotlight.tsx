@@ -23,8 +23,8 @@ export function CursorSpotlight({
   const [isHovering, setIsHovering] = useState(false);
   const posRef = useRef({ x: 0, y: 0 });
   const smoothRef = useRef({ x: 0, y: 0 });
+  const [smoothPos, setSmoothPos] = useState({ x: 0, y: 0 });
   const rafRef = useRef<number>(0);
-  const [, forceUpdate] = useState(0);
 
   // Smooth animation loop
   useEffect(() => {
@@ -43,7 +43,7 @@ export function CursorSpotlight({
           x: smoothRef.current.x + dx * 0.12,
           y: smoothRef.current.y + dy * 0.12,
         };
-        forceUpdate(n => n + 1);
+        setSmoothPos({ ...smoothRef.current });
       }
 
       rafRef.current = requestAnimationFrame(animate);
@@ -68,6 +68,7 @@ export function CursorSpotlight({
     // Initialize both positions to cursor — no jump
     posRef.current = { x, y };
     smoothRef.current = { x, y };
+    setSmoothPos({ x, y });
     setIsHovering(true);
   }, []);
 
@@ -75,7 +76,7 @@ export function CursorSpotlight({
     setIsHovering(false);
   }, []);
 
-  const { x, y } = smoothRef.current;
+  const { x, y } = smoothPos;
 
   return (
     <div

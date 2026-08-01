@@ -9,7 +9,6 @@ import {
   ArrowRight,
   ArrowUpRight,
   Building2,
-  CheckCircle2,
   ExternalLink,
   FolderKanban,
   Gauge,

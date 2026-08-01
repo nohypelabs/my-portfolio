@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
-  Activity,
   Camera,
   ChevronDown,
   ClipboardCheck,
@@ -44,18 +43,15 @@ function AnimatedNumber({
   value,
   duration = 2000,
   started,
-  generation,
 }: {
   value: number;
   duration?: number;
   started: boolean;
-  generation: number;
 }) {
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
     if (!started || value === 0) return;
-    setDisplay(0);
     const start = performance.now();
 
     function tick(now: number) {
@@ -67,7 +63,7 @@ function AnimatedNumber({
     }
 
     requestAnimationFrame(tick);
-  }, [value, duration, started, generation]);
+  }, [value, duration, started]);
 
   return <>{display.toLocaleString("id-ID")}</>;
 }
@@ -195,22 +191,40 @@ export function LiveMetrics() {
   const t = translations[language];
   const projectGroups = getProjectGroups();
 
-  const fetchMetrics = (bustCache = false) => {
-    setRefreshing(true);
+  const loadMetrics = async (bustCache = false): Promise<Metrics> => {
     const url = bustCache ? `/api/live-metrics?t=${Date.now()}` : "/api/live-metrics";
-    fetch(url)
-      .then((r) => r.json())
-      .then((data: Metrics) => {
+    const res = await fetch(url);
+    return res.json();
+  };
+
+  const handleRefresh = () => {
+    setRefreshing(true);
+    loadMetrics(true)
+      .then((data) => {
         setMetrics(data);
         setIsLive(!data.cached);
-        if (bustCache) setGeneration((g) => g + 1);
+        setGeneration((g) => g + 1);
       })
       .catch(() => setMetrics(FALLBACK))
       .finally(() => setRefreshing(false));
   };
 
   useEffect(() => {
-    fetchMetrics();
+    let ignore = false;
+
+    loadMetrics()
+      .then((data) => {
+        if (ignore) return;
+        setMetrics(data);
+        setIsLive(!data.cached);
+      })
+      .catch(() => {
+        if (!ignore) setMetrics(FALLBACK);
+      });
+
+    return () => {
+      ignore = true;
+    };
   }, []);
 
   const data = metrics ?? FALLBACK;
@@ -250,7 +264,7 @@ export function LiveMetrics() {
           <div className="flex flex-col items-end gap-2">
             <div className="flex items-center gap-2 sm:gap-3">
               <button
-                onClick={() => fetchMetrics(true)}
+                onClick={() => handleRefresh()}
                 disabled={refreshing}
                 className="group/btn flex items-center gap-2 px-4 py-2.5 rounded-[8px] bg-surface border border-foreground/40 hover:bg-accent-light/30 disabled:opacity-60 disabled:cursor-not-allowed transition-all text-xs font-semibold text-accent"
               >
@@ -401,10 +415,10 @@ export function LiveMetrics() {
                           }`}
                         >
                           <AnimatedNumber
+                            key={generation}
                             value={value}
                             duration={isHero ? 2200 : 1400}
                             started={started}
-                            generation={generation}
                           />
                         </p>
                       </div>

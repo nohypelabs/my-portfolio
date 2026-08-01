@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 function renderMarkdown(content: string) {
   return content
     .split("\n\n")
-    .map((block, i) => {
+    .map((block) => {
       // Headers
       if (block.startsWith("### ")) {
         return `<h3 class="text-lg font-bold text-foreground mt-6 mb-2">${block.slice(4)}</h3>`;

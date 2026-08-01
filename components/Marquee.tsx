@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useSyncExternalStore } from "react";
 
 interface MarqueeProps {
   children: React.ReactNode;
@@ -9,14 +9,16 @@ interface MarqueeProps {
   className?: string;
 }
 
+const noopSubscribe = () => () => {};
+
 export function Marquee({ children, speed = 30, pauseOnHover = true, className = "" }: MarqueeProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(
+    noopSubscribe,
+    () => true,
+    () => false
+  );
 
   useEffect(() => {
     const el = scrollRef.current;

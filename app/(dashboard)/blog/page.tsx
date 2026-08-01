@@ -28,7 +28,7 @@ export default function BlogPage() {
       </motion.div>
 
       <div className="space-y-4">
-        {blogPosts.map((post, index) => (
+        {blogPosts.map((post) => (
           <ScrollReveal key={post.slug}>
             <Link
               href={`/blog/${post.slug}`}

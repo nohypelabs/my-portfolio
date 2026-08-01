@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 /**
  * Premium grid mosaic of project screenshots.
  * Used as background content for CursorSpotlight.
@@ -25,10 +27,12 @@ export function ProjectMosaic() {
             className="relative overflow-hidden group"
           >
             {/* Image */}
-            <img
+            <Image
               src={project.src}
               alt={project.name}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
+              sizes="(max-width: 768px) 50vw, 25vw"
               loading="eager"
             />
 

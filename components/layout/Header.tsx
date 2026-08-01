@@ -49,24 +49,21 @@ export const Header = () => {
   const router = useRouter();
   const { openMobileSidebar } = useSidebar();
 
-  const [showMore, setShowMore] = useState(false);
+  const [openAt, setOpenAt] = useState<string | null>(null);
+  const showMore = openAt === pathname;
   const moreRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setShowMore(false);
-  }, [pathname]);
 
   useEffect(() => {
     if (!showMore) return;
 
     const handleClickOutside = (e: MouseEvent) => {
       if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
-        setShowMore(false);
+        setOpenAt(null);
       }
     };
 
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setShowMore(false);
+      if (e.key === 'Escape') setOpenAt(null);
     };
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -109,7 +106,7 @@ export const Header = () => {
           {/* Lainnya dropdown */}
           <div className="relative" ref={moreRef}>
             <button
-              onClick={() => setShowMore((prev) => !prev)}
+              onClick={() => setOpenAt(showMore ? null : pathname)}
               className={clsx(
                 'flex items-center gap-1 px-3 py-1.5 rounded-[8px] text-[13px] font-semibold border-2 transition-all',
                 showMore

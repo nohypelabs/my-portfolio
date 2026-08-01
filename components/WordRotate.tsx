@@ -23,7 +23,7 @@ export function WordRotate({ words, interval = 3000, className = '' }: WordRotat
 
   useEffect(() => {
     if (!measureRef.current) return;
-    const observer = new ResizeObserver((entries) => {
+    const observer = new ResizeObserver(() => {
       const max = Math.max(...words.map((w) => {
         const el = document.createElement('span');
         el.style.visibility = 'hidden';

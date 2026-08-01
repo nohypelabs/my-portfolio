@@ -3,13 +3,11 @@
 import { motion } from 'framer-motion';
 import { UserPlus, Loader2, Eye, EyeOff } from 'lucide-react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { staggerContainer, fadeInUp } from '@/lib/animations';
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
 export default function RegisterPage() {
-  const router = useRouter();
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

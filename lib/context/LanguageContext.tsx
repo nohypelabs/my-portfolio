@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useState, useSyncExternalStore, ReactNode } from "react";
 
 type Language = "en" | "id";
 
@@ -11,16 +11,19 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("en");
+const noopSubscribe = () => () => {};
 
-  useEffect(() => {
-    // Load language from localStorage
-    const saved = localStorage.getItem("language") as Language;
-    if (saved === "en" || saved === "id") {
-      setLanguageState(saved);
-    }
-  }, []);
+export function LanguageProvider({ children }: { children: ReactNode }) {
+  const [languageState, setLanguageState] = useState<Language>("en");
+
+  // Read persisted language from localStorage without an effect
+  const stored = useSyncExternalStore(
+    noopSubscribe,
+    () => (typeof window !== "undefined" ? localStorage.getItem("language") : null),
+    () => null
+  );
+
+  const language: Language = stored === "en" || stored === "id" ? stored : languageState;
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);

@@ -19,7 +19,6 @@ function OrderForm() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [user, setUser] = useState<User | null>(null);
 
   const [form, setForm] = useState({
     customer_name: '',
@@ -39,7 +38,6 @@ function OrderForm() {
     supabase.auth.getUser().then(({ data }: { data: { user: User | null } }) => {
       const u = data.user;
       if (u) {
-        setUser(u);
         setForm(prev => ({
           ...prev,
           customer_name: (u.user_metadata?.full_name as string) || prev.customer_name,

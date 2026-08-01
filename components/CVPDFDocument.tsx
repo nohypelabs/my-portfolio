@@ -343,9 +343,10 @@ export default function CVPDFDocument({
   return (
     <Document>
       <Page size="LEGAL" style={s.page}>
-        {/* Header — exact match from web */}
-        <View style={s.header}>
-          <Image src={photoUrl} style={s.headerPhoto} />
+          {/* Header — exact match from web */}
+          <View style={s.header}>
+            {/* eslint-disable-next-line jsx-a11y/alt-text -- @react-pdf/renderer Image has no alt prop */}
+            <Image src={photoUrl} style={s.headerPhoto} />
           <View style={s.headerInfo}>
             <Text style={s.headerName}>{personalInfo.name.toUpperCase()}</Text>
             <Text style={s.headerRole}>{personalInfo.role}</Text>
@@ -368,16 +369,19 @@ export default function CVPDFDocument({
             <Text style={s.profileText}>{cvData.profile[language]}</Text>
 
             <Text style={s.h2}>{language === "en" ? "Technical Experience" : "Pengalaman Teknis"}</Text>
-            {cvData.technicalExperience.map((item, i) => (
-              <View key={i} style={s.entry}>
-                <Text style={s.entryYear}>{item.year}</Text>
-                <Text style={s.entryTitle}>{item.title}</Text>
-                <Text style={s.entryDesc}>{item.description[language]}</Text>
-                {"highlights" in item && (item as any).highlights?.length > 0 && (
-                  <Highlights items={(item as any).highlights} />
-                )}
-              </View>
-            ))}
+            {cvData.technicalExperience.map((item, i) => {
+              const highlights = (item as { highlights?: string[] }).highlights;
+              return (
+                <View key={i} style={s.entry}>
+                  <Text style={s.entryYear}>{item.year}</Text>
+                  <Text style={s.entryTitle}>{item.title}</Text>
+                  <Text style={s.entryDesc}>{item.description[language]}</Text>
+                  {highlights && highlights.length > 0 && (
+                    <Highlights items={highlights} />
+                  )}
+                </View>
+              );
+            })}
 
             <Text style={s.h2}>{language === "en" ? "Other Experience" : "Pengalaman Lain"}</Text>
             {cvData.otherExperience.map((item, i) => (
