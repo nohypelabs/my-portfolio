@@ -19,7 +19,6 @@ interface NavItem {
 const primaryNav: NavItem[] = [
   { label: 'Layanan & Harga', path: '/services' },
   { label: 'Portfolio', path: '/projects' },
-  { label: 'Tentang Founder', path: '/about' },
   { label: 'Hubungi Kami', path: '/contact' },
 ];
 

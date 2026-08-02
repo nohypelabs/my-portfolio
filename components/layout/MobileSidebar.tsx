@@ -4,9 +4,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import {
   LayoutDashboard,
   FolderKanban,
-  User,
   Mail,
-  Radio,
   X,
   Briefcase,
 } from 'lucide-react';
@@ -22,8 +20,6 @@ const navItems = [
   { id: 'dashboard', label: 'Beranda', icon: LayoutDashboard, path: '/' },
   { id: 'services', label: 'Layanan & Harga', icon: Briefcase, path: '/services' },
   { id: 'projects', label: 'Portfolio & Proyek', icon: FolderKanban, path: '/projects' },
-  { id: 'live', label: 'Live Proof', icon: Radio, path: '/live' },
-  { id: 'about', label: 'Tentang Founder', icon: User, path: '/about' },
   { id: 'contact', label: 'Hubungi Kami', icon: Mail, path: '/contact' },
 ];
 

@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { MobileSidebarWrapper } from "@/components/layout/MobileSidebarWrapper";
 import { SidebarProvider } from "@/contexts/SidebarContext";
 import { PageTransition } from "@/components/PageTransition";
+import { Footer } from "@/components/layout/Footer";
 
 export default function DashboardLayout({
   children,
@@ -24,6 +25,8 @@ export default function DashboardLayout({
             <PageTransition>{children}</PageTransition>
           </div>
         </main>
+
+        <Footer />
       </div>
     </SidebarProvider>
   );

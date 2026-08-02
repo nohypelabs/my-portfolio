@@ -3,8 +3,6 @@
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { projects } from '@/lib/data/projects';
-import { ongoingProjects } from '@/lib/data/ongoingProjects';
-import { testimonials } from '@/lib/data/testimonials';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import type { Project } from '@/lib/domain/entities/Project';
 import {
@@ -16,8 +14,6 @@ import {
   Gauge,
   Globe2,
   Sparkles,
-  Star,
-  Clock,
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -421,126 +417,6 @@ export default function ProjectsPage() {
                 </motion.div>
               );
             })}
-          </div>
-        </div>
-      </ScrollReveal>
-
-      {/* 4. ONGOING PROJECTS (PROYEK YANG SEDANG BERJALAN) */}
-      <ScrollReveal>
-        <div className="space-y-6 rounded-[8px] neo-surface p-6 md:p-8 bg-surface">
-          <div className="max-w-2xl">
-            <h2 className="text-xl font-bold text-foreground md:text-2xl">
-              Sistem yang Sedang Dibangun (Ongoing)
-            </h2>
-            <p className="mt-1.5 text-sm leading-relaxed text-neutral-500">
-              Transparansi progres adalah kunci. Di bawah ini adalah daftar proyek aktif yang sedang kami beri kode (development) beserta estimasi waktu rilisnya.
-            </p>
-          </div>
-
-          <div className="grid gap-4 md:grid-cols-2">
-            {ongoingProjects.map((item) => (
-              <div
-                key={item.id}
-                className="rounded-[6px] border-2 border-foreground bg-background p-4 shadow-[3px_3px_0px_#141414] flex flex-col justify-between"
-              >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold font-mono text-neutral-400">MULAI: {item.startDate}</span>
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[9px] font-extrabold uppercase font-mono bg-accent-bg border border-foreground rounded-[2px]">
-                      <Clock className="w-3 h-3" /> CODING AKTIF
-                    </span>
-                  </div>
-
-                  <div>
-                    <h3 className="text-base font-extrabold text-foreground">{item.name}</h3>
-                    <p className="mt-1 text-xs leading-relaxed text-neutral-500 font-mono">{item.description}</p>
-                  </div>
-
-                  {/* Retro Progress Bar */}
-                  <div className="space-y-1">
-                    <div className="flex justify-between text-[10px] font-bold font-mono text-neutral-500">
-                      <span>PROGRES CODING</span>
-                      <span>{item.progress}%</span>
-                    </div>
-                    <div className="h-4 border-2 border-foreground bg-surface rounded-[4px] shadow-[1px_1px_0px_#141414] overflow-hidden relative">
-                      <div
-                        className="h-full bg-money border-r-2 border-foreground transition-all duration-500"
-                        style={{ width: `${item.progress}%` }}
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-1 pt-1">
-                    <p className="text-[10px] font-bold font-mono text-foreground/70 uppercase">Target Rilis:</p>
-                    <ul className="space-y-1">
-                      {item.keyGoals?.slice(0, 3).map((goal, i) => (
-                        <li key={i} className="flex items-start gap-1.5 text-[10px] leading-relaxed text-neutral-500 font-mono">
-                          <span className="text-accent-dark font-extrabold">•</span>
-                          <span>{goal}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between border-t border-foreground/10 pt-3 mt-4">
-                  <div className="flex flex-wrap gap-1">
-                    {item.techStack.slice(0, 3).map((t) => (
-                      <span key={t} className="text-[9px] font-bold font-mono text-neutral-500 px-1 border border-foreground/15 rounded-[2px]">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <span className="text-[10px] font-bold font-mono text-accent-dark">
-                    ESTIMASI RILIS: {item.estimatedCompletion}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </ScrollReveal>
-
-      {/* 5. TESTIMONIALS (ULASAN KLIEN) */}
-      <ScrollReveal>
-        <div className="space-y-6">
-          <div className="max-w-2xl">
-            <h2 className="text-xl font-bold text-foreground md:text-2xl">
-              Ulasan Pengguna & Klien Kami
-            </h2>
-            <p className="mt-1.5 text-sm leading-relaxed text-neutral-500">
-              Berikut testimoni langsung dari manajer operasional dan pemilik bisnis yang menggunakan sistem buatan kami sehari-hari.
-            </p>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            {testimonials.map((item) => (
-              <div
-                key={item.id}
-                className="rounded-[8px] border-2 border-foreground bg-surface p-5 shadow-[4px_4px_0px_#141414] flex flex-col justify-between"
-              >
-                <div className="space-y-3">
-                  <div className="flex gap-0.5">
-                    {[...Array(item.rating)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-accent text-accent" />
-                    ))}
-                  </div>
-                  <p className="text-xs leading-relaxed text-neutral-600 font-mono italic">
-                    &ldquo;{item.content}&rdquo;
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-between border-t border-foreground/10 pt-4 mt-4 font-mono">
-                  <div>
-                    <h4 className="text-xs font-extrabold text-foreground">{item.name}</h4>
-                    <p className="text-[10px] text-neutral-400">{item.role}, {item.company}</p>
-                  </div>
-                  <span className="rounded-[4px] border border-foreground/20 bg-background px-2.5 py-0.5 text-[9px] font-bold text-neutral-500 uppercase">
-                    PROYEK: {item.project}
-                  </span>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </ScrollReveal>
