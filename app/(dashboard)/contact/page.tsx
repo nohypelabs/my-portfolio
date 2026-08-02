@@ -29,11 +29,11 @@ function WhatsAppIcon({ className }: { className?: string }) {
   );
 }
 
-const colorMap: Record<string, { icon: string; hover: string; bg: string }> = {
-  green: { icon: 'text-green-600', hover: 'hover:border-foreground/40', bg: 'bg-surface' },
-  emerald: { icon: 'text-accent', hover: 'hover:border-foreground/40', bg: 'bg-surface' },
-  blue: { icon: 'text-blue-600', hover: 'hover:border-foreground/40', bg: 'bg-accent-bg' },
-  zinc: { icon: 'text-neutral-700', hover: 'hover:border-foreground/40', bg: 'bg-surface' },
+const colorMap: Record<string, { icon: string; hover: string }> = {
+  green: { icon: 'text-green-600', hover: 'hover:border-green-500/40' },
+  emerald: { icon: 'text-accent', hover: 'hover:border-accent/40' },
+  blue: { icon: 'text-blue-600', hover: 'hover:border-blue-500/40' },
+  zinc: { icon: 'text-neutral-600 dark:text-neutral-300', hover: 'hover:border-foreground/30' },
 };
 
 export default function ContactPage() {
@@ -99,17 +99,17 @@ export default function ContactPage() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-[8px] neo-surface p-6 md:p-8"
+        className="rounded-3xl glass p-6 md:p-10"
       >
-        <div className="max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-surface px-3 py-1 text-xs font-semibold text-accent-dark">
-            <Rocket className="h-3.5 w-3.5" />
+        <div className="max-w-3xl space-y-5">
+          <span className="chip">
+            <Rocket className="h-3.5 w-3.5 text-accent" />
             Konsultasi Proyek
-          </div>
-          <h1 className="text-3xl font-extrabold tracking-tight text-foreground md:text-4xl">
+          </span>
+          <h1 className="text-3xl font-light tracking-tight text-foreground md:text-5xl">
             Diskusikan proyek sistem Anda sebelum makin rumit.
           </h1>
-          <p className="text-sm leading-relaxed text-neutral-600 md:text-base">
+          <p className="text-sm leading-relaxed text-muted md:text-base">
             Jika bisnis Anda membutuhkan landing page konversi, dashboard admin untuk operasional internal, atau sistem database kustom yang berjalan stabil di lapangan, mulailah dari sini. Fokus utama diskusi pertama kami adalah mencari kejelasan scope dan timeline pengerjaan yang realistis.
           </p>
         </div>
@@ -122,25 +122,25 @@ export default function ContactPage() {
         transition={{ delay: 0.08 }}
         className="grid grid-cols-1 gap-3 md:grid-cols-3 font-mono text-[11px]"
       >
-        <div className="flex items-center gap-3 rounded-[8px] neo-surface px-4 py-3 bg-surface">
+        <div className="flex items-center gap-3 rounded-2xl border border-foreground/10 bg-foreground/[0.03] px-4 py-3.5">
           <Clock className="h-4 w-4 text-accent" strokeWidth={2.2} />
           <div>
-            <p className="font-bold text-foreground">Waktu Respons</p>
-            <p className="text-neutral-500">Merespons dalam waktu 24 jam</p>
+            <p className="font-semibold text-foreground">Waktu Respons</p>
+            <p className="text-muted">Merespons dalam waktu 24 jam</p>
           </div>
         </div>
-        <div className="flex items-center gap-3 rounded-[8px] neo-surface px-4 py-3 bg-surface">
+        <div className="flex items-center gap-3 rounded-2xl border border-foreground/10 bg-foreground/[0.03] px-4 py-3.5">
           <ShieldCheck className="h-4 w-4 text-accent" strokeWidth={2.2} />
           <div>
-            <p className="font-bold text-foreground">Cara Mulai</p>
-            <p className="text-neutral-500">Kirim brief detail di bawah</p>
+            <p className="font-semibold text-foreground">Cara Mulai</p>
+            <p className="text-muted">Kirim brief detail di bawah</p>
           </div>
         </div>
-        <div className="flex items-center gap-3 rounded-[8px] neo-surface px-4 py-3 bg-surface">
+        <div className="flex items-center gap-3 rounded-2xl border border-foreground/10 bg-foreground/[0.03] px-4 py-3.5">
           <Building2 className="h-4 w-4 text-accent" strokeWidth={2.2} />
           <div>
-            <p className="font-bold text-foreground">Domisili Kerja</p>
-            <p className="text-neutral-500">Bandung, remote seluruh Indonesia</p>
+            <p className="font-semibold text-foreground">Domisili Kerja</p>
+            <p className="text-muted">Bandung, remote seluruh Indonesia</p>
           </div>
         </div>
       </motion.div>
@@ -151,13 +151,13 @@ export default function ContactPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.12 }}
-          className="space-y-4 rounded-[8px] neo-surface p-6 bg-surface"
+          className="rounded-3xl glass p-6 md:p-8"
         >
           <div>
-            <h2 className="text-lg font-bold text-foreground">
+            <h2 className="text-lg font-light text-foreground">
               Kirim Brief Proyek Singkat
             </h2>
-            <p className="mt-1 text-xs text-neutral-500 font-mono">
+            <p className="mt-1 text-xs text-muted font-mono">
               Silakan lengkapi formulir di bawah ini untuk membantu kami memahami tantangan operasional bisnis Anda.
             </p>
           </div>
@@ -188,11 +188,11 @@ export default function ContactPage() {
 
               window.open(`mailto:${personalInfo.contact.email}?subject=${subject}&body=${body}`);
             }}
-            className="space-y-4 font-mono text-[12px]"
+            className="mt-6 space-y-4 font-mono text-[12px]"
           >
             <div className="grid gap-3 sm:grid-cols-2">
               <div>
-                <label className="mb-1 block font-bold text-neutral-700">
+                <label className="mb-1.5 block font-semibold text-foreground/80">
                   Nama Anda
                 </label>
                 <input
@@ -200,11 +200,11 @@ export default function ContactPage() {
                   name="name"
                   required
                   placeholder="Nama lengkap"
-                  className="w-full rounded-[4px] border-2 border-foreground bg-background px-3 py-2 text-sm text-foreground placeholder:text-neutral-400 focus:outline-none focus:shadow-[2px_2px_0px_#141414]"
+                  className="w-full rounded-xl border border-foreground/15 bg-white/60 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 dark:bg-white/[0.04]"
                 />
               </div>
               <div>
-                <label className="mb-1 block font-bold text-neutral-700">
+                <label className="mb-1.5 block font-semibold text-foreground/80">
                   Bisnis / Perusahaan
                 </label>
                 <input
@@ -212,14 +212,14 @@ export default function ContactPage() {
                   name="company"
                   required
                   placeholder="Nama perusahaan"
-                  className="w-full rounded-[4px] border-2 border-foreground bg-background px-3 py-2 text-sm text-foreground placeholder:text-neutral-400 focus:outline-none focus:shadow-[2px_2px_0px_#141414]"
+                  className="w-full rounded-xl border border-foreground/15 bg-white/60 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 dark:bg-white/[0.04]"
                 />
               </div>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
               <div>
-                <label className="mb-1 block font-bold text-neutral-700">
+                <label className="mb-1.5 block font-semibold text-foreground/80">
                   Tipe Proyek
                 </label>
                 <input
@@ -227,24 +227,24 @@ export default function ContactPage() {
                   name="projectType"
                   required
                   placeholder="Contoh: Landing Page, Dashboard Admin, App Android"
-                  className="w-full rounded-[4px] border-2 border-foreground bg-background px-3 py-2 text-sm text-foreground placeholder:text-neutral-400 focus:outline-none focus:shadow-[2px_2px_0px_#141414]"
+                  className="w-full rounded-xl border border-foreground/15 bg-white/60 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 dark:bg-white/[0.04]"
                 />
               </div>
               <div>
-                <label className="mb-1 block font-bold text-neutral-700">
+                <label className="mb-1.5 block font-semibold text-foreground/80">
                   Estimasi Budget (Rp)
                 </label>
                 <input
                   type="text"
                   name="budget"
                   placeholder="Opsional"
-                  className="w-full rounded-[4px] border-2 border-foreground bg-background px-3 py-2 text-sm text-foreground placeholder:text-neutral-400 focus:outline-none focus:shadow-[2px_2px_0px_#141414]"
+                  className="w-full rounded-xl border border-foreground/15 bg-white/60 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 dark:bg-white/[0.04]"
                 />
               </div>
             </div>
 
             <div>
-              <label className="mb-1 block font-bold text-neutral-700">
+              <label className="mb-1.5 block font-semibold text-foreground/80">
                 Apa tantangan operasional atau kebutuhan sistem yang ingin dibenahi?
               </label>
               <textarea
@@ -252,13 +252,13 @@ export default function ContactPage() {
                 required
                 rows={6}
                 placeholder="Tulis masalah saat ini di lapangan, alur manual yang ingin diotomasi, dan sistem apa saja yang sudah berjalan saat ini."
-                className="w-full resize-none rounded-[4px] border-2 border-foreground bg-background px-3 py-2 text-sm text-foreground placeholder:text-neutral-400 focus:outline-none focus:shadow-[2px_2px_0px_#141414]"
+                className="w-full resize-none rounded-xl border border-foreground/15 bg-white/60 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 dark:bg-white/[0.04]"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full inline-flex items-center justify-center gap-2 rounded-[4px] border-2 border-foreground bg-foreground text-background py-3 text-xs font-extrabold shadow-[3px_3px_0px_var(--color-accent)] hover:-translate-y-0.5 transition-all"
+              className="w-full btn-primary py-3 text-xs font-mono"
             >
               <Mail className="h-4 w-4" />
               Kirim Brief via Email
@@ -284,7 +284,7 @@ export default function ContactPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.22 + index * 0.06 }}
-                  className={`group rounded-[8px] neo-surface p-4 transition-all bg-surface hover:shadow-lg ${colors.hover}`}
+                  className={`group rounded-2xl glass p-4 transition-all hover:-translate-y-0.5 ${colors.hover}`}
                 >
                   <div className="flex items-center justify-between">
                     <a
@@ -293,7 +293,7 @@ export default function ContactPage() {
                       rel="noopener noreferrer"
                       className="flex min-w-0 flex-1 items-center gap-4"
                     >
-                      <div className="flex h-9 w-9 items-center justify-center rounded-[4px] border-2 border-foreground bg-surface shadow-[1.5px_1.5px_0px_#141414]">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent/10 border border-accent/20">
                         {link.customIcon ? (
                           <link.customIcon className={`h-4 w-4 ${colors.icon}`} />
                         ) : (
@@ -301,22 +301,22 @@ export default function ContactPage() {
                         )}
                       </div>
                       <div className="min-w-0 flex-1 font-mono">
-                        <h3 className="text-xs font-bold text-foreground">{link.name}</h3>
-                        <p className="truncate text-[10px] text-neutral-400">{link.handle}</p>
+                        <h3 className="text-xs font-semibold text-foreground">{link.name}</h3>
+                        <p className="truncate text-[10px] text-muted">{link.handle}</p>
                       </div>
-                      <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-neutral-500 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" strokeWidth={2.5} />
+                      <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" strokeWidth={2.5} />
                     </a>
 
                     {link.copyable && (
                       <button
                         onClick={copyEmail}
-                        className="flex h-7.5 w-7.5 items-center justify-center rounded-[4px] border-2 border-foreground bg-surface shadow-[1px_1px_0px_#141414] hover:bg-accent-bg"
+                        className="ml-2 flex h-8 w-8 items-center justify-center rounded-xl border border-foreground/15 bg-white/60 transition-colors hover:bg-accent-bg dark:bg-white/[0.04]"
                         title="Copy email"
                       >
                         {copied ? (
                           <Check className="h-3.5 w-3.5 text-accent" strokeWidth={2.5} />
                         ) : (
-                          <Copy className="h-3.5 w-3.5 text-neutral-500" strokeWidth={2.2} />
+                          <Copy className="h-3.5 w-3.5 text-muted" strokeWidth={2.2} />
                         )}
                       </button>
                     )}
@@ -330,16 +330,16 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.28 }}
-            className="rounded-[8px] neo-surface p-5 bg-surface"
+            className="rounded-3xl glass p-6"
           >
             <div className="mb-3 flex items-center gap-2">
               <Zap className="h-4 w-4 text-accent" strokeWidth={2.2} />
-              <h2 className="text-sm font-bold text-foreground">Sangat Cocok Untuk:</h2>
+              <h2 className="text-sm font-semibold text-foreground">Sangat Cocok Untuk:</h2>
             </div>
-            <ul className="space-y-3 text-xs text-neutral-600 font-mono">
+            <ul className="space-y-3 text-xs text-muted font-mono">
               {goodFit.map((item) => (
                 <li key={item} className="flex items-start gap-2">
-                  <span className="text-accent font-extrabold">•</span>
+                  <span className="text-accent font-bold mt-0.5">•</span>
                   <span>{item}</span>
                 </li>
               ))}

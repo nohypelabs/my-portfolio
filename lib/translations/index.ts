@@ -32,6 +32,14 @@ const idTranslations = {
   cvGeneralIT: "IT Umum",
   cvDownloadPDF: "Unduh Profil Deck",
   cvProduction: "produksi aktif",
+
+  // Energy Saver Panel
+  energyUsage: "Energy",
+  energyLow: "Low",
+  energyMed: "Med",
+  energyHigh: "High",
+  playerDarkMode: "Dark mode untuk menghemat baterai",
+  playerReduceMotion: "Hemat CPU/GPU — matikan animasi",
 };
 
 export const translations = {

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { Inter, JetBrains_Mono, Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { LanguageProvider } from "@/lib/context/LanguageContext";
+import { EnergySaverProvider } from "@/contexts/EnergySaverContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,10 +15,10 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const outfit = Outfit({
+  variable: "--font-outfit",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -103,12 +104,12 @@ export default function RootLayout({
   return (
     <html lang="id" suppressHydrationWarning data-scroll-behavior="smooth">
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} antialiased`}
+        className={`${inter.variable} ${jetbrainsMono.variable} ${outfit.variable} antialiased`}
       >
         <ThemeProvider>
-          <LanguageProvider>
-            {children}
-          </LanguageProvider>
+          <EnergySaverProvider>
+            <LanguageProvider>{children}</LanguageProvider>
+          </EnergySaverProvider>
         </ThemeProvider>
       </body>
     </html>

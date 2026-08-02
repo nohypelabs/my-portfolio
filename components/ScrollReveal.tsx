@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useEnergySaver } from "@/contexts/EnergySaverContext";
 
 interface ScrollRevealProps {
   children: React.ReactNode;
@@ -16,8 +17,13 @@ export function ScrollReveal({
   delay = 0,
   direction = "up",
 }: ScrollRevealProps) {
+  const { reduceMotion } = useEnergySaver();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
+
+  if (reduceMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   const variants = {
     up: { y: 40, x: 0, scale: 1 },

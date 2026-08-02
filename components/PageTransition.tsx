@@ -2,9 +2,15 @@
 
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { useEnergySaver } from "@/contexts/EnergySaverContext";
 
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const { reduceMotion } = useEnergySaver();
+
+  if (reduceMotion) {
+    return <>{children}</>;
+  }
 
   return (
     <motion.div
