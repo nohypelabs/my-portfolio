@@ -15,13 +15,12 @@ This file tracks the current direction of the nasaq.id surface. It is no longer 
 - Founder trust page in `app/(dashboard)/about/page.tsx`
 - Consultation page in `app/(dashboard)/contact/page.tsx`
 - Live proof page in `app/(dashboard)/live/page.tsx`
-- Studio Deck in `app/(dashboard)/cv/page.tsx`
-- Pricing, process, services, testimonials, faq, and order routes as supporting decision pages
+- Studio Deck served via `app/api/cv/pdf` (rendered by `components/CVPDFDocument.tsx`)
+- `/services` covers service tracks, process, pricing packages, and FAQ in one static page
 
 ## Active Shell
 
 - `app/(dashboard)/layout.tsx`
-- `components/layout/Sidebar.tsx`
 - `components/layout/Header.tsx`
 - `components/layout/MobileSidebarWrapper.tsx`
 - `components/PageTransition.tsx`

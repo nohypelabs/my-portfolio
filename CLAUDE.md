@@ -27,36 +27,41 @@ pnpm test:watch
 - `@react-pdf/renderer` for the founder profile PDF
 - `postgres` for live metrics data access
 
+No Supabase CMS dependencies remain: the site is fully static/hardcoded except `app/api/live-metrics` (production DB counts via REST/`postgres`).
+
 ## Active Architecture
 
 ### Routing
 
-The main site lives under `app/(dashboard)/`. Important business-facing routes include:
+The main site lives under `app/(dashboard)/`. Current business-facing routes:
 
-- `/` for the homepage funnel
+- `/` for the homepage funnel: hero → mitra strip → projects grid → pricing → 2 testimonial quotes → CTA
+- `/services` for the full service tracks, process, pricing packages, and FAQ (single page, static data)
+- `/projects` and `/projects/[id]` for proof and case studies
 - `/about` for the founder story and trust surface
-- `/services`, `/process`, `/pricing`, `/testimonials`, `/faq`
-- `/contact` and `/order` for consultation and brief flow
+- `/contact` for consultation / brief flow
 - `/live` for production-proof metrics
-- `/cv` for the Studio Deck / founder profile
-- `/projects`, `/ongoing`, and `/blog` for supporting proof content
+
+The old `/pricing`, `/process`, `/testimonials`, `/faq`, `/cv`, `/ongoing`, `/blog`, and `/order` routes do not exist anymore; their content lives in `/services` or the homepage. Do not reintroduce them.
 
 ### Shell
 
 `app/(dashboard)/layout.tsx` uses the current top navigation shell:
 
-- `components/layout/Header.tsx` — brutalist top nav: logo sticker, primary links, "Lainnya" dropdown, CTA
+- `components/layout/Header.tsx` — brutalist top nav: logo sticker, primary links, CTA
 - `components/layout/MobileSidebar.tsx` (+ `MobileSidebarWrapper.tsx`) — mobile slide-over menu
 - `contexts/SidebarContext.tsx` — mobile drawer open state only
 - `components/PageTransition.tsx`
 
-The admin-panel sidebar shell was intentionally removed (product decision). Do not reintroduce it.
+The admin-panel sidebar shell and the Supabase CMS admin (`/admin/*`, `/auth/*`) were intentionally removed (product decision). Content is hardcoded in `lib/data/`. Do not reintroduce them.
 
 ### Data and Content
 
 Shared copy and structured content live in `lib/data/` and `lib/translations/index.ts`.
 
 - `lib/data/personalInfo.ts` now represents founder/studio positioning, not a recruiter-facing bio
+- `lib/data/services.ts` is the single source for service tracks, pricing packages, process steps, and FAQs (used by `/services`)
+- `lib/data/studioStats.ts` is the single source for proof stats (hero + about)
 - `lib/data/testimonials.ts`, `projects.ts`, `ongoingProjects.ts`, and `cvData.ts` support trust and proof surfaces
 - When adding UI copy, update both `en` and `id` entries in `lib/translations/index.ts`
 

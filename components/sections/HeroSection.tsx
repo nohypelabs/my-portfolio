@@ -7,6 +7,7 @@ import { MagneticButton } from '@/components/MagneticButton';
 import { FloatingParticles } from '@/components/FloatingParticles';
 import { CursorSpotlight } from '@/components/CursorSpotlight';
 import { ProjectMosaic } from '@/components/ProjectMosaic';
+import { studioStats } from '@/lib/data/studioStats';
 
 const stagger = {
   hidden: { opacity: 0 },
@@ -31,13 +32,6 @@ const serviceFits = [
   'Dashboard internal, admin panel, dan workflow operasional',
   'Sistem custom untuk QC, POS, tracking, dan form lapangan',
   'Android companion untuk tim yang butuh akses mobile',
-];
-
-const proofItems = [
-  { value: '7+', label: 'sistem production shipped' },
-  { value: '340K+', label: 'records dan aktivitas terproses' },
-  { value: '3', label: 'sektor utama: logistik, retail, operasional' },
-  { value: '≤24 jam', label: 'respon awal untuk breakdown kebutuhan' },
 ];
 
 export function HeroSection() {
@@ -116,7 +110,7 @@ export function HeroSection() {
             </motion.div>
           </div>
 
-          <motion.div variants={fadeUp} className="flex flex-col gap-4">
+          <motion.div variants={fadeUp}>
             <div className="rounded-[8px] neo-surface p-6">
               <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.24em] text-neutral-500">
                 Yang Paling Sering Dikerjakan
@@ -132,24 +126,24 @@ export function HeroSection() {
                 ))}
               </div>
             </div>
-
-            <div className="grid grid-cols-2 gap-3">
-              {proofItems.map((item) => (
-                <div
-                  key={item.label}
-                  className="rounded-[8px] neo-surface p-4"
-                >
-                  <p className="text-xl font-extrabold text-foreground md:text-2xl">
-                    {item.value}
-                  </p>
-                  <p className="mt-1 text-[11px] leading-relaxed text-neutral-500">
-                    {item.label}
-                  </p>
-                </div>
-              ))}
-            </div>
           </motion.div>
         </div>
+
+        <motion.div
+          variants={fadeUp}
+          className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 border-t-2 border-foreground pt-6 lg:grid-cols-4"
+        >
+          {studioStats.map((item) => (
+            <div key={item.label}>
+              <p className="text-2xl font-extrabold text-foreground md:text-3xl">
+                {item.value}
+              </p>
+              <p className="mt-1 text-[11px] leading-relaxed text-neutral-500">
+                {item.label}
+              </p>
+            </div>
+          ))}
+        </motion.div>
       </CursorSpotlight>
     </motion.section>
   );

@@ -6,16 +6,12 @@ import { ScrollReveal } from '@/components/ScrollReveal';
 import {
   ArrowRight,
   Building2,
-  Code,
   FileText,
-  Globe,
   GraduationCap,
-  Sparkles,
-  Target,
   Wrench,
-  Zap,
 } from 'lucide-react';
 import Link from 'next/link';
+import { studioStats } from '@/lib/data/studioStats';
 
 const fadeUp = {
   initial: { opacity: 0, y: 20 },
@@ -24,43 +20,6 @@ const fadeUp = {
 };
 
 export default function AboutPage() {
-  const stats = [
-    {
-      value: '7+',
-      label: 'sistem skala produksi rilis',
-    },
-    {
-      value: '340rb+',
-      label: 'resi logistik terproses otomatis',
-    },
-    {
-      value: 'Langsung',
-      label: 'komunikasi langsung tanpa perantara',
-    },
-    {
-      value: 'Bandung',
-      label: 'remote delivery seluruh Indonesia',
-    },
-  ];
-
-  const studioTracks = [
-    {
-      icon: Globe,
-      title: 'Company Profile Kredibel',
-      desc: 'Brosur digital interaktif dan landing page konversi yang membuat bisnis Anda terlihat kokoh, serius, dan siap closing.',
-    },
-    {
-      icon: Building2,
-      title: 'Sistem Operasional Lapangan',
-      desc: 'Dashboard internal, sinkronisasi stok multi-outlet, pencatatan otomatis, serta pelacakan kurir GPS real-time.',
-    },
-    {
-      icon: Code,
-      title: 'Backend & Integrasi API kustom',
-      desc: 'Sentralisasi database PostgreSQL, API kustom, integrasi payment gateway, dan otomasi alur data bebas spreadsheet manual.',
-    },
-  ];
-
   const techSkills = [
     { category: 'Frontend', items: 'Next.js, React, TypeScript, TailwindCSS, Framer Motion' },
     { category: 'Backend & API', items: 'Node.js, Express, tRPC, Python, REST API' },
@@ -103,7 +62,7 @@ export default function AboutPage() {
       {/* 2. STATS */}
       <ScrollReveal>
         <div className="grid gap-4 grid-cols-2 md:grid-cols-4">
-          {stats.map((item) => (
+          {studioStats.map((item) => (
             <div key={item.label} className="rounded-[8px] neo-surface bg-surface p-4 text-center">
               <div className="text-2xl font-extrabold text-accent font-mono">{item.value}</div>
               <p className="mt-2 text-[10px] leading-relaxed font-bold font-mono text-neutral-500 uppercase">{item.label}</p>
@@ -112,30 +71,7 @@ export default function AboutPage() {
         </div>
       </ScrollReveal>
 
-      {/* 3. MASALAH YANG KAMI SELESAIKAN */}
-      <ScrollReveal>
-        <div className="space-y-4 rounded-[8px] neo-surface p-6 bg-surface">
-          <h2 className="flex items-center gap-2 text-lg font-bold text-foreground">
-            <Target className="h-4.5 w-4.5 text-accent" strokeWidth={2.2} />
-            Kebutuhan yang Paling Sering Kami Selesaikan
-          </h2>
-
-          <div className="grid gap-4 md:grid-cols-3">
-            {studioTracks.map((item) => (
-              <div
-                key={item.title}
-                className="rounded-[6px] border border-foreground/20 p-4 bg-background"
-              >
-                <item.icon className="mb-3 h-5 w-5 text-accent" strokeWidth={2.2} />
-                <h3 className="mb-1.5 text-xs font-bold text-foreground font-mono">{item.title}</h3>
-                <p className="text-[11px] leading-relaxed text-neutral-500 font-mono">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </ScrollReveal>
-
-      {/* 4. KEAHLIAN TEKNIS */}
+      {/* 3. KEAHLIAN TEKNIS */}
       <ScrollReveal>
         <div className="space-y-4 rounded-[8px] neo-surface p-6 bg-surface">
           <h2 className="flex items-center gap-2 text-lg font-bold text-foreground">
@@ -154,7 +90,7 @@ export default function AboutPage() {
         </div>
       </ScrollReveal>
 
-      {/* 5. PENDIDIKAN & LATAR BELAKANG */}
+      {/* 4. PENDIDIKAN & LATAR BELAKANG */}
       <ScrollReveal>
         <div className="space-y-4 rounded-[8px] neo-surface p-6 bg-surface">
           <h2 className="flex items-center gap-2 text-lg font-bold text-foreground">
@@ -178,7 +114,7 @@ export default function AboutPage() {
         </div>
       </ScrollReveal>
 
-      {/* FOOTER CTA & DOWNLOAD DECK */}
+      {/* 5. FOOTER CTA & DOWNLOAD DECK */}
       <ScrollReveal>
         <div className="rounded-[8px] neo-surface p-6 md:p-8 bg-surface">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">

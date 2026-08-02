@@ -7,15 +7,8 @@ import {
   User,
   Mail,
   Radio,
-  BookOpen,
   X,
   Briefcase,
-  Route,
-  DollarSign,
-  MessageSquare,
-  HelpCircle,
-  Shield,
-  Building2,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { clsx } from '@/lib/utils';
@@ -32,7 +25,6 @@ const navItems = [
   { id: 'live', label: 'Live Proof', icon: Radio, path: '/live' },
   { id: 'about', label: 'Tentang Founder', icon: User, path: '/about' },
   { id: 'contact', label: 'Hubungi Kami', icon: Mail, path: '/contact' },
-  { id: 'admin', label: 'Admin', icon: Shield, path: '/admin/dashboard' },
 ];
 
 const backdropVariants = {

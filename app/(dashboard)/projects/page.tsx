@@ -71,10 +71,17 @@ function getProjectAngle(project: Project) {
   };
 }
 
+interface LiveMetricsData {
+  seratQc: { entries: number };
+  wcCheck: { inspections: number };
+  lakuPos: { transactions: number };
+  ecommerce: { orders: number };
+}
+
 export default function ProjectsPage() {
   const featuredProject = getFeaturedProject();
 
-  const [liveMetrics, setLiveMetrics] = useState<any>(null);
+  const [liveMetrics, setLiveMetrics] = useState<LiveMetricsData | null>(null);
 
   useEffect(() => {
     fetch('/api/live-metrics')

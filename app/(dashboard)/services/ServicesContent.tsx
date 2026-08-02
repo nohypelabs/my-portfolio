@@ -17,7 +17,6 @@ import {
   CheckCircle,
   Headphones,
   ChevronDown,
-  Sparkles,
   Coins,
   FileText,
   ShieldCheck,
@@ -29,7 +28,7 @@ import Link from 'next/link';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { staggerContainer, fadeInUp } from '@/lib/animations';
 import { useState } from 'react';
-import type { Service, PricingPackage, ProcessStep, FAQ } from '@/lib/supabase/types';
+import type { Service, PricingPackage, ProcessStep, FAQ } from '@/lib/data/services';
 import { clsx } from '@/lib/utils';
 
 const iconMap: Record<string, LucideIcon> = {
@@ -81,6 +80,15 @@ function formatPrice(min: number, max: number): string {
 function getServiceLens(service: Service) {
   const key = service.slug.toLowerCase();
 
+  if (key.includes('android') || key.includes('mobile')) {
+    return {
+      badge: 'Operasional Lapangan',
+      fit: 'Paling cocok saat tim lapangan butuh alat catat cepat, atau customer Anda butuh akses on-the-go tanpa buka laptop.',
+      outcome: 'Target: Menghilangkan pencatatan kertas di lapangan dan mempercepat input data.',
+      summary: 'Aplikasi Android native/hybrid yang ringan, mendukung mode offline (gudang/tambang), serta dilengkapi GPS watermark.',
+    };
+  }
+
   if (key.includes('web') || key.includes('website')) {
     return {
       badge: 'Surface Publik',
@@ -90,16 +98,7 @@ function getServiceLens(service: Service) {
     };
   }
 
-  if (key.includes('mobile')) {
-    return {
-      badge: 'Operasional Lapangan',
-      fit: 'Paling cocok saat tim lapangan butuh alat catat cepat, atau customer Anda butuh akses on-the-go tanpa buka laptop.',
-      outcome: 'Target: Menghilangkan pencatatan kertas di lapangan dan mempercepat input data.',
-      summary: 'Aplikasi Android native/hybrid yang ringan, mendukung mode offline (gudang/tambang), serta dilengkapi GPS watermark.',
-    };
-  }
-
-  if (key.includes('api') || key.includes('backend')) {
+  if (key.includes('dashboard') || key.includes('operasional') || key.includes('api') || key.includes('backend')) {
     return {
       badge: 'Backbone Sistem',
       fit: 'Paling cocok saat bisnis Anda mulai kewalahan dengan sheet manual, integrasi yang sering terputus, atau data tersebar.',
