@@ -1,9 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { projects } from '@/lib/data/projects';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { MaskReveal } from '@/components/motion/MaskReveal';
 import type { Project } from '@/lib/domain/entities/Project';
 import {
   ArrowRight,
@@ -17,12 +17,6 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-
-const fadeUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 },
-};
 
 const productionProjects = projects.filter((project) => project.status === 'production');
 
@@ -82,7 +76,7 @@ export default function ProjectsPage() {
   useEffect(() => {
     fetch('/api/live-metrics')
       .then((r) => r.json())
-      .then((data) => setLiveMetrics(data))
+      .then((data) => setLiveMetrics(data.metrics))
       .catch(() => {});
   }, []);
 
@@ -154,40 +148,42 @@ export default function ProjectsPage() {
   return (
     <div className="mx-auto max-w-5xl space-y-12 pb-12">
       {/* 1. HERO PORTFOLIO */}
-      <motion.div {...fadeUp} className="rounded-3xl glass p-6 md:p-10">
+      <ScrollReveal>
+        <div className="rounded-3xl bg-[var(--bg-element)] soft-border p-6 md:p-10">
         <div className="max-w-3xl space-y-5">
           <span className="chip">
-            <FolderKanban className="h-3.5 w-3.5 text-accent" />
+            <FolderKanban className="h-3.5 w-3.5 text-foreground/60" />
             Showcase Portofolio
           </span>
           <h1 className="text-3xl font-light tracking-tight text-foreground md:text-5xl">
             Sistem kustom yang benar-benar rilis dan dipakai kerja.
           </h1>
-          <p className="text-sm leading-relaxed text-muted md:text-base">
+          <p className="text-sm leading-relaxed text-foreground/70 md:text-base">
             Halaman ini bukan sekadar galeri tangkapan layar. Di sini kami merangkum tantangan awal di lapangan, solusi arsitektur yang kami bangun, serta metrik perbaikan nyata setelah rilis.
           </p>
         </div>
 
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+        <div className="card-rotate mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
           {stats.map((stat) => (
-            <div key={stat.label} className="glass-soft rounded-2xl p-4 border border-foreground/10">
-              <div className="text-2xl font-light tracking-tight text-foreground font-mono bg-gradient-to-br from-accent to-splash bg-clip-text text-transparent">
+            <div key={stat.label} className="rounded-2xl soft-border p-4">
+              <div className="text-2xl font-light tracking-tight text-foreground font-mono">
                 {stat.value}
               </div>
-              <p className="mt-2 text-xs leading-relaxed text-muted">{stat.label}</p>
+              <p className="mt-2 text-xs leading-relaxed text-foreground/70">{stat.label}</p>
             </div>
           ))}
         </div>
-      </motion.div>
+        </div>
+      </ScrollReveal>
 
       {/* Lenses */}
       <ScrollReveal>
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="card-rotate grid gap-4 md:grid-cols-3">
           {reviewLenses.map((lens) => (
-            <div key={lens.title} className="glass rounded-2xl p-5 hover:-translate-y-1 transition-transform">
-              <lens.icon className="h-4.5 w-4.5 text-accent" strokeWidth={2.2} />
+            <div key={lens.title} className="neo-surface rounded-2xl p-5 hover:-translate-y-1 transition-transform">
+              <lens.icon className="h-4.5 w-4.5 text-foreground" strokeWidth={2.2} />
               <h2 className="mt-3 text-sm font-semibold text-foreground">{lens.title}</h2>
-              <p className="mt-1 text-xs leading-relaxed text-muted">{lens.desc}</p>
+              <p className="mt-1 text-xs leading-relaxed text-foreground/70">{lens.desc}</p>
             </div>
           ))}
         </div>
@@ -196,24 +192,24 @@ export default function ProjectsPage() {
       {/* 2. CASE STUDY UTAMA (FEATURED PROOF) */}
       {featuredProject && (
         <ScrollReveal>
-          <div className="rounded-3xl glass p-6 md:p-10">
+          <div className="rounded-3xl bg-[var(--bg-element)] soft-border p-6 md:p-10">
             <div className="mb-6 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
               <div className="max-w-2xl">
                 <div className="chip">
-                  <Sparkles className="h-3 w-3 text-accent" />
+                  <Sparkles className="h-3 w-3 text-foreground/60" />
                   Studi Kasus Utama
                 </div>
                 <h2 className="mt-3 text-2xl font-light text-foreground md:text-3xl">
                   Rekomendasi studi kasus pilihan
                 </h2>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
+                <p className="mt-2 text-sm leading-relaxed text-foreground/70">
                   Pelajari bagaimana kami mengidentifikasi masalah penimbangan manual di logistik J&T Express, mendesain verifikasi GPS otomatis, dan mempercepat alur kerja hingga 8x lipat.
                 </p>
               </div>
 
               <Link
                 href={`/projects/${featuredProject.id}`}
-                className="inline-flex items-center gap-2 text-sm font-semibold text-accent transition-colors hover:underline"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-foreground underline decoration-1 underline-offset-4 transition-opacity hover:opacity-70"
               >
                 Baca Studi Kasus Lengkap
                 <ArrowRight className="h-4 w-4" />
@@ -221,7 +217,7 @@ export default function ProjectsPage() {
             </div>
 
             <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-              <div className="overflow-hidden rounded-2xl border border-foreground/10">
+              <div className="overflow-hidden rounded-2xl soft-border">
                 <Image
                   src={featuredProject.image}
                   alt={featuredProject.title}
@@ -246,12 +242,12 @@ export default function ProjectsPage() {
                     )}
                   </div>
                   <h3 className="mt-4 text-2xl font-semibold text-foreground">{featuredProject.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted font-mono">
+                  <p className="mt-2 text-sm leading-relaxed text-foreground/70 font-mono">
                     {getProjectAngle(featuredProject).summary}
                   </p>
                 </div>
 
-                <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-4 font-mono text-[12px] leading-relaxed text-muted">
+                <div className="rounded-2xl soft-border bg-[var(--bg-element-second)] p-4 font-mono text-[12px] leading-relaxed text-foreground/80">
                   <p className="font-semibold text-foreground/80 uppercase text-[10px] tracking-wider mb-1">Masalah Lapangan:</p>
                   <p>{featuredProject.caseStudy?.problem ?? featuredProject.shortDescription}</p>
                 </div>
@@ -261,18 +257,20 @@ export default function ProjectsPage() {
                     {featuredProject.caseStudy.metrics.slice(0, 3).map((metric) => (
                       <div
                         key={metric.label}
-                        className="grid gap-3 rounded-2xl border border-foreground/10 bg-white/40 p-4 dark:bg-white/[0.03] md:grid-cols-[0.9fr_1fr_1fr] md:items-center"
+                        className="grid gap-3 rounded-2xl soft-border bg-[var(--bg-element)] p-4 md:grid-cols-[0.9fr_1fr_1fr] md:items-center"
                       >
-                        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted font-mono">
+                        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-foreground/70 font-mono">
                           {metric.label}
                         </p>
-                        <div className="rounded-xl bg-double/15 border border-double/30 px-3 py-2">
+                        <div className="rounded-xl bg-[var(--bg-element-second)] soft-border px-3 py-2">
                           <p className="text-[10px] font-semibold uppercase text-foreground/70 font-mono">
                             Sebelum
                           </p>
                           <p className="mt-1 text-xs font-mono font-semibold text-foreground">{metric.before}</p>
                         </div>
-                        <div className="rounded-xl bg-money/15 border border-money/30 px-3 py-2">
+                        {/* indicator-green is one of only two hues in the palette;
+                            reserved for exactly this "after / improved" signal. */}
+                        <div className="rounded-xl bg-money/20 border border-money/40 px-3 py-2">
                           <p className="text-[10px] font-semibold uppercase text-foreground/70 font-mono">
                             Sesudah
                           </p>
@@ -296,26 +294,29 @@ export default function ProjectsPage() {
             <h2 className="mt-2 text-2xl font-light text-foreground md:text-3xl">
               Selusuri berdasarkan masalah
             </h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted">
+            <p className="mt-2 text-sm leading-relaxed text-foreground/70">
               Berikut adalah daftar sistem berskala produksi yang telah kami deploy. Kami menyertakan detail teknis, alur, dan tautan uji coba jika tersedia.
             </p>
           </div>
 
-          <div className="grid gap-6">
+          {/* row-mirror alternates which side the screenshot sits on */}
+          <div className="row-mirror grid gap-6">
             {productionProjects.map((project, index) => {
               const angle = getProjectAngle(project);
               const metrics = project.caseStudy?.metrics.slice(0, 2) ?? [];
 
               return (
-                <motion.div
+                <MaskReveal
                   key={project.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.08 + index * 0.05, duration: 0.45 }}
-                  className="glass rounded-3xl p-6 hover:-translate-y-1 transition-transform"
+                  split="none"
+                  duration={0.45}
+                  delay={0.08 + index * 0.05}
+                  stagger={0}
+                  start="top 90%"
+                  className="neo-surface rounded-3xl p-6 hover:-translate-y-1 transition-transform"
                 >
-                  <div className="grid gap-6 lg:grid-cols-[320px_1fr]">
-                    <div className="overflow-hidden rounded-2xl border border-foreground/10 h-[220px] lg:h-full relative">
+                  <div className="row-mirror-row grid gap-6 lg:grid-cols-[320px_1fr]">
+                    <div className="row-mirror-media overflow-hidden rounded-2xl soft-border h-[220px] lg:h-full relative">
                       <Image
                         src={project.image}
                         alt={project.title}
@@ -349,16 +350,16 @@ export default function ProjectsPage() {
                           <h3 className="text-xl font-semibold text-foreground">
                             {project.title}
                           </h3>
-                          <p className="mt-1.5 text-xs leading-relaxed text-muted font-mono">{project.shortDescription}</p>
+                          <p className="mt-1.5 text-xs leading-relaxed text-foreground/70 font-mono">{project.shortDescription}</p>
                         </div>
 
                         <div className="grid gap-3 lg:grid-cols-2">
-                          <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-3.5 font-mono text-[11px] leading-relaxed text-muted">
-                            <p className="font-semibold text-foreground/80 uppercase text-[9px] tracking-wider mb-1">Masalah Lapangan:</p>
+                          <div className="rounded-2xl soft-border bg-[var(--bg-element-second)] p-3.5 font-mono text-[11px] leading-relaxed text-foreground/80">
+                            <p className="font-semibold text-foreground uppercase text-[9px] tracking-wider mb-1">Masalah Lapangan:</p>
                             <p>{project.caseStudy?.problem ?? angle.summary}</p>
                           </div>
-                          <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-3.5 font-mono text-[11px] leading-relaxed text-muted">
-                            <p className="font-semibold text-foreground/80 uppercase text-[9px] tracking-wider mb-1">Apa yang Berubah:</p>
+                          <div className="rounded-2xl soft-border bg-[var(--bg-element-second)] p-3.5 font-mono text-[11px] leading-relaxed text-foreground/80">
+                            <p className="font-semibold text-foreground uppercase text-[9px] tracking-wider mb-1">Apa yang Berubah:</p>
                             <p>{project.caseStudy?.solution ?? project.fullDescription}</p>
                           </div>
                         </div>
@@ -366,11 +367,11 @@ export default function ProjectsPage() {
                         {metrics.length > 0 && (
                           <div className="grid gap-2 md:grid-cols-2 pt-1">
                             {metrics.map((metric) => (
-                              <div key={metric.label} className="rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-3.5 font-mono text-[11px]">
+                              <div key={metric.label} className="rounded-2xl soft-border bg-[var(--bg-element-second)] p-3.5 font-mono text-[11px]">
                                 <p className="font-semibold text-foreground/80 text-[10px] uppercase mb-1.5">{metric.label}</p>
                                 <div className="flex items-center gap-2">
                                   <span className="bg-double/15 border border-double/30 px-1.5 py-0.5 text-[9px] font-semibold uppercase rounded-full">Sebelum</span>
-                                  <span className="text-muted">{metric.before}</span>
+                                  <span className="text-foreground/70">{metric.before}</span>
                                 </div>
                                 <div className="mt-1.5 flex items-center gap-2">
                                   <span className="bg-money/15 border border-money/30 px-1.5 py-0.5 text-[9px] font-semibold uppercase rounded-full">Sesudah</span>
@@ -408,16 +409,16 @@ export default function ProjectsPage() {
                           )}
                           <Link
                             href={`/projects/${project.id}`}
-                            className="inline-flex items-center gap-1 text-xs font-semibold text-foreground hover:text-accent transition-colors"
+                            className="inline-flex items-center gap-1 text-xs font-semibold text-foreground underline decoration-1 underline-offset-4 transition-opacity hover:opacity-70"
                           >
                             Buka Detail Kasus
-                            <ArrowUpRight className="h-4 w-4 text-accent" strokeWidth={2.5} />
+                            <ArrowUpRight className="h-4 w-4" strokeWidth={2.5} />
                           </Link>
                         </div>
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </MaskReveal>
               );
             })}
           </div>
@@ -426,13 +427,13 @@ export default function ProjectsPage() {
 
       {/* FOOTER CTA */}
       <ScrollReveal>
-        <div className="rounded-3xl bg-gradient-to-br from-accent/10 to-splash/10 border border-accent/30 p-6 md:p-10">
+        <div className="rounded-3xl bg-[var(--bg-btn-big)] text-[var(--txt-btn-big)] p-6 md:p-10">
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="space-y-2">
-              <h2 className="text-2xl font-light text-foreground md:text-3xl">
+              <h2 className="text-2xl font-light text-current md:text-3xl">
                 Punya Masalah Operasional Lapangan?
               </h2>
-              <p className="text-sm leading-relaxed text-muted">
+              <p className="text-sm leading-relaxed opacity-70">
                 Jangan biarkan tim Anda membuang jam kerja untuk entri manual. Mari diskusikan solusi digital pragmatis untuk mempercepat operasional Anda.
               </p>
             </div>
@@ -440,7 +441,7 @@ export default function ProjectsPage() {
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
               <Link
                 href="/contact"
-                className="btn-primary px-6 py-3 text-sm"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--bg-form-element)] px-6 py-3 text-sm font-semibold text-[#3c3c3c] transition-transform hover:-translate-y-0.5"
               >
                 Mulai Diskusi Sekarang
                 <ArrowRight className="h-4.5 w-4.5" strokeWidth={2.5} />

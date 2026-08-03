@@ -29,11 +29,13 @@ function WhatsAppIcon({ className }: { className?: string }) {
   );
 }
 
+// No brand accent in the palette, so social tiles are differentiated by the
+// icon glyph alone rather than by per-network colour.
 const colorMap: Record<string, { icon: string; hover: string }> = {
-  green: { icon: 'text-green-600', hover: 'hover:border-green-500/40' },
-  emerald: { icon: 'text-accent', hover: 'hover:border-accent/40' },
-  blue: { icon: 'text-blue-600', hover: 'hover:border-blue-500/40' },
-  zinc: { icon: 'text-neutral-600 dark:text-neutral-300', hover: 'hover:border-foreground/30' },
+  green: { icon: 'text-foreground', hover: 'hover:border-foreground/30' },
+  emerald: { icon: 'text-foreground', hover: 'hover:border-foreground/30' },
+  blue: { icon: 'text-foreground', hover: 'hover:border-foreground/30' },
+  zinc: { icon: 'text-foreground/70', hover: 'hover:border-foreground/30' },
 };
 
 export default function ContactPage() {
@@ -103,13 +105,13 @@ export default function ContactPage() {
       >
         <div className="max-w-3xl space-y-5">
           <span className="chip">
-            <Rocket className="h-3.5 w-3.5 text-accent" />
+            <Rocket className="h-3.5 w-3.5 text-foreground" />
             Konsultasi Proyek
           </span>
           <h1 className="text-3xl font-light tracking-tight text-foreground md:text-5xl">
             Diskusikan proyek sistem Anda sebelum makin rumit.
           </h1>
-          <p className="text-sm leading-relaxed text-muted md:text-base">
+          <p className="text-sm leading-relaxed text-foreground/70 md:text-base">
             Jika bisnis Anda membutuhkan landing page konversi, dashboard admin untuk operasional internal, atau sistem database kustom yang berjalan stabil di lapangan, mulailah dari sini. Fokus utama diskusi pertama kami adalah mencari kejelasan scope dan timeline pengerjaan yang realistis.
           </p>
         </div>
@@ -122,25 +124,25 @@ export default function ContactPage() {
         transition={{ delay: 0.08 }}
         className="grid grid-cols-1 gap-3 md:grid-cols-3 font-mono text-[11px]"
       >
-        <div className="flex items-center gap-3 rounded-2xl border border-foreground/10 bg-foreground/[0.03] px-4 py-3.5">
-          <Clock className="h-4 w-4 text-accent" strokeWidth={2.2} />
+        <div className="flex items-center gap-3 rounded-2xl soft-border bg-[var(--bg-element-second)] px-4 py-3.5">
+          <Clock className="h-4 w-4 text-foreground" strokeWidth={2.2} />
           <div>
             <p className="font-semibold text-foreground">Waktu Respons</p>
-            <p className="text-muted">Merespons dalam waktu 24 jam</p>
+            <p className="text-foreground/70">Merespons dalam waktu 24 jam</p>
           </div>
         </div>
-        <div className="flex items-center gap-3 rounded-2xl border border-foreground/10 bg-foreground/[0.03] px-4 py-3.5">
-          <ShieldCheck className="h-4 w-4 text-accent" strokeWidth={2.2} />
+        <div className="flex items-center gap-3 rounded-2xl soft-border bg-[var(--bg-element-second)] px-4 py-3.5">
+          <ShieldCheck className="h-4 w-4 text-foreground" strokeWidth={2.2} />
           <div>
             <p className="font-semibold text-foreground">Cara Mulai</p>
-            <p className="text-muted">Kirim brief detail di bawah</p>
+            <p className="text-foreground/70">Kirim brief detail di bawah</p>
           </div>
         </div>
-        <div className="flex items-center gap-3 rounded-2xl border border-foreground/10 bg-foreground/[0.03] px-4 py-3.5">
-          <Building2 className="h-4 w-4 text-accent" strokeWidth={2.2} />
+        <div className="flex items-center gap-3 rounded-2xl soft-border bg-[var(--bg-element-second)] px-4 py-3.5">
+          <Building2 className="h-4 w-4 text-foreground" strokeWidth={2.2} />
           <div>
             <p className="font-semibold text-foreground">Domisili Kerja</p>
-            <p className="text-muted">Bandung, remote seluruh Indonesia</p>
+            <p className="text-foreground/70">Bandung, remote seluruh Indonesia</p>
           </div>
         </div>
       </motion.div>
@@ -157,7 +159,7 @@ export default function ContactPage() {
             <h2 className="text-lg font-light text-foreground">
               Kirim Brief Proyek Singkat
             </h2>
-            <p className="mt-1 text-xs text-muted font-mono">
+            <p className="mt-1 text-xs text-foreground/70 font-mono">
               Silakan lengkapi formulir di bawah ini untuk membantu kami memahami tantangan operasional bisnis Anda.
             </p>
           </div>
@@ -200,7 +202,7 @@ export default function ContactPage() {
                   name="name"
                   required
                   placeholder="Nama lengkap"
-                  className="w-full rounded-xl border border-foreground/15 bg-white/60 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 dark:bg-white/[0.04]"
+                  className="w-full rounded-xl soft-border px-3.5 py-2.5 text-sm"
                 />
               </div>
               <div>
@@ -212,7 +214,7 @@ export default function ContactPage() {
                   name="company"
                   required
                   placeholder="Nama perusahaan"
-                  className="w-full rounded-xl border border-foreground/15 bg-white/60 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 dark:bg-white/[0.04]"
+                  className="w-full rounded-xl soft-border px-3.5 py-2.5 text-sm"
                 />
               </div>
             </div>
@@ -227,7 +229,7 @@ export default function ContactPage() {
                   name="projectType"
                   required
                   placeholder="Contoh: Landing Page, Dashboard Admin, App Android"
-                  className="w-full rounded-xl border border-foreground/15 bg-white/60 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 dark:bg-white/[0.04]"
+                  className="w-full rounded-xl soft-border px-3.5 py-2.5 text-sm"
                 />
               </div>
               <div>
@@ -238,7 +240,7 @@ export default function ContactPage() {
                   type="text"
                   name="budget"
                   placeholder="Opsional"
-                  className="w-full rounded-xl border border-foreground/15 bg-white/60 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 dark:bg-white/[0.04]"
+                  className="w-full rounded-xl soft-border px-3.5 py-2.5 text-sm"
                 />
               </div>
             </div>
@@ -252,7 +254,7 @@ export default function ContactPage() {
                 required
                 rows={6}
                 placeholder="Tulis masalah saat ini di lapangan, alur manual yang ingin diotomasi, dan sistem apa saja yang sudah berjalan saat ini."
-                className="w-full resize-none rounded-xl border border-foreground/15 bg-white/60 px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 dark:bg-white/[0.04]"
+                className="w-full resize-none rounded-xl soft-border px-3.5 py-2.5 text-sm"
               />
             </div>
 
@@ -284,7 +286,7 @@ export default function ContactPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.22 + index * 0.06 }}
-                  className={`group rounded-2xl glass p-4 transition-all hover:-translate-y-0.5 ${colors.hover}`}
+                  className={`group rounded-2xl neo-surface p-4 transition-all hover:-translate-y-0.5 ${colors.hover}`}
                 >
                   <div className="flex items-center justify-between">
                     <a
@@ -293,7 +295,7 @@ export default function ContactPage() {
                       rel="noopener noreferrer"
                       className="flex min-w-0 flex-1 items-center gap-4"
                     >
-                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-accent/10 border border-accent/20">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[var(--bg-element-second)] soft-border">
                         {link.customIcon ? (
                           <link.customIcon className={`h-4 w-4 ${colors.icon}`} />
                         ) : (
@@ -302,21 +304,21 @@ export default function ContactPage() {
                       </div>
                       <div className="min-w-0 flex-1 font-mono">
                         <h3 className="text-xs font-semibold text-foreground">{link.name}</h3>
-                        <p className="truncate text-[10px] text-muted">{link.handle}</p>
+                        <p className="truncate text-[10px] text-foreground/70">{link.handle}</p>
                       </div>
-                      <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-muted transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" strokeWidth={2.5} />
+                      <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-foreground/60 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" strokeWidth={2.5} />
                     </a>
 
                     {link.copyable && (
                       <button
                         onClick={copyEmail}
-                        className="ml-2 flex h-8 w-8 items-center justify-center rounded-xl border border-foreground/15 bg-white/60 transition-colors hover:bg-accent-bg dark:bg-white/[0.04]"
+                        className="ml-2 flex h-8 w-8 items-center justify-center rounded-xl soft-border bg-[var(--bg-element-second)] transition-colors hover:bg-[var(--bg-element-hover)]"
                         title="Copy email"
                       >
                         {copied ? (
-                          <Check className="h-3.5 w-3.5 text-accent" strokeWidth={2.5} />
+                          <Check className="h-3.5 w-3.5 text-money" strokeWidth={2.5} />
                         ) : (
-                          <Copy className="h-3.5 w-3.5 text-muted" strokeWidth={2.2} />
+                          <Copy className="h-3.5 w-3.5 text-foreground/70" strokeWidth={2.2} />
                         )}
                       </button>
                     )}
@@ -333,13 +335,13 @@ export default function ContactPage() {
             className="rounded-3xl glass p-6"
           >
             <div className="mb-3 flex items-center gap-2">
-              <Zap className="h-4 w-4 text-accent" strokeWidth={2.2} />
+              <Zap className="h-4 w-4 text-foreground" strokeWidth={2.2} />
               <h2 className="text-sm font-semibold text-foreground">Sangat Cocok Untuk:</h2>
             </div>
-            <ul className="space-y-3 text-xs text-muted font-mono">
+            <ul className="space-y-3 text-xs text-foreground/70 font-mono">
               {goodFit.map((item) => (
                 <li key={item} className="flex items-start gap-2">
-                  <span className="text-accent font-bold mt-0.5">•</span>
+                  <span className="text-foreground font-bold mt-0.5">•</span>
                   <span>{item}</span>
                 </li>
               ))}

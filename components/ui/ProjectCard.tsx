@@ -1,12 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Project } from "@/lib/domain/entities/Project";
 import { TechBadge } from "./TechBadge";
 import { ArrowUpRight, TrendingUp } from "lucide-react";
 import { TiltCard } from "@/components/TiltCard";
+import { MaskReveal } from "@/components/motion/MaskReveal";
 
 interface ProjectCardProps {
   project: Project;
@@ -26,11 +26,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
   const isProduction = project.status === "production";
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 25 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
+    <MaskReveal
+      split="none"
+      duration={0.5}
+      delay={index * 0.08}
+      stagger={0}
+      start="top 90%"
     >
       <TiltCard>
         <Link
@@ -38,32 +39,37 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           className="group block neo-surface rounded-[8px] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
         >
           {/* Image */}
-          <div className="aspect-video relative overflow-hidden bg-accent-bg">
+          <div className="aspect-video relative overflow-hidden bg-[var(--bg-element-second)]">
             <Image
               src={project.image}
               alt={project.title}
               fill
               className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
-              sizes="(max-width: 768px) 100vw, 50vw"
-              loading="eager"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              // Only the first row is above the fold; eager-loading every card
+              // in the grid competes with the hero for bandwidth.
+              loading={index < 3 ? "eager" : "lazy"}
+              priority={index === 0}
             />
             {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
             {/* Status badge */}
             <div className="absolute top-3 left-3">
-              <span className={`px-2.5 py-1 rounded-[4px] text-[10px] font-bold border-2 border-foreground font-mono shadow-[2px_2px_0px_#141414] ${
-                isProduction
-                  ? "bg-money text-foreground"
-                  : "bg-foreground text-background"
-              }`}>
+              <span
+                className={`px-2.5 py-1 rounded-full text-[10px] font-bold font-mono ${
+                  isProduction
+                    ? "bg-money text-[#1c0d0d]"
+                    : "bg-foreground text-background"
+                }`}
+              >
                 {isProduction ? "Production" : "Development"}
               </span>
             </div>
 
             {/* Arrow */}
             <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
-              <div className="w-8 h-8 rounded-full bg-surface border-2 border-foreground flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full bg-surface-solid soft-border flex items-center justify-center">
                 <ArrowUpRight className="w-4 h-4 text-foreground" />
               </div>
             </div>
@@ -72,17 +78,17 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           {/* Content */}
           <div className="p-5 space-y-3">
             <div>
-              <h3 className="font-bold text-[14px] text-foreground group-hover:text-accent transition-colors mb-1.5">
+              <h3 className="font-bold text-[14px] text-foreground mb-1.5">
                 {project.title}
               </h3>
-              <p className="text-[12px] text-neutral-500 line-clamp-2 leading-relaxed">
+              <p className="text-[12px] text-foreground/70 line-clamp-2 leading-relaxed">
                 {project.shortDescription}
               </p>
             </div>
 
             {/* Impact metric */}
             {impactLabel && (
-              <div className="flex items-center gap-1.5 text-[10px] text-accent font-medium">
+              <div className="flex items-center gap-1.5 text-[10px] text-foreground/80 font-medium">
                 <TrendingUp className="w-3 h-3" />
                 <span className="truncate">{impactLabel}</span>
               </div>
@@ -97,6 +103,6 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
         </Link>
       </TiltCard>
-    </motion.div>
+    </MaskReveal>
   );
 }

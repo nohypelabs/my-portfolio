@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { Maximize2, MousePointer2, RefreshCw } from 'lucide-react';
+import { useEnergySaver } from '@/contexts/EnergySaverContext';
 
 export interface AndroidScreenVariant {
   label: string;
@@ -15,47 +16,78 @@ interface Android3DViewerProps {
   className?: string;
 }
 
+function loadModelViewer(): Promise<boolean> {
+  return import('@google/model-viewer').then(() => true).catch(() => false);
+}
+
 export default function Android3DViewer({ variants, className = '' }: Android3DViewerProps) {
   const [ready, setReady] = useState(false);
   const [webgl, setWebgl] = useState<boolean | null>(null);
   const [active, setActive] = useState(0);
   const [rotateOn, setRotateOn] = useState(true);
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const viewerRef = useRef<HTMLElement | null>(null);
+  const { reduceMotion, runtimePaused } = useEnergySaver();
 
   useEffect(() => {
-    let mounted = true;
-    import('@google/model-viewer')
-      .then(() => {
-        const gl =
-          typeof document !== 'undefined'
-            ? document.createElement('canvas').getContext('webgl2') ||
-              document.createElement('canvas').getContext('webgl')
-            : null;
-        if (mounted) {
-          setReady(true);
-          setWebgl(Boolean(gl));
-        }
-      })
-      .catch(() => {
-        if (mounted) setReady(false);
+    const el = containerRef.current;
+    if (!el) return;
+
+    // Reduce-motion means don't pay for WebGL at all — the static poster is
+    // the whole experience. This is the toggle having a real render cost.
+    if (reduceMotion) {
+      setReady(false);
+      return;
+    }
+
+    const importWhenNear = () => {
+      const gl =
+        typeof document !== 'undefined'
+          ? document.createElement('canvas').getContext('webgl2') ||
+            document.createElement('canvas').getContext('webgl')
+          : null;
+      setWebgl(Boolean(gl));
+      if (!gl) return;
+      loadModelViewer().then((ok) => {
+        if (ok) setReady(true);
       });
-    return () => {
-      mounted = false;
     };
-  }, []);
 
-  useEffect(() => {
-    setRotateOn(true);
-  }, [active]);
+    if (typeof IntersectionObserver === 'undefined') {
+      importWhenNear();
+      return;
+    }
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          importWhenNear();
+          io.disconnect();
+        }
+      },
+      { rootMargin: '600px' }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [reduceMotion]);
 
   const current = variants[active];
 
+  // Auto-rotate is suppressed while the tab is hidden or motion is reduced;
+  // the CSS in globals.css also drops the element out of rendering entirely.
+  const autoRotate = rotateOn && !reduceMotion && !runtimePaused;
+
+  const selectVariant = (i: number) => {
+    setRotateOn(true);
+    setActive(i);
+  };
+
   return (
-    <div className={`overflow-hidden rounded-3xl border border-foreground/10 ${className}`}>
+    <div ref={containerRef} className={`overflow-hidden rounded-3xl border border-foreground/10 ${className}`}>
       <div className="flex flex-wrap items-center justify-between gap-3 px-5 py-4 border-b border-foreground/10 bg-foreground/[0.02]">
-        <div className="flex items-center gap-2.5 font-mono text-[11px] text-muted">
-          <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-accent/10 border border-accent/20">
-            <Maximize2 className="h-3.5 w-3.5 text-accent" strokeWidth={2.2} />
+        <div className="flex items-center gap-2.5 font-mono text-[11px] text-foreground/60">
+          <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-[var(--bg-element-second)] soft-border">
+            <Maximize2 className="h-3.5 w-3.5 text-foreground" strokeWidth={2.2} />
           </span>
           Panorama Interaktif 3D — putar & zoom dengan drag
         </div>
@@ -70,9 +102,9 @@ export default function Android3DViewer({ variants, className = '' }: Android3DV
             }
             onClick={() => setRotateOn((r) => !r)}
             disabled={webgl === false || !ready}
-            className="inline-flex items-center gap-1.5 rounded-full border border-foreground/10 bg-foreground/[0.04] px-3 py-1.5 text-[10px] font-mono text-muted transition-colors hover:text-foreground disabled:opacity-40 disabled:cursor-not-allowed"
+            className="inline-flex items-center gap-1.5 rounded-full soft-border bg-[var(--bg-element-second)] px-3 py-1.5 text-[10px] font-mono text-foreground/70 transition-colors hover:text-foreground disabled:opacity-40 disabled:cursor-not-allowed"
           >
-            <RefreshCw className={`h-3 w-3 ${rotateOn ? 'text-accent' : ''}`} strokeWidth={2.2} />
+            <RefreshCw className={`h-3 w-3 ${autoRotate ? 'text-money' : ''}`} strokeWidth={2.2} />
             auto-rotate
           </button>
 
@@ -102,8 +134,13 @@ export default function Android3DViewer({ variants, className = '' }: Android3DV
               priority={false}
             />
             {webgl === false && (
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full border border-accent/30 bg-background/80 px-3 py-1.5 text-[10px] font-mono text-accent backdrop-blur">
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full soft-border bg-[var(--bg-element)] px-3 py-1.5 text-[10px] font-mono text-foreground">
                 WebGL tidak tersedia — menampilkan gambar statis
+              </div>
+            )}
+            {reduceMotion && webgl !== false && (
+              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full soft-border bg-[var(--bg-element)] px-3 py-1.5 text-[10px] font-mono text-foreground">
+                Mode hemat energi — 3D dimatikan
               </div>
             )}
           </div>
@@ -114,7 +151,7 @@ export default function Android3DViewer({ variants, className = '' }: Android3DV
             alt={`Phone UI ${current.label}`}
             camera-controls
             touch-action="pan-y"
-            auto-rotate={rotateOn}
+            auto-rotate={autoRotate}
             rotation-per-second="18deg"
             exposure="1.05"
             shadow-intensity="1"
@@ -129,8 +166,8 @@ export default function Android3DViewer({ variants, className = '' }: Android3DV
         )}
       </div>
 
-      <div className="flex flex-wrap items-center gap-2 border-t border-foreground/10 px-5 py-4">
-        <span className="mr-1 flex items-center gap-1.5 font-mono text-[10px] text-muted">
+      <div className="flex flex-wrap items-center gap-2 border-t border-[var(--border-hairline)] px-5 py-4">
+        <span className="mr-1 flex items-center gap-1.5 font-mono text-[10px] text-foreground/60">
           <MousePointer2 className="h-3 w-3" strokeWidth={2.2} />
           Layar
         </span>
@@ -139,11 +176,11 @@ export default function Android3DViewer({ variants, className = '' }: Android3DV
             key={v.src}
             type="button"
             aria-pressed={i === active}
-            onClick={() => setActive(i)}
-            className={`rounded-full border px-3 py-1.5 text-[10px] font-mono transition-colors ${
+            onClick={() => selectVariant(i)}
+            className={`rounded-full soft-border px-3 py-1.5 text-[10px] font-mono transition-colors ${
               i === active
-                ? 'border-accent/40 bg-accent/10 text-accent'
-                : 'border-foreground/10 bg-foreground/[0.02] text-muted hover:text-foreground'
+                ? 'bg-[var(--bg-btn-pm)] text-[var(--txt-btn-pm)]'
+                : 'bg-[var(--bg-element-second)] text-foreground/70 hover:text-foreground'
             }`}
           >
             {v.label}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { useEnergySaver } from "@/contexts/EnergySaverContext";
 
 interface TiltCardProps {
   children: React.ReactNode;
@@ -10,8 +11,10 @@ interface TiltCardProps {
 export function TiltCard({ children, className = "" }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [style, setStyle] = useState({ transform: "", transition: "" });
+  const { reduceMotion } = useEnergySaver();
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (reduceMotion) return;
     const el = ref.current;
     if (!el) return;
     const rect = el.getBoundingClientRect();
@@ -29,6 +32,7 @@ export function TiltCard({ children, className = "" }: TiltCardProps) {
   };
 
   const handleMouseLeave = () => {
+    if (reduceMotion) return;
     setStyle({
       transform: "perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
       transition: "transform 0.4s ease-out",
@@ -40,7 +44,7 @@ export function TiltCard({ children, className = "" }: TiltCardProps) {
       ref={ref}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      style={style}
+      style={reduceMotion ? undefined : style}
       className={className}
     >
       {children}

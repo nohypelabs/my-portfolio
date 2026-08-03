@@ -55,8 +55,8 @@ export function StorytellingSection({ slides, title, kicker }: StorytellingSecti
                     onFocus={() => setActiveId(slide.id)}
                     className={`inline-flex items-baseline gap-1 border-b-2 pb-0.5 transition-colors ${
                       activeId === slide.id
-                        ? "border-accent text-accent"
-                        : "border-foreground/20 text-foreground hover:border-accent hover:text-accent"
+                        ? "border-foreground text-foreground"
+                        : "border-foreground/25 text-foreground/70 hover:border-foreground hover:text-foreground"
                     }`}
                   >
                     {slide.label}
@@ -74,10 +74,10 @@ export function StorytellingSection({ slides, title, kicker }: StorytellingSecti
                   onClick={() => setActiveId(slide.id)}
                   onMouseEnter={() => setActiveId(slide.id)}
                   aria-pressed={activeId === slide.id}
-                  className={`rounded-full border px-3.5 py-1.5 font-mono text-[11px] font-semibold transition-all ${
+                  className={`rounded-full soft-border px-3.5 py-1.5 font-mono text-[11px] font-semibold transition-all ${
                     activeId === slide.id
-                      ? "border-accent bg-accent text-white"
-                      : "border-foreground/15 bg-foreground/[0.03] text-muted hover:border-accent/50 hover:text-foreground"
+                      ? "bg-[var(--bg-btn-pm)] text-[var(--txt-btn-pm)]"
+                      : "bg-[var(--bg-element-second)] text-foreground/75 hover:text-foreground"
                   }`}
                 >
                   {slide.label}
@@ -110,7 +110,7 @@ export function StorytellingSection({ slides, title, kicker }: StorytellingSecti
                 <div className="p-5">
                   <p className="text-[15px] font-semibold text-foreground">{current.caption}</p>
                   {current.metric && (
-                    <p className="mt-2 font-mono text-[12px] font-semibold text-accent">
+                    <p className="mt-2 font-mono text-[12px] font-semibold text-foreground/80">
                       {current.metric}
                     </p>
                   )}

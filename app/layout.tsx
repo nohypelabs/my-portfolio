@@ -51,10 +51,10 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/picture/nasaq-id-photo.png' },
       { url: '/favicon.ico' },
+      { url: '/icons/nasaq-app-icon-192.png' },
     ],
-    apple: '/picture/nasaq-id-photo.png',
+    apple: '/icons/nasaq-apple-icon.png',
   },
   manifest: '/manifest.json',
   openGraph: {

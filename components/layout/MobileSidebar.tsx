@@ -82,10 +82,10 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-y-0 left-0 w-[280px] glass flex flex-col z-50 border-r"
+            className="fixed inset-y-0 left-0 w-[280px] glass flex flex-col z-50 border-r border-[var(--border-hairline)]"
           >
             {/* Header */}
-            <div className="h-[62px] flex items-center justify-between px-6 border-b">
+            <div className="h-[62px] flex items-center justify-between px-6 border-b border-[var(--border-hairline)]">
               <motion.h1
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -93,14 +93,14 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
                 className="font-display text-[20px] font-bold tracking-tight text-foreground"
                 style={{ letterSpacing: '-0.04em' }}
               >
-                nasaq<span className="text-accent">.id</span>
+                nasaq<span className="text-foreground/60">.id</span>
               </motion.h1>
               <motion.button
                 initial={{ opacity: 0, rotate: -90 }}
                 animate={{ opacity: 1, rotate: 0 }}
                 transition={{ delay: 0.25, duration: 0.3 }}
                 onClick={onClose}
-                className="flex h-9 w-9 items-center justify-center rounded-full border transition-colors hover:border-accent hover:bg-accent-bg"
+                className="flex h-9 w-9 items-center justify-center rounded-full soft-border transition-colors hover:bg-[var(--bg-element-hover)]"
                 aria-label="Close menu"
               >
                 <X className="w-4 h-4" strokeWidth={2.2} />
@@ -127,9 +127,11 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
                     }}
                     className={clsx(
                       'w-full flex items-center gap-3 rounded-xl border transition-all text-left text-[13px] px-4 py-3 font-medium',
+                      // text-white on bg-accent broke in dark mode: the primary
+                      // button surface is cream there, so white vanished.
                       isActive
-                        ? 'bg-accent text-white border-accent'
-                        : 'bg-transparent border-transparent text-foreground/80 hover:bg-foreground/[0.05] hover:border-foreground/10'
+                        ? 'bg-[var(--bg-btn-pm)] text-[var(--txt-btn-pm)] border-transparent'
+                        : 'bg-transparent border-transparent text-foreground/80 hover:bg-[var(--bg-element-second)] hover:border-[var(--border-hairline)]'
                     )}
                   >
                     <Icon className="w-4 h-4 flex-shrink-0" strokeWidth={2.2} />
@@ -144,7 +146,7 @@ export const MobileSidebar = ({ isOpen, onClose }: MobileSidebarProps) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.3 }}
-              className="border-t py-4 px-6 font-mono text-[10px] text-muted"
+              className="border-t border-[var(--border-hairline)] py-4 px-6 font-mono text-[10px] text-foreground/70"
             >
               <p className="font-semibold">© {new Date().getFullYear()} nasaq.id</p>
             </motion.div>

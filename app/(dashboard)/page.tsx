@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Marquee } from "@/components/Marquee";
 import { projects } from "@/lib/data/projects";
 import { studioStats } from "@/lib/data/studioStats";
@@ -6,62 +7,23 @@ import { packages } from "@/lib/data/services";
 import { testimonials } from "@/lib/data/testimonials";
 import { TextReveal } from "@/components/TextReveal";
 import { StorytellingSection, type StorySlide } from "@/components/StorytellingSection";
+import { LiveMetrics } from "@/components/sections/LiveMetrics";
+import { ProjectCard } from "@/components/ui/ProjectCard";
 
 // Homepage funnel: satu ide per blok, tanpa dinding kartu.
-// Urutan: cover → mitra → problem → kontras → angka → project → pricing → testimoni → CTA.
+// Urutan: cover → mitra → problem/solusi → live metrics → projects → pricing → testimoni → CTA.
 
 const mitra = [
-  "J&T Express",
-  "Proservice Indonesia",
-  "Serat QC",
-  "WC Check",
-  "LakuPOS",
-  "Qohira",
-  "nasaq.id",
+  { name: "J&T Express", logo: "/clients/jt.svg" },
+  { name: "PT Prenacons Internusa", logo: "/clients/prenacons.png" },
+  { name: "Serat QC", initial: "SQ" },
+  { name: "WC Check", initial: "WC" },
+  { name: "LakuPOS", initial: "LP" },
+  { name: "Qohira", initial: "QH" },
+  { name: "nasaq.id", initial: "NQ" },
 ];
 
-const problems = [
-  {
-    n: "01",
-    t: "Hasilnya cakep, tapi tidak dipakai.",
-    d: "Banyak jasa web menjual template. Hasilnya cantik, manggung 3 bulan, lalu admin tetap kerja di Excel.",
-  },
-  {
-    n: "02",
-    t: "Harga bicara sebelum pemahaman.",
-    d: "Kesepakatan ditutup dari halaman harga, padahal problem bisnis belum dibedah sama sekali.",
-  },
-  {
-    n: "03",
-    t: "Bukti progres cuma cerita.",
-    d: "Kabar kemajuan berupa laporan PDF yang tidak ada yang baca, bukan data yang bisa dicek langsung.",
-  },
-];
 
-const donts = [
-  "Desain berat tanpa bedah operasional.",
-  "Template pasang lalu revisi ping-pong tanpa arah.",
-  "Status 'ongoing' tanpa nomor dan tanpa hasil.",
-  "Laporan 96 halaman sebagai bukti kemajuan.",
-];
-
-const numbers = [
-  {
-    value: "80K+",
-    label: "resi QC diproses J&T Express",
-    aside: "160K+ foto GPS-watermark — 4–5 jam jadi <30 menit per 500 resi",
-  },
-  {
-    value: "3.293",
-    label: "inspeksi tercatat & searchable",
-    aside: "WC Check — 12-month subscription, admin bisa napas",
-  },
-  {
-    value: "≤24 jam",
-    label: "respon awal untuk brief",
-    aside: "langsung di-breakdown kebutuhan, bukan balas 'terima kasih'",
-  },
-];
 
 function formatPrice(pkg: (typeof packages)[number]) {
   const min = pkg.price_min >= 1_000_000 ? `Rp ${pkg.price_min / 1_000_000}jt` : `Rp ${pkg.price_min / 1_000}rb`;
@@ -94,12 +56,14 @@ export default function HomePage() {
           <h1 className="mt-6 max-w-4xl text-[40px] font-light leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
             <TextReveal text="Sistem yang dipakai admin," />
             <br />
-            <span className="bg-gradient-to-r from-accent to-splash bg-clip-text text-transparent">
+            {/* Emphasis is weight + contrast, not a gradient: the palette has no
+                accent hue, and bg-clip-text breaks the reveal's masking. */}
+            <span className="font-normal">
               <TextReveal text="bukan yang cuma dilirik." />
             </span>
           </h1>
 
-          <p className="mt-6 max-w-2xl text-[15px] leading-8 text-muted md:text-base">
+          <p className="mt-6 max-w-2xl text-[15px] leading-8 text-foreground/70 md:text-base">
             Satu brief. Dipahami dulu, baru dibangun. Target kami: company
             profile, dashboard internal, dan app Android yang dibangun dari
             problem operasional nyata — bukan dari template.
@@ -113,18 +77,18 @@ export default function HomePage() {
               Kirim brief proyek
               <span aria-hidden>→</span>
             </Link>
-            <span className="font-mono text-[11px] text-muted">
+            <span className="font-mono text-[11px] text-foreground/70">
               1 kalimat boleh. / Dibalas langsung.
             </span>
           </div>
 
-          <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
-            {studioStats.map((s) => (
-              <div key={s.label} className="glass rounded-2xl px-5 py-4">
-                <p className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
+          <div className="mt-12 neo-surface rounded-2xl p-5 bg-[var(--bg-element)]/50 divide-y divide-foreground/10 md:divide-y-0 md:divide-x md:grid md:grid-cols-4 md:text-center">
+            {studioStats.map((s, i) => (
+              <div key={s.label} className={`py-4 md:py-0 md:px-5 ${i === 0 ? "pt-0 md:pt-0" : ""} ${i === 3 ? "pb-0 md:pb-0" : ""}`}>
+                <p className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
                   {s.value}
                 </p>
-                <p className="mt-1 text-[12px] text-muted">{s.label}</p>
+                <p className="mt-1 text-[11px] font-semibold font-mono uppercase tracking-wider text-foreground/50">{s.label}</p>
               </div>
             ))}
           </div>
@@ -132,79 +96,150 @@ export default function HomePage() {
       </section>
 
       {/* 2. MITRA — strip tipis */}
-      <section className="py-8">
+      <section className="py-8 border-y border-[var(--border-hairline)] bg-[var(--bg-element-second)]/30">
         <div className="mx-auto max-w-6xl px-2">
-          <p className="text-center descriptor">Dipercaya tim operasional nyata</p>
+          <p className="text-center descriptor">Dipercaya oleh bisnis & mitra nyata</p>
           <div className="mt-5 overflow-hidden">
-            <Marquee speed={16}>
-              {[...mitra, ...mitra].map((name, i) => (
-                <span
-                  key={`${name}-${i}`}
-                  className="chip whitespace-nowrap px-5 py-2 text-[12px] uppercase tracking-wide"
+            <Marquee speed={20}>
+              {[...mitra, ...mitra].map((m, i) => (
+                <div
+                  key={`${m.name}-${i}`}
+                  className="inline-flex items-center gap-3 px-5 py-2.5 bg-white border border-[var(--border-hairline)] rounded-xl mx-2 shadow-[2px_2px_0px_rgba(0,0,0,0.05)] select-none hover:shadow-md transition-shadow"
                 >
-                  {name}
-                </span>
+                  {m.logo ? (
+                    <div className="relative w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center bg-white p-1">
+                      <Image
+                        src={m.logo}
+                        alt={`${m.name} logo`}
+                        width={32}
+                        height={32}
+                        className="object-contain w-full h-full"
+                      />
+                    </div>
+                  ) : (
+                    <div className="w-8 h-8 rounded-lg bg-[var(--bg-element-third)] border border-[var(--border-hairline)] flex items-center justify-center text-[10px] font-bold text-foreground">
+                      {m.initial}
+                    </div>
+                  )}
+                  <span className="text-[13px] font-semibold text-foreground/80">
+                    {m.name}
+                  </span>
+                </div>
               ))}
             </Marquee>
           </div>
         </div>
       </section>
 
-      {/* 3. PROBLEM */}
+      {/* 3. REALITAS LAPANGAN VS SOLUSI */}
       <section className="py-14 md:py-20">
         <div className="mx-auto max-w-6xl px-2">
-          <p className="descriptor">Masalah yang sering ketemu</p>
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {problems.map((p) => (
-              <div key={p.n} className="glass rounded-2xl p-6 flex flex-col">
-                <span className="font-mono text-[11px] font-bold text-accent">{p.n}</span>
-                <h2 className="mt-3 text-xl font-semibold leading-snug text-foreground md:text-[22px]">
-                  {p.t}
-                </h2>
-                <p className="mt-3 text-[13px] leading-7 text-muted">{p.d}</p>
-              </div>
-            ))}
+          <p className="descriptor">Masalah Riil vs Solusi Kustom</p>
+          <h2 className="mt-3 text-3xl font-light leading-tight tracking-tight text-foreground md:text-5xl">
+            Kami menyelesaikan bottleneck operasional nyata, bukan sekadar memoles template instan.
+          </h2>
+          
+          <div className="mt-10 grid gap-8 md:grid-cols-2">
+            {/* Sisi Kiri: Masalah Lapangan */}
+            <div className="neo-surface rounded-2xl p-6 bg-red-50/5 border-red-200/20">
+              <span className="font-mono text-[10px] font-bold text-red-500 uppercase tracking-widest">
+                Tantangan Lapangan (Manual & Rentan Error)
+              </span>
+              <ul className="mt-6 space-y-6">
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-red-100/50 text-[11px] font-bold text-red-600 font-mono">
+                    ✗
+                  </span>
+                  <div>
+                    <h4 className="text-[14px] font-bold text-foreground font-mono">Stok Fisik vs Excel Sering Selisih</h4>
+                    <p className="mt-1 text-[12px] leading-relaxed text-foreground/60">
+                      Ritel multi-outlet terpaksa rekap stok manual di akhir hari. Rentan selisih, barang hilang tak terlacak, dan pemindahan stok antar outlet lambat di-update.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-red-100/50 text-[11px] font-bold text-red-600 font-mono">
+                    ✗
+                  </span>
+                  <div>
+                    <h4 className="text-[14px] font-bold text-foreground font-mono">Admin Lembur Rename & Susun Foto Manual</h4>
+                    <p className="mt-1 text-[12px] leading-relaxed text-foreground/60">
+                      Untuk audit logistik (seperti selisih berat paket), tim menghabiskan 4-5 jam sehari hanya untuk mencocokkan nomor resi dengan nama file foto secara manual.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-red-100/50 text-[11px] font-bold text-red-600 font-mono">
+                    ✗
+                  </span>
+                  <div>
+                    <h4 className="text-[14px] font-bold text-foreground font-mono">Inspeksi Lapangan Tanpa Bukti Valid</h4>
+                    <p className="mt-1 text-[12px] leading-relaxed text-foreground/60">
+                      Checklist kebersihan toilet atau gedung menggunakan form kertas yang mudah hilang, rawan dimanipulasi data tanggalnya, dan tidak bisa dimonitor real-time oleh manajemen.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            {/* Sisi Kanan: Solusi Digital */}
+            <div className="neo-surface rounded-2xl p-6 bg-green-50/5 border-green-200/20">
+              <span className="font-mono text-[10px] font-bold text-green-500 uppercase tracking-widest">
+                Solusi Digital nasaq.id (Otomatis & Real-Time)
+              </span>
+              <ul className="mt-6 space-y-6">
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-green-100/50 text-[11px] font-bold text-green-600 font-mono">
+                    ✓
+                  </span>
+                  <div>
+                    <h4 className="text-[14px] font-bold text-foreground font-mono">Sinkronisasi Multi-Outlet Otomatis</h4>
+                    <p className="mt-1 text-[12px] leading-relaxed text-foreground/60">
+                      Sistem POS kasir dan gudang terpusat (seperti LakuPOS) dengan pemantauan stok real-time, alert otomatis saat stok menipis, dan modul transfer stok dengan audit trail ketat.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-green-100/50 text-[11px] font-bold text-green-600 font-mono">
+                    ✓
+                  </span>
+                  <div>
+                    <h4 className="text-[14px] font-bold text-foreground font-mono">Scan Barcode & Otomasi Watermark Foto</h4>
+                    <p className="mt-1 text-[12px] leading-relaxed text-foreground/60">
+                      Cukup scan barcode resi logistik lewat HP, ambil foto, dan biarkan sistem (seperti Serat QC) secara otomatis membubuhkan watermark GPS (lokasi, waktu) serta menamai file. Waktu proses dipotong 90%!
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="mt-1 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-green-100/50 text-[11px] font-bold text-green-600 font-mono">
+                    ✓
+                  </span>
+                  <div>
+                    <h4 className="text-[14px] font-bold text-foreground font-mono">Scan QR Code & GPS-Validated Checklist</h4>
+                    <p className="mt-1 text-[12px] leading-relaxed text-foreground/60">
+                      Petugas scan QR di lokasi fisik untuk membuka checklist inspeksi digital. Setiap laporan wajib menyertakan foto tervalidasi lokasi (GPS) dan langsung tersimpan di dashboard pusat secara real-time.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 4. KONTRAST */}
-      <section className="py-14 md:py-20 border-t border-foreground/10">
+      {/* 4. VERIFIKASI KONEKSI DATABASE PRODUKSI (LIVE PROOF) */}
+      <section id="live-data" className="py-14 md:py-20 border-t border-[var(--border-hairline)] bg-[var(--bg-element-second)]/10">
         <div className="mx-auto max-w-6xl px-2">
-          <p className="descriptor">Yang tidak kami kerjakan</p>
-          <ul className="mt-8 grid gap-4 md:grid-cols-2">
-            {donts.map((d, i) => (
-              <li key={d} className="flex items-start gap-4 glass rounded-2xl p-5">
-                <span className="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-accent text-[12px] font-bold text-white">
-                  {i + 1}
-                </span>
-                <span className="text-[14px] font-medium leading-relaxed text-foreground">
-                  {d}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+          <p className="descriptor">Bukti Integrasi Real-Time</p>
+          <h2 className="mt-3 text-2xl font-light leading-tight tracking-tight text-foreground md:text-4xl">
+            Verifikasi Data Lapangan Langsung Dari Database
+          </h2>
+          <p className="mt-3 max-w-2xl text-[13px] leading-relaxed text-foreground/70 font-mono">
+            Berikut adalah performa riil dari aplikasi yang kami deploy di server produksi client. Kami tidak menyembunyikan mock data — Anda dapat menguji koneksi langsung ke Supabase & PostgreSQL kami secara real-time di bawah ini.
+          </p>
 
-      {/* 5. ANGKA BUKTI */}
-      <section className="py-14 md:py-20">
-        <div className="mx-auto max-w-6xl px-2">
-          <p className="descriptor">Bukti di lapangan</p>
-          <div className="mt-8 grid gap-5 lg:grid-cols-3">
-            {numbers.map((n) => (
-              <div key={n.label} className="rounded-2xl border border-foreground/10 p-6 transition-colors hover:border-accent/40">
-                <p className="text-4xl font-light tracking-tight text-transparent bg-gradient-to-br from-accent to-splash bg-clip-text md:text-5xl">
-                  {n.value}
-                </p>
-                <p className="mt-3 text-[15px] font-semibold leading-snug text-foreground">
-                  {n.label}
-                </p>
-                <p className="mt-2 font-mono text-[11px] leading-relaxed text-muted">
-                  {n.aside}
-                </p>
-              </div>
-            ))}
+          <div className="mt-10">
+            <LiveMetrics />
           </div>
         </div>
       </section>
@@ -216,33 +251,29 @@ export default function HomePage() {
         title="Setiap sistem dimulai dari masalah kecil yang menggerogoti waktu — dan di sini kami ukur kapan sebelum berubah jadi sesudah."
       />
 
-      {/* 6. PROJECT LIST */}
-      <section className="py-14 md:py-20 border-t border-foreground/10">
+      {/* 6. PROJECT SHOWCASE GRID */}
+      <section className="py-14 md:py-20 border-t border-[var(--border-hairline)]">
         <div className="mx-auto max-w-6xl px-2">
-          <div className="flex items-end justify-between gap-4">
-            <p className="descriptor">Sistem yang sudah jalan</p>
-            <Link href="/projects" className="text-[12px] font-semibold text-accent hover:underline">
-              semua case study →
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            <div>
+              <p className="descriptor">Showcase Sistem Nyata</p>
+              <h2 className="mt-3 text-2xl font-light leading-tight tracking-tight text-foreground md:text-4xl">
+                Aplikasi Produksi Yang Sedang Berjalan
+              </h2>
+            </div>
+            <Link
+              href="/projects"
+              className="text-[12px] font-semibold text-foreground underline decoration-1 underline-offset-4 hover:opacity-70 shrink-0 font-mono"
+            >
+              Lihat semua case study →
             </Link>
           </div>
-          <ul className="mt-6 divide-y divide-foreground/10">
-            {projects.map((p) => (
-              <li key={p.id}>
-                <Link
-                  href={`/projects/${p.id}`}
-                  className="group flex items-center justify-between gap-4 py-4 transition-colors hover:px-2"
-                >
-                  <span className="text-[15px] font-semibold text-foreground group-hover:text-accent transition-colors">
-                    {p.title}
-                  </span>
-                  <span className="hidden flex-1 border-b border-dotted border-foreground/20 sm:block" />
-                  <span className="text-[11px] uppercase tracking-wide text-muted group-hover:text-accent transition-colors">
-                    buka case study
-                  </span>
-                </Link>
-              </li>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {projects.slice(0, 3).map((p, i) => (
+              <ProjectCard key={p.id} project={p} index={i} />
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
@@ -255,18 +286,20 @@ export default function HomePage() {
               <div
                 key={p.id}
                 className={`relative flex flex-col justify-between gap-6 rounded-2xl p-7 transition-all hover:-translate-y-1 ${
+                  // The featured tier is the darkest slab in the rotation rather
+                  // than a tinted gradient — there is no accent hue to tint with.
                   i === 1
-                    ? "bg-gradient-to-br from-accent/10 to-splash/10 border border-accent/40"
-                    : "glass"
+                    ? "bg-[var(--bg-element-third)] soft-border"
+                    : "bg-[var(--bg-element)] soft-border"
                 }`}
               >
                 {i === 1 && (
-                  <span className="absolute -top-2.5 right-4 chip bg-accent border-accent text-white">
+                  <span className="absolute -top-2.5 right-4 chip bg-[var(--bg-btn-pm)] text-[var(--txt-btn-pm)]">
                     Paling dipilih
                   </span>
                 )}
                 <div>
-                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-muted">
+                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground/70">
                     {p.name}
                   </p>
                   <p className="mt-3 text-3xl font-light tracking-tight text-foreground">
@@ -274,12 +307,10 @@ export default function HomePage() {
                   </p>
                 </div>
                 <div>
-                  <p className="text-[13px] leading-relaxed text-muted">{p.description}</p>
+                  <p className="text-[13px] leading-relaxed text-foreground/70">{p.description}</p>
                   <Link
                     href="/contact"
-                    className={`mt-4 inline-flex items-center gap-1 text-sm font-semibold ${
-                      i === 1 ? "text-accent" : "text-foreground hover:text-accent"
-                    }`}
+                    className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-foreground underline decoration-1 underline-offset-4 transition-opacity hover:opacity-70"
                   >
                     bahas scope <span aria-hidden>→</span>
                   </Link>
@@ -291,14 +322,14 @@ export default function HomePage() {
       </section>
 
       {/* 8. SATU TESTIMONIAL */}
-      <section className="py-14 md:py-20 border-t border-foreground/10">
+      <section className="py-14 md:py-20 border-t border-[var(--border-hairline)]">
         <div className="mx-auto max-w-3xl px-2 text-center">
           <p className="descriptor">Kata tim yang pakai</p>
           <blockquote className="mt-6">
             <p className="text-2xl font-light leading-tight text-foreground md:text-4xl">
               &ldquo;{quote.content}&rdquo;
             </p>
-            <footer className="mt-5 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+            <footer className="mt-5 font-mono text-[11px] uppercase tracking-[0.18em] text-foreground/70">
               {quote.role} · {quote.company}
             </footer>
           </blockquote>
@@ -308,14 +339,18 @@ export default function HomePage() {
       {/* 9. CTA */}
       <section className="py-14 md:py-20">
         <div className="mx-auto max-w-5xl px-2">
-          <div className="glass rounded-3xl py-12 px-6 text-center md:py-16">
-            <p className="descriptor">Kalau masalahnya sudah kebayang</p>
-            <h2 className="mx-auto mt-4 max-w-2xl text-[32px] font-light tracking-tight text-foreground md:text-5xl">
+          <div className="rounded-3xl bg-[var(--bg-btn-big)] py-12 px-6 text-center text-[var(--txt-btn-big)] md:py-16">
+            {/* Inside the dark slab, text colours inherit — page-level tokens
+                (.descriptor, text-foreground) would invert against it. */}
+            <p className="descriptor !text-current opacity-70">
+              Kalau masalahnya sudah kebayang
+            </p>
+            <h2 className="mx-auto mt-4 max-w-2xl text-[32px] font-light tracking-tight text-current md:text-5xl">
               Satu brief. Dijawab dalam jam.
             </h2>
             <Link
               href="/contact"
-              className="mt-8 inline-flex btn-primary px-8 py-4 text-sm"
+              className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[var(--bg-form-element)] px-8 py-4 text-sm font-semibold text-[#3c3c3c] transition-transform hover:-translate-y-0.5"
             >
               Mulai briefing
               <span aria-hidden>→</span>

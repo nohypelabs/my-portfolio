@@ -175,13 +175,13 @@ function FAQItem({ faq, isOpen, onToggle }: { faq: FAQ; isOpen: boolean; onToggl
       >
         <span className="text-[13px] font-semibold text-foreground pr-4 font-mono">{faq.question}</span>
         <ChevronDown
-          className={clsx('w-4 h-4 text-muted flex-shrink-0 transition-transform duration-200', isOpen && 'rotate-180')}
+          className={clsx('w-4 h-4 text-foreground/60 flex-shrink-0 transition-transform duration-200', isOpen && 'rotate-180')}
           strokeWidth={2.5}
         />
       </button>
       {isOpen && (
-        <div className="px-4.5 pb-4 border-t border-foreground/10 pt-3">
-          <p className="text-[12px] text-muted leading-relaxed font-mono">{faq.answer}</p>
+        <div className="px-4.5 pb-4 border-t border-[var(--border-hairline)] pt-3">
+          <p className="text-[12px] text-foreground/70 leading-relaxed font-mono">{faq.answer}</p>
         </div>
       )}
     </div>
@@ -257,23 +257,23 @@ export function ServicesContent({
       <motion.div {...fadeUp} className="rounded-3xl glass p-6 md:p-10">
         <div className="max-w-3xl space-y-5">
           <span className="chip">
-            <Building2 className="h-3.5 w-3.5 text-accent" />
+            <Building2 className="h-3.5 w-3.5 text-foreground" />
             Layanan Kami
           </span>
           <h1 className="text-3xl font-light tracking-tight text-foreground md:text-5xl">
             Sistem kustom untuk merapikan alur kerja operasional Anda.
           </h1>
-          <p className="text-sm leading-relaxed text-muted md:text-base">
+          <p className="text-sm leading-relaxed text-foreground/70 md:text-base">
             Kami mendeploy software operasional terpadu bagi bisnis yang mulai kewalahan dengan pencatatan manual, Excel berantakan, atau sistem pihak ketiga yang kaku. Pilih track yang paling cocok untuk bisnis Anda.
           </p>
         </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="card-rotate mt-8 grid gap-4 md:grid-cols-3">
           {trustPoints.map((item) => (
-            <div key={item.title} className="glass-soft rounded-2xl p-5">
-              <item.icon className="h-4.5 w-4.5 text-accent" strokeWidth={2.2} />
+            <div key={item.title} className="neo-surface rounded-2xl p-5">
+              <item.icon className="h-4.5 w-4.5 text-foreground" strokeWidth={2.2} />
               <h2 className="mt-3 text-sm font-semibold text-foreground">{item.title}</h2>
-              <p className="mt-1 text-[12px] leading-relaxed text-muted">{item.desc}</p>
+              <p className="mt-1 text-[12px] leading-relaxed text-foreground/70">{item.desc}</p>
             </div>
           ))}
         </div>
@@ -287,12 +287,12 @@ export function ServicesContent({
             <h2 className="mt-2 text-2xl font-light text-foreground md:text-3xl">
               Dipecah per masalah utama
             </h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted">
+            <p className="mt-2 text-sm leading-relaxed text-foreground/70">
               Setiap track dirancang untuk memecahkan satu masalah utama: merapikan citra publik, mempercepat kerja tim lapangan, atau merapikan integrasi data operasional.
             </p>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="card-rotate grid gap-4 md:grid-cols-2">
             {services.map((service) => {
               const Icon = iconMap[service.icon] || Globe;
               const lens = getServiceLens(service);
@@ -301,24 +301,24 @@ export function ServicesContent({
                 <motion.div
                   key={service.id}
                   variants={fadeInUp}
-                  className="glass rounded-2xl p-6 flex flex-col justify-between hover:-translate-y-1 transition-transform"
+                  className="neo-surface rounded-2xl p-6 flex flex-col justify-between hover:-translate-y-1 transition-transform"
                 >
                   <div className="space-y-4">
                     <div className="flex items-start justify-between gap-4">
                       <span className="chip text-[10px] uppercase tracking-[0.14em] text-foreground/70">
                         {lens.badge}
                       </span>
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 border border-accent/20">
-                        <Icon className="h-4.5 w-4.5 text-accent" strokeWidth={2.2} />
+                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--bg-element-second)] soft-border">
+                        <Icon className="h-4.5 w-4.5 text-foreground" strokeWidth={2.2} />
                       </div>
                     </div>
 
                     <div>
                       <h3 className="text-lg font-semibold text-foreground">{service.title}</h3>
-                      <p className="mt-1.5 text-[12px] leading-relaxed text-muted">{lens.summary}</p>
+                      <p className="mt-1.5 text-[12px] leading-relaxed text-foreground/70">{lens.summary}</p>
                     </div>
 
-                    <div className="rounded-xl border border-foreground/10 bg-foreground/[0.03] p-3.5 text-[11px] leading-relaxed text-muted">
+                    <div className="rounded-xl border border-[var(--border-hairline)] bg-[var(--bg-element-second)] p-3.5 text-[11px] leading-relaxed text-foreground/70">
                       <p className="font-bold text-foreground/80 font-mono text-[10px] uppercase tracking-wider">
                         Kapan Butuh Ini:
                       </p>
@@ -327,7 +327,7 @@ export function ServicesContent({
 
                     <ul className="grid gap-1.5 sm:grid-cols-2 pt-1">
                       {service.features.map((feature, index) => (
-                        <li key={index} className="flex items-start gap-1.5 text-[11px] leading-relaxed text-muted">
+                        <li key={index} className="flex items-start gap-1.5 text-[11px] leading-relaxed text-foreground/70">
                           <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-money" strokeWidth={2.5} />
                           <span>{feature}</span>
                         </li>
@@ -335,14 +335,14 @@ export function ServicesContent({
                     </ul>
                   </div>
 
-                  <div className="flex items-center justify-between border-t border-foreground/10 pt-4 mt-4">
-                    <p className="text-[10px] font-mono text-muted">{lens.outcome}</p>
+                  <div className="flex items-center justify-between border-t border-[var(--border-hairline)] pt-4 mt-4">
+                    <p className="text-[10px] font-mono text-foreground/70">{lens.outcome}</p>
                     <Link
                       href="/contact"
-                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground hover:text-accent transition-colors"
+                      className="inline-flex items-center gap-1.5 text-xs font-semibold text-foreground transition-opacity hover:opacity-70"
                     >
                       Bahas Solusi
-                      <ArrowRight className="h-3.5 w-3.5 text-accent" strokeWidth={2.5} />
+                      <ArrowRight className="h-3.5 w-3.5" strokeWidth={2.5} />
                     </Link>
                   </div>
                 </motion.div>
@@ -360,25 +360,25 @@ export function ServicesContent({
             <h2 className="mt-2 text-2xl font-light text-foreground md:text-3xl">
               Output konkret di setiap tahap
             </h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted">
+            <p className="mt-2 text-sm leading-relaxed text-foreground/70">
               Proses kerja kami dirancang untuk mengeliminasi ketakutan akan proyek yang macet di tengah jalan. Setiap tahap memiliki output konkret yang bisa Anda evaluasi langsung.
             </p>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+          <div className="card-rotate grid gap-3 sm:grid-cols-2 md:grid-cols-3">
             {steps.map((step) => {
               const StepIcon = stepIconMap[step.icon] || Search;
               return (
                 <div
                   key={step.id}
-                  className="glass-soft rounded-2xl p-5 border border-foreground/10"
+                  className="neo-surface rounded-2xl p-5"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold font-mono text-muted">TAHAP {step.step_number}</span>
-                    <StepIcon className="h-4 w-4 text-accent" strokeWidth={2.2} />
+                    <span className="text-[10px] font-bold font-mono text-foreground/70">TAHAP {step.step_number}</span>
+                    <StepIcon className="h-4 w-4 text-foreground" strokeWidth={2.2} />
                   </div>
                   <h3 className="mt-2 text-sm font-semibold text-foreground">{step.title}</h3>
-                  <p className="mt-1 text-[11px] leading-relaxed text-muted">{step.description}</p>
+                  <p className="mt-1 text-[11px] leading-relaxed text-foreground/70">{step.description}</p>
                 </div>
               );
             })}
@@ -394,7 +394,7 @@ export function ServicesContent({
             <h2 className="mt-2 text-2xl font-light text-foreground md:text-3xl">
               Rentang yang realistis
             </h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted">
+            <p className="mt-2 text-sm leading-relaxed text-foreground/70">
               Kami terbuka mengenai rentang biaya agar Anda dapat memilih titik pengerjaan awal yang realistis dengan budget operasional bisnis Anda.
             </p>
           </div>
@@ -409,31 +409,34 @@ export function ServicesContent({
                 <div
                   key={pkg.id}
                   className={clsx(
-                    'rounded-2xl flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 p-6',
+                    'rounded-2xl flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 p-6 soft-border',
+                    // The popular tier is the darkest slab in the warm rotation
+                    // rather than a tinted gradient — there is no accent hue to
+                    // tint with any more.
                     isPopular
-                      ? 'bg-gradient-to-br from-accent/10 to-splash/10 border border-accent/40 shadow-[0_20px_60px_rgba(93,81,255,0.12)]'
-                      : 'glass border border-foreground/10'
+                      ? 'bg-[var(--bg-element-third)]'
+                      : 'bg-[var(--bg-element)]'
                   )}
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-muted">
+                      <span className="font-mono text-[10px] font-semibold uppercase tracking-wider text-foreground/70">
                         {lens.badge}
                       </span>
                       {isPopular && (
-                        <span className="inline-flex items-center gap-1 rounded-full bg-accent px-2.5 py-1 text-[9px] font-bold uppercase tracking-wide text-white">
-                          <Star className="h-3 w-3 fill-white" /> Terpopuler
+                        <span className="inline-flex items-center gap-1 rounded-full bg-[var(--bg-btn-pm)] px-2.5 py-1 text-[9px] font-bold uppercase tracking-wide text-[var(--txt-btn-pm)]">
+                          <Star className="h-3 w-3 fill-current" /> Terpopuler
                         </span>
                       )}
                     </div>
 
                     <div>
                       <h3 className="text-lg font-semibold text-foreground">{pkg.name}</h3>
-                      <p className="mt-1 text-[11px] leading-relaxed text-muted">{pkg.description}</p>
+                      <p className="mt-1 text-[11px] leading-relaxed text-foreground/70">{pkg.description}</p>
                     </div>
 
-                    <div className="py-3 border-y border-foreground/10">
-                      <p className="text-[10px] font-mono text-muted">Estimasi Rentang Biaya:</p>
+                    <div className="py-3 border-y border-[var(--border-hairline)]">
+                      <p className="text-[10px] font-mono text-foreground/70">Estimasi Rentang Biaya:</p>
                       <p className="text-xl font-light tracking-tight text-foreground font-mono">
                         {formatPrice(pkg.price_min, pkg.price_max)}
                       </p>
@@ -443,7 +446,7 @@ export function ServicesContent({
                       <p className="text-[10px] font-semibold font-mono text-foreground/70 uppercase">Cakupan Pekerjaan:</p>
                       <ul className="space-y-1.5">
                         {pkg.features.map((feature, i) => (
-                          <li key={i} className="flex items-start gap-1.5 text-[11px] leading-relaxed text-muted">
+                          <li key={i} className="flex items-start gap-1.5 text-[11px] leading-relaxed text-foreground/70">
                             <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-money" strokeWidth={2.5} />
                             <span>{feature}</span>
                           </li>
@@ -452,8 +455,8 @@ export function ServicesContent({
                     </div>
                   </div>
 
-                  <div className="pt-4 mt-4 border-t border-foreground/10 space-y-3">
-                    <p className="text-[10px] font-mono text-muted leading-relaxed italic">{lens.fit}</p>
+                  <div className="pt-4 mt-4 border-t border-[var(--border-hairline)] space-y-3">
+                    <p className="text-[10px] font-mono text-foreground/70 leading-relaxed italic">{lens.fit}</p>
                     <Link
                       href="/contact"
                       className={clsx(
@@ -471,12 +474,12 @@ export function ServicesContent({
           </div>
 
           {/* Pricing Info Cards */}
-          <div className="grid gap-3 md:grid-cols-3 pt-2">
+          <div className="card-rotate grid gap-3 md:grid-cols-3 pt-2">
             {guidePoints.map((point) => (
-              <div key={point.title} className="glass-soft rounded-2xl p-5">
-                <point.icon className="h-4.5 w-4.5 text-accent" strokeWidth={2.2} />
+              <div key={point.title} className="neo-surface rounded-2xl p-5">
+                <point.icon className="h-4.5 w-4.5 text-foreground" strokeWidth={2.2} />
                 <h4 className="mt-2 text-xs font-semibold text-foreground">{point.title}</h4>
-                <p className="mt-1 text-[11px] leading-relaxed text-muted font-mono">{point.desc}</p>
+                <p className="mt-1 text-[11px] leading-relaxed text-foreground/70 font-mono">{point.desc}</p>
               </div>
             ))}
           </div>
@@ -491,7 +494,7 @@ export function ServicesContent({
             <h2 className="mt-2 text-2xl font-light text-foreground md:text-3xl">
               Pertanyaan yang sering diajukan
             </h2>
-            <p className="mt-2 text-sm leading-relaxed text-muted">
+            <p className="mt-2 text-sm leading-relaxed text-foreground/70">
               Kami hendaknya menjawab tentang bagaimana kerja sama pengerjaan sistem ini berjalan di lapangan.
             </p>
           </div>
@@ -499,7 +502,7 @@ export function ServicesContent({
           <div className="space-y-6">
             {categories.map((cat) => (
               <div key={cat} className="space-y-3">
-                <h3 className="text-xs font-semibold text-foreground font-mono uppercase tracking-wider border-b border-foreground/10 pb-1.5">
+                <h3 className="text-xs font-semibold text-foreground font-mono uppercase tracking-wider border-b border-[var(--border-hairline)] pb-1.5">
                   {categoryLabels[cat] || cat}
                 </h3>
                 <div className="grid gap-3 sm:grid-cols-2">
@@ -522,13 +525,15 @@ export function ServicesContent({
 
       {/* FOOTER CTA */}
       <ScrollReveal>
-        <div className="rounded-3xl bg-gradient-to-br from-accent/10 to-splash/10 border border-accent/30 p-6 md:p-10">
+        {/* Dark slab instead of an accent-tinted gradient. Text inside inherits
+            via text-current so page-level tokens don't invert against it. */}
+        <div className="rounded-3xl bg-[var(--bg-btn-big)] text-[var(--txt-btn-big)] p-6 md:p-10">
           <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div className="space-y-2">
-              <h2 className="text-2xl font-light text-foreground md:text-3xl">
+              <h2 className="text-2xl font-light text-current md:text-3xl">
                 Siap Merapikan Operasional Bisnis Anda?
               </h2>
-              <p className="text-sm leading-relaxed text-muted">
+              <p className="text-sm leading-relaxed text-current opacity-75">
                 Kami siap membantu memetakan bottleneck operasional Anda dan mendesain sistem digital kustom yang andal. Mulai dengan membuat brief proyek singkat.
               </p>
             </div>
@@ -536,7 +541,7 @@ export function ServicesContent({
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
               <Link
                 href="/contact"
-                className="btn-primary px-6 py-3 text-sm"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--bg-form-element)] px-6 py-3 text-sm font-semibold text-[#3c3c3c] transition-transform hover:-translate-y-0.5"
               >
                 Mulai Hubungi Kami
                 <ArrowRight className="h-4.5 w-4.5" strokeWidth={2.5} />

@@ -31,23 +31,23 @@ export const Header = () => {
 
   return (
     <header className="sticky top-4 z-40 mx-4 md:mx-8">
-      <div className="glass rounded-2xl">
+      <div className="rounded-2xl soft-border bg-[var(--bg-header)] text-[var(--txt-header)]">
         <div className="flex items-center justify-between gap-4 h-[62px] px-3.5 lg:px-5 max-w-[1400px] mx-auto">
           {/* Left: Logo */}
           <div className="flex items-center gap-3 flex-shrink-0">
             <Link
               href="/"
-              className="flex items-baseline gap-0.5 font-display text-[19px] font-bold tracking-tight text-foreground transition-colors hover:text-accent"
+              className="flex items-baseline gap-0.5 font-display text-[19px] font-bold tracking-tight text-foreground transition-opacity hover:opacity-70"
               style={{ letterSpacing: '-0.04em' }}
             >
               nasaq
-              <span className="text-accent">.id</span>
+              <span className="text-foreground/60">.id</span>
             </Link>
 
             {/* Silent live link — production proof */}
             <Link
-              href="/live"
-              className="hidden xl:inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold text-muted transition-colors hover:text-accent"
+              href="/#live-data"
+              className="hidden xl:inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-semibold text-foreground/70 transition-colors hover:text-foreground"
               style={{ letterSpacing: '0.06em' }}
             >
               <Activity className="h-3 w-3 text-money" strokeWidth={2.4} />
@@ -63,8 +63,10 @@ export const Header = () => {
                 href={item.path}
                 className={clsx(
                   'relative px-3.5 py-1.5 rounded-full text-[13px] font-medium transition-colors duration-200 z-10 select-none',
+                  // Pairs with the --bg-btn-pm pill below; in dark mode that
+                  // pill is cream, so a hardcoded white would be invisible.
                   isActive(pathname, item.path)
-                    ? 'text-white'
+                    ? 'text-[var(--txt-btn-pm)]'
                     : 'text-foreground/80 hover:text-foreground'
                 )}
                 onMouseEnter={() => setHoveredPath(item.path)}
@@ -83,7 +85,7 @@ export const Header = () => {
                 {isActive(pathname, item.path) && (
                   <motion.span
                     layoutId="nav-active-highlight"
-                    className="absolute inset-0 rounded-full bg-accent z-[-1]"
+                    className="absolute inset-0 rounded-full bg-[var(--bg-btn-pm)] z-[-1]"
                     transition={{ type: 'spring', stiffness: 380, damping: 28 }}
                   />
                 )}

@@ -45,7 +45,7 @@ export function AvatarImage({ className = "", size = 40, priority = false }: Ava
             {/* Close Button */}
             <button
               onClick={() => setIsOpen(false)}
-              className="absolute top-4 right-4 p-2 rounded-full bg-black/10 hover:bg-black/20 transition-colors"
+              className="absolute top-4 right-4 p-2 rounded-full bg-white/15 hover:bg-white/25 transition-colors"
               aria-label="Close"
             >
               <X className="w-6 h-6 text-white" />

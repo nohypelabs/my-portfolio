@@ -57,7 +57,11 @@
       "Bash(node -e \"try { require\\('playwright'\\); console.log\\('playwright: installed'\\) } catch\\(e\\) { console.log\\('playwright: not installed'\\) }\")",
       "Bash(playwright screenshot *)",
       "Bash(pnpm test *)",
-      "Bash(grep -oP '--color-\\\\w+:[^;]+')"
+      "Bash(grep -oP '--color-\\\\w+:[^;]+')",
+      "WebFetch(domain:noho.ink)",
+      "Bash(python3 -c ' *)",
+      "Bash(sort -u -k2)",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); print\\(json.dumps\\({'dependencies':d.get\\('dependencies'\\),'devDependencies':d.get\\('devDependencies'\\)},indent=1\\)\\)\")"
     ]
   }
 }

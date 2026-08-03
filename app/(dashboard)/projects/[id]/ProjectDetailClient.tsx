@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ScrollReveal } from '@/components/ScrollReveal';
 import { TechBadge } from '@/components/ui/TechBadge';
+import { useEnergySaver } from '@/contexts/EnergySaverContext';
 import type { Project } from '@/lib/domain/entities/Project';
 import {
   AlertTriangle,
@@ -39,6 +40,64 @@ const METRICS_FALLBACKS: Record<string, Record<string, number>> = {
   'lakupos': { transactions: 11, products: 2, outlets: 4 },
   'ecommerce-manual': { products: 16, orders: 6, users: 5 },
 };
+
+// Which live-metric keys each project surfaces, in display order. The last
+// entry in a group is the headline number and renders heavier than the rest.
+const METRIC_CARDS: Record<
+  string,
+  Array<{ key: string; label: string; wide?: boolean }>
+> = {
+  'selisih-berat': [
+    { key: 'entries', label: 'Resi QC Terproses' },
+    { key: 'photos', label: 'Foto GPS-Watermarked Terunggah', wide: true },
+  ],
+  'wc-check': [
+    { key: 'inspections', label: 'Inspeksi Masuk' },
+    { key: 'users', label: 'User Terdaftar' },
+    { key: 'locations', label: 'Lokasi Terkelola' },
+  ],
+  lakupos: [
+    { key: 'transactions', label: 'Transaksi POS' },
+    { key: 'products', label: 'Varian Produk' },
+    { key: 'outlets', label: 'Outlet Aktif' },
+  ],
+  'ecommerce-manual': [
+    { key: 'products', label: 'Varian Produk' },
+    { key: 'orders', label: 'Pesanan Masuk' },
+    { key: 'users', label: 'User Terdaftar' },
+  ],
+};
+
+function MetricCard({
+  label,
+  value,
+  emphasis,
+  wide,
+}: {
+  label: string;
+  value: number | undefined;
+  emphasis?: boolean;
+  wide?: boolean;
+}) {
+  return (
+    <div
+      className={`neo-surface soft-border rounded-2xl p-5 font-mono text-center${
+        wide ? ' sm:col-span-2' : ''
+      }`}
+    >
+      <p className="text-[10px] font-semibold uppercase text-foreground/70">
+        {label}
+      </p>
+      <p
+        className={`mt-2 text-2xl tracking-tight text-foreground ${
+          emphasis ? 'font-semibold' : 'font-light'
+        }`}
+      >
+        {(value ?? 0).toLocaleString('id-ID')}
+      </p>
+    </div>
+  );
+}
 
 const ANDROID_SLUGS: Array<{ slug: string; label: string }> = [
   { slug: 'lakupos', label: 'Lakupos' },
@@ -104,6 +163,7 @@ interface ProjectDetailClientProps {
 
 export default function ProjectDetailClient({ project }: ProjectDetailClientProps) {
   const { id } = project;
+  const { reduceMotion } = useEnergySaver();
 
   // Live Metrics states
   const [liveData, setLiveData] = useState<Record<string, number> | null>(null);
@@ -181,7 +241,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
     <div className="mx-auto max-w-5xl space-y-8 pb-12">
       <Link
         href="/projects"
-        className="inline-flex items-center gap-2 text-sm font-medium text-muted transition-colors hover:text-accent"
+        className="inline-flex items-center gap-2 text-sm font-medium text-foreground/70 transition-opacity hover:opacity-70"
       >
         <ArrowLeft className="h-4 w-4" />
         Kembali ke Showcase
@@ -208,12 +268,12 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
               <h1 className="text-3xl font-light tracking-tight text-foreground md:text-[44px] leading-[1.1]">
                 {project.title}
               </h1>
-              <p className="mt-4 text-sm leading-relaxed text-muted">
+              <p className="mt-4 text-sm leading-relaxed text-foreground/70">
                 {project.shortDescription}
               </p>
             </div>
 
-            <div className="rounded-2xl border border-foreground/10 bg-foreground/[0.03] p-4 font-mono text-[12px] leading-relaxed text-muted">
+            <div className="rounded-2xl soft-border bg-[var(--bg-element-second)] p-4 font-mono text-[12px] leading-relaxed text-foreground/70">
               <p className="font-semibold text-foreground/80 uppercase text-[10px] tracking-wider mb-1">Konteks & Latar Proyek:</p>
               <p>{getContextNote(project)}</p>
             </div>
@@ -252,27 +312,27 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
             </div>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-            <div className="glass-soft rounded-2xl p-5 border border-foreground/10">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 border border-accent/20">
-                <Building2 className="h-4.5 w-4.5 text-accent" strokeWidth={2.2} />
+          <div className="card-rotate grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+            <div className="neo-surface rounded-2xl p-5">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--bg-element-second)] soft-border">
+                <Building2 className="h-4.5 w-4.5 text-foreground" strokeWidth={2.2} />
               </div>
               <h2 className="mt-4 text-xs font-semibold font-mono text-foreground uppercase tracking-wide">
                 Sekilas Deskripsi
               </h2>
-              <p className="mt-2 text-[11px] font-mono leading-relaxed text-muted">{project.fullDescription}</p>
+              <p className="mt-2 text-[11px] font-mono leading-relaxed text-foreground/70">{project.fullDescription}</p>
             </div>
 
-            <div className="glass-soft rounded-2xl p-5 border border-foreground/10">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent/10 border border-accent/20">
-                <ShieldCheck className="h-4.5 w-4.5 text-accent" strokeWidth={2.2} />
+            <div className="neo-surface rounded-2xl p-5">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--bg-element-second)] soft-border">
+                <ShieldCheck className="h-4.5 w-4.5 text-foreground" strokeWidth={2.2} />
               </div>
               <h2 className="mt-4 text-xs font-semibold font-mono text-foreground uppercase tracking-wide">
                 Dampak & Manfaat Nyata
               </h2>
               <div className="mt-3 space-y-2.5">
                 {proofLines.slice(0, 3).map((line) => (
-                  <div key={line} className="flex items-start gap-2 text-[11px] leading-relaxed text-muted font-mono">
+                  <div key={line} className="flex items-start gap-2 text-[11px] leading-relaxed text-foreground/70 font-mono">
                     <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-money" strokeWidth={2.5} />
                     <span>{line}</span>
                   </div>
@@ -290,13 +350,13 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="space-y-2">
                 <span className="chip">
-                  <Database className="h-3.5 w-3.5 text-accent" />
+                  <Database className="h-3.5 w-3.5 text-foreground" />
                   Metrik Live Database Produksi
                 </span>
                 <h2 className="text-xl font-light text-foreground md:text-2xl">
                   Verifikasi integrasi sistem & data lapangan
                 </h2>
-                <p className="text-xs leading-relaxed text-muted font-mono max-w-xl">
+                <p className="text-xs leading-relaxed text-foreground/70 font-mono max-w-xl">
                   Sistem ini terhubung langsung ke database aktif menggunakan API serverless. Klik tombol di kanan untuk melakukan sinkronisasi data terbaru secara real-time.
                 </p>
               </div>
@@ -308,20 +368,22 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
                     disabled={fetching}
                     className="btn-secondary px-4 py-2.5 text-xs disabled:opacity-60 disabled:cursor-not-allowed font-mono"
                   >
-                    <RefreshCw className={`h-3.5 w-3.5 text-accent ${fetching ? 'animate-spin' : ''}`} />
+                    <RefreshCw className={`h-3.5 w-3.5 ${fetching ? 'animate-spin' : ''}`} />
                     {fetching ? 'Menarik...' : 'Tarik Data Live'}
                   </button>
 
                   <div className="inline-flex items-center gap-2 rounded-full border border-money/30 bg-money/10 px-3 py-2 text-xs font-semibold font-mono">
                     <span className="relative flex h-2.5 w-2.5">
-                      <span className="absolute inline-flex h-full w-full rounded-full bg-money opacity-75 animate-ping" />
+                      {!reduceMotion && (
+                        <span className="absolute inline-flex h-full w-full rounded-full bg-money opacity-75 animate-ping" />
+                      )}
                       <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-money" />
                     </span>
                     <span className="text-[10px] text-foreground">CONNECTED</span>
                   </div>
                 </div>
                 {fetchedAt && (
-                  <p className="text-[9px] font-mono text-muted">
+                  <p className="text-[9px] font-mono text-foreground/70">
                     Sync terakhir: pukul {fetchedAt} WIB
                   </p>
                 )}
@@ -329,92 +391,16 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
             </div>
 
             {/* Metrics cards grid */}
-            <div className="grid gap-3 sm:grid-cols-3 mt-6">
-              {id === 'selisih-berat' && (
-                <>
-                  <div className="glass-soft rounded-2xl p-5 font-mono text-center border border-foreground/10">
-                    <p className="text-[10px] text-muted font-semibold uppercase">Resi QC Terproses</p>
-                    <p className="text-2xl font-light tracking-tight text-foreground mt-2">
-                      {activeMetrics.entries.toLocaleString('id-ID')}
-                    </p>
-                  </div>
-                  <div className="glass-soft rounded-2xl p-5 font-mono text-center sm:col-span-2 border border-foreground/10">
-                    <p className="text-[10px] text-muted font-semibold uppercase">Foto GPS-Watermarked Terunggah</p>
-                    <p className="text-2xl font-light tracking-tight text-foreground mt-2 bg-gradient-to-br from-accent to-splash bg-clip-text text-transparent">
-                      {activeMetrics.photos.toLocaleString('id-ID')}
-                    </p>
-                  </div>
-                </>
-              )}
-
-              {id === 'wc-check' && (
-                <>
-                  <div className="glass-soft rounded-2xl p-5 font-mono text-center border border-foreground/10">
-                    <p className="text-[10px] text-muted font-semibold uppercase">Inspeksi Masuk</p>
-                    <p className="text-2xl font-light tracking-tight text-foreground mt-2">
-                      {activeMetrics.inspections.toLocaleString('id-ID')}
-                    </p>
-                  </div>
-                  <div className="glass-soft rounded-2xl p-5 font-mono text-center border border-foreground/10">
-                    <p className="text-[10px] text-muted font-semibold uppercase">User Terdaftar</p>
-                    <p className="text-2xl font-light tracking-tight text-foreground mt-2">
-                      {activeMetrics.users.toLocaleString('id-ID')}
-                    </p>
-                  </div>
-                  <div className="glass-soft rounded-2xl p-5 font-mono text-center border border-foreground/10">
-                    <p className="text-[10px] text-muted font-semibold uppercase">Lokasi Terkelola</p>
-                    <p className="text-2xl font-light tracking-tight text-foreground mt-2 bg-gradient-to-br from-accent to-splash bg-clip-text text-transparent">
-                      {activeMetrics.locations.toLocaleString('id-ID')}
-                    </p>
-                  </div>
-                </>
-              )}
-
-              {id === 'lakupos' && (
-                <>
-                  <div className="glass-soft rounded-2xl p-5 font-mono text-center border border-foreground/10">
-                    <p className="text-[10px] text-muted font-semibold uppercase">Transaksi POS</p>
-                    <p className="text-2xl font-light tracking-tight text-foreground mt-2">
-                      {activeMetrics.transactions.toLocaleString('id-ID')}
-                    </p>
-                  </div>
-                  <div className="glass-soft rounded-2xl p-5 font-mono text-center border border-foreground/10">
-                    <p className="text-[10px] text-muted font-semibold uppercase">Varian Produk</p>
-                    <p className="text-2xl font-light tracking-tight text-foreground mt-2">
-                      {activeMetrics.products.toLocaleString('id-ID')}
-                    </p>
-                  </div>
-                  <div className="glass-soft rounded-2xl p-5 font-mono text-center border border-foreground/10">
-                    <p className="text-[10px] text-muted font-semibold uppercase">Outlet Aktif</p>
-                    <p className="text-2xl font-light tracking-tight text-foreground mt-2 bg-gradient-to-br from-accent to-splash bg-clip-text text-transparent">
-                      {activeMetrics.outlets.toLocaleString('id-ID')}
-                    </p>
-                  </div>
-                </>
-              )}
-
-              {id === 'ecommerce-manual' && (
-                <>
-                  <div className="glass-soft rounded-2xl p-5 font-mono text-center border border-foreground/10">
-                    <p className="text-[10px] text-muted font-semibold uppercase">Varian Produk</p>
-                    <p className="text-2xl font-light tracking-tight text-foreground mt-2">
-                      {activeMetrics.products.toLocaleString('id-ID')}
-                    </p>
-                  </div>
-                  <div className="glass-soft rounded-2xl p-5 font-mono text-center border border-foreground/10">
-                    <p className="text-[10px] text-muted font-semibold uppercase">Pesanan Masuk</p>
-                    <p className="text-2xl font-light tracking-tight text-foreground mt-2">
-                      {activeMetrics.orders.toLocaleString('id-ID')}
-                    </p>
-                  </div>
-                  <div className="glass-soft rounded-2xl p-5 font-mono text-center border border-foreground/10">
-                    <p className="text-[10px] text-muted font-semibold uppercase">User Terdaftar</p>
-                    <p className="text-2xl font-light tracking-tight text-foreground mt-2 bg-gradient-to-br from-accent to-splash bg-clip-text text-transparent">
-                      {activeMetrics.users.toLocaleString('id-ID')}
-                    </p>
-                  </div>
-                </>
-              )}
+            <div className="card-rotate mt-6 grid gap-3 sm:grid-cols-3">
+              {(METRIC_CARDS[id] ?? []).map((card, i, all) => (
+                <MetricCard
+                  key={card.key}
+                  label={card.label}
+                  value={activeMetrics?.[card.key]}
+                  emphasis={i === all.length - 1}
+                  wide={card.wide}
+                />
+              ))}
             </div>
           </div>
         </ScrollReveal>
@@ -447,7 +433,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
                 Putar produknya, ganti layar aplikasi
               </h2>
             </div>
-            <p className="hidden md:block max-w-xs text-[11px] leading-relaxed text-muted font-mono">
+            <p className="hidden md:block max-w-xs text-[11px] leading-relaxed text-foreground/70 font-mono">
               Model phone 3D berbasis GLB dengan texture layar dari build produksi. Klik chip untuk mengganti aplikasi yang ditampilkan.
             </p>
           </div>
@@ -469,14 +455,14 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
                     Tantangan di Lapangan
                   </h2>
                 </div>
-                <p className="mt-4 text-xs leading-relaxed text-muted font-mono">{project.caseStudy.problem}</p>
+                <p className="mt-4 text-xs leading-relaxed text-foreground/70 font-mono">{project.caseStudy.problem}</p>
 
                 {project.caseStudy.painPoints.length > 0 && (
                   <div className="mt-5 space-y-2">
                     {project.caseStudy.painPoints.map((point) => (
                       <div
                         key={point}
-                        className="flex items-start gap-2 rounded-xl border border-foreground/10 bg-foreground/[0.03] px-4 py-3 text-xs leading-relaxed text-muted font-mono"
+                        className="flex items-start gap-2 rounded-xl soft-border bg-[var(--bg-element-second)] px-4 py-3 text-xs leading-relaxed text-foreground/70 font-mono"
                       >
                         <span className="text-punch font-extrabold">•</span>
                         <span>{point}</span>
@@ -495,9 +481,9 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
                     Solusi yang Di-deploy
                   </h2>
                 </div>
-                <p className="mt-4 text-xs leading-relaxed text-muted font-mono">{project.caseStudy.solution}</p>
+                <p className="mt-4 text-xs leading-relaxed text-foreground/70 font-mono">{project.caseStudy.solution}</p>
 
-                <div className="mt-5 rounded-xl border border-foreground/10 bg-foreground/[0.03] p-4 font-mono text-[11px] leading-relaxed text-muted">
+                <div className="mt-5 rounded-xl soft-border bg-[var(--bg-element-second)] p-4 font-mono text-[11px] leading-relaxed text-foreground/70">
                   <p className="font-semibold text-foreground/80 uppercase text-[9px] tracking-wider mb-1">Kenapa Ini Signifikan:</p>
                   <p>
                     {project.impact?.business ??
@@ -516,7 +502,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
 <h2 className="text-lg font-light text-foreground">
                   Sebelum vs Sesudah
                 </h2>
-                <p className="mt-1.5 text-xs leading-relaxed text-muted font-mono">
+                <p className="mt-1.5 text-xs leading-relaxed text-foreground/70 font-mono">
                   Bukti terkuat dari efisiensi sistem di lapangan: perbandingan data performa kerja sebelum dan sesudah sistem live.
                 </p>
 
@@ -524,7 +510,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
                   {project.caseStudy.metrics.map((metric) => (
                     <div
                       key={metric.label}
-                      className="grid gap-3 rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-4 md:grid-cols-[0.9fr_1fr_1fr] md:items-center font-mono text-[11px]"
+                      className="grid gap-3 rounded-2xl soft-border bg-[var(--bg-element-second)] p-4 md:grid-cols-[0.9fr_1fr_1fr] md:items-center font-mono text-[11px]"
                     >
                       <div>
                         <p className="font-semibold text-foreground/80 uppercase text-[10px]">
@@ -554,17 +540,17 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
           {project.caseStudy.testimonial && (
             <ScrollReveal>
               <div className="glass rounded-3xl p-6 md:p-10">
-                <Quote className="h-9 w-9 text-accent/20" />
+                <Quote className="h-9 w-9 text-foreground/20" />
                 <blockquote className="mt-4 text-base font-medium leading-relaxed text-foreground font-mono italic">
                   &ldquo;{project.caseStudy.testimonial.quote}&rdquo;
                 </blockquote>
                 <div className="mt-5 flex items-center gap-3 font-mono">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-accent to-splash font-bold text-white">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--bg-btn-pm)] font-bold text-[var(--txt-btn-pm)]">
                     {project.caseStudy.testimonial.author.charAt(0)}
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-foreground">{project.caseStudy.testimonial.author}</p>
-                    <p className="text-[10px] text-muted">{project.caseStudy.testimonial.role}</p>
+                    <p className="text-[10px] text-foreground/70">{project.caseStudy.testimonial.role}</p>
                   </div>
                 </div>
               </div>
@@ -582,9 +568,9 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
             </h2>
             <div className="mt-5 grid gap-4 md:grid-cols-2">
               {project.highlights.map((highlight) => (
-                <div key={highlight.title} className="rounded-2xl border border-foreground/10 bg-foreground/[0.02] p-4 font-mono text-[11px]">
+                <div key={highlight.title} className="rounded-2xl soft-border bg-[var(--bg-element-second)] p-4 font-mono text-[11px]">
                   <h3 className="font-semibold text-foreground">{highlight.title}</h3>
-                  <p className="mt-1.5 leading-relaxed text-muted">{highlight.description}</p>
+                  <p className="mt-1.5 leading-relaxed text-foreground/70">{highlight.description}</p>
                 </div>
               ))}
             </div>
@@ -598,7 +584,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
               {proofLines.map((line) => (
                 <div
                   key={line}
-                  className="flex items-start gap-3 rounded-2xl border border-foreground/10 px-4 py-3 bg-foreground/[0.02] leading-relaxed text-muted"
+                  className="flex items-start gap-3 rounded-2xl soft-border px-4 py-3 bg-[var(--bg-element-second)] leading-relaxed text-foreground/70"
                 >
                   <ShieldCheck className="mt-0.5 h-4.5 w-4.5 flex-shrink-0 text-money" strokeWidth={2.2} />
                   <span>{line}</span>
@@ -618,7 +604,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
             </h2>
             <div className="mt-5 grid gap-3 lg:grid-cols-2">
               {project.features.map((feature) => (
-                <div key={feature} className="flex items-start gap-2 rounded-2xl border border-foreground/10 px-4 py-3 bg-foreground/[0.02] text-[11px] leading-relaxed text-muted font-mono">
+                <div key={feature} className="flex items-start gap-2 rounded-2xl soft-border px-4 py-3 bg-[var(--bg-element-second)] text-[11px] leading-relaxed text-foreground/70 font-mono">
                   <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-money" strokeWidth={2.5} />
                   <span>{feature}</span>
                 </div>
@@ -633,7 +619,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
             <div className="mt-5 space-y-5">
               {project.techStack.map((stack) => (
                 <div key={stack.category}>
-                  <h3 className="text-xs font-semibold text-accent font-mono uppercase tracking-wider">{stack.category}</h3>
+                  <h3 className="text-xs font-semibold text-foreground/60 font-mono uppercase tracking-wider">{stack.category}</h3>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {stack.technologies.map((tech) => (
                       <TechBadge key={tech} tech={tech} />
@@ -648,21 +634,23 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
 
       {/* FOOTER CTA */}
       <ScrollReveal>
-        <div className="rounded-3xl bg-gradient-to-br from-accent/10 to-splash/10 border border-accent/30 p-6 md:p-10">
+        <div className="rounded-3xl bg-[var(--bg-btn-big)] text-[var(--txt-btn-big)] p-6 md:p-10">
           <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div className="space-y-3">
-              <h2 className="text-2xl font-light text-foreground md:text-3xl">
+              <h2 className="text-2xl font-light text-current md:text-3xl">
                 Menghadapi Tantangan Operasional yang Serupa?
               </h2>
-              <p className="text-sm leading-relaxed text-muted">
+              <p className="text-sm leading-relaxed text-current opacity-75">
                 Langkah awal terbaik adalah memetakan bottleneck operasional Anda dan merumuskan scope proyek yang paling pragmatis. Hubungi kami untuk memulai.
               </p>
             </div>
 
             <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
+              {/* Sits on the dark slab, so the button pins to the light form
+                  surface instead of the theme-flipping primary pair. */}
               <Link
                 href="/contact"
-                className="btn-primary px-6 py-3 text-xs"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--bg-form-element)] px-6 py-3 text-xs font-semibold text-[var(--txt-form-element)] transition-opacity hover:opacity-90"
               >
                 Mulai Diskusi Kasus Anda
                 <ArrowRight className="h-4.5 w-4.5" strokeWidth={2.5} />

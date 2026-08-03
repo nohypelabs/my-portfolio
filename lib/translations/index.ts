@@ -40,6 +40,16 @@ const idTranslations = {
   energyHigh: "High",
   playerDarkMode: "Dark mode untuk menghemat baterai",
   playerReduceMotion: "Hemat CPU/GPU — matikan animasi",
+  energyPanelTitle: "Konsumsi energi halaman",
+  energyPanelBody:
+    "Dark mode menurunkan daya layar OLED, dan mematikan animasi mengurangi kerja CPU/GPU. Dua-duanya bikin baterai perangkat lebih awet dan jejak energi kunjungan ini lebih kecil.",
+  energyPanelDarkLabel: "Dark mode",
+  energyPanelDarkHint: "Latar gelap, lebih hemat di layar OLED.",
+  energyPanelMotionLabel: "Kurangi animasi",
+  energyPanelMotionHint:
+    "Menghentikan smooth scroll, reveal teks, marquee, dan render 3D.",
+  energyPanelToggleAria: "Buka panel konsumsi energi",
+  energyPanelCurrent: "Level sekarang",
 };
 
 export const translations = {

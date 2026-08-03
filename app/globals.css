@@ -1,177 +1,262 @@
 @import "tailwindcss";
 
 /* ════════════════════════════════════════════════════════════
-   Premium glass design system — nasaq.id (noho.ink-inspired)
+   nasaq.id — warm clay design system
+   Token model adapted from the noho.ink structure:
+   flat warm neutrals, no brand accent. Contrast and imagery
+   carry the emphasis instead of a coloured accent.
    ════════════════════════════════════════════════════════════ */
-@theme {
-  /* Core palette — soft neutral glass */
-  --color-background: #f6f6f9;
-  --color-foreground: #141419;
-  --color-surface: rgba(255, 255, 255, 0.72);  /* glass white */
-  --color-surface-solid: #ffffff;
-  --color-border: rgba(20, 20, 25, 0.1);
-  --color-muted: #6f6f7d;
 
-  /* Accent — single confident indigo */
-  --color-accent: #5d51ff;
-  --color-accent-light: #8b82ff;
-  --color-accent-dark: #4338ca;
-  --color-accent-bg: rgba(93, 81, 255, 0.08);
-  --color-accent-hover: #4a3ff0;
+/* ── Canonical token layer (light) ───────────────────────────── */
+:root {
+  color-scheme: light;
 
-  /* Semantic */
-  --color-punch: #e11d48;      /* error / on-hold */
-  --color-double: #f472b6;     /* soft magenta */
-  --color-money: #10b981;      /* success */
-  --color-splash: #8b5cf6;     /* violet */
+  --bg-page: #f1eee9;
+  --bg-element: #e7e2da;
+  --bg-element-second: #d7d1c7;
+  --bg-element-third: #cdc0b0;
+  --bg-element-hover: #cdc0b0;
 
-  /* Fonts */
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-outfit);
-  --font-mono: var(--font-jetbrains-mono);
+  --txt-main: #3c3c3c;
+  /* Opacity ramps: decorative / large text only — see a11y note below */
+  --txt-main-opacity-med: rgba(60, 60, 60, 0.6);
+  --txt-main-opacity-max: rgba(60, 60, 60, 0.4);
 
-  /* Radius */
+  --bg-btn-pm: #3c3c3c;
+  --txt-btn-pm: #ffffff;
+  --bg-btn-sc: #ffffff;
+  --txt-btn-sc: #3c3c3c;
+  --bg-btn-big: #3c3c3c;
+  --txt-btn-big: #ffffff;
+
+  --bg-form-element: #ffffff;
+  /* Form surfaces stay light in both themes, so their text token is paired to
+     the surface — not to --txt-main, which inverts. */
+  --txt-form-element: #3c3c3c;
+  --txt-form-placeholder: rgba(60, 60, 60, 0.5);
+  --txt-form-header: #6b6b6b;
+
+  --bg-header: #ffffff;
+  --txt-header: #3c3c3c;
+
+  --bg-switch: #d7d1c7;
+  --bg-switch-active: #3c3c3c;
+  --bg-inner-switch: #ffffff;
+
+  --icon-contrast: #3c3c3c;
+  --border-hairline: rgba(60, 60, 60, 0.14);
+
+  /* Semantic indicators — the only non-neutral hues in the system */
+  --indicator-green: #88c159;
+  --indicator-red: #dc5b5b;
+  --dim-gray: #686868;
+}
+
+/* ── Canonical token layer (dark — warm brown, not neutral grey) ── */
+.dark {
+  color-scheme: dark;
+
+  --bg-page: #2e241c;
+  --bg-element: #46362a;
+  --bg-element-second: #584537;
+  --bg-element-third: #715946;
+  --bg-element-hover: #785b46;
+
+  --txt-main: #f0e9e4;
+  --txt-main-opacity-med: rgba(236, 223, 214, 0.6);
+  --txt-main-opacity-max: rgba(236, 223, 214, 0.5);
+
+  --bg-btn-pm: #ecdfd6;
+  --txt-btn-pm: #1c0d0d;
+  --bg-btn-sc: #2e241c;
+  --txt-btn-sc: #ffffff;
+  --bg-btn-big: #362920;
+  --txt-btn-big: #e7e2da;
+
+  --bg-form-element: #ecdfd6;
+  /* Cream surface in dark mode, so text must stay dark — using --txt-main here
+     would put near-white text on cream. */
+  --txt-form-element: #2e241c;
+  --txt-form-placeholder: rgba(46, 36, 28, 0.55);
+  --txt-form-header: #796153;
+
+  /* Deviation from noho: they run a light header pill (#F2ECE9) on dark.
+     Our header is a full-width sticky bar, so a cream slab reads as broken.
+     Warm dark surface keeps the same intent with a legible pairing. */
+  --bg-header: #46362a;
+  --txt-header: #f0e9e4;
+
+  --bg-switch: #584537;
+  --bg-switch-active: #ecdfd6;
+  --bg-inner-switch: #2e241c;
+
+  --icon-contrast: #ffffff;
+  --border-hairline: rgba(240, 233, 228, 0.16);
+}
+
+/* ── Tailwind bridge ─────────────────────────────────────────────
+   Existing utilities (bg-background, text-foreground, text-accent …)
+   resolve through the canonical tokens above, so theme switching is
+   a single var swap. "accent" is deliberately the contrast neutral,
+   not a colour — decision A: full warm clay, no brand accent.
+   ──────────────────────────────────────────────────────────────── */
+@theme inline {
+  --color-background: var(--bg-page);
+  --color-foreground: var(--txt-main);
+  --color-surface: var(--bg-element);
+  --color-surface-solid: var(--bg-element);
+  --color-surface-second: var(--bg-element-second);
+  --color-surface-third: var(--bg-element-third);
+  --color-border: var(--border-hairline);
+  --color-muted: var(--txt-main-opacity-med);
+
+  --color-accent: var(--bg-btn-pm);
+  --color-accent-light: var(--bg-element-third);
+  --color-accent-dark: var(--txt-main);
+  --color-accent-bg: var(--bg-element-second);
+  --color-accent-hover: var(--bg-element-hover);
+
+  --color-punch: var(--indicator-red);
+  --color-money: var(--indicator-green);
+  --color-splash: var(--bg-element-third);
+  --color-double: var(--bg-element-second);
+
+  /* Nested fallbacks: if Switzer fails to register the declaration must still
+     be valid, otherwise the whole font stack is dropped (IACVT). */
+  --font-sans: var(--font-switzer, var(--font-inter, ui-sans-serif));
+  --font-display: var(--font-switzer, var(--font-outfit, ui-sans-serif));
+  --font-mono: var(--font-jetbrains-mono, ui-monospace);
+
   --radius-card: 16px;
   --radius-glass: 18px;
 }
 
-.dark {
-  --color-background: #0c0c12;
-  --color-foreground: #f4f4f6;
-  --color-surface: rgba(24, 24, 32, 0.66);
-  --color-surface-solid: #18181f;
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-muted: #a1a1ac;
-
-  --color-accent: #8b82ff;
-  --color-accent-light: #a8a1ff;
-  --color-accent-dark: #b3adff;
-  --color-accent-bg: rgba(139, 130, 255, 0.14);
-  --color-accent-hover: #9a93ff;
-
-  --color-punch: #fb7185;
-  --color-double: #f472b6;
-  --color-money: #34d399;
-  --color-splash: #a78bfa;
-}
-
-:root {
-  color-scheme: light;
-}
-.dark {
-  color-scheme: dark;
+/* ── Fluid type scale ────────────────────────────────────────────
+   vw midpoints lifted from noho (6.25vw = 120px @ 1920), wrapped in
+   clamp() so 200% zoom and small viewports stay legible (WCAG 1.4.4).
+   ──────────────────────────────────────────────────────────────── */
+@theme {
+  --text-display: clamp(2.75rem, 6.25vw, 7.5rem);
+  --text-h1: clamp(2.25rem, 5.556vw, 6.5rem);
+  --text-h2: clamp(1.875rem, 3.75vw, 3.75rem);
+  --text-h3: clamp(1.375rem, 2.5vw, 2.25rem);
+  --text-h4: clamp(1.125rem, 1.667vw, 1.5rem);
+  --text-lead: clamp(1.0625rem, 1.25vw, 1.375rem);
 }
 
 html {
   scroll-behavior: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-page);
 }
 
 body {
-  background-color: var(--color-background);
-  color: var(--color-foreground);
+  background-color: var(--bg-page);
+  color: var(--txt-main);
   font-family: var(--font-sans), system-ui, sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  /* noho tweens each var over .6s via GSAP; a plain transition on the two
+     paint properties is visually equivalent and far cheaper. */
+  transition: background-color 0.6s ease, color 0.6s ease;
 }
 
-/* Soft aurora wash behind everything */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background:
-    radial-gradient(52% 42% at 18% 0%, var(--color-accent-bg), transparent 58%),
-    radial-gradient(46% 38% at 92% 12%, rgba(139, 130, 255, 0.05), transparent 50%),
-    radial-gradient(40% 40% at 50% 110%, rgba(139, 130, 255, 0.04), transparent 60%);
-  pointer-events: none;
-}
-
-/* Display headings — light, roomy, confident */
-h1, h2, h3, h4 {
+/* Display headings — tight, roomy, confident */
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
   letter-spacing: -0.02em;
   font-weight: 600;
+  line-height: 0.95;
+  text-wrap: balance;
 }
 
-/* ── Tiny descriptor label — the noho.ink draw string ── */
+h3,
+h4 {
+  line-height: 1.1;
+}
+
+/* Tiny descriptor label */
 .descriptor {
   font-family: var(--font-mono), monospace;
   font-size: 11px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.24em;
-  color: var(--color-accent);
+  color: var(--txt-main-opacity-med);
 }
 
 /* ════════════════════════════════════════════════════════════
-   Glass surfaces
+   Surfaces — flat warm clay (the glass/backdrop-blur era is over)
    ════════════════════════════════════════════════════════════ */
-.glass {
-  background: var(--color-surface);
-  -webkit-backdrop-filter: blur(20px) saturate(1.4);
-  backdrop-filter: blur(20px) saturate(1.4);
-  border: 1px solid var(--color-border);
-  box-shadow:
-    0 12px 40px rgba(20, 20, 25, 0.07),
-    inset 0 1px 0 rgba(255, 255, 255, 0.65);
-}
-.dark .glass {
-  box-shadow:
-    0 16px 48px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
-}
-
-.glass-soft {
-  background: var(--color-surface);
-  -webkit-backdrop-filter: blur(16px) saturate(1.3);
-  backdrop-filter: blur(16px) saturate(1.3);
-  border: 1px solid var(--color-border);
-}
-
-/* Legacy neo-brutal "surface" → premium glass card */
+.glass,
+.glass-soft,
 .neo-surface,
 .card-enterprise,
 .card-elevated {
-  background: var(--color-surface);
-  -webkit-backdrop-filter: blur(18px) saturate(1.35);
-  backdrop-filter: blur(18px) saturate(1.35);
-  border: 1px solid var(--color-border);
+  /* --card-bg lets the nth-child rotation win when one is in play. */
+  background: var(--card-bg, var(--bg-element));
+  border: 1px solid var(--border-hairline);
   border-radius: var(--radius-card);
-  box-shadow: 0 12px 40px rgba(20, 15, 25, 0.07);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-.dark .neo-surface,
-.dark .card-enterprise,
-.dark .card-elevated {
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.25s ease, border-color 0.25s ease,
+    transform 0.25s ease;
 }
 
 .neo-surface:hover,
 .card-enterprise:hover,
 .card-elevated:hover {
+  background: var(--bg-element-hover);
   transform: translateY(-3px);
-  border-color: var(--color-accent);
-  box-shadow: 0 20px 60px rgba(20, 15, 25, 0.12);
 }
 
+/* ── Card colour rotation (noho §1.6) ──────────────────────────
+   Three-step warm rotation with zero extra data. Apply to the grid
+   wrapper; children cycle element → third → second.
+   ──────────────────────────────────────────────────────────────── */
+/* --card-bg is set on the grid child and *inherits* down, so the painted
+   surface can be nested arbitrarily deep (motion wrapper → tilt → link). */
+.card-rotate > *:nth-child(3n + 1) {
+  --card-bg: var(--bg-element);
+}
+.card-rotate > *:nth-child(3n + 2) {
+  --card-bg: var(--bg-element-third);
+}
+.card-rotate > *:nth-child(3n + 3) {
+  --card-bg: var(--bg-element-second);
+}
+
+/* ── Alternating mirror layout for case-study rows (noho §1.6) ──
+   Every other row flips its media to the opposite side. Implemented with
+   `order` so it works for both grid and flex rows, and only above lg where
+   the row actually has two columns.
+   ──────────────────────────────────────────────────────────────── */
+@media (min-width: 1024px) {
+  .row-mirror > *:nth-child(even) .row-mirror-row {
+    grid-template-columns: 1fr 320px;
+  }
+  .row-mirror > *:nth-child(even) .row-mirror-media {
+    order: 2;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════
+   Buttons — token pairs, never a raw colour
+   ════════════════════════════════════════════════════════════ */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
-  color: #fff;
+  background: var(--bg-btn-pm);
+  color: var(--txt-btn-pm);
   font-weight: 600;
-  box-shadow: 0 8px 24px rgba(93, 81, 255, 0.35);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+  transition: transform 0.15s ease, filter 0.15s ease;
 }
 .btn-primary:hover {
-  filter: brightness(1.06);
+  filter: brightness(1.12);
   transform: translateY(-1px);
-  box-shadow: 0 12px 32px rgba(93, 81, 255, 0.42);
 }
 .btn-primary:active {
   transform: translateY(0);
@@ -183,85 +268,118 @@ h1, h2, h3, h4 {
   justify-content: center;
   gap: 0.5rem;
   border-radius: 999px;
-  background: var(--color-surface);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--color-border);
-  color: var(--color-foreground);
+  background: var(--bg-btn-sc);
+  color: var(--txt-btn-sc);
+  border: 1px solid var(--border-hairline);
   font-weight: 600;
-  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  transition: transform 0.15s ease, background 0.15s ease;
 }
 .btn-secondary:hover {
-  border-color: var(--color-accent);
-  background: var(--color-accent-bg);
+  background: var(--bg-element-hover);
   transform: translateY(-1px);
 }
 
-/* Legacy neo-button → subtle glass square button */
+.btn-big {
+  background: var(--bg-btn-big);
+  color: var(--txt-btn-big);
+}
+
 .neo-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+  background: var(--bg-element);
+  border: 1px solid var(--border-hairline);
+  color: var(--txt-main);
+  transition: background 0.15s ease, transform 0.15s ease;
 }
 .neo-button:hover {
-  background: var(--color-accent-bg);
-  border-color: var(--color-accent);
+  background: var(--bg-element-hover);
 }
 .neo-button:active {
   transform: scale(0.96);
 }
 
 .neo-pressed {
-  background: var(--color-accent);
+  background: var(--bg-btn-pm);
+  color: var(--txt-btn-pm);
   border-radius: 12px;
-  color: #fff;
 }
 
-/* Underline chips — the noho.ink keyword idiom */
 .chip {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   border-radius: 999px;
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
+  border: 1px solid var(--border-hairline);
+  background: var(--bg-element-second);
   padding: 0.3rem 0.75rem;
   font-family: var(--font-mono), monospace;
   font-size: 11px;
   font-weight: 600;
-  color: var(--color-muted);
+  color: var(--txt-main);
 }
 
 .soft-border {
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border-hairline);
+}
+
+/* Form surfaces — the surface stays light in both themes, so text and
+   placeholder pair to the surface rather than to the page. */
+input,
+textarea,
+select {
+  background: var(--bg-form-element);
+  color: var(--txt-form-element);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--txt-form-placeholder);
 }
 
 /* ════════════════════════════════════════════════════════════
-   Scrollbar — slim & quiet
+   Scrollbar — hidden on the page scroller only.
+   Scoped to html/body so modals, panels and overflow regions keep
+   a usable scrollbar (noho hides it on `*`, which strands them).
    ════════════════════════════════════════════════════════════ */
-::-webkit-scrollbar {
-  width: 9px;
-  height: 9px;
+html,
+body {
+  scrollbar-width: none;
 }
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--color-muted);
-  border-radius: 999px;
-  opacity: 0.5;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-accent);
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
 }
 
 ::selection {
-  background: var(--color-accent);
-  color: #fff;
+  background: var(--bg-btn-pm);
+  color: var(--txt-btn-pm);
+}
+
+/* ════════════════════════════════════════════════════════════
+   Focus — the scrollbar is hidden, so keyboard affordance must be loud
+   ════════════════════════════════════════════════════════════ */
+:focus-visible {
+  outline: 2px solid var(--txt-main);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 10000;
+  background: var(--bg-btn-pm);
+  color: var(--txt-btn-pm);
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 8px 0;
+  font-weight: 600;
+}
+.skip-link:focus {
+  left: 0;
 }
 
 /* ── Noise texture overlay ── */
@@ -279,7 +397,43 @@ h1, h2, h3, h4 {
 }
 
 /* ════════════════════════════════════════════════════════════
-   Motion — respect user preference globally
+   Mask reveal primitive — parent clips, child rides up from 100%
+   ════════════════════════════════════════════════════════════ */
+.mask-reveal-line {
+  display: block;
+  overflow: hidden;
+}
+.mask-reveal-inner {
+  display: inline-block;
+  will-change: transform;
+}
+/* Block-level reveals (cards, sections) must fill their track, not shrink-wrap. */
+.mask-reveal-block {
+  display: block;
+  width: 100%;
+}
+
+/* Text splits need the mask to sit inline so words wrap naturally. */
+.mask-reveal-line.align-bottom {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+/* ── Footer reveal mask (noho §1.5.4) ── */
+.footer-reveal-mask {
+  position: relative;
+  overflow: hidden;
+}
+.footer-reveal-mask > footer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* ════════════════════════════════════════════════════════════
+   Motion — reduced-motion is a default, not an opt-in
    ════════════════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -290,6 +444,39 @@ h1, h2, h3, h4 {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
+  /* Reveals must land at their end state, never stay hidden */
+  .mask-reveal-inner {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  .footer-reveal-mask {
+    overflow: visible;
+    height: auto !important;
+  }
+  .footer-reveal-mask > footer {
+    position: static;
+  }
+}
+
+/* Same treatment when the energy-saver toggle is on */
+html[data-reduce-motion="true"] .mask-reveal-inner {
+  transform: none !important;
+  opacity: 1 !important;
+}
+html[data-reduce-motion="true"] .footer-reveal-mask {
+  overflow: visible;
+  height: auto !important;
+}
+html[data-reduce-motion="true"] .footer-reveal-mask > footer {
+  position: static;
+}
+
+/* Runtime pause — mirrors html.noho-site-runtime-paused */
+html[data-runtime-paused="true"] model-viewer {
+  content-visibility: hidden;
+  contain: strict;
 }
 
 /* ── CV Print Styles ── */
@@ -345,4 +532,10 @@ h1, h2, h3, h4 {
   a[href]::after {
     content: none !important;
   }
+}
+
+/* ── Shimmer skeleton animation ─────────────────────────────────────────────── */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }

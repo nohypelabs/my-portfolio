@@ -2,6 +2,7 @@
 
 import { useRef, useState, useCallback, type RefObject } from 'react';
 import { motion } from 'framer-motion';
+import { useEnergySaver } from '@/contexts/EnergySaverContext';
 
 interface MagneticButtonProps {
   children: React.ReactNode;
@@ -21,9 +22,11 @@ export function MagneticButton({
 }: MagneticButtonProps) {
   const ref = useRef<HTMLElement & HTMLAnchorElement & HTMLButtonElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const { reduceMotion } = useEnergySaver();
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent<HTMLElement>) => {
+      if (reduceMotion) return;
       const el = ref.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();
@@ -33,7 +36,7 @@ export function MagneticButton({
       const deltaY = (e.clientY - centerY) * strength;
       setPosition({ x: deltaX, y: deltaY });
     },
-    [strength]
+    [strength, reduceMotion]
   );
 
   const handleMouseLeave = useCallback(() => {
@@ -47,8 +50,12 @@ export function MagneticButton({
       ref={ref as RefObject<HTMLButtonElement>}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      animate={{ x: position.x, y: position.y }}
-      transition={{ type: 'spring', stiffness: 150, damping: 15, mass: 0.1 }}
+      animate={reduceMotion ? { x: 0, y: 0 } : { x: position.x, y: position.y }}
+      transition={
+        reduceMotion
+          ? { duration: 0 }
+          : { type: 'spring', stiffness: 150, damping: 15, mass: 0.1 }
+      }
       className={className}
       {...props}
     >

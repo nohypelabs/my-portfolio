@@ -1,9 +1,25 @@
 "use client";
 
-import { createContext, useCallback, useContext, useMemo, useSyncExternalStore } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useSyncExternalStore,
+} from "react";
 import { useTheme } from "next-themes";
 
 export type EnergyLevel = "low" | "med" | "high";
+
+/** A registered animation that reduce-motion can cancel mid-flight. */
+export interface ReducedAnimationEntry {
+  /** Tear down the tween + its ScrollTrigger. */
+  kill: () => void;
+  /** Jump the target to its end state (never leave content hidden). */
+  snap: () => void;
+}
 
 interface EnergySaverContextValue {
   reduceMotion: boolean;
@@ -12,11 +28,16 @@ interface EnergySaverContextValue {
   toggleDark: () => void;
   energyLevel: EnergyLevel;
   mounted: boolean;
+  /** True while the tab is hidden — consumers should pause heavy rendering. */
+  runtimePaused: boolean;
+  registerReducedAnimation: (id: string, entry: ReducedAnimationEntry) => void;
+  unregisterReducedAnimation: (id: string) => void;
 }
 
 const EnergySaverContext = createContext<EnergySaverContextValue | null>(null);
 
 const STORAGE_KEY = "nasaq:reduce-motion";
+const REDUCE_MOTION_EVENT = "nasaq:reduce-motion-change";
 
 function getReduceMotionSnapshot(): boolean {
   if (typeof window === "undefined") return false;
@@ -26,8 +47,6 @@ function getReduceMotionSnapshot(): boolean {
     return false;
   }
 }
-
-const REDUCE_MOTION_EVENT = "nasaq:reduce-motion-change";
 
 function subscribeReduceMotion(callback: () => void): () => void {
   if (typeof window === "undefined") return () => {};
@@ -52,6 +71,18 @@ function setStoredReduceMotion(next: boolean) {
   }
 }
 
+// ── Page Visibility store (mirrors html.noho-site-runtime-paused) ──────────
+function subscribeVisibility(callback: () => void): () => void {
+  if (typeof document === "undefined") return () => {};
+  document.addEventListener("visibilitychange", callback);
+  return () => document.removeEventListener("visibilitychange", callback);
+}
+
+function getVisibilitySnapshot(): boolean {
+  if (typeof document === "undefined") return false;
+  return document.hidden;
+}
+
 export function EnergySaverProvider({ children }: { children: React.ReactNode }) {
   const { setTheme, resolvedTheme } = useTheme();
 
@@ -61,12 +92,62 @@ export function EnergySaverProvider({ children }: { children: React.ReactNode })
     getReduceMotionSnapshot
   );
 
-  // Server snapshot returns false → render identical before/after hydration; true only on client.
+  const runtimePaused = useSyncExternalStore(
+    subscribeVisibility,
+    getVisibilitySnapshot,
+    () => false
+  );
+
+  // Server snapshot returns false → render identical before/after hydration.
   const mounted = useSyncExternalStore(
     () => () => {},
     () => true,
     () => false
   );
+
+  // ── Reduce-motion animation registry ────────────────────────────────────
+  const registry = useRef(new Map<string, ReducedAnimationEntry>());
+
+  const registerReducedAnimation = useCallback(
+    (id: string, entry: ReducedAnimationEntry) => {
+      registry.current.set(id, entry);
+    },
+    []
+  );
+
+  const unregisterReducedAnimation = useCallback((id: string) => {
+    registry.current.delete(id);
+  }, []);
+
+  // When the toggle flips on, cancel every live animation to its end state.
+  useEffect(() => {
+    if (!reduceMotion) return;
+    for (const entry of registry.current.values()) {
+      try {
+        entry.kill();
+        entry.snap();
+      } catch {
+        /* a single bad entry must not break the sweep */
+      }
+    }
+  }, [reduceMotion]);
+
+  // Expose both flags as html attributes so pure-CSS rules can react.
+  useEffect(() => {
+    const root = document.documentElement;
+    root.dataset.reduceMotion = reduceMotion ? "true" : "false";
+    return () => {
+      delete root.dataset.reduceMotion;
+    };
+  }, [reduceMotion]);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.dataset.runtimePaused = runtimePaused ? "true" : "false";
+    return () => {
+      delete root.dataset.runtimePaused;
+    };
+  }, [runtimePaused]);
 
   const toggleReduceMotion = useCallback(() => {
     setStoredReduceMotion(!getReduceMotionSnapshot());
@@ -92,8 +173,21 @@ export function EnergySaverProvider({ children }: { children: React.ReactNode })
       toggleDark,
       energyLevel,
       mounted,
+      runtimePaused,
+      registerReducedAnimation,
+      unregisterReducedAnimation,
     }),
-    [reduceMotion, toggleReduceMotion, isDark, toggleDark, energyLevel, mounted]
+    [
+      reduceMotion,
+      toggleReduceMotion,
+      isDark,
+      toggleDark,
+      energyLevel,
+      mounted,
+      runtimePaused,
+      registerReducedAnimation,
+      unregisterReducedAnimation,
+    ]
   );
 
   return <EnergySaverContext.Provider value={value}>{children}</EnergySaverContext.Provider>;
