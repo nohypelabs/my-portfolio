@@ -96,7 +96,7 @@ export default function Android3DViewer({ variants, className = '' }: Android3DV
           <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-[var(--bg-element-second)] soft-border">
             <Maximize2 className="h-3.5 w-3.5 text-foreground" strokeWidth={2.2} />
           </span>
-          Panorama Interaktif 3D — putar & zoom dengan drag
+          Panorama Interaktif 3D, putar & zoom dengan drag
         </div>
 
         <div className="flex items-center gap-2">
@@ -142,12 +142,12 @@ export default function Android3DViewer({ variants, className = '' }: Android3DV
             />
             {webgl === false && (
               <div className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full soft-border bg-[var(--bg-element)] px-3 py-1.5 text-[10px] font-mono text-foreground">
-                WebGL tidak tersedia — menampilkan gambar statis
+                WebGL tidak tersedia, menampilkan gambar statis
               </div>
             )}
             {reduceMotion && webgl !== false && (
               <div className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full soft-border bg-[var(--bg-element)] px-3 py-1.5 text-[10px] font-mono text-foreground">
-                Mode hemat energi — 3D dimatikan
+                Mode hemat energi, 3D dimatikan
               </div>
             )}
           </div>

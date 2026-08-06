@@ -30,7 +30,7 @@ export const Footer = () => {
                 nasaq<span className="opacity-60">.id</span>
               </Link>
               <p className="mt-3 text-[13px] leading-relaxed text-foreground/70">
-                Website &amp; Android app development untuk operasional nyata —
+                Website &amp; Android app development untuk operasional nyata:
                 company profile, dashboard internal, dan sistem custom.
               </p>
             </div>
@@ -50,11 +50,11 @@ export const Footer = () => {
 
           <div className="mt-10 flex flex-col gap-3 border-t border-[var(--border-hairline)] pt-6 font-mono text-[11px] text-foreground/60 md:flex-row md:items-center md:justify-between">
             <p>
-              © {new Date().getFullYear()} nasaq.id — dibuat oleh founder Abdul
+              © {new Date().getFullYear()} nasaq.id, dibuat oleh founder Abdul
               Gofur.
             </p>
             <p className="font-semibold tracking-[0.12em] text-foreground/60">
-              baik &amp; jalan aja nggak cukup — harus dipakai admin.
+              baik &amp; jalan aja nggak cukup, harus dipakai admin.
             </p>
           </div>
         </div>

@@ -1,7 +1,7 @@
 export const cvData = {
   profile: {
-    en: "Full-stack developer who shipped 7 production systems in 12 months, with 340K+ records processed and real clients at J&T Express and the retail sector. Stack: Next.js, TypeScript, tRPC, PostgreSQL. Also experienced in IT support: hardware troubleshooting, OS deployment, and network configuration. Returned to full-time development after 9 years of building end-to-end systems that solve real business problems.",
-    id: "Full-stack developer yang ngirim 7 sistem produksi dalam 12 bulan, 340K+ records diproses, client asli di J&T Express dan sektor ritel. Stack: Next.js, TypeScript, tRPC, PostgreSQL. Juga berpengalaman di IT support: troubleshooting hardware, deploy OS, dan konfigurasi jaringan. Kembali fokus ke development setelah 9 tahun membangun sistem end-to-end yang menyelesaikan masalah bisnis nyata.",
+    en: "Full-stack developer who shipped 7 production systems in 12 months, with 340K+ records processed and real clients at J&T Express and the retail sector. Stack: Next.js, TypeScript, tRPC, PostgreSQL. Also experienced in IT support: hardware troubleshooting, OS deployment, and network configuration. Returned to full-time development after 9 years of building complete systems that solve real business problems.",
+    id: "Full-stack developer yang ngirim 7 sistem produksi dalam 12 bulan, 340K+ records diproses, client asli di J&T Express dan sektor ritel. Stack: Next.js, TypeScript, tRPC, PostgreSQL. Juga berpengalaman di IT support: troubleshooting hardware, deploy OS, dan konfigurasi jaringan. Kembali fokus ke development setelah 9 tahun membangun sistem utuh yang menyelesaikan masalah bisnis nyata.",
   },
 
   technicalExperience: [

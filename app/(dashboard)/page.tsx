@@ -177,7 +177,7 @@ export default function HomePage() {
             {/* Sisi Kanan: Solusi Digital */}
             <div className="neo-surface rounded-2xl p-6 bg-green-50/5 border-green-200/20">
               <span className="font-mono text-[10px] font-bold text-green-500 uppercase tracking-widest">
-                Solusi Digital nasaq.id (Otomatis & Real-Time)
+                Solusi Digital nasaq.id (Otomatis & Langsung)
               </span>
               <ul className="mt-6 space-y-6">
                 <li className="flex items-start gap-3">
@@ -243,7 +243,7 @@ export default function HomePage() {
         <StorytellingSection
           slides={storySlides}
           kicker="Cerita di balik angkanya"
-          title="Setiap sistem dimulai dari masalah kecil yang menggerogoti waktu — dan di sini kami ukur kapan sebelum berubah jadi sesudah."
+          title="Setiap sistem dimulai dari masalah kecil yang menggerogoti waktu. Di sini kami ukur kapan sebelum berubah jadi sesudah."
         />
 
         {/* 4c. PROJECT SHOWCASE GRID */}
@@ -279,7 +279,7 @@ export default function HomePage() {
           <div>
             <p className="descriptor">Titik masuk harga</p>
             <p className="mt-3 text-2xl font-light tracking-tight text-foreground md:text-3xl">
-              Mulai dari <span className="font-semibold">Rp 1,5jt</span> — scope menyesuaikan brief.
+              Mulai dari <span className="font-semibold">Rp 1,5jt</span>, scope menyesuaikan brief.
             </p>
           </div>
           <Link

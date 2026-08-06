@@ -4,8 +4,8 @@ export const projects: Project[] = [
   {
     id: "lakupos",
     title: "LakuPOS — Kasir & Warehouse System",
-    shortDescription: "Sistem kasir & gudang untuk toko ritel sungguhan: scan barcode, bayar QRIS, stok antar cabang nyambung otomatis. Arsitektur DDD dengan test end-to-end.",
-    fullDescription: "Aplikasi Point of Sale dan manajemen gudang yang dibangun untuk toko ritel. Masalahnya, client butuh satu sistem yang bisa nampung kasir multi-cabang, scan barcode, dan pembayaran QRIS — sebelumnya tiap cabang rekap sendiri pakai Excel. Solusinya, POS yang dioptimalkan untuk tablet dengan 3 cara scan barcode (USB, kamera, upload foto), stok antar outlet yang langsung sinkron, dan QRIS yang ke-generate otomatis. Dibangun dengan arsitektur DDD, test Playwright end-to-end, dan unit test Jest.",
+    shortDescription: "Sistem kasir & gudang untuk toko ritel sungguhan: scan barcode, bayar QRIS, stok antar cabang nyambung otomatis. Arsitektur DDD dengan test E2E.",
+    fullDescription: "Aplikasi Point of Sale dan manajemen gudang yang dibangun untuk toko ritel. Masalahnya, client butuh satu sistem yang bisa nampung kasir multi-cabang, scan barcode, dan pembayaran QRIS — sebelumnya tiap cabang rekap sendiri pakai Excel. Solusinya, POS yang dioptimalkan untuk tablet dengan 3 cara scan barcode (USB, kamera, upload foto), stok antar outlet yang langsung sinkron, dan QRIS yang ke-generate otomatis. Dibangun dengan arsitektur DDD, test Playwright E2E, dan unit test Jest.",
     category: "full-stack",
     techStack: [
       {
@@ -497,7 +497,7 @@ export const projects: Project[] = [
       },
       {
         category: "Architecture",
-        technologies: ["On-chain FHE computation (CMUX)", "Threshold Network (signature verification)", "47 comprehensive tests"]
+        technologies: ["On-chain FHE computation (CMUX)", "Threshold Network (signature verification)", "47 test lengkap"]
       }
     ],
     highlights: [
@@ -536,7 +536,7 @@ export const projects: Project[] = [
       "On-chain proof verification feed",
       "Protocol documentation page",
       "Demo auction templates",
-      "47 comprehensive tests",
+      "47 test lengkap",
       "Responsive design (390px, 768px, 1440px)"
     ],
     impact: {
