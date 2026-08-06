@@ -89,10 +89,11 @@ Sekarang 9 section. Target: **6 section, satu CTA per layar.** ✅
 
 ### Fase 3 — Trust & konversi (konten baru)
 
-1. **Case study template before/after** yang konsisten: problem → angka sebelum → solusi → angka sesudah → testimoni. (Sudah ada di data, tinggal distandarkan di UI.)
-2. **Tambah 1-2 testimoni** dari client riil (minta ke client LakuPOS/WC Check/Serat QC).
-3. **Ganti anchor harga**: paket Starter jangan dipajang sebagai yang pertama — Basic (is_popular, 1,5-3jt) yang jadi centerpiece.
-4. **FAQ**: tambah 1-2 pertanyaan yang ngejawab keberatan utama UKM ("saya gak ngerti teknis, gimana?", "kalau sistemnya error gimana?").
+1. **Case study template before/after** yang konsisten ✅ — sudah terstandar di ProjectDetailClient (problem → painPoints → solution → metrics before/after → testimonial). Verifikasi: 7/7 project punya caseStudy lengkap.
+2. **Tambah 1-2 testimoni** dari client riil ⏳ — butuh data dari client (minta ke client LakuPOS/WC Check/Serat QC). JANGAN dikarang.
+3. **Ganti anchor harga** ✅ — Basic (is_popular, Rp 1,5-3jt) sudah jadi centerpiece di tengah grid + badge Terpopuler; homepage anchor Rp 1,5jt.
+4. **FAQ** tambah 2 pertanyaan keberatan utama UKM ✅ — "tidak paham teknis" + "kalau sistem error gimana?" (commit 2d204c9)
+5. **Bonus: 4 error lint pre-existing dibersihkan** ✅ — prefer-const live-metrics, ScrollTrigger unused, Android3DViewer setState-in-effect → derived state
 
 ---
 
