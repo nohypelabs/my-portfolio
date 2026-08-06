@@ -289,7 +289,7 @@ export function ServicesContent({
               Dipecah per masalah utama
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-foreground/70">
-              Setiap track dibuat buat menyelesaikan satu masalah utama: merapikan citra publik, mempercepat kerja tim lapangan, atau merapikan data operasional.
+              Setiap track dibuat buat menyelesaikan satu masalah utama: merapikan citra publik, atau merapikan data operasional tim.
             </p>
           </div>
 
