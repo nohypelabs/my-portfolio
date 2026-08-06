@@ -35,8 +35,9 @@ export default function Android3DViewer({ variants, className = '' }: Android3DV
 
     // Reduce-motion means don't pay for WebGL at all — the static poster is
     // the whole experience. This is the toggle having a real render cost.
+    // No setState here: `viewerActive` (derived below) treats reduceMotion
+    // as "not ready", so the static branch renders without a state write.
     if (reduceMotion) {
-      setReady(false);
       return;
     }
 
@@ -73,6 +74,12 @@ export default function Android3DViewer({ variants, className = '' }: Android3DV
 
   const current = variants[active];
 
+  // Derived readiness: reduceMotion forces the static branch even if the
+  // model viewer finished loading earlier (toggling energy saver mid-session
+  // must not leave the WebGL surface mounted).
+  const viewerActive = ready && !reduceMotion;
+  const showStatic = webgl === false || !viewerActive;
+
   // Auto-rotate is suppressed while the tab is hidden or motion is reduced;
   // the CSS in globals.css also drops the element out of rendering entirely.
   const autoRotate = rotateOn && !reduceMotion && !runtimePaused;
@@ -96,12 +103,12 @@ export default function Android3DViewer({ variants, className = '' }: Android3DV
           <button
             type="button"
             aria-label={
-              webgl === false || !ready
+              showStatic
                 ? 'Mode statis: render 3D tidak tersedia'
                 : 'Aktifkan/matikan putar otomatis'
             }
             onClick={() => setRotateOn((r) => !r)}
-            disabled={webgl === false || !ready}
+            disabled={showStatic}
             className="inline-flex items-center gap-1.5 rounded-full soft-border bg-[var(--bg-element-second)] px-3 py-1.5 text-[10px] font-mono text-foreground/70 transition-colors hover:text-foreground disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <RefreshCw className={`h-3 w-3 ${autoRotate ? 'text-money' : ''}`} strokeWidth={2.2} />
@@ -109,7 +116,7 @@ export default function Android3DViewer({ variants, className = '' }: Android3DV
           </button>
 
           <span className="relative flex h-2.5 w-2.5" aria-hidden>
-            {webgl !== false && ready ? (
+            {webgl !== false && viewerActive ? (
               <>
                 <span className="absolute inline-flex h-full w-full rounded-full bg-money opacity-70 animate-ping" />
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-money" />
@@ -122,7 +129,7 @@ export default function Android3DViewer({ variants, className = '' }: Android3DV
       </div>
 
       <div className="relative aspect-[16/10] w-full bg-gradient-to-br from-foreground/[0.04] to-transparent">
-        {webgl === false || !ready ? (
+        {showStatic ? (
           <div className="relative h-full w-full">
             <Image
               src={current.poster ?? current.src.replace(/\.glb$/, '.jpg')}

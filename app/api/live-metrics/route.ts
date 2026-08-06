@@ -104,7 +104,7 @@ export async function GET(request: Request) {
   // ── LakuPOS ──────────────────────────────────────────────────────────
   log("fetch", "→ LakuPOS (Supabase REST · transactions, products, outlets)");
   const s2 = performance.now();
-  let [lakuTx, lakuProd, lakuOut] = await Promise.allSettled([
+  const [lakuTx, lakuProd, lakuOut] = await Promise.allSettled([
     supabaseCount(process.env.LAKUPOS_SUPABASE_URL!, process.env.LAKUPOS_SUPABASE_SERVICE_KEY!, "transactions", fresh),
     supabaseCount(process.env.LAKUPOS_SUPABASE_URL!, process.env.LAKUPOS_SUPABASE_SERVICE_KEY!, "products", fresh),
     supabaseCount(process.env.LAKUPOS_SUPABASE_URL!, process.env.LAKUPOS_SUPABASE_SERVICE_KEY!, "outlets", fresh),

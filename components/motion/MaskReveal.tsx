@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef } from "react";
-import { initMotion, ScrollTrigger, EASE } from "@/lib/motion/eases";
+import { initMotion, EASE } from "@/lib/motion/eases";
 import { useEnergySaver } from "@/contexts/EnergySaverContext";
 
 type SplitMode = "lines" | "words" | "chars" | "none";
