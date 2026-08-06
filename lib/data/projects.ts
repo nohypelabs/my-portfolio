@@ -4,8 +4,8 @@ export const projects: Project[] = [
   {
     id: "lakupos",
     title: "LakuPOS — Kasir & Warehouse System",
-    shortDescription: "Production POS & warehouse system untuk client ritel nyata — barcode scanning, QRIS payment, multi-outlet inventory sync. DDD architecture dengan E2E tests.",
-    fullDescription: "Full-stack Point of Sale dan Warehouse Management System yang dibangun untuk client ritel nyata. Problem: client butuh sistem kasir yang handle multi-outlet, barcode scanning, dan QRIS payment dalam satu aplikasi — sebelumnya pakai Excel terpisah per cabang. Solution: POS tablet-optimized dengan 3 mode barcode scan (USB/camera/upload), real-time stock sync antar outlet, dan QRIS auto-generate. DDD architecture dengan Playwright E2E dan Jest unit tests.",
+    shortDescription: "Sistem kasir & gudang untuk toko ritel sungguhan: scan barcode, bayar QRIS, stok antar cabang nyambung otomatis. Arsitektur DDD dengan test end-to-end.",
+    fullDescription: "Aplikasi Point of Sale dan manajemen gudang yang dibangun untuk toko ritel. Masalahnya, client butuh satu sistem yang bisa nampung kasir multi-cabang, scan barcode, dan pembayaran QRIS — sebelumnya tiap cabang rekap sendiri pakai Excel. Solusinya, POS yang dioptimalkan untuk tablet dengan 3 cara scan barcode (USB, kamera, upload foto), stok antar outlet yang langsung sinkron, dan QRIS yang ke-generate otomatis. Dibangun dengan arsitektur DDD, test Playwright end-to-end, dan unit test Jest.",
     category: "full-stack",
     techStack: [
       {
@@ -28,17 +28,17 @@ export const projects: Project[] = [
     highlights: [
       {
         title: "Kasir dengan Barcode Scanner",
-        description: "3 mode scan: manual/USB scanner, kamera, dan upload gambar barcode",
+        description: "3 cara scan: manual/USB scanner, kamera HP, atau upload foto barcode",
         icon: "scan"
       },
       {
         title: "Multi-outlet & Stok Transfer",
-        description: "Kelola stok real-time per cabang dengan transfer dan stok opname",
+        description: "Stok tiap cabang langsung sinkron, lengkap dengan transfer dan stok opname",
         icon: "building"
       },
       {
         title: "DDD & Clean Architecture",
-        description: "Codebase production-grade dengan layered architecture, E2E & unit tests",
+        description: "Codebase yang beres: arsitektur berlapis, test E2E & unit",
         icon: "layers"
       }
     ],
@@ -47,7 +47,7 @@ export const projects: Project[] = [
       "Barcode scanning via kamera smartphone, USB scanner, atau upload gambar",
       "QRIS payment integration",
       "Multi-outlet management dengan pemilihan outlet per transaksi",
-      "Real-time stock tracking per outlet dengan low-stock alerts",
+      "Stok per outlet yang selalu update dengan low-stock alerts",
       "Transfer stok antar outlet dengan audit log",
       "Stok opname (physical count vs system)",
       "Role-based access: Admin, Manager, Kasir",
@@ -59,14 +59,14 @@ export const projects: Project[] = [
     ],
     impact: {
       dataVolume: "11 transaksi | 2 produk | 4 outlet aktif",
-      performance: "Production-ready dengan E2E test coverage",
-      users: "Digunakan client nyata untuk operasional kasir & gudang harian",
-      business: "Client aktif — sistem kasir harian untuk multi-outlet retail"
+      performance: "Siap produksi dengan test E2E",
+      users: "Dipakai client sungguhan buat operasional kasir & gudang harian",
+      business: "Client aktif — sistem kasir harian untuk retail multi-outlet"
     },
     caseStudy: {
-      problem: "Client butuh sistem kasir yang bisa handle multi-outlet, barcode scanning, dan QRIS payment dalam satu aplikasi",
-      painPoints: ["Sistem kasir sebelumnya tidak support multi-outlet", "Manual stock tracking antar cabang"],
-      solution: "Full-stack POS dengan DDD architecture, real-time inventory sync, dan tablet-optimized UI",
+      problem: "Client butuh sistem kasir yang bisa nampung multi-outlet, scan barcode, dan pembayaran QRIS dalam satu aplikasi",
+      painPoints: ["Sistem kasir sebelumnya gak support multi-outlet", "Stok antar cabang dicatat manual"],
+      solution: "POS full-stack dengan arsitektur DDD, stok antar outlet yang langsung sinkron, dan UI yang dioptimalkan untuk tablet",
       metrics: [
         {
           label: "Checkout process",
@@ -76,7 +76,7 @@ export const projects: Project[] = [
         {
           label: "Stok antar outlet",
           before: "Excel terpisah per cabang",
-          after: "Real-time sync + transfer antar outlet"
+          after: "Langsung sinkron + transfer antar outlet"
         },
         {
           label: "Pembayaran QRIS",
@@ -99,8 +99,8 @@ export const projects: Project[] = [
   {
     id: "wc-check",
     title: "WC Check — Toilet Inspection System",
-    shortDescription: "Production toilet inspection system: 3.293 inspeksi, 53 users, 49 lokasi. Client bayar 12-month subscription — revenue locked in. QR code + real-time analytics.",
-    fullDescription: "Sistem monitoring kebersihan toilet berbasis web untuk Proservice Indonesia. Problem: inspeksi toilet manual pakai form kertas — hilang/rusak, tidak ada data historis, tidak bisa monitor real-time. Solution: QR-code scanning per lokasi, 11-component checklist, photo documentation, dan real-time dashboard. 3.293 inspeksi tercatat, 53 users (14 aktif mingguan), 49 lokasi. Client locked in 12-month subscription.",
+    shortDescription: "Sistem inspeksi kebersihan toilet berbasis QR: 3.293 inspeksi, 53 user, 49 lokasi. Client langganan 12 bulan — pendapatan terkunci.",
+    fullDescription: "Sistem monitoring kebersihan toilet berbasis web untuk Proservice Indonesia. Masalahnya, inspeksi masih pakai form kertas: gampang hilang atau rusak, data historisnya nol, dan manajemen gak bisa lihat kondisinya saat itu juga. Solusinya, tiap lokasi dikasih QR code, petugas scan lalu isi checklist 11 komponen lengkap dengan foto, semua langsung masuk dashboard. Hasilnya: 3.293 inspeksi tercatat, 53 user (14 aktif tiap minggu), 49 lokasi. Client lanjut langganan 12 bulan.",
     category: "full-stack",
     techStack: [
       {
@@ -118,25 +118,25 @@ export const projects: Project[] = [
     ],
     highlights: [
       {
-        title: "3.293 Inspections",
-        description: "Total inspeksi tercatat di production — terus bertambah harian",
+        title: "3.293 Inspeksi",
+        description: "Total inspeksi tercatat di produksi, terus nambah tiap hari",
         icon: "clipboard-check"
       },
       {
-        title: "53 Users & 49 Lokasi",
-        description: "14 active users mingguan mengelola 49 titik inspeksi",
+        title: "53 User & 49 Lokasi",
+        description: "14 user aktif tiap minggu ngurusin 49 titik inspeksi",
         icon: "users"
       },
       {
-        title: "QR Code + Real-time",
-        description: "Scan QR per lokasi, dashboard analytics langsung update",
+        title: "QR Code + Langsung Update",
+        description: "Scan QR per lokasi, dashboard langsung kebaca",
         icon: "qr-code"
       }
     ],
     features: [
       "QR Code Scanning & Auto-generated QR codes",
       "Multi-component inspection checklist (11 komponen)",
-      "Real-time dashboard dengan analytics",
+      "Dashboard dengan analytics yang langsung update",
       "Photo documentation dengan Cloudinary",
       "Role-based access control (Admin, User, Super Admin)",
       "Multi-level organization hierarchy (Org → Building → Location)",
@@ -147,15 +147,15 @@ export const projects: Project[] = [
       "Occupation & template management"
     ],
     impact: {
-      dataVolume: "3.293 inspeksi | 53 users | 49 lokasi in production",
-      performance: "Efisiensi inspeksi meningkat 70% vs manual",
-      users: "14 active users weekly — live operational system",
-      business: "12-month subscription locked in — client retention 100%"
+      dataVolume: "3.293 inspeksi | 53 user | 49 lokasi di produksi",
+      performance: "Efisiensi inspeksi naik 70% dibanding manual",
+      users: "14 user aktif tiap minggu — sistem operasional yang beneran dipake",
+      business: "Langganan 12 bulan terkunci — client bertahan 100%"
     },
     caseStudy: {
-      problem: "Inspeksi kebersihan toilet dilakukan manual dengan form kertas, tidak ada monitoring real-time",
-      painPoints: ["Form kertas hilang/rusak", "Tidak ada data historis", "Tidak bisa monitor real-time"],
-      solution: "Web-based inspection system dengan QR code, photo documentation, dan real-time dashboard",
+      problem: "Inspeksi kebersihan toilet masih manual pakai form kertas, gak ada monitoring saat itu juga",
+      painPoints: ["Form kertas gampang hilang/rusak", "Gak ada data historis", "Gak bisa dipantau langsung dari jauh"],
+      solution: "Sistem inspeksi berbasis web dengan QR code, dokumentasi foto, dan dashboard yang langsung kebaca",
       metrics: [
         {
           label: "Inspeksi per hari",
@@ -164,8 +164,8 @@ export const projects: Project[] = [
         },
         {
           label: "Laporan",
-          before: "Manual kumpulkan form, input ke Excel",
-          after: "Auto-generate dashboard real-time"
+          before: "Kumpulin form manual, input ke Excel",
+          after: "Dashboard ke-generate otomatis"
         },
         {
           label: "Data historis",
@@ -188,8 +188,8 @@ export const projects: Project[] = [
   {
     id: "ecommerce-manual",
     title: "Qohira — E-Commerce Manual Payment",
-    shortDescription: "Production e-commerce untuk client nyata — manual payment verification, real-time inventory, admin dashboard. 16 produk, 6 orders, 5 users aktif.",
-    fullDescription: "Full-stack e-commerce platform untuk client ritel yang butuh toko online dengan alur pembayaran transfer bank. Problem: konfirmasi pembayaran manual via chat WA, data pesanan tersebar, tidak ada notifikasi otomatis. Solution: customer upload bukti transfer → admin verify di dashboard → auto email + web push notification. Type-safe end-to-end dengan tRPC + Prisma ORM.",
+    shortDescription: "Toko online untuk client ritel sungguhan: verifikasi pembayaran manual, stok yang selalu update, dashboard admin. 16 produk, 6 pesanan, 5 user aktif.",
+    fullDescription: "Platform e-commerce full-stack untuk client ritel yang butuh toko online dengan alur pembayaran transfer bank. Masalahnya, konfirmasi pembayaran masih lewat chat WA, data pesanan berceceran, dan gak ada notifikasi otomatis. Solusinya, customer upload bukti transfer, admin verifikasi di dashboard, lalu email dan notifikasi web push keluar otomatis. Type-safe dari depan sampai belakang pakai tRPC + Prisma ORM.",
     category: "full-stack",
     techStack: [
       {
@@ -207,24 +207,24 @@ export const projects: Project[] = [
     ],
     highlights: [
       {
-        title: "16 Products, 6 Orders",
-        description: "Data nyata dari production database — dipakai client aktif",
+        title: "16 Produk, 6 Pesanan",
+        description: "Data asli dari database produksi, dipakai client aktif",
         icon: "database"
       },
       {
-        title: "Manual Payment Flow",
-        description: "Upload bukti transfer → admin verify → order confirmed otomatis",
+        title: "Alur Pembayaran Manual",
+        description: "Upload bukti transfer → admin verifikasi → pesanan dikonfirmasi otomatis",
         icon: "code"
       },
       {
-        title: "Push Notifications",
-        description: "Web push + email alerts untuk order baru & status update",
+        title: "Notifikasi Push",
+        description: "Web push + email buat pesanan baru dan update status",
         icon: "zap"
       }
     ],
     features: [
       "Product catalog dengan categories & filtering",
-      "Shopping cart dengan real-time inventory check",
+      "Shopping cart dengan cek stok langsung",
       "User authentication dengan NextAuth",
       "Admin dashboard untuk product & order management",
       "Order tracking system",
@@ -237,21 +237,21 @@ export const projects: Project[] = [
     ],
     impact: {
       dataVolume: "16 produk | 6 pesanan | 5 user terdaftar",
-      performance: "Type-safe end-to-end dengan tRPC + Prisma ORM",
-      users: "Dipakai client nyata — admin dashboard aktif untuk kelola produk & pesanan"
+      performance: "Type-safe dari depan sampai belakang dengan tRPC + Prisma ORM",
+      users: "Dipakai client sungguhan — dashboard admin aktif buat kelola produk & pesanan"
     },
     caseStudy: {
-      problem: "Client butuh toko online dengan alur pembayaran manual (transfer bank) dan verifikasi oleh admin sebelum pesanan diproses",
+      problem: "Client butuh toko online dengan alur pembayaran manual (transfer bank) dan verifikasi admin sebelum pesanan diproses",
       painPoints: [
-        "Tidak ada sistem terpusat untuk kelola produk & pesanan",
-        "Konfirmasi pembayaran manual via chat, rawan terlewat",
-        "Tidak ada notifikasi otomatis ke pembeli & admin"
+        "Gak ada satu tempat buat kelola produk & pesanan",
+        "Konfirmasi pembayaran lewat chat, rawan kelewat",
+        "Gak ada notifikasi otomatis ke pembeli & admin"
       ],
-      solution: "E-commerce platform dengan manual payment verification flow — customer upload bukti transfer, admin konfirmasi via dashboard, notifikasi otomatis via email & web push",
+      solution: "Platform e-commerce dengan alur verifikasi pembayaran manual: customer upload bukti transfer, admin konfirmasi lewat dashboard, notifikasi otomatis via email & web push",
       metrics: [
         {
           label: "Kelola produk & pesanan",
-          before: "Chat WA manual, data tersebar",
+          before: "Chat WA manual, data berceceran",
           after: "Dashboard terpusat — produk, pesanan, stok"
         },
         {
@@ -280,8 +280,8 @@ export const projects: Project[] = [
   {
     id: "selisih-berat",
     title: "Serat QC — Selisih Berat J&T Express",
-    shortDescription: "Production logistics QC untuk J&T Express — 80K+ resi, 160K+ foto GPS-watermarked. Waktu proses: 4-5 jam → <30 menit per 500 resi.",
-    fullDescription: "Sistem Quality Control selisih berat untuk operasional J&T Express. Problem: tim operasional harus rename 1.000 foto manual per hari, proses 4-5 jam untuk 500 resi, data tersebar di folder lokal. Solution: scan barcode resi → auto-capture GPS → watermark foto otomatis → upload cloud. Real-time dashboard + gamification leaderboard. 80.187 entries dan 160.374 foto terproses di production.",
+    shortDescription: "Quality control logistik untuk J&T Express: 80K+ resi, 160K+ foto ber-watermark GPS. Waktu proses: 4-5 jam jadi kurang dari 30 menit per 500 resi.",
+    fullDescription: "Sistem Quality Control selisih berat untuk operasional J&T Express. Masalahnya, tim harus rename 1.000 foto manual tiap hari, proses 4-5 jam untuk 500 resi, dan data numpuk di folder lokal. Solusinya, scan barcode resi, lokasi ke-capture otomatis, foto ke-watermark, lalu upload ke cloud. Dashboard langsung kebaca plus leaderboard ala game. Di produksi: 80.187 entry dan 160.374 foto terproses.",
     category: "full-stack",
     techStack: [
       {
@@ -300,17 +300,17 @@ export const projects: Project[] = [
     highlights: [
       {
         title: "80K+ Resi Diproses",
-        description: "80.187 entries production — sistem berjalan dan terus bertambah",
+        description: "80.187 entry di produksi, sistem jalan terus dan nambah tiap hari",
         icon: "database"
       },
       {
-        title: "160K+ Foto Documented",
-        description: "160.374 foto dengan GPS watermark tersimpan otomatis",
+        title: "160K+ Foto Terdokumentasi",
+        description: "160.374 foto dengan watermark GPS tersimpan otomatis",
         icon: "camera"
       },
       {
-        title: "Barcode + GPS Watermark",
-        description: "Scan resi, auto-capture GPS, watermark foto real-time",
+        title: "Barcode + Watermark GPS",
+        description: "Scan resi, lokasi ke-capture, foto langsung ke-watermark",
         icon: "scan"
       }
     ],
@@ -318,7 +318,7 @@ export const projects: Project[] = [
       "Barcode scanner untuk No Resi (JNT packages)",
       "Auto GPS capture & reverse geocoding",
       "GPS watermark on photos (Date, Time, Coordinates, Location)",
-      "Real-time dashboard dengan statistik",
+      "Dashboard dengan statistik yang langsung update",
       "Gamified leaderboard system (Beginner → Diamond levels)",
       "User earnings calculation (500-1500 IDR per entry)",
       "Photo management dengan Cloudinary",
@@ -327,20 +327,20 @@ export const projects: Project[] = [
       "Role-based access (Admin vs User)"
     ],
     impact: {
-      dataVolume: "80.187 entries & 160.374 photos in production",
-      users: "Live operational QC system untuk J&T Express",
-      business: "Sistem operational harian — 500+ resi per hari diproses"
+      dataVolume: "80.187 entry & 160.374 foto di produksi",
+      users: "Sistem QC operasional yang dipakai J&T Express tiap hari",
+      business: "Operasional harian — 500+ resi per hari diproses"
     },
     caseStudy: {
-      problem: "Tim operasional J&T Express harus memverifikasi selisih berat paket setiap hari. Setiap resi membutuhkan 2 foto bukti yang harus di-rename manual satu per satu dengan format tertentu (nomor resi + keterangan). Rata-rata 500 resi dan 1.000 foto per hari.",
+      problem: "Tim operasional J&T Express harus verifikasi selisih berat paket tiap hari. Setiap resi butuh 2 foto bukti yang harus di-rename manual satu-satu dengan format tertentu (nomor resi + keterangan). Rata-rata 500 resi dan 1.000 foto per hari.",
       painPoints: [
-        "Rename 1.000 foto manual satu per satu setiap hari",
-        "Harus cocokkan nama file dengan nomor resi — rawan salah",
-        "Proses memakan waktu 4-5 jam per hari untuk 500 resi",
-        "Tidak ada tracking progress atau dashboard monitoring",
-        "Data tersebar di folder lokal, sulit diaudit"
+        "Rename 1.000 foto manual satu-satu tiap hari",
+        "Harus cocokin nama file sama nomor resi, rawan salah",
+        "Proses makan waktu 4-5 jam per hari buat 500 resi",
+        "Gak ada pantauan progress atau dashboard",
+        "Data numpuk di folder lokal, susah diaudit"
       ],
-      solution: "Dibangun sistem web-based (PWA) dimana user cukup scan barcode resi, ambil foto langsung dari kamera — sistem otomatis memberi nama file, menambahkan GPS watermark (tanggal, waktu, koordinat, lokasi), dan upload ke cloud. Semua data langsung masuk dashboard real-time.",
+      solution: "Sistem berbasis web (PWA) di mana user cukup scan barcode resi dan ambil foto dari kamera. Sistem yang kasih nama file, nambahin watermark GPS (tanggal, waktu, koordinat, lokasi), dan upload ke cloud. Semua langsung masuk dashboard.",
       metrics: [
         {
           label: "Waktu per 500 resi",
@@ -349,26 +349,26 @@ export const projects: Project[] = [
         },
         {
           label: "Rename foto",
-          before: "Manual 1 per 1",
-          after: "Otomatis via barcode scan"
+          before: "Manual satu-satu",
+          after: "Otomatis lewat scan barcode"
         },
         {
           label: "Total data diproses",
-          before: "Scattered di folder lokal",
+          before: "Berceceran di folder lokal",
           after: "80.187 resi & 160.374 foto terpusat"
         },
         {
           label: "Monitoring & audit",
-          before: "Tidak ada",
-          after: "Real-time dashboard + export Excel"
+          before: "Gak ada",
+          after: "Dashboard langsung kebaca + export Excel"
         }
       ],
       testimonial: {
-        quote: "Dulu butuh 4-5 jam buat 500 resi, sekarang under 30 menit. Gak perlu rename foto satu-satu lagi.",
+        quote: "Dulu butuh 4-5 jam buat 500 resi, sekarang kurang dari 30 menit. Gak perlu rename foto satu-satu lagi.",
         author: "User Operasional",
         role: "Tim QC J&T Express"
       },
-      timeline: "Dari ide ke production dalam 3 bulan"
+      timeline: "Dari ide ke produksi dalam 3 bulan"
     },
     demo: "https://selisih-berat.vercel.app",
     image: "/projects/selisih-thumb.jpg",
@@ -379,8 +379,8 @@ export const projects: Project[] = [
   {
     id: "signalflow-agent",
     title: "SignalFlow Agent — AI Trading Signal Dashboard",
-    shortDescription: "AI trading signal dashboard — 5-Layer Signal Engine V2, multi-timeframe confluence, paper futures trading. SoSoValue Buildathon 2026 submission.",
-    fullDescription: "SignalFlow Agent mengubah multi-dimensional market data menjadi trade signals yang explainable. Problem: trader retail butuh sistem yang bisa analisis multi-factor (trend, momentum, volatility, volume, structure) secara otomatis dan execute paper trades — bukan cuma chart viewer. Solution: 5-Layer Signal Engine V2 dengan market regime detection, 7-tier classification, dan wallet-aware paper futures validation. Bloomberg-style command center dengan pipeline visualization.",
+    shortDescription: "Dashboard sinyal trading berbasis AI: 5-Layer Signal Engine V2, analisis multi-timeframe, paper futures trading. Submission SoSoValue Buildathon 2026.",
+    fullDescription: "SignalFlow Agent ngubah data pasar yang multidimensi jadi sinyal trading yang bisa dijelasin. Masalahnya, trader retail butuh sistem yang bisa analisis banyak faktor (trend, momentum, volatility, volume, struktur) otomatis dan jalanin paper trade — bukan cuma penampil chart. Solusinya, 5-Layer Signal Engine V2 dengan deteksi regime pasar, klasifikasi 7 tingkat, dan validasi paper futures yang sadar saldo. Command center ala Bloomberg dengan visualisasi pipeline.",
     category: "full-stack",
     techStack: [
       {
@@ -403,17 +403,17 @@ export const projects: Project[] = [
     highlights: [
       {
         title: "5-Layer Signal Engine V2",
-        description: "Multi-factor confluence system: Trend, Momentum, Volatility, Volume, Structure — dengan market regime detection, 7-tier classification, dan volatility-adjusted TP/SL. Adaptif ke 4 trading styles (Scalper, Intraday, Swing, Position)",
+        description: "Sistem konfluensi multi-faktor: Trend, Momentum, Volatility, Volume, Struktur — plus deteksi regime pasar, klasifikasi 7 tingkat, dan TP/SL yang menyesuaikan volatilitas. Adaptif ke 4 gaya trading (Scalper, Intraday, Swing, Position)",
         icon: "brain"
       },
       {
-        title: "Multi-Timeframe Confluence",
-        description: "Setiap signal dianalisis independent di 3 timeframe (1H, 4H, 1D) dengan alignment scoring. Semua 3 timeframe agree = 95 conviction score, conflicting = 30-50",
+        title: "Konfluensi Multi-Timeframe",
+        description: "Tiap sinyal dianalisis di 3 timeframe (1H, 4H, 1D) dengan skor keselarasan. Kalau 3 timeframe sepakat = skor keyakinan 95, kalau bentrok = 30-50",
         icon: "layers"
       },
       {
-        title: "End-to-End Signal-to-Execution",
-        description: "Bloomberg-style command center dengan pipeline visualization. Paper futures trading dengan virtual USDC, auto TP/SL/liquidation, leverage 1x-100x, dan per-type performance stats",
+        title: "Dari Sinyal ke Eksekusi",
+        description: "Command center ala Bloomberg dengan visualisasi pipeline. Paper futures trading dengan USDC virtual, TP/SL/likuidasi otomatis, leverage 1x-100x, dan statistik performa per tipe",
         icon: "activity"
       }
     ],
@@ -438,33 +438,33 @@ export const projects: Project[] = [
       "Responsive navigation dengan bottom tabs dan mobile drawer"
     ],
     impact: {
-      performance: "End-to-end signal pipeline: market data → multi-factor analysis → classified signal → paper execution",
-      users: "SoSoValue Buildathon 2026 submission by NoHype Labs"
+      performance: "Pipeline sinyal utuh: data pasar → analisis multi-faktor → sinyal terklasifikasi → eksekusi paper",
+      users: "Submission SoSoValue Buildathon 2026 oleh nasaq.id"
     },
     caseStudy: {
-      problem: "Trader retail kesulitan mengintegrasikan data dari banyak sumber (ETF flows, sentiment, macro events, technical indicators) menjadi satu keputusan trading yang koheren. Platform existing hanya chart viewer tanpa signal classification atau automated execution.",
+      problem: "Trader retail kesulitan nyatuin data dari banyak sumber (ETF flows, sentimen, event makro, indikator teknikal) jadi satu keputusan trading yang koheren. Platform yang ada cuma penampil chart, tanpa klasifikasi sinyal atau eksekusi otomatis.",
       painPoints: [
-        "Data tersebar di banyak platform — tidak ada unified view",
-        "Tidak ada sistem multi-factor confluence yang explainable",
-        "Paper trading terpisah dari analysis — tidak ada feedback loop",
-        "Tidak ada adaptasi per trading style (scalper vs swing vs position)"
+        "Data berceceran di banyak platform, gak ada satu tampilan utuh",
+        "Gak ada sistem konfluensi multi-faktor yang bisa dijelasin",
+        "Paper trading terpisah dari analisis, gak ada umpan balik",
+        "Gak ada adaptasi per gaya trading (scalper vs swing vs position)"
       ],
-      solution: "5-Layer Signal Engine V2 yang menggabungkan Trend, Momentum, Volatility, Volume, dan Structure analysis dengan market regime detection. Setiap signal dianalisis di 3 timeframe (1H, 4H, 1D) dengan alignment scoring. Paper futures trading dengan virtual USDC, auto TP/SL/liquidation, dan per-type performance stats.",
+      solution: "5-Layer Signal Engine V2 yang nyatuin analisis Trend, Momentum, Volatility, Volume, dan Struktur dengan deteksi regime pasar. Tiap sinyal dianalisis di 3 timeframe (1H, 4H, 1D) dengan skor keselarasan. Paper futures trading dengan USDC virtual, TP/SL/likuidasi otomatis, dan statistik performa per tipe.",
       metrics: [
         {
-          label: "Signal analysis",
-          before: "Manual cek 5+ indikator di berbagai platform",
-          after: "Auto 5-factor confluence + 3-timeframe alignment"
+          label: "Analisis sinyal",
+          before: "Cek manual 5+ indikator di berbagai platform",
+          after: "Otomatis 5-faktor + keselarasan 3 timeframe"
         },
         {
-          label: "Trade execution",
-          before: "Manual open/close, rawan emosi",
-          after: "Paper futures dengan auto TP/SL/liquidation"
+          label: "Eksekusi trading",
+          before: "Buka/tutup manual, rawan emosi",
+          after: "Paper futures dengan TP/SL/likuidasi otomatis"
         },
         {
-          label: "Performance tracking",
-          before: "Tidak ada atau manual spreadsheet",
-          after: "Per-type stats: Sharpe, Sortino, Calmar, drawdown"
+          label: "Pantau performa",
+          before: "Gak ada atau spreadsheet manual",
+          after: "Statistik per tipe: Sharpe, Sortino, Calmar, drawdown"
         }
       ],
       timeline: "Dibangun dalam 3 minggu untuk SoSoValue Buildathon 2026"
@@ -479,8 +479,8 @@ export const projects: Project[] = [
   {
     id: "shadowbid",
     title: "ShadowBid — Encrypted Sealed-Bid Auction (FHE)",
-    shortDescription: "On-chain sealed-bid auction dengan Fully Homomorphic Encryption (FHE) — bid tetap terenkripsi, smart contract compute winner tanpa decrypt. 47 tests.",
-    fullDescription: "Protokol sealed-bid auction dimana bid tetap terenkripsi on-chain menggunakan FHE. Problem: on-chain auctions biasa vulnerable ke MEV extraction, bid sniping, dan price manipulation karena bid visible di mempool. Solution: bid di-encrypt di browser via CoFHE SDK, smart contract bandingkan encrypted bids via FHE CMUX operations tanpa pernah decrypt — hanya pemenang yang di-reveal setelah settlement via Threshold Network. Deployed on Arbitrum Sepolia.",
+    shortDescription: "Lelang tertutup on-chain dengan Fully Homomorphic Encryption (FHE): bid tetap terenkripsi, smart contract hitung pemenang tanpa pernah buka isi bid. 47 test.",
+    fullDescription: "Protokol lelang tertutup di mana bid tetap terenkripsi on-chain pakai FHE. Masalahnya, lelang on-chain biasa gampang kena MEV extraction, bid sniping, dan manipulasi harga karena bid keliatan di mempool. Solusinya, bid dienkripsi di browser lewat CoFHE SDK, smart contract bandingin bid terenkripsi via operasi FHE CMUX tanpa pernah decrypt, cuma pemenang yang kebuka setelah settlement via Threshold Network. Deployed di Arbitrum Sepolia.",
     category: "full-stack",
     techStack: [
       {
@@ -502,18 +502,18 @@ export const projects: Project[] = [
     ],
     highlights: [
       {
-        title: "Fully On-Chain Encrypted Bidding",
-        description: "Bid di-encrypt di browser via CoFHE SDK dan disimpan on-chain sebagai euint64. Smart contract compute winner via FHE CMUX tanpa pernah decrypt individual bids — eliminating MEV, bid sniping, dan price manipulation",
+        title: "Bidding Terenkripsi Penuh On-Chain",
+        description: "Bid dienkripsi di browser via CoFHE SDK dan disimpan on-chain sebagai euint64. Smart contract hitung pemenang via FHE CMUX tanpa pernah buka bid individu, jadi MEV, bid sniping, dan manipulasi harga gak mempan",
         icon: "shield"
       },
       {
-        title: "Zero-Trust Auction Settlement",
-        description: "Tidak butuh trusted third party atau off-chain computation. FHE protocol enable verifiable on-chain settlement dimana hanya winning bid yang di-reveal setelah finalization via Threshold Network",
+        title: "Settlement Tanpa Pihak Ketiga",
+        description: "Gak butuh pihak ketiga yang dipercaya atau komputasi off-chain. Protokol FHE memungkinkan settlement on-chain yang bisa diverifikasi, cuma bid pemenang yang kebuka setelah finalisasi via Threshold Network",
         icon: "lock"
       },
       {
-        title: "Full Auction Lifecycle + Institutional UI",
-        description: "Complete auction flow: create → bid → finalize → reveal → claim/settle. Polished institutional dark-theme design system dengan 11 purpose-built pages, responsive layouts, dan comprehensive empty states",
+        title: "Lifecycle Lelang Lengkap + UI Institusional",
+        description: "Alur lelang utuh: buat → bid → finalisasi → reveal → klaim/settle. Design system institusional dark-theme dengan 11 halaman, layout responsif, dan empty state yang lengkap",
         icon: "gavel"
       }
     ],
@@ -540,36 +540,36 @@ export const projects: Project[] = [
       "Responsive design (390px, 768px, 1440px)"
     ],
     impact: {
-      performance: "~430 lines smart contract dengan 47 tests — production-grade FHE auction protocol",
-      users: "Deployed on Arbitrum Sepolia testnet (contract: 0x96dA...447)"
+      performance: "~430 baris smart contract dengan 47 test — protokol lelang FHE siap produksi",
+      users: "Deployed di Arbitrum Sepolia testnet (contract: 0x96dA...447)"
     },
     caseStudy: {
-      problem: "On-chain auctions biasa (English, Dutch, Sealed-bid) semuanya vulnerable: bid visible di mempool, MEV bots bisa snipe, dan price manipulation mudah dilakukan. Tidak ada privacy untuk peserta auction.",
+      problem: "Lelang on-chain biasa (English, Dutch, sealed-bid) semuanya punya celah: bid keliatan di mempool, bot MEV bisa snipe, dan manipulasi harga gampang. Gak ada privasi buat peserta lelang.",
       painPoints: [
-        "Bid visible di mempool — MEV bots bisa extract value",
-        "Bid sniping: peserta tunggu last second untuk outbid",
-        "Price manipulation mudah karena semua bid transparan",
-        "Tidak ada protokol sealed-bid yang truly private on-chain"
+        "Bid keliatan di mempool, bot MEV bisa ekstrak nilai",
+        "Bid sniping: peserta nunggu detik terakhir buat outbid",
+        "Manipulasi harga gampang karena semua bid transparan",
+        "Gak ada protokol sealed-bid yang beneran privat on-chain"
       ],
-      solution: "Fully Homomorphic Encryption (FHE) memungkinkan smart contract compute pada encrypted data. Bid di-encrypt di browser via Fhenix CoFHE SDK, disimpan on-chain sebagai euint64. Smart contract bandingkan encrypted bids via CMUX operations — tidak pernah decrypt individual bids. Hanya winning bid yang di-reveal setelah finalization via Threshold Network.",
+      solution: "Fully Homomorphic Encryption (FHE) bikin smart contract bisa komputasi data terenkripsi. Bid dienkripsi di browser via Fhenix CoFHE SDK, disimpan on-chain sebagai euint64. Smart contract bandingin bid terenkripsi via operasi CMUX, tanpa pernah buka bid individu. Cuma bid pemenang yang kebuka setelah finalisasi via Threshold Network.",
       metrics: [
         {
-          label: "Bid privacy",
-          before: "Visible di mempool — MEV extractable",
-          after: "FHE encrypted — zero knowledge sampai settlement"
+          label: "Privasi bid",
+          before: "Keliatan di mempool, bisa di-extract MEV",
+          after: "Terenskripsi FHE — nol informasi sampai settlement"
         },
         {
-          label: "Winner selection",
-          before: "On-chain comparison (plaintext)",
-          after: "CMUX on encrypted bids — never decrypts losers"
+          label: "Penentuan pemenang",
+          before: "Perbandingan on-chain (plaintext)",
+          after: "CMUX di bid terenkripsi, bid kalah gak pernah kebuka"
         },
         {
-          label: "Trust model",
-          before: "Trusted auctioneer atau transparent (gameable)",
-          after: "Trustless — verifiable on-chain, no third party"
+          label: "Model kepercayaan",
+          before: "Percaya auctioneer atau transparan (bisa dimanipulasi)",
+          after: "Trustless — bisa diverifikasi on-chain, tanpa pihak ketiga"
         }
       ],
-      timeline: "Dibangun dalam 2 minggu — ~430 lines Solidity + 47 tests"
+      timeline: "Dibangun dalam 2 minggu — ~430 baris Solidity + 47 test"
     },
     demo: "https://shadowbid.vercel.app",
     github: "https://github.com/nohypelabs/shadowbid",
@@ -581,8 +581,8 @@ export const projects: Project[] = [
   {
     id: "traceflow",
     title: "TraceFlow — Real-Time GPS Fleet Tracking",
-    shortDescription: "GPS fleet management dashboard dengan real-time tracking, geofencing, multi-provider GPS integration, dan comprehensive reporting — untuk perusahaan logistik dan transportasi",
-    fullDescription: "Sistem manajemen armada GPS real-time berbasis web yang memungkinkan pemantauan kendaraan secara live, pembuatan zona geofence, penerimaan peringatan otomatis, serta analisis riwayat perjalanan. Mendukung berbagai perangkat GPS dari vendor Teltonika, Queclink, dan Concox, serta mode testing menggunakan GPS smartphone. Dibangun dengan arsitektur full-stack modern menggunakan Next.js 16, tRPC, Prisma, dan Socket.IO untuk real-time updates.",
+    shortDescription: "Dashboard manajemen armada GPS: tracking kendaraan live, geofencing, integrasi multi-provider GPS, dan laporan lengkap — buat perusahaan logistik dan transportasi",
+    fullDescription: "Sistem manajemen armada GPS berbasis web yang bisa pantau kendaraan secara live, bikin zona geofence, terima peringatan otomatis, dan analisis riwayat perjalanan. Support berbagai perangkat GPS dari vendor Teltonika, Queclink, dan Concox, plus mode testing pakai GPS smartphone. Dibangun full-stack pakai Next.js 16, tRPC, Prisma, dan Socket.IO buat update yang langsung kebaca.",
     category: "full-stack",
     techStack: [
       {
@@ -604,23 +604,23 @@ export const projects: Project[] = [
     ],
     highlights: [
       {
-        title: "Real-Time Vehicle Tracking",
-        description: "Pantau posisi kendaraan secara live di peta OpenStreetMap dengan marker berkode warna dan animasi transisi smooth",
+        title: "Tracking Kendaraan Live",
+        description: "Pantau posisi kendaraan di peta OpenStreetMap dengan marker warna dan animasi transisi yang mulus",
         icon: "map-pin"
       },
       {
-        title: "Geofencing & Alerts",
-        description: "Buat zona virtual (lingkaran/polygon), dapatkan peringatan otomatis saat kendaraan masuk/keluar zona — 9 tipe alert",
+        title: "Geofencing & Peringatan",
+        description: "Bikin zona virtual (lingkaran/polygon), dapet peringatan otomatis pas kendaraan masuk/keluar zona — 9 tipe alert",
         icon: "shield"
       },
       {
-        title: "Multi-Provider GPS Integration",
+        title: "Integrasi Multi-Provider GPS",
         description: "Support 4 provider GPS: Teltonika, Queclink, Concox, dan Mock — plus GPS smartphone via browser",
         icon: "satellite"
       }
     ],
     features: [
-      "Real-time vehicle monitoring di peta OpenStreetMap",
+      "Monitoring kendaraan langsung di peta OpenStreetMap",
       "Marker berkode warna berdasarkan status (Online, Idle, Offline)",
       "Multi-provider GPS: Teltonika, Queclink, Concox, Mock",
       "3 metode integrasi: GPS tracker fisik, API JSON Push, GPS HP (browser)",
@@ -631,36 +631,36 @@ export const projects: Project[] = [
       "Laporan harian/mingguan/bulanan dengan export TXT/MD/CSV",
       "Role-based access: Super Admin, Admin, Manager, User, Viewer",
       "Profil pengguna dengan upload foto (Supabase Storage)",
-      "Socket.IO real-time updates tanpa refresh"
+      "Update Socket.IO langsung tanpa refresh"
     ],
     impact: {
-      performance: "Real-time GPS updates via WebSocket — zero latency vehicle tracking",
+      performance: "Update GPS langsung via WebSocket, pantau kendaraan tanpa jeda",
       users: "Target: perusahaan logistik, layanan transportasi, manajemen armada kendaraan"
     },
     caseStudy: {
-      problem: "Perusahaan logistik kesulitan memantau armada kendaraan secara real-time. Data GPS tersebar di berbagai platform vendor, tidak ada dashboard terpusat untuk monitoring, geofencing, dan reporting.",
+      problem: "Perusahaan logistik kesulitan pantau armada kendaraan. Data GPS berceceran di berbagai platform vendor, gak ada dashboard terpusat buat monitoring, geofencing, dan laporan.",
       painPoints: [
-        "Tidak ada dashboard terpusat untuk multi-vendor GPS",
-        "Monitoring kendaraan manual via WhatsApp/telepon",
-        "Tidak ada sistem geofencing dan auto-alert",
+        "Gak ada dashboard terpusat buat GPS multi-vendor",
+        "Pantau kendaraan manual lewat WhatsApp/telepon",
+        "Gak ada sistem geofencing dan peringatan otomatis",
         "Laporan perjalanan dibuat manual dari data mentah GPS"
       ],
-      solution: "Full-stack fleet management dashboard dengan real-time tracking via Socket.IO, multi-provider GPS webhook integration, geofencing engine, dan automated reporting system.",
+      solution: "Dashboard manajemen armada full-stack dengan tracking live via Socket.IO, integrasi webhook GPS multi-provider, mesin geofencing, dan sistem laporan otomatis.",
       metrics: [
         {
           label: "Monitoring armada",
           before: "Manual via WhatsApp/telepon ke supir",
-          after: "Real-time dashboard dengan posisi live di peta"
+          after: "Dashboard langsung dengan posisi live di peta"
         },
         {
           label: "Geofencing",
-          before: "Tidak ada — tidak tahu kendaraan masuk/keluar zona",
-          after: "Auto-alert 9 tipe: speeding, geofence, SOS, ignition, dll"
+          before: "Gak ada — gak tau kendaraan masuk/keluar zona",
+          after: "Peringatan otomatis 9 tipe: speeding, geofence, SOS, ignition, dll"
         },
         {
           label: "Laporan perjalanan",
-          before: "Manual kumpulkan data dari setiap vendor GPS",
-          after: "Auto-generate harian/mingguan/bulanan + export CSV"
+          before: "Manual kumpulin data dari tiap vendor GPS",
+          after: "Ke-generate otomatis harian/mingguan/bulanan + export CSV"
         }
       ],
       testimonial: {

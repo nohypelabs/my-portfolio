@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     default: "nasaq.id — Website, Company Profile & Custom Systems",
     template: "%s | nasaq.id"
   },
-  description: "nasaq.id adalah jasa website dan android app development untuk company profile, website bisnis, dashboard internal, dan sistem custom yang benar-benar dipakai tim. Cocok untuk bisnis yang butuh surface lebih meyakinkan dan workflow lebih rapi.",
+  description: "nasaq.id adalah jasa pembuatan website dan aplikasi Android untuk company profile, dashboard internal, dan sistem custom yang beneran dipakai tim. Cocok buat bisnis yang butuh tampilan lebih meyakinkan dan alur kerja yang lebih rapi.",
   keywords: [
     "nasaq.id",
     "jasa pembuatan website",

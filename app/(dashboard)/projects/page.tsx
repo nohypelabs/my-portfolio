@@ -37,27 +37,27 @@ function getProjectAngle(project: Project) {
   if (title.includes('wc check') || title.includes('inspection')) {
     return {
       label: 'Bukti Monitoring',
-      summary: 'Studi kasus penggantian pelaporan kertas manual menjadi data digital real-time yang bisa ditelusuri riwayatnya.',
+      summary: 'Studi kasus ganti pelaporan kertas manual jadi data digital yang bisa ditelusuri riwayatnya.',
     };
   }
 
   if (title.includes('pos') || title.includes('warehouse')) {
     return {
       label: 'Workflow Retail',
-      summary: 'Menunjukkan bagaimana operasional kasir dan manajemen stok disatukan dalam satu antarmuka kasir pintar.',
+      summary: 'Nunjukin gimana operasional kasir dan manajemen stok disatuin dalam satu antarmuka kasir.',
     };
   }
 
   if (title.includes('e-commerce') || title.includes('qohira')) {
     return {
       label: 'Workflow Commerce',
-      summary: 'Pusat kelola pesanan dan konfirmasi pembayaran otomatis untuk merapikan alur masuk transaksi pembeli.',
+      summary: 'Pusat kelola pesanan dan konfirmasi pembayaran yang otomatis, biar alur transaksi pembeli rapi.',
     };
   }
 
   return {
     label: 'Build Sistem',
-    summary: 'Pengembangan sistem kustom untuk mengubah bottleneck operasional menjadi alur kerja web yang pragmatis.',
+    summary: 'Pengembangan sistem kustom untuk mengubah bottleneck operasional jadi alur kerja web yang pragmatis.',
   };
 }
 
@@ -98,17 +98,17 @@ export default function ProjectsPage() {
     {
       icon: Building2,
       title: 'Konteks bisnis riil',
-      desc: 'Setiap sistem dirancang untuk memecahkan hambatan operasional nyata, bukan sekadar demo.',
+      desc: 'Setiap sistem dibuat buat mecahin hambatan operasional nyata, bukan sekadar demo.',
     },
     {
       icon: Gauge,
       title: 'Sebelum vs sesudah',
-      desc: 'Bukti pengerjaan kami diukur dari perubahan kecepatan kerja, kejelasan data, dan hilangnya friction.',
+      desc: 'Bukti kerja kami diukur dari perubahan kecepatan kerja, kejelasan data, dan berkurangnya hambatan.',
     },
     {
       icon: Globe2,
       title: 'Teruji di lapangan',
-      desc: 'Aplikasi didesain untuk bertahan menghadapi beban kerja riil operasional harian tim Anda.',
+      desc: 'Aplikasi dirancang buat tahan banting menghadapi beban kerja harian tim Anda.',
     },
   ];
 
@@ -126,7 +126,7 @@ export default function ProjectsPage() {
             Sistem kustom yang benar-benar rilis dan dipakai kerja.
           </h1>
           <p className="text-sm leading-relaxed text-foreground/70 md:text-base">
-            Halaman ini bukan sekadar galeri tangkapan layar. Di sini kami merangkum tantangan awal di lapangan, solusi arsitektur yang kami bangun, serta metrik perbaikan nyata setelah rilis.
+            Halaman ini bukan sekadar galeri tangkapan layar. Di sini kami rangkum tantangan awal di lapangan, solusi yang kami bangun, dan metrik perbaikan nyata setelah rilis.
           </p>
         </div>
 

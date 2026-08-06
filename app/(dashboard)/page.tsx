@@ -64,8 +64,8 @@ export default function HomePage() {
 
           <p className="mt-6 max-w-2xl text-[15px] leading-8 text-foreground/70 md:text-base">
             Satu brief. Dipahami dulu, baru dibangun. Target kami: company
-            profile, dashboard internal, dan app Android yang dibangun dari
-            problem operasional nyata — bukan dari template.
+            profile, dashboard internal, dan app Android yang berangkat dari
+            problem operasional nyata, bukan dari template.
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
@@ -131,7 +131,6 @@ export default function HomePage() {
           <h2 className="mt-3 text-3xl font-light leading-tight tracking-tight text-foreground md:text-5xl">
             Kami menyelesaikan bottleneck operasional nyata, bukan sekadar memoles template instan.
           </h2>
-          
           <div className="mt-10 grid gap-8 md:grid-cols-2">
             {/* Sisi Kiri: Masalah Lapangan */}
             <div className="neo-surface rounded-2xl p-6 bg-red-50/5 border-red-200/20">
@@ -168,7 +167,7 @@ export default function HomePage() {
                   <div>
                     <h4 className="text-[14px] font-bold text-foreground font-mono">Inspeksi Lapangan Tanpa Bukti Valid</h4>
                     <p className="mt-1 text-[12px] leading-relaxed text-foreground/60">
-                      Checklist kebersihan toilet atau gedung menggunakan form kertas yang mudah hilang, rawan dimanipulasi data tanggalnya, dan tidak bisa dimonitor real-time oleh manajemen.
+                      Checklist kebersihan toilet atau gedung menggunakan form kertas yang mudah hilang, rawan dimanipulasi data tanggalnya, dan tidak bisa dimonitor langsung oleh manajemen.
                     </p>
                   </div>
                 </li>
@@ -188,7 +187,7 @@ export default function HomePage() {
                   <div>
                     <h4 className="text-[14px] font-bold text-foreground font-mono">Sinkronisasi Multi-Outlet Otomatis</h4>
                     <p className="mt-1 text-[12px] leading-relaxed text-foreground/60">
-                      Sistem POS kasir dan gudang terpusat (seperti LakuPOS) dengan pemantauan stok real-time, alert otomatis saat stok menipis, dan modul transfer stok dengan audit trail ketat.
+                      Sistem POS kasir dan gudang terpusat (seperti LakuPOS) dengan pemantauan stok yang selalu update, alert otomatis saat stok menipis, dan modul transfer stok dengan audit trail ketat.
                     </p>
                   </div>
                 </li>
@@ -210,7 +209,7 @@ export default function HomePage() {
                   <div>
                     <h4 className="text-[14px] font-bold text-foreground font-mono">Scan QR Code & GPS-Validated Checklist</h4>
                     <p className="mt-1 text-[12px] leading-relaxed text-foreground/60">
-                      Petugas scan QR di lokasi fisik untuk membuka checklist inspeksi digital. Setiap laporan wajib menyertakan foto tervalidasi lokasi (GPS) dan langsung tersimpan di dashboard pusat secara real-time.
+                      Petugas scan QR di lokasi fisik untuk membuka checklist inspeksi digital. Setiap laporan wajib menyertakan foto tervalidasi lokasi (GPS) dan langsung tersimpan di dashboard pusat.
                     </p>
                   </div>
                 </li>
@@ -223,15 +222,15 @@ export default function HomePage() {
       {/* 4. FLAGSHIP PROOF — satu blok bukti: live strip + storytelling + projects */}
       <section id="live-data" className="border-t border-[var(--border-hairline)]">
 
-        {/* 4a. LIVE STRIP — bukti integrasi real-time */}
+        {/* 4a. LIVE STRIP — bukti integrasi langsung */}
         <section className="py-12 md:py-14 bg-[var(--bg-element-second)]/10">
           <div className="mx-auto max-w-6xl px-2">
-            <p className="descriptor">Bukti Integrasi Real-Time</p>
+            <p className="descriptor">Bukti Integrasi Langsung</p>
             <h2 className="mt-3 text-2xl font-light leading-tight tracking-tight text-foreground md:text-4xl">
               Verifikasi Data Lapangan Langsung Dari Database
             </h2>
             <p className="mt-3 max-w-2xl text-[13px] leading-relaxed text-foreground/70 font-mono">
-              Berikut adalah performa riil dari aplikasi yang kami deploy di server produksi client. Kami tidak menyembunyikan mock data — Anda dapat menguji koneksi langsung ke Supabase & PostgreSQL kami secara real-time di bawah ini.
+              Ini performa asli dari aplikasi yang kami deploy di server produksi client. Bukan mock data, Anda bisa tes langsung koneksi ke database-nya di bawah.
             </p>
 
             <div className="mt-8">

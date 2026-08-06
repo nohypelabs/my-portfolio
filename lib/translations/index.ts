@@ -5,14 +5,14 @@ const idTranslations = {
 
   // Live Metrics
   liveProductionData: "Verifikasi Data Live",
-  liveMetricsDesc: "Data real-time yang diambil langsung dari database produksi aktif. Bukti nyata sistem kami benar-benar bekerja.",
-  loading: "MEMUAT DATA...",
+  liveMetricsDesc: "Data langsung yang diambil dari database produksi aktif. Bukti nyata kalau sistem kami beneran jalan.",
+  loading: "MUAT DATA...",
   fetched: "Terakhir Diambil",
   visitApp: "Lihat Sistem",
-  liveMetricsFooter: "Koneksi data real-time via API serverless ke database produksi. Halaman auto-refresh setiap 5 menit.",
+  liveMetricsFooter: "Koneksi data live via API serverless ke database produksi. Halaman auto-refresh tiap 5 menit.",
   fetchLatest: "Muat Ulang Data",
   fetching: "Mengambil data...",
-  fetchHint: "Klik untuk menarik data terbaru langsung dari database produksi",
+  fetchHint: "Klik buat narik data terbaru langsung dari database produksi",
   databases: "Database",
 
   // CV Page
@@ -38,8 +38,8 @@ const idTranslations = {
   energyLow: "Low",
   energyMed: "Med",
   energyHigh: "High",
-  playerDarkMode: "Dark mode untuk menghemat baterai",
-  playerReduceMotion: "Hemat CPU/GPU — matikan animasi",
+  playerDarkMode: "Dark mode buat hemat baterai",
+  playerReduceMotion: "Hemat CPU/GPU, matikan animasi",
   energyPanelTitle: "Konsumsi energi halaman",
   energyPanelBody:
     "Dark mode menurunkan daya layar OLED, dan mematikan animasi mengurangi kerja CPU/GPU. Dua-duanya bikin baterai perangkat lebih awet dan jejak energi kunjungan ini lebih kecil.",

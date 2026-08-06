@@ -143,18 +143,18 @@ function getContextNote(project: Project) {
   }
 
   if (title.includes('wc check')) {
-    return 'Sistem monitoring kebersihan fasilitas gedung untuk menggantikan checklist kertas manual dengan pelaporan digital real-time terpusat.';
+    return 'Sistem monitoring kebersihan fasilitas gedung buat ganti checklist kertas manual dengan pelaporan digital yang terpusat dan langsung kebaca.';
   }
 
   if (title.includes('lakupos')) {
-    return 'Sistem kasir pintar (POS) ritel yang mengintegrasikan transaksi kasir harian, sinkronisasi stok otomatis, dan multi-outlet dalam satu platform.';
+    return 'Sistem kasir (POS) ritel yang nyatuin transaksi kasir harian, sinkronisasi stok otomatis, dan multi-outlet dalam satu platform.';
   }
 
   if (title.includes('qohira')) {
-    return 'Workflow verifikasi pesanan dan konfirmasi pembayaran otomatis e-commerce untuk merapikan pencatatan admin toko.';
+    return 'Workflow verifikasi pesanan dan konfirmasi pembayaran otomatis e-commerce buat merapikan pencatatan admin toko.';
   }
 
-  return 'Pengembangan sistem kustom untuk mengubah bottleneck operasional harian menjadi alur kerja web yang efisien dan praktis.';
+  return 'Pengembangan sistem kustom buat ngubah bottleneck operasional harian jadi alur kerja web yang efisien dan praktis.';
 }
 
 interface ProjectDetailClientProps {
@@ -357,7 +357,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
                   Verifikasi integrasi sistem & data lapangan
                 </h2>
                 <p className="text-xs leading-relaxed text-foreground/70 font-mono max-w-xl">
-                  Sistem ini terhubung langsung ke database aktif menggunakan API serverless. Klik tombol di kanan untuk melakukan sinkronisasi data terbaru secara real-time.
+                  Sistem ini terhubung langsung ke database aktif menggunakan API serverless. Klik tombol di kanan buat sinkronisasi data terbaru.
                 </p>
               </div>
 
@@ -488,7 +488,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
                   <p>
                     {project.impact?.business ??
                       project.impact?.users ??
-                      'Sistem kustom ini memotong birokrasi penulisan manual dan memastikan validitas data secara real-time.'}
+                      'Sistem kustom ini memotong birokrasi penulisan manual dan memastikan data tetap valid.'}
                   </p>
                 </div>
               </div>

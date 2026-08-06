@@ -289,7 +289,7 @@ export function ServicesContent({
               Dipecah per masalah utama
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-foreground/70">
-              Setiap track dirancang untuk memecahkan satu masalah utama: merapikan citra publik, mempercepat kerja tim lapangan, atau merapikan integrasi data operasional.
+              Setiap track dibuat buat menyelesaikan satu masalah utama: merapikan citra publik, mempercepat kerja tim lapangan, atau merapikan data operasional.
             </p>
           </div>
 
@@ -362,7 +362,7 @@ export function ServicesContent({
               Output konkret di setiap tahap
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-foreground/70">
-              Proses kerja kami dirancang untuk mengeliminasi ketakutan akan proyek yang macet di tengah jalan. Setiap tahap memiliki output konkret yang bisa Anda evaluasi langsung.
+              Proses kerja kami dirancang biar Anda gak khawatir proyek macet di tengah jalan. Tiap tahap ada output konkret yang bisa langsung dicek.
             </p>
           </div>
 

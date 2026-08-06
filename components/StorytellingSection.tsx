@@ -63,7 +63,7 @@ export function StorytellingSection({ slides, title, kicker }: StorytellingSecti
                   </button>
                 </span>
               ))}
-              {" "}— dan di setiap sudutnya kami ukur sebelum, setelah, serta apa yang berubah di lapangan.
+              {" "}dan di setiap sudutnya kami ukur sebelum, setelah, serta apa yang berubah di lapangan.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-2">

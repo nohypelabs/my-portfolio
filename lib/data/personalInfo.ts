@@ -4,8 +4,8 @@ export const personalInfo = {
   role: "Founder & Full-stack Product Engineer",
   tagline: "Website and Android app development for company profile, internal dashboard, and custom web systems",
   headline: "Building websites and internal tools that make businesses look serious and work cleaner.",
-  narrative: "I run nasaq.id as a studio focused on website and Android app development for practical systems used in real operations. From company profiles and internal dashboards to logistics QC flows, retail tools, and custom admin systems, every build is shaped by a concrete business bottleneck.",
-  bio: "Founder of nasaq.id. I design and ship company profiles, internal dashboards, and custom web systems with a production-first mindset shaped by real operational work.",
+  narrative: "Saya menjalankan nasaq.id sebagai studio yang fokus bikin website dan aplikasi Android untuk sistem yang beneran dipakai di operasional. Dari company profile, dashboard internal, alur QC logistik, tools retail, sampai sistem admin custom, semua dibangun dari bottleneck bisnis yang konkret.",
+  bio: "Founder nasaq.id. Saya bikin dan ngirim company profile, dashboard internal, dan sistem web custom dengan pola pikir production-first yang dibentuk dari kerja operasional nyata.",
 
   contact: {
     email: "agdscid@gmail.com",

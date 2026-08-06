@@ -112,7 +112,7 @@ export default function ContactPage() {
             Diskusikan proyek sistem Anda sebelum makin rumit.
           </h1>
           <p className="text-sm leading-relaxed text-foreground/70 md:text-base">
-            Jika bisnis Anda membutuhkan landing page konversi, dashboard admin untuk operasional internal, atau sistem database kustom yang berjalan stabil di lapangan, mulailah dari sini. Fokus utama diskusi pertama kami adalah mencari kejelasan scope dan timeline pengerjaan yang realistis.
+            Kalau bisnis Anda butuh landing page konversi, dashboard admin buat operasional internal, atau sistem database kustom yang stabil di lapangan, mulai dari sini. Fokus diskusi pertama kami cuma satu: nyariin scope dan timeline yang realistis.
           </p>
         </div>
       </motion.div>
@@ -160,7 +160,7 @@ export default function ContactPage() {
               Kirim Brief Proyek Singkat
             </h2>
             <p className="mt-1 text-xs text-foreground/70 font-mono">
-              Silakan lengkapi formulir di bawah ini untuk membantu kami memahami tantangan operasional bisnis Anda.
+              Isi formulir di bawah ini biar kami makin paham masalah operasional bisnis Anda.
             </p>
           </div>
 
