@@ -69,14 +69,14 @@ export default function ContactPage() {
       name: 'GitHub',
       icon: Github,
       url: personalInfo.contact.github,
-      handle: '@nohypelabs',
+      handle: '@nasaq-id',
       color: 'zinc',
     },
     {
       name: 'X',
       icon: Twitter,
       url: personalInfo.contact.twitter,
-      handle: '@nohypelabs',
+      handle: '@nasaq_id',
       color: 'zinc',
     },
   ];

@@ -4,7 +4,7 @@ const footerLinks = [
   { label: "Layanan & Harga", path: "/services" },
   { label: "Portfolio", path: "/projects" },
   { label: "Hubungi Kami", path: "/contact" },
-  { label: "Live Metrics", path: "/live" },
+  { label: "Live Metrics", path: "/#live-data" },
 ];
 
 /**

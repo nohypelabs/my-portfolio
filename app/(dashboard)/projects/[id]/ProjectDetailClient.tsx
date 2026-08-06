@@ -3,13 +3,13 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { CTASection } from '@/components/sections/CTASection';
 import { TechBadge } from '@/components/ui/TechBadge';
 import { useEnergySaver } from '@/contexts/EnergySaverContext';
 import type { Project } from '@/lib/domain/entities/Project';
 import {
   AlertTriangle,
   ArrowLeft,
-  ArrowRight,
   Building2,
   Calendar,
   CheckCircle2,
@@ -634,30 +634,12 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
 
       {/* FOOTER CTA */}
       <ScrollReveal>
-        <div className="rounded-3xl bg-[var(--bg-btn-big)] text-[var(--txt-btn-big)] p-6 md:p-10">
-          <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-            <div className="space-y-3">
-              <h2 className="text-2xl font-light text-current md:text-3xl">
-                Menghadapi Tantangan Operasional yang Serupa?
-              </h2>
-              <p className="text-sm leading-relaxed text-current opacity-75">
-                Langkah awal terbaik adalah memetakan bottleneck operasional Anda dan merumuskan scope proyek yang paling pragmatis. Hubungi kami untuk memulai.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
-              {/* Sits on the dark slab, so the button pins to the light form
-                  surface instead of the theme-flipping primary pair. */}
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--bg-form-element)] px-6 py-3 text-xs font-semibold text-[var(--txt-form-element)] transition-opacity hover:opacity-90"
-              >
-                Mulai Diskusi Kasus Anda
-                <ArrowRight className="h-4.5 w-4.5" strokeWidth={2.5} />
-              </Link>
-            </div>
-          </div>
-        </div>
+        <CTASection
+          title="Menghadapi Tantangan Operasional yang Serupa?"
+          body="Langkah awal terbaik adalah memetakan bottleneck operasional Anda dan merumuskan scope proyek yang paling pragmatis. Hubungi kami untuk memulai."
+          ctaLabel="Mulai Diskusi Kasus Anda"
+          ctaHref="/contact"
+        />
       </ScrollReveal>
     </div>
   );

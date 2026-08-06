@@ -56,25 +56,8 @@ const stamp = { created_at: '', updated_at: '' };
 
 export const services: Service[] = [
   {
-    id: '1',
-    title: 'Company Profile & Website',
-    slug: 'company-profile-website',
-    description: 'Untuk bisnis yang butuh surface lebih serius, CTA lebih jelas, dan presentasi brand yang lebih rapi di mata calon client.',
-    features: [
-      'Landing page dan company profile multi-halaman',
-      'Copy hierarchy yang lebih meyakinkan',
-      'SEO, mobile-friendly, dan siap diarahkan ke order',
-      'Contact form / WhatsApp CTA',
-      'Analytics dan tracking konversi dasar',
-    ],
-    icon: 'Globe',
-    sort_order: 1,
-    is_active: true,
-    ...stamp,
-  },
-  {
     id: '2',
-    title: 'Dashboard & Sistem Operasional',
+    title: 'Dashboard Operasional',
     slug: 'dashboard-operasional',
     description: 'Untuk tim yang capek kerja di Excel, chat, atau form manual dan butuh dashboard yang mempermudah kontrol harian.',
     features: [
@@ -85,13 +68,13 @@ export const services: Service[] = [
       'Import/export data dan rekapitulasi otomatis',
     ],
     icon: 'Server',
-    sort_order: 2,
+    sort_order: 1,
     is_active: true,
     ...stamp,
   },
   {
     id: '3',
-    title: 'Web App & Android Companion',
+    title: 'Aplikasi Android Lapangan',
     slug: 'web-app-android',
     description: 'Untuk use case yang butuh login, notifikasi, data real-time, atau tim lapangan yang harus tetap bisa kerja dari mobile.',
     features: [
@@ -102,6 +85,23 @@ export const services: Service[] = [
       'Deploy web + Play Store',
     ],
     icon: 'Smartphone',
+    sort_order: 2,
+    is_active: true,
+    ...stamp,
+  },
+  {
+    id: '1',
+    title: 'Website & Company Profile',
+    slug: 'company-profile-website',
+    description: 'Untuk bisnis yang butuh surface lebih serius, CTA lebih jelas, dan presentasi brand yang lebih rapi di mata calon client.',
+    features: [
+      'Landing page dan company profile multi-halaman',
+      'Copy hierarchy yang lebih meyakinkan',
+      'SEO, mobile-friendly, dan siap diarahkan ke order',
+      'Contact form / WhatsApp CTA',
+      'Analytics dan tracking konversi dasar',
+    ],
+    icon: 'Globe',
     sort_order: 3,
     is_active: true,
     ...stamp,

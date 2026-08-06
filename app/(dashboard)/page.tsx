@@ -3,35 +3,34 @@ import Image from "next/image";
 import { Marquee } from "@/components/Marquee";
 import { projects } from "@/lib/data/projects";
 import { studioStats } from "@/lib/data/studioStats";
-import { packages } from "@/lib/data/services";
 import { testimonials } from "@/lib/data/testimonials";
 import { TextReveal } from "@/components/TextReveal";
 import { StorytellingSection, type StorySlide } from "@/components/StorytellingSection";
 import { LiveMetrics } from "@/components/sections/LiveMetrics";
+import { CTASection } from "@/components/sections/CTASection";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 
 // Homepage funnel: satu ide per blok, tanpa dinding kartu.
 // Urutan: cover → mitra → problem/solusi → live metrics → projects → pricing → testimoni → CTA.
 
+// Mitra strip hanya menampilkan mitra dengan logo asli — inisial tanpa logo
+// dihapus (keputusan branding 2026-08-06). Tambahkan kembali saat logo didapat.
 const mitra = [
   { name: "J&T Express", logo: "/clients/jt.svg" },
   { name: "PT Prenacons Internusa", logo: "/clients/prenacons.png" },
-  { name: "Serat QC", initial: "SQ" },
-  { name: "WC Check", initial: "WC" },
-  { name: "LakuPOS", initial: "LP" },
-  { name: "Qohira", initial: "QH" },
-  { name: "nasaq.id", initial: "NQ" },
 ];
 
 
 
-function formatPrice(pkg: (typeof packages)[number]) {
-  const min = pkg.price_min >= 1_000_000 ? `Rp ${pkg.price_min / 1_000_000}jt` : `Rp ${pkg.price_min / 1_000}rb`;
-  return `${min}+`;
-}
-
 export default function HomePage() {
   const quote = testimonials[1];
+
+  // Lead with the strongest proof (Serat QC — J&T, 112K+ resi) instead of
+  // array order, so the first card visitors see is the flagship. Off-brand
+  // projects remain on /projects, untouched.
+  const featuredHomeProjects = ["selisih-berat", "wc-check", "lakupos"].map(
+    (id) => projects.find((p) => p.id === id)!
+  );
 
   const storySlides: StorySlide[] = projects
     .filter((p) => p.status === 'production')
@@ -51,7 +50,7 @@ export default function HomePage() {
       {/* 1. COVER */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-6xl px-2 pt-10 pb-14 md:pt-16 md:pb-20">
-          <p className="descriptor">nasaq.id · website, android, admin system</p>
+          <p className="descriptor">nasaq.id · studio website & sistem operasional digital</p>
 
           <h1 className="mt-6 max-w-4xl text-[40px] font-light leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
             <TextReveal text="Sistem yang dipakai admin," />
@@ -106,21 +105,15 @@ export default function HomePage() {
                   key={`${m.name}-${i}`}
                   className="inline-flex items-center gap-3 px-5 py-2.5 bg-white border border-[var(--border-hairline)] rounded-xl mx-2 shadow-[2px_2px_0px_rgba(0,0,0,0.05)] select-none hover:shadow-md transition-shadow"
                 >
-                  {m.logo ? (
-                    <div className="relative w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center bg-white p-1">
-                      <Image
-                        src={m.logo}
-                        alt={`${m.name} logo`}
-                        width={32}
-                        height={32}
-                        className="object-contain w-full h-full"
-                      />
-                    </div>
-                  ) : (
-                    <div className="w-8 h-8 rounded-lg bg-[var(--bg-element-third)] border border-[var(--border-hairline)] flex items-center justify-center text-[10px] font-bold text-foreground">
-                      {m.initial}
-                    </div>
-                  )}
+                  <div className="relative w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center bg-white p-1">
+                    <Image
+                      src={m.logo}
+                      alt={`${m.name} logo`}
+                      width={32}
+                      height={32}
+                      className="object-contain w-full h-full"
+                    />
+                  </div>
                   <span className="text-[13px] font-semibold text-foreground/80">
                     {m.name}
                   </span>
@@ -270,54 +263,29 @@ export default function HomePage() {
           </div>
 
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {projects.slice(0, 3).map((p, i) => (
+            {featuredHomeProjects.map((p, i) => (
               <ProjectCard key={p.id} project={p} index={i} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* 7. PRICING */}
-      <section className="py-14 md:py-20">
-        <div className="mx-auto max-w-6xl px-2">
-          <p className="descriptor">Titik masuk harga</p>
-          <div className="mt-8 grid gap-5 lg:grid-cols-3">
-            {packages.map((p, i) => (
-              <div
-                key={p.id}
-                className={`relative flex flex-col justify-between gap-6 rounded-2xl p-7 transition-all hover:-translate-y-1 ${
-                  // The featured tier is the darkest slab in the rotation rather
-                  // than a tinted gradient — there is no accent hue to tint with.
-                  i === 1
-                    ? "bg-[var(--bg-element-third)] soft-border"
-                    : "bg-[var(--bg-element)] soft-border"
-                }`}
-              >
-                {i === 1 && (
-                  <span className="absolute -top-2.5 right-4 chip bg-[var(--bg-btn-pm)] text-[var(--txt-btn-pm)]">
-                    Paling dipilih
-                  </span>
-                )}
-                <div>
-                  <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-foreground/70">
-                    {p.name}
-                  </p>
-                  <p className="mt-3 text-3xl font-light tracking-tight text-foreground">
-                    {formatPrice(p)}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-[13px] leading-relaxed text-foreground/70">{p.description}</p>
-                  <Link
-                    href="/contact"
-                    className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-foreground underline decoration-1 underline-offset-4 transition-opacity hover:opacity-70"
-                  >
-                    bahas scope <span aria-hidden>→</span>
-                  </Link>
-                </div>
-              </div>
-            ))}
+      {/* 7. PRICING — single source lives on /services; homepage keeps a compact entry point. */}
+      <section className="py-12 md:py-16 border-t border-[var(--border-hairline)]">
+        <div className="mx-auto max-w-6xl px-2 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p className="descriptor">Titik masuk harga</p>
+            <p className="mt-3 text-2xl font-light tracking-tight text-foreground md:text-3xl">
+              Mulai dari <span className="font-semibold">Rp 1,5jt</span> — scope menyesuaikan brief.
+            </p>
           </div>
+          <Link
+            href="/services"
+            className="btn-primary px-6 py-3 text-sm shrink-0"
+          >
+            Lihat 3 paket
+            <span aria-hidden>→</span>
+          </Link>
         </div>
       </section>
 
@@ -337,27 +305,13 @@ export default function HomePage() {
       </section>
 
       {/* 9. CTA */}
-      <section className="py-14 md:py-20">
-        <div className="mx-auto max-w-5xl px-2">
-          <div className="rounded-3xl bg-[var(--bg-btn-big)] py-12 px-6 text-center text-[var(--txt-btn-big)] md:py-16">
-            {/* Inside the dark slab, text colours inherit — page-level tokens
-                (.descriptor, text-foreground) would invert against it. */}
-            <p className="descriptor !text-current opacity-70">
-              Kalau masalahnya sudah kebayang
-            </p>
-            <h2 className="mx-auto mt-4 max-w-2xl text-[32px] font-light tracking-tight text-current md:text-5xl">
-              Satu brief. Dijawab dalam jam.
-            </h2>
-            <Link
-              href="/contact"
-              className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-[var(--bg-form-element)] px-8 py-4 text-sm font-semibold text-[#3c3c3c] transition-transform hover:-translate-y-0.5"
-            >
-              Mulai briefing
-              <span aria-hidden>→</span>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CTASection
+        centered
+        eyebrow="Kalau masalahnya sudah kebayang"
+        title="Satu brief. Dijawab dalam jam."
+        ctaLabel="Mulai briefing"
+        ctaHref="/contact"
+      />
     </main>
   );
 }

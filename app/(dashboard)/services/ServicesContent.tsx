@@ -26,6 +26,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { CTASection } from '@/components/sections/CTASection';
 import { staggerContainer, fadeInUp } from '@/lib/animations';
 import { useState } from 'react';
 import type { Service, PricingPackage, ProcessStep, FAQ } from '@/lib/data/services';
@@ -525,30 +526,12 @@ export function ServicesContent({
 
       {/* FOOTER CTA */}
       <ScrollReveal>
-        {/* Dark slab instead of an accent-tinted gradient. Text inside inherits
-            via text-current so page-level tokens don't invert against it. */}
-        <div className="rounded-3xl bg-[var(--bg-btn-big)] text-[var(--txt-btn-big)] p-6 md:p-10">
-          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div className="space-y-2">
-              <h2 className="text-2xl font-light text-current md:text-3xl">
-                Siap Merapikan Operasional Bisnis Anda?
-              </h2>
-              <p className="text-sm leading-relaxed text-current opacity-75">
-                Kami siap membantu memetakan bottleneck operasional Anda dan mendesain sistem digital kustom yang andal. Mulai dengan membuat brief proyek singkat.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--bg-form-element)] px-6 py-3 text-sm font-semibold text-[#3c3c3c] transition-transform hover:-translate-y-0.5"
-              >
-                Mulai Hubungi Kami
-                <ArrowRight className="h-4.5 w-4.5" strokeWidth={2.5} />
-              </Link>
-            </div>
-          </div>
-        </div>
+        <CTASection
+          title="Siap Merapikan Operasional Bisnis Anda?"
+          body="Kami siap membantu memetakan bottleneck operasional Anda dan mendesain sistem digital kustom yang andal. Mulai dengan membuat brief proyek singkat."
+          ctaLabel="Mulai Hubungi Kami"
+          ctaHref="/contact"
+        />
       </ScrollReveal>
     </motion.div>
   );

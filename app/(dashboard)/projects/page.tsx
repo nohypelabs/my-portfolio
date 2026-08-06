@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { projects } from '@/lib/data/projects';
 import { ScrollReveal } from '@/components/ScrollReveal';
+import { CTASection } from '@/components/sections/CTASection';
 import { MaskReveal } from '@/components/motion/MaskReveal';
 import type { Project } from '@/lib/domain/entities/Project';
 import {
@@ -61,41 +61,8 @@ function getProjectAngle(project: Project) {
   };
 }
 
-interface LiveMetricsData {
-  seratQc: { entries: number };
-  wcCheck: { inspections: number };
-  lakuPos: { transactions: number };
-  ecommerce: { orders: number };
-}
-
 export default function ProjectsPage() {
   const featuredProject = getFeaturedProject();
-
-  const [liveMetrics, setLiveMetrics] = useState<LiveMetricsData | null>(null);
-
-  useEffect(() => {
-    fetch('/api/live-metrics')
-      .then((r) => r.json())
-      .then((data) => setLiveMetrics(data.metrics))
-      .catch(() => {});
-  }, []);
-
-  const getLiveBadgeText = (pId: string) => {
-    if (!liveMetrics) return null;
-    if (pId === 'selisih-berat') {
-      return `● ${liveMetrics.seratQc.entries.toLocaleString('id-ID')} resi terproses`;
-    }
-    if (pId === 'wc-check') {
-      return `● ${liveMetrics.wcCheck.inspections.toLocaleString('id-ID')} inspeksi`;
-    }
-    if (pId === 'lakupos') {
-      return `● ${liveMetrics.lakuPos.transactions.toLocaleString('id-ID')} transaksi`;
-    }
-    if (pId === 'ecommerce-manual') {
-      return `● ${liveMetrics.ecommerce.orders.toLocaleString('id-ID')} pesanan`;
-    }
-    return null;
-  };
 
   const liveDemoCount = productionProjects.filter((project) => Boolean(project.demo)).length;
   const documentedStudies = productionProjects.filter((project) => Boolean(project.caseStudy)).length;
@@ -235,11 +202,6 @@ export default function ProjectsPage() {
                     <span className="chip text-[10px] uppercase tracking-[0.14em]">
                       {getProjectAngle(featuredProject).label}
                     </span>
-                    {getLiveBadgeText(featuredProject.id) && (
-                      <span className="inline-flex items-center gap-1 rounded-full bg-money/15 border border-money/30 px-2.5 py-1 text-[10px] font-semibold font-mono text-foreground animate-pulse">
-                        {getLiveBadgeText(featuredProject.id)}
-                      </span>
-                    )}
                   </div>
                   <h3 className="mt-4 text-2xl font-semibold text-foreground">{featuredProject.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-foreground/70 font-mono">
@@ -339,11 +301,6 @@ export default function ProjectsPage() {
                           <span className="chip uppercase">
                             {project.status === 'production' ? 'Live Produksi' : 'Pengerjaan'}
                           </span>
-                          {getLiveBadgeText(project.id) && (
-                            <span className="inline-flex items-center rounded-full bg-money/15 border border-money/30 px-2.5 py-1 text-[10px] font-semibold font-mono text-foreground animate-pulse">
-                              {getLiveBadgeText(project.id)}
-                            </span>
-                          )}
                         </div>
 
                         <div>
@@ -427,28 +384,12 @@ export default function ProjectsPage() {
 
       {/* FOOTER CTA */}
       <ScrollReveal>
-        <div className="rounded-3xl bg-[var(--bg-btn-big)] text-[var(--txt-btn-big)] p-6 md:p-10">
-          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div className="space-y-2">
-              <h2 className="text-2xl font-light text-current md:text-3xl">
-                Punya Masalah Operasional Lapangan?
-              </h2>
-              <p className="text-sm leading-relaxed opacity-70">
-                Jangan biarkan tim Anda membuang jam kerja untuk entri manual. Mari diskusikan solusi digital pragmatis untuk mempercepat operasional Anda.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-3 sm:flex-row sm:justify-end">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[var(--bg-form-element)] px-6 py-3 text-sm font-semibold text-[#3c3c3c] transition-transform hover:-translate-y-0.5"
-              >
-                Mulai Diskusi Sekarang
-                <ArrowRight className="h-4.5 w-4.5" strokeWidth={2.5} />
-              </Link>
-            </div>
-          </div>
-        </div>
+        <CTASection
+          title="Punya Masalah Operasional Lapangan?"
+          body="Jangan biarkan tim Anda membuang jam kerja untuk entri manual. Mari diskusikan solusi digital pragmatis untuk mempercepat operasional Anda."
+          ctaLabel="Mulai Diskusi Sekarang"
+          ctaHref="/contact"
+        />
       </ScrollReveal>
     </div>
   );
