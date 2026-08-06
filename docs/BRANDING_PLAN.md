@@ -67,28 +67,25 @@ Dibuat: 2026-08-06. Sumber audit: homepage funnel, lib/data/*, header, UI_UX_PRO
 
 ## 3. Rencana Eksekusi (3 fase)
 
-### Fase 1 — Konsistensi pesan (copy & data, tanpa UI overhaul)
+### Fase 1 — Konsistensi pesan (copy & data, tanpa UI overhaul) — ✅ SELESAI (commit ec9c685)
 
-1. **Rewrite descriptor hero** → "nasaq.id · sistem operasional untuk bisnis yang masih manual"
-2. **Rewrite sub-headline hero** → satu kalimat yang ngunci positioning (draft: "Dashboard internal, aplikasi Android lapangan, dan sistem custom — dibangun dari problem operasional nyata, bukan template.")
-3. **Rename 3 services** biar nyambung ke positioning:
-   - "Company Profile & Website" → **"Website & Company Profile"** (tetap ada, tapi jadi entry point)
-   - "Dashboard & Sistem Operasional" → **"Dashboard Operasional"** (ini flagship, taruh paling atas)
-   - "Web App & Android Companion" → **"Aplikasi Android Lapangan"** (lebih konkret)
-4. **Update translations** en/id sekalian.
-5. **Mitra wajib logo asli** — semua mitra harus punya logo (J&T, Prenacons sudah ada). Mitra tanpa logo (Serat QC, WC Check, LakuPOS, Qohira, nasaq.id sendiri) diganti/dihapus dari strip sampai logo asli didapat — inisial ngerusak kredibilitas.
-6. **Satu brand di depan**: footer/link social pindah ke nasaq.id; nohypelabs tetap ada sebagai handle teknis, bukan identitas situs.
+1. **Rewrite descriptor hero** → "nasaq.id · studio website & sistem operasional digital" ✅
+2. **Rewrite sub-headline hero** → satu kalimat yang ngunci positioning ✅ (copy existing sudah selaras, dipertahankan)
+3. **Rename 3 services** biar nyambung ke positioning ✅ (Dashboard Operasional flagship #1, Aplikasi Android Lapangan #2, Website & Company Profile #3 entry point)
+4. **Update translations** en/id sekalian. ⏳ (translations/index.ts sudah en=id identik, tidak ada yang berubah — verify ulang saat tambah copy baru)
+5. **Mitra wajib logo asli** ✅ — hanya J&T + Prenacons yang tampil
+6. **Satu brand di depan** ✅ — contact handles @nasaq-id/@nasaq_id; URL github/x masih nohypelabs sampai akun baru dibuat
 
-### Fase 2 — Struktur homepage (potong yang bersaing)
+### Fase 2 — Struktur homepage (potong yang bersaing) — ✅ SELESAI (commit 9620055)
 
-Sekarang 9 section. Target: **6 section, satu CTA per layar.**
+Sekarang 9 section. Target: **6 section, satu CTA per layar.** ✅
 
-1. **Cover** (hero + stats) — CTA: kirim brief
-2. **Mitra** (hanya yang ada logo) — strip tipis
-3. **Problem/solusi** (pertahankan, ini jantungnya)
-4. **Flagship proof** (gabung live metrics + storytelling + project grid jadi SATU blok: 3 case study dengan angka before/after, live metrics sebagai strip kecil di dalamnya)
-5. **Pricing entry** — ganti anchor: mulai dari **"Rp 1,5jt"** (sesuai paket Basic yang is_popular) atau hilangkan angka mentah, bicara "scope dari landing page sampai sistem penuh"
-6. **Testimoni + CTA** (gabung)
+1. **Cover** (hero + stats) — CTA: kirim brief ✅
+2. **Mitra** (hanya yang ada logo) — strip tipis ✅
+3. **Problem/solusi** (pertahankan, ini jantungnya) ✅
+4. **Flagship proof** — live strip + storytelling + project grid digabung satu blok (id=live-data dipertahankan) ✅
+5. **Pricing entry** — anchor Rp 1,5jt ✅
+6. **Testimoni + CTA** (digabung) ✅
 
 ### Fase 3 — Trust & konversi (konten baru)
 
