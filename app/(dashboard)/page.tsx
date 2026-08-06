@@ -11,7 +11,7 @@ import { CTASection } from "@/components/sections/CTASection";
 import { ProjectCard } from "@/components/ui/ProjectCard";
 
 // Homepage funnel: satu ide per blok, tanpa dinding kartu.
-// Urutan: cover → mitra → problem/solusi → live metrics → projects → pricing → testimoni → CTA.
+// Urutan: cover → mitra → problem/solusi → flagship proof (live+story+projects) → pricing → testimoni+CTA.
 
 // Mitra strip hanya menampilkan mitra dengan logo asli — inisial tanpa logo
 // dihapus (keputusan branding 2026-08-06). Tambahkan kembali saat logo didapat.
@@ -220,54 +220,58 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. VERIFIKASI KONEKSI DATABASE PRODUKSI (LIVE PROOF) */}
-      <section id="live-data" className="py-14 md:py-20 border-t border-[var(--border-hairline)] bg-[var(--bg-element-second)]/10">
-        <div className="mx-auto max-w-6xl px-2">
-          <p className="descriptor">Bukti Integrasi Real-Time</p>
-          <h2 className="mt-3 text-2xl font-light leading-tight tracking-tight text-foreground md:text-4xl">
-            Verifikasi Data Lapangan Langsung Dari Database
-          </h2>
-          <p className="mt-3 max-w-2xl text-[13px] leading-relaxed text-foreground/70 font-mono">
-            Berikut adalah performa riil dari aplikasi yang kami deploy di server produksi client. Kami tidak menyembunyikan mock data — Anda dapat menguji koneksi langsung ke Supabase & PostgreSQL kami secara real-time di bawah ini.
-          </p>
+      {/* 4. FLAGSHIP PROOF — satu blok bukti: live strip + storytelling + projects */}
+      <section id="live-data" className="border-t border-[var(--border-hairline)]">
 
-          <div className="mt-10">
-            <LiveMetrics />
-          </div>
-        </div>
-      </section>
+        {/* 4a. LIVE STRIP — bukti integrasi real-time */}
+        <section className="py-12 md:py-14 bg-[var(--bg-element-second)]/10">
+          <div className="mx-auto max-w-6xl px-2">
+            <p className="descriptor">Bukti Integrasi Real-Time</p>
+            <h2 className="mt-3 text-2xl font-light leading-tight tracking-tight text-foreground md:text-4xl">
+              Verifikasi Data Lapangan Langsung Dari Database
+            </h2>
+            <p className="mt-3 max-w-2xl text-[13px] leading-relaxed text-foreground/70 font-mono">
+              Berikut adalah performa riil dari aplikasi yang kami deploy di server produksi client. Kami tidak menyembunyikan mock data — Anda dapat menguji koneksi langsung ke Supabase & PostgreSQL kami secara real-time di bawah ini.
+            </p>
 
-      {/* 5.5. STORYTELLING */}
-      <StorytellingSection
-        slides={storySlides}
-        kicker="Cerita di balik angkanya"
-        title="Setiap sistem dimulai dari masalah kecil yang menggerogoti waktu — dan di sini kami ukur kapan sebelum berubah jadi sesudah."
-      />
-
-      {/* 6. PROJECT SHOWCASE GRID */}
-      <section className="py-14 md:py-20 border-t border-[var(--border-hairline)]">
-        <div className="mx-auto max-w-6xl px-2">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-            <div>
-              <p className="descriptor">Showcase Sistem Nyata</p>
-              <h2 className="mt-3 text-2xl font-light leading-tight tracking-tight text-foreground md:text-4xl">
-                Aplikasi Produksi Yang Sedang Berjalan
-              </h2>
+            <div className="mt-8">
+              <LiveMetrics />
             </div>
-            <Link
-              href="/projects"
-              className="text-[12px] font-semibold text-foreground underline decoration-1 underline-offset-4 hover:opacity-70 shrink-0 font-mono"
-            >
-              Lihat semua case study →
-            </Link>
           </div>
+        </section>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {featuredHomeProjects.map((p, i) => (
-              <ProjectCard key={p.id} project={p} index={i} />
-            ))}
+        {/* 4b. STORYTELLING */}
+        <StorytellingSection
+          slides={storySlides}
+          kicker="Cerita di balik angkanya"
+          title="Setiap sistem dimulai dari masalah kecil yang menggerogoti waktu — dan di sini kami ukur kapan sebelum berubah jadi sesudah."
+        />
+
+        {/* 4c. PROJECT SHOWCASE GRID */}
+        <section className="py-14 md:py-20">
+          <div className="mx-auto max-w-6xl px-2">
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+              <div>
+                <p className="descriptor">Showcase Sistem Nyata</p>
+                <h2 className="mt-3 text-2xl font-light leading-tight tracking-tight text-foreground md:text-4xl">
+                  Aplikasi Produksi Yang Sedang Berjalan
+                </h2>
+              </div>
+              <Link
+                href="/projects"
+                className="text-[12px] font-semibold text-foreground underline decoration-1 underline-offset-4 hover:opacity-70 shrink-0 font-mono"
+              >
+                Lihat semua case study →
+              </Link>
+            </div>
+
+            <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {featuredHomeProjects.map((p, i) => (
+                <ProjectCard key={p.id} project={p} index={i} />
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
       </section>
 
       {/* 7. PRICING — single source lives on /services; homepage keeps a compact entry point. */}
@@ -289,8 +293,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 8. SATU TESTIMONIAL */}
-      <section className="py-14 md:py-20 border-t border-[var(--border-hairline)]">
+      {/* 6. PENUTUP — testimoni + CTA dalam satu blok */}
+      <section className="py-14 md:py-16 border-t border-[var(--border-hairline)]">
         <div className="mx-auto max-w-3xl px-2 text-center">
           <p className="descriptor">Kata tim yang pakai</p>
           <blockquote className="mt-6">
@@ -304,7 +308,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 9. CTA */}
       <CTASection
         centered
         eyebrow="Kalau masalahnya sudah kebayang"
