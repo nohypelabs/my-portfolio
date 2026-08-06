@@ -9,6 +9,7 @@ import { StorytellingSection, type StorySlide } from "@/components/StorytellingS
 import { LiveMetrics } from "@/components/sections/LiveMetrics";
 import { CTASection } from "@/components/sections/CTASection";
 import { ProjectCard } from "@/components/ui/ProjectCard";
+import { CountUp } from "@/components/CountUp";
 
 // Homepage funnel: satu ide per blok, tanpa dinding kartu.
 // Urutan: cover → mitra → problem/solusi → flagship proof (live+story+projects) → pricing → testimoni+CTA.
@@ -85,7 +86,7 @@ export default function HomePage() {
             {studioStats.map((s, i) => (
               <div key={s.label} className={`py-4 md:py-0 md:px-5 ${i === 0 ? "pt-0 md:pt-0" : ""} ${i === 3 ? "pb-0 md:pb-0" : ""}`}>
                 <p className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-                  {s.value}
+                  <CountUp value={s.value} />
                 </p>
                 <p className="mt-1 text-[11px] font-semibold font-mono uppercase tracking-wider text-foreground/50">{s.label}</p>
               </div>
@@ -264,9 +265,12 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {/* Bento grid: flagship (Serat QC) full-width row, two cards side by side below. */}
+            <div className="mt-10 grid gap-6 md:grid-cols-2">
               {featuredHomeProjects.map((p, i) => (
-                <ProjectCard key={p.id} project={p} index={i} />
+                <div key={p.id} className={i === 0 ? "md:col-span-2" : ""}>
+                  <ProjectCard project={p} index={i} featured={i === 0} />
+                </div>
               ))}
             </div>
           </div>
