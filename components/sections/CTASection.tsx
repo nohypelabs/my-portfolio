@@ -45,7 +45,7 @@ export function CTASection({
   if (centered) {
     return (
       <section className="py-14 md:py-20">
-        <div className="mx-auto max-w-5xl px-2">
+        <div className="mx-auto max-w-[1440px] px-2">
           <div className="rounded-3xl bg-[var(--bg-btn-big)] py-12 px-6 text-center text-[var(--txt-btn-big)] md:py-16">
             {eyebrow && (
               <p className="descriptor !text-current opacity-70">{eyebrow}</p>

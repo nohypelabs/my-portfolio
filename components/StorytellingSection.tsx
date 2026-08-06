@@ -33,7 +33,7 @@ export function StorytellingSection({ slides, title, kicker }: StorytellingSecti
 
   return (
     <section className="py-14 md:py-20">
-      <div className="mx-auto max-w-6xl px-2">
+      <div className="mx-auto max-w-[1440px] px-2">
         <p className="descriptor">{kicker}</p>
         <h2 className="mt-3 max-w-3xl text-2xl font-light leading-tight text-foreground md:text-4xl">
           {title}

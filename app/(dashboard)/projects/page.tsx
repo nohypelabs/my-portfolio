@@ -113,7 +113,7 @@ export default function ProjectsPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-5xl space-y-12 pb-12">
+    <div className="mx-auto max-w-[1440px] space-y-12 pb-12">
       {/* 1. HERO PORTFOLIO */}
       <ScrollReveal>
         <div className="rounded-3xl bg-[var(--bg-element)] soft-border p-6 md:p-10">

@@ -49,7 +49,7 @@ export default function HomePage() {
     <main className="space-y-0">
       {/* 1. COVER */}
       <section className="relative overflow-hidden">
-        <div className="mx-auto max-w-6xl px-2 pt-10 pb-14 md:pt-16 md:pb-20">
+        <div className="mx-auto max-w-[1440px] px-2 pt-10 pb-14 md:pt-16 md:pb-20">
           <p className="descriptor">nasaq.id · studio website & sistem operasional digital</p>
 
           <h1 className="mt-6 max-w-4xl text-[40px] font-light leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
@@ -96,7 +96,7 @@ export default function HomePage() {
 
       {/* 2. MITRA — strip tipis */}
       <section className="py-8 border-y border-[var(--border-hairline)] bg-[var(--bg-element-second)]/30">
-        <div className="mx-auto max-w-6xl px-2">
+        <div className="mx-auto max-w-[1440px] px-2">
           <p className="text-center descriptor">Dipercaya oleh bisnis & mitra nyata</p>
           <div className="mt-5 overflow-hidden">
             <Marquee speed={20}>
@@ -126,7 +126,7 @@ export default function HomePage() {
 
       {/* 3. REALITAS LAPANGAN VS SOLUSI */}
       <section className="py-14 md:py-20">
-        <div className="mx-auto max-w-6xl px-2">
+        <div className="mx-auto max-w-[1440px] px-2">
           <p className="descriptor">Masalah Riil vs Solusi Kustom</p>
           <h2 className="mt-3 text-3xl font-light leading-tight tracking-tight text-foreground md:text-5xl">
             Kami menyelesaikan bottleneck operasional nyata, bukan sekadar memoles template instan.
@@ -224,7 +224,7 @@ export default function HomePage() {
 
         {/* 4a. LIVE STRIP — bukti integrasi langsung */}
         <section className="py-12 md:py-14 bg-[var(--bg-element-second)]/10">
-          <div className="mx-auto max-w-6xl px-2">
+          <div className="mx-auto max-w-[1440px] px-2">
             <p className="descriptor">Bukti Integrasi Langsung</p>
             <h2 className="mt-3 text-2xl font-light leading-tight tracking-tight text-foreground md:text-4xl">
               Verifikasi Data Lapangan Langsung Dari Database
@@ -248,7 +248,7 @@ export default function HomePage() {
 
         {/* 4c. PROJECT SHOWCASE GRID */}
         <section className="py-14 md:py-20">
-          <div className="mx-auto max-w-6xl px-2">
+          <div className="mx-auto max-w-[1440px] px-2">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
               <div>
                 <p className="descriptor">Showcase Sistem Nyata</p>
@@ -275,7 +275,7 @@ export default function HomePage() {
 
       {/* 7. PRICING — single source lives on /services; homepage keeps a compact entry point. */}
       <section className="py-12 md:py-16 border-t border-[var(--border-hairline)]">
-        <div className="mx-auto max-w-6xl px-2 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mx-auto max-w-[1440px] px-2 flex flex-col items-start gap-5 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="descriptor">Titik masuk harga</p>
             <p className="mt-3 text-2xl font-light tracking-tight text-foreground md:text-3xl">

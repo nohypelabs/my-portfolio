@@ -96,7 +96,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="mx-auto max-w-5xl space-y-8 pb-12">
+    <div className="mx-auto max-w-[1440px] space-y-8 pb-12">
       {/* HEADER CARD */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

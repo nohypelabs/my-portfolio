@@ -238,7 +238,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
   const androidVariants = buildAndroidVariants(activeScreenSlug);
 
   return (
-    <div className="mx-auto max-w-5xl space-y-8 pb-12">
+    <div className="mx-auto max-w-[1440px] space-y-8 pb-12">
       <Link
         href="/projects"
         className="inline-flex items-center gap-2 text-sm font-medium text-foreground/70 transition-opacity hover:opacity-70"

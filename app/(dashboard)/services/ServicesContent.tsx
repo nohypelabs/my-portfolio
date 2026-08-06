@@ -252,7 +252,7 @@ export function ServicesContent({
       variants={staggerContainer}
       initial="initial"
       animate="animate"
-      className="mx-auto max-w-5xl space-y-12 pb-12"
+      className="mx-auto max-w-[1440px] space-y-12 pb-12"
     >
       {/* 1. HERO SERVICES */}
       <motion.div {...fadeUp} className="rounded-3xl glass p-6 md:p-10">
