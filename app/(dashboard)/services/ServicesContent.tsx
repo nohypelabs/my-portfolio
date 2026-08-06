@@ -289,11 +289,11 @@ export function ServicesContent({
               Dipecah per masalah utama
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-foreground/70">
-              Setiap track dibuat buat menyelesaikan satu masalah utama: merapikan citra publik, atau merapikan data operasional tim.
+              Setiap track dibuat buat menyelesaikan satu masalah utama: merapikan citra publik, mempercepat kerja tim lapangan, atau merapikan data operasional.
             </p>
           </div>
 
-          <div className="card-rotate grid gap-4 md:grid-cols-2">
+          <div className="card-rotate grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {services.map((service) => {
               const Icon = iconMap[service.icon] || Globe;
               const lens = getServiceLens(service);
